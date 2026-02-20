@@ -37,6 +37,23 @@ A comprehensive US FDA medication lookup tool with access to over 81,000 medicat
 
 Ideal for US healthcare applications, medical AI assistants, drug interaction checkers, and developers building healthcare applications for the American market.
 
+### 🏥 EIR Health Data Standard
+
+**Location**: [`open-health-standard/health-md-standard/`](open-health-standard/health-md-standard/)
+
+An open YAML-based standard for structuring healthcare information optimized for Large Language Models. Named after Eir, the Norse goddess of healing and medicine, this format enables privacy-preserving, clinically-accurate health data exchange.
+
+**Key Features:**
+- **LLM-Optimized**: Structured for perfect AI comprehension and reasoning
+- **Privacy-First**: Built-in anonymization and data protection patterns  
+- **Clinical-Accurate**: Preserves medical context and relationships
+- **Human-Readable**: Markdown format accessible to clinicians and patients
+- **Interoperable**: Works across systems, platforms, and use cases
+- **MCP Compatible**: Includes Model Context Protocol server implementation
+- **Comprehensive Specification**: Detailed EIR-SPEC.md with examples and guidelines
+
+Perfect for healthcare AI applications, EHR systems, telemedicine platforms, and any application requiring standardized, privacy-aware health data formatting. Enables seamless integration between healthcare systems and AI models while maintaining clinical accuracy and patient privacy.
+
 ## GitHub Pages
 
 The landing page lives in [`docs/`](docs/) and is available at:
