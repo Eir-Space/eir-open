@@ -46,14 +46,65 @@
       color: #2d3748;
       font-weight: 500;
     }
+    .projects {
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .projects h2 {
+      font-size: 1.75rem;
+      color: #1a1a2e;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .project {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+    .project h3 {
+      font-size: 1.3rem;
+      color: #1a1a2e;
+      margin-bottom: 1rem;
+    }
+    .project p {
+      margin-bottom: 0.75rem;
+    }
+    .github-link {
+      display: inline-block;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      transition: color 0.2s ease;
+    }
+    .github-link:hover {
+      color: #0052a3;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Hello, welcome to Eir Open</h1>
-    <p>
-      Eir Open is a project by Eir Space — the home for open source code modules focused on <span class="highlight">AI for empowering people in their health journey</span>.
+    <p class="tagline">
+      Open source tools for <span class="highlight">AI-powered health empowerment</span>
     </p>
+    <p>
+      Eir Open is a project by Eir Space — the home for open source code modules focused on AI for empowering people in their health journey.
+    </p>
+    
+    <div class="projects">
+      <h2>Our Open Source Projects</h2>
+      <div class="project">
+        <h3>🇸🇪 Swedish Medications</h3>
+        <p>A comprehensive medication lookup tool for Swedish pharmaceuticals based on the FASS database. Perfect for AI agents and healthcare applications serving the Swedish market.</p>
+        <p><strong>Features:</strong> Brand-to-substance mapping, dosage info, side effects, OTC status, and direct FASS links.</p>
+        <a href="https://github.com/BirgerMoell/swedish-medications" class="github-link">View on GitHub →</a>
+      </div>
+    </div>
   </div>
 </body>
 </html>
