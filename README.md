@@ -22,9 +22,13 @@ Perfect for healthcare applications, AI assistants helping with Swedish healthca
 
 ## GitHub Pages
 
-The landing page lives in [`docs/`](docs/). To enable GitHub Pages:
+The landing page lives in [`docs/`](docs/) and is available at:
+
+**🌐 https://eir-space.github.io/eir-open/**
+
+To enable GitHub Pages (if needed):
 
 1. Go to **Settings** → **Pages**
 2. Under **Source**, choose **Deploy from a branch**
 3. Select branch `main` and folder `/docs`
-4. Save — your site will be available at `https://<org>.github.io/<repo>/`
+4. Save
