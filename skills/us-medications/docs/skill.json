@@ -1,0 +1,13 @@
+{
+  "name": "us-medications",
+  "description": "US FDA medication lookup - drug information, uses, warnings, and interactions",
+  "version": "1.0.0",
+  "author": "Birger Moëll",
+  "repository": "https://github.com/BirgerMoell/us-medications",
+  "npm": "us-medications",
+  "keywords": ["fda", "medications", "drugs", "pharmacy", "us", "healthcare"],
+  "install": {
+    "npm": "npm install -g us-medications",
+    "url": "https://birgermoell.github.io/us-medications/skill.md"
+  }
+}

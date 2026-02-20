@@ -20,6 +20,23 @@ A comprehensive medication lookup tool for Swedish pharmaceuticals based on the 
 
 Perfect for healthcare applications, AI assistants helping with Swedish healthcare queries, and developers building health-focused applications in the Swedish market.
 
+### 🇺🇸 US FDA Medications
+
+**Location**: [`skills/us-medications/`](skills/us-medications/)
+
+A comprehensive US FDA medication lookup tool with access to over 81,000 medications in the full database. Features 99 curated common medications for instant access and includes drug interaction checking capabilities.
+
+**Key Features:**
+- **81,212 FDA medications** in the full database
+- **99 curated** common medications with instant access (no download needed)
+- **Drug interactions** lookup functionality
+- CLI and JavaScript API
+- OpenClaw skill compatible
+- Automatic database download on first use
+- Comprehensive medication information including uses, warnings, and interactions
+
+Ideal for US healthcare applications, medical AI assistants, drug interaction checkers, and developers building healthcare applications for the American market.
+
 ## GitHub Pages
 
 The landing page lives in [`docs/`](docs/) and is available at:
