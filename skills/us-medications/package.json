@@ -1,0 +1,43 @@
+{
+  "name": "us-medications",
+  "version": "1.0.0",
+  "description": "US FDA medication lookup for OpenClaw - drug information, uses, warnings, and interactions",
+  "main": "scripts/fda_lookup.js",
+  "bin": {
+    "us-medications": "./scripts/fda_lookup.js",
+    "fda-lookup": "./scripts/fda_lookup.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "lookup": "node scripts/fda_lookup.js",
+    "download": "node scripts/download-data.js",
+    "postinstall": "node scripts/download-data.js --silent || true"
+  },
+  "keywords": [
+    "fda",
+    "medications",
+    "drugs",
+    "pharmacy",
+    "us",
+    "healthcare",
+    "openclaw",
+    "skill"
+  ],
+  "author": "Birger Moëll",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BirgerMoell/us-medications.git"
+  },
+  "homepage": "https://birgermoell.github.io/us-medications",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "scripts/",
+    "data/curated-medications.json",
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ]
+}

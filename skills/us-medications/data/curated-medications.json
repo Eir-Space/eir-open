@@ -1,0 +1,1405 @@
+[
+  {
+    "id": "fda_14499781-b90e-47d5-a7de-006965439b94_10",
+    "name": ".Insulin Aspart Protamine and Insulin Aspart",
+    "altNames": [
+      "INSULIN ASPART"
+    ],
+    "substances": [
+      "INSULIN ASPART"
+    ],
+    "class": [
+      "Insulin Analog [EPC]"
+    ],
+    "form": " (SUBCUTANEOUS)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Insulin Aspart Protamine and Insulin Aspart Mix 70/30 is a mixture of insulin aspart protamine and insulin aspart indicated to improve glycemic control in adult patients with diabetes mellitus.",
+    "interactions": "7 DRUG INTERACTIONS The table below presents clinically significant drug interactions with Insulin Aspart Protamine and Insulin Aspart Mix 70/30 Table 3: Clinically Significant Drug Interactions with Insulin Aspart Protamine and Insulin Aspart Mix 70/30 Drugs that May Increase the Risk of Hypoglycemia Drugs: Antidiabetic agents, ACE inhibitors, angiotensin II receptor blocking agents, disopyramide, fibrates, fluoxetine, monoamine oxidase inhibitors, pentoxifylline, pramlintide, salicylates, soma..."
+  },
+  {
+    "id": "fda_36adb053-3189-4c91-87dd-e122a2c8e812_3",
+    "name": "24 hr omeprazole",
+    "altNames": [
+      "OMEPRAZOLE"
+    ],
+    "substances": [
+      "OMEPRAZOLE",
+      "Active ingredient (in each tablet) Omeprazole 20 mg"
+    ],
+    "class": [
+      "Proton Pump Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Use • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
+    "warnings": "Warnings Allergy alert: • do not use if you are allergic to omeprazole. • omeprazole may cause severe skin reactions. Symptoms may include: • skin reddening • blisters • rash If an allergic reaction occurs, stop use and seek medical help right away."
+  },
+  {
+    "id": "fda_57f89574-98e5-40e5-8dd4-e868a668adaa_3",
+    "name": "365 whole foods market acetaminophen",
+    "altNames": [
+      "ACETAMINOPHEN"
+    ],
+    "substances": [
+      "ACETAMINOPHEN",
+      "Active ingredient (in each caplet) Acetaminophen 500 mg"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses • temporarily relieves minor aches and pains due to: • the common cold • headache • backache • minor pain of arthritis • toothache • muscular aches • premenstrual and menstrual cramps • temporarily reduces fever",
+    "warnings": "Warnings Liver warning: This product contains acetaminophen. Severe liver damage may occur if you take • more than 4,000 mg of acetaminophen in 24 hours • with other drugs containing acetaminophen • 3 or more alcoholic drinks every day while using this product Allergy alert: Acetaminophen may cause ..."
+  },
+  {
+    "id": "fda_e914472b-c785-4c73-b37c-4d459166cf41_3",
+    "name": "365 whole foods market ibuprofen",
+    "altNames": [
+      "IBUPROFEN"
+    ],
+    "substances": [
+      "IBUPROFEN",
+      "Active ingredient (in each tablet) Ibuprofen 200 mg (NSAID)* *nonsteroidal anti-inflammatory drug"
+    ],
+    "class": [
+      "Nonsteroidal Anti-inflammatory Drug [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses • temporarily relieves minor aches and pains due to: • headache • muscular aches • minor pain of arthritis • toothache • backache • the common cold • menstrual cramps • temporarily reduces fever",
+    "warnings": "Warnings Allergy alert: Ibuprofen may cause a severe allergic reaction, especially in people allergic to aspirin. Symptoms may include: • hives • facial swelling • asthma (wheezing) • shock • skin reddening • rash • blisters If an allergic reaction occurs, stop use and seek medical help right away."
+  },
+  {
+    "id": "fda_bba4e7c8-db8e-4522-915c-48ee809e3bce_1",
+    "name": "365 Whole Foods Market Loratadine",
+    "altNames": [
+      "LORATADINE"
+    ],
+    "substances": [
+      "LORATADINE",
+      "Active ingredient (in each tablet) Loratadine USP 10 mg"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses temporarily relieves these symptoms due to hay fever or other upper respiratory allergies: runny nose itchy, watery eyes sneezing itching of the nose or throat",
+    "warnings": "Warnings Do not use if you have ever had an allergic reaction to this product or any of its ingredients."
+  },
+  {
+    "id": "fda_4543e156-1deb-666e-e063-6394a90a719c_1",
+    "name": "Acetaminophen , Aspirin and Caffeine",
+    "substances": [
+      "ACETAMINOPHEN",
+      "ASPIRIN",
+      "CAFFEINE",
+      "Active ingredients (in each geltab) Acetaminophen 250 mg Aspirin 250 mg Caffeine 65 mg"
+    ],
+    "class": [
+      "Nonsteroidal Anti-inflammatory Drug [EPC]",
+      "Platelet Aggregation Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses Temporarily relieves minor aches and pains due to: • headache • a cold • arthritis • muscular aches • toothache • premenstrual and menstrual cramps",
+    "warnings": "Warnings Reye's syndrome : Children and teenagers who have or are recovering from chicken pox or flu-like symptoms should not use this product. When using this product, if changes in behavior with nausea and vomiting occur, consult a doctor because these symptoms could be an early sign of Reye's syn..."
+  },
+  {
+    "id": "fda_ff9b287b-e4a4-4c12-ad2f-6b7d55b20dc6_3",
+    "name": "Albuterol",
+    "substances": [
+      "ALBUTEROL SULFATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Albuterol tablets are indicated for the relief of bronchospasm in adults and children 6 years of age and older with reversible obstructive airway disease.",
+    "warnings": "WARNINGS Paradoxical Bronchospasm Albuterol tablets can produce paradoxical bronchospasm, which may be life threatening. If paradoxical bronchospasm occurs, albuterol tablets should be discontinued immediately and alternative therapy instituted.",
+    "interactions": "Drug Interactions The concomitant use of albuterol tablets and other oral sympathomimetic agents is not recommended since such combined use may lead to deleterious cardiovascular effects. This recommendation does not preclude the judicious use of an aerosol bronchodilator of the adrenergic stimulant type in patients receiving albuterol tablets. Such concomitant use, however, should be individualized and not given on a routine basis."
+  },
+  {
+    "id": "fda_14d98490-4f8f-4d2f-a4e9-7a3d7a0199ba_18",
+    "name": "alogliptin and metformin hydrochloride",
+    "substances": [
+      "ALOGLIPTIN BENZOATE",
+      "METFORMIN HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Alogliptin and metformin HCl tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+    "warnings": "WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and resistant bradyarrhythmias.",
+    "interactions": "7 DRUG INTERACTIONS Carbionic anhydrase inhibitors may increase risk of lactic acidosis. Consider more frequent monitoring. ( 7 ) Drugs that reduce metformin clearance (such as ranolazine, vandetanib, dolutegravir, and cimetidine), may increase the accumulation of metformin. Consider the benefits and risks of concomitant use. ( 7 ) Alcohol can potentiate the effect of metformin on lactate metabolism. Warn patients against excessive alcohol intake."
+  },
+  {
+    "id": "fda_642b1e90-701e-42f2-bac6-a4918738e2c9_11",
+    "name": "Alogliptin and Pioglitazone",
+    "altNames": [
+      "ALOGLIPTIN BENZOATE AND PIOGLITAZONE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "ALOGLIPTIN BENZOATE",
+      "PIOGLITAZONE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Alogliptin and pioglitazone tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus .",
+    "warnings": "WARNING: CONGESTIVE HEART FAILURE Thiazolidinediones, including pioglitazone, which is a component of alogliptin and pioglitazone tablets, cause or exacerbate congestive heart failure in some patients  .",
+    "interactions": "7 DRUG INTERACTIONS Strong CYP2C8 inhibitors (e.g., gemfibrozil) increase pioglitazone concentrations. Limit the pioglitazone dose to 15 mg daily.  CYP2C8 inducers (e.g., rifampin) may decrease pioglitazone concentrations.  Topiramate may decrease pioglitazone concentrations.  7.1 Insulin Secretagogues and Insulin Insulin and insulin secretagogues are known to cause hypoglycemia. Coadministration of alogliptin and pioglitazone tablets with an insulin secretagogue (e.g."
+  },
+  {
+    "id": "fda_717ce509-f92e-4ec1-a3c6-aeae54d56f4d_6",
+    "name": "Alprazolam",
+    "substances": [
+      "ALPRAZOLAM"
+    ],
+    "class": [
+      "Benzodiazepine [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Anxiety Disorders Alprazolam tablets are indicated for the management of anxiety disorder (a condition corresponding most closely to the APA Diagnostic and Statistical Manual [DSM-III-R] diagnosis of generalized anxiety disorder) or the short-term relief of symptoms of anxiety.",
+    "warnings": "WARNINGS Dependence and Withdrawal Reactions, Including Seizures Certain adverse clinical events, some life-threatening, are a direct consequence of physical dependence to alprazolam. These include a spectrum of withdrawal symptoms; the most important is seizure (see DRUG ABUSE AND DEPENDENCE ).",
+    "interactions": "Drug Interactions Use with Other CNS Depressants If alprazolam tablets are to be combined with other psychotropic agents or anticonvulsant drugs, careful consideration should be given to the pharmacology of the agents to be employed, particularly with compounds which might potentiate the action of benzodiazepines."
+  },
+  {
+    "id": "fda_8b2c581a-f955-4a8e-bf85-e768e903fd10_12",
+    "name": "Amiloride Hydrochloride and Hydrochlorothiazide",
+    "substances": [
+      "AMILORIDE HYDROCHLORIDE",
+      "HYDROCHLOROTHIAZIDE"
+    ],
+    "class": [
+      "Thiazide Diuretic [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Amiloride hydrochloride and hydrochlorothiazide tablets are indicated in those patients with hypertension or with congestive heart failure who develop hypokalemia when thiazides or other kaliuretic diuretics are used alone, or in whom maintenance of normal serum potassium level...",
+    "warnings": "Like other potassium-conserving diuretic combinations, amiloride and hydrochlorothiazide may cause hyperkalemia (serum potassium levels greater than 5.5 mEq per liter).",
+    "interactions": "Drug Interactions In some patients, the administration of a non-steroidal anti-inflammatory agent can reduce the diuretic, natriuretic, and antihypertensive effects of loop, potassium-sparing and thiazide diuretics. Therefore, when amiloride and hydrochlorothiazide plus non-steroidal anti-inflammatory agents are used concomitantly, the patient should be observed closely to determine if the desired effect of the diuretic is obtained."
+  },
+  {
+    "id": "fda_5d7ca186-f22b-465f-913b-c020240b2c66_103",
+    "name": "Amlodipine and Atorvastatin",
+    "substances": [
+      "AMLODIPINE BESYLATE",
+      "ATORVASTATIN CALCIUM TRIHYDRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Amlodipine and atorvastatin tablets are indicated in patients for whom treatment with both amlodipine and atorvastatin is appropriate. Amlodipine Hypertension Amlodipine is indicated for the treatment of hypertension, to lower blood pressure.",
+    "interactions": "7 DRUG INTERACTIONS Data from a drug-drug interaction study involving 10 mg of amlodipine and 80 mg of atorvastatin in healthy subjects indicate that the pharmacokinetics of amlodipine are not altered when the drugs are co-administered. The effect of amlodipine on the pharmacokinetics of atorvastatin showed no effect on the C max : 91% (90% confidence interval: 80 to 103%), but the AUC of atorvastatin increased by 18% (90% confidence interval: 109 to 127%) in the presence of amlodipine, which is..."
+  },
+  {
+    "id": "fda_bed1710f-edd9-488d-855b-603d50ee212c_103",
+    "name": "Amlodipine and Atorvastatin",
+    "substances": [
+      "AMLODIPINE BESYLATE",
+      "ATORVASTATIN CALCIUM TRIHYDRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Amlodipine and atorvastatin tablets are indicated in patients for whom treatment with both amlodipine and atorvastatin is appropriate. Amlodipine Hypertension Amlodipine is indicated for the treatment of hypertension, to lower blood pressure.",
+    "interactions": "7 DRUG INTERACTIONS Data from a drug-drug interaction study involving 10 mg of amlodipine and 80 mg of atorvastatin in healthy subjects indicate that the pharmacokinetics of amlodipine are not altered when the drugs are co-administered. The effect of amlodipine on the pharmacokinetics of atorvastatin showed no effect on the C max : 91% (90% confidence interval: 80 to 103%), but the AUC of atorvastatin increased by 18% (90% confidence interval: 109 to 127%) in the presence of amlodipine, which is..."
+  },
+  {
+    "id": "fda_6a3d1af5-6e93-4f06-8d82-1c87290c46aa_4",
+    "name": "Amoxicillin",
+    "substances": [
+      "AMOXICILLIN"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Adults and Pediatric Patients Upper Respiratory Tract Infections of the Ear, Nose, and Throat: Amoxicillin for oral suspension is indicated in the treatment of infections due to susceptible (ONLY β-lactamase–negative) isolates of Streptococcus species.",
+    "interactions": "7 DRUG INTERACTIONS Co-administration with probenicid is not recommended.  Concomitant use of amoxicillin and oral anticoagulants may increase the prolongation of prothrombin time.  Co-administration with allopurinol increases the risk of rash.  Amoxicillin may reduce the efficacy of oral contraceptives.  7.1 Probenecid Probenecid decreases the renal tubular secretion of amoxicillin. Concurrent use of amoxicillin and probenecid may result in increased and prolonged blood levels of amoxicillin."
+  },
+  {
+    "id": "fda_aedf70e4-1949-44bc-bf1b-0f282c4f0705_1",
+    "name": "apomorphine hydrocloride",
+    "altNames": [
+      "APOMORPHINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "APOMORPHINE HYDROCHLORIDE"
+    ],
+    "form": " (SUBCUTANEOUS)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Apomorphine hydrochloride injection is indicated for the acute, intermittent treatment of hypomobility, \"off\" episodes (\"end-of-dose wearing off\" and unpredictable \"on/off\" episodes) in patients with advanced Parkinson's disease.",
+    "interactions": "7 DRUG INTERACTIONS Concomitant use of antihypertensive medications and vasodilators: increased risk for hypotension, myocardial infarction, pneumonia, falls, and injuries  Dopamine antagonists such as neuroleptics or metoclopramide, may diminish the effectiveness of apomorphine hydrocloride  7."
+  },
+  {
+    "id": "fda_d8183eaf-0093-4720-b8ed-20e570697511_1",
+    "name": "Aripiprazole",
+    "substances": [
+      "ARIPIPRAZOLE"
+    ],
+    "class": [
+      "Atypical Antipsychotic [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Aripiprazole tablets are indicated for the treatment of: Schizophrenia Irritability Associated with Autistic Disorder Treatment of Tourette’s Disorder Aripiprazole is an atypical antipsychotic.",
+    "warnings": "WARNING: INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA-RELATED PSYCHOSIS; and SUICIDAL THOUGHTS AND BEHAVIORS WITH ANTIDEPRESSANT DRUGS Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death.",
+    "interactions": "7 DRUG INTERACTIONS Dosage adjustment due to drug interactions : Factors Dosage Adjustments for Aripiprazole Tablets Known CYP2D6 Poor Metabolizers Administer half of usual dose Known CYP2D6 Poor Metabolizers and strong CYP3A4 inhibitors Administer a quarter of usual dose Strong CYP2D6 or CYP3A4 inhibitors Administer half of usual dose Strong CYP2D6 and CYP3A4 inhibitors Administer a quarter of usual dose Strong CYP3A4 inducers Double usual dose over 1 to 2 weeks 7."
+  },
+  {
+    "id": "fda_ee143f2f-be60-bc67-e053-2a95a90ae6e6_4",
+    "name": "Atenolol",
+    "substances": [
+      "ATENOLOL"
+    ],
+    "class": [
+      "beta-Adrenergic Blocker [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Atenolol tablets USP are indicated for the treatment of hypertension, to lower blood pressure. Lowering blood pressure lowers the risk of fatal and non-fatal cardiovascular events, primarily strokes and myocardial infarctions.",
+    "warnings": "BOXED WARNING Cessation of Therapy with Atenolol Patients with coronary artery disease, who are being treated with atenolol, should be advised against abrupt discontinuation of therapy."
+  },
+  {
+    "id": "fda_7bbc6514-bea3-0be0-e673-a8f6069025ff_14",
+    "name": "Azelastine hydrochloride and Fluticasone propionate",
+    "substances": [
+      "AZELASTINE HYDROCHLORIDE",
+      "FLUTICASONE PROPIONATE"
+    ],
+    "form": " (NASAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Azelastine hydrochloride and fluticasone propionate nasal spray is indicated for the relief of symptoms of seasonal allergic rhinitis in adult and pediatric patients 6 years of age and older.",
+    "interactions": "7 DRUG INTERACTIONS No formal drug interaction studies have been performed with azelastine hydrochloride and fluticasone propionate nasal spray. The drug interactions of the combination are expected to reflect those of the individual components. Potent inhibitors of cytochrome P450 (CYP) 3A4: May increase blood levels of fluticasone propionate. Ritonavir: Coadministration is not recommended. ( 5.6 , 7.2 ) Other potent CYP3A4 inhibitors, such as ketoconazole: use caution with coadministration."
+  },
+  {
+    "id": "fda_d564d91e-3039-c120-e053-2995a90ae6db_2",
+    "name": "AZITHROMYCIN",
+    "substances": [
+      "AZITHROMYCIN MONOHYDRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Azithromycin for oral suspension USP is a macrolide antibacterial drug indicated for the treatment of patients with mild to moderate infections caused by susceptible strains of the designated microorganisms in the specific conditions listed below.",
+    "interactions": "7.1 Nelfinavir Co-administration of nelfinavir at steady-state with a single oral dose of azithromycin resulted in increased azithromycin serum concentrations. Although a dose adjustment of azithromycin is not recommended when administered in combination with nelfinavir, close monitoring for known adverse reactions of azithromycin, such as liver enzyme abnormalities and hearing impairment, is warranted.  7."
+  },
+  {
+    "id": "fda_2466913b-7292-4dfd-8ac9-429256faacee_3",
+    "name": "basic care esomeprazole magnesium",
+    "altNames": [
+      "ESOMEPRAZOLE"
+    ],
+    "substances": [
+      "ESOMEPRAZOLE",
+      "Active ingredient (in each capsule) Esomeprazole 20 mg (Each delayed-release capsule corresponds to 22 mg esomeprazole magnesium dihydrate)"
+    ],
+    "class": [
+      "Proton Pump Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
+    "warnings": "Warnings Allergy alert: • Do not use if you are allergic to esomeprazole. • Esomeprazole may cause severe skin reactions. Symptoms may include: • skin reddening • blisters • rash If an allergic reaction occurs, stop use and seek medical help right away."
+  },
+  {
+    "id": "fda_5ab07bf7-140a-4ca0-9b3a-38da7aa454db_3",
+    "name": "basic care lansoprazole",
+    "altNames": [
+      "LANSOPRAZOLE"
+    ],
+    "substances": [
+      "LANSOPRAZOLE",
+      "Active ingredient (in each capsule) Lansoprazole 15 mg"
+    ],
+    "class": [
+      "Proton Pump Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Use • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
+    "warnings": "Warnings Allergy alert: Do not use if you are allergic to lansoprazole Do not use • if you have trouble or pain swallowing food, vomiting with blood, or bloody or black stools. These may be signs of a serious condition. See your doctor."
+  },
+  {
+    "id": "fda_93c857e4-72b3-433e-ae6f-281cd57e3996_10",
+    "name": "berkley and jensen famotidine",
+    "altNames": [
+      "FAMOTIDINE"
+    ],
+    "substances": [
+      "FAMOTIDINE",
+      "Active ingredient (in each tablet) Famotidine 20 mg"
+    ],
+    "class": [
+      "Histamine-2 Receptor Antagonist [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses • relieves heartburn associated with acid indigestion and sour stomach • prevents heartburn associated with acid indigestion and sour stomach brought on by eating or drinking certain food and beverages",
+    "warnings": "Warnings Allergy alert: Do not use if you are allergic to famotidine or other acid reducers Do not use • if you have trouble or pain swallowing food, vomiting with blood, or bloody or black stools. These may be signs of a serious condition. See your doctor."
+  },
+  {
+    "id": "fda_2facb092-a71f-8bdd-e063-6394a90a61e2_2",
+    "name": "Bestmade Natural Products Lithium Chloride (Lith Mur)",
+    "altNames": [
+      "LITHIUM CHLORIDE"
+    ],
+    "substances": [
+      "LITHIUM CHLORIDE",
+      "Active Ingredients"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses: Use the leaflet enclosed for detail.",
+    "warnings": "Warnings and Storage: Ask a professional before use if pregnant or breast feeding or if you have severe symptoms. Keep away from children. If you have a reaction to this product that is not positive, discontinue use. Store in a cool and dry place. Packaging: 30gm jar standard quality packing."
+  },
+  {
+    "id": "fda_304bc36b-ffbc-76df-e063-6294a90a8fe0_1",
+    "name": "Bestmade Natural Products Testosterone Support",
+    "altNames": [
+      "ACID PHOS, AGNUS CASTUS, AGARICUS MUS, DAMIAANA, GINSENG PANAX, SABAL SERR, SCUTELLARIA LAT, SELENIUM, YOHIMBINUM"
+    ],
+    "substances": [
+      "AMANITA MUSCARIA FRUITING BODY",
+      "AMERICAN GINSENG",
+      "CHASTE TREE",
+      "PHOSPHORIC ACID",
+      "SAW PALMETTO"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses Temporarily supports muscle mass gain, libido, and energy.* *CLAIMS BASED ON TRADITIONAL HOMEOPATHIC PRACTICE, NOT ACCEPTED MEDICAL EVIDENCE, NOT FDA EVALUATED. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+    "warnings": "Warnings and Storage: Ask a professional before use if pregnant or breastfeeding or if you have severe symptoms. Keep away from children. If you have a reaction to this product that is not positive, discontinue use. Store in a cool and dry place."
+  },
+  {
+    "id": "fda_c4d66e80-f0bc-4e64-a0f0-630ef673da1b_16",
+    "name": "Bismuth Subcitrate Potassium, Metronidazole and Tetracycline Hydrochloride",
+    "substances": [
+      "BISMUTH SUBCITRATE POTASSIUM",
+      "METRONIDAZOLE",
+      "TETRACYCLINE HYDROCHLORIDE"
+    ],
+    "class": [
+      "Nitroimidazole Antimicrobial [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Bismuth subcitrate potassium, metronidazole and tetracycline hydrochloride capsules are a combination of metronidazole, a nitroimidazole antimicrobial, tetracycline, a tetracycline class antimicrobial and bismuth subcitrate potassium, indicated for use, in combination with om...",
+    "warnings": "WARNING: POTENTIAL FOR CARCINOGENICITY Metronidazole has been shown to be carcinogenic in mice and rats. It is unknown whether metronidazole is associated with carcinogenicity in humans . WARNING: POTENTIAL FOR CARCINOGENICITY See full prescribing information for complete boxed warning.",
+    "interactions": "7 DRUG INTERACTIONS Methoxyflurane: Risk of fatal renal toxicity; do not co-administer. ( 4.1 , 7.1 ) Disulfiram: Psychotic reactions can occur; do not take concurrently or within the last 2 weeks of disulfiram. ( 4.2 , 7.2 ) Alcohol: Abdominal cramps, nausea, vomiting, headaches, and flushing can occur; do not consume during therapy and for at least 3 days afterwards. ( 4.3 , 7."
+  },
+  {
+    "id": "fda_47ceb7e1-b2f7-47f8-8b6a-85eea36606b8_3",
+    "name": "bupropion",
+    "substances": [
+      "BUPROPION HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1. INDICATIONS AND USAGE Bupropion hydrochloride extended-release tablets, USP (XL) is an aminoketone antidepressant, indicated for the treatment of major depressive disorder (MDD) and prevention of seasonal affective disorder (SAD).",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS; AND NEUROPSYCHIATRIC REACTIONS See full prescribing information for complete boxed warning. • Increased risk of suicidal thinking and behavior in children, adolescents, and young adults taking antidepressants.",
+    "interactions": "7. DRUG INTERACTIONS • CYP2B6 inducers: Dose increase may be necessary if coadministered with CYP2B6 inducers (e.g., ritonavir, lopinavir, efavirenz, carbamazepine, phenobarbital, and phenytoin) based on clinical exposure, but should not exceed the maximum recommended dose.  • Drugs metabolized by CYP2D6: Bupropion inhibits CYP2D6 and can increase concentrations of: antidepressants (e.g., venlafaxine, nortriptyline, imipramine, desipramine, paroxetine, fluoxetine, sertraline), antipsychotics (e."
+  },
+  {
+    "id": "fda_f83219c9-8081-fe55-e053-6394a90aa924_2",
+    "name": "Buspirone HCL",
+    "substances": [
+      "BUSPIRONE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Buspirone hydrochloride tablets are indicated for the management of anxiety disorders or the short-term relief of the symptoms of anxiety. Anxiety or tension associated with the stress of everyday life usually does not require treatment with an anxiolytic.",
+    "warnings": "The administration of buspirone to a patient taking a monoamine oxidase inhibitor (MAOI) may pose a hazard. There have been reports of the occurrence of elevated blood pressure when buspirone hydrochloride has been added to a regimen including an MAOI."
+  },
+  {
+    "id": "fda_0eaf9d27-e221-4cdd-97bc-478c775e3d67_1",
+    "name": "Cabinet Allergy Relief Refill Cetirizine HCI",
+    "altNames": [
+      "CETIRIZINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "CETIRIZINE HYDROCHLORIDE",
+      "Active Ingredient (in each caplet) Cetirizine HCl 10mg Purpose Antihistamine"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "Uses • temporarily relieves these symptoms due to hay fever or other upper respiratory allergies • runny nose • itchy watery eyes• sneezing• itching of the nose or throat",
+    "warnings": "Warnings Do not use if you have ever had an allergic reaction to this product or any of its ingredients or to an antihistamine containing hydroxyzine. Ask a doctor before use if you have liver or kidny disease. Your doctor should determine if you need a different dose."
+  },
+  {
+    "id": "fda_df6076ca-b8c2-5439-e053-2995a90a716a_2",
+    "name": "Carbamazepine",
+    "substances": [
+      "CARBAMAZEPINE"
+    ],
+    "class": [
+      "Mood Stabilizer [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Epilepsy Carbamazepine is indicated for use as an anticonvulsant drug. Evidence supporting efficacy of carbamazepine as an anticonvulsant was derived from active drug-controlled studies that enrolled patients with the following seizure types: Partial seizures with complex sympt...",
+    "warnings": "WARNINGS SERIOUS DERMATOLOGIC REACTIONS AND HLA-B*1502 ALLELE SERIOUS AND SOMETIMES FATAL DERMATOLOGIC REACTIONS, INCLUDING TOXIC EPIDERMAL NECROLYSIS (TEN) AND STEVENS-JOHNSON SYNDROME (SJS), HAVE BEEN REPORTED DURING TREATMENT WITH CARBAMAZEPINE.",
+    "interactions": "Drug Interactions There has been a report of a patient who passed an orange rubbery precipitate in his stool the day after ingesting carbamazepine suspension immediately followed by Thorazine ® * solution. Subsequent testing has shown that mixing carbamazepine suspension and chlorpromazine solution (both generic and brand name) as well as carbamazepine suspension and liquid Mellaril ® , resulted in the occurrence of this precipitate."
+  },
+  {
+    "id": "fda_fe462198-32ae-4f6c-befc-acb97fb017c9_102",
+    "name": "CARVEDILOL",
+    "substances": [
+      "CARVEDILOL"
+    ],
+    "class": [
+      "alpha-Adrenergic Blocker [EPC]",
+      "beta-Adrenergic Blocker [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Carvedilol is an alpha-/beta-adrenergic blocking agent indicated for the treatment of: mild to severe chronic heart failure  left ventricular dysfunction following myocardial infarction in clinically stable patients  hypertension  1.",
+    "interactions": "7 DRUG INTERACTIONS CYP P450 2D6 enzyme inhibitors may increase and rifampin may decrease carvedilol levels. ( 7.1 , 7.5 ) Hypotensive agents (e.g., reserpine, MAO inhibitors, clonidine) may increase the risk of hypotension and/or severe bradycardia.  Cyclosporine or digoxin levels may increase. ( 7.3 , 7.4 ) Both digitalis glycosides and β-blockers slow atrioventricular conduction and decrease heart rate. Concomitant use can increase the risk of bradycardia."
+  },
+  {
+    "id": "fda_602fae70-3b8a-4f09-8db1-41fef4a2ecd7_2",
+    "name": "Cephalexin",
+    "substances": [
+      "CEPHALEXIN"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Cephalexin capsules are a cephalosporin antibacterial drug indicated for the treatment of the following infections caused by susceptible isolates of designated bacteria: Respiratory tract infection  Otitis media  Skin and skin structure infections  Bone infections  Genitourin...",
+    "interactions": "7 DRUG INTERACTIONS Metformin: increased metformin concentrations. Monitor for hypoglycemia.  Probenecid-The renal excretion of cephalexin is inhibited by probenecid. Co-administration of probenecid with cephalexin is not recommended.  Administration of cephalexin may result in a false-positive reaction for glucose in the urine.  7.1 Metformin Administration of cephalexin with metformin results in increased plasma metformin concentrations and decreased renal clearance of metformin."
+  },
+  {
+    "id": "fda_d38b5160-4c1c-41d9-8f13-f9f877778f9c_1",
+    "name": "Ciprofloxacin",
+    "altNames": [
+      "CIPROFOLXACIN"
+    ],
+    "substances": [
+      "CIPROFLOXACIN HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Ciprofloxacin is a fluoroquinolone antibacterial indicated in adults (18 years of age and older) with the following infections caused by designated, susceptible bacteria and in pediatric patients where indicated: Skin and Skin Structure Infections  Bone and Joint Infections  ...",
+    "warnings": "WARNING: SERIOUS ADVERSE REACTIONS INCLUDING TENDINITIS, TENDON RUPTURE, PERIPHERAL NEUROPATHY, CENTRAL NERVOUS SYSTEM EFFECTS AND EXACERBATION OF MYASTHENIA GRAVIS Fluoroquinolones, including ciprofloxacin, have been associated with disabling and potentially irreversible serious adverse reactions t...",
+    "interactions": "7 DRUG INTERACTIONS Ciprofloxacin is an inhibitor of human cytochrome P450 1A2 (CYP1A2) mediated metabolism. Co-administration of ciprofloxacin with other drugs primarily metabolized by CYP1A2 results in increased plasma concentrations of these drugs and could lead to clinically significant adverse events of the co-administered drug."
+  },
+  {
+    "id": "fda_0dfb11d9-f48d-56ee-e063-6294a90ad256_1",
+    "name": "Citalopram",
+    "substances": [
+      "CITALOPRAM HYDROBROMIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Citalopram tablets are indicated for the treatment of major depressive disorder (MDD) in adults  . Citalopram tablets are a selective serotonin reuptake inhibitor (SSRI) indicated for the treatment of major depressive disorder (MDD) in adults ( 1 ) .",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies.",
+    "interactions": "7 DRUG INTERACTIONS Table 5 presents clinically important drug interactions with citalopram tablets. Table 5: Clinically Important Drug Interactions with Citalopram Tablets Monoamine Oxidase Inhibitors (MAOIs) Clinical Impact: Concomitant use of SSRIs, including citalopram tablets, and MAOIs increases the risk of serotonin syndrome. Intervention: Citalopram tablets are contraindicated in patients taking MAOIs, including MAOIs such as linezolid or intravenous methylene blue  ."
+  },
+  {
+    "id": "fda_dc8b8a09-3eed-1998-e053-2995a90a2f60_3",
+    "name": "Clindamycin",
+    "altNames": [
+      "CLINDAMYCIN PHOSPHATE"
+    ],
+    "substances": [
+      "CLINDAMYCIN PHOSPHATE"
+    ],
+    "form": " (INTRAMUSCULAR, INTRAVENOUS)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Clindamycin Injection, USP is indicated in the treatment of serious infections caused by susceptible anaerobic bacteria. Clindamycin Injection, USP is also indicated in the treatment of serious infections due to susceptible strains of streptococci, pneumococci, and staphylococc...",
+    "warnings": "WARNING Clostridium difficile -associated diarrhea (CDAD) has been reported with use of nearly all antibacterial agents, including clindamycin and may range in severity from mild diarrhea to fatal colitis.",
+    "interactions": "Drug Interactions Clindamycin has been shown to have neuromuscular blocking properties that may enhance the action of other neuromuscular blocking agents. Therefore, it should be used with caution in patients receiving such agents. Clindamycin is metabolized predominantly by CYP3A4, and to a lesser extent by CYP3A5, to the major metabolite clindamycin sulfoxide and minor metabolite N-desmethylclindamycin."
+  },
+  {
+    "id": "fda_30d674f9-f1b3-4c2d-a8e9-3bc8e476f1ec_3",
+    "name": "Clonazepam",
+    "substances": [
+      "CLONAZEPAM"
+    ],
+    "class": [
+      "Benzodiazepine [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Seizure Disorders: Clonazepam tablets are useful alone or as an adjunct in the treatment of the Lennox- Gastaut syndrome (petit mal variant), akinetic and myoclonic seizures.",
+    "warnings": "WARNING: RISKS FROM CONCOMITANT USE WITH OPIOIDS; ABUSE, MISUSE, AND ADDICTION, and DEPENDENCE AND WITHDRAWAL REACTIONS Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death.",
+    "interactions": "Drug Interactions: Effect of Concomitant Use of Benzodiazepine and Opioids: The concomitant use of benzodiazepines and opioids increases the risk of respiratory depression because of actions at different receptor sites in the CNS that control respiration. Benzodiazepines interact at GABAA sites, and opioids interact primarily at mu receptors. When benzodiazepines and opioids are combined, the potential for benzodiazepines to significantly worsen opioid-related respiratory depression exists."
+  },
+  {
+    "id": "fda_4cd07a3c-9673-4aa0-b76a-d79df2399ee1_10",
+    "name": "Clopidogrel",
+    "altNames": [
+      "CLOPIDOGREL BISULFATE"
+    ],
+    "substances": [
+      "CLOPIDOGREL BISULFATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Clopidogrel tablets are a P2Y 12 platelet inhibitor indicated for: • Acute coronary syndrome - For patients with non-ST-segment elevation ACS (unstable angina [UA]/non-ST-elevation myocardial infarction [NSTEMI]), clopidogrel tablets has been shown to reduce the rate of myoca...",
+    "warnings": "WARNING: DIMINISHED ANTIPLATELET EFFECT IN PATIENTS WITH TWO LOSS-OF-FUNCTION ALLELES OF THE CYP2C19 GENE WARNING: DIMINISHED ANTIPLATELET EFFECT IN PATIENTS WITH TWO LOSS-OF-FUNCTION ALLELES OF THE CYP2C19 GENE See full prescribing information for complete boxed warning.",
+    "interactions": "7 DRUG INTERACTIONS • CYP2C19 inducers: Increases levels of clopidogrel active metabolite and increases platelet inhibition.  • Opioids: Decreased exposure to clopidogrel. Consider use of parenteral antiplatelet agent.  • Nonsteroidal anti-inflammatory drugs (NSAIDs), warfarin, selective serotonin and serotonin norepinephrine reuptake inhibitors (SSRIs, SNRIs): Increases risk of bleeding. ( 7.4 , 7.5 , 7.6 ) • Other Antiplatelet Agents: Increases the risk of bleeding due to an additive effect."
+  },
+  {
+    "id": "fda_83198ef1-11c4-11e4-9191-0800200c9a66_14",
+    "name": "CombiPatch (estradiol/norethindrone acetate transdermal system)",
+    "altNames": [
+      "ESTRADIOL/NORETHINDRONE ACETATE TRANSDERMAL SYSTEM"
+    ],
+    "substances": [
+      "ESTRADIOL",
+      "NORETHINDRONE ACETATE"
+    ],
+    "class": [
+      "Estrogen [EPC]"
+    ],
+    "form": " (TRANSDERMAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE CombiPatch is indicated in a woman with a uterus for: Treatment of moderate to severe vasomotor symptoms due to menopause. Treatment of moderate to severe symptoms of vulvar and vaginal atrophy due to menopause.",
+    "warnings": "WARNING: CARDIOVASCULAR DISORDERS, BREAST CANCER, ENDOMETRIAL CANCER, AND PROBABLE DEMENTIA Estrogen Plus Progestin Therapy Cardiovascular Disorders and Probable Dementia Estrogen plus progestin therapy should not be used for the prevention of cardiovascular disease or dementia.",
+    "interactions": "Drug Interactions No drug interaction studies have been conducted with CombiPatch. In vitro and in vivo studies have shown that estrogens are metabolized partially by cytochrome P450 3A4 (CYP3A4). Therefore, inducers or inhibitors of CYP3A4 may affect estrogen drug metabolism. Inducers of CYP3A4 such as St. John’s wort ( Hypericum perforatum ) preparations, anticonvulsants (e.g., phenobarbital, phenytoin and carbamazepine), phenylbutazone, and anti-infectives (e.g."
+  },
+  {
+    "id": "fda_3a397e88-d267-feed-e063-6294a90a7710_1",
+    "name": "Cyclobenzaprine HCL",
+    "substances": [
+      "CYCLOBENZAPRINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Indications and Usage Section INDICATIONS AND USAGE Cyclobenzaprine hydrochloride tablets, USP are indicated as an adjunct to rest and physical therapy for relief of muscle spasm associated with acute, painful musculoskeletal conditions.",
+    "warnings": "Warnings Serotonin Syndrome The development of a potentially life-threatening serotonin syndrome has been reported with cyclobenzaprine hydrochloride when used in combination with other drugs, such as selective serotonin reuptake inhibitors (SSRIs), serotonin norepinephrine reuptake inhibitors (SNRI..."
+  },
+  {
+    "id": "fda_25bdfc41-c7cb-4d16-b6a8-f102f9b8c984_23",
+    "name": "Desvenlafaxine",
+    "altNames": [
+      "DESVENLAFAXINE SUCCINATE"
+    ],
+    "substances": [
+      "DESVENLAFAXINE SUCCINATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Desvenlafaxine is indicated for the treatment of adults with major depressive disorder (MDD)  . Desvenlafaxine is a serotonin and norepinephrine reuptake inhibitor (SNRI) indicated for the treatment of adults with major depressive disorder (MDD) ( 1 ).",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies.",
+    "interactions": "7 DRUG INTERACTIONS 7.1 Drugs Having Clinically Important Interactions with Desvenlafaxine Table 8: Clinically Important Drug Interactions with Desvenlafaxine Monoamine Oxidase Inhibitors (MAOI) Clinical Impact The concomitant use of SSRIs and SNRIs including desvenlafaxine with MAOIs increases the risk of serotonin syndrome."
+  },
+  {
+    "id": "fda_f930af78-760b-42c7-af30-ffcc64c4d35d_104",
+    "name": "Dexmethylphenidate Hydrochloride",
+    "substances": [
+      "DEXMETHYLPHENIDATE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Dexmethylphenidate hydrochloride tablets are indicated for the treatment of Attention Deficit Hyperactivity Disorder (ADHD)  . Dexmethylphenidate hydrochloride tablets are a central nervous system (CNS) stimulant indicated for the treatment of Attention Deficit Hyperactivity ...",
+    "warnings": "WARNING: ABUSE AND DEPENDENCE CNS stimulants, including dexmethylphenidate hydrochloride, other methylphenidate-containing products, and amphetamines, have a high potential for abuse and dependence.",
+    "interactions": "7 DRUG INTERACTIONS Antihypertensive Drugs: Monitor blood pressure. Adjust dosage of antihypertensive drug as needed . Halogenated Anesthetics: Avoid use of dexmethylphenidate hydrochloride tablets on the day of surgery if halogenated anesthetics will be used . 7.1 Clinically Important Drug Interactions With Dexmethylphenidate Hydrochloride Tablets Table 2 presents clinically important drug interactions with dexmethylphenidate hydrochloride tablets."
+  },
+  {
+    "id": "fda_078bbb41-7e3a-48db-87f0-ec6a6ec0194e_12",
+    "name": "Diazepam",
+    "substances": [
+      "DIAZEPAM"
+    ],
+    "class": [
+      "Benzodiazepine [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS Diazepam tablets are indicated for the management of anxiety disorders or for the short-term relief of the symptoms of anxiety. Anxiety or tension associated with the stress of everyday life usually does not require treatment with an anxiolytic.",
+    "warnings": "WARNING: RISKS FROM CONCOMITANT USE WITH OPIOIDS; ABUSE, MISUSE, AND ADDICTION; and DEPENDENCE AND WITHDRAWAL REACTIONS Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death."
+  },
+  {
+    "id": "fda_2c656550-7e5b-445f-e063-6294a90a8f52_2",
+    "name": "Dicyclomine",
+    "altNames": [
+      "DICYCLOMINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "DICYCLOMINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Dicyclomine hydrochloride tablets are indicated for the treatment of patients with functional bowel/irritable bowel syndrome. Dicyclomine hydrochloride tablets are an antispasmodic and anticholinergic (antimuscarinic) agent indicated for the treatment of functional bowel/irri...",
+    "interactions": "7 DRUG INTERACTIONS Antiglaucoma agents : anticholinergics antagonize antiglaucoma agents and may increase intraoccular pressure (7) Anticholinergic agents : may affect the gastrointestinal absorption of various drugs; may also increase certain actions or side effects of other anticholinergic drugs (7) Antacids : interfere with the absorption of anticholinergic agents (7) 7.1 Antiglaucoma Agents Anticholinergics antagonize the effects of antiglaucoma agents."
+  },
+  {
+    "id": "fda_dcf9b23b-5840-46ff-bb61-c57a02831a03_103",
+    "name": "Digoxin",
+    "substances": [
+      "DIGOXIN"
+    ],
+    "class": [
+      "Cardiac Glycoside [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS & USAGE Digoxin is a cardiac glycoside indicated for: Treatment of mild to moderate heart failure in adults.  Increasing myocardial contractility in pediatric patients with heart failure.  Control of resting ventricular rate in patients with chronic atrial fibrillation in adults.  1.",
+    "interactions": "7 DRUG INTERACTIONS Digoxin has a narrow therapeutic index, increased monitoring of serum digoxin concentrations and for potential signs and symptoms of clinical toxicity is necessary when initiating, adjusting, or discontinuing drugs that may interact with digoxin. Prescribers should consult the prescribing information of any drug which is co-prescribed with digoxin for potential drug interaction information."
+  },
+  {
+    "id": "fda_99c5813f-1ffe-0eaa-e053-2a95a90a751b_5",
+    "name": "DILTIAZEM HCI",
+    "substances": [
+      "DILTIAZEM HYDROCHLORIDE"
+    ],
+    "form": " (INTRAVENOUS)",
+    "rx": true,
+    "uses": "INDICATIONS & USAGE Diltiazem Hydrochloride Injection or Diltiazem Hydrochloride for Injection are indicated for the following: Atrial Fibrillation or Atrial Flutter Temporary control of rapid ventricular rate in atrial fibrillation or atrial flutter.",
+    "warnings": "WARNINGS Cardiac Conduction. Diltiazem prolongs AV nodal conduction and refractoriness that may rarely result in second- or third-degree AV block in sinus rhythm."
+  },
+  {
+    "id": "fda_9454f948-584f-59de-e053-2a95a90a9f01_4",
+    "name": "DOXY 100(TM) DOXYCYCLINE",
+    "substances": [
+      "DOXYCYCLINE HYCLATE"
+    ],
+    "form": " (INTRAVENOUS)",
+    "rx": true,
+    "uses": "INDICATIONS & USAGE To reduce the development of drug-resistant bacteria and maintain the effectiveness of Doxycycline for Injection, USP and other antibacterial drugs, Doxycycline for Injection, USP should be used only to treat or prevent infections that are proven or strongly suspected to be cause...",
+    "warnings": "WARNINGS The use of drugs of the tetracycline class during tooth development (last half of pregnancy, infancy and childhood to the age of 8 years) may cause permanent discoloration of the teeth (yellow-gray-brown)."
+  },
+  {
+    "id": "fda_fdc774b5-c8f2-4daf-94cb-7e73548b541a_8",
+    "name": "Duloxetine",
+    "altNames": [
+      "DULOXETINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "DULOXETINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Duloxetine delayed-release capsules are indicated for the treatment of: • Major depressive disorder in adults • Generalized anxiety disorder in adults and pediatric patients 7 years of age and older • Diabetic peripheral neuropathic pain in adults • Fibromyalgia in adults and...",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies.",
+    "interactions": "7 DRUG INTERACTIONS Both CYP1A2 and CYP2D6 are responsible for duloxetine metabolism. • Potent inhibitors of CYP1A2 should be avoided  • Potent inhibitors of CYP2D6 may increase duloxetine delayed-release capsules concentrations  • Duloxetine delayed-release capsules are a moderate inhibitor of CYP2D6  7."
+  },
+  {
+    "id": "fda_8c6031b3-b6a8-4ec7-b0d3-286f50d29353_18",
+    "name": "Dutasteride and Tamsulosin Hydrochloride",
+    "substances": [
+      "DUTASTERIDE",
+      "TAMSULOSIN HYDROCHLORIDE"
+    ],
+    "class": [
+      "5-alpha Reductase Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Dutasteride and tamsulosin hydrochloride capsules are a combination of dutasteride, a 5-alpha-reductase inhibitor, and tamsulosin, an alpha-adrenergic antagonist, indicated for the treatment of symptomatic benign prostatic hyperplasia (BPH) in men with an enlarged prostate.",
+    "interactions": "7 DRUG INTERACTIONS There have been no drug interaction trials using dutasteride and tamsulosin hydrochloride capsules. The following sections reflect information available for the individual components. 7.1 Cytochrome P450 Inhibition Dutasteride Dutasteride is extensively metabolized in humans by the CYP3A4 and CYP3A5 isoenzymes. The effect of potent CYP3A4 inhibitors on dutasteride has not been studied."
+  },
+  {
+    "id": "fda_dffdb225-c87c-4182-87be-b6a20ae14c85_9",
+    "name": "Escitalopram",
+    "substances": [
+      "ESCITALOPRAM OXALATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Escitalopram is a selective serotonin reuptake inhibitor (SSRI) indicated for: • Acute and Maintenance Treatment of Major Depressive Disorder (MDD) in adults and adolescents aged 12-17 years  • Acute Treatment of Generalized Anxiety Disorder (GAD) in adults  1.",
+    "warnings": "WARNINGS: SUICIDALITY AND ANTIDEPRESSANT DRUGS Antidepressants increased the risk compared to placebo of suicidal thinking and behavior (suicidality) in children, adolescents, and young adults in short-term studies of major depressive disorder (MDD) and other psychiatric disorders.",
+    "interactions": "7 DRUG INTERACTIONS Concomitant use with SSRIs, SNRIs or Tryptophan is not recommended . Use caution when concomitant use with drugs that affect Hemostasis (NSAIDs, Aspirin, Warfarin) . 7.1 Monoamine Oxidase Inhibitors (MAOIs) . 7.2 Serotonergic Drugs . 7.3 Triptans There have been rare postmarketing reports of serotonin syndrome with use of an SSRI and a triptan."
+  },
+  {
+    "id": "fda_44125b2f-10ac-435c-bdb4-a29bf8450dbf_10",
+    "name": "Estradiol / Norethindrone Acetate",
+    "altNames": [
+      "ESTRADIOL AND NORETHINDRONE ACETATE"
+    ],
+    "substances": [
+      "ESTRADIOL",
+      "NORETHINDRONE ACETATE"
+    ],
+    "class": [
+      "Estrogen [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Estradiol/Norethindrone Acetate Tablets are indicated for: Estradiol/Norethindrone Acetate Tablets are an estrogen and progestin combination indicated in a woman with a uterus for: Treatment of Moderate to Severe Vasomotor Symptoms due to Menopause  Treatment of Moderate to S...",
+    "warnings": "WARNING: CARDIOVASCULAR DISORDERS, PROBABLE DEMENTIA, BREAST CANCER, and ENDOMETRIAL CANCER WARNING: CARDIOVASCULAR DISORDERS, PROBABLE DEMENTIA, BREAST CANCER, and ENDOMETRIAL CANCER See full prescribing information for complete boxed warning Estrogen Plus Progestin Therapy The Women's Health Initi...",
+    "interactions": "7 DRUG INTERACTIONS Co-administration of estradiol with norethindrone acetate did not elicit any apparent influence on the pharmacokinetics of norethindrone acetate. Similarly, no relevant interaction of norethindrone acetate on the pharmacokinetics of estradiol was found within the NETA dose range investigated in a single dose study. Inducers and/or inhibitors of CYP3A4 may affect estrogen drug metabolism and decrease or increase the estrogen plasma concentration."
+  },
+  {
+    "id": "fda_71fec93b-43b7-4ebb-ab5c-5f544d8e6cbf_1",
+    "name": "Estrogen and Progesterone",
+    "altNames": [
+      "AGNUS CASTUS, ANGELICA SINENSIS, APIS MELLIFICA, ARNICA MONTANA, CIMICIFUGA RACEMOSA, ESTRADIOL, ESTRIOL, FOLLICULINUM, GALIUM APARINE, GLYCYRRHIZA GLABRA, KOREAN GINSENG, OOPHORINUM (SUIS), PROGESTERONE, SEPIA, THUJA OCCIDENTALIS, VISCUM ALBUM"
+    ],
+    "substances": [
+      "ANGELICA SINENSIS ROOT",
+      "APIS MELLIFERA",
+      "ARNICA MONTANA",
+      "ASIAN GINSENG",
+      "BLACK COHOSH"
+    ],
+    "class": [
+      "Standardized Insect Venom Allergenic Extract [EPC]",
+      "Estrogen [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "INDICATIONS: Temporarily supports the body to rebalance estrogen output. Symptoms may include: mood swings, hot flashes, irritability, lack of energy.",
+    "warnings": "WARNINGS: Not for use on children. If symptoms continue to recur, or if sleeplessness persists continuously for more than two weeks, consult a physician. Insomnia may be a symptom of a serious underlying medical illness."
+  },
+  {
+    "id": "fda_a7bfb3aa-5226-4a48-8156-a9ecc4536fdf_1",
+    "name": "Extended Phenytoin Sodium",
+    "altNames": [
+      "PHENYTOIN SODIUM"
+    ],
+    "substances": [
+      "PHENYTOIN SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Extended phenytoin sodium capsules are indicated for the treatment of tonic-clonic (grand mal) and psychomotor (temporal lobe) seizures and prevention and treatment of seizures occurring during or following neurosurgery.",
+    "interactions": "7 DRUG INTERACTIONS Phenytoin is extensively bound to plasma proteins and is prone to competitive displacement. Phenytoin is primarily metabolized by the hepatic cytochrome P450 enzyme CYP2C9 and to a lesser extent by CYP2C19, and is particularly susceptible to inhibitory drug interactions because it is subject to saturable metabolism. Inhibition of metabolism may produce significant increases in circulating phenytoin concentrations and enhance the risk of drug toxicity."
+  },
+  {
+    "id": "fda_88cd0e7b-e8dc-6125-e053-2a95a90aaa27_7",
+    "name": "Ezetimibe and Simvastatin",
+    "substances": [
+      "EZETIMIBE",
+      "SIMVASTATIN"
+    ],
+    "class": [
+      "Dietary Cholesterol Absorption Inhibitor [EPC]",
+      "HMG-CoA Reductase Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Therapy with lipid-altering agents should be only one component of multiple risk factor intervention in individuals at significantly increased risk for atherosclerotic vascular disease due to hypercholesterolemia.",
+    "interactions": "7 DRUG INTERACTIONS  Ezetimibe and Simvastatin Tablets Drug Interactions Associated With Increased Risk of Myopathy/Rhabdomyolysis ( 2.3 , 2.4 , 4 , 5.1 , 7.1 , 7.2 , 7.3 , 7.8 , 12.3 ) Interacting Agents Prescribing Recommendations Strong CYP3A4 Inhibitors, (e.g."
+  },
+  {
+    "id": "fda_1c1bf77c-f99a-44e4-b71e-ce766afa99b6_6",
+    "name": "Finasteride",
+    "substances": [
+      "FINASTERIDE"
+    ],
+    "class": [
+      "5-alpha Reductase Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Finasteride tablets is a 5α-reductase inhibitor, indicated for the treatment of symptomatic benign prostatic hyperplasia (BPH) in men with an enlarged prostate to  : Improve symptoms Reduce the risk of acute urinary retention Reduce the risk of the need for surgery including ...",
+    "interactions": "7 DRUG INTERACTIONS 7.1 Cytochrome P450-Linked Drug Metabolizing Enzyme System No drug interactions of clinical importance have been identified. Finasteride does not appear to affect the cytochrome P450-linked drug metabolizing enzyme system. Compounds that have been tested in man have included antipyrine, digoxin, propranolol, theophylline, and warfarin and no clinically meaningful interactions were found. 7."
+  },
+  {
+    "id": "fda_0b3da881-475d-cdee-e063-6394a90aee99_2",
+    "name": "Fluoxetine",
+    "altNames": [
+      "FLUOXETINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "FLUOXETINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Fluoxetine is indicated for the treatment of: Acute and maintenance treatment of Major Depressive Disorder  . Acute and maintenance treatment of obsessions and compulsions in patients with Obsessive Compulsive Disorder (OCD)  .",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behavior in children, adolescents, and young adults in short-term studies.",
+    "interactions": "7 DRUG INTERACTIONS As with all drugs, the potential for interaction by a variety of mechanisms (e.g., pharmacodynamic, pharmacokinetic drug inhibition or enhancement, etc.) is a possibility. Monoamine Oxidase Inhibitors (MAOIs): ( 2.9 , 2.10 , 4.1 , 5.2 ) Drugs Metabolized by CYP2D6: Fluoxetine is a potent inhibitor of CYP2D6 enzyme pathway  Tricyclic Antidepressants (TCAs): Monitor TCA levels during coadministration with fluoxetine or when fluoxetine has been recently discontinued ( 5.2 , 7."
+  },
+  {
+    "id": "fda_39fd32f2-6bb7-4a65-d298-e48d26bc80c7_32",
+    "name": "Furosemide",
+    "substances": [
+      "FUROSEMIDE"
+    ],
+    "class": [
+      "Loop Diuretic [EPC]"
+    ],
+    "form": " (INTRAMUSCULAR, INTRAVENOUS)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE FUROSEMIDE INJECTION is a loop diuretic indicated for: • The treatment of edema associated with heart failure, cirrhosis of the liver, and renal disease  • Acute pulmonary edema as adjunctive therapy  1.",
+    "interactions": "7 DRUG INTERACTIONS • Aminoglycoside antibiotics : Increased potential ototoxicity of the antibiotics. Avoid combination  • Ethacrynic acid : Risk of ototoxicity. Avoid combination  • Salicylates : Risk of salicylate toxicity  • Cisplatin and nephrotoxic drugs : Risk of ototoxicity and nephrotoxicity  • Lithium : Risk of lithium toxicity  • Renin-angiotensin inhibitors : Increased risk of hypotension and renal failure."
+  },
+  {
+    "id": "fda_b7a29b99-ce23-950e-e053-2995a90a1934_2",
+    "name": "Gabapentin",
+    "substances": [
+      "GABAPENTIN"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Gabapentin is indicated for: Management of postherpetic neuralgia in adults Adjunctive therapy in the treatment of partial onset seizures, with and without secondary generalization, in adults and pediatric patients 3 years and older with epilepsy Gabapentin is indicated for: ...",
+    "interactions": "7 DRUG INTERACTIONS Concentrations increased by morphine; may need dose adjustment ( 5.4 , 7.2 ) 7.1 Other Antiepileptic Drugs Gabapentin is not appreciably metabolized nor does it interfere with the metabolism of commonly coadministered antiepileptic drugs  . 7.2 Opioids Hydrocodone Coadministration of gabapentin with hydrocodone decreases hydrocodone exposure ."
+  },
+  {
+    "id": "fda_560448dd-3690-43d9-9667-925f20bb816e_103",
+    "name": "Glipizide",
+    "substances": [
+      "GLIPIZIDE"
+    ],
+    "class": [
+      "Sulfonylurea [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Glipizide tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+    "warnings": "WARNINGS SPECIAL WARNING ON INCREASED RISK OF CARDIOVASCULAR MORTALITY The administration of oral hypoglycemic drugs has been reported to be associated with increased cardiovascular mortality as compared to treatment with diet alone or diet plus insulin.",
+    "interactions": "Drug Interactions The hypoglycemic action of sulfonylureas may be potentiated by certain drugs including nonsteroidal anti-inflammatory agents, some azoles, and other drugs that are highly protein bound, salicylates, sulfonamides, chloramphenicol, probenecid, coumarins, monoamine oxidase inhibitors, quinolones and beta adrenergic blocking agents. When such drugs are administered to a patient receiving glipizide, the patient should be observed closely for hypoglycemia."
+  },
+  {
+    "id": "fda_1fd8cf42-66ae-4af5-a5ae-7c9679a0e532_3",
+    "name": "Hydralazine",
+    "altNames": [
+      "HYDRALAZINE HYDROCHLORIDE"
+    ],
+    "substances": [
+      "HYDRALAZINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Essential hypertension, alone or as an adjunct.",
+    "warnings": "WARNINGS In a few patients hydrALAZINE may produce a clinical picture simulating systemic lupus erythematosus including glomerulonephritis. In such patients hydrALAZINE should be discontinued unless the benefit-to-risk determination requires continued antihypertensive therapy with this drug.",
+    "interactions": "Drug/Drug Interactions MAO inhibitors should be used with caution in patients receiving hydrALAZINE. When other potent parenteral antihypertensive drugs, such as diazoxide, are used in combination with hydrALAZINE, patients should be continuously observed for several hours for any excessive fall in blood pressure. Profound hypotensive episodes may occur when diazoxide injection and hydrALAZINE are used concomitantly."
+  },
+  {
+    "id": "fda_deaa53c1-81ed-7497-e053-2995a90a07cc_6",
+    "name": "Hydrocodone APAP",
+    "substances": [
+      "ACETAMINOPHEN",
+      "HYDROCODONE BITARTRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Hydrocodone bitartrate and acetaminophen tablets, USP are indicated for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
+    "warnings": "Addiction, Abuse, and Misuse Hydrocodone bitartrate and acetaminophen tablets contain hydrocodone, a Schedule II controlled substance. As an opioid, hydrocodone bitartrate and acetaminophen tablets expose users to the risks of addiction, abuse, and misuse ."
+  },
+  {
+    "id": "fda_851e7439-bb0a-4a09-9279-e3c33bff8965_5",
+    "name": "Hydroxyzine",
+    "substances": [
+      "HYDROXYZINE DIHYDROCHLORIDE"
+    ],
+    "form": " (INTRAMUSCULAR)",
+    "rx": true,
+    "uses": "Indications and Usage The total management of anxiety, tension, and psychomotor agitation in conditions of emotional stress requires in most instances a combined approach of psychotherapy and chemotherapy.",
+    "warnings": "Warnings Tissue damage: Intramuscular hydroxyzine hydrochloride may result in severe injection site reactions (including extensive tissue damage, necrosis and gangrene) requiring surgical intervention (including debridement, skin grafting and amputation)."
+  },
+  {
+    "id": "fda_9498fa14-1614-4a8e-b872-41c11745b01e_1",
+    "name": "Isosorbide",
+    "altNames": [
+      "ISOSORBIDE DINITRATE"
+    ],
+    "substances": [
+      "ISOSORBIDE DINITRATE"
+    ],
+    "class": [
+      "Nitrate Vasodilator [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Isosorbide Dinitrate Tablets, USP are indicated for the prevention of angina pectoris due to coronary artery disease. The onset of action of immediate-release oral isosorbide dinitrate is not sufficiently rapid for this product to be useful in aborting an acute anginal episode.",
+    "warnings": "WARNINGS Amplification of the vasodilatory effects of isosorbide dinitrate tablets by sildenafil can result in severe hypotension. The time course and dose dependence of this interaction have not been studied.",
+    "interactions": "Drug Interactions The vasodilating effects of isosorbide dinitrate may be additive with those of other vasodilators. Alcohol, in particular, has been found to exhibit additive effects of this variety. Concomitant use of isosorbide dinitrate tablets with phosphodiesterase inhibitors in any form is contraindicated (see CONTRAINDICATIONS ). Concomitant use of isosorbide dinitrate tablets with riociguat, a soluble guanylate cyclase stimulator, is contraindicated (see CONTRAINDICATIONS )."
+  },
+  {
+    "id": "fda_47fd2592-2fc6-9787-e063-6394a90a8f01_1",
+    "name": "Lamotrigine",
+    "substances": [
+      "LAMOTRIGINE"
+    ],
+    "class": [
+      "Anti-epileptic Agent [EPC]",
+      "Mood Stabilizer [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Lamotrigine is indicated for: Epilepsy—adjunctive therapy in patients aged 2 years and older: partial-onset seizures. primary generalized tonic-clonic (PGTC) seizures. generalized seizures of Lennox-Gastaut syndrome.",
+    "warnings": "WARNING: SERIOUS SKIN RASHES Lamotrigine can cause serious rashes requiring hospitalization and discontinuation of treatment. The incidence of these rashes, which have included Stevens-Johnson syndrome, is approximately 0.3% to 0.8% in pediatric patients (aged 2 to 17 years) and 0.08% to 0.",
+    "interactions": "7 DRUG INTERACTIONS Significant drug interactions with lamotrigine are summarized in this section. Uridine 5´-diphospho-glucuronyl transferases (UGT) have been identified as the enzymes responsible for metabolism of lamotrigine. Drugs that induce or inhibit glucuronidation may, therefore, affect the apparent clearance of lamotrigine. Strong or moderate inducers of the cytochrome P450 3A4 (CYP3A4) enzyme, which are also known to induce UGT, may also enhance the metabolism of lamotrigine."
+  },
+  {
+    "id": "fda_0a688786-879b-4e27-a46a-5c86bbfa1292_6",
+    "name": "Levetiracetam",
+    "substances": [
+      "LEVETIRACETAM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Levetiracetam tablets are indicated for the treatment of partial-onset seizures in patients 1 month of age and older  Levetiracetam tablets are indicated for adjunctive therapy for the treatment of: Myoclonic seizures in patients 12 years of age and older with juvenile myoclo..."
+  },
+  {
+    "id": "fda_1a467f8b-2611-4936-af2b-098e4791d6ae_3",
+    "name": "Levothyroxine",
+    "substances": [
+      "LEVOTHYROXINE",
+      "ACTIVE INGREDIENT"
+    ],
+    "class": [
+      "l-Thyroxine [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "HOMEOPATHIC INDICATIONS: For the temporary relief of symptoms such as backache, constipation, and vomiting.** **These statements are based upon traditional homeopathic principles. They have not been reviewed by the Food and Drug Administration.",
+    "warnings": "WARNINGS: Keep out of reach of children. In case of overdose, contact physician or a Poison Control Center right away. If pregnant or breast-feeding, ask a health professional before use. Tamper seal: \"Sealed for Your Protection.\" Do not use if seal is broken or missing."
+  },
+  {
+    "id": "fda_38ef3766-bb9a-402e-9e4a-ad8bb5b26e4c_9",
+    "name": "Liothyronine Sodium",
+    "substances": [
+      "LIOTHYRONINE SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Liothyronine sodium is an L-triiodothyronine (T3) indicated for: Hypothyroidism: As replacement in primary (thyroidal), secondary (pituitary), and tertiary (hypothalamic) congenital or acquired hypothyroidism  Pituitary Thyrotropin (Thyroid-Stimulating Hormone, TSH) Suppressi...",
+    "warnings": "WARNING: NOT FOR TREATMENT OF OBESITY OR FOR WEIGHT LOSS Thyroid hormones, including liothyronine sodium, either alone or with other therapeutic agents, should not be used for the treatment of obesity or for weight loss.",
+    "interactions": "7 DRUG INTERACTIONS See full prescribing information for drugs that affect thyroid hormone pharmacokinetics and metabolism (e.g., absorption, synthesis, secretion, catabolism, protein binding, and target tissue response) and may alter the therapeutic response to liothyronine sodium 7.1 Drugs Known to Affect Thyroid Hormone Pharmacokinetics Many drugs can exert effects on thyroid hormone pharmacokinetics (e.g."
+  },
+  {
+    "id": "fda_5f05d7c1-e681-4321-b1c2-7dfd262b88f9_6",
+    "name": "Lisinopril",
+    "substances": [
+      "LISINOPRIL"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Lisinopril tablet USP is an angiotensin converting enzyme (ACE) inhibitor indicated for: Treatment of hypertension in adults and pediatric patients 6 years of age and older  Adjunct therapy for heart failure  Treatment of Acute Myocardial Infarction  1.",
+    "warnings": "WARNING: FETAL TOXICITY See full prescribing information for complete boxed warning. When pregnancy is detected, discontinue lisinopril as soon as possible.  Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus.",
+    "interactions": "7 DRUG INTERACTIONS Diuretics: Excessive drop in blood pressure  NSAIDS: Increased risk of renal impairment and loss of antihypertensive efficacy  Dual inhibition of the renin-angiotensin system: Increased risk of renal impairment, hypotension and hyperkalemia  Lithium: Symptoms of lithium toxicity  Gold: Nitritoid reactions have been reported  Concomitant mTOR inhibitor or neprilysin inhibitor use may increase angioedema risk ( 7.7 , 7.8 ) 7."
+  },
+  {
+    "id": "fda_ba76eb91-bea6-4e37-e053-2a95a90a065a_2",
+    "name": "Losartan Potassium",
+    "substances": [
+      "LOSARTAN POTASSIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Losartan Potassium tablets are an angiotensin II receptor blocker (ARB) indicated for: • Treatment of hypertension, to lower blood pressure in adults and children greater than 6 years old.",
+    "warnings": "WARNING: FETAL TOXICITY When pregnancy is detected, discontinue losartan Potassium tablets as soon as possible. Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus .",
+    "interactions": "7 DRUG INTERACTIONS • Agents increasing serum potassium: Risk of hyperkalemia.  • Lithium: Risk of lithium toxicity.  • NSAIDs: Increased risk of renal impairment and reduced diuretic, natriuretic, and antihypertensive effects.  • Dual inhibition of the renin-angiotensin system: Increased risk of renal impairment, hypotension, syncope, and hyperkalemia.  7."
+  },
+  {
+    "id": "fda_dfaac71c-dcc5-4b57-bf3b-616fccab96de_5",
+    "name": "Meloxicam",
+    "substances": [
+      "MELOXICAM"
+    ],
+    "class": [
+      "Nonsteroidal Anti-inflammatory Drug [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Meloxicam tablets are a non-steroidal anti-inflammatory drug indicated for: Osteoarthritis (OA)  Rheumatoid Arthritis (RA)  Juvenile Rheumatoid Arthritis (JRA) in patients who weigh ≥60 kg  1.",
+    "warnings": "WARNING: RISK OF SERIOUS CARDIOVASCULAR and GASTROINTESTINAL EVENTS WARNING: RISK OF SERIOUS CARDIOVASCULAR AND GASTROINTESTINAL EVENTS Cardiovascular Thrombotic Events Nonsteroidal anti-inflammatory drugs (NSAIDs) cause an increased risk of serious cardiovascular thrombotic events, including myocar...",
+    "interactions": "7 DRUG INTERACTIONS See Table 3 for clinically significant drug interactions with meloxicam. See also Warnings and Precautions (5.2, 5.6, 5.11) and Clinical Pharmacology . Table 3 Clinically Significant Drug Interactions with Meloxicam Drugs that Interfere with Hemostasis (e.g., warfarin, aspirin, SSRIs/SNRIs) : Monitor patients for bleeding who are concomitantly taking Meloxicam with drugs that interfere with hemostasis."
+  },
+  {
+    "id": "fda_7678bcd5-1071-0a9b-e053-2a91aa0a3853_8",
+    "name": "METOCLOPRAMIDE",
+    "substances": [
+      "METOCLOPRAMIDE HYDROCHLORIDE"
+    ],
+    "form": " (INTRAMUSCULAR, INTRAVENOUS)",
+    "rx": true,
+    "uses": "INDICATIONS & USAGE Diabetic Gastroparesis (Diabetic Gastric Stasis) Metoclopramide is indicated for the relief of symptoms associated with acute and recurrent diabetic gastric stasis.",
+    "warnings": "BOXED WARNINGS BOXED WARNING"
+  },
+  {
+    "id": "fda_d6ae40f1-bc7d-4d3a-b2e9-8d4fc4d1d759_12",
+    "name": "Metoprolol",
+    "altNames": [
+      "METOPROLOL TARTRATE"
+    ],
+    "substances": [
+      "METOPROLOL TARTRATE"
+    ],
+    "form": " (INTRAVENOUS)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Metoprolol tartrate injection is indicated in the treatment of definite or suspected acute myocardial infarction in hemodynamically stable patients to reduce cardiovascular mortality when used in conjunction with oral metoprolol maintenance therapy.",
+    "interactions": "7 DRUG INTERACTIONS • Catecholamine-depleting drugs may have an additive effect when given with beta-blocking agents.  • Patients may be unresponsive to the usual doses of epinephrine used to treat allergic reaction.  • CYP2D6 Inhibitors are likely to increase metoprolol concentration.  • Concomitant use of glycosides, clonidine, and diltiazem and verapamil with beta-blockers can increase the risk of bradycardia."
+  },
+  {
+    "id": "fda_e0c5b856-3f70-4ca6-9763-a90673bb82fb_11",
+    "name": "Montelukast",
+    "substances": [
+      "MONTELUKAST SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS & USAGE Montelukast sodium tablets are a leukotriene receptor antagonist indicated for: Prophylaxis and chronic treatment of asthma in patients 15 years of age and older . Acute prevention of exercise-induced bronchoconstriction (EIB) in patients 15 years of age and older .",
+    "warnings": "WARNING: SERIOUS NEUROPSYCHIATRIC EVENTS WARNING: SERIOUS NEUROPSYCHIATRIC EVENTS Serious neuropsychiatric (NP) events have been reported with the use of montelukast sodium tablets.",
+    "interactions": "7 DRUG INTERACTIONS No dose adjustment is needed when montelukast sodium is co-administered with theophylline, prednisone, prednisolone, oral contraceptives, fexofenadine, digoxin, warfarin, gemfibrozil, itraconazole, thyroid hormones, sedative hypnotics, non-steroidal anti-inflammatory agents, benzodiazepines, decongestants, and Cytochrome P450 (CYP) enzyme inducers ."
+  },
+  {
+    "id": "fda_c98ecf77-ae9a-438b-9bad-ffbed25d95bc_3",
+    "name": "Nifedipine",
+    "substances": [
+      "NIFEDIPINE"
+    ],
+    "class": [
+      "Dihydropyridine Calcium Channel Blocker [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE I.Vasospastic Angina Nifedipine extended-release tablets are indicated for the management of vasospastic angina confirmed by any of the following criteria: 1) classical pattern of angina at rest accompanied by ST segment elevation, 2) angina or coronary artery spasm provoked by...",
+    "warnings": "WARNINGS Excessive Hypotension Although in most angina patients the hypotensive effect of nifedipine is modest and well tolerated, occasional patients have had excessive and poorly tolerated hypotension.",
+    "interactions": "Drug Interactions: Beta-adrenergic blocking agents: (see INDICATIONS AND USAGE and WARNINGS .) Experience in over 1400 patients with nifedipine capsules in a noncomparative clinical trial has shown that concomitant administration of nifedipine and beta-blocking agents is usually well tolerated, but there have been occasional literature reports suggesting that the combination may increase the likelihood of congestive heart failure, severe hypotension, or exacerbation of angina."
+  },
+  {
+    "id": "fda_26c314ea-077e-490b-826b-2aafcb6e9564_1",
+    "name": "NITROGLYCERIN",
+    "substances": [
+      "NITROGLYCERIN"
+    ],
+    "class": [
+      "Nitrate Vasodilator [EPC]"
+    ],
+    "form": " (SUBLINGUAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Nitroglycerin sublingual tablets are indicated for the acute relief of an attack or acute prophylaxis of angina pectoris due to coronary artery disease.",
+    "interactions": "7 DRUG INTERACTIONS Ergotamine: increased bioavailability of ergotamine. Avoid concomitant use.  7.1 PDE-5-Inhibitors and sGC-Stimulators Nitroglycerin is contraindicated in patients who are using a selective inhibitor of cyclic guanosine monophosphate (cGMP)-specific phosphodiesterase type 5 (PDE-5). PDE-5-Inhibitors such as avanafil, sildenafil, vardenafil, and tadalafil have been shown to potentiate the hypotensive effects of organic nitrates."
+  },
+  {
+    "id": "fda_2cb1bebe-0ced-46d8-bf21-c28a9acc4a15_17",
+    "name": "OLANZAPINE",
+    "substances": [
+      "OLANZAPINE"
+    ],
+    "class": [
+      "Atypical Antipsychotic [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Olanzapine is an atypical antipsychotic indicated: As oral formulation for the: • Treatment of schizophrenia.  • Adults: Efficacy was established in three clinical trials in patients with schizophrenia: two 6-week trials and one maintenance trial.",
+    "warnings": "WARNING: INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA-RELATED PSYCHOSIS See full prescribing information for complete boxed warning. • Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death.",
+    "interactions": "7 DRUG INTERACTIONS • Diazepam: May potentiate orthostatic hypotension. ( 7.1 , 7.2 ) • Alcohol: May potentiate orthostatic hypotension.  • Carbamazepine: Increased clearance of olanzapine.  • Fluvoxamine: May increase olanzapine levels.  • Olanzapine and Fluoxetine in Combination: Also refer to the Drug Interactions section of the package insert for Symbyax.  • CNS Acting Drugs: Caution should be used when taken in combination with other centrally acting drugs and alcohol."
+  },
+  {
+    "id": "fda_c83821ad-822e-47dc-8108-612312cf3a16_1",
+    "name": "Ondansetron",
+    "substances": [
+      "ONDANSETRON"
+    ],
+    "class": [
+      "Serotonin-3 Receptor Antagonist [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Ondansetron is a 5-HT 3 receptor antagonist indicated for the prevention of: nausea and vomiting associated with highly emetogenic cancer chemotherapy, including cisplatin greater than or equal to 50 mg/m 2 .",
+    "interactions": "7 DRUG INTERACTIONS 7.1 Serotonergic Drugs Serotonin syndrome (including altered mental status, autonomic instability, and neuromuscular symptoms) has been described following the concomitant use of 5-HT 3 receptor antagonists and other serotonergic drugs, including SSRIs and SNRIs. Monitor for the emergence of serotonin syndrome. If symptoms occur, discontinue ondansetron and initiate supportive treatment  . 7."
+  },
+  {
+    "id": "fda_916ff456-a27e-49dc-a312-274126a8c30c_8",
+    "name": "Oxycodone and Acetaminophen",
+    "substances": [
+      "ACETAMINOPHEN",
+      "OXYCODONE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Oxycodone and Acetaminophen Tablets is indicated for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
+    "warnings": "WARNING: SERIOUS AND LIFE-THREATENING RISKS FROM USE OF OXYCODONE AND ACETAMINOPHEN TABLETS Addiction, Abuse, and Misuse Because the use of Oxycodone and Acetaminophen Tablets exposes patients and other users to the risks of opioid addiction, abuse, and misuse, which can lead to overdose and death, ..."
+  },
+  {
+    "id": "fda_2de07baf-1add-f3d1-e063-6394a90a41d8_2",
+    "name": "P- PACK PREDNISONE 20MG, 7- DAY TAPERING DOSE PACK",
+    "altNames": [
+      "DR ADAM AU"
+    ],
+    "substances": [
+      "PREDNISONE"
+    ],
+    "class": [
+      "Corticosteroid [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true
+  },
+  {
+    "id": "fda_2bed1bae-519f-1bb9-e063-6294a90a795b_2",
+    "name": "Pantoprazole",
+    "substances": [
+      "PANTOPRAZOLE SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Pantoprazole sodium delayed-release tablets are indicated for: Pantoprazole sodium is a proton pump inhibitor (PPI) indicated for the following: Short-Term Treatment of Erosive Esophagitis Associated with Gastroesophageal Reflux Disease (GERD)  Maintenance of Healing of Erosi...",
+    "interactions": "7 DRUG INTERACTIONS Table 4 includes drugs with clinically important drug interactions and interaction with diagnostics when administered concomitantly with pantoprazole sodium and instructions for preventing or managing them. Consult the labeling of concomitantly used drugs to obtain further information about interactions with PPIs."
+  },
+  {
+    "id": "fda_89ca6d56-527a-4be2-baea-531156f0a7be_4",
+    "name": "PEG-3350, sodium chloride, sodium bicarbonate and potassium chloride",
+    "altNames": [
+      "POLYETHYLENE GLYCOL 3350, SODIUM CHLORIDE, SODIUM BICARBONATE, POTASSIUM CHLORIDE"
+    ],
+    "substances": [
+      "POLYETHYLENE GLYCOL 3350",
+      "POTASSIUM CHLORIDE",
+      "SODIUM BICARBONATE",
+      "SODIUM CHLORIDE"
+    ],
+    "class": [
+      "Osmotic Laxative [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE PEG-3350, sodium chloride, sodium bicarbonate and potassium chloride for oral solution is indicated for bowel cleansing prior to colonoscopy in adults and pediatric patients aged 6 months or greater.",
+    "interactions": "7 DRUG INTERACTIONS Some drugs increase risks due to fluid and electrolyte changes  Oral medication taken within 1 hour of start of each dose may not be absorbed properly  7.1 Drugs that May Lead to Fluid and Electrolyte Abnormalities Use caution when prescribing PEG-3350, sodium chloride, sodium bicarbonate and potassium chloride for oral solution for patients who are using medications that increase the risk for fluid and electrolyte disturbances or may increase the risk of adverse events of se..."
+  },
+  {
+    "id": "fda_876bd763-13fa-481e-b579-c2fc44dbf3c2_3",
+    "name": "phentermine and topiramate",
+    "substances": [
+      "PHENTERMINE HYDROCHLORIDE",
+      "TOPIRAMATE"
+    ],
+    "class": [
+      "Cytochrome P450 3A4 Inducers [MoA]",
+      "Cytochrome P450 2C19 Inhibitors [MoA]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Phentermine and topiramate extended-release capsules are indicated in combination with a reduced-calorie diet and increased physical activity to reduce excess body weight and maintain weight reduction long term in: Adults and pediatric patients aged 12 years and older with ob...",
+    "interactions": "7 DRUG INTERACTIONS Table 5 displays clinically significant drug interactions with phentermine and topiramate extended-release capsules. Table 5. Clinically Significant Drug Interactions with Phentermine and Topiramate Extended-Release Capsules Monoamine Oxidase Inhibitors Clinical Impact Concomitant use of phentermine with monoamine oxidase inhibitors (MAOIs) increases the risk of hypertensive crisis."
+  },
+  {
+    "id": "fda_635062df-9a84-4ff8-874c-dcee581a5555_1",
+    "name": "PRAVASTATIN SODIUM",
+    "substances": [
+      "PRAVASTATIN SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Pravastatin sodium tablets are indicated: To reduce the risk of myocardial infarction, myocardial revascularization procedures, and cardiovascular mortality in adults with elevated low- density lipoprotein cholesterol (LDL-C) without clinically evident coronary heart disease ...",
+    "interactions": "7 DRUG INTERACTIONS See full prescribing information for details regarding concomitant use of pravastatin sodium with other drugs that increase the risk of myopathy and rhabdomyolysis. ( 2.5 , 7.1 ) Bile Acid Sequestrants: in patients taking a bile acid sequestrant, administer pravastatin sodium at least 1 hour before or at least 4 hours after the bile acid sequestrant  7."
+  },
+  {
+    "id": "fda_4f681538-7ac4-484c-9e6d-b571d73b9e0b_2",
+    "name": "Promethazine",
+    "substances": [
+      "PROMETHAZINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Promethazine hydrochloride tablets, USP are useful for: Perennial and seasonal allergic rhinitis. Vasomotor rhinitis. Allergic conjunctivitis due to inhalant allergens and foods. Mild, uncomplicated allergic skin manifestations of urticaria and angioedema.",
+    "warnings": "WARNINGS WARNING: PROMETHAZINE HYDROCHLORIDE TABLETS, USP SHOULD NOT BE USED IN PEDIATRIC PATIENTS LESS THAN 2 YEARS OF AGE BECAUSE OF THE POTENTIAL FOR FATAL RESPIRATORY DEPRESSION."
+  },
+  {
+    "id": "fda_9e50d1ee-b7f3-e549-e053-2995a90a4a86_2",
+    "name": "Propranolol",
+    "altNames": [
+      "PROPRANOLOL HYDROCHLORIDE"
+    ],
+    "substances": [
+      "PROPRANOLOL HYDROCHLORIDE"
+    ],
+    "form": " (INTRAVENOUS)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Cardiac Arrhythmias Intravenous administration is usually reserved for life-threatening arrhythmias or those occurring under anesthesia. 1.",
+    "warnings": "WARNINGS Cardiac Failure Sympathetic stimulation may be a vital component supporting circulatory function in patients with congestive heart failure, and its inhibition by beta-blockade may precipitate more severe failure."
+  },
+  {
+    "id": "fda_c6e25a58-96b4-47b7-a5f3-33e5ffce1d1e_1",
+    "name": "Quetiapine",
+    "substances": [
+      "QUETIAPINE FUMARATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Quetiapine is an atypical antipsychotic indicated for the treatment of: Schizophrenia  Bipolar I disorder, manic, or mixed episodes  Bipolar disorder, depressive episodes  Major depressive disorder, adjunctive therapy with antidepressants  1.",
+    "warnings": "WARNING: INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA RELATED PSYCHOSIS; and SUICIDAL THOUGHTS AND BEHAVIORS Increased Mortality in Elderly Patients with Dementia-Related Psychosis Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of ...",
+    "interactions": "7 DRUG INTERACTIONS Concomitant use of strong CYP3A4 inhibitors: Reduce quetiapine dose to one-sixth when coadministered with strong CYP3A4 inhibitors (e.g., ketoconazole, ritonavir) ( 2.5 , 7.1 , 12.3 ) Concomitant use of strong CYP3A4 inducers: Increase quetiapine dose up to 5 fold when used in combination with a chronic treatment (more than 7-14 days) of potent CYP3A4 inducers (e.g., phenytoin, rifampin, St. John's wort) ( 2.6 , 7.1 , 12."
+  },
+  {
+    "id": "fda_aab81d9f-397d-49fb-8083-77a1872cc71f_11",
+    "name": "Ranitidine",
+    "altNames": [
+      "Ranitidine cool mint"
+    ],
+    "substances": [
+      "RANITIDINE HYDROCHLORIDE",
+      "ACTIVE INGREDIENT(S) Ranitidine 150 mg"
+    ],
+    "form": " (ORAL)",
+    "rx": false,
+    "uses": "USE(S) ◾ relieves heartburn associated with acid indigestion and sour stomach ◾ prevents heartburn associated with acid indigestion and sour stomach brought on by eating or drinking certain foods and beverages",
+    "warnings": "WARNINGS Allergy alert: Do not use if you are allergic to ranitidine or other acid reducers"
+  },
+  {
+    "id": "fda_390904c2-fcfa-466e-e063-6394a90a03af_1",
+    "name": "Risperidone",
+    "substances": [
+      "RISPERIDONE"
+    ],
+    "class": [
+      "Atypical Antipsychotic [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Risperidone is an atypical antipsychotic indicated for: Treatment of schizophrenia  As monotherapy or adjunctive therapy with lithium or valproate, for the treatment of acute manic or mixed episodes associated with Bipolar I Disorder  Treatment of irritability associated with...",
+    "warnings": "WARNING: INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA-RELATED PSYCHOSIS Elderly patients with dementia-related psychosis treated with antipsychotic drugs are at an increased risk of death. Risperidone is not approved for the treatment of patients with dementia-related psychosis.",
+    "interactions": "7 DRUG INTERACTIONS Carbamazepine and other enzyme inducers decrease plasma concentrations of risperidone. Increase the risperidone dose up to double the patient's usual dose. Titrate slowly.  Fluoxetine, paroxetine, and other CYP 2D6 enzyme inhibitors increase plasma concentrations of risperidone. Reduce the initial dose. Do not exceed a final dose of 8 mg per day of risperidone.  7."
+  },
+  {
+    "id": "fda_11701a6e-9b34-4939-e063-6294a90a09c9_3",
+    "name": "Rosuvastatin",
+    "substances": [
+      "ROSUVASTATIN"
+    ],
+    "class": [
+      "HMG-CoA Reductase Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Rosuvastatin tablets are indicated: To reduce the risk of stroke, myocardial infarction, and arterial revascularization procedures in adults without established coronary heart disease who are at increased risk of cardiovascular (CV) disease based on age, hsCRP ≥2 mg/L, and at...",
+    "interactions": "7 DRUG INTERACTIONS See full prescribing information for details regarding concomitant use of rosuvastatin tablets with other drugs that increase the risk of myopathy and rhabdomyolysis. ( 2.6 , 7.1 ) Aluminum and Magnesium Hydroxide Combination Antacids: Administer rosuvastatin tablets at least 2 hours after the antacid. ( 2.6 , 7.2 ) Warfarin: Obtain INR prior to starting rosuvastatin tablets. Monitor INR frequently until stable upon initiation, dose titration or discontinuation.  7."
+  },
+  {
+    "id": "fda_ad69cbfe-5b42-4714-a999-77d474e0849d_1",
+    "name": "Sertraline",
+    "substances": [
+      "SERTRALINE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Sertraline hydrochloride tablets are indicated for the treatment of the following : • Major depressive disorder (MDD) • Obsessive-compulsive disorder (OCD) • Panic disorder (PD) • Posttraumatic stress disorder (PTSD) • Social anxiety disorder (SAD) • Premenstrual dysphoric di...",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behavior in pediatric and young adult patients in short- term studies.",
+    "interactions": "7 DRUG INTERACTIONS Protein-bound drugs: Monitor for adverse reactions and reduce dosage of sertraline hydrochloride or other protein-bound drugs (e.g., warfarin) as warranted. ( 7.1 , 12.3 ) CYP2D6 substrates: Reduce dosage of drugs metabolized by CYP2D6. ( 7.1 , 12.3 ) 7.1 Clinically Significant Drug Interactions Table 5 includes clinically significant drug interactions with sertraline hydrochloride . Table 5."
+  },
+  {
+    "id": "fda_53078688-ad66-4bb2-808c-b76acedd00e3_3",
+    "name": "SILDENAFIL",
+    "substances": [
+      "SILDENAFIL CITRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Sildenafil tablets are indicated for the treatment of erectile dysfunction. Sildenafil tablets are phosphodiesterase-5 (PDE5) inhibitor indicated for the treatment of erectile dysfunction (ED) ( 1 )",
+    "interactions": "7 DRUG INTERACTIONS Sildenafil can potentiate the hypotensive effects of nitrates, alpha blockers, and anti- hypertensives ( 4.1 , 5.5 , 7.1 , 7.2 , 7.3 , 12.2 ) With concomitant use of alpha blockers, initiate sildenafil at 25 mg dose  CYP3A4 inhibitors (e.g., ritonavir, ketoconazole, itraconazole, erythromycin): Increase sildenafil exposure ( 2.4 , 7.4 , 12.3 ) Ritonavir: Do not exceed a maximum single dose of 25 mg in a 48 hour period ( 2.4 , 5.6 ) Erythromycin or strong CYP3A4 inhibitors (e."
+  },
+  {
+    "id": "fda_6a970e80-b753-48fa-9fff-87e7a5044982_7",
+    "name": "Sitagliptin",
+    "substances": [
+      "SITAGLIPTIN"
+    ],
+    "class": [
+      "Dipeptidyl Peptidase 4 Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Sitagliptin Tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus. Limitations of Use Sitagliptin Tablets is not recommended in patients with type 1 diabetes mellitus.",
+    "interactions": "7 DRUG INTERACTIONS 7.1 Insulin Secretagogues or Insulin Sitagliptin lowers blood glucose in patients with type 2 diabetes mellitus. Coadministration of sitagliptin with an insulin secretagogue (e.g., sulfonylurea) or insulin may require lower doses of the insulin secretagogue or insulin to reduce the risk of hypoglycemia. ."
+  },
+  {
+    "id": "fda_eb27a2d2-1d28-4780-8e69-5fe613a0335e_3",
+    "name": "spironolactone",
+    "substances": [
+      "SPIRONOLACTONE"
+    ],
+    "class": [
+      "Aldosterone Antagonist [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Spironolactone is an aldosterone antagonist indicated for: The treatment of NYHA Class III-IV heart failure and reduced ejection fraction to increase survival, manage edema, and to reduce the need for hospitalization for heart failure .",
+    "interactions": "7 DRUG INTERACTIONS Agents increasing serum potassium: Concomitant administration can lead to hyperkalemia ( 5.1 , 7.1 ). Lithium: Increased risk of lithium toxicity . NSAIDs: May reduce the diuretic, natriuretic and antihypertensive effect of spironolactone . Digoxin: Spironolactone can interfere with radioimmunologic assays of digoxin exposure . Cholestyramine: Hyperkalemic metabolic acidosis has been reported with concomitant use ."
+  },
+  {
+    "id": "fda_85bf8e58-0984-427b-9ed4-7e0df4e444d2_1",
+    "name": "Sumatriptan",
+    "substances": [
+      "SUMATRIPTAN SUCCINATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Sumatriptan tablets are indicated for the acute treatment of migraine with or without aura in adults. Limitations of Use: • Use only if a clear diagnosis of migraine headache has been established.",
+    "interactions": "7 DRUG INTERACTIONS 7.1 Ergot-Containing Drugs Ergot-containing drugs have been reported to cause prolonged vasospastic reactions. Because these effects may be additive, use of ergotamine-containing or ergot-type medications (like dihydroergotamine or methysergide) and sumatriptan tablets within 24 hours of each other is contraindicated. 7.2 Monoamine Oxidase-A Inhibitors MAO‑A inhibitors increase systemic exposure by 7 fold."
+  },
+  {
+    "id": "fda_741102c1-8809-44d4-9098-3dc8c0604764_5",
+    "name": "Tadalafil",
+    "substances": [
+      "TADALAFIL"
+    ],
+    "class": [
+      "Phosphodiesterase 5 Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Tadalafil tablets USP are phosphodiesterase 5 (PDE5) inhibitor indicated for the treatment of: · erectile dysfunction (ED)  · the signs and symptoms of benign prostatic hyperplasia (BPH)  · ED and the signs and symptoms of BPH (ED/BPH)  If tadalafil tablets USP are used with ...",
+    "interactions": "7 DRUG INTERACTIONS · Tadalafil tablets can potentiate the hypotensive effects of nitrates, alpha blockers, antihypertensives or alcohol . · CYP3A4 inhibitors (e.g. ketoconazole, ritonavir) increase tadalafil tablets exposure (2.7, 5.10, 7.2) requiring dose adjustment: · Tadalafil tablets for use as needed: no more than 10 mg every 72 hours · Tadalafil tablet for once daily use: dose not to exceed 2.5 mg · CYP3A4 inducers (e.g. rifampin) decrease tadalafil tablets exposure . 7."
+  },
+  {
+    "id": "fda_af87fc31-07c2-b1f7-e053-2995a90a499f_9",
+    "name": "Tramadol HCL",
+    "substances": [
+      "TRAMADOL HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1. Indications and Usage Tramadol hydrochloride tablets are indicated in adults for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
+    "warnings": "Boxed Warning WARNING: ADDICTION, ABUSE, AND MISUSE; RISK EVALUATION AND MITIGATION STRATEGY (REMS); LIFE-THREATENING RESPIRATORY DEPRESSION; ACCIDENTAL INGESTION; ULTRA-RAPID METABOLISM OF TRAMADOL AND OTHER RISK FACTORS FOR LIFE-THREATENING RESPIRATORY DEPRESSION IN CHILDREN; NEONATAL OPIOID WITHD...",
+    "interactions": "7. Drug Interactions Table 2: Clinically Significant Drug Interactions with Tramadol Hydrochloride Inhibitors of CYP2D6 Clinical Impact: The concomitant use of tramadol hydrochloride and CYP2D6 inhibitors may result in an increase in the plasma concentration of tramadol and a decrease in the plasma concentration of M1, particularly when an inhibitor is added after a stable dose of tramadol hydrochloride is achieved."
+  },
+  {
+    "id": "fda_39bad727-af4c-4d20-933b-7f287e88099a_12",
+    "name": "Trandolapril and Verapamil Hydrochloride",
+    "substances": [
+      "TRANDOLAPRIL",
+      "VERAPAMIL HYDROCHLORIDE"
+    ],
+    "class": [
+      "Angiotensin Converting Enzyme Inhibitor [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "INDICATIONS AND USAGE Trandolapril and verapamil hydrochloride extended-release tablets are indicated for the treatment of hypertension. This fixed combination drug is not indicated for the initial therapy of hypertension (see DOSAGE AND ADMINISTRATION ).",
+    "warnings": "WARNING: FETAL TOXICITY • When pregnancy is detected, discontinue trandolapril and verapamil hydrochloride extended-release tablets as soon as possible. • Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus (see WARNINGS: Fetal Toxicity ) .",
+    "interactions": "Drug Interactions In vitro metabolic studies indicate that verapamil is metabolized by cytochrome P450 including CYP3A4, CYP1A2, CYP2C8, CYP2C9 and CYP2C18. Verapamil has been shown to be an inhibitor of CYP3A4 enzymes and P-glycoprotein (P-gp). Clinically significant interactions have been reported with inhibitors of CYP3A4 (e.g. erythromycin, ritonavir) causing elevation of plasma levels of verapamil while inducers of CYP3A4 (e.g. rifampin) have caused a lowering of plasma levels of verapamil."
+  },
+  {
+    "id": "fda_1fd0fc6d-5b1c-9f6a-e063-6394a90a3b7c_1",
+    "name": "Trazodone HCL",
+    "substances": [
+      "TRAZODONE HYDROCHLORIDE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "Trazodone hydrochloride tablets, USP are indicated for the treatment of major depressive disorder (MDD) in adults.",
+    "warnings": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS - Antidepressants increased the risk of suicidal thoughts and behavior in pediatric and young adult patients in short-term studies. Closely monitor all ...",
+    "interactions": "7.1 Drugs Having Clinically Important Interactions with Trazodone Hydrochloride Tablets Table 3: Clinically Important Drug Interactions with Trazodone Hydrochloride Tablets Monoamine Oxidase Inhibitors (MAOIs) Clinical Impact: The concomitant use of MAOIs and serotonergic drugs including trazodone increases the risk of serotonin syndrome. Intervention: Trazodone is contraindicated in patients taking MAOIs, including MAOIs such as linezolid or intravenous methylene blue ."
+  },
+  {
+    "id": "fda_cef3e335-5891-412f-89c4-79fcd2f145b7_19",
+    "name": "Valproic",
+    "altNames": [
+      "VALPROIC ACID"
+    ],
+    "substances": [
+      "VALPROIC ACID"
+    ],
+    "class": [
+      "Anti-epileptic Agent [EPC]",
+      "Mood Stabilizer [EPC]"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Valproic Acid is an anti-epileptic drug indicated for: Monotherapy and adjunctive therapy of complex partial seizures; sole and adjunctive therapy of simple and complex absence seizures; adjunctive therapy in patients with multiple seizure types that include absence seizures ...",
+    "warnings": "WARNING: LIFE THREATENING ADVERSE REACTIONS Hepatotoxicity General Population: Hepatic failure resulting in fatalities has occurred in patients receiving valproate and its derivatives. These incidents usually have occurred during the first six months of treatment.",
+    "interactions": "7 DRUG INTERACTIONS Hepatic enzyme-inducing drugs (e.g., phenytoin, carbamazepine, phenobarbital, primidone, rifampin) can increase valproate clearance, while enzyme inhibitors (e.g., felbamate) can decrease valproate clearance. Therefore increased monitoring of valproate and concomitant drug concentrations and dosage adjustment are indicated whenever enzyme-inducing or inhibiting drugs are introduced or withdrawn  Aspirin, carbapenem antibiotics, estrogen-containing hormonal contraceptives: Mon..."
+  },
+  {
+    "id": "fda_f827bb9a-6afd-4d0c-a7ca-bdef0667be52_100",
+    "name": "Warfarin Sodium",
+    "substances": [
+      "WARFARIN SODIUM"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Warfarin sodium tablets are indicated for: Prophylaxis and treatment of venous thrombosis and its extension, pulmonary embolism (PE). Prophylaxis and treatment of thromboembolic complications associated with atrial fibrillation (AF) and/or cardiac valve replacement.",
+    "warnings": "WARNING: BLEEDING RISK Warfarin sodium can cause major or fatal bleeding . Perform regular monitoring of INR in all treated patients . Drugs, dietary changes, and other factors affect INR levels achieved with warfarin sodium therapy .",
+    "interactions": "7 DRUG INTERACTIONS Concomitant use of drugs that increase bleeding risk, antibiotics, antifungals, botanical (herbal) products, and inhibitors and inducers of CYP2C9, 1A2, or 3A4. ( 7 ) Consult labeling of all concurrently used drugs for complete information about interactions with warfarin sodium or increased risks for bleeding. (7) 7.1 General Information Drugs may interact with warfarin sodium through pharmacodynamic or pharmacokinetic mechanisms."
+  },
+  {
+    "id": "fda_c6824c69-76bc-4ca0-a6b1-5cddc2c42fc9_7",
+    "name": "Zolpidem",
+    "altNames": [
+      "ZOLPIDEM TARTRATE"
+    ],
+    "substances": [
+      "ZOLPIDEM TARTRATE"
+    ],
+    "form": " (ORAL)",
+    "rx": true,
+    "uses": "1 INDICATIONS AND USAGE Zolpidem Tartrate Tablets is indicated for the short-term treatment of insomnia characterized by difficulties with sleep initiation. Zolpidem Tartrate Tablets has been shown to decrease sleep latency for up to 35 days in controlled clinical studies .",
+    "warnings": "WARNING: COMPLEX SLEEP BEHAVIOUR Complex sleep behaviors including sleep-walking, sleep-driving, and engaging in other activities while not fully awake may occur following use of Zolpidem Tartrate Tablets. Some of these events may result in serious injuries, including death.",
+    "interactions": "7 DRUG INTERACTIONS CNS depressants, including alcohol: Possible adverse additive CNS- depressant effects ( 5.1 , 7.1 ) Opioids: Concomitant use may increase risk of respiratory depression ( 5.7 , 7.1 ) Imipramine: Decreased alertness observed  Chlorpromazine: Impaired alertness and psychomotor performance observed  CYP3A4 inducers (rifampin or St. John's wort): Combination use may decrease effect  Ketoconazole: Combination use may increase effect  7."
+  }
+]
