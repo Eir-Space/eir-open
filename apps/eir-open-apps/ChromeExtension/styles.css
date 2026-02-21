@@ -1,0 +1,174 @@
+/* Floating Button Styles */
+.floating-button {
+  position: fixed;
+  z-index: 10000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  cursor: grab;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 200px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.floating-button:active {
+  cursor: grabbing;
+  transform: translateY(0) scale(0.98);
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.button-content svg {
+  color: white;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.button-text {
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+/* Animation for button appearance */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%) translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(-50%);
+    opacity: 1;
+  }
+}
+
+.floating-button {
+  animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .floating-button {
+    min-width: 160px;
+    height: 50px;
+    right: 10px !important;
+  }
+  
+  .button-text {
+    font-size: 12px;
+  }
+  
+  .button-content {
+    gap: 8px;
+    padding: 0 16px;
+  }
+  
+  .button-content svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Ensure button stays above other elements */
+.floating-button {
+  z-index: 2147483647 !important;
+}
+
+/* Add a subtle pulse animation to draw attention */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.5), 0 0 0 10px rgba(102, 126, 234, 0.1);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  }
+}
+
+.floating-button {
+  animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1), pulse 2s ease-in-out infinite 3s;
+}
+
+/* Action buttons styles */
+.button-actions {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+/* Update button layout to accommodate actions */
+.floating-button {
+  flex-direction: column;
+  min-height: 60px;
+  height: auto;
+  padding: 10px;
+}
+
+.button-content {
+  pointer-events: auto;
+}
+
+/* Responsive adjustments for action buttons */
+@media (max-width: 768px) {
+  .action-btn {
+    height: 25px;
+    width: 25px;
+    font-size: 14px;
+  }
+  
+  .button-actions {
+    gap: 3px;
+    margin-top: 8px;
+  }
+}

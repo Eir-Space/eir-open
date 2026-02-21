@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+.build/
+Desktop/EirViewer/.build/
+find-api.js
+scrape-clinics.js
+healthcare-clinics.csv
+healthcare-clinics.json
