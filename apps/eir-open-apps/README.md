@@ -23,6 +23,26 @@ A native macOS app (Swift/SwiftUI) for viewing `.eir` medical record files with 
 - **Explain with AI** — one-click button on each journal entry to get a plain-language explanation
 - **Privacy-first** — everything runs locally, no cloud storage
 
+### [iOS — Eir Viewer](iOS/EirViewer/)
+
+A native iOS app (Swift/SwiftUI) for viewing `.eir` medical record files on iPhone and iPad with AI chat and Apple HealthKit integration.
+
+- **Journal viewer** — timeline of medical records with search, filtering, and category badges
+- **AI chat** — ask questions about your records using OpenAI, Anthropic, Groq, or custom providers
+- **Agent with tools** — search records, get details, summarize health data, and persistent memory
+- **Apple HealthKit import** — import vitals, activity, and lab values from Apple Health (heart rate, blood pressure, SpO2, weight, steps, workouts, and more)
+- **Multi-profile** — manage records for multiple family members
+- **Mac transfer** — scan QR code to receive records from the macOS app via local network
+- **Privacy-first** — all data stays on-device, API keys in Keychain
+
+Build from source with Xcode 16+ (requires iOS 17+):
+
+```bash
+cd iOS/EirViewer
+xcodegen generate
+open EirViewer.xcodeproj
+```
+
 ### [Chrome Extension — 1177 Journal Downloader](ChromeExtension/)
 
 A Chrome extension that downloads your medical records from 1177.se into portable, structured files.
@@ -38,6 +58,8 @@ A Chrome extension that downloads your medical records from 1177.se into portabl
 ```
 ├── Desktop/              # macOS desktop app
 │   └── EirViewer/        # Swift/SwiftUI app with AI agent, tools, and memory
+├── iOS/                  # iOS app
+│   └── EirViewer/        # Swift/SwiftUI app with HealthKit integration
 ├── ChromeExtension/      # Chrome browser extension
 │   ├── manifest.json     # Manifest V3 configuration
 │   ├── content.js        # Journal scraping and EIR generation
