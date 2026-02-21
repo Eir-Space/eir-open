@@ -54,6 +54,32 @@ An open YAML-based standard for structuring healthcare information optimized for
 
 Perfect for healthcare AI applications, EHR systems, telemedicine platforms, and any application requiring standardized, privacy-aware health data formatting. Enables seamless integration between healthcare systems and AI models while maintaining clinical accuracy and patient privacy.
 
+## Applications
+
+### 📱 Eir Open Apps
+
+**Location**: [`apps/eir-open-apps/`](apps/eir-open-apps/)
+
+Open-source applications for accessing, viewing, and understanding Swedish medical records from 1177.se with complete privacy - your data never leaves your device.
+
+**Desktop App - Eir Viewer (macOS):**
+- **Timeline view** with AI-powered health insights using OpenAI, Anthropic, or Groq
+- **Agent with tools** for intelligent record search and analysis
+- **Multi-profile support** for managing family health records
+- **Local vector search** with on-device embeddings
+- **Health data browser** with embedded 1177.se integration
+- **Find Care** interactive map with 17,800+ Swedish healthcare clinics
+- **Privacy-first** - everything runs locally, no cloud storage
+
+**Chrome Extension - 1177 Journal Downloader:**
+- **One-click download** of complete medical records from 1177.se
+- **Structured EIR format** exports (.eir/YAML and .txt)
+- **Complete history** with automatic timeline expansion
+- **Privacy-first** - all processing happens locally in browser
+- **Transfer to Eir.Space** for viewing in web interface
+
+Ideal for patients wanting full control over their health data, healthcare developers building patient-centric applications, and anyone requiring privacy-preserving medical record management with AI assistance.
+
 ## GitHub Pages
 
 The landing page lives in [`docs/`](docs/) and is available at:

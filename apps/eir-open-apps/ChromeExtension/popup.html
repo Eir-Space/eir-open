@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { 
+            width: 300px; 
+            padding: 20px; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        h1 { 
+            color: white; 
+            font-size: 18px; 
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        p { 
+            color: rgba(255,255,255,0.9); 
+            font-size: 14px; 
+            margin: 0 0 20px 0;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .button { 
+            background: rgba(255,255,255,0.2); 
+            color: white; 
+            padding: 12px 20px; 
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px; 
+            cursor: pointer; 
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-1px);
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <h1>📄 1177 Journal Downloader</h1>
+    <p>Download your complete medical journal from 1177.se with one click</p>
+    <button class="button" onclick="openJournal()">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Open Journal & Download
+    </button>
+    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <button class="button" style="background: rgba(255,255,255,0.1); font-size: 12px; padding: 8px 16px;" onclick="downloadViewer()">
+            Download Eir Viewer for macOS
+        </button>
+        <p style="font-size: 11px; margin: 8px 0 0; opacity: 0.6;">Open .eir files on your desktop</p>
+    </div>
+
+    <script>
+        function openJournal() {
+            chrome.tabs.create({
+                url: 'https://journalen.1177.se/JournalCategories/JournalOverview'
+            });
+        }
+        function downloadViewer() {
+            chrome.tabs.create({
+                url: 'https://github.com/BirgerMoell/eir-chrome-plugin/releases/latest'
+            });
+        }
+    </script>
+</body>
+</html>

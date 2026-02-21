@@ -1,0 +1,131 @@
+# EIR File Format v1.0 - Simple Example
+metadata:
+  format_version: "1.0"
+  created_at: "2025-01-16T17:17:03Z"
+  source: "1177.se Journal"
+  patient:
+    name: "Birger Moell"
+    birth_date: "1986-02-28"
+    personal_number: "19860228-0250"
+  export_info:
+    total_entries: 25
+    date_range:
+      start: "2001-02-26"
+      end: "2025-03-17"
+    healthcare_providers: 
+      - "Östervåla vårdcentral"
+      - "Folktandvården Östervåla"
+      - "SLSO- Närakut Danderyd"
+
+entries:
+  - id: "entry_001"
+    date: "2025-03-17"
+    time: "10:52"
+    category: "Vårdkontakter"
+    type: "Annan"
+    provider:
+      name: "Östervåla vårdcentral"
+      region: "Region Uppsala"
+      location: "Östervåla vårdcentral"
+    status: "Nytt"
+    responsible_person:
+      name: "Therese Karlberg"
+      role: "Distriktssköterska"
+    content:
+      summary: "Vårdkontakt - Annan typ"
+      details: "Dag & tid: måndag 17 mars 2025 klockan 10:52"
+      notes: []
+    attachments: []
+    tags: ["vårdkontakt", "allmänmedicin"]
+
+  - id: "entry_002"
+    date: "2025-03-17"
+    time: "10:52"
+    category: "Diagnoser"
+    type: "Vaccination avseende artropodöverförd virusencefalit"
+    provider:
+      name: "Östervåla vårdcentral"
+      region: "Region Uppsala"
+      location: "Östervåla vårdcentral"
+    status: "Nytt"
+    responsible_person:
+      name: "Therese Karlberg"
+      role: "Distriktssköterska"
+    content:
+      summary: "TBE-vaccination diagnos"
+      details: "Diagnos: Vaccination avseende artropodöverförd virusencefalit 2025-03-17 10:52"
+      notes: []
+    attachments: []
+    tags: ["diagnos", "vaccination", "TBE"]
+
+  - id: "entry_003"
+    date: "2025-03-17"
+    time: "10:52"
+    category: "Vaccinationer"
+    type: "FSME-IMMUN Vuxen"
+    provider:
+      name: "Östervåla vårdcentral"
+      region: "Region Uppsala"
+      location: "Östervåla vårdcentral"
+    status: "Nytt"
+    responsible_person:
+      name: "Karlberg, Anne"
+      role: "Sjuksköterska"
+    content:
+      summary: "TBE-vaccination utförd"
+      details: "FSME-IMMUN Vuxen 2025-03-17"
+      notes:
+        - "Dos: 0.5 ml, intramuskulär"
+        - "Tillverkare: Pfizer Innovations AB (batch KC8559)"
+        - "Ordinatör: Drochtert, Sarah, distriktsläkare, drs003"
+        - "Vaccinerad av: Karlberg, Therese, kat025"
+    attachments: []
+    tags: ["vaccination", "TBE", "FSME-IMMUN"]
+
+  - id: "entry_004"
+    date: "2024-06-11"
+    time: "09:01"
+    category: "Anteckningar"
+    type: "Åtgärd/behandling"
+    provider:
+      name: "Folktandvården Östervåla"
+      region: "Region Uppsala"
+      location: "Östervåla"
+    status: "Nytt"
+    responsible_person:
+      name: "Ban Rabi"
+      role: "Tandläkare"
+    content:
+      summary: "Tandvårdsbehandling"
+      details: "Åtgärd/behandling 2024-06-11 09:01"
+      notes:
+        - "Behandling: Allmänt tandvårdsbidrag : Utförd"
+        - "Undersökning - Kompletterande undersökning eller utredning, enstaka tand - (FK tillstånd 1301) : Utförd"
+        - "Tandvård - Sjukdomsbehandlande åtgärder mindre omfattning - (FK tillstånd 4772) : Utförd"
+    attachments: []
+    tags: ["tandvård", "behandling", "tandläkare"]
+
+  - id: "entry_005"
+    date: "2021-11-02"
+    time: "21:37"
+    category: "Anteckningar"
+    type: "Besöksanteckning"
+    provider:
+      name: "SLSO- Närakut Danderyd"
+      region: "Stockholm"
+      location: "Danderyd"
+    status: "Osignerad"
+    responsible_person:
+      name: "Andreas Fredholm"
+      role: "Läkare"
+    content:
+      summary: "Tåskada - luxation"
+      details: "Besöksanteckning 2021-11-02 21:37"
+      notes:
+        - "Kontakttyp: Oplanerat mottagningsbesök"
+        - "Kontaktorsak: Smärta vänster dig 2. Olycksfall."
+        - "Aktuellt: Man som sparkat in i någon betongvägg. Dig 2 vänster pekar lite snett."
+        - "Status: Lokalstatus Dig 2 vänster inspekteras lite sned i DIP-leden. Palpöm där."
+        - "Bedömning: DIP-led subluxation lateralt. Drar den rakt och därefter är tån rak. Inga hematom eller svullnader. Således luxation, ingen misstanke om fraktur."
+    attachments: []
+    tags: ["akut", "ortopedi", "tåskada", "luxation", "osignerad"]

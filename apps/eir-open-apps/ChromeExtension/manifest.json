@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "1177 Journal Downloader",
+  "version": "1.0.0",
+  "description": "Download and structure patient journals from 1177.se",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://journalen.1177.se/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://journalen.1177.se/*"],
+      "js": ["data-transfer.js", "content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "1177 Journal Downloader"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

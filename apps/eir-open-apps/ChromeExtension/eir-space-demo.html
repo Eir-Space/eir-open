@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eir.space - EIR Data Viewer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .status {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .status.loading {
+            background: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #bbdefb;
+        }
+        
+        .status.success {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .data-preview {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .data-preview h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .entry-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .entry-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .entry-content {
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>eir.space</h1>
+            <p>Electronic Health Records Viewer</p>
+        </div>
+        
+        <div class="content">
+            <div id="status" class="status loading">
+                <div class="spinner"></div>
+                <p>Waiting for data from Chrome plugin...</p>
+            </div>
+            
+            <div id="data-preview" class="data-preview hidden">
+                <h3>Your Health Data</h3>
+                <div id="entries-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class EirSpaceViewer {
+            constructor() {
+                this.dataKey = null;
+                this.eirData = null;
+                this.pluginOrigin = 'chrome-extension://your-extension-id'; // This should match the actual extension ID
+                
+                this.init();
+            }
+            
+            init() {
+                // Get data key from URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                this.dataKey = urlParams.get('key');
+                
+                if (this.dataKey) {
+                    this.requestDataFromPlugin();
+                } else {
+                    this.showError('No data key provided in URL');
+                }
+                
+                // Setup message listener for plugin communication
+                this.setupMessageListener();
+            }
+            
+            setupMessageListener() {
+                window.addEventListener('message', (event) => {
+                    // Security: Only accept messages from the Chrome plugin
+                    if (event.origin !== this.pluginOrigin) {
+                        return;
+                    }
+                    
+                    this.handlePluginMessage(event);
+                });
+            }
+            
+            handlePluginMessage(event) {
+                const { type, key, data, timestamp } = event.data;
+                
+                switch (type) {
+                    case 'EIR_DATA_RESPONSE':
+                        if (key === this.dataKey) {
+                            this.loadEirData(data);
+                        }
+                        break;
+                        
+                    default:
+                        console.log('Unknown message type:', type);
+                }
+            }
+            
+            requestDataFromPlugin() {
+                // Send request to plugin for data
+                if (window.opener) {
+                    window.opener.postMessage({
+                        type: 'REQUEST_EIR_DATA',
+                        key: this.dataKey
+                    }, this.pluginOrigin);
+                }
+                
+                // Also try to ping the plugin
+                if (window.opener) {
+                    window.opener.postMessage({
+                        type: 'EIR_SPACE_READY',
+                        key: this.dataKey
+                    }, this.pluginOrigin);
+                }
+                
+                // Show loading state
+                this.showLoading('Requesting data from Chrome plugin...');
+            }
+            
+            loadEirData(dataString) {
+                try {
+                    this.eirData = JSON.parse(dataString);
+                    this.displayData();
+                    this.showSuccess('Data loaded successfully!');
+                } catch (error) {
+                    console.error('Error parsing EIR data:', error);
+                    this.showError('Error parsing data from plugin');
+                }
+            }
+            
+            displayData() {
+                if (!this.eirData) return;
+                
+                const container = document.getElementById('entries-container');
+                const preview = document.getElementById('data-preview');
+                
+                // Display metadata
+                const metadata = this.eirData.metadata;
+                let html = `
+                    <div class="entry-item">
+                        <div class="entry-meta">
+                            <strong>Patient:</strong> ${metadata.patient.name} | 
+                            <strong>Total Entries:</strong> ${metadata.export_info.total_entries} | 
+                            <strong>Date Range:</strong> ${metadata.export_info.date_range.start} - ${metadata.export_info.date_range.end}
+                        </div>
+                        <div class="entry-content">
+                            <strong>Healthcare Providers:</strong> ${metadata.export_info.healthcare_providers.join(', ')}
+                        </div>
+                    </div>
+                `;
+                
+                // Display entries (limit to first 10 for preview)
+                const entries = this.eirData.entries.slice(0, 10);
+                entries.forEach(entry => {
+                    html += `
+                        <div class="entry-item">
+                            <div class="entry-meta">
+                                ${entry.date} ${entry.time} | ${entry.category} | ${entry.provider.name}
+                            </div>
+                            <div class="entry-content">
+                                <strong>${entry.type}</strong><br>
+                                ${entry.content.summary}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                if (this.eirData.entries.length > 10) {
+                    html += `
+                        <div class="entry-item">
+                            <div class="entry-content">
+                                <em>... and ${this.eirData.entries.length - 10} more entries</em>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                container.innerHTML = html;
+                preview.classList.remove('hidden');
+                
+                // Clean up URL for privacy
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            
+            showLoading(message) {
+                const status = document.getElementById('status');
+                status.className = 'status loading';
+                status.innerHTML = `
+                    <div class="spinner"></div>
+                    <p>${message}</p>
+                `;
+            }
+            
+            showSuccess(message) {
+                const status = document.getElementById('status');
+                status.className = 'status success';
+                status.innerHTML = `<p>${message}</p>`;
+                
+                // Hide status after 3 seconds
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 3000);
+            }
+            
+            showError(message) {
+                const status = document.getElementById('status');
+                status.className = 'status error';
+                status.innerHTML = `<p>${message}</p>`;
+            }
+        }
+        
+        // Initialize the viewer when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new EirSpaceViewer();
+        });
+    </script>
+</body>
+</html>
