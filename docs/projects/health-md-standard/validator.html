@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EIR Format Validator - Validate Healthcare Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .main {
+            padding: 2rem 0;
+        }
+        
+        .validator-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .input-section {
+            margin-bottom: 2rem;
+        }
+        
+        .input-section h2 {
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .input-tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tab {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .tab:hover {
+            background: #f7fafc;
+        }
+        
+        .input-panel {
+            display: none;
+        }
+        
+        .input-panel.active {
+            display: block;
+        }
+        
+        .textarea {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .textarea:focus {
+            border-color: #667eea;
+        }
+        
+        .file-upload {
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .file-upload:hover {
+            border-color: #667eea;
+            background: #f7fafc;
+        }
+        
+        .file-upload.dragover {
+            border-color: #667eea;
+            background: #ebf8ff;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .validate-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .validate-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .validate-button:disabled {
+            background: #a0aec0;
+            transform: none;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            margin-top: 2rem;
+        }
+        
+        .result-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid;
+        }
+        
+        .result-card.success {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+        
+        .result-card.error {
+            border-color: #f56565;
+            background: #fffaf0;
+        }
+        
+        .result-card.warning {
+            border-color: #ed8936;
+            background: #fffbf0;
+        }
+        
+        .result-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-details {
+            color: #4a5568;
+        }
+        
+        .result-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .result-list li {
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+        }
+        
+        .result-list li::before {
+            content: "• ";
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .examples {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .example-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .example-button {
+            background: #e2e8f0;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .example-button:hover {
+            background: #cbd5e0;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .input-tabs {
+                flex-direction: column;
+            }
+            
+            .example-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.75rem 20px; font-size: 0.9rem;">
+        <a href="../../index.html" style="color: white; text-decoration: none; opacity: 0.95;">← All projects</a>
+        <span style="margin: 0 0.5rem; opacity: 0.7;">·</span>
+        <a href="index.html" style="color: white; text-decoration: none; opacity: 0.95;">Health.md Standard</a>
+        <span style="margin: 0 0.5rem; opacity: 0.7;">·</span>
+        <a href="https://eir-space.github.io/eir-open/" style="color: white; text-decoration: none; opacity: 0.95;">Eir Open</a>
+    </nav>
+    <div class="header">
+        <div class="container">
+            <h1>🔍 EIR Format Validator</h1>
+            <p>Validate your healthcare data against the EIR format specification</p>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="validator-container">
+                <div class="input-section">
+                    <h2>Input Your EIR Data</h2>
+                    
+                    <div class="input-tabs">
+                        <button class="tab active" data-tab="paste">Paste YAML</button>
+                        <button class="tab" data-tab="upload">Upload File</button>
+                    </div>
+                    
+                    <div class="input-panel active" id="paste-panel">
+                        <textarea 
+                            class="textarea" 
+                            id="yaml-input" 
+                            placeholder="Paste your EIR format YAML here...
+
+Example:
+metadata:
+  format_version: '1.0'
+  privacy_level: 'anonymous'
+  created_at: '2024-02-17T10:00:00Z'
+  record_id: 'anonymous-001'
+
+patient:
+  name: 'Anonymous Patient 001'
+  age: 34
+  sex: 'female'
+
+current_medications:
+  - name: 'Metformin'
+    strength: '500mg'
+    dosage: '500mg twice daily'
+    indication:
+      condition: 'Type 2 Diabetes Mellitus'
+      icd_10: 'E11.9'
+    started: '2024-01-15'
+"></textarea>
+                    </div>
+                    
+                    <div class="input-panel" id="upload-panel">
+                        <div class="file-upload" id="file-drop-zone">
+                            <p>📄 Drop your .eir file here or click to browse</p>
+                            <p style="margin-top: 0.5rem; color: #718096; font-size: 0.9rem;">
+                                Supports .eir, .yaml, .yml files
+                            </p>
+                            <input type="file" class="file-input" id="file-input" accept=".eir,.yaml,.yml">
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <button class="validate-button" id="validate-btn">
+                            🔍 Validate EIR Format
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="results hidden" id="results-section">
+                    <h2>Validation Results</h2>
+                    <div id="results-container"></div>
+                </div>
+                
+                <div class="loading hidden" id="loading">
+                    <p>🔄 Validating your EIR data...</p>
+                </div>
+            </div>
+            
+            <div class="examples">
+                <h2>Quick Examples</h2>
+                <p style="margin-bottom: 1rem; color: #4a5568;">
+                    Load example EIR data to see the format in action:
+                </p>
+                
+                <div class="example-buttons">
+                    <button class="example-button" data-example="basic">Basic Patient</button>
+                    <button class="example-button" data-example="diabetes">Diabetes Patient</button>
+                    <button class="example-button" data-example="medications">Medications Only</button>
+                    <button class="example-button" data-example="labs">Lab Results</button>
+                    <button class="example-button" data-example="invalid">Invalid Example</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and panels
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.input-panel').forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding panel
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-panel`).classList.add('active');
+            });
+        });
+        
+        // File upload handling
+        const fileInput = document.getElementById('file-input');
+        const fileDropZone = document.getElementById('file-drop-zone');
+        const yamlInput = document.getElementById('yaml-input');
+        
+        fileDropZone.addEventListener('click', () => fileInput.click());
+        
+        fileDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileDropZone.classList.add('dragover');
+        });
+        
+        fileDropZone.addEventListener('dragleave', () => {
+            fileDropZone.classList.remove('dragover');
+        });
+        
+        fileDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileDropZone.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                yamlInput.value = e.target.result;
+                // Switch to paste tab to show the loaded content
+                document.querySelector('[data-tab="paste"]').click();
+            };
+            reader.readAsText(file);
+        }
+        
+        // Example data
+        const examples = {
+            basic: `metadata:
+  format_version: "1.0"
+  privacy_level: "anonymous"
+  created_at: "2024-02-17T10:00:00Z"
+  record_id: "anonymous-001"
+
+patient:
+  name: "Anonymous Patient 001"
+  age: 34
+  sex: "female"
+  location:
+    region: "Northern Europe"
+  occupation:
+    category: "Technology"`,
+            
+            diabetes: `metadata:
+  format_version: "1.0"
+  privacy_level: "anonymous"
+  created_at: "2024-02-17T10:00:00Z"
+  record_id: "diabetes-001"
+
+patient:
+  name: "Anonymous Patient 001"
+  age: 34
+  sex: "female"
+
+medical_history:
+  - condition: "Type 2 Diabetes Mellitus"
+    icd_10: "E11.9"
+    onset_date: "2024-01-15"
+    status: "active"
+
+current_medications:
+  - name: "Metformin"
+    strength: "500mg"
+    dosage: "500mg twice daily"
+    indication:
+      condition: "Type 2 Diabetes Mellitus"
+      icd_10: "E11.9"
+    started: "2024-01-15"`,
+            
+            medications: `metadata:
+  format_version: "1.0"
+  privacy_level: "pseudonymized"
+  created_at: "2024-02-17T10:00:00Z"
+  record_id: "meds-001"
+
+patient:
+  name: "Patient Smith-001"
+  age: 45
+
+current_medications:
+  - name: "Lisinopril"
+    strength: "10mg"
+    dosage: "10mg once daily"
+    route: "oral"
+    frequency: "daily"
+    indication:
+      condition: "Essential Hypertension"
+      icd_10: "I10"
+    started: "2023-08-10"
+    
+  - name: "Metformin"
+    strength: "500mg" 
+    dosage: "500mg twice daily"
+    route: "oral"
+    frequency: "BID"
+    indication:
+      condition: "Type 2 Diabetes"
+      icd_10: "E11.9"
+    started: "2024-01-15"`,
+            
+            labs: `metadata:
+  format_version: "1.0"
+  privacy_level: "anonymous"
+  created_at: "2024-02-17T10:00:00Z"
+  record_id: "labs-001"
+
+patient:
+  name: "Anonymous Patient 001"
+  age_range: "30-39"
+
+lab_results:
+  glucose_metabolism:
+    - test_name: "Hemoglobin A1C"
+      loinc_code: "4548-4"
+      results:
+        - date: "2024-02-10"
+          value: 6.8
+          unit: "%"
+          reference_range: "<7.0"
+          status: "target_met"
+          trend: "decreasing"`,
+          
+            invalid: `metadata:
+  format_version: "invalid_version"
+  # Missing required privacy_level
+  created_at: "not-a-valid-date"
+
+patient:
+  # Missing required name
+  age: "not-a-number"
+  sex: "invalid_sex_value"
+
+current_medications:
+  - name: "Medication without required fields"
+    # Missing dosage, indication, etc.`
+        };
+        
+        // Example button handling
+        document.querySelectorAll('.example-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const example = button.dataset.example;
+                yamlInput.value = examples[example];
+                document.querySelector('[data-tab="paste"]').click();
+            });
+        });
+        
+        // Validation logic
+        document.getElementById('validate-btn').addEventListener('click', () => {
+            const yamlContent = yamlInput.value.trim();
+            
+            if (!yamlContent) {
+                showResults([{
+                    type: 'error',
+                    title: 'No Input Data',
+                    message: 'Please provide EIR data to validate.'
+                }]);
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate validation (in real implementation, this would call a backend service)
+            setTimeout(() => {
+                const results = validateEIR(yamlContent);
+                showResults(results);
+            }, 1500);
+        });
+        
+        function showLoading() {
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('results-section').classList.add('hidden');
+        }
+        
+        function showResults(results) {
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+            
+            const container = document.getElementById('results-container');
+            container.innerHTML = '';
+            
+            results.forEach(result => {
+                const card = document.createElement('div');
+                card.className = `result-card ${result.type}`;
+                
+                const icon = result.type === 'success' ? '✅' : 
+                            result.type === 'error' ? '❌' : '⚠️';
+                
+                let detailsHtml = '';
+                if (result.details && result.details.length > 0) {
+                    detailsHtml = `
+                        <ul class="result-list">
+                            ${result.details.map(detail => `<li>${detail}</li>`).join('')}
+                        </ul>
+                    `;
+                }
+                
+                card.innerHTML = `
+                    <div class="result-title">
+                        <span class="result-icon">${icon}</span>
+                        ${result.title}
+                    </div>
+                    <div class="result-details">
+                        ${result.message}
+                        ${detailsHtml}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+        
+        function validateEIR(yamlContent) {
+            const results = [];
+            
+            try {
+                // Basic YAML parsing check
+                const parsed = jsyaml.load(yamlContent);
+                
+                // Check required metadata
+                if (!parsed.metadata) {
+                    results.push({
+                        type: 'error',
+                        title: 'Missing Metadata Section',
+                        message: 'EIR files must include a metadata section with format version, privacy level, and creation date.'
+                    });
+                } else {
+                    const metadata = parsed.metadata;
+                    const metadataIssues = [];
+                    
+                    if (!metadata.format_version) metadataIssues.push('format_version is required');
+                    if (!metadata.privacy_level) metadataIssues.push('privacy_level is required'); 
+                    if (!metadata.created_at) metadataIssues.push('created_at is required');
+                    
+                    if (metadata.format_version && metadata.format_version !== "1.0") {
+                        metadataIssues.push('format_version should be "1.0"');
+                    }
+                    
+                    if (metadata.privacy_level && !['anonymous', 'pseudonymized', 'identified'].includes(metadata.privacy_level)) {
+                        metadataIssues.push('privacy_level must be one of: anonymous, pseudonymized, identified');
+                    }
+                    
+                    if (metadataIssues.length > 0) {
+                        results.push({
+                            type: 'error',
+                            title: 'Metadata Validation Errors',
+                            message: 'The metadata section has validation errors:',
+                            details: metadataIssues
+                        });
+                    }
+                }
+                
+                // Check patient section
+                if (!parsed.patient) {
+                    results.push({
+                        type: 'error',
+                        title: 'Missing Patient Section',
+                        message: 'EIR files must include a patient section with basic demographics.'
+                    });
+                } else {
+                    const patient = parsed.patient;
+                    const patientWarnings = [];
+                    
+                    if (!patient.name) patientWarnings.push('Patient name is recommended');
+                    if (!patient.age && !patient.age_range) patientWarnings.push('Patient age or age_range is recommended');
+                    if (!patient.sex) patientWarnings.push('Patient sex is recommended');
+                    
+                    if (patientWarnings.length > 0) {
+                        results.push({
+                            type: 'warning',
+                            title: 'Patient Section Recommendations',
+                            message: 'Consider adding the following patient information:',
+                            details: patientWarnings
+                        });
+                    }
+                }
+                
+                // Check medications format
+                if (parsed.current_medications) {
+                    const medicationIssues = [];
+                    parsed.current_medications.forEach((med, index) => {
+                        if (!med.name) medicationIssues.push(`Medication ${index + 1}: name is required`);
+                        if (!med.dosage) medicationIssues.push(`Medication ${index + 1}: dosage is recommended`);
+                        if (!med.indication) medicationIssues.push(`Medication ${index + 1}: indication is recommended`);
+                    });
+                    
+                    if (medicationIssues.length > 0) {
+                        results.push({
+                            type: 'warning',
+                            title: 'Medication Section Issues',
+                            message: 'Medications section has some issues:',
+                            details: medicationIssues
+                        });
+                    }
+                }
+                
+                // Success case
+                if (results.length === 0 || results.every(r => r.type === 'warning')) {
+                    results.unshift({
+                        type: 'success',
+                        title: 'Valid EIR Format!',
+                        message: 'Your healthcare data follows the EIR format specification. It can be used with MCP servers and AI applications.'
+                    });
+                }
+                
+            } catch (error) {
+                results.push({
+                    type: 'error',
+                    title: 'YAML Parsing Error',
+                    message: `Unable to parse YAML content: ${error.message}`
+                });
+            }
+            
+            return results;
+        }
+    </script>
+    
+    <!-- Include js-yaml library for client-side validation -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</body>
+</html>

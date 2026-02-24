@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health.md - Open Standard for LLM-Optimized Healthcare Data</title>
+    <meta name="description" content="An open standard for structuring healthcare information in a format optimized for Large Language Models while preserving privacy and clinical accuracy.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Health.md - Open Healthcare Data Standard">
+    <meta property="og:description" content="LLM-optimized healthcare data format with built-in privacy and clinical accuracy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://birgermoell.github.io/health-md-standard/">
+    
+    <!-- Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .header .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .header .version {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 1rem;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border-color: #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: #f7fafc;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+        }
+        
+        /* Example Section */
+        .example {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .example h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .example-description {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+        
+        .code-example {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 2rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        
+        .code-example .comment {
+            color: #68d391;
+        }
+        
+        .code-example .keyword {
+            color: #90cdf4;
+        }
+        
+        .code-example .string {
+            color: #fbb6ce;
+        }
+        
+        /* Use Cases */
+        .use-cases {
+            padding: 4rem 0;
+            background: #f7fafc;
+        }
+        
+        .use-cases h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+        
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .use-case {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .use-case h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .use-case p {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        
+        /* Getting Started */
+        .getting-started {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .getting-started h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            text-align: center;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 50px;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .step p {
+            color: #4a5568;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #4a5568;
+            padding-top: 2rem;
+            color: #a0aec0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 0.75rem 20px; font-size: 0.9rem;">
+        <a href="../../index.html" style="color: white; text-decoration: none; opacity: 0.95;">← All projects</a>
+        <span style="margin: 0 0.5rem; opacity: 0.7;">·</span>
+        <a href="https://eir-space.github.io/eir-open/" style="color: white; text-decoration: none; opacity: 0.95;">Eir Open</a>
+    </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="assets/logo.svg" alt="EIR Format Logo" style="height: 60px; margin-bottom: 1rem;">
+            <h1>EIR Format</h1>
+            <p class="tagline">Open Standard for LLM-Optimized Healthcare Data</p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Named after Eir, the Norse goddess of healing and medicine</p>
+            <div>
+                <span class="version">v1.0</span>
+                <span class="version">Open Source</span>
+                <span class="version">Privacy-First</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <strong>Health.md</strong>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#example">Example</a></li>
+                <li><a href="validator.html">Validator</a></li>
+                <li><a href="#getting-started">Get Started</a></li>
+                <li><a href="https://github.com/BirgerMoell/health-md-standard">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Healthcare Data Deserves Better Standards</h2>
+            <p>EIR Format defines an open YAML-based standard for structuring healthcare information optimized for Large Language Models while preserving privacy, accuracy, and clinical context. Load directly into AI conversations via MCP servers.</p>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/BirgerMoell/health-md-standard" class="btn btn-primary">View on GitHub</a>
+                <a href="validator.html" class="btn btn-secondary">Validate EIR Files</a>
+                <a href="#example" class="btn btn-secondary">See Example</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why EIR Format?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>LLM-Optimized</h3>
+                    <p>YAML structure perfect for AI parsing and reasoning. Semantic sections that LLMs understand contextually for better healthcare conversations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>MCP Compatible</h3>
+                    <p>Load directly into AI applications via Model Context Protocol. Drag & drop your .eir file into Claude, ChatGPT, and other MCP-enabled AIs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy-First</h3>
+                    <p>Built-in anonymization patterns and multiple privacy levels. Control exactly what data is shared with AI applications.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚕️</div>
+                    <h3>Clinical-Accurate</h3>
+                    <p>Preserves medical context and relationships. Uses standard medical codes (ICD-10, SNOMED, LOINC) for precise clinical information.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Extensible</h3>
+                    <p>Easy to add new sections for specialties, devices, or use cases. YAML structure naturally supports extensions and customizations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Validated</h3>
+                    <p>Schema validation ensures data consistency and clinical accuracy. Built-in validator for real-time error checking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Section -->
+    <section class="example" id="example">
+        <div class="container">
+            <h2>See EIR Format in Action</h2>
+            <p class="example-description">Here's a sample EIR file showing how healthcare data is structured in YAML:</p>
+            
+            <div class="code-example">
+<span class="comment"># Electronic health Information Record (EIR) Format</span>
+<span class="keyword">metadata:</span>
+  format_version: <span class="string">"1.0"</span>
+  privacy_level: <span class="string">"anonymous"</span>
+  record_id: <span class="string">"anonymous-001"</span>
+
+<span class="keyword">patient:</span>
+  name: <span class="string">"Anonymous Patient 001"</span>
+  age: 34
+  sex: <span class="string">"female"</span>
+  occupation:
+    category: <span class="string">"Technology"</span>
+
+<span class="keyword">current_medications:</span>
+  - name: <span class="string">"Metformin"</span>
+    strength: <span class="string">"500mg"</span>
+    dosage: <span class="string">"500mg twice daily"</span>
+    indication:
+      condition: <span class="string">"Type 2 Diabetes Mellitus"</span>
+      icd_10: <span class="string">"E11.9"</span>
+    started: <span class="string">"2024-01-15"</span>
+    clinical_notes: <span class="string">"Well tolerated, excellent control"</span>
+
+<span class="keyword">lab_results:</span>
+  glucose_metabolism:
+    - test_name: <span class="string">"Hemoglobin A1C"</span>
+      results:
+        - date: <span class="string">"2024-02-10"</span>
+          value: 6.8
+          unit: <span class="string">"%"</span>
+          reference_range: <span class="string">"<7.0"</span>
+          trend: <span class="string">"decreasing"</span>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/BirgerMoell/health-md-standard/tree/main/examples" class="btn btn-primary">View More Examples</a>
+                <a href="validator.html" class="btn btn-secondary">Validate EIR Files</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="use-cases">
+        <div class="container">
+            <h2>Use Cases</h2>
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <h3>🤖 AI Health Conversations</h3>
+                    <p>Load your .eir file into Claude, ChatGPT, or any MCP-compatible AI for natural health discussions.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>🩺 Clinical Decision Support</h3>
+                    <p>Structured data perfect for AI diagnostic tools and clinical decision support systems.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>🔄 Data Conversion</h3>
+                    <p>Convert from FHIR, HL7, or proprietary EHR formats to EIR for AI compatibility.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>🔬 Research & Analytics</h3>
+                    <p>Privacy-aware datasets for health AI training and clinical research with built-in anonymization.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>📱 Personal Health Records</h3>
+                    <p>Patient-controlled health data that works seamlessly with AI health assistants.</p>
+                </div>
+                
+                <div class="use-case">
+                    <h3>🌍 Swedish Healthcare</h3>
+                    <p>Native support for 1177 Vårdguiden data and Swedish healthcare terminology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="getting-started" id="getting-started">
+        <div class="container">
+            <h2>Getting Started</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Read the Specification</h3>
+                    <p>Understand the Health.md format, sections, and privacy guidelines.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Install the Parser</h3>
+                    <p><code>pip install health-md</code> to get started with Python integration.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Create Your First File</h3>
+                    <p>Use our examples and templates to create your first Health.md file.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="spec.html" class="btn btn-primary">Read Full Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Documentation</h3>
+                    <p><a href="spec.html">Specification v1.0</a></p>
+                    <p><a href="https://github.com/BirgerMoell/health-md-standard/tree/main/examples">Examples</a></p>
+                    <p><a href="parser.html">Parser Documentation</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <p><a href="https://github.com/BirgerMoell/health-md-standard">GitHub Repository</a></p>
+                    <p><a href="https://github.com/BirgerMoell/health-md-standard/issues">Report Issues</a></p>
+                    <p><a href="https://github.com/BirgerMoell/health-md-standard/discussions">Discussions</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p><a href="https://github.com/BirgerMoell">Birger Moëll</a></p>
+                    <p><a href="https://www.uu.se/">Uppsala University</a></p>
+                    <p><a href="https://eir.space/">EIR Space</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Health.md Standard. Released under MIT License.</p>
+                <p>Created by Birger Moëll at Uppsala University. Healthcare data deserves better standards.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
