@@ -1,0 +1,25 @@
+---
+import Icon from './Icon';
+
+interface Props {
+  title: string;
+  icon?: string;
+}
+
+const { title, icon } = Astro.props;
+---
+
+<div class="feature-card group rounded-lg border border-border bg-card text-card-foreground shadow-sm p-5 transition-all hover:border-primary/50">
+  <div class="flex gap-4">
+    <div class="w-px shrink-0 self-stretch bg-primary/40 transition-colors group-hover:bg-primary" aria-hidden="true" />
+    <div class="min-w-0 flex-1">
+      <h3 class="font-medium text-foreground flex items-center gap-2">
+        {icon && <span class="feature-icon" aria-hidden="true"><Icon name={icon} size={18} /></span>}
+        {title}
+      </h3>
+      <div class="mt-1.5 text-sm text-muted-foreground">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

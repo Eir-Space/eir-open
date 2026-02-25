@@ -82,9 +82,9 @@ Ideal for patients wanting full control over their health data, healthcare devel
 
 ## GitHub Pages
 
-The documentation is built with [Hugo](https://gohugo.io/) using the [Geekdoc](https://github.com/thegeeklab/hugo-geekdoc) theme and deployed via GitHub Actions.
+The documentation is built with [Astro](https://astro.build/) using [Starlight](https://starlight.astro.build/) and [shadcn/ui](https://ui.shadcn.com/) styling, deployed via GitHub Actions.
 
-**🌐 https://missberg.github.io/eir-open/**
+**🌐 https://eir-space.github.io/eir-open/**
 
 ### Deployment
 
@@ -92,13 +92,14 @@ The site deploys automatically when you push to `main` or `cursor/root-docs-cons
 
 1. Go to **Settings** → **Pages**
 2. Under **Source**, choose **GitHub Actions**
-3. The workflow in `.github/workflows/hugo.yml` will build and deploy on each push
+3. The workflow in `.github/workflows/deploy-docs.yml` will build and deploy on each push
 
 ### Local development
 
 ```bash
-cd hugo
-hugo server
+cd site
+pnpm install
+pnpm dev
 ```
 
-Then open http://localhost:1313/eir-open/
+Then open http://localhost:4321/eir-open/

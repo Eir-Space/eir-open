@@ -1,0 +1,120 @@
+---
+title: Eir Open Apps
+description: Privacy-first apps for Swedish medical records from 1177.se.
+sidebar:
+  order: 4
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+Open-source applications for accessing, viewing, and understanding Swedish medical records from 1177.se with complete privacy — your data never leaves your device.
+
+**Perfect for:** Patients, healthcare developers, privacy-conscious medical record management.
+
+<Aside type="note" title="Privacy">
+  All processing happens locally — your data never leaves your device. API keys are stored in Keychain.
+</Aside>
+
+## Desktop App — Eir Viewer (macOS)
+
+A native macOS app (Swift/SwiftUI) for viewing `.eir` medical record files with AI-powered health insights.
+
+<div class="features-grid mt-4">
+  <FeatureCard title="Timeline view" icon="calendar">
+    Entries grouped by month with colored category badges and AI-powered health insights.
+  </FeatureCard>
+  <FeatureCard title="AI chat" icon="message-circle">
+    Ask questions about your records using OpenAI, Anthropic, Groq, or any OpenAI-compatible provider.
+  </FeatureCard>
+  <FeatureCard title="Agent with tools" icon="wrench">
+    The AI can search records, drill into entries, find clinics, and remember you across sessions.
+  </FeatureCard>
+  <FeatureCard title="Smart context" icon="brain">
+    Handles 400+ entries by automatically summarizing records and letting the AI fetch details on demand.
+  </FeatureCard>
+  <FeatureCard title="Multi-profile support" icon="users">
+    Manage records for multiple family members, each with their own chat history.
+  </FeatureCard>
+  <FeatureCard title="Health data browser" icon="globe">
+    Embedded 1177.se browser with API-based extraction and session keep-alive.
+  </FeatureCard>
+  <FeatureCard title="Local vector search" icon="search">
+    On-device embeddings for semantic search across all your records.
+  </FeatureCard>
+  <FeatureCard title="Find Care" icon="map-pin">
+    Interactive map with 17,800+ Swedish healthcare clinics.
+  </FeatureCard>
+  <FeatureCard title="Explain with AI" icon="lightbulb">
+    One-click button on each journal entry to get a plain-language explanation.
+  </FeatureCard>
+</div>
+
+**[Download latest release](https://github.com/BirgerMoell/eir-open-apps/releases/latest)**
+
+## iOS App — Eir Viewer (iPhone & iPad)
+
+A native iOS app (Swift/SwiftUI) for viewing `.eir` medical record files on iPhone and iPad with AI chat and Apple HealthKit integration.
+
+<div class="features-grid mt-4">
+  <FeatureCard title="Journal viewer" icon="clipboard-list">
+    Timeline of medical records with search, filtering, and category badges.
+  </FeatureCard>
+  <FeatureCard title="AI chat" icon="message-circle">
+    Ask questions about your records using OpenAI, Anthropic, Groq, or custom providers.
+  </FeatureCard>
+  <FeatureCard title="Agent with tools" icon="wrench">
+    Search records, get details, summarize health data, and persistent memory across sessions.
+  </FeatureCard>
+  <FeatureCard title="Apple HealthKit" icon="heart">
+    Import vitals, activity, and lab values — heart rate, blood pressure, SpO2, weight, steps, workouts, and more.
+  </FeatureCard>
+  <FeatureCard title="Multi-profile" icon="users">
+    Manage records for multiple family members on a single device.
+  </FeatureCard>
+  <FeatureCard title="Mac transfer" icon="smartphone">
+    Scan QR code to receive records from the macOS app via local network.
+  </FeatureCard>
+</div>
+
+Build from source with Xcode 16+ (requires iOS 17+):
+
+```bash
+cd iOS/EirViewer
+xcodegen generate
+open EirViewer.xcodeproj
+```
+
+## Chrome Extension — 1177 Journal Downloader
+
+A Chrome extension that downloads your medical records from 1177.se into portable, structured files.
+
+<div class="features-grid mt-4">
+  <FeatureCard title="One-click download" icon="download">
+    Floating button on 1177.se exports all your journal entries.
+  </FeatureCard>
+  <FeatureCard title="Structured EIR format" icon="file-text">
+    Exports to both plain text (.txt) and the open EIR format (.eir/YAML).
+  </FeatureCard>
+  <FeatureCard title="Complete history" icon="book-open">
+    Automatically loads all available entries by expanding the full timeline.
+  </FeatureCard>
+  <FeatureCard title="Privacy-first" icon="lock">
+    All processing happens locally in your browser.
+  </FeatureCard>
+  <FeatureCard title="Transfer to Eir.Space" icon="rocket">
+    Optionally view your records in the <a href="https://eir.space">Eir.Space</a> web viewer.
+  </FeatureCard>
+</div>
+
+### Installation
+
+1. Download the [Chrome Extension](https://github.com/BirgerMoell/eir-chrome-plugin/releases/latest)
+2. Load unpacked in Chrome at `chrome://extensions/`
+3. Navigate to [journalen.1177.se](https://journalen.1177.se) and use the download button
+
+## Links
+
+- [GitHub Repository](https://github.com/BirgerMoell/eir-open-apps)
+- [Chrome Extension](https://github.com/BirgerMoell/eir-chrome-plugin)
+- [Privacy Policy](/eir-open/projects/eir-open-apps/privacy-policy.html)

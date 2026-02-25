@@ -1,0 +1,70 @@
+---
+title: Documentation
+description: Explore open source projects for healthcare AI, medication lookups, and privacy-first apps.
+---
+
+import ProjectCard from '@/components/ProjectCard.astro';
+import Icon from '@/components/Icon';
+
+Eir Open provides a suite of open source tools spanning medication databases, health data standards, and privacy-first applications. Each project is designed for seamless integration with AI agents, LLMs, and healthcare workflows.
+
+## Get Started
+
+<div class="getting-started-grid mt-4">
+  <div class="getting-started-item">
+    <h4 class="getting-started-heading"><Icon name="pill" size={16} /> US Medications</h4>
+    <code>npm install -g us-medications</code>
+  </div>
+  <div class="getting-started-item">
+    <h4 class="getting-started-heading"><Icon name="pill" size={16} /> Swedish Medications</h4>
+    <code>npm install -g swedish-medications</code>
+  </div>
+  <div class="getting-started-item">
+    <h4 class="getting-started-heading"><Icon name="file-heart" size={16} /> Health Data Standard</h4>
+    <code>pip install health-md</code>
+  </div>
+  <div class="getting-started-item">
+    <h4 class="getting-started-heading"><Icon name="smartphone" size={16} /> Eir Open Apps</h4>
+    <a href="eir-open-apps/">Download for macOS, iOS, or Chrome</a>
+  </div>
+</div>
+
+<hr class="section-divider" />
+
+## Libraries & Tools
+
+<div class="projects-grid">
+  <ProjectCard
+    title="EIR Health Data Standard"
+    description="Open YAML-based standard for structuring healthcare information optimized for LLMs. Privacy-first, MCP-compatible."
+    link="health-md-standard/"
+    icon="file-heart"
+    tags={["YAML", "MCP", "pip"]}
+  />
+  <ProjectCard
+    title="US FDA Medications"
+    description="Comprehensive US FDA medication lookup with 81,212 medications. CLI, JavaScript API, and drug interaction checking."
+    link="us-medications/"
+    icon="pill"
+    tags={["npm", "CLI", "OpenClaw"]}
+  />
+  <ProjectCard
+    title="Swedish Medications"
+    description="Complete Swedish pharmaceutical database from FASS. 9,064 medications with brand-to-substance mapping and AI-agent support."
+    link="swedish-medications/"
+    icon="pill"
+    tags={["npm", "CLI", "OpenClaw"]}
+  />
+</div>
+
+## Applications
+
+<div class="projects-grid mt-6">
+  <ProjectCard
+    title="Eir Open Apps"
+    description="Privacy-first apps for Swedish medical records. macOS and iOS apps with AI chat, Chrome extension for one-click export."
+    link="eir-open-apps/"
+    icon="smartphone"
+    tags={["macOS", "iOS", "Chrome"]}
+  />
+</div>

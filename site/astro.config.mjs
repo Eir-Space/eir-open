@@ -1,0 +1,58 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+import starlight from '@astrojs/starlight';
+
+import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://eir-space.github.io',
+  base: '/eir-open',
+
+  integrations: [
+    starlight({
+      title: 'Eir Open',
+      logo: {
+        light: './src/assets/logos/light-circle.svg',
+        dark: './src/assets/logos/dark-circle.svg',
+      },
+      favicon: '/favicon.svg',
+      customCss: ['./src/styles/global.css'],
+      components: {
+        ThemeProvider: './src/components/ThemeProvider.astro',
+      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/eir-space/eir-open' },
+      ],
+      editLink: {
+        base: 'https://github.com/eir-space/eir-open/edit/main/site/src/content/docs',
+        text: 'Edit this page',
+      },
+      sidebar: [
+        { label: 'Overview', slug: 'docs' },
+        {
+          label: 'Projects',
+          items: [
+            { slug: 'docs/health-md-standard', label: 'EIR Health Data Standard' },
+            { slug: 'docs/us-medications', label: 'US FDA Medications' },
+            { slug: 'docs/swedish-medications', label: 'Swedish Medications' },
+            { slug: 'docs/eir-open-apps', label: 'Eir Open Apps' },
+          ],
+        },
+      ],
+    }),
+    react(),
+  ],
+
+  vite: {
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: { '@': join(__dirname, 'src') },
+    },
+  },
+});
