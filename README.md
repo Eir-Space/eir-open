@@ -84,7 +84,7 @@ Ideal for patients wanting full control over their health data, healthcare devel
 
 The documentation is built with [Hugo](https://gohugo.io/) using the [Geekdoc](https://github.com/thegeeklab/hugo-geekdoc) theme and deployed via GitHub Actions.
 
-**🌐 https://eir-space.github.io/eir-open/**
+**🌐 https://missberg.github.io/eir-open/**
 
 ### Deployment
 

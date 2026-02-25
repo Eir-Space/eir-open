@@ -1,4 +1,4 @@
-baseURL = "https://eir-space.github.io/eir-open/"
+baseURL = "https://missberg.github.io/eir-open/"
 languageCode = "en-us"
 title = "Eir Open"
 theme = "github.com/thegeeklab/hugo-geekdoc"
