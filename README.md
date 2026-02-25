@@ -82,13 +82,23 @@ Ideal for patients wanting full control over their health data, healthcare devel
 
 ## GitHub Pages
 
-The landing page lives in [`docs/`](docs/) and is available at:
+The documentation is built with [Hugo](https://gohugo.io/) using the [Geekdoc](https://github.com/thegeeklab/hugo-geekdoc) theme and deployed via GitHub Actions.
 
 **🌐 https://eir-space.github.io/eir-open/**
 
-To enable GitHub Pages (if needed):
+### Deployment
+
+The site deploys automatically when you push to `main` or `cursor/root-docs-consolidation-3cc0`. To enable:
 
 1. Go to **Settings** → **Pages**
-2. Under **Source**, choose **Deploy from a branch**
-3. Select branch `main` and folder `/docs`
-4. Save
+2. Under **Source**, choose **GitHub Actions**
+3. The workflow in `.github/workflows/hugo.yml` will build and deploy on each push
+
+### Local development
+
+```bash
+cd hugo
+hugo server
+```
+
+Then open http://localhost:1313/eir-open/
