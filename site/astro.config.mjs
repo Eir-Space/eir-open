@@ -25,6 +25,7 @@ export default defineConfig({
       customCss: ['./src/styles/global.css'],
       components: {
         ThemeProvider: './src/components/ThemeProvider.astro',
+        ThemeSelect: './src/components/ThemeSelect.astro',
       },
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/eir-space/eir-open' },
@@ -45,6 +46,19 @@ export default defineConfig({
           ],
         },
       ],
+      expressiveCode: {
+        styleOverrides: {
+          borderRadius: '0.75rem',
+          borderColor: 'var(--border-subtle)',
+          borderWidth: '1px',
+          frames: {
+            shadowColor: 'rgba(26, 47, 53, 0.12)',
+            shadowBlur: '12px',
+            shadowOffsetX: '0',
+            shadowOffsetY: '4px',
+          },
+        },
+      },
     }),
     react(),
   ],

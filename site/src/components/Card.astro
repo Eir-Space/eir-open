@@ -1,0 +1,50 @@
+---
+import Icon from './Icon';
+
+interface Props {
+  tag?: 'div' | 'a';
+  href?: string;
+  variant?: 'default' | 'feature' | 'project';
+  icon?: string;
+  title: string;
+  iconSize?: number;
+}
+
+const { tag = 'div', href, variant = 'default', icon, title, iconSize = 16 } = Astro.props;
+
+const isLink = tag === 'a' && href;
+const El = isLink ? 'a' : 'div';
+
+const baseClasses =
+  'card-base group relative flex h-full flex-col rounded-xl bg-card p-5 text-card-foreground transition-all';
+const variantClasses: Record<string, string> = {
+  feature:
+    'feature-card border-l-4 border-l-[color-mix(in_srgb,var(--primary)_40%,transparent)] pl-6 hover:border-l-primary',
+  project: 'project-card no-underline',
+  default: 'card-base',
+};
+const cardClass = `${baseClasses} ${variantClasses[variant] || variantClasses.default}`.trim();
+
+const titleClasses: Record<string, string> = {
+  feature: 'feature-card-title flex items-center gap-2 font-semibold text-foreground',
+  project:
+    'project-card-title flex items-center gap-2 font-semibold text-foreground group-hover:text-primary',
+  default: 'card-title flex items-center gap-2 font-semibold text-foreground',
+};
+const titleClass = titleClasses[variant] || titleClasses.default;
+---
+
+<El class={cardClass} href={isLink ? href : undefined} style="box-shadow: var(--card-shadow);">
+  <div class="min-h-0 flex-1 min-w-0">
+    <h3 class={titleClass}>
+      {icon && (
+        <span class="card-icon" aria-hidden="true">
+          <Icon name={icon} size={iconSize} />
+        </span>
+      )}
+      {title}
+    </h3>
+    <slot />
+  </div>
+  <slot name="footer" />
+</El>

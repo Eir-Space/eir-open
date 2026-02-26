@@ -1,0 +1,19 @@
+---
+import Icon from './Icon';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="capability-card">
+  <div class="capability-icon">
+    <Icon name={icon} size={28} />
+  </div>
+  <div class="capability-title">{title}</div>
+  <div class="capability-desc">{description}</div>
+</div>

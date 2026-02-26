@@ -19,10 +19,10 @@ hero:
       variant: minimal
 ---
 
-import ProjectCard from '@/components/ProjectCard.astro';
+import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
 import StatsBar from '@/components/StatsBar.astro';
-import FeatureCard from '@/components/FeatureCard.astro';
-import Icon from '@/components/Icon';
+import CapabilityCard from '@/components/CapabilityCard.astro';
+import { projects } from '@/data/projects';
 
 Eir Open is a project by [Eir Space](https://eir.space) — the home for open source code modules focused on AI for empowering people in their health journey. Medication lookups, health data standards, and privacy-first apps for Swedish healthcare.
 
@@ -35,60 +35,15 @@ Eir Open is a project by [Eir Space](https://eir.space) — the home for open so
 
 ## Key Capabilities
 
-<div class="capabilities-grid">
-  <div class="capability-card">
-    <div class="capability-icon"><Icon name="bot" size={28} /></div>
-    <div class="capability-title">AI-Powered</div>
-    <div class="capability-desc">Built for LLMs, agents, and MCP integration</div>
-  </div>
-  <div class="capability-card">
-    <div class="capability-icon"><Icon name="shield-check" size={28} /></div>
-    <div class="capability-title">Privacy-First</div>
-    <div class="capability-desc">On-device processing, no cloud storage</div>
-  </div>
-  <div class="capability-card">
-    <div class="capability-icon"><Icon name="globe" size={28} /></div>
-    <div class="capability-title">Open Source</div>
-    <div class="capability-desc">MIT licensed, community-driven</div>
-  </div>
-  <div class="capability-card">
-    <div class="capability-icon"><Icon name="terminal" size={28} /></div>
-    <div class="capability-title">Developer Ready</div>
-    <div class="capability-desc">CLI tools, npm packages, and APIs</div>
-  </div>
+<div class="capabilities-grid not-content">
+  <CapabilityCard title="AI-Powered" description="Built for LLMs, agents, and MCP integration" icon="bot" />
+  <CapabilityCard title="Privacy-First" description="On-device processing, no cloud storage" icon="shield-check" />
+  <CapabilityCard title="Open Source" description="MIT licensed, community-driven" icon="globe" />
+  <CapabilityCard title="Developer Ready" description="CLI tools, npm packages, and APIs" icon="terminal" />
 </div>
 
 <hr class="section-divider" />
 
 ## Our Projects
 
-<div class="projects-grid">
-  <ProjectCard
-    title="EIR Health Data Standard"
-    description="Open YAML-based standard for structuring healthcare information optimized for LLMs. Privacy-first, MCP-compatible."
-    link="docs/health-md-standard/"
-    icon="file-heart"
-    tags={["YAML", "MCP", "pip"]}
-  />
-  <ProjectCard
-    title="US FDA Medications"
-    description="Comprehensive US FDA medication lookup with 81,212 medications. CLI, JavaScript API, and drug interaction checking."
-    link="docs/us-medications/"
-    icon="pill"
-    tags={["npm", "CLI", "OpenClaw"]}
-  />
-  <ProjectCard
-    title="Swedish Medications"
-    description="Complete Swedish pharmaceutical database from FASS. 9,064 medications with brand-to-substance mapping and AI-agent support."
-    link="docs/swedish-medications/"
-    icon="pill"
-    tags={["npm", "CLI", "OpenClaw"]}
-  />
-  <ProjectCard
-    title="Eir Open Apps"
-    description="Privacy-first apps for Swedish medical records. macOS and iOS apps with AI chat, Chrome extension for one-click export."
-    link="docs/eir-open-apps/"
-    icon="smartphone"
-    tags={["macOS", "iOS", "Chrome"]}
-  />
-</div>
+<ProjectCardGrid projects={projects} linkPrefix="docs/" />

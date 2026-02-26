@@ -11,7 +11,7 @@ interface Props {
 const { stats } = Astro.props;
 ---
 
-<div class="stats-bar">
+<div class="stats-bar not-content">
   {stats.map((stat) => (
     <div class="stat-item">
       <span class="stat-value">{stat.value}</span>
