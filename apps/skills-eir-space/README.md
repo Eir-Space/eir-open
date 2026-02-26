@@ -42,6 +42,20 @@ This app is ready to deploy to Cloudflare as a Next.js app.
 ### Option B: OpenNext + Cloudflare Workers (recommended for production APIs)
 Use OpenNext Cloudflare adapter and move store from local JSON to Cloudflare D1 or KV.
 
+Project files already include:
+- `wrangler.jsonc`
+- `open-next.config.ts`
+- `npm run deploy`
+
+Recommended Cloudflare build settings:
+- Root directory: `apps/skills-eir-space`
+- Build command: `npm run build`
+- Deploy command: `npm run deploy`
+
+Important:
+- Do not use `npx wrangler deploy` directly as deploy command in CI.
+- It may run migration prompts in non-interactive mode and generate mismatched self-bindings.
+
 ## Production TODO (Required)
 
 - Replace file writes in `lib/skill-store.js` with Cloudflare D1/KV persistence
