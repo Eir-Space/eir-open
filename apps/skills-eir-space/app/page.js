@@ -21,16 +21,22 @@ function statCards(skills, submissions) {
 }
 
 export default async function HomePage({ searchParams }) {
-  const params = await searchParams;
+  const params = searchParams || {};
   const q = params?.q || "";
   const tag = params?.tag || "";
   const reviewStatus = params?.review || "";
   const moderationTier = params?.tier || "";
 
-  const [skills, store] = await Promise.all([
-    listSkills({ q, tag, reviewStatus, moderationTier }),
-    readStore()
-  ]);
+  let skills = [];
+  let store = { skills: [], submissions: [] };
+  try {
+    [skills, store] = await Promise.all([
+      listSkills({ q, tag, reviewStatus, moderationTier }),
+      readStore()
+    ]);
+  } catch (error) {
+    console.error("Failed to load skills directory data:", error?.message || error);
+  }
   const tags = uniqueTags(store.skills);
   const filters = getFilterOptions();
   const stats = statCards(store.skills, store.submissions);

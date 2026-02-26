@@ -17,8 +17,13 @@ const tierLabel = {
 };
 
 export default async function SkillPage({ params }) {
-  const { slug } = await params;
-  const skill = await getSkillBySlug(slug);
+  const { slug } = params || {};
+  let skill = null;
+  try {
+    skill = await getSkillBySlug(slug);
+  } catch (error) {
+    console.error("Failed to load skill detail:", error?.message || error);
+  }
   if (!skill) notFound();
 
   return (

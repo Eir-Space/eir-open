@@ -1,8 +1,4 @@
-import { promises as fs } from "fs";
-import path from "path";
 import seedData from "@/data/skills.json";
-
-const storePath = path.join(process.cwd(), "data", "skills.json");
 
 const d1Config = {
   accountId: process.env.CF_ACCOUNT_ID || "",
@@ -45,6 +41,9 @@ export async function writeStore(data) {
     return;
   }
   try {
+    const { promises: fs } = await import("node:fs");
+    const path = await import("node:path");
+    const storePath = path.join(process.cwd(), "data", "skills.json");
     await fs.writeFile(storePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
   } catch {
     throw new Error(
@@ -93,6 +92,9 @@ async function readSeedStore() {
 
 async function readStoreFromFile() {
   try {
+    const { promises: fs } = await import("node:fs");
+    const path = await import("node:path");
+    const storePath = path.join(process.cwd(), "data", "skills.json");
     const raw = await fs.readFile(storePath, "utf8");
     const parsed = JSON.parse(raw);
     return {
