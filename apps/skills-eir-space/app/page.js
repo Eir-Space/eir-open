@@ -21,7 +21,7 @@ function statCards(skills, submissions) {
 }
 
 export default async function HomePage({ searchParams }) {
-  const params = searchParams || {};
+  const params = await Promise.resolve(searchParams || {});
   const q = params?.q || "";
   const tag = params?.tag || "";
   const reviewStatus = params?.review || "";

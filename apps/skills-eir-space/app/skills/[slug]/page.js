@@ -17,7 +17,8 @@ const tierLabel = {
 };
 
 export default async function SkillPage({ params }) {
-  const { slug } = params || {};
+  const resolvedParams = await Promise.resolve(params || {});
+  const { slug } = resolvedParams;
   let skill = null;
   try {
     skill = await getSkillBySlug(slug);

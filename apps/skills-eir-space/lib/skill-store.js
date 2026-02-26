@@ -1,9 +1,14 @@
 import seedData from "@/data/skills.json";
 
+const env =
+  typeof process !== "undefined" && process?.env
+    ? process.env
+    : {};
+
 const d1Config = {
-  accountId: process.env.CF_ACCOUNT_ID || "",
-  databaseId: process.env.CF_D1_DATABASE_ID || "",
-  apiToken: process.env.CF_API_TOKEN || ""
+  accountId: env.CF_ACCOUNT_ID || "",
+  databaseId: env.CF_D1_DATABASE_ID || "",
+  apiToken: env.CF_API_TOKEN || ""
 };
 
 function useD1Store() {
