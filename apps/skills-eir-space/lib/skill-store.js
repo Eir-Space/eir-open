@@ -1,4 +1,4 @@
-import seedData from "@/data/skills.json";
+import { SEED_STORE } from "@/data/seed-skills";
 
 const env =
   typeof process !== "undefined" && process?.env
@@ -88,7 +88,7 @@ async function ensureD1Table() {
 }
 
 async function readSeedStore() {
-  const parsed = seedData;
+  const parsed = SEED_STORE;
   return {
     skills: safeArray(parsed.skills),
     submissions: safeArray(parsed.submissions)
