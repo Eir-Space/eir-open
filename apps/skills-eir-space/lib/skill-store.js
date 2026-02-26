@@ -29,7 +29,12 @@ function normalizeList(input) {
 
 export async function readStore() {
   if (useD1Store()) {
-    return readStoreFromD1();
+    try {
+      return await readStoreFromD1();
+    } catch (error) {
+      console.error("D1 read failed, falling back to seed store:", error?.message || error);
+      return readSeedStore();
+    }
   }
   return readStoreFromFile();
 }
