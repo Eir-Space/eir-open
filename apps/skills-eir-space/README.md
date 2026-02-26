@@ -1,0 +1,59 @@
+# skills.eir.space (MVP)
+
+Minimal Next.js registry for health-focused agent skills with:
+- public submissions
+- badges and moderation tiers
+- health.md compatibility metadata
+- skill detail pages
+- `find-health-skill` seeded as a catalog skill
+
+## Local Run
+
+```bash
+cd /Users/birger/Community/eir-open/apps/skills-eir-space
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## What Is Implemented
+
+- Directory page with search/filter
+- Hybrid moderation model UI (`community`, `verified`, `clinician_reviewed`)
+- Skill detail pages
+- Submission/update form
+- API routes:
+  - `GET /api/skills`
+  - `POST /api/submit`
+- Local persistence in `data/skills.json` (fast MVP)
+
+## Cloudflare Hosting (Fast Path)
+
+This app is ready to deploy to Cloudflare as a Next.js app.
+
+### Option A: Cloudflare Pages with Next.js support
+1. Create a new Pages project connected to this repo
+2. Set root directory: `apps/skills-eir-space`
+3. Build command: `npm run build`
+4. Output directory: `.next`
+5. Add custom domain: `skills.eir.space`
+
+### Option B: OpenNext + Cloudflare Workers (recommended for production APIs)
+Use OpenNext Cloudflare adapter and move store from local JSON to Cloudflare D1 or KV.
+
+## Production TODO (Required)
+
+- Replace file writes in `lib/skill-store.js` with Cloudflare D1/KV persistence
+- Add auth for moderation actions
+- Add validation worker for repo ingestion and `SKILL.md` parsing
+- Add moderation dashboard
+
+## How skills.sh / agentskill.sh Works (high-level)
+
+- Repo-first submission model (GitHub repo URL + skill path)
+- Skill discovery based on `SKILL.md` metadata
+- Submission goes through analysis/security checks
+- Ranking/discoverability influenced by install telemetry
+
+This MVP keeps that repo-first model and adds health-specific trust metadata.
