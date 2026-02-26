@@ -1,8 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
+import seedData from "@/data/skills.json";
 
 const storePath = path.join(process.cwd(), "data", "skills.json");
-const seedPath = path.join(process.cwd(), "data", "skills.json");
 
 const d1Config = {
   accountId: process.env.CF_ACCOUNT_ID || "",
@@ -31,12 +31,7 @@ export async function readStore() {
   if (useD1Store()) {
     return readStoreFromD1();
   }
-  const raw = await fs.readFile(storePath, "utf8");
-  const parsed = JSON.parse(raw);
-  return {
-    skills: safeArray(parsed.skills),
-    submissions: safeArray(parsed.submissions)
-  };
+  return readStoreFromFile();
 }
 
 export async function writeStore(data) {
@@ -44,7 +39,13 @@ export async function writeStore(data) {
     await writeStoreToD1(data);
     return;
   }
-  await fs.writeFile(storePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  try {
+    await fs.writeFile(storePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  } catch {
+    throw new Error(
+      "Submission persistence requires Cloudflare D1 in production (set CF_ACCOUNT_ID, CF_D1_DATABASE_ID, CF_API_TOKEN)."
+    );
+  }
 }
 
 async function d1Query(sql, params = []) {
@@ -78,12 +79,25 @@ async function ensureD1Table() {
 }
 
 async function readSeedStore() {
-  const raw = await fs.readFile(seedPath, "utf8");
-  const parsed = JSON.parse(raw);
+  const parsed = seedData;
   return {
     skills: safeArray(parsed.skills),
     submissions: safeArray(parsed.submissions)
   };
+}
+
+async function readStoreFromFile() {
+  try {
+    const raw = await fs.readFile(storePath, "utf8");
+    const parsed = JSON.parse(raw);
+    return {
+      skills: safeArray(parsed.skills),
+      submissions: safeArray(parsed.submissions)
+    };
+  } catch {
+    // Workers runtime has no writable/readable project filesystem.
+    return readSeedStore();
+  }
 }
 
 async function readStoreFromD1() {
