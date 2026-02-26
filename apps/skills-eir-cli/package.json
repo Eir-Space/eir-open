@@ -1,0 +1,20 @@
+{
+  "name": "@eir-space/skills",
+  "version": "0.1.0",
+  "description": "CLI for the skills.eir.space health skill registry",
+  "type": "module",
+  "bin": {
+    "skills": "bin/skills.js"
+  },
+  "scripts": {
+    "test:cli": "node bin/skills.js help"
+  },
+  "keywords": [
+    "eir",
+    "skills",
+    "health",
+    "agent",
+    "cli"
+  ],
+  "license": "MIT"
+}
