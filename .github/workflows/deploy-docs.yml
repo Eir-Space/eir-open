@@ -2,7 +2,7 @@ name: Deploy Docs to GitHub Pages
 
 on:
   push:
-    branches: ["main", "cursor/root-docs-consolidation-3cc0"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
