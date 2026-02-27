@@ -1,0 +1,51 @@
+---
+title: EIR Health Data Standard
+description: Open YAML-based standard for structuring healthcare information optimized for LLMs.
+sidebar:
+  order: 1
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+Open YAML-based standard for structuring healthcare information optimized for Large Language Models. Named after Eir, the Norse goddess of healing and medicine, this format enables privacy-preserving, clinically-accurate health data exchange.
+
+**Perfect for:** Healthcare AI, EHR systems, telemedicine, personal health records.
+
+## Why EIR Format?
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="LLM-Optimized" icon="bot">
+    YAML structure designed for perfect AI comprehension and reasoning.
+  </FeatureCard>
+  <FeatureCard title="MCP Compatible" icon="plug">
+    Load into Claude, ChatGPT via Model Context Protocol server implementation.
+  </FeatureCard>
+  <FeatureCard title="Privacy-First" icon="shield-check">
+    Built-in anonymization and data protection patterns.
+  </FeatureCard>
+  <FeatureCard title="Clinical-Accurate" icon="stethoscope">
+    Preserves medical context and relationships. Uses ICD-10, SNOMED, LOINC.
+  </FeatureCard>
+  <FeatureCard title="Human-Readable" icon="book-open">
+    Markdown format accessible to clinicians and patients alike.
+  </FeatureCard>
+  <FeatureCard title="Interoperable" icon="arrow-left-right">
+    Works across systems, platforms, and use cases.
+  </FeatureCard>
+</div>
+
+## Getting Started
+
+1. Read the [Specification](https://github.com/BirgerMoell/health-md-standard) — includes the detailed EIR-SPEC.md with examples and guidelines
+2. Install the parser: `pip install health-md`
+3. Use the [Validator](/eir-open/projects/health-md-standard/validator.html) to validate EIR files
+
+<Aside type="caution" title="Validation">
+  Validate EIR files before production use to ensure correct structure and compliance.
+</Aside>
+
+## Links
+
+- [GitHub Repository](https://github.com/BirgerMoell/health-md-standard)
+- [Validate EIR Files](/eir-open/projects/health-md-standard/validator.html)

@@ -1,0 +1,25 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { Project } from '@/data/projects';
+
+interface Props {
+  projects: Project[];
+  linkPrefix?: string;
+  class?: string;
+}
+
+const { projects, linkPrefix = '', class: className } = Astro.props;
+const classList = ['projects-grid', 'not-content', className].filter(Boolean);
+---
+
+<div class={classList.join(' ')}>
+  {projects.map((project) => (
+    <ProjectCard
+      title={project.title}
+      description={project.description}
+      link={`${linkPrefix}${project.slug}/`}
+      icon={project.icon}
+      tags={project.tags}
+    />
+  ))}
+</div>

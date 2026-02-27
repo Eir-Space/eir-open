@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Background circle -->
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="30" cy="30" r="28" fill="url(#iconGradient)" stroke="#ffffff" stroke-width="2"/>
+  
+  <!-- Medical cross with data nodes -->
+  <g transform="translate(15, 15)">
+    <!-- Main medical cross -->
+    <rect x="10" y="5" width="10" height="20" fill="white" rx="2"/>
+    <rect x="5" y="10" width="20" height="10" fill="white" rx="2"/>
+    
+    <!-- Data connection nodes -->
+    <circle cx="5" cy="5" r="2" fill="white"/>
+    <circle cx="25" cy="5" r="2" fill="white"/>
+    <circle cx="5" cy="25" r="2" fill="white"/>
+    <circle cx="25" cy="25" r="2" fill="white"/>
+    
+    <!-- Connection lines -->
+    <line x1="7" y1="7" x2="12" y2="12" stroke="white" stroke-width="1" opacity="0.8"/>
+    <line x1="23" y1="7" x2="18" y2="12" stroke="white" stroke-width="1" opacity="0.8"/>
+    <line x1="7" y1="23" x2="12" y2="18" stroke="white" stroke-width="1" opacity="0.8"/>
+    <line x1="23" y1="23" x2="18" y2="18" stroke="white" stroke-width="1" opacity="0.8"/>
+  </g>
+</svg>

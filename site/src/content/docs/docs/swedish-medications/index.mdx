@@ -1,0 +1,57 @@
+---
+title: Swedish Medications
+description: Comprehensive medication lookup for Swedish pharmaceuticals from FASS database.
+sidebar:
+  order: 3
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+A comprehensive medication lookup tool for Swedish pharmaceuticals based on the FASS database. 9,064 medications with brand-to-substance mapping, dosages, side effects, and OTC status.
+
+**Perfect for:** AI agents, healthcare apps, OpenClaw skills, Swedish market applications.
+
+<Aside type="tip" title="Quick start">
+  Install with `npm install -g swedish-medications` and run `fass-lookup` for instant CLI access.
+</Aside>
+
+## Quick Start
+
+```bash
+npm install -g swedish-medications
+fass-lookup paracetamol
+fass-lookup Alvedon
+```
+
+## Features
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="9,064 medications" icon="pill">
+    Complete Swedish pharmaceutical database from FASS.
+  </FeatureCard>
+  <FeatureCard title="Smart search" icon="search">
+    By brand name, substance, or partial match (e.g., Alvedon to paracetamol).
+  </FeatureCard>
+  <FeatureCard title="Rich details" icon="clipboard-list">
+    Dosage, warnings, side effects, OTC status, ATC codes, and direct FASS links.
+  </FeatureCard>
+  <FeatureCard title="AI-agent ready" icon="bot">
+    OpenClaw, LangChain, and custom agent frameworks.
+  </FeatureCard>
+</div>
+
+## API Reference
+
+- `lookupMedication(query)` — Formatted markdown with medication info
+- `findMedication(query)` — Raw medication data object
+- `searchMedications(query, limit?)` — Multiple matching medications
+- `getDatabaseStats()` — Database statistics
+
+## Links
+
+- [View on npm](https://www.npmjs.com/package/swedish-medications)
+- [GitHub Repository](https://github.com/BirgerMoell/swedish-medications)
+- [OpenClaw Integration](/eir-open/docs/openclaw-integration/) — Add to your AI agent
+- [Skill file (OpenClaw)](/eir-open/projects/swedish-medications/skill.md)
+- [Official FASS documentation](https://www.fass.se)

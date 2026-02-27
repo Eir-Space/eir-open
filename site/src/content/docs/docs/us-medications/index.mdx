@@ -1,0 +1,68 @@
+---
+title: US FDA Medications
+description: Comprehensive US FDA medication lookup with 81,212 medications.
+sidebar:
+  order: 2
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+Comprehensive US FDA medication lookup with 81,212 medications. 99 curated common medications for instant access, drug interaction checking, CLI and JavaScript API.
+
+**Perfect for:** US healthcare apps, drug interaction checkers, medical AI assistants.
+
+<Aside type="tip" title="Quick start">
+  Install with `npm install -g us-medications` for instant CLI access. The full database downloads automatically on first use.
+</Aside>
+
+## Quick Start
+
+```bash
+npm install -g us-medications
+us-medications "lisinopril"
+us-medications --search "blood pressure"
+us-medications --interactions "warfarin"
+```
+
+## Database Statistics
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="81,212 medications" icon="pill">
+    Complete FDA medication database with automatic download on first use.
+  </FeatureCard>
+  <FeatureCard title="99 curated" icon="star">
+    Instant access to common medications — no download needed.
+  </FeatureCard>
+  <FeatureCard title="FDA data source" icon="landmark">
+    Authoritative, up-to-date information from the US Food and Drug Administration.
+  </FeatureCard>
+  <FeatureCard title="OpenClaw compatible" icon="bot">
+    Works as an OpenClaw skill for AI agents and LLM tool frameworks.
+  </FeatureCard>
+</div>
+
+## Usage
+
+### Command Line
+
+```bash
+us-medications "lisinopril"
+us-medications --search "blood pressure"
+us-medications --interactions "warfarin"
+us-medications --stats
+```
+
+### JavaScript API
+
+```javascript
+const { lookupMedication, searchMedications } = require('us-medications');
+const med = await lookupMedication('metformin');
+```
+
+## Links
+
+- [GitHub Repository](https://github.com/BirgerMoell/us-medications)
+- [npm Package](https://www.npmjs.com/package/us-medications)
+- [OpenClaw Integration](/eir-open/docs/openclaw-integration/) — Add to your AI agent
+- [Skill file (OpenClaw)](/eir-open/projects/us-medications/skill.md)

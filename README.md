@@ -2,6 +2,14 @@
 
 Open Source Eir Space code — focused on AI for empowering people in their health journey.
 
+## Quick Install (Mac)
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/eir-space/eir-open/main/install.sh)
+```
+
+Interactive menu installs medication skills, Health.md, Eir Apps, and OpenClaw integration. See the [Quickstart guide](https://eir-space.github.io/eir-open/docs/quickstart/) for individual installs and OpenClaw setup.
+
 ## Open Source Projects
 
 ### 🇸🇪 Swedish Medications
@@ -82,13 +90,24 @@ Ideal for patients wanting full control over their health data, healthcare devel
 
 ## GitHub Pages
 
-The landing page lives in [`docs/`](docs/) and is available at:
+The documentation is built with [Astro](https://astro.build/) using [Starlight](https://starlight.astro.build/) and [shadcn/ui](https://ui.shadcn.com/) styling, deployed via GitHub Actions.
 
 **🌐 https://eir-space.github.io/eir-open/**
 
-To enable GitHub Pages (if needed):
+### Deployment
+
+The site deploys automatically when you push to `main` or `cursor/root-docs-consolidation-3cc0`. To enable:
 
 1. Go to **Settings** → **Pages**
-2. Under **Source**, choose **Deploy from a branch**
-3. Select branch `main` and folder `/docs`
-4. Save
+2. Under **Source**, choose **GitHub Actions**
+3. The workflow in `.github/workflows/deploy-docs.yml` will build and deploy on each push
+
+### Local development
+
+```bash
+cd site
+pnpm install
+pnpm dev
+```
+
+Then open http://localhost:4321/eir-open/

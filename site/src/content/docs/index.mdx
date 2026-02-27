@@ -1,0 +1,49 @@
+---
+title: Eir Open
+description: Open source tools for AI-powered health empowerment.
+template: splash
+hero:
+  image:
+    alt: Eir Open
+    light: ../../assets/logos/eir-logo-light-bg.svg
+    dark: ../../assets/logos/eir-logo-dark-bg.svg
+  tagline: Open source tools for <strong>AI-powered health empowerment</strong>.
+  actions:
+    - text: Explore Projects
+      link: docs/
+      icon: right-arrow
+      variant: primary
+    - text: GitHub
+      link: https://github.com/eir-space/eir-open
+      icon: external
+      variant: minimal
+---
+
+import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
+import StatsBar from '@/components/StatsBar.astro';
+import CapabilityCard from '@/components/CapabilityCard.astro';
+import { projects } from '@/data/projects';
+
+Eir Open is a project by [Eir Space](https://eir.space) — the home for open source code modules focused on AI for empowering people in their health journey. Medication lookups, health data standards, and privacy-first apps for Swedish healthcare.
+
+<StatsBar stats={[
+  { value: "81,000+", label: "Medications" },
+  { value: "17,800+", label: "Clinics" },
+  { value: "5", label: "Projects" },
+  { value: "100%", label: "Private" },
+]} />
+
+## Key Capabilities
+
+<div class="capabilities-grid not-content">
+  <CapabilityCard title="AI-Powered" description="Built for LLMs, agents, and MCP integration" icon="bot" />
+  <CapabilityCard title="Privacy-First" description="On-device processing, no cloud storage" icon="shield-check" />
+  <CapabilityCard title="Open Source" description="MIT licensed, community-driven" icon="globe" />
+  <CapabilityCard title="Developer Ready" description="CLI tools, npm packages, and APIs" icon="terminal" />
+</div>
+
+<hr class="section-divider" />
+
+## Our Projects
+
+<ProjectCardGrid projects={projects} linkPrefix="docs/" />

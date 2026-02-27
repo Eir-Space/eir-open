@@ -1,0 +1,76 @@
+---
+title: Quickstart
+description: Get up and running with Eir Open in 30 seconds.
+sidebar:
+  order: 0
+---
+
+Get Eir Open installed and running quickly. Choose your path below.
+
+## Mac one-liner (recommended)
+
+Run the unified install script for an interactive menu:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/eir-space/eir-open/main/install.sh)
+```
+
+Installs medication skills, Health.md, Eir Apps, and OpenClaw integration with an interactive menu. Requires macOS, Node.js 18+, and optionally Python 3.
+
+## Individual installs
+
+Copy-paste the commands you need:
+
+### US Medications
+
+```bash
+npm install -g us-medications
+us-medications "lisinopril"
+```
+
+### Swedish Medications
+
+```bash
+npm install -g swedish-medications
+fass-lookup paracetamol
+fass-lookup Alvedon
+```
+
+### Health.md Standard
+
+```bash
+pip install health-md pyyaml beautifulsoup4
+```
+
+### Eir Open Apps
+
+- **macOS**: [Download Eir Viewer DMG](https://github.com/BirgerMoell/eir-open-apps/releases/latest)
+- **iOS**: Build from source with Xcode 16+
+- **Chrome Extension**: Load unpacked from `apps/eir-open-apps/ChromeExtension/`
+
+## OpenClaw users
+
+Add eir-open skills to your OpenClaw agent:
+
+```bash
+openclaw skill add us-medications
+openclaw skill add swedish-medications
+```
+
+See the full [OpenClaw Integration](/eir-open/docs/openclaw-integration/) guide for details and the Health.md Parser skill.
+
+## Verify
+
+After installing medication skills:
+
+```bash
+fass-lookup paracetamol
+us-medications "lisinopril"
+```
+
+## Next steps
+
+- [US FDA Medications](/eir-open/docs/us-medications/) — 81,212 medications, drug interactions
+- [Swedish Medications](/eir-open/docs/swedish-medications/) — FASS database, 9,064 medications
+- [EIR Health Data Standard](/eir-open/docs/health-md-standard/) — LLM-optimized health data format
+- [Eir Open Apps](/eir-open/docs/eir-open-apps/) — Desktop, iOS, Chrome extension for Swedish medical records

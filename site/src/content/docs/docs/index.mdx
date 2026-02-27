@@ -1,0 +1,42 @@
+---
+title: Documentation
+description: Explore open source projects for healthcare AI, medication lookups, and privacy-first apps.
+---
+
+import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
+import GettingStartedItem from '@/components/GettingStartedItem.astro';
+import { libraryProjects, appProjects } from '@/data/projects';
+import { Aside } from '@astrojs/starlight/components';
+
+Eir Open provides a suite of open source tools spanning medication databases, health data standards, and privacy-first applications. Each project is designed for seamless integration with AI agents, LLMs, and healthcare workflows.
+
+<Aside type="tip" title="Get started in 30 seconds">
+  <a href="/eir-open/docs/quickstart/">Quickstart guide</a> — Mac one-liner and individual installs. <a href="/eir-open/docs/openclaw-integration/">OpenClaw Integration</a> — Add skills to your AI agent.
+</Aside>
+
+## Get Started
+
+<div class="getting-started-grid not-content mt-4">
+  <GettingStartedItem title="US Medications" icon="pill">
+    <code>npm install -g us-medications</code>
+  </GettingStartedItem>
+  <GettingStartedItem title="Swedish Medications" icon="pill">
+    <code>npm install -g swedish-medications</code>
+  </GettingStartedItem>
+  <GettingStartedItem title="Health Data Standard" icon="file-heart">
+    <code>pip install health-md</code>
+  </GettingStartedItem>
+  <GettingStartedItem title="Eir Open Apps" icon="smartphone">
+    <a href="eir-open-apps/">Download for macOS, iOS, or Chrome</a>
+  </GettingStartedItem>
+</div>
+
+<hr class="section-divider" />
+
+## Libraries & Tools
+
+<ProjectCardGrid projects={libraryProjects} />
+
+## Applications
+
+<ProjectCardGrid projects={appProjects} class="mt-6" />
