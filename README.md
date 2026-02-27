@@ -2,6 +2,14 @@
 
 Open Source Eir Space code — focused on AI for empowering people in their health journey.
 
+## Quick Install (Mac)
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/eir-space/eir-open/main/install.sh)
+```
+
+Interactive menu installs medication skills, Health.md, Eir Apps, and OpenClaw integration. See the [Quickstart guide](https://eir-space.github.io/eir-open/docs/quickstart/) for individual installs and OpenClaw setup.
+
 ## Open Source Projects
 
 ### 🇸🇪 Swedish Medications

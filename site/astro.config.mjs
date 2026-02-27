@@ -36,6 +36,8 @@ export default defineConfig({
       },
       sidebar: [
         { label: 'Overview', slug: 'docs' },
+        { label: 'Quickstart', slug: 'docs/quickstart' },
+        { label: 'OpenClaw Integration', slug: 'docs/openclaw-integration' },
         {
           label: 'Projects',
           items: [

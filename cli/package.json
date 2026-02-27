@@ -1,0 +1,29 @@
+{
+  "name": "eir-open",
+  "version": "1.0.0",
+  "description": "Eir Open installer – medication skills, Health.md, Eir Apps, and OpenClaw integration",
+  "type": "module",
+  "bin": {
+    "eir-open": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "eir",
+    "health",
+    "medications",
+    "openclaw",
+    "installer"
+  ],
+  "author": "Birger Moëll",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.0.1",
+    "chalk": "^5",
+    "commander": "^14"
+  }
+}

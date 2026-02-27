@@ -1,3 +1,5 @@
+# Dependencies
+node_modules/
+
 # Docs (Astro) build output
 site/dist/
-site/node_modules/

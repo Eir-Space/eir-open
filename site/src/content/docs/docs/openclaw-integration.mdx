@@ -1,0 +1,101 @@
+---
+title: OpenClaw Integration
+description: Add eir-open skills to your OpenClaw AI agent.
+sidebar:
+  order: 1
+---
+
+Add eir-open medication lookups and health data parsing to your OpenClaw agent. Your AI can then answer medication questions, look up drug interactions, and work with Health.md files.
+
+## Prerequisites
+
+- [OpenClaw](https://openclaw.ai) installed
+- Node.js 18+ (for medication skills)
+
+## Quick install
+
+Add both medication skills with one-liners:
+
+```bash
+openclaw skill add us-medications
+openclaw skill add swedish-medications
+```
+
+## Skill-by-skill
+
+### US Medications
+
+81,212 FDA medications with drug interaction checking.
+
+```bash
+# From npm (recommended)
+openclaw skill add us-medications
+
+# Or from URL
+openclaw skill add https://eir-space.github.io/eir-open/projects/us-medications/skill.md
+```
+
+### Swedish Medications
+
+9,064 Swedish pharmaceuticals from FASS with brand-to-substance mapping.
+
+```bash
+# From npm (recommended)
+openclaw skill add swedish-medications
+
+# Or from URL
+openclaw skill add https://eir-space.github.io/eir-open/projects/swedish-medications/skill.md
+```
+
+### Health.md Parser
+
+Parse and analyze Health.md files. Requires manual setup:
+
+```bash
+pip install health-md pyyaml beautifulsoup4
+```
+
+Then add the skill from the [health-md-standard openclaw-skill](/eir-open/docs/health-md-standard/) directory, or configure manually in `~/.openclaw/config.yaml`.
+
+## Config reference
+
+Example `~/.openclaw/config.yaml` with all eir-open skills:
+
+```yaml
+skills:
+  - us-medications
+  - swedish-medications
+```
+
+## Verify
+
+Ask your OpenClaw agent:
+
+- "What is paracetamol?" (Swedish Medications)
+- "Look up lisinopril" (US Medications)
+- "What are the drug interactions for warfarin?" (US Medications)
+
+## Troubleshooting
+
+**OpenClaw not found**
+
+Install OpenClaw first: [openclaw.ai](https://openclaw.ai)
+
+**Skill not found**
+
+If the package alias is unavailable, add the skill directly from URL:
+
+```bash
+openclaw skill add https://eir-space.github.io/eir-open/projects/us-medications/skill.md
+# or
+openclaw skill add https://eir-space.github.io/eir-open/projects/swedish-medications/skill.md
+```
+
+**Node.js version**
+
+Medication skills require Node.js 18+. Check with `node -v`. Install via `brew install node` if needed.
+
+## Skill files
+
+- [US Medications skill.md](/eir-open/projects/us-medications/skill.md)
+- [Swedish Medications skill.md](/eir-open/projects/swedish-medications/skill.md)
