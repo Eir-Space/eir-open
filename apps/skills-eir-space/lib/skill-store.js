@@ -181,7 +181,50 @@ function makeSlug(name) {
     .replace(/^-+|-+$/g, "");
 }
 
-export async function upsertSubmission(payload) {
+function buildSkillRecord({ payload, existing, now }) {
+  const skillName = String(payload.name || "").trim();
+  const slug = makeSlug(skillName);
+  const skillPath = String(payload.skillPath || "").trim() || `${slug}/`;
+  const reviewStatus = String(payload.reviewStatus || "not_medically_reviewed");
+  const sourceUrls = normalizeList(payload.sourceUrls);
+  const domainTags = normalizeList(payload.domainTags);
+  const populations = normalizeList(payload.populations);
+  const regions = normalizeList(payload.regions);
+  const linkedFileNames = normalizeList(payload.linkedFileNames);
+
+  return {
+    id: existing?.id || slug,
+    slug: existing?.slug || slug,
+    name: skillName,
+    title: String(payload.title || skillName)
+      .trim()
+      .replace(/\b\w/g, (m) => m.toUpperCase()),
+    owner: String(payload.owner || "community").trim().toLowerCase(),
+    repoUrl: String(payload.repoUrl || "").trim(),
+    skillPath,
+    domainTags,
+    populations,
+    regions,
+    healthMdCompatible: Boolean(payload.healthMdCompatible),
+    createsLinkedFile: Boolean(payload.createsLinkedFile),
+    linkedFileNames,
+    reviewStatus,
+    moderationTier: existing?.moderationTier || String(payload.moderationTier || "community"),
+    status: existing ? existing.status : String(payload.status || "pending_review"),
+    badges: [
+      payload.healthMdCompatible ? "Health.md Compatible" : null,
+      payload.createsLinkedFile && linkedFileNames[0] ? `Creates ${linkedFileNames[0]}` : null,
+      reviewStatus === "not_medically_reviewed" ? "Not Medically Reviewed" : null
+    ].filter(Boolean),
+    summary: String(payload.summary || "").trim(),
+    sourceUrls,
+    lastReviewed: String(payload.lastReviewed || "").trim() || null,
+    version: String(payload.version || "0.1.0").trim(),
+    updatedAt: now
+  };
+}
+
+export async function ingestSkill(payload, ingestion = {}) {
   const store = await readStore();
   const now = new Date().toISOString();
 
@@ -197,48 +240,11 @@ export async function upsertSubmission(payload) {
   }
 
   const skillPath = String(payload.skillPath || "").trim() || `${slug}/`;
-  const reviewStatus = String(payload.reviewStatus || "not_medically_reviewed");
-  const moderationTier = "community";
-  const sourceUrls = normalizeList(payload.sourceUrls);
-  const domainTags = normalizeList(payload.domainTags);
-  const populations = normalizeList(payload.populations);
-  const regions = normalizeList(payload.regions);
-  const linkedFileNames = normalizeList(payload.linkedFileNames);
-
   const existing = store.skills.find(
     (skill) => skill.repoUrl === repoUrl && String(skill.skillPath || "") === skillPath
   );
 
-  const record = {
-    id: existing?.id || slug,
-    slug: existing?.slug || slug,
-    name: skillName,
-    title: String(payload.title || skillName)
-      .trim()
-      .replace(/\b\w/g, (m) => m.toUpperCase()),
-    owner: String(payload.owner || "community").trim().toLowerCase(),
-    repoUrl,
-    skillPath,
-    domainTags,
-    populations,
-    regions,
-    healthMdCompatible: Boolean(payload.healthMdCompatible),
-    createsLinkedFile: Boolean(payload.createsLinkedFile),
-    linkedFileNames,
-    reviewStatus,
-    moderationTier: existing?.moderationTier || moderationTier,
-    status: existing ? existing.status : "pending_review",
-    badges: [
-      payload.healthMdCompatible ? "Health.md Compatible" : null,
-      payload.createsLinkedFile && linkedFileNames[0] ? `Creates ${linkedFileNames[0]}` : null,
-      reviewStatus === "not_medically_reviewed" ? "Not Medically Reviewed" : null
-    ].filter(Boolean),
-    summary: String(payload.summary || "").trim(),
-    sourceUrls,
-    lastReviewed: String(payload.lastReviewed || "").trim() || null,
-    version: String(payload.version || "0.1.0").trim(),
-    updatedAt: now
-  };
+  const record = buildSkillRecord({ payload, existing, now });
 
   if (existing) {
     Object.assign(existing, record);
@@ -246,21 +252,31 @@ export async function upsertSubmission(payload) {
     store.skills.unshift(record);
   }
 
-  store.submissions.unshift({
-    id: `${slug}-${Date.now()}`,
-    type: existing ? "update" : "new",
-    repoUrl,
-    skillPath,
-    slug,
-    submittedBy: String(payload.submitter || "anonymous").trim() || "anonymous",
-    moderationTierRequested: String(payload.moderationTierRequested || "community"),
-    notes: String(payload.notes || "").trim(),
-    createdAt: now,
-    status: "queued"
-  });
+  const enqueueSubmission = ingestion.enqueueSubmission !== false;
+  if (enqueueSubmission) {
+    store.submissions.unshift({
+      id: `${slug}-${Date.now()}`,
+      type: existing ? "update" : "new",
+      repoUrl,
+      skillPath,
+      slug,
+      submittedBy: String(ingestion.submittedBy || "ingestion-bot"),
+      moderationTierRequested: String(payload.moderationTierRequested || "community"),
+      notes: String(ingestion.notes || "").trim(),
+      createdAt: now,
+      status: "queued"
+    });
+  }
 
   await writeStore(store);
   return { skill: record, type: existing ? "update" : "new" };
+}
+
+export async function upsertSubmission(payload) {
+  return ingestSkill(payload, {
+    submittedBy: String(payload.submitter || "anonymous").trim() || "anonymous",
+    notes: String(payload.notes || "").trim()
+  });
 }
 
 export function getFilterOptions() {

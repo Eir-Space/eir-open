@@ -26,6 +26,8 @@ Open `http://localhost:3000`.
 - API routes:
   - `GET /api/skills`
   - `POST /api/submit`
+  - `POST /api/ingest/github` (ingest one GitHub repo)
+  - `POST /api/ingest/sync` (ingest many repos)
 - Local persistence in `data/skills.json` (fast MVP)
 
 ## Cloudflare Hosting (Fast Path)
@@ -62,6 +64,34 @@ Important:
 - Add auth for moderation actions
 - Add validation worker for repo ingestion and `SKILL.md` parsing
 - Add moderation dashboard
+
+## GitHub Ingestion
+
+Use ingestion to pull `SKILL.md` files from GitHub repos and upsert skills automatically.
+
+### Required/optional env vars
+
+- `EIR_INGEST_API_KEY` (recommended for route protection)
+- `GITHUB_TOKEN` (optional, needed for private repos / higher rate limits)
+- `EIR_REGISTRY_REPOS` (optional, comma-separated list for `/api/ingest/sync`)
+
+### Ingest one repo
+
+```bash
+curl -X POST "https://skills.eir.space/api/ingest/github" \
+  -H "content-type: application/json" \
+  -H "x-ingest-key: $EIR_INGEST_API_KEY" \
+  -d '{"repo":"Eir-Space/find-health-skill","ref":"main"}'
+```
+
+### Sync configured repos
+
+```bash
+curl -X POST "https://skills.eir.space/api/ingest/sync" \
+  -H "content-type: application/json" \
+  -H "x-ingest-key: $EIR_INGEST_API_KEY" \
+  -d '{"ref":"main"}'
+```
 
 ## How skills.sh / agentskill.sh Works (high-level)
 
