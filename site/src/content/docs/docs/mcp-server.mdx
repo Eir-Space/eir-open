@@ -1,0 +1,122 @@
+---
+title: MCP Server
+description: Load EIR health data files into Claude Desktop and any MCP-compatible AI client.
+sidebar:
+  order: 3
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+The EIR MCP Server lets you load `.eir` health data files directly into Claude Desktop and any MCP-compatible AI client. Ask questions about your medications, lab results, conditions, and care timeline — in natural language, with full privacy preserved.
+
+## Compatible Clients
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Claude Desktop" icon="bot">
+    Load your health records and chat with Claude about your medications, lab results, and care history.
+  </FeatureCard>
+  <FeatureCard title="Any MCP Client" icon="plug">
+    Works with any application that implements the Model Context Protocol standard.
+  </FeatureCard>
+  <FeatureCard title="Privacy-First" icon="shield-check">
+    All processing is local. Your health data is never sent to external servers.
+  </FeatureCard>
+  <FeatureCard title="Swedish Healthcare" icon="globe">
+    Native support for Swedish medical terminology, 1177 records, and ICD-10-SE codes.
+  </FeatureCard>
+</div>
+
+---
+
+## Install
+
+```bash
+npm install -g eir-mcp-server
+# or
+pip install eir-mcp-server
+```
+
+---
+
+## Configure
+
+Add the server to your MCP client configuration.
+
+**Claude Desktop** — edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "eir-healthcare": {
+      "command": "eir-mcp-server",
+      "args": []
+    }
+  }
+}
+```
+
+Restart Claude Desktop after saving. The EIR tools will appear automatically.
+
+<Aside type="tip">
+  For full Claude Desktop setup instructions, see the [Claude Desktop documentation](https://docs.anthropic.com/en/docs/claude-desktop).
+</Aside>
+
+---
+
+## Use It
+
+Once configured, just describe what you want to do in natural language:
+
+1. **Load your file** — "Load my healthcare data from patient-2024.eir"
+2. **Query medications** — "What medications am I currently taking?"
+3. **Analyze trends** — "How has my HbA1c changed over time?"
+4. **Get insights** — "What should I be monitoring based on my conditions?"
+
+---
+
+## Available Tools
+
+The MCP server exposes seven tools that Claude can invoke on your behalf:
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="load_eir_file" icon="file-heart">
+    Load any `.eir` file into context. Returns a patient summary, key metrics, and validation status.
+  </FeatureCard>
+  <FeatureCard title="query_medications" icon="pill">
+    Retrieve current medications and treatment history, with optional filtering for active-only.
+  </FeatureCard>
+  <FeatureCard title="query_lab_results" icon="clipboard-list">
+    Get lab results filtered by test name, date range, and including trend calculations.
+  </FeatureCard>
+  <FeatureCard title="query_conditions" icon="stethoscope">
+    Retrieve conditions and diagnoses with status filtering and optional ICD-10/SNOMED codes.
+  </FeatureCard>
+  <FeatureCard title="analyze_timeline" icon="calendar">
+    Generate a clinical timeline and care journey analysis across a given period.
+  </FeatureCard>
+  <FeatureCard title="validate_eir_file" icon="shield-check">
+    Validate EIR format and content before loading, with optional strict-mode checking.
+  </FeatureCard>
+  <FeatureCard title="generate_summary" icon="file-text">
+    Create a health summary in brief, detailed, clinical, or patient-friendly format.
+  </FeatureCard>
+</div>
+
+---
+
+## Get a `.eir` File
+
+EIR files are health records exported in the open EIR format. You can get one from:
+
+- **Chrome Extension** — [1177 Journal Downloader](/eir-open/docs/eir-open-apps/) exports your complete 1177.se journal with one click
+- **Eir Viewer (macOS)** — export from the desktop app after importing your 1177 records
+- **Health.md Standard** — if you're building your own, see the [EIR Health Data Standard](/eir-open/docs/health-md-standard/)
+
+---
+
+## Links
+
+- [GitHub Repository](https://github.com/eir-space/eir-mcp-server)
+- [EIR Health Data Standard](/eir-open/docs/health-md-standard/)
+- [Eir Open Apps](/eir-open/docs/eir-open-apps/)

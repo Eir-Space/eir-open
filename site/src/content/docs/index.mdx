@@ -13,6 +13,10 @@ hero:
       link: docs/
       icon: right-arrow
       variant: primary
+    - text: Agent Integration
+      link: docs/agent-integration/
+      icon: right-arrow
+      variant: secondary
     - text: GitHub
       link: https://github.com/eir-space/eir-open
       icon: external
@@ -22,6 +26,7 @@ hero:
 import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
 import StatsBar from '@/components/StatsBar.astro';
 import CapabilityCard from '@/components/CapabilityCard.astro';
+import GettingStartedItem from '@/components/GettingStartedItem.astro';
 import { projects } from '@/data/projects';
 
 Eir Open is a project by [Eir Space](https://eir.space) — the home for open source code modules focused on AI for empowering people in their health journey. Medication lookups, health data standards, and privacy-first apps for Swedish healthcare.
@@ -33,12 +38,28 @@ Eir Open is a project by [Eir Space](https://eir.space) — the home for open so
   { value: "100%", label: "Private" },
 ]} />
 
+## Who is this for?
+
+<div class="getting-started-grid not-content mt-4">
+  <GettingStartedItem title="Learning about eir-open" icon="book-open">
+    Read the [Overview](/eir-open/docs/) and explore the four projects below.
+  </GettingStartedItem>
+  <GettingStartedItem title="Building with agents" icon="bot">
+    Jump to the [Agent Integration guide](/eir-open/docs/agent-integration/) or [MCP Server](/eir-open/docs/mcp-server/) setup.
+  </GettingStartedItem>
+  <GettingStartedItem title="Contributing" icon="users">
+    See [how to get involved](/eir-open/docs/contributing/) — code, clinical review, and docs all welcome.
+  </GettingStartedItem>
+</div>
+
+<hr class="section-divider" />
+
 ## Key Capabilities
 
 <div class="capabilities-grid not-content">
   <CapabilityCard title="AI-Powered" description="Built for LLMs, agents, and MCP integration" icon="bot" />
   <CapabilityCard title="Privacy-First" description="On-device processing, no cloud storage" icon="shield-check" />
-  <CapabilityCard title="Open Source" description="MIT licensed, community-driven" icon="globe" />
+  <CapabilityCard title="Open Source" description="Community open source, freely usable" icon="globe" />
   <CapabilityCard title="Developer Ready" description="CLI tools, npm packages, and APIs" icon="terminal" />
 </div>
 
