@@ -36,8 +36,15 @@ export default defineConfig({
       },
       sidebar: [
         { label: 'Overview', slug: 'docs' },
-        { label: 'Quickstart', slug: 'docs/quickstart' },
-        { label: 'OpenClaw Integration', slug: 'docs/openclaw-integration' },
+        {
+          label: 'Get Started',
+          items: [
+            { slug: 'docs/quickstart', label: 'Quickstart' },
+            { slug: 'docs/agent-integration', label: 'Agent Integration' },
+            { slug: 'docs/mcp-server', label: 'MCP Server' },
+            { slug: 'docs/openclaw-integration', label: 'OpenClaw Integration' },
+          ],
+        },
         {
           label: 'Projects',
           items: [
@@ -47,6 +54,7 @@ export default defineConfig({
             { slug: 'docs/eir-open-apps', label: 'Eir Open Apps' },
           ],
         },
+        { label: 'Contributing', slug: 'docs/contributing' },
       ],
       expressiveCode: {
         styleOverrides: {
