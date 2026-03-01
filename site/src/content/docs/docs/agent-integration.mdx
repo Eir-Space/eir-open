@@ -1,0 +1,203 @@
+---
+title: Agent Integration
+description: Integrate eir-open medication lookups and health data into Claude, LangChain, MCP, or any AI agent framework.
+sidebar:
+  order: 2
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import CapabilityCard from '@/components/CapabilityCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+eir-open tools expose a consistent JavaScript API and CLI that any agent framework can use as tools or subprocesses. Whether you're building with Claude's tool use, LangChain, OpenClaw, or a custom pipeline — the same underlying packages work everywhere.
+
+## Supported Frameworks
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Claude Tool Use" icon="bot">
+    Define medication lookups as Claude tools using the Anthropic SDK's function calling interface.
+  </FeatureCard>
+  <FeatureCard title="OpenClaw (Native)" icon="plug">
+    The native integration path — install skills with a single command. See the [OpenClaw Integration guide](/eir-open/docs/openclaw-integration/).
+  </FeatureCard>
+  <FeatureCard title="LangChain" icon="wrench">
+    Wrap the CLI or npm API as a LangChain `Tool` (Python) or `DynamicTool` (JS) in your chain or agent.
+  </FeatureCard>
+  <FeatureCard title="Generic Subprocess" icon="terminal">
+    Any agent framework can shell out to the CLI tools — a simple, universal integration path.
+  </FeatureCard>
+</div>
+
+---
+
+## Claude Tool Use
+
+Define eir-open lookups as Claude tools using the [Anthropic SDK](https://docs.anthropic.com/en/docs/tool-use).
+
+```typescript
+import Anthropic from "@anthropic-ai/sdk";
+import { lookupMedication, searchMedications } from "swedish-medications";
+
+const client = new Anthropic();
+
+const tools: Anthropic.Tool[] = [
+  {
+    name: "lookup_medication",
+    description:
+      "Look up a Swedish medication by brand name or generic substance name. Returns dosage, side effects, OTC status, and FASS link.",
+    input_schema: {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description: "Medication brand name or active substance (e.g. 'Alvedon', 'paracetamol')",
+        },
+      },
+      required: ["query"],
+    },
+  },
+  {
+    name: "search_medications",
+    description:
+      "Search across all 9,064 Swedish medications. Returns up to 10 matches with names, substances, and OTC status.",
+    input_schema: {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description: "Search term for medication name or substance",
+        },
+      },
+      required: ["query"],
+    },
+  },
+];
+
+async function handleToolCall(name: string, input: Record<string, string>) {
+  if (name === "lookup_medication") {
+    return await lookupMedication(input.query);
+  }
+  if (name === "search_medications") {
+    return await searchMedications(input.query);
+  }
+}
+
+// Use in a conversation loop
+const response = await client.messages.create({
+  model: "claude-opus-4-6",
+  max_tokens: 1024,
+  tools,
+  messages: [{ role: "user", content: "What is Alvedon used for?" }],
+});
+```
+
+For US medications, swap in `us-medications` and adjust the tool descriptions accordingly.
+
+---
+
+## LangChain
+
+### Python
+
+Wrap the `fass-lookup` CLI as a LangChain `Tool`:
+
+```python
+import subprocess
+from langchain.tools import Tool
+
+def fass_lookup(query: str) -> str:
+    result = subprocess.run(
+        ["fass-lookup", query],
+        capture_output=True, text=True
+    )
+    return result.stdout or result.stderr
+
+medication_tool = Tool(
+    name="swedish_medication_lookup",
+    func=fass_lookup,
+    description="Look up a Swedish medication by brand or substance name using the FASS database."
+)
+```
+
+### JavaScript / TypeScript
+
+Use the npm API directly as a LangChain `DynamicTool`:
+
+```typescript
+import { DynamicTool } from "@langchain/core/tools";
+import { lookupMedication } from "swedish-medications";
+
+const medicationTool = new DynamicTool({
+  name: "swedish_medication_lookup",
+  description:
+    "Look up a Swedish medication by brand or substance name. Returns dosage, warnings, and FASS link.",
+  func: async (query: string) => {
+    const result = await lookupMedication(query);
+    return JSON.stringify(result);
+  },
+});
+```
+
+---
+
+## OpenClaw (Native Skills)
+
+OpenClaw is the native integration path for eir-open medication tools. Skills are installed with a single command and automatically available to any OpenClaw-compatible agent.
+
+See the [OpenClaw Integration guide](/eir-open/docs/openclaw-integration/) for setup instructions.
+
+---
+
+## MCP (Model Context Protocol)
+
+The EIR MCP Server lets agents load `.eir` health data files and query them with natural language — no custom tool definitions required. Compatible with Claude Desktop and any MCP client.
+
+See the [MCP Server guide](/eir-open/docs/mcp-server/) for setup and configuration.
+
+---
+
+## Generic Subprocess Pattern
+
+Any agent framework can shell out to the CLI tools. This works in any language with subprocess support.
+
+```bash
+# Shell
+fass-lookup "metformin"
+us-medications "lisinopril"
+us-medications --interactions "warfarin,aspirin"
+```
+
+```python
+# Python
+import subprocess, json
+
+result = subprocess.run(
+    ["us-medications", "--json", "lisinopril"],
+    capture_output=True, text=True
+)
+data = json.loads(result.stdout)
+```
+
+```typescript
+// Node.js / TypeScript
+import { execSync } from "child_process";
+
+const output = execSync(`fass-lookup "paracetamol"`, { encoding: "utf8" });
+```
+
+---
+
+## What Can Agents Do?
+
+<div class="capabilities-grid not-content mt-4">
+  <CapabilityCard title="Medication Lookup" description="Brand-to-substance resolution, dosage, warnings, and OTC status" icon="pill" />
+  <CapabilityCard title="Drug Interactions" description="Check interactions across the 81,212-medication US FDA database" icon="shield-check" />
+  <CapabilityCard title="Multi-Result Search" description="Search by partial name, substance, or category across both databases" icon="search" />
+  <CapabilityCard title="Health Data Parsing" description="Load and query .eir health records via the MCP Server" icon="file-heart" />
+</div>
+
+<Aside type="tip">
+  **OpenClaw users:** The fastest path to adding medication skills to your agent is the [OpenClaw Integration guide](/eir-open/docs/openclaw-integration/).
+
+  **Claude Desktop users:** Load your health records directly using the [MCP Server](/eir-open/docs/mcp-server/).
+</Aside>

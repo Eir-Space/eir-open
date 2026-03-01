@@ -1,0 +1,91 @@
+---
+title: Contributing
+description: How to get involved with eir-open — code, documentation, clinical review, or advocacy.
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+eir-open is a community project. Whether you are a developer, healthcare professional, researcher, or patient advocate, there is a meaningful way to contribute.
+
+## Ways to Contribute
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Code" icon="terminal">
+    Parser improvements, new language bindings, CLI features, integrations with EHR systems and agent frameworks.
+  </FeatureCard>
+  <FeatureCard title="Documentation" icon="book-open">
+    Improve clarity, add examples, fix inaccuracies, translate content, or document undocumented features.
+  </FeatureCard>
+  <FeatureCard title="Clinical Review" icon="stethoscope">
+    Validate terminology accuracy, propose specialty extensions (cardiology, oncology, mental health), share clinical workflow insights.
+  </FeatureCard>
+  <FeatureCard title="Community" icon="users">
+    Open issues, participate in discussions, advocate for adoption, or help other users in GitHub Discussions.
+  </FeatureCard>
+</div>
+
+---
+
+## Project Repositories
+
+| Project | Repository | Stack |
+|---|---|---|
+| Swedish Medications | [eir-space/swedish-medications](https://github.com/eir-space/swedish-medications) | Node.js |
+| US FDA Medications | [eir-space/us-medications](https://github.com/eir-space/us-medications) | Node.js |
+| Health.md Standard | [eir-space/health-md-standard](https://github.com/eir-space/health-md-standard) | Python |
+| EIR MCP Server | [eir-space/eir-mcp-server](https://github.com/eir-space/eir-mcp-server) | Node.js |
+| Eir Open Apps | [eir-space/eir-open-apps](https://github.com/eir-space/eir-open-apps) | Swift |
+| eir-open (this site) | [eir-space/eir-open](https://github.com/eir-space/eir-open) | Astro / MDX |
+
+---
+
+## Good First Issues
+
+These are high-priority areas where the project needs help:
+
+- **JavaScript parser library** — expand `health-md` parsing beyond Python
+- **FHIR integration** — bidirectional conversion between EIR format and FHIR resources
+- **Clinical validation studies** — real-world testing and accuracy review
+- **EHR integrations** — Epic, Cerner, Allscripts connectors
+- **Specialty extensions** — structured sections for cardiology, oncology, mental health
+
+Browse [open issues](https://github.com/eir-space/eir-open/issues) and look for `good first issue` and `help wanted` labels.
+
+---
+
+## Dev Setup
+
+To run the docs site locally:
+
+```bash
+git clone https://github.com/eir-space/eir-open.git
+cd eir-open/site
+pnpm install
+pnpm dev
+```
+
+The site will be available at `http://localhost:4321/eir-open/`.
+
+---
+
+## Standards
+
+When contributing to eir-open projects:
+
+- **Backward compatibility** — don't break existing Health.md files or CLI interfaces
+- **Clinical accuracy** — validate changes with healthcare professionals or cite sources
+- **Privacy-first** — always consider data protection implications; never commit real patient data
+- **LLM-optimized** — structured output should be easy for AI systems to parse and reason about
+
+<Aside>
+  The Health.md Standard has the most detailed contributing guide, including code style, testing requirements, and issue templates. Start there if you are contributing to clinical data standards: [health-md-standard/CONTRIBUTING.md](https://github.com/eir-space/health-md-standard/blob/main/CONTRIBUTING.md)
+</Aside>
+
+---
+
+## Community
+
+- [GitHub Discussions](https://github.com/eir-space/eir-open/discussions) — questions, ideas, and general discussion
+- [GitHub Issues](https://github.com/eir-space/eir-open/issues) — bug reports and feature requests
+- Email: [birger.moell@uu.se](mailto:birger.moell@uu.se) for sensitive topics or research collaboration
