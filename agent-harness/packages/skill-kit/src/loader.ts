@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { parseSkillMarkdown } from './parser.js';
-import { skillMetaSchema, type LoadedSkill, type SkillMeta } from './types.js';
+import { skillMetaSchema, type LoadedSkill, type SkillMeta, type SkillScript } from './types.js';
 
 /**
  * Load a single skill from a directory.
@@ -70,7 +70,36 @@ export function loadSkill(skillDir: string): LoadedSkill | null {
     return null; // No prompt content at all
   }
 
-  return { meta, prompts, path: skillDir };
+  // Resolve scripts declared in frontmatter (explicit)
+  const scripts: SkillScript[] = [];
+  for (const scriptDef of meta.scripts) {
+    const resolved = path.resolve(skillDir, scriptDef.entrypoint);
+    if (fs.existsSync(resolved)) {
+      scripts.push({
+        name: scriptDef.name,
+        entrypoint: resolved,
+        description: scriptDef.description,
+        parameters: scriptDef.parameters,
+      });
+    }
+  }
+
+  // Auto-discover from scripts/ directory if no explicit declarations
+  if (scripts.length === 0) {
+    const scriptsDir = path.join(skillDir, 'scripts');
+    if (fs.existsSync(scriptsDir)) {
+      const scriptFiles = fs.readdirSync(scriptsDir)
+        .filter(f => f.endsWith('.js') || f.endsWith('.mjs'));
+      for (const file of scriptFiles) {
+        scripts.push({
+          name: path.basename(file, path.extname(file)),
+          entrypoint: path.join(scriptsDir, file),
+        });
+      }
+    }
+  }
+
+  return { meta, prompts, path: skillDir, scripts };
 }
 
 /**

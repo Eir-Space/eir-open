@@ -8,6 +8,7 @@ export interface LlmCompletionRequest {
   temperature?: number;
   max_tokens?: number;
   response_format?: Record<string, unknown>;
+  signal?: AbortSignal;
 }
 
 export interface LlmCompletionResponse {
