@@ -25,6 +25,8 @@ export interface SubagentToolParams {
   temperature?: number;
   /** Hooks for the subagent's tool loop. */
   hooks?: ToolLoopHooks;
+  /** Parent tool loop hooks. When provided, onSubagentSpawning and onSubagentEnded are invoked during subagent lifecycle. */
+  parentHooks?: ToolLoopHooks;
   /** JSON Schema for the parameters the parent LLM passes to invoke this subagent. */
   parameters?: Record<string, unknown>;
 }
@@ -54,6 +56,7 @@ export function createSubagentTool(params: SubagentToolParams): SubagentTool {
     maxIterations = 5,
     temperature = 0.4,
     hooks,
+    parentHooks,
     parameters,
   } = params;
 
@@ -77,35 +80,51 @@ export function createSubagentTool(params: SubagentToolParams): SubagentTool {
 
   const handler: ToolHandler = async (args) => {
     const query = typeof args.query === 'string' ? args.query : JSON.stringify(args);
+    const context = { query, systemPrompt, model, toolName: name };
 
-    const messages: LlmMessage[] = [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: query },
-    ];
+    await parentHooks?.onSubagentSpawning?.(name, context);
 
-    const result = await executeToolLoop({
-      provider,
-      model,
-      messages,
-      tools,
-      toolHandlers,
-      maxIterations,
-      temperature,
-      hooks,
-    });
+    let result: ToolHandlerResult;
+    try {
+      const messages: LlmMessage[] = [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: query },
+      ];
 
-    const response = result.responseMessage.content ?? 'Subagent returned no response.';
+      const loopResult = await executeToolLoop({
+        provider,
+        model,
+        messages,
+        tools,
+        toolHandlers,
+        maxIterations,
+        temperature,
+        hooks,
+      });
 
-    return {
-      toolResponse: {
-        status: 'success' as const,
-        message: response,
-        data: {
-          iterations: result.iterations,
-          actions: result.actions,
+      const response = loopResult.responseMessage.content ?? 'Subagent returned no response.';
+
+      result = {
+        toolResponse: {
+          status: 'success' as const,
+          message: response,
+          data: {
+            iterations: loopResult.iterations,
+            actions: loopResult.actions,
+          },
         },
-      },
-    };
+      };
+    } catch (err) {
+      const errMsg = err instanceof Error ? err.message : 'Unknown subagent error';
+      result = {
+        toolResponse: { status: 'error' as const, message: errMsg },
+      };
+      await parentHooks?.onSubagentEnded?.(name, result);
+      return result;
+    }
+
+    await parentHooks?.onSubagentEnded?.(name, result);
+    return result;
   };
 
   return { definition, handler };

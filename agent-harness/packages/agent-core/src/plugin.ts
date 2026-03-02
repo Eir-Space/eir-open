@@ -143,6 +143,8 @@ export class PluginRegistry {
    * - decideFollowupToolChoice: last one wins.
    * - shouldBreakEarly: true if any returns true.
    * - onProviderError: first non-null recovery wins.
+   * - onSubagentSpawning: runs each in order.
+   * - onSubagentEnded: runs each in order.
    */
   private chainHooks(hooksList: Partial<ToolLoopHooks>[]): Partial<ToolLoopHooks> {
     const merged: Partial<ToolLoopHooks> = {};
@@ -205,6 +207,26 @@ export class PluginRegistry {
           if (recovered) return recovered;
         }
         return null;
+      };
+    }
+
+    // onSubagentSpawning — run all in order
+    const spawningHooks = hooksList.map(h => h.onSubagentSpawning).filter(Boolean);
+    if (spawningHooks.length > 0) {
+      merged.onSubagentSpawning = async (agentId, context) => {
+        for (const hook of spawningHooks) {
+          await hook!(agentId, context);
+        }
+      };
+    }
+
+    // onSubagentEnded — run all in order
+    const endedHooks = hooksList.map(h => h.onSubagentEnded).filter(Boolean);
+    if (endedHooks.length > 0) {
+      merged.onSubagentEnded = async (agentId, result) => {
+        for (const hook of endedHooks) {
+          await hook!(agentId, result);
+        }
       };
     }
 
