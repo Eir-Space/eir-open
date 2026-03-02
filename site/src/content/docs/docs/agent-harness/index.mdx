@@ -1,0 +1,120 @@
+---
+title: Agent Harness
+description: Modular toolkit for building health AI agents — tool loop engine, skill format, and health memory standard.
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import GettingStartedItem from '@/components/GettingStartedItem.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+A modular, composable toolkit for building health AI agents. Agent Harness provides three independent npm packages that can be used alone or together — a tool loop engine, a skill format and loader, and a health memory standard.
+
+**Perfect for:** Health AI agents, conversational health assistants, clinical decision support tools.
+
+## Packages
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Agent Core" icon="cpu">
+    Tool loop engine, LLM provider abstraction, mode routing, and context building. The foundation for any agentic workflow.
+  </FeatureCard>
+  <FeatureCard title="Skill Kit" icon="book-open">
+    Unified skill format using Markdown + YAML frontmatter. Load, filter, and assemble skill prompts with multi-language support.
+  </FeatureCard>
+  <FeatureCard title="Health Memory" icon="brain">
+    Open standard for health agent memory. Schemas, store interface, and reference implementation for persistent health context.
+  </FeatureCard>
+</div>
+
+<Aside type="tip" title="Use what you need">
+  Each package is independent. Use **agent-core** alone for a generic tool loop, add **skill-kit** for prompt management, or bring in **health-memory** for persistent health context. Or combine all three for a full health agent stack.
+</Aside>
+
+---
+
+## Getting Started
+
+<div class="getting-started-grid not-content mt-4">
+  <GettingStartedItem title="Agent Core" icon="cpu">
+    <code>npm install @eir-open/agent-core</code>
+  </GettingStartedItem>
+  <GettingStartedItem title="Skill Kit" icon="book-open">
+    <code>npm install @eir-open/skill-kit</code>
+  </GettingStartedItem>
+  <GettingStartedItem title="Health Memory" icon="brain">
+    <code>npm install @eir-open/health-memory</code>
+  </GettingStartedItem>
+</div>
+
+All packages require **Node.js 18+** and have a single shared dependency: [zod](https://zod.dev/) for schema validation.
+
+---
+
+## How They Compose
+
+A typical health agent combines all three packages:
+
+```typescript
+import { executeToolLoop, OpenAICompatibleProvider, KeywordModeRouter, buildSystemContent, buildModeToolInstruction } from '@eir-open/agent-core';
+import { loadSkillDirectory, getSkillsForMode, buildSkillPrompt } from '@eir-open/skill-kit';
+import { InMemoryHealthMemoryStore, formatMemoryContext } from '@eir-open/health-memory';
+
+// 1. Load skills from disk
+const skills = await loadSkillDirectory('./skills');
+
+// 2. Route user message to a mode
+const router = new KeywordModeRouter(routerConfig);
+const decision = router.resolve({ message: userMessage });
+
+// 3. Build system prompt from skills + mode + memory
+const modeSkills = getSkillsForMode(skills, decision.mode);
+const memoryItems = await memoryStore.getAll();
+const system = buildSystemContent([
+  buildSkillPrompt(modeSkills),
+  buildModeToolInstruction({ mode: decision.mode, toolNames: decision.allowedTools }),
+  formatMemoryContext(memoryItems),
+]);
+
+// 4. Run the tool loop
+const result = await executeToolLoop({
+  provider: new OpenAICompatibleProvider(openaiClient),
+  model: 'gpt-4o',
+  messages: [{ role: 'system', content: system }, { role: 'user', content: userMessage }],
+  tools: toolDefinitions,
+  toolHandlers: handlers,
+  allowedToolNames: new Set(decision.allowedTools),
+});
+```
+
+---
+
+## Key Design Principles
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="SDK-Agnostic" icon="plug">
+    Works with any OpenAI-compatible LLM provider — OpenAI, Groq, Together, Mistral, and more.
+  </FeatureCard>
+  <FeatureCard title="Composable" icon="blocks">
+    Use one package or all three. No forced coupling between tool execution, skills, and memory.
+  </FeatureCard>
+  <FeatureCard title="Lifecycle Hooks" icon="wrench">
+    Intercept tool calls, handle errors, and control loop behavior with optional hook callbacks.
+  </FeatureCard>
+  <FeatureCard title="Mode Routing" icon="shield-check">
+    Route messages to different modes with distinct tool sets and skill configurations. Safety modes can disable tools entirely.
+  </FeatureCard>
+  <FeatureCard title="Health-Aware Memory" icon="heart">
+    Purpose-built memory model for health data with confidence scoring, deduplication, and "untrusted snippet" framing.
+  </FeatureCard>
+  <FeatureCard title="Markdown Skills" icon="file-text">
+    Define skills as readable Markdown files with YAML frontmatter — no JSON schemas or code required.
+  </FeatureCard>
+</div>
+
+---
+
+## Learn More
+
+- [Agent Core](/eir-open/docs/agent-harness/agent-core/) — Tool loop engine and LLM provider abstraction
+- [Skill Kit](/eir-open/docs/agent-harness/skill-kit/) — Skill format, loader, and prompt assembly
+- [Health Memory](/eir-open/docs/agent-harness/health-memory/) — Health memory standard and store interface
+- [GitHub Repository](https://github.com/eir-space/eir-open/tree/main/agent-harness)

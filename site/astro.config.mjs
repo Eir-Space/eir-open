@@ -46,6 +46,15 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Agent Harness',
+          items: [
+            { slug: 'docs/agent-harness', label: 'Overview' },
+            { slug: 'docs/agent-harness/agent-core', label: 'Agent Core' },
+            { slug: 'docs/agent-harness/skill-kit', label: 'Skill Kit' },
+            { slug: 'docs/agent-harness/health-memory', label: 'Health Memory' },
+          ],
+        },
+        {
           label: 'Projects',
           items: [
             { slug: 'docs/health-md-standard', label: 'EIR Health Data Standard' },
