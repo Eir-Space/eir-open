@@ -1,0 +1,46 @@
+name: Publish Packages
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agent-harness
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build all packages
+        run: npm run build
+
+      - name: Typecheck all packages
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Publish @eir-open/agent-core
+        run: npm publish --workspace=packages/agent-core --provenance --access public
+
+      - name: Publish @eir-open/skill-kit
+        run: npm publish --workspace=packages/skill-kit --provenance --access public
+
+      - name: Publish @eir-open/health-memory
+        run: npm publish --workspace=packages/health-memory --provenance --access public
