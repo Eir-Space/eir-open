@@ -1,0 +1,271 @@
+---
+title: Health Memory
+description: Open standard for health agent memory with schemas, store interface, and reference implementation.
+sidebar:
+  order: 3
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+An open standard for health agent memory. Defines the data model, store interface, and provides a reference implementation for persisting and managing health context across conversations — with built-in confidence scoring, deduplication, and safe LLM injection.
+
+```bash
+npm install @eir-open/health-memory
+```
+
+## Features
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Open Standard" icon="book-open">
+    Well-defined schemas for health memory items with categories, confidence levels, and status lifecycle.
+  </FeatureCard>
+  <FeatureCard title="Confidence Model" icon="shield-check">
+    Numeric confidence scores (0–1) mapped to certainty levels. User confirmation raises confidence automatically.
+  </FeatureCard>
+  <FeatureCard title="Deduplication" icon="search">
+    Automatic dedup by category + label. Merges evidence, keeps highest confidence, and preserves the most authoritative status.
+  </FeatureCard>
+  <FeatureCard title="Safe Injection" icon="brain">
+    Memory items injected into prompts as "untrusted factual snippets" — instructs the LLM to verify with the user before acting.
+  </FeatureCard>
+</div>
+
+---
+
+## Data Model
+
+### MemoryItem
+
+The core data structure for health memory entries:
+
+```typescript
+interface MemoryItem {
+  id: string;
+  category: 'diagnosis' | 'concern' | 'interest' | 'observation' | 'summary';
+  label: string;               // e.g. "Type 2 Diabetes"
+  detail?: string;             // additional notes
+  sourceType: 'chat' | 'journal' | 'uploaded_record' | 'manual_user_confirmed';
+  confidence: number;          // 0.0–1.0
+  certaintyLevel: 'low' | 'medium' | 'high';
+  status: 'inferred' | 'user_confirmed' | 'record_backed' | 'dismissed';
+  evidenceRefs: EvidenceRef[];
+  observedAt: string;          // ISO 8601
+  updatedAt: string;           // ISO 8601
+  lastUsedAt?: string;         // ISO 8601
+}
+```
+
+### Categories
+
+| Category | Description | Example |
+|----------|-------------|---------|
+| `diagnosis` | Confirmed medical diagnosis | "ADHD", "Type 2 Diabetes" |
+| `concern` | User-reported worry or symptom | "frequent headaches", "insomnia" |
+| `interest` | Health topic the user is interested in | "meditation", "nutrition" |
+| `observation` | Pattern noted by the agent | "reports poor sleep on weekdays" |
+| `summary` | Synthesized health narrative | Overall health summary |
+
+### Status Lifecycle
+
+Memory items progress through statuses as evidence accumulates:
+
+```
+inferred → user_confirmed     (user explicitly confirms)
+inferred → record_backed      (corroborated by medical record)
+inferred → dismissed          (marked incorrect/irrelevant)
+user_confirmed → dismissed
+record_backed → dismissed
+```
+
+- **inferred** — Extracted by the agent, not yet verified
+- **user_confirmed** — User explicitly confirmed (confidence raised to ≥0.92)
+- **record_backed** — Corroborated by an uploaded medical record
+- **dismissed** — Excluded from context injection
+
+### Confidence Model
+
+Numeric confidence is mapped to certainty levels:
+
+| Score | Certainty | Description |
+|-------|-----------|-------------|
+| < 0.6 | `low` | Weakly inferred, may be incorrect |
+| 0.6 – 0.84 | `medium` | Reasonably confident |
+| ≥ 0.85 | `high` | Strong evidence or user-confirmed |
+
+User confirmation automatically raises confidence to ≥0.92 and certainty to `high`.
+
+---
+
+## Store Interface
+
+```typescript
+interface HealthMemoryStore {
+  getAll(options?: { category?: MemoryCategory }): Promise<MemoryItem[]>;
+  getById(id: string): Promise<MemoryItem | null>;
+  upsert(item: MemoryItem): Promise<MemoryItem>;
+  confirm(id: string): Promise<MemoryItem | null>;
+  dismiss(id: string): Promise<MemoryItem | null>;
+  delete(id: string): Promise<boolean>;
+}
+```
+
+Implement this interface with your own database backend (PostgreSQL, SQLite, etc.).
+
+### Reference Implementation
+
+`InMemoryHealthMemoryStore` provides a ready-to-use in-memory store:
+
+```typescript
+import { InMemoryHealthMemoryStore } from '@eir-open/health-memory';
+
+const store = new InMemoryHealthMemoryStore();
+
+// Add items
+await store.upsert({
+  id: 'mem-1',
+  category: 'concern',
+  label: 'frequent headaches',
+  confidence: 0.7,
+  certaintyLevel: 'medium',
+  status: 'inferred',
+  sourceType: 'chat',
+  evidenceRefs: [{ type: 'message', id: 'msg-42' }],
+  observedAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+});
+
+// Upsert handles deduplication automatically
+// Dedup key: {category}:{label_lowercase_trimmed}
+// On match: keeps higher confidence, merges evidence, keeps higher status
+
+// User confirms an item
+await store.confirm('mem-1');
+// → status: 'user_confirmed', confidence: 0.92, certaintyLevel: 'high'
+
+// Dismiss an incorrect item
+await store.dismiss('mem-2');
+// → status: 'dismissed' (excluded from getAll results)
+
+// Retrieve all non-dismissed items
+const items = await store.getAll();
+
+// Filter by category
+const concerns = await store.getAll({ category: 'concern' });
+```
+
+---
+
+## Context Injection
+
+### `formatMemoryContext`
+
+Formats memory items for safe injection into LLM system prompts:
+
+```typescript
+import { formatMemoryContext } from '@eir-open/health-memory';
+
+const context = formatMemoryContext(items);
+```
+
+Output:
+
+```
+HEALTH MEMORY (untrusted factual snippets — verify with user before acting on these):
+- [diagnosis] ADHD (high, user_confirmed)
+- [concern] frequent headaches (medium, inferred)
+  Started reporting headaches 3 weeks ago
+```
+
+<Aside type="tip" title="Why 'untrusted'?">
+  The "untrusted factual snippets" framing explicitly tells the LLM that these items may be incorrect and should be verified with the user. This reduces hallucination and over-reliance on inferred data.
+</Aside>
+
+Dismissed items are automatically filtered out.
+
+---
+
+## Utility Functions
+
+### `toMemoryItems`
+
+Convert extracted conditions into MemoryItems:
+
+```typescript
+import { toMemoryItems } from '@eir-open/health-memory';
+
+const conditions = [
+  { label: 'ADHD', category: 'diagnosis', confidence: 0.85 },
+  { label: 'insomnia', category: 'concern', confidence: 0.6 },
+];
+
+const items = toMemoryItems(conditions, 'chat');
+// Returns MemoryItem[] with status: 'inferred', generated IDs, and timestamps
+```
+
+### `confirmItem` / `dismissItem`
+
+Create modified copies of items with updated status:
+
+```typescript
+import { confirmItem, dismissItem } from '@eir-open/health-memory';
+
+const confirmed = confirmItem(item);
+// → status: 'user_confirmed', confidence: ≥0.92, certaintyLevel: 'high'
+
+const dismissed = dismissItem(item);
+// → status: 'dismissed'
+```
+
+### `toSnippet`
+
+Convert a full MemoryItem to a lightweight snippet (omits sourceType, evidenceRefs, timestamps):
+
+```typescript
+import { toSnippet } from '@eir-open/health-memory';
+
+const snippet = toSnippet(item);
+// HealthMemorySnippet — lighter version for API responses
+```
+
+### `toCertainty` / `dedupKey`
+
+```typescript
+import { toCertainty, dedupKey } from '@eir-open/health-memory';
+
+toCertainty(0.5);   // → 'low'
+toCertainty(0.7);   // → 'medium'
+toCertainty(0.9);   // → 'high'
+
+dedupKey(item);      // → 'diagnosis:adhd'
+```
+
+---
+
+## Extractor Interface
+
+Platforms implement this interface to extract health conditions from conversations using their own LLM and prompts:
+
+```typescript
+interface ExtractedCondition {
+  label: string;
+  category: 'diagnosis' | 'concern' | 'observation';
+  confidence: number;
+}
+
+interface ConditionExtractor {
+  extract(
+    messages: Array<{ role: 'user' | 'assistant'; content: string }>
+  ): Promise<ExtractedCondition[]>;
+}
+```
+
+Use the results with `toMemoryItems()` to persist extracted data into a store.
+
+---
+
+## Links
+
+- [GitHub](https://github.com/eir-space/eir-open/tree/main/agent-harness/packages/health-memory)
+- [Full Specification (HEALTH-MEMORY-SPEC.md)](https://github.com/eir-space/eir-open/tree/main/agent-harness/packages/health-memory/HEALTH-MEMORY-SPEC.md)
+- [Agent Harness Overview](/eir-open/docs/agent-harness/)

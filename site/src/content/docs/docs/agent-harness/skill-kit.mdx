@@ -1,0 +1,231 @@
+---
+title: Skill Kit
+description: Unified skill format using Markdown + YAML frontmatter, with loader and prompt assembly utilities.
+sidebar:
+  order: 2
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+A unified skill format and toolkit for managing agent prompts. Define skills as Markdown files with YAML frontmatter, load them from disk, filter by mode, and assemble into system prompts — with built-in multi-language support.
+
+```bash
+npm install @eir-open/skill-kit
+```
+
+## Features
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Markdown Format" icon="file-text">
+    Define skills as readable SKILL.md files with YAML frontmatter — no JSON schemas or code needed.
+  </FeatureCard>
+  <FeatureCard title="Mode Filtering" icon="shield-check">
+    Each skill declares which modes it applies to. Filter skills per-mode at runtime.
+  </FeatureCard>
+  <FeatureCard title="Multi-Language" icon="globe">
+    Support multiple languages per skill with SKILL.sv.md, SKILL.fr.md, etc. Automatic fallback to default.
+  </FeatureCard>
+  <FeatureCard title="Prompt Assembly" icon="wrench">
+    Concatenate filtered skill prompts into a single system prompt with one function call.
+  </FeatureCard>
+</div>
+
+---
+
+## SKILL.md Format
+
+Each skill lives in its own directory as a `SKILL.md` file with YAML frontmatter:
+
+```markdown
+---
+name: base-personality
+description: Core role and tone for a health agent
+modes: [general, assessment]
+requiredTools: []
+languages: [en]
+---
+
+# Base Personality
+
+You are a helpful health assistant. You provide general health information
+and support.
+
+## Guidelines
+
+- Be empathetic and clear
+- Always recommend consulting a healthcare provider
+- Use available tools when helpful
+- Keep responses concise and actionable
+```
+
+### Frontmatter Schema
+
+| Field | Type | Required | Default | Description |
+|-------|------|----------|---------|-------------|
+| `name` | `string` | Yes | — | Unique skill identifier |
+| `description` | `string` | No | — | Human-readable description |
+| `modes` | `string[]` | No | `[]` | Modes this skill applies to (empty = all modes) |
+| `requiredTools` | `string[]` | No | `[]` | Tools this skill expects to be available |
+| `languages` | `string[]` | No | `['en']` | Supported language codes |
+
+### Multi-Language Skills
+
+Add language-specific variants alongside the main file:
+
+```
+skills/
+  base-personality/
+    SKILL.md          ← English (default)
+    SKILL.sv.md       ← Swedish
+    SKILL.fr.md       ← French
+```
+
+Language variants contain only the translated prompt body — no frontmatter needed.
+
+---
+
+## Loading Skills
+
+### `loadSkill`
+
+Load a single skill from a directory:
+
+```typescript
+import { loadSkill } from '@eir-open/skill-kit';
+
+const skill = await loadSkill('./skills/base-personality');
+// skill.meta.name → 'base-personality'
+// skill.prompts['en'] → '# Base Personality\n...'
+// skill.prompts['sv'] → Swedish translation (if SKILL.sv.md exists)
+```
+
+Returns `null` if the directory doesn't contain a valid skill.
+
+### `loadSkillDirectory`
+
+Load all skills from a parent directory:
+
+```typescript
+import { loadSkillDirectory } from '@eir-open/skill-kit';
+
+const skills = await loadSkillDirectory('./skills');
+// Map<string, LoadedSkill> keyed by skill name
+
+for (const [name, skill] of skills) {
+  console.log(`${name}: ${skill.meta.description}`);
+}
+```
+
+Recursively discovers skill subdirectories and returns a `Map` keyed by `skill.meta.name`.
+
+---
+
+## Filtering and Assembly
+
+### `getSkillsForMode`
+
+Filter skills to those applicable to a specific mode:
+
+```typescript
+import { getSkillsForMode } from '@eir-open/skill-kit';
+
+const allSkills = await loadSkillDirectory('./skills');
+const generalSkills = getSkillsForMode(allSkills, 'general');
+// Returns skills where modes[] includes 'general' OR modes is empty
+```
+
+Skills with an empty `modes` array apply to all modes.
+
+### `buildSkillPrompt`
+
+Assemble filtered skills into a single prompt string:
+
+```typescript
+import { buildSkillPrompt } from '@eir-open/skill-kit';
+
+const prompt = buildSkillPrompt(generalSkills, 'en');
+// Concatenates all skill prompts with double newlines
+// Falls back: requested language → 'default' → first available
+```
+
+---
+
+## Parsing
+
+### `parseSkillMarkdown`
+
+Parse a SKILL.md string into metadata and body:
+
+```typescript
+import { parseSkillMarkdown } from '@eir-open/skill-kit';
+
+const content = fs.readFileSync('./skills/base-personality/SKILL.md', 'utf-8');
+const { meta, body } = parseSkillMarkdown(content);
+// meta → { name, description, modes, requiredTools, languages }
+// body → markdown content after frontmatter
+```
+
+<Aside type="note">
+  If no frontmatter is found, the entire content is treated as the body with default metadata.
+</Aside>
+
+---
+
+## Types
+
+```typescript
+interface SkillMeta {
+  name: string;
+  description?: string;
+  modes: string[];
+  requiredTools: string[];
+  languages: string[];
+}
+
+interface LoadedSkill {
+  meta: SkillMeta;
+  prompts: Record<string, string>;  // language code → prompt text
+  path: string;                     // filesystem path
+}
+```
+
+---
+
+## Example: Full Integration
+
+```typescript
+import { loadSkillDirectory, getSkillsForMode, buildSkillPrompt } from '@eir-open/skill-kit';
+import { executeToolLoop, buildSystemContent, buildModeToolInstruction } from '@eir-open/agent-core';
+
+// Load all skills
+const skills = await loadSkillDirectory('./skills');
+
+// Filter to current mode
+const modeSkills = getSkillsForMode(skills, 'general');
+
+// Build system prompt
+const system = buildSystemContent([
+  buildSkillPrompt(modeSkills, 'en'),
+  buildModeToolInstruction({ mode: 'general', toolNames: ['greet_user'] }),
+]);
+
+// Run the agent
+const result = await executeToolLoop({
+  provider,
+  model: 'gpt-4o',
+  messages: [
+    { role: 'system', content: system },
+    { role: 'user', content: 'Hello!' },
+  ],
+  tools,
+  toolHandlers,
+});
+```
+
+---
+
+## Links
+
+- [GitHub](https://github.com/eir-space/eir-open/tree/main/agent-harness/packages/skill-kit)
+- [Agent Harness Overview](/eir-open/docs/agent-harness/)

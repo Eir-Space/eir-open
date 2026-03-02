@@ -36,6 +36,33 @@ export const projects: Project[] = [
     category: 'library',
   },
   {
+    title: 'Agent Core',
+    description:
+      'Tool loop engine, LLM provider abstraction, mode routing, and context building for health AI agents.',
+    slug: 'agent-harness/agent-core',
+    icon: 'cpu',
+    tags: ['npm', 'TypeScript'],
+    category: 'library',
+  },
+  {
+    title: 'Skill Kit',
+    description:
+      'Unified skill format using Markdown + YAML frontmatter, with loader and prompt assembly utilities.',
+    slug: 'agent-harness/skill-kit',
+    icon: 'book-open',
+    tags: ['npm', 'TypeScript'],
+    category: 'library',
+  },
+  {
+    title: 'Health Memory',
+    description:
+      'Open standard for health agent memory with schemas, store interface, and reference implementation.',
+    slug: 'agent-harness/health-memory',
+    icon: 'brain',
+    tags: ['npm', 'TypeScript'],
+    category: 'library',
+  },
+  {
     title: 'Eir Open Apps',
     description:
       'Privacy-first apps for Swedish medical records. macOS and iOS apps with AI chat, Chrome extension for one-click export.',
