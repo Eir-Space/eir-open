@@ -2,21 +2,46 @@
   "name": "@eir-open/skill-kit",
   "version": "0.1.0",
   "description": "Skill format specification, loader, and prompt assembly for health agents",
+  "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.test.*",
+    "LICENSE",
+    "README.md"
   ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eir-Space/eir-open.git",
+    "directory": "agent-harness/packages/skill-kit"
+  },
+  "homepage": "https://github.com/Eir-Space/eir-open/tree/main/agent-harness/packages/skill-kit",
+  "bugs": {
+    "url": "https://github.com/Eir-Space/eir-open/issues"
+  },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "node --test dist/**/*.test.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "zod": "^3.22.0"
   },
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^25.3.3",
     "typescript": "^5.9.3"
