@@ -1,0 +1,16 @@
+{
+  "name": "@eir-open/health-memory",
+  "version": "0.1.0",
+  "description": "Open Health Memory Standard — schemas, store interface, and reference implementation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test dist/**/*.test.js",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": { "zod": "^3.22.0" },
+  "license": "MIT"
+}

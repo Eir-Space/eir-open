@@ -1,0 +1,13 @@
+{
+  "name": "minimal-agent-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --loader ts-node/esm index.ts"
+  },
+  "dependencies": {
+    "@eir-open/agent-core": "../../packages/agent-core",
+    "@eir-open/skill-kit": "../../packages/skill-kit",
+    "@eir-open/health-memory": "../../packages/health-memory"
+  }
+}
