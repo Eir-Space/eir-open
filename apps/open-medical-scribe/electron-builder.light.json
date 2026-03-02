@@ -1,0 +1,22 @@
+{
+  "appId": "com.openmedicalscribe.app",
+  "productName": "Open Medical Scribe",
+  "asar": true,
+  "files": [
+    "src",
+    "public",
+    "electron",
+    "package.json"
+  ],
+  "mac": {
+    "target": "dmg",
+    "category": "public.app-category.medical"
+  },
+  "win": {
+    "target": "nsis"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+}

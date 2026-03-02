@@ -61,6 +61,7 @@ export default defineConfig({
             { slug: 'docs/us-medications', label: 'US FDA Medications' },
             { slug: 'docs/swedish-medications', label: 'Swedish Medications' },
             { slug: 'docs/eir-open-apps', label: 'Eir Open Apps' },
+            { slug: 'docs/open-medical-scribe', label: 'Open Medical Scribe' },
           ],
         },
         { label: 'Contributing', slug: 'docs/contributing' },

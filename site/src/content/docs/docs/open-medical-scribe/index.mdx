@@ -1,0 +1,167 @@
+---
+title: Open Medical Scribe
+description: Open-source AI medical scribe — real-time transcription and structured note generation with full local privacy.
+sidebar:
+  order: 5
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+An open-source AI medical scribe that transcribes clinical encounters in real-time and generates structured medical notes. Runs fully local for maximum privacy — no patient data ever leaves your machine.
+
+**Perfect for:** Clinicians, healthtech developers, medical NLP researchers.
+
+<Aside type="note" title="Privacy">
+  The entire pipeline — transcription, note generation, and data storage — can run on your own hardware. No patient data is sent to external services when using local providers.
+</Aside>
+
+## Key Features
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Real-time transcription" icon="mic">
+    Whisper ONNX runs locally with Swedish-optimized KB Whisper model. Streaming support with live partial results.
+  </FeatureCard>
+  <FeatureCard title="Structured notes" icon="clipboard-list">
+    Generates SOAP, H&P, Progress, DAP, Procedure, and Swedish Journalanteckning notes from transcripts.
+  </FeatureCard>
+  <FeatureCard title="Pluggable providers" icon="blocks">
+    Swap transcription and LLM backends with a single config change — local or cloud.
+  </FeatureCard>
+  <FeatureCard title="Desktop app" icon="monitor">
+    Electron app available in Light (~1 GB) and Full (~1.9 GB with bundled models) builds for macOS.
+  </FeatureCard>
+  <FeatureCard title="CLI tools" icon="terminal">
+    <code>scribe-transcribe</code> and <code>scribe-note</code> for scripting and batch workflows.
+  </FeatureCard>
+  <FeatureCard title="Web UI" icon="globe">
+    Browser-based interface with settings page for all providers and configuration.
+  </FeatureCard>
+  <FeatureCard title="Privacy-first" icon="lock">
+    Entire pipeline runs on your own hardware in local mode. No cloud required.
+  </FeatureCard>
+  <FeatureCard title="Swedish support" icon="message-circle">
+    Optimized for Swedish clinical encounters with KB Whisper and Journalanteckning format.
+  </FeatureCard>
+</div>
+
+## Supported Providers
+
+### Transcription
+
+| Provider | Type | Notes |
+|---|---|---|
+| Whisper ONNX | Local | Default. Swedish-optimized KB Whisper model, runs in-process |
+| faster-whisper | Local | Python-based, high performance |
+| whisper.cpp | Local | C++ implementation |
+| OpenAI Whisper | Cloud | OpenAI API |
+| Deepgram | Cloud | Deepgram Nova |
+| Google Cloud Speech | Cloud | Google Speech-to-Text |
+| Berget AI | Cloud | EU sovereign cloud, Swedish Whisper |
+
+### Note Generation
+
+| Provider | Type | Notes |
+|---|---|---|
+| Ollama | Local | Any local LLM (Llama 3.1, Mistral, etc.) |
+| OpenAI | Cloud | GPT-4o and other models |
+| Anthropic Claude | Cloud | Claude 3.5 Sonnet and other models |
+| Google Gemini | Cloud | Gemini Pro and other models |
+
+## Quick Start
+
+### Web App
+
+```bash
+git clone https://github.com/eir-space/eir-open.git
+cd eir-open/apps/open-medical-scribe
+npm install
+npm start
+# Open http://localhost:8787
+```
+
+### Desktop App
+
+Download the pre-built Electron app:
+
+- **[Light Build (~1 GB)](https://github.com/BirgerMoell/open-medical-scribe/releases/tag/v0.1.0)** — Clean app, downloads Whisper model on first run
+- **[Full Build (~1.9 GB)](https://github.com/BirgerMoell/open-medical-scribe/releases/tag/v0.1.0)** — Bundled Whisper ONNX model, works offline immediately
+
+Or build from source:
+
+```bash
+# Light build (no bundled models)
+npm run electron:build:light:mac
+
+# Full build (bundled Whisper + LLM)
+npm run models:download:whisper
+npm run models:download:llm
+npm run electron:build:full:mac
+```
+
+### CLI Tools
+
+```bash
+# Transcribe an audio file
+node cli/scribe-transcribe.js --input recording.wav
+
+# Generate a note from a transcript
+node cli/scribe-note.js --input transcript.txt --style soap
+```
+
+## Note Formats
+
+| Format | Use Case |
+|---|---|
+| **SOAP** | General clinical encounters — Subjective, Objective, Assessment, Plan |
+| **H&P** | History & Physical — comprehensive initial evaluations |
+| **Progress** | Follow-up visits and ongoing care |
+| **DAP** | Behavioral health — Data, Assessment, Plan |
+| **Procedure** | Surgical and procedural documentation |
+| **Journalanteckning** | Swedish clinical format — Kontaktorsak, Anamnes, Status, Bedömning, Åtgärd |
+
+## Configuration
+
+All settings can be configured via environment variables or the web UI settings page:
+
+```bash
+# Transcription
+TRANSCRIPTION_PROVIDER=whisper-onnx   # or openai, deepgram, google, berget, whisper.cpp
+WHISPER_MODEL=KBLab/kb-whisper-large  # HuggingFace model ID
+
+# Note generation
+NOTE_PROVIDER=ollama                  # or openai, anthropic, gemini
+NOTE_STYLE=soap                       # or hp, progress, dap, procedure, journalanteckning
+
+# API keys (only needed for cloud providers)
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GOOGLE_API_KEY=...
+```
+
+## Architecture
+
+```
+open-medical-scribe/
+  src/
+    providers/
+      transcription/    # Pluggable transcription backends
+      note/             # Pluggable LLM note generators
+    services/
+      scribeService.js  # Core pipeline: transcribe -> generate note
+      promptBuilder.js  # Note-style-specific LLM prompts
+      privacy.js        # PHI redaction utilities
+    server/
+      createApp.js      # HTTP server and routes
+      streamHandler.js  # WebSocket streaming
+  public/               # Web UI
+  electron/             # Desktop app wrapper
+  cli/                  # CLI tools
+  test/                 # Tests (Node.js built-in runner)
+```
+
+## Links
+
+- [GitHub Repository](https://github.com/BirgerMoell/open-medical-scribe)
+- [Documentation](https://birgermoell.github.io/open-medical-scribe/)
+- [Desktop Downloads](https://github.com/BirgerMoell/open-medical-scribe/releases/tag/v0.1.0)
