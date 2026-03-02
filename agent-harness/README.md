@@ -107,4 +107,4 @@ npm run test
 
 ## License
 
-MIT
+[Eir Space License v1.0](../LICENSE)
