@@ -88,6 +88,46 @@ Open-source applications for accessing, viewing, and understanding Swedish medic
 
 Ideal for patients wanting full control over their health data, healthcare developers building patient-centric applications, and anyone requiring privacy-preserving medical record management with AI assistance.
 
+### Open Medical Scribe
+
+**Location**: [`apps/open-medical-scribe/`](apps/open-medical-scribe/)
+
+An open-source AI medical scribe that transcribes clinical encounters in real-time and generates structured medical notes. Runs fully local for maximum privacy — no patient data ever leaves your machine.
+
+**Key Features:**
+- **Real-time transcription** with Whisper ONNX running locally (Swedish-optimized KB Whisper model)
+- **Structured note generation** via Ollama (local), OpenAI, Anthropic Claude, or Google Gemini
+- **Six note formats**: SOAP, H&P, Progress, DAP, Procedure, and Swedish Journalanteckning
+- **Privacy-first**: entire pipeline runs on your own hardware in local mode
+- **Electron desktop app** with light build (~1 GB) and full offline build (~1.9 GB with bundled models)
+- **CLI tools**: `scribe-transcribe` and `scribe-note` for scripting and batch workflows
+- **Web UI** with settings page for all providers and configuration
+- **Pluggable providers**: swap transcription and LLM backends with a single config change
+
+**Supported Providers:**
+
+| Transcription | Note Generation |
+|---|---|
+| Whisper ONNX (local) | Ollama (local) |
+| faster-whisper (local) | OpenAI |
+| whisper.cpp (local) | Anthropic Claude |
+| OpenAI Whisper | Google Gemini |
+| Deepgram | |
+| Google Cloud Speech | |
+| Berget AI (EU) | |
+
+**Quick Start:**
+```bash
+cd apps/open-medical-scribe
+npm install
+npm start
+# Open http://localhost:8787
+```
+
+**Downloads**: [Desktop app for macOS](https://github.com/BirgerMoell/open-medical-scribe/releases/tag/v0.1.0) | [Documentation](https://birgermoell.github.io/open-medical-scribe/)
+
+Ideal for clinicians who want AI-assisted documentation without sending patient data to the cloud, healthtech developers building documentation tools, and researchers exploring medical NLP pipelines.
+
 ## GitHub Pages
 
 The documentation is built with [Astro](https://astro.build/) using [Starlight](https://starlight.astro.build/) and [shadcn/ui](https://ui.shadcn.com/) styling, deployed via GitHub Actions.

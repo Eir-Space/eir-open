@@ -71,6 +71,15 @@ export const projects: Project[] = [
     tags: ['macOS', 'iOS', 'Chrome'],
     category: 'app',
   },
+  {
+    title: 'Open Medical Scribe',
+    description:
+      'AI medical scribe with real-time transcription and structured note generation. Runs fully local for maximum privacy.',
+    slug: 'open-medical-scribe',
+    icon: 'mic',
+    tags: ['Electron', 'Whisper', 'Local'],
+    category: 'app',
+  },
 ];
 
 export const libraryProjects = projects.filter((p) => p.category === 'library');
