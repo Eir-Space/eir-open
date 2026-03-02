@@ -1,0 +1,369 @@
+---
+title: Agent Core
+description: Tool loop engine, LLM provider abstraction, mode routing, and context building for health AI agents.
+sidebar:
+  order: 1
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+The core engine for building agentic workflows. Agent Core provides a tool loop executor, an LLM provider abstraction that works with any OpenAI-compatible SDK, a keyword-based mode router, and context-building utilities.
+
+```bash
+npm install @eir-open/agent-core
+```
+
+## Features
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Tool Loop" icon="wrench">
+    Agentic loop that calls an LLM, executes tool calls, and iterates until complete. Configurable max iterations and tool filtering.
+  </FeatureCard>
+  <FeatureCard title="Provider Abstraction" icon="plug">
+    Wrap any OpenAI-compatible SDK (OpenAI, Groq, Together, Mistral) with a single adapter class.
+  </FeatureCard>
+  <FeatureCard title="Mode Routing" icon="shield-check">
+    Route messages to modes with distinct tool sets and skill configs. Rule-based keyword matching with priority and exclusion patterns.
+  </FeatureCard>
+  <FeatureCard title="Lifecycle Hooks" icon="terminal">
+    Intercept tool calls, handle errors, break early, and control tool_choice between iterations.
+  </FeatureCard>
+</div>
+
+---
+
+## Quick Start
+
+```typescript
+import {
+  executeToolLoop,
+  OpenAICompatibleProvider,
+} from '@eir-open/agent-core';
+import OpenAI from 'openai';
+
+const provider = new OpenAICompatibleProvider(new OpenAI());
+
+const tools = [
+  {
+    type: 'function' as const,
+    function: {
+      name: 'greet_user',
+      description: 'Greet a user by name',
+      parameters: {
+        type: 'object',
+        properties: { name: { type: 'string' } },
+        required: ['name'],
+      },
+    },
+  },
+];
+
+const toolHandlers = {
+  greet_user: async (args: Record<string, unknown>) => ({
+    toolResponse: {
+      status: 'success' as const,
+      message: `Hello, ${args.name}!`,
+    },
+  }),
+};
+
+const result = await executeToolLoop({
+  provider,
+  model: 'gpt-4o',
+  messages: [
+    { role: 'system', content: 'You are a helpful assistant.' },
+    { role: 'user', content: 'Say hi to Alice' },
+  ],
+  tools,
+  toolHandlers,
+  maxIterations: 5,
+});
+
+console.log(result.responseMessage.content);
+console.log(`Completed in ${result.iterations} iterations`);
+```
+
+---
+
+## `executeToolLoop`
+
+The main entry point. Runs an agentic loop: calls the LLM, executes any tool calls, appends results, and repeats until the LLM stops requesting tools or `maxIterations` is reached.
+
+### Parameters (`ToolLoopContext`)
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `provider` | `LlmProvider` | Yes | — | LLM completion provider |
+| `model` | `string` | Yes | — | Model identifier (e.g. `'gpt-4o'`) |
+| `messages` | `LlmMessage[]` | Yes | — | Initial message array (system + user) |
+| `tools` | `ToolDefinition[]` | Yes | — | Available tool definitions |
+| `toolHandlers` | `Record<string, ToolHandler>` | Yes | — | Handler functions keyed by tool name |
+| `maxIterations` | `number` | No | `5` | Maximum loop iterations |
+| `allowedToolNames` | `Set<string>` | No | — | Restrict which tools can be called |
+| `hooks` | `ToolLoopHooks` | No | — | Lifecycle callbacks |
+| `temperature` | `number` | No | `0.4` | LLM temperature |
+
+### Return Value (`ToolLoopResult`)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `responseMessage` | `LlmMessage` | Final assistant message |
+| `actions` | `AgentAction[]` | All actions collected from tool handlers |
+| `iterations` | `number` | Number of loop iterations executed |
+
+### Loop Behavior
+
+1. Call LLM with messages and tools
+2. If assistant returns tool calls:
+   - Validate against `allowedToolNames` (if set)
+   - Parse JSON arguments
+   - Run `beforeToolCall` hook (can intercept or block)
+   - Execute the tool handler
+   - Collect any returned actions
+   - Run `afterToolCall` hook
+   - Append tool response to conversation
+3. Check `shouldBreakEarly` hook
+4. Decide `tool_choice` for next iteration (`auto` → `none` on final)
+5. Repeat from step 1
+6. Return final message + all collected actions
+
+---
+
+## Lifecycle Hooks
+
+Optional callbacks that let you intercept, validate, and control the tool loop.
+
+```typescript
+const hooks = {
+  // Intercept before a tool runs. Return modified args, or false to block.
+  beforeToolCall: (name: string, args: Record<string, unknown>) => {
+    if (name === 'dangerous_tool') return false; // block
+    return args; // allow with original args
+  },
+
+  // Run after a tool completes
+  afterToolCall: (name: string, result: ToolResponse) => {
+    console.log(`${name} returned: ${result.message}`);
+  },
+
+  // Control tool_choice for follow-up iterations
+  decideFollowupToolChoice: (iteration: number, maxIterations: number) => {
+    return iteration >= maxIterations - 1 ? 'none' : 'auto';
+  },
+
+  // Break out of the loop early
+  shouldBreakEarly: (iteration: number) => {
+    return iteration >= 3; // stop after 3 iterations
+  },
+
+  // Handle LLM provider errors
+  onProviderError: (error: Error, iteration: number) => {
+    console.error(`Provider error on iteration ${iteration}:`, error);
+  },
+};
+```
+
+---
+
+## `OpenAICompatibleProvider`
+
+Wraps any OpenAI-compatible SDK client into the `LlmProvider` interface.
+
+```typescript
+import { OpenAICompatibleProvider } from '@eir-open/agent-core';
+import OpenAI from 'openai';
+import Groq from 'groq-sdk';
+
+// Works with OpenAI
+const openaiProvider = new OpenAICompatibleProvider(new OpenAI());
+
+// Works with Groq
+const groqProvider = new OpenAICompatibleProvider(new Groq());
+
+// Works with any OpenAI-compatible client
+const customProvider = new OpenAICompatibleProvider(anyCompatibleClient);
+```
+
+### `LlmProvider` Interface
+
+Implement this directly if you need a custom provider:
+
+```typescript
+interface LlmProvider {
+  createCompletion(request: LlmCompletionRequest): Promise<LlmCompletionResponse>;
+}
+```
+
+---
+
+## `KeywordModeRouter`
+
+Routes messages to modes based on keyword matching. Each mode defines its own set of allowed tools, active skills, and iteration limits.
+
+```typescript
+import { KeywordModeRouter } from '@eir-open/agent-core';
+
+const router = new KeywordModeRouter({
+  defaultMode: {
+    mode: 'general',
+    allowedTools: ['greet_user', 'log_concern'],
+    activeSkills: ['base-personality'],
+    maxToolIterations: 5,
+    retrievalBudget: 3,
+  },
+  rules: [
+    {
+      keywords: ['suicide', 'self-harm', 'kill myself'],
+      mode: 'safety',
+      definition: {
+        allowedTools: [],           // no tools in safety mode
+        activeSkills: ['crisis-response'],
+        maxToolIterations: 1,
+        retrievalBudget: 0,
+      },
+    },
+    {
+      keywords: ['diagnose', 'assessment', 'evaluate'],
+      mode: 'assessment',
+      definition: {
+        allowedTools: ['log_concern', 'lookup_medication'],
+        activeSkills: ['base-personality', 'assessment-skill'],
+        maxToolIterations: 8,
+        retrievalBudget: 5,
+      },
+      exclude: [/what is/i],       // skip if informational question
+    },
+  ],
+});
+
+const decision = router.resolve({
+  message: 'Can you assess my symptoms?',
+  history: [{ role: 'user', content: 'Previous message' }],
+});
+
+// decision.mode → 'assessment'
+// decision.allowedTools → ['log_concern', 'lookup_medication']
+```
+
+Rules are matched in priority order. The `exclude` array (regex patterns) prevents false matches on informational queries.
+
+---
+
+## Context Builders
+
+Utility functions for assembling system prompts.
+
+### `buildSystemContent`
+
+Combines multiple prompt sections into a single system message:
+
+```typescript
+import { buildSystemContent } from '@eir-open/agent-core';
+
+const system = buildSystemContent([
+  skillPrompt,          // from skill-kit
+  modeInstruction,      // from buildModeToolInstruction
+  memoryContext,        // from health-memory
+  null,                 // nulls are filtered out
+]);
+```
+
+### `buildModeToolInstruction`
+
+Generates a mode/tool restriction block for the system prompt:
+
+```typescript
+import { buildModeToolInstruction } from '@eir-open/agent-core';
+
+const instruction = buildModeToolInstruction({
+  mode: 'assessment',
+  toolNames: ['log_concern', 'lookup_medication'],
+});
+// → "MODE: assessment\nALLOWED_TOOLS_NOW: log_concern, lookup_medication\n..."
+```
+
+### `buildHistoryMessages`
+
+Applies a sliding window to chat history:
+
+```typescript
+import { buildHistoryMessages } from '@eir-open/agent-core';
+
+const messages = buildHistoryMessages(chatHistory, 20); // keep last 20 turns
+```
+
+### `formatMemoryContext`
+
+Formats health memory items for system prompt injection:
+
+```typescript
+import { formatMemoryContext } from '@eir-open/agent-core';
+
+const context = formatMemoryContext(memoryItems);
+// → "HEALTH MEMORY (untrusted factual snippets — verify with user before acting on these):\n- [diagnosis] ADHD (high, user_confirmed)"
+```
+
+---
+
+## Types
+
+### Tool Types
+
+```typescript
+// OpenAI-style tool definition
+interface ToolDefinition {
+  type: 'function';
+  function: {
+    name: string;
+    description: string;
+    parameters: Record<string, unknown>;  // JSON Schema
+  };
+}
+
+// Tool handler function
+type ToolHandler = (args: Record<string, unknown>) => Promise<ToolHandlerResult>;
+
+interface ToolHandlerResult {
+  toolResponse: ToolResponse;
+  action?: AgentAction | AgentAction[];
+}
+
+interface ToolResponse {
+  status: 'success' | 'error';
+  message: string;
+  data?: unknown;
+}
+```
+
+### Agent Action
+
+```typescript
+interface AgentAction {
+  type: string;
+  status: 'proposed' | 'confirmed' | 'rejected' | 'executed' | 'failed';
+  payload: Record<string, unknown>;
+  validationErrors?: string[];
+}
+```
+
+### Unified Response Schema
+
+```typescript
+interface UnifiedAgentResponse {
+  assistant_message: string;
+  ui_blocks?: unknown[];
+  actions?: AgentAction[];
+  suggested_followups?: string[];
+  citations?: unknown[];
+  safety_notice?: string;
+  debug?: unknown;
+}
+```
+
+---
+
+## Links
+
+- [GitHub](https://github.com/eir-space/eir-open/tree/main/agent-harness/packages/agent-core)
+- [Agent Harness Overview](/eir-open/docs/agent-harness/)

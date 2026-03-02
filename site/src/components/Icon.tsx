@@ -1,5 +1,7 @@
 import {
+  Blocks,
   Bot,
+  Cpu,
   ShieldCheck,
   Globe,
   Terminal,
@@ -30,7 +32,9 @@ import {
 } from "lucide-react";
 
 const iconMap: Record<string, LucideIcon> = {
+  blocks: Blocks,
   bot: Bot,
+  cpu: Cpu,
   "shield-check": ShieldCheck,
   globe: Globe,
   terminal: Terminal,
