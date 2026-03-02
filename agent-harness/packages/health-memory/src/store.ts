@@ -2,6 +2,23 @@ import type { MemoryItem, MemoryCategory } from './schemas.js';
 import { memoryItemSchema } from './schemas.js';
 import { dedupKey, toCertainty, confirmItem, dismissItem } from './confidence.js';
 
+export interface MemorySearchOptions {
+  /** Search query string */
+  query: string;
+  /** Maximum results to return. Default: 10 */
+  limit?: number;
+  /** Filter by category */
+  category?: MemoryCategory;
+  /** Filter by minimum confidence score (0-1) */
+  minConfidence?: number;
+}
+
+export interface MemorySearchResult {
+  item: MemoryItem;
+  /** Relevance score (0-1) */
+  score: number;
+}
+
 /**
  * Abstract store interface. Platforms implement this with their own storage backend
  * (Supabase, SQLite, encrypted localStorage, etc.)
@@ -19,6 +36,8 @@ export interface HealthMemoryStore {
   dismiss(id: string): Promise<MemoryItem | null>;
   /** Delete an item by ID */
   delete(id: string): Promise<boolean>;
+  /** Search memory items by keyword. Implementations may support semantic search. */
+  search?(options: MemorySearchOptions): Promise<MemorySearchResult[]>;
 }
 
 /**
@@ -99,6 +118,31 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
     this.dedupIndex.delete(key);
     this.items.delete(id);
     return true;
+  }
+
+  async search(options: MemorySearchOptions): Promise<MemorySearchResult[]> {
+    const { query, limit = 10, category, minConfidence = 0 } = options;
+    const queryTerms = query.toLowerCase().split(/\s+/).filter(Boolean);
+
+    if (queryTerms.length === 0) return [];
+
+    let items = await this.getAll({ category });
+
+    if (minConfidence > 0) {
+      items = items.filter(item => item.confidence >= minConfidence);
+    }
+
+    const scored: MemorySearchResult[] = items.map(item => {
+      const text = `${item.label} ${item.detail ?? ''} ${item.category}`.toLowerCase();
+      const matches = queryTerms.filter(term => text.includes(term));
+      const score = matches.length / queryTerms.length;
+      return { item, score };
+    });
+
+    return scored
+      .filter(r => r.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit);
   }
 
   private higherStatus(a: string, b: string): MemoryItem['status'] {

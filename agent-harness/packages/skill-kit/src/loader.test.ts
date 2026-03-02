@@ -165,8 +165,8 @@ Skill B prompt.
 describe('buildSkillPrompt', () => {
   it('combines prompts from multiple skills', () => {
     const skills = [
-      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'] }, prompts: { default: 'Prompt A', en: 'Prompt A' }, path: '/a' },
-      { meta: { name: 'b', modes: [], requiredTools: [], languages: ['en'] }, prompts: { default: 'Prompt B', en: 'Prompt B' }, path: '/b' },
+      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Prompt A', en: 'Prompt A' }, path: '/a', scripts: [] },
+      { meta: { name: 'b', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Prompt B', en: 'Prompt B' }, path: '/b', scripts: [] },
     ];
     const combined = buildSkillPrompt(skills, 'en');
     assert.ok(combined.includes('Prompt A'));
@@ -176,7 +176,7 @@ describe('buildSkillPrompt', () => {
 
   it('falls back to default language', () => {
     const skills = [
-      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'] }, prompts: { default: 'Default prompt' }, path: '/a' },
+      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Default prompt' }, path: '/a', scripts: [] },
     ];
     const result = buildSkillPrompt(skills, 'fr');
     assert.equal(result, 'Default prompt');
