@@ -80,6 +80,15 @@ export const projects: Project[] = [
     tags: ['Electron', 'Whisper', 'Local'],
     category: 'app',
   },
+  {
+    title: 'EIR Provider Directory',
+    description:
+      'Production-grade Swedish provider discovery with map/list UX, verified self-referral status, and Cloudflare D1/R2 data infrastructure.',
+    slug: 'eir-provider-directory',
+    icon: 'map-pinned',
+    tags: ['Cloudflare', 'D1', 'R2'],
+    category: 'app',
+  },
 ];
 
 export const libraryProjects = projects.filter((p) => p.category === 'library');

@@ -64,6 +64,8 @@ Perfect for healthcare AI applications, EHR systems, telemedicine platforms, and
 
 ## Applications
 
+App directory index: [`apps/README.md`](apps/README.md)
+
 ### 📱 Eir Open Apps
 
 **Location**: [`apps/eir-open-apps/`](apps/eir-open-apps/)
@@ -127,6 +129,23 @@ npm start
 **Downloads**: [Desktop app for macOS](https://github.com/BirgerMoell/open-medical-scribe/releases/tag/v0.1.0) | [Documentation](https://birgermoell.github.io/open-medical-scribe/)
 
 Ideal for clinicians who want AI-assisted documentation without sending patient data to the cloud, healthtech developers building documentation tools, and researchers exploring medical NLP pipelines.
+
+### 🏥 EIR Provider Directory
+
+**Location**: [`apps/eir-provider-directory/`](apps/eir-provider-directory/)
+
+Production-grade healthcare provider discovery app for Sweden with map + list browsing, verified service capabilities, and Cloudflare-native data infrastructure.
+
+**Key Features:**
+- **Nationwide provider search** with map and list views
+- **Verified self-referral data** from 1177 clinic pages
+- **Detailed care metadata** including e-services and action capabilities
+- **Location-aware discovery** with "My position" centering and nearby filtering
+- **Digital-only clinic support** separated from physical-address listings
+- **Cloudflare deployment** with D1 (query layer) + R2 (snapshot storage) + Workers Assets
+- **Automated enrichment pipeline** for keeping provider capabilities current
+
+Built to support care discovery flows in EIR products and as a standalone public care-finder foundation for future multi-country expansion.
 
 ## GitHub Pages
 
