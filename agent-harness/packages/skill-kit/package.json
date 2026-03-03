@@ -1,6 +1,6 @@
 {
   "name": "@eir-open/skill-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Skill format specification, loader, and prompt assembly for health agents",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",

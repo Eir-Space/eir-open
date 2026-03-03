@@ -22,8 +22,11 @@ export type {
 export { toCertainty, dedupKey, confirmItem, dismissItem } from './confidence.js';
 
 // Store
-export type { HealthMemoryStore } from './store.js';
+export type { HealthMemoryStore, MemorySearchOptions, MemorySearchResult } from './store.js';
 export { InMemoryHealthMemoryStore } from './store.js';
+
+// Embedding
+export type { EmbeddingProvider } from './embedding.js';
 
 // Extractor
 export type { ExtractedCondition, ConditionExtractor } from './extractor.js';
