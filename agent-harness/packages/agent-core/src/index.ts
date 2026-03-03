@@ -24,7 +24,11 @@ export type { UnifiedAgentResponse, GenericAgentAction } from './contracts.js';
 
 // Provider
 export type { LlmProvider, LlmCompletionRequest, LlmCompletionResponse } from './provider.js';
-export { OpenAICompatibleProvider } from './provider.js';
+export { ChatCompletionsProvider, OpenAICompatibleProvider } from './provider.js';
+
+// Provider Wrappers
+export { RetryProvider, FallbackProvider, isTransientError } from './providerWrappers.js';
+export type { RetryProviderOptions, FallbackProviderOptions } from './providerWrappers.js';
 
 // Tool Loop
 export { executeToolLoop } from './toolLoop.js';

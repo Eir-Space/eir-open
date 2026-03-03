@@ -86,8 +86,12 @@ export class PluginRegistry {
 
     for (const { registration } of this.plugins.values()) {
       for (const tool of registration.tools ?? []) {
+        const toolName = tool.definition.function.name;
+        if (handlers[toolName]) {
+          console.warn(`[PluginRegistry] Duplicate tool name "${toolName}" — later registration overwrites earlier one.`);
+        }
         definitions.push(tool.definition);
-        handlers[tool.definition.function.name] = tool.handler;
+        handlers[toolName] = tool.handler;
       }
     }
 
@@ -155,10 +159,15 @@ export class PluginRegistry {
       merged.beforeToolCall = async (name, args) => {
         let currentArgs = args;
         for (const hook of beforeHooks) {
-          const result = await hook!(name, currentArgs);
-          if (result === false) return false;
-          if (result && typeof result === 'object') {
-            currentArgs = result;
+          try {
+            const result = await hook!(name, currentArgs);
+            if (result === false) return false;
+            if (result && typeof result === 'object') {
+              currentArgs = result;
+            }
+          } catch (err) {
+            console.warn('[PluginRegistry] beforeToolCall hook threw:', err);
+            return false;
           }
         }
         return currentArgs;
@@ -170,7 +179,11 @@ export class PluginRegistry {
     if (afterHooks.length > 0) {
       merged.afterToolCall = async (name, result) => {
         for (const hook of afterHooks) {
-          await hook!(name, result);
+          try {
+            await hook!(name, result);
+          } catch (err) {
+            console.warn('[PluginRegistry] afterToolCall hook threw:', err);
+          }
         }
       };
     }
@@ -181,7 +194,11 @@ export class PluginRegistry {
       merged.decideFollowupToolChoice = (iteration, maxIterations) => {
         let result: 'auto' | 'none' = 'auto';
         for (const hook of decideHooks) {
-          result = hook!(iteration, maxIterations);
+          try {
+            result = hook!(iteration, maxIterations);
+          } catch (err) {
+            console.warn('[PluginRegistry] decideFollowupToolChoice hook threw:', err);
+          }
         }
         return result;
       };
@@ -192,7 +209,11 @@ export class PluginRegistry {
     if (breakHooks.length > 0) {
       merged.shouldBreakEarly = (iteration, maxIterations) => {
         for (const hook of breakHooks) {
-          if (hook!(iteration, maxIterations)) return true;
+          try {
+            if (hook!(iteration, maxIterations)) return true;
+          } catch (err) {
+            console.warn('[PluginRegistry] shouldBreakEarly hook threw:', err);
+          }
         }
         return false;
       };
@@ -203,8 +224,12 @@ export class PluginRegistry {
     if (errorHooks.length > 0) {
       merged.onProviderError = async (error, iteration) => {
         for (const hook of errorHooks) {
-          const recovered = await hook!(error, iteration);
-          if (recovered) return recovered;
+          try {
+            const recovered = await hook!(error, iteration);
+            if (recovered) return recovered;
+          } catch (err) {
+            console.warn('[PluginRegistry] onProviderError hook threw:', err);
+          }
         }
         return null;
       };
@@ -215,7 +240,11 @@ export class PluginRegistry {
     if (spawningHooks.length > 0) {
       merged.onSubagentSpawning = async (agentId, context) => {
         for (const hook of spawningHooks) {
-          await hook!(agentId, context);
+          try {
+            await hook!(agentId, context);
+          } catch (err) {
+            console.warn('[PluginRegistry] onSubagentSpawning hook threw:', err);
+          }
         }
       };
     }
@@ -225,7 +254,11 @@ export class PluginRegistry {
     if (endedHooks.length > 0) {
       merged.onSubagentEnded = async (agentId, result) => {
         for (const hook of endedHooks) {
-          await hook!(agentId, result);
+          try {
+            await hook!(agentId, result);
+          } catch (err) {
+            console.warn('[PluginRegistry] onSubagentEnded hook threw:', err);
+          }
         }
       };
     }

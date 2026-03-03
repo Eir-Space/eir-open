@@ -24,10 +24,10 @@ export interface LlmProvider {
 }
 
 /**
- * Wraps any OpenAI-compatible SDK client instance.
- * Works with openai, groq, together, mistral, etc.
+ * Wraps any client with an OpenAI-compatible chat.completions.create method.
+ * Works with openai, groq, together, mistral, ollama, etc.
  */
-export class OpenAICompatibleProvider implements LlmProvider {
+export class ChatCompletionsProvider implements LlmProvider {
   constructor(private client: { chat: { completions: { create: (params: any) => Promise<any> } } }) {}
 
   async createCompletion(request: LlmCompletionRequest): Promise<LlmCompletionResponse> {
@@ -35,3 +35,6 @@ export class OpenAICompatibleProvider implements LlmProvider {
     return response as LlmCompletionResponse;
   }
 }
+
+/** @deprecated Use `ChatCompletionsProvider` instead. */
+export const OpenAICompatibleProvider = ChatCompletionsProvider;

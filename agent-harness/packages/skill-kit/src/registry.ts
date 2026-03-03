@@ -55,14 +55,15 @@ export class EirSkillRegistryClient implements SkillRegistryClient {
  * Fetches the SKILL.md from the GitHub raw URL and parses it.
  * Scripts are not supported for remote skills (scripts array will be empty).
  */
-export async function loadRemoteSkill(entry: SkillRegistryEntry): Promise<LoadedSkill | null> {
+export async function loadRemoteSkill(entry: SkillRegistryEntry, options?: { branch?: string }): Promise<LoadedSkill | null> {
   // Build raw GitHub URL for SKILL.md
   const repoMatch = entry.repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
   if (!repoMatch) return null;
 
   const [, owner, repo] = repoMatch;
+  const branch = options?.branch ?? 'main';
   const skillPath = entry.skillPath.replace(/^\//, '').replace(/\/$/, '');
-  const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main/${skillPath}/SKILL.md`;
+  const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${skillPath}/SKILL.md`;
 
   const response = await fetch(rawUrl);
   if (!response.ok) return null;
