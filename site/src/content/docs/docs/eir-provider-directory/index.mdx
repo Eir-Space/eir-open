@@ -1,0 +1,76 @@
+---
+title: EIR Provider Directory
+description: Production-grade Swedish healthcare provider search with verified 1177 capability data.
+---
+
+import FeatureCard from '@/components/FeatureCard.astro';
+
+The **EIR Provider Directory** is a care-discovery application for Sweden with map + list navigation, verified provider capabilities, and production deployment on Cloudflare.
+
+Repository location in this monorepo:
+- [`apps/eir-provider-directory/`](https://github.com/Eir-Space/eir-open/tree/main/apps/eir-provider-directory)
+
+<div class="features-grid not-content mt-4">
+  <FeatureCard title="Verified capabilities" icon="badge-check">
+    Self-referral and e-service actions are verified from 1177 contact card pages.
+  </FeatureCard>
+  <FeatureCard title="Map + list UX" icon="map-pinned">
+    Built for dense provider datasets with clustering, filtered exploration, and detail panes.
+  </FeatureCard>
+  <FeatureCard title="Location-aware" icon="locate-fixed">
+    "My Position" controls center users and support nearby discovery workflows.
+  </FeatureCard>
+  <FeatureCard title="Cloudflare stack" icon="server">
+    D1 for query performance, R2 for snapshots, Workers Assets for frontend delivery.
+  </FeatureCard>
+</div>
+
+## Local development
+
+```bash
+cd apps/eir-provider-directory
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000`.
+
+## Key commands
+
+```bash
+# test + build
+npm test
+npm run build
+
+# 1177 verification/enrichment
+npm run verify:self-referral
+npm run enrich:1177
+
+# D1 / R2 setup
+npm run d1:migrate
+npm run d1:import:verified
+npm run r2:upload:all
+
+# deploy
+npm run deploy:cloudflare
+```
+
+## URL shortcut
+
+Open the app with verified self-referral specialists pre-filtered:
+
+- `?self_referral_verified=true`
+- `?self_referral_specialists=true`
+- `?shortcut=self-referral-specialists`
+
+## API endpoints
+
+- `GET /api/providers`
+- `GET /api/search`
+- `GET /api/provider-description`
+
+## Data pipeline notes
+
+- Dataset snapshots live in `public/data/`
+- Runtime prefers D1; falls back to snapshot JSON if needed
+- Enrichment scripts include retry/backoff controls for 1177 rate limiting

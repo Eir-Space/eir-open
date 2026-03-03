@@ -137,6 +137,11 @@ Works with Chrome, Edge, Brave, Arc, and other Chromium-based browsers.
 - API keys stored in macOS Keychain (desktop app)
 - GDPR compliant
 
+## Related EIR Open App
+
+- **EIR Provider Directory**: [`../eir-provider-directory/`](../eir-provider-directory/)  
+  Sweden-wide healthcare provider finder with verified self-referral status, map exploration, and D1/R2-backed APIs.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests.

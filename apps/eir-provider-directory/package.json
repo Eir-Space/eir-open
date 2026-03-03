@@ -1,0 +1,54 @@
+{
+  "name": "eir-provider-directory",
+  "version": "1.0.0",
+  "description": "Open source healthcare provider directory",
+  "type": "module",
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vinext build",
+    "start": "vinext start",
+    "lint": "vinext lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify:self-referral": "node scripts/verify-self-referral-1177.js",
+    "enrich:1177": "node scripts/enrich-providers-1177.js",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build",
+    "r2:create-bucket": "wrangler r2 bucket create eir-provider-data",
+    "r2:upload:verified": "wrangler r2 object put eir-provider-data/providers/providers-sweden-verified.json --file public/data/providers-sweden-verified.json --content-type application/json --remote",
+    "r2:upload:all": "wrangler r2 object put eir-provider-data/providers/providers-sweden.json --file public/data/providers-sweden.json --content-type application/json --remote && wrangler r2 object put eir-provider-data/providers/providers-sweden-sample.json --file public/data/providers-sweden-sample.json --content-type application/json --remote && wrangler r2 object put eir-provider-data/providers/providers-sweden-verified.json --file public/data/providers-sweden-verified.json --content-type application/json --remote",
+    "d1:create": "wrangler d1 create eir-provider-db",
+    "d1:migrate": "wrangler d1 execute eir-provider-db --file ./scripts/sql/d1-schema.sql --remote",
+    "d1:import:verified": "node scripts/import-providers-to-d1.js --db eir-provider-db --remote --source public/data/providers-sweden-verified.json",
+    "d1:bootstrap": "npm run d1:migrate && npm run d1:import:verified",
+    "deploy:prep-assets": "rm -rf dist/deploy-assets && mkdir -p dist/deploy-assets && rsync -a --exclude 'providers-sweden-verified.json' dist/client/ dist/deploy-assets/",
+    "deploy:cloudflare": "npm run build && npm run deploy:prep-assets && wrangler deploy --config wrangler.jsonc"
+  },
+  "keywords": [
+    "healthcare",
+    "providers",
+    "directory",
+    "eir",
+    "open-source"
+  ],
+  "author": "EIR Space",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "mapbox-gl": "^3.1.2",
+    "maplibre-gl": "^5.19.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-window": "^2.2.7",
+    "typescript": "^5.5.3",
+    "vinext": "^0.0.18"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.25.6",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18",
+    "wrangler": "^4.69.0"
+  }
+}
