@@ -56,7 +56,7 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
 
   // Check for abort before initial call
   if (signal?.aborted) {
-    throw new DOMException('The operation was aborted', 'AbortError');
+    throw signal.reason ?? new Error('The operation was aborted');
   }
 
   // Initial LLM call
@@ -145,7 +145,7 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
 
       // Check for abort before tool execution
       if (signal?.aborted) {
-        throw new DOMException('The operation was aborted', 'AbortError');
+        throw signal.reason ?? new Error('The operation was aborted');
       }
 
       let result: ToolHandlerResult;
@@ -166,9 +166,15 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       await hooks.afterToolCall?.(name, result);
 
       // Append tool response
+      let serialized: string;
+      try {
+        serialized = JSON.stringify(result.toolResponse);
+      } catch {
+        serialized = JSON.stringify({ status: 'error', message: 'Tool response could not be serialized.' });
+      }
       conversationMessages.push({
         role: 'tool',
-        content: JSON.stringify(result.toolResponse),
+        content: serialized,
         tool_call_id: toolCall.id,
       });
     }
@@ -184,7 +190,7 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
 
     // Check for abort before follow-up call
     if (signal?.aborted) {
-      throw new DOMException('The operation was aborted', 'AbortError');
+      throw signal.reason ?? new Error('The operation was aborted');
     }
 
     // Follow-up LLM call

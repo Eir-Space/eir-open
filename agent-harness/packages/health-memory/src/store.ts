@@ -77,7 +77,7 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
         confidence: Math.max(existing.confidence, validated.confidence),
         certaintyLevel: toCertainty(Math.max(existing.confidence, validated.confidence)),
         detail: validated.detail ?? existing.detail,
-        evidenceRefs: [...existing.evidenceRefs, ...validated.evidenceRefs],
+        evidenceRefs: this.deduplicateRefs([...existing.evidenceRefs, ...validated.evidenceRefs]),
         updatedAt: new Date().toISOString(),
         // Keep higher status (user_confirmed > record_backed > inferred)
         status: this.higherStatus(existing.status, validated.status),
@@ -143,6 +143,16 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
       .filter(r => r.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, limit);
+  }
+
+  private deduplicateRefs(refs: MemoryItem['evidenceRefs']): MemoryItem['evidenceRefs'] {
+    const seen = new Set<string>();
+    return refs.filter(ref => {
+      const key = `${ref.type}:${ref.id}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   }
 
   private higherStatus(a: string, b: string): MemoryItem['status'] {

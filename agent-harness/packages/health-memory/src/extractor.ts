@@ -1,4 +1,6 @@
+import { randomUUID } from 'node:crypto';
 import type { MemoryItem } from './schemas.js';
+import { toCertainty } from './confidence.js';
 
 /**
  * Extracted condition from conversation, before being turned into a MemoryItem.
@@ -26,22 +28,16 @@ export interface ConditionExtractor {
  */
 export function toMemoryItems(conditions: ExtractedCondition[], sourceType: 'chat' | 'journal' = 'chat'): MemoryItem[] {
   const now = new Date().toISOString();
-  return conditions.map((condition, i) => ({
-    id: `extracted-${Date.now()}-${i}`,
+  return conditions.map((condition) => ({
+    id: randomUUID(),
     category: condition.category,
     label: condition.label,
     sourceType,
     confidence: Math.max(0, Math.min(1, condition.confidence)),
-    certaintyLevel: toCertaintyLevel(condition.confidence),
+    certaintyLevel: toCertainty(condition.confidence),
     status: 'inferred' as const,
     evidenceRefs: [],
     observedAt: now,
     updatedAt: now,
   }));
-}
-
-function toCertaintyLevel(confidence: number): 'low' | 'medium' | 'high' {
-  if (confidence >= 0.85) return 'high';
-  if (confidence >= 0.6) return 'medium';
-  return 'low';
 }
