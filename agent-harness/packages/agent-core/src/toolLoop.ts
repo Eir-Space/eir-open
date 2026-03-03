@@ -12,6 +12,10 @@ export interface ToolLoopHooks {
   shouldBreakEarly?(iteration: number, maxIterations: number): boolean;
   /** Handle provider errors (e.g. tool_use_failed). Return a recovery message or null to throw. */
   onProviderError?(error: unknown, iteration: number): Promise<LlmMessage | null>;
+  /** Called when a subagent tool is about to be spawned. */
+  onSubagentSpawning?(agentId: string, context: Record<string, unknown>): void | Promise<void>;
+  /** Called when a subagent tool completes. */
+  onSubagentEnded?(agentId: string, result: ToolHandlerResult): void | Promise<void>;
 }
 
 export interface ToolLoopContext {
@@ -24,6 +28,7 @@ export interface ToolLoopContext {
   allowedToolNames?: Set<string>;
   hooks?: ToolLoopHooks;
   temperature?: number;
+  signal?: AbortSignal;
 }
 
 export interface ToolLoopResult {
@@ -43,10 +48,16 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
     allowedToolNames,
     hooks = {},
     temperature = 0.4,
+    signal,
   } = context;
 
   const actions: AgentAction[] = [];
   let iteration = 0;
+
+  // Check for abort before initial call
+  if (signal?.aborted) {
+    throw signal.reason ?? new Error('The operation was aborted');
+  }
 
   // Initial LLM call
   const request: LlmCompletionRequest = {
@@ -55,6 +66,7 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
     tools: tools.length > 0 ? tools : undefined,
     tool_choice: tools.length > 0 ? 'auto' : undefined,
     temperature,
+    signal,
   };
 
   let response;
@@ -131,6 +143,11 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
         continue;
       }
 
+      // Check for abort before tool execution
+      if (signal?.aborted) {
+        throw signal.reason ?? new Error('The operation was aborted');
+      }
+
       let result: ToolHandlerResult;
       try {
         result = await handler(args);
@@ -149,9 +166,15 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       await hooks.afterToolCall?.(name, result);
 
       // Append tool response
+      let serialized: string;
+      try {
+        serialized = JSON.stringify(result.toolResponse);
+      } catch {
+        serialized = JSON.stringify({ status: 'error', message: 'Tool response could not be serialized.' });
+      }
       conversationMessages.push({
         role: 'tool',
-        content: JSON.stringify(result.toolResponse),
+        content: serialized,
         tool_call_id: toolCall.id,
       });
     }
@@ -165,6 +188,11 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
     const toolChoice = hooks.decideFollowupToolChoice?.(iteration, maxIterations)
       ?? (iteration >= maxIterations ? 'none' : 'auto');
 
+    // Check for abort before follow-up call
+    if (signal?.aborted) {
+      throw signal.reason ?? new Error('The operation was aborted');
+    }
+
     // Follow-up LLM call
     try {
       response = await provider.createCompletion({
@@ -173,6 +201,7 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
         tools: toolChoice === 'none' ? undefined : tools,
         tool_choice: toolChoice === 'none' ? undefined : toolChoice,
         temperature,
+        signal,
       });
     } catch (error) {
       const recovered = await hooks.onProviderError?.(error, iteration);

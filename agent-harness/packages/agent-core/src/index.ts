@@ -24,7 +24,11 @@ export type { UnifiedAgentResponse, GenericAgentAction } from './contracts.js';
 
 // Provider
 export type { LlmProvider, LlmCompletionRequest, LlmCompletionResponse } from './provider.js';
-export { OpenAICompatibleProvider } from './provider.js';
+export { ChatCompletionsProvider, OpenAICompatibleProvider } from './provider.js';
+
+// Provider Wrappers
+export { RetryProvider, FallbackProvider, isTransientError } from './providerWrappers.js';
+export type { RetryProviderOptions, FallbackProviderOptions } from './providerWrappers.js';
 
 // Tool Loop
 export { executeToolLoop } from './toolLoop.js';
@@ -34,5 +38,17 @@ export type { ToolLoopHooks, ToolLoopContext, ToolLoopResult } from './toolLoop.
 export type { ModeDefinition, RouterDecision, ModeRouter, ModeRouterInput, KeywordRule, KeywordModeRouterConfig } from './modeRouter.js';
 export { KeywordModeRouter } from './modeRouter.js';
 
+// Session
+export { SessionManager } from './session.js';
+export type { Session, SessionManagerOptions } from './session.js';
+
 // Context Builder
 export { buildHistoryMessages, buildModeToolInstruction, buildSystemContent, formatMemoryContext } from './contextBuilder.js';
+
+// Plugin
+export { PluginRegistry, pluginManifestSchema } from './plugin.js';
+export type { PluginManifest, PluginContext, PluginToolEntry, PluginRegistration, EirPlugin } from './plugin.js';
+
+// Subagent
+export { createSubagentTool } from './subagent.js';
+export type { SubagentToolParams, SubagentTool } from './subagent.js';
