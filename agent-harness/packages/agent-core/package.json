@@ -1,6 +1,6 @@
 {
   "name": "@eir-open/agent-core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Tool loop, LLM provider interface, types, and mode router for health agents",
   "license": "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
