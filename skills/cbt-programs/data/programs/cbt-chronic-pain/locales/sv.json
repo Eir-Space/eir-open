@@ -1,0 +1,117 @@
+{
+  "language": "sv",
+  "title": "Bemästra smärthantering: ta tillbaka ditt liv",
+  "summary": "Ett medkännande, vetenskapligt förankrat KBT-program för att leva väl med långvarig smärta. Programmet hjälper dig att minska kopplingen mellan smärta och lidande, bryta överaktivering/ras-cykeln, utmana rädslostyrda tankar och stegvis bygga ett värderingsstyrt liv.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå smärta: volymratten",
+      "overview": "Vi börjar med validering: din smärta är verklig. Samtidigt skiljer vi mellan akut smärta (vävnadsskada) och långvarig smärta (överkänsligt alarmsystem). Gate control-teorin förklarar hur hjärna och ryggmärg kan förstärka eller dämpa smärtupplevelsen beroende på känslor och tolkningar. Vi går igenom smärtcykeln där smärta leder till inaktivitet, stelhet och nedstämdhet som i sin tur ökar smärtan. Begreppet central sensitisering introduceras med volymmetaforen: systemet står på för hög nivå. Du startar en aktivitets- och smärtlogg där du följer vad du gjorde, tänkte och kände när smärtan ändrades. Vi skiljer också på \"ont\" och \"skadligt\". Vid långvarig smärta betyder ont inte alltid att kroppen tar skada. Målet i programmet är ökad livskvalitet, inte nödvändigtvis noll smärta.",
+      "takeaways": [
+        "Långvarig smärta fungerar ofta mer som ett överkänsligt larm än en ren skadesignal.",
+        "Tankar och känslor kan påverka smärtgrinden och därmed upplevelsen.",
+        "Ont är inte alltid lika med skada; du kan vara öm och samtidigt säker.",
+        "Förändring börjar med att förstå mekanismen bakom smärtcykeln."
+      ],
+      "exercises": [
+        "Baslinjelogg: följ smärta (0-10), aktivitet och humör tre gånger dagligen i en vecka.",
+        "Grindanalys: lista tre faktorer som verkar öppna smärtgrinden och tre som verkar stänga den.",
+        "Ont vs skadligt-reflektion: välj en undviken aktivitet och fråga om den sannolikt skadar eller bara ger tillfälligt obehag."
+      ],
+      "homework": [
+        "Fyll i baslinjeloggen i 7 dagar.",
+        "Förklara begreppet \"ont vs skadligt\" för en närstående för att skapa stöd för din nya strategi.",
+        "Välj en \"grindstängare\" och använd den medvetet vid lindrig smärtökning."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Pacing: bryt överaktivitet-krasch-cykeln",
+      "overview": "Den här modulen fokuserar på ett vanligt mönster vid långvarig smärta: att göra för mycket bra dagar och krascha efteråt. Du lär dig skillnaden mellan tidsstyrd aktivitet (enligt plan) och smärtstyrd aktivitet (styrd av dagsform). Vi tar fram baslinjer för vanliga aktiviteter som sittande, stående och promenad, och hittar en hållbar nivå att bygga från. Du skapar en pacingplan där större uppgifter delas upp i mindre steg med planerade pauser. Vi arbetar även med skuld kring vila och ramar in återhämtning som en aktiv strategi, inte lathet. Slutligen introduceras gradvis aktivitetsökning för att träna upp tolerans över tid.",
+      "takeaways": [
+        "Att pressa för hårt bra dagar ökar risken för bakslag.",
+        "Pacing innebär att stanna enligt plan innan smärtan eskalerar.",
+        "Planerade pauser ger bättre hållbarhet än att vila först vid kollaps.",
+        "Jämnhet slår intensitet i långsiktig återhämtning."
+      ],
+      "exercises": [
+        "Hitta baslinjer: mät hur länge du kan göra en aktivitet innan tydlig försämring, och sätt startnivån kring 80%.",
+        "Pausschema: planera en uppgift med fasta mikropauser, använd timer och följ planen.",
+        "10%-regeln: öka en vald aktivitet med cirka 10% nästa vecka."
+      ],
+      "homework": [
+        "Använd tidsstyrd pacing för en huvudaktivitet under hela veckan.",
+        "Identifiera när du är i \"överaktiveringsläge\" och avsluta tidigare än impulsen säger.",
+        "Öva aktiv vila under pauser, exempelvis andning eller mjuk stretch."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Kropp och sinne: sänk volymen",
+      "overview": "Här arbetar vi med kroppslig stressaktivering som ofta förstärker smärta. Smärta ökar stress, stress ökar spänning och spänning ökar smärta. Du lär dig diafragmaandning för att aktivera parasympatiska nervsystemet och minska alarmnivån. Progressiv muskelavslappning anpassas för smärta så att skyddsspänning kan släppa. Vi introducerar visualisering för att skapa lugnande sensoriska bilder i smärtområden. Vi berör också hur omgivningens reaktioner kan påverka smärtupplevelsen, samt grundläggande sömnhygien i smärtkontext. Slutligen övar du mindfulness av sensation: att observera upplevelsen utan att fastna i kamp mot den.",
+      "takeaways": [
+        "Avslappnad kropp tolkar ofta smärtsignaler som mindre hotfulla.",
+        "Skyddsspänning kan öka stelhet och obehag över tid.",
+        "Visualisering kan påverka hur hjärnan bearbetar sensorisk information.",
+        "Mindfulness kan ändra relationen till smärta från kamp till observation."
+      ],
+      "exercises": [
+        "Spänningsskanning: kontrollera käke, axlar och andning flera gånger per dag och släpp onödig spänning.",
+        "Mjukhetsvisualisering: föreställ dig värme eller mjukhet i smärtområdet i 10 minuter.",
+        "Andningsbro: vid smärttopp, ta 10 långsamma andetag och skapa mentalt utrymme runt obehaget."
+      ],
+      "homework": [
+        "Öva visualisering dagligen.",
+        "Observera skyddsbeteenden och återgå varsamt till mer naturlig rörelse när det är säkert.",
+        "Sätt ett dagligt avslappningsalarm mitt på dagen."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Utmana smärttankar: det mentala spelet",
+      "overview": "Denna modul fokuserar på tankemönster som kan förstärka smärtupplevelsen, särskilt katastroftänkande. Du identifierar automatiska negativa tankar som \"jag är trasig\" eller \"mitt liv är över\" och granskar dem med tankeprotokoll. Vi arbetar med evidensfrågor och mer balanserade tolkningar. Vi ser också på språkets roll: starkt hotladdade ord kan höja alarmsystemet, medan neutralare ord kan minska hotkänslan. Självtillit byggs genom att flytta från \"jag kan ingenting\" till \"jag kan något trots smärtan\". Du tränar copingformuleringar för skov och breddar identiteten bortom smärtrollen.",
+      "takeaways": [
+        "Katastroftankar är starkt kopplade till högre smärtintensitet.",
+        "Språket du använder påverkar upplevelsen av hot och kontroll.",
+        "Hjälplöshet och förmåga kan samexistera; du kan göra mer än hjärnan påstår i stress.",
+        "Du är mer än dina symtom och bilddiagnostiska fynd."
+      ],
+      "exercises": [
+        "Fånga katastroftanken: byt \"det här är outhärdligt\" mot en mer funktionell formulering.",
+        "Språkbyte: ersätt tre dramatiska smärtord med mer neutrala beskrivningar i en vecka.",
+        "Bevislogg: skriv tre saker du gjort trots smärtan varje vecka."
+      ],
+      "homework": [
+        "Gör ett tankeprotokoll vid ett tillfälle med hög smärtstress.",
+        "Använd dina copingfraser under svåra stunder.",
+        "Planera en aktivitet helt utanför hälsotemat för mental återhämtning."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Rörelse och mening: lev enligt dina värden",
+      "overview": "Sista modulen integrerar programmet i ett liv med riktning. Fokus flyttas från att enbart hantera symtom till att aktivt leva. Du klargör dina kärnvärden och sätter SMARTA mål kopplade till det som betyder mest, exempelvis relationer, natur eller kreativitet. Du tar fram en skovplan för sämre dagar så att tillfälliga bakslag inte blir långvariga avbrott. Vi arbetar också med tydlig kommunikation med vård, närstående och arbetsplats. Neuroplasticitet återbesöks som hoppfaktor: nervsystemet kan förändras med träning. Modulen avslutas med att aktivt planera glädje och återhämtande aktiviteter.",
+      "takeaways": [
+        "Smärta tar mindre plats när livet blir större än symtomen.",
+        "Värden ger riktning och motivation för vardaglig träning.",
+        "En skovplan minskar risken att tillfälliga svackor blir återfall.",
+        "Din erfarenhet av kroppen är viktig kunskap i vårdbeslut."
+      ],
+      "exercises": [
+        "Värdekompass: välj tre värden och planera en liten aktivitet per värde, även för sämre dagar.",
+        "Skovlåda: samla praktiska stöd som värme, copingkort, musik eller annat som hjälper vid toppar.",
+        "Målsättning: sätt ett tre månaders mål med pacingprinciper och gradvis progression."
+      ],
+      "homework": [
+        "Genomför en värderingsstyrd aktivitet denna vecka.",
+        "Bygg klart din skovlåda.",
+        "Skriv ett uppskattningsbrev till kroppen för det den fortfarande möjliggör."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
