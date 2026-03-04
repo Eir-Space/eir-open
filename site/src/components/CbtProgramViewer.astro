@@ -214,7 +214,15 @@ const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-ve
             <td>
               <div class="cbt-viewer-badges">
                 {row.languages.map((lang) => (
-                  <span class="cbt-badge">{lang}</span>
+                  <button
+                    type="button"
+                    class="cbt-badge cbt-badge-lang"
+                    data-role="open-reader-lang"
+                    data-lang={lang}
+                    title={`Open ${row.id} in ${lang}`}
+                  >
+                    {lang}
+                  </button>
                 ))}
               </div>
               <div class="cbt-viewer-meta">{row.translationSummary}</div>
@@ -282,6 +290,7 @@ const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-ve
       const emptyEl = root.querySelector('[data-role="empty"]');
       const rows = Array.from(root.querySelectorAll('tr[data-row]'));
       const openButtons = Array.from(root.querySelectorAll('[data-role="open-reader"]'));
+      const openLanguageButtons = Array.from(root.querySelectorAll('[data-role="open-reader-lang"]'));
       const reader = root.querySelector('[data-role="reader"]');
       const readerTitle = root.querySelector('[data-role="reader-title"]');
       const readerSubtitle = root.querySelector('[data-role="reader-subtitle"]');
@@ -456,7 +465,7 @@ const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-ve
       }
     };
 
-      const applyFilters = () => {
+    const applyFilters = () => {
         const query = (searchInput?.value || '').toLowerCase().trim();
         const language = (languageSelect?.value || 'all').toLowerCase();
         let visible = 0;
@@ -471,44 +480,60 @@ const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-ve
         if (show) visible += 1;
         });
 
-        if (countEl) countEl.textContent = String(visible);
-        if (emptyEl) emptyEl.hidden = visible !== 0;
-      };
+      if (countEl) countEl.textContent = String(visible);
+      if (emptyEl) emptyEl.hidden = visible !== 0;
+    };
+
+    const openReaderForRow = (row, preferredLanguage) => {
+      if (!row || !reader || !readerTitle || !readerSubtitle || !readerLanguage) return;
+
+      rows.forEach((otherRow) => otherRow.classList.remove('cbt-row-selected'));
+      row.classList.add('cbt-row-selected');
+      activeRow = row;
+
+      const rowData = parseRowData(row);
+      const languageSet = new Set([
+        ...rowData.languages,
+        ...Object.keys(rowData.translationPaths || {}),
+        rowData.defaultLanguage,
+      ]);
+      const languages = Array.from(languageSet).filter(Boolean).sort();
+
+      readerTitle.textContent = rowData.id;
+      readerSubtitle.textContent = rowData.condition;
+      reader.hidden = false;
+
+      readerLanguage.innerHTML = '';
+      languages.forEach((lang) => {
+        const option = document.createElement('option');
+        option.value = lang;
+        option.textContent = lang;
+        readerLanguage.appendChild(option);
+      });
+
+      const selectedLang =
+        preferredLanguage && languages.includes(preferredLanguage)
+          ? preferredLanguage
+          : languages.includes(rowData.defaultLanguage)
+            ? rowData.defaultLanguage
+            : languages[0] || 'en';
+
+      readerLanguage.value = selectedLang;
+      loadLocale(rowData, selectedLang);
+    };
 
     openButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const row = button.closest('tr[data-row]');
-        if (!row || !reader || !readerTitle || !readerSubtitle || !readerLanguage) return;
+        openReaderForRow(row, null);
+      });
+    });
 
-        rows.forEach((otherRow) => otherRow.classList.remove('cbt-row-selected'));
-        row.classList.add('cbt-row-selected');
-        activeRow = row;
-
-        const rowData = parseRowData(row);
-        const languageSet = new Set([
-          ...rowData.languages,
-          ...Object.keys(rowData.translationPaths || {}),
-          rowData.defaultLanguage,
-        ]);
-        const languages = Array.from(languageSet).filter(Boolean).sort();
-
-        readerTitle.textContent = rowData.id;
-        readerSubtitle.textContent = rowData.condition;
-        reader.hidden = false;
-
-        readerLanguage.innerHTML = '';
-        languages.forEach((lang) => {
-          const option = document.createElement('option');
-          option.value = lang;
-          option.textContent = lang;
-          readerLanguage.appendChild(option);
-        });
-
-        const selectedLang = languages.includes(rowData.defaultLanguage)
-          ? rowData.defaultLanguage
-          : languages[0] || 'en';
-        readerLanguage.value = selectedLang;
-        loadLocale(rowData, selectedLang);
+    openLanguageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const row = button.closest('tr[data-row]');
+        const requestedLang = (button.getAttribute('data-lang') || '').trim();
+        openReaderForRow(row, requestedLang || null);
       });
     });
 
@@ -684,6 +709,17 @@ const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-ve
     color: var(--sl-color-gray-2);
     background: var(--sl-color-gray-7);
     white-space: nowrap;
+  }
+
+  .cbt-badge-lang {
+    appearance: none;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .cbt-badge-lang:hover {
+    border-color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 14%, var(--sl-color-gray-7));
   }
 
   .cbt-badge-lineage {
