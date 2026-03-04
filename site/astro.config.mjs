@@ -60,6 +60,7 @@ export default defineConfig({
             { slug: 'docs/health-md-standard', label: 'EIR Health Data Standard' },
             { slug: 'docs/us-medications', label: 'US FDA Medications' },
             { slug: 'docs/swedish-medications', label: 'Swedish Medications' },
+            { slug: 'docs/cbt-programs', label: 'CBT Programs Registry' },
             { slug: 'docs/eir-open-apps', label: 'Eir Open Apps' },
             { slug: 'docs/open-medical-scribe', label: 'Open Medical Scribe' },
           ],
