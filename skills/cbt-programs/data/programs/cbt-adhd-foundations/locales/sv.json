@@ -1,0 +1,159 @@
+{
+  "language": "sv",
+  "title": "Bemästra ditt fokus: KBT-program för ADHD",
+  "summary": "En KBT-resa med sju moduler som hjälper dig att minska glappet mellan intention och handling. Du bygger praktiska rutiner, kommer förbi startmotstånd, stärker uppmärksamheten, organiserar vardagen, löser problem mer systematiskt och tar hand om känslor med självmedkänsla i centrum.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå din ADHD",
+      "overview": "Välkommen till programmet. Det här handlar inte om att laga dig - du är inte trasig. Det handlar om att lära känna hur din hjärna fungerar och bygga ett vänligare, mer effektivt sätt att leva. ADHD innebär ofta ett glapp mellan intention och handling. Tänk på hjärnans \"drömmare\" (Default Mode Network) och \"görare\" (Task Positive Network). Vårt arbete är att stärka bron mellan dem. KBT ger en praktisk karta: koppla ihop tankar, känslor och beteenden, och förändra livet genom att förändra nästa steg - vänligt och konsekvent. Framsteg växer av små handlingar som går att upprepa. Perfektion behövs inte. Träning gör skillnad.",
+      "takeaways": [
+        "Små, tydliga åtaganden som tränas dagligen stärker bron mellan tanke och handling.",
+        "Självmedkänsla driver motivation bättre än självkritik.",
+        "Tydlighet slår viljestyrka: konkreta planer minskar friktion och gör det lättare att komma igång."
+      ],
+      "exercises": [
+        "Skriv ditt \"varför\": två meningar om varför du väljer det här programmet just nu.",
+        "Sätt en mikrointention: välj en mycket liten handling och en exakt tid (t.ex. \"kl. 07:00 ställer jag mig upp och dricker ett glas vatten\"). Genomför den en gång.",
+        "Formulera 1-3 SMARTA processmål för de kommande 7 dagarna (t.ex. \"göra en planeringscheck på 5 minuter varje kväll\")."
+      ],
+      "homework": [
+        "Reflektera över ouppmärksamhet/hyperaktivitet/impulsivitet den här veckan - fånga två konkreta situationer utan att döma dig själv.",
+        "Lista styrkor och stöd du redan har (kreativitet, humor, uthållighet, allierade).",
+        "Skriv ett enmeningslöfte om självmedkänsla att återkomma till under svåra dagar.",
+        "Träna en mikrointention dagligen. Notera: planerad tid, handling, gjorde du den (J/N)."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Bygg struktur och rutiner",
+      "overview": "Struktur minskar beslutströtthet och skapar förutsägbarhet - två starka stöd vid ADHD. Börja med grundankare (sömn, uppvaknande, måltider) och små morgon- och kvällsrutiner. Håll dem korta och möjliga att lyckas med. Förbättra tidskänslan med uppskattningsövningar och enkel tidsblockering på papper.",
+      "takeaways": [
+        "Ankare gör goda intentioner till lågfriktionsstandard.",
+        "Tidskänsla är en träningsbar färdighet; övning slår gissning."
+      ],
+      "exercises": [
+        "Designa en morgonrutin i 3 steg och en kvällsrutin i 3 steg som du faktiskt kan göra den här veckan.",
+        "Öva tidsuppskattning: uppskatta hur lång tid en uppgift tar, ta tid, jämför. Upprepa dagligen.",
+        "Skapa ett enkelt tidsblockschema på papper för i morgon (fasta punkter -> ankare -> 2-3 flexibla block)."
+      ],
+      "homework": [
+        "Följ upp planerad kontra faktisk tid för uppvaknande/sömn i 7 dagar.",
+        "Planera morgondagen varje kväll med enkla tidsblock och namnge en Måste-göra, en Borde-göra och en Vill-göra.",
+        "Veckoreflektion: vad fungerade, vad tappade du, vad överraskade dig kring tid?"
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Övervinna prokrastinering",
+      "overview": "Prokrastinering är en strategi för känsloreglering, inte ett karaktärsfel. När överväldigande minskar blir det lättare att börja. Bryt ned uppgifter i fysiska första steg och använd 5-minutersregeln för att passera startlinjen. Koppla små steg till befintliga signaler eller belöningar för att bygga momentum.",
+      "takeaways": [
+        "Små, konkreta första handlingar minskar undvikande.",
+        "Fem minuter blir ofta femton - men ge dig själv erkännande även när det inte händer."
+      ],
+      "exercises": [
+        "Nedbrytning med papper och penna: välj en uppgift du undviker och lista huvudsteg -> mikrosteg -> ringa in den första fysiska handlingen.",
+        "Schemalägg en 5-minutersstart på den handlingen i dag. Sätt timer.",
+        "Skapa en \"koppling\": para ett litet steg med en återkommande signal (t.ex. \"efter kaffe öppnar jag dokumentet och skriver en mening\")."
+      ],
+      "homework": [
+        "Bryt ned två ytterligare uppgifter den här veckan. Identifiera första fysiska handlingen för varje.",
+        "Använd 5-minutersregeln 3-5 gånger. Logga start, stopp/fortsättning och känsla efteråt.",
+        "Testa en signal/belöningskoppling dagligen; notera vilka kopplingar som hjälper dig tillbaka."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Förbättra fokus",
+      "overview": "Uppmärksamhet är en träningsbar muskel - skapa rätt förutsättningar och öva på vänlig återstyrning. Minska yttre distraktioner (plats, ljud, avbrott) och hantera inre distraktioner (tankar, oro, rastlöshet). Använd en distraktionslista och 3 minuters andningsfokus för att notera och återvända utan självkritik.",
+      "takeaways": [
+        "Miljöjusteringar ger stor effekt över tid.",
+        "Att märka och återvända är själva träningen. Självdömande är valfritt."
+      ],
+      "exercises": [
+        "Gör en distraktionsinventering: dina två största yttre och två största inre distraktioner.",
+        "Inför en miljöförändring i dag (t.ex. ren arbetsyta, öronproppar, en tydlig fokusplats).",
+        "3 minuters andningsfokus: notera när tankarna vandrar och återvänd varsamt; skriv en mening om upplevelsen."
+      ],
+      "homework": [
+        "Använd distraktionslistan under två fokussessioner; gå igenom den efteråt.",
+        "Dagligen: en kort uppmärksamhetsövning (andning, grounding eller medveten rörelse). Notera vilken som hjälpte mest.",
+        "Behåll minst en miljöförändring hela veckan och notera effekt på fokus."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Organisera ditt liv",
+      "overview": "Yttre ordning stödjer inre lugn. Skapa fasta platser för viktiga saker och rensa i korta, upprepningsbara pass. Håll papper i rörelse med ett enkelt flöde: Inkorg -> Åtgärd -> Arkiv.",
+      "takeaways": [
+        "System slår minne. Etiketter slår gissning.",
+        "Korta, tidsatta pass slår heroiska maratonröjningar."
+      ],
+      "exercises": [
+        "Välj ett litet avgränsat område (en hylla/låda/yta). Kör 15 minuters rensning med Behåll / Flytta-åtgärda / Skänk-kasta.",
+        "Bestäm fasta platser för 3-5 saker du ofta tappar bort; märk upp vid behov.",
+        "Sätt upp en pappers-\"inkorg\" och en \"åtgärdsbricka\" om du saknar det."
+      ],
+      "homework": [
+        "Gör två 15-minuters rensningspass på samma område; hantera Flytta-åtgärda direkt efter passet.",
+        "Töm pappersinkorgen två gånger med Åtgärd / Arkiv / Kasta; lägg åtgärder i din lista.",
+        "Följ upp hur ofta nyckelsaker återvänder till sin fasta plats; justera placering vid kvarvarande friktion.",
+        "Reflektera över kopplingen mellan miljö och fokus/humör under veckan."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Modul 6 • Utmaningar och känslor",
+      "overview": "Använd en problemlösningsmodell i fem steg för att gå från överväldigande till handling. Bygg grunder i känsloreglering: notera och namnge, STOPP, grounding och självlugnande strategier.",
+      "takeaways": [
+        "Paus skapar möjligheter: ett andetag kan ändra nästa beslut.",
+        "Du kan inte alltid välja känslor - men du kan välja nästa steg."
+      ],
+      "exercises": [
+        "Välj ett återkommande problem. Skriv steg 1-5: definiera -> brainstorma -> utvärdera -> genomför -> följ upp (korta punkter).",
+        "Öva STOPP vid en känslostorm: Stanna, Ta ett andetag, Observera, Pull Back, Proceed. Skriv en mening om vad som hade ändrats.",
+        "Prova en groundingteknik i dag (boxandning eller 5-4-3-2-1)."
+      ],
+      "homework": [
+        "Arbeta igenom alla fem problemlösningssteg på papper; schemalägg och genomför första handlingen.",
+        "Logga 2-3 känslotriggers under veckan; notera vilken teknik du använde och effekten.",
+        "Behåll dina fasta platser och pappersflöde; rensa ett nytt litet område en gång.",
+        "Veckoreflektion: vad lärde du dig om triggers, verktyg och vad som hjälper snabbast?"
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Modul 7 • Behåll momentum",
+      "overview": "Samla ihop dina framsteg och bygg en plan för återfallsprevention som du faktiskt använder. Håll fast vid kärnrutiner, schemalägg uppföljning och fortsätt utvecklas med självmedkänsla.",
+      "takeaways": [
+        "Följ upp, justera, återförbind - så fastnar vanor.",
+        "Stöd slår ensamkamp: dela en insikt med någon du litar på."
+      ],
+      "exercises": [
+        "Se tillbaka: skriv ned 2-3 viktigaste färdigheter, 1-3 förändringar du gjort och styrkor du använde.",
+        "Återfallsplan: lista 2-3 triggers, 2-3 tidiga varningssignaler och 3-5 åtgärder för att komma tillbaka på spåret.",
+        "Schemalägg ditt första månatliga 15-30 minuters \"personliga systemgenomgång\"."
+      ],
+      "homework": [
+        "Skriv en enmeningsförbindelse till 1-3 kärnrutiner (t.ex. dagsplan, veckogenomgång).",
+        "Lägg in första månatliga genomgången i kalendern och lägg till frågor som är viktiga för dig.",
+        "Dela en insikt med en stödperson; notera deras förslag.",
+        "Skapa en snabbreferens: \"Mina viktigaste ADHD-strategier\" (5-7 punkter)."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Övningar i självmedkänsla vid ADHD",
+      "url": "https://www.compassionfocusedtherapy.com/wp-content/uploads/2020/03/CFT-Exercise-Compassionate-Hand.pdf"
+    },
+    {
+      "title": "Timer för att träna tidsuppskattning",
+      "url": "https://tomato-timer.com/"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Vid akut säkerhetsrisk, hänvisa till akutsjukvård direkt."
+  }
+}
