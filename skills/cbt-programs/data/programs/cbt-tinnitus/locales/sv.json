@@ -1,0 +1,102 @@
+{
+  "language": "sv",
+  "title": "Hitta inre tystnad: habituering vid tinnitus",
+  "summary": "Ett specialiserat KBT-program för tinnitusrelaterad stress. Målet är inte alltid att få bort ljudet, utan att minska reaktionen på det. Med habituering, kognitiv defusion och uppmärksamhetsträning flyttas tinnitus från förgrund till bakgrund.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Filtreringsproblemet",
+      "overview": "Vi börjar med validering av lidandet. Tinnitus är en verklig perception som kan trigga starkt alarmsvar. Med den neurofysiologiska modellen förklarar vi varför limbiska systemet kan tolka ljudet som hot. Habituering introduceras: hjärnan kan lära sig ignorera stabila signaler som inte bedöms farliga. Du kartlägger ond cirkel: tinnitus -> rädsla/fokus -> upplevt högre ljud -> mer rädsla. Vi introducerar ljudberikning, alltså neutralt bakgrundsljud för att minska kontrast och reaktivitet.",
+      "takeaways": [
+        "Upplevd ljudstyrka påverkas av stress och emotionellt tillstånd.",
+        "Rädsla försvårar habituering.",
+        "Målet är minskad betydelse av ljudet, inte alltid total tystnad."
+      ],
+      "exercises": [
+        "Ljudmiljöaudit: bedöm om miljön är för tyst och planera neutralt bakgrundsljud hemma.",
+        "Reaktionslogg: följ din känsloreaktion på tinnitus under dagen i stället för att jaga volym."
+      ],
+      "homework": [
+        "Inför ljudberikning med låg nivå under dag och natt.",
+        "När du märker kontrollbeteende (\"hur högt är det nu?\"), skifta fokus till uppgift eller omgivning."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Kognitiv defusion: ändra berättelsen",
+      "overview": "Vi arbetar med katastroftankar som \"det här går aldrig över\" och \"jag kommer inte stå ut\". Defusion hjälper dig se tankar som mentala händelser, inte sanningar. Vi utmanar myten om total tystnad och definierar lugn som frånvaro av kamp, inte frånvaro av ljud. Vid behov ges plats för sorg och frustration kring tinnitusens start. Fokus är att minska konflikt med upplevelsen.",
+      "takeaways": [
+        "Det är ofta tolkningen av ljudet som driver mest lidande.",
+        "Att kämpa mot ljudet ökar ofta kroppslig spänning och uppmärksamhet på ljudet.",
+        "Acceptans är aktiv anpassning, inte uppgivenhet."
+      ],
+      "exercises": [
+        "Tankemärkning: säg \"jag märker tanken att...\" när katastroftanken kommer.",
+        "Sorgbrev: skriv om förlust, ilska eller oro och avsluta med ett medkännande nulägesperspektiv."
+      ],
+      "homework": [
+        "Öva \"släpp repet\"-visualisering vid ljudtoppar.",
+        "Skriv dagligen tre saker du kunnat göra trots tinnitus."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Uppmärksamhetsskifte och fokus",
+      "overview": "Tinnitus tar lätt över uppmärksamheten. Här tränar du medvetet fokusbyte. Du övar aktiv lyssning på andra ljud och styr mental uppmärksamhet mellan kroppsdelar, synfält och uppgifter. Vi arbetar med att minska monitorering, dvs. vanan att ständigt kontrollera om tinnitus finns eller ändrats. Ju mindre kontrollbeteende, desto bättre för habituering.",
+      "takeaways": [
+        "Det du riktar uppmärksamhet mot upplevs starkare.",
+        "Kontroll av tinnitus kan återaktivera hotresponsen.",
+        "Fokus är träningsbart och ger större upplevd kontroll i vardagen."
+      ],
+      "exercises": [
+        "Ljudspaning: identifiera fem olika omgivningsljud under promenad och fokusera en minut per ljud.",
+        "Skiftesdrill: fokusera tinnitus 10 sekunder och flytta sedan fokus till fotsulor eller andning 10 sekunder."
+      ],
+      "homework": [
+        "Träna ljudspaning dagligen.",
+        "Vid tinnitusmedvetenhet: gå direkt in i en koncentrationskrävande aktivitet."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Sömnstrategier för ett ringande sinne",
+      "overview": "Sömn påverkas ofta starkt av tinnitus. Den här modulen anpassar principer från KBT-I till tinnitus. Ljudberikning nattetid prioriteras och du testar olika neutrala ljudkällor. Du arbetar med oro för tysta sovrum och använder kroppslig nedreglering före läggdags, till exempel body scan och andning. Katastroftankar kring sömn utmanas med mer funktionella alternativ.",
+      "takeaways": [
+        "Nattetystnad kan förstärka tinnitusupplevelsen.",
+        "Hjärnan kan vänja sig vid stabilt bakgrundsljud under sömn.",
+        "Fysiologisk avslappning kan minska upplevd ljuddominans."
+      ],
+      "exercises": [
+        "Ljudsetup: testa olika ljud (t.ex. pink/brown noise, natur) och välj mest neutralt lugnande.",
+        "Sömnvisualisering: föreställ ljudet som en neutral bakgrundssignal utan hotvärde."
+      ],
+      "homework": [
+        "Inför en konsekvent nattlig ljudrutin.",
+        "Gör body scan vid sänggående även om tinnitus är närvarande."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Liv bortom ljudet",
+      "overview": "I slutmodulen går du från hantering till livsriktning. Du lär dig hantera tillfälliga toppar vid stress, sömnbrist eller livsstilsfaktorer utan att tolka dem som bakslag. Vi går igenom hörselskydd med balans: skydda vid behov utan överundvikande. Fokus flyttas till värderingsstyrda mål som inte kretsar kring tinnitus. Du bygger en plan för långsiktigt vidmakthållande.",
+      "takeaways": [
+        "Habituering blir mer stabil med fortsatt träning över tid.",
+        "En spike är ofta tillfällig och hanterbar.",
+        "Du kan återta aktiviteter och livsutrymme från tinnitus."
+      ],
+      "exercises": [
+        "\"So what?\"-övning: vid tillfällig ökning, använd ett neutralt avspänt svar och återgå till aktivitet.",
+        "Värdeplan: välj en aktivitet du undvikit p.g.a. tinnitus och planera genomförande med rimlig hörselskyddsnivå."
+      ],
+      "homework": [
+        "Skapa en personlig spike-plan (vätska, sömn, fokusbyte, återhämtning).",
+        "Skriv en kort självdeklaration om hur du vill leva oberoende av tinnitusnivå."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
