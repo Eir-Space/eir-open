@@ -2,6 +2,8 @@ import SwiftUI
 
 struct EntryDetailView: View {
     let entry: EirEntry
+    @EnvironmentObject var chatThreadStore: ChatThreadStore
+    @EnvironmentObject var profileStore: ProfileStore
 
     var body: some View {
         ScrollView {
@@ -119,25 +121,54 @@ struct EntryDetailView: View {
                 }
 
                 // Explain with AI
-                Button {
-                    NotificationCenter.default.post(
-                        name: .explainEntryWithAI,
-                        object: entry
-                    )
-                } label: {
-                    HStack(spacing: 8) {
-                        Image(systemName: "sparkles")
-                        Text("Explain with AI")
+                HStack(spacing: 8) {
+                    Button {
+                        NotificationCenter.default.post(
+                            name: .explainEntryWithAI,
+                            object: entry
+                        )
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "sparkles")
+                            Text("Explain with AI")
+                        }
+                        .font(.callout)
+                        .fontWeight(.medium)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(AppColors.primary)
+                        .cornerRadius(10)
                     }
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(AppColors.primary)
-                    .cornerRadius(10)
+                    .buttonStyle(.plain)
+
+                    Button {
+                        // Ensure a thread exists before toggling
+                        if chatThreadStore.selectedThreadID == nil,
+                           let profileID = profileStore.selectedProfileID {
+                            chatThreadStore.createThread(profileID: profileID)
+                        }
+                        chatThreadStore.toggleEntry(entry.id)
+                    } label: {
+                        let isExcluded = chatThreadStore.isEntryExcluded(entry.id)
+                        HStack(spacing: 6) {
+                            Image(systemName: isExcluded ? "plus.circle" : "minus.circle")
+                            Text(isExcluded ? "Add to Chat" : "Remove from Chat")
+                        }
+                        .font(.callout)
+                        .fontWeight(.medium)
+                        .foregroundColor(isExcluded ? AppColors.primary : AppColors.red)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(isExcluded ? AppColors.primarySoft : AppColors.red.opacity(0.08))
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(isExcluded ? AppColors.primary.opacity(0.3) : AppColors.red.opacity(0.2), lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
 
                 // Tags
                 if let tags = entry.tags, !tags.isEmpty {

@@ -48,7 +48,7 @@ struct ChatBubbleView: View {
     }
 
     private func markdownAttributed(_ text: String) -> AttributedString {
-        (try? AttributedString(markdown: text, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(text)
+        (try? AttributedString(markdown: text, options: .init(interpretedSyntax: .full))) ?? AttributedString(text)
     }
 
     private var formattedTime: String {

@@ -216,7 +216,7 @@ final class ClinicStore: ObservableObject {
         isLoading = true
         // Parse JSON off the main thread
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let url = Bundle.module.url(forResource: "healthcare-clinics", withExtension: "json") else {
+            guard let url = Bundle.main.url(forResource: "healthcare-clinics", withExtension: "json") else {
                 print("Could not find healthcare-clinics.json in bundle")
                 return
             }

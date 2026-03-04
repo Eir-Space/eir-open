@@ -2,6 +2,7 @@ import SwiftUI
 
 enum NavTab: String, CaseIterable, Identifiable {
     case journal = "Journal"
+    case healthData = "Health Data"
     case chat = "Chat"
     case settings = "Settings"
 
@@ -10,6 +11,7 @@ enum NavTab: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .journal: return "doc.text"
+        case .healthData: return "heart.text.clipboard"
         case .chat: return "bubble.left.and.bubble.right"
         case .settings: return "gearshape"
         }
@@ -38,6 +40,12 @@ struct ContentView: View {
                 .tag(NavTab.journal)
 
                 NavigationStack {
+                    HealthDataBrowserView()
+                }
+                .tabItem { Label("Health Data", systemImage: "heart.text.clipboard") }
+                .tag(NavTab.healthData)
+
+                NavigationStack {
                     ChatView()
                 }
                 .tabItem { Label("Chat", systemImage: "bubble.left.and.bubble.right") }
@@ -51,9 +59,19 @@ struct ContentView: View {
             }
             .tint(AppColors.primary)
             .onAppear {
+                // Auto-select first profile if none selected
+                if profileStore.selectedProfileID == nil,
+                   let first = profileStore.profiles.first {
+                    profileStore.selectProfile(first.id)
+                }
                 loadSelectedProfile()
             }
             .onChange(of: profileStore.selectedProfileID) {
+                loadSelectedProfile()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .profileDidLoad)) { _ in
+                // Switch to journal tab and reload when a profile is loaded
+                selectedTab = .journal
                 loadSelectedProfile()
             }
             .onReceive(NotificationCenter.default.publisher(for: .navigateToJournalEntry)) { notification in
@@ -61,6 +79,9 @@ struct ContentView: View {
                     documentVM.selectedEntryID = entryID
                     selectedTab = .journal
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .navigateToChat)) { _ in
+                selectedTab = .chat
             }
         }
     }

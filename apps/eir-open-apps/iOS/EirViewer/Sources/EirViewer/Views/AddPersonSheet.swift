@@ -9,6 +9,8 @@ struct AddPersonSheet: View {
     @State private var parsedDoc: EirDocument?
     @State private var displayName: String = ""
     @State private var showFilePicker = false
+    @State private var showQRScanner = false
+    @State private var shouldDismissAfterChild = false
     @State private var errorMessage: String?
 
     var body: some View {
@@ -17,7 +19,7 @@ struct AddPersonSheet: View {
                 if let doc = parsedDoc, let url = selectedURL {
                     parsedInfoView(doc: doc, url: url)
                 } else {
-                    filePickerView
+                    importOptionsView
                 }
 
                 Spacer()
@@ -53,34 +55,101 @@ struct AddPersonSheet: View {
                 errorMessage = error.localizedDescription
             }
         }
+        .sheet(isPresented: $showQRScanner, onDismiss: {
+            // After QR scanner finishes dismissing, dismiss AddPersonSheet if a profile was loaded
+            if shouldDismissAfterChild {
+                shouldDismissAfterChild = false
+                dismiss()
+            }
+        }) {
+            QRScannerView()
+        }
+        // Auto-dismiss when a profile is loaded
+        .onReceive(NotificationCenter.default.publisher(for: .profileDidLoad)) { _ in
+            if showQRScanner {
+                // QR scanner loaded a profile — dismiss QR first, then self via onDismiss
+                shouldDismissAfterChild = true
+                showQRScanner = false
+            } else {
+                // File import flow — no child sheet, dismiss directly
+                dismiss()
+            }
+        }
     }
 
-    // MARK: - File Picker
+    // MARK: - Import Options
 
-    private var filePickerView: some View {
+    private var importOptionsView: some View {
         VStack(spacing: 12) {
-            VStack(spacing: 16) {
-                Image(systemName: "doc.badge.plus")
-                    .font(.system(size: 32))
-                    .foregroundColor(AppColors.textSecondary)
+            // File import option
+            Button {
+                showFilePicker = true
+            } label: {
+                HStack(spacing: 14) {
+                    Image(systemName: "doc.badge.plus")
+                        .font(.title2)
+                        .foregroundColor(AppColors.primary)
+                        .frame(width: 36)
 
-                Text("Select an .eir or .yaml file")
-                    .font(.callout)
-                    .foregroundColor(AppColors.text)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Import from File")
+                            .font(.headline)
+                            .foregroundColor(AppColors.text)
+                        Text("Open an .eir or .yaml file")
+                            .font(.caption)
+                            .foregroundColor(AppColors.textSecondary)
+                    }
 
-                Button("Choose File...") {
-                    showFilePicker = true
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundColor(AppColors.textSecondary)
                 }
-                .buttonStyle(.bordered)
+                .padding(16)
+                .background(AppColors.card)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(AppColors.border, lineWidth: 0.5)
+                )
             }
-            .frame(maxWidth: .infinity)
-            .padding(24)
-            .background(AppColors.card)
-            .cornerRadius(12)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(AppColors.border, style: StrokeStyle(lineWidth: 2, dash: [6]))
-            )
+            .buttonStyle(.plain)
+
+            // QR code import option
+            Button {
+                showQRScanner = true
+            } label: {
+                HStack(spacing: 14) {
+                    Image(systemName: "qrcode.viewfinder")
+                        .font(.title2)
+                        .foregroundColor(AppColors.primary)
+                        .frame(width: 36)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Scan QR Code")
+                            .font(.headline)
+                            .foregroundColor(AppColors.text)
+                        Text("Transfer from your Mac")
+                            .font(.caption)
+                            .foregroundColor(AppColors.textSecondary)
+                    }
+
+                    Spacer()
+
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundColor(AppColors.textSecondary)
+                }
+                .padding(16)
+                .background(AppColors.card)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(AppColors.border, lineWidth: 0.5)
+                )
+            }
+            .buttonStyle(.plain)
 
             if let error = errorMessage {
                 Text(error)
@@ -172,7 +241,7 @@ struct AddPersonSheet: View {
         if let profile = profileStore.addProfile(displayName: displayName, fileURL: url) {
             profileStore.selectProfile(profile.id)
         }
-        dismiss()
+        // dismiss handled by .onReceive(.profileDidLoad)
     }
 
     private func initials(for name: String) -> String {

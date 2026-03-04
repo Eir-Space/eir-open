@@ -97,6 +97,60 @@ class ChatThreadStore: ObservableObject {
         threads.first { $0.id == selectedThreadID }
     }
 
+    // MARK: - Entry Context Management
+
+    var excludedEntryIDs: Set<String> {
+        selectedThread?.excludedEntryIDs ?? []
+    }
+
+    func isEntryExcluded(_ entryID: String) -> Bool {
+        excludedEntryIDs.contains(entryID)
+    }
+
+    func excludeEntry(_ entryID: String) {
+        guard let idx = threads.firstIndex(where: { $0.id == selectedThreadID }) else { return }
+        threads[idx].excludedEntryIDs.insert(entryID)
+        if let profileID = currentProfileID { saveThreads(for: profileID) }
+        objectWillChange.send()
+    }
+
+    func includeEntry(_ entryID: String) {
+        guard let idx = threads.firstIndex(where: { $0.id == selectedThreadID }) else { return }
+        threads[idx].excludedEntryIDs.remove(entryID)
+        if let profileID = currentProfileID { saveThreads(for: profileID) }
+        objectWillChange.send()
+    }
+
+    func toggleEntry(_ entryID: String) {
+        if isEntryExcluded(entryID) {
+            includeEntry(entryID)
+        } else {
+            excludeEntry(entryID)
+        }
+    }
+
+    func excludeAllEntries(from document: EirDocument?) {
+        guard let idx = threads.firstIndex(where: { $0.id == selectedThreadID }),
+              let entries = document?.entries else { return }
+        threads[idx].excludedEntryIDs = Set(entries.map(\.id))
+        if let profileID = currentProfileID { saveThreads(for: profileID) }
+        objectWillChange.send()
+    }
+
+    func includeAllEntries() {
+        guard let idx = threads.firstIndex(where: { $0.id == selectedThreadID }) else { return }
+        threads[idx].excludedEntryIDs = []
+        if let profileID = currentProfileID { saveThreads(for: profileID) }
+        objectWillChange.send()
+    }
+
+    func includedEntries(from document: EirDocument?) -> [EirEntry] {
+        guard let entries = document?.entries else { return [] }
+        let excluded = excludedEntryIDs
+        if excluded.isEmpty { return entries }
+        return entries.filter { !excluded.contains($0.id) }
+    }
+
     // MARK: - Persistence
 
     private func saveThreads(for profileID: UUID) {

@@ -3,6 +3,11 @@ import Foundation
 struct EirDocument: Codable {
     let metadata: EirMetadata
     let entries: [EirEntry]
+
+    /// Return a copy with excluded entries filtered out
+    func filteringEntries(excluding ids: Set<String>) -> EirDocument {
+        EirDocument(metadata: metadata, entries: entries.filter { !ids.contains($0.id) })
+    }
 }
 
 struct EirMetadata: Codable {

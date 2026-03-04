@@ -2,6 +2,13 @@ import SwiftUI
 
 struct EntryDetailView: View {
     let entry: EirEntry
+    @EnvironmentObject var chatVM: ChatViewModel
+    @EnvironmentObject var documentVM: DocumentViewModel
+    @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var profileStore: ProfileStore
+    @EnvironmentObject var chatThreadStore: ChatThreadStore
+    @EnvironmentObject var agentMemoryStore: AgentMemoryStore
+    @EnvironmentObject var localModelManager: LocalModelManager
 
     var body: some View {
         ScrollView {
@@ -136,5 +143,23 @@ struct EntryDetailView: View {
             .padding(24)
         }
         .background(AppColors.background)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    guard let profileID = profileStore.selectedProfileID else { return }
+                    chatVM.explainEntry(
+                        entry,
+                        document: documentVM.document,
+                        settingsVM: settingsVM,
+                        chatThreadStore: chatThreadStore,
+                        profileID: profileID,
+                        agentMemoryStore: agentMemoryStore,
+                        localModelManager: localModelManager
+                    )
+                } label: {
+                    Label("Explain with AI", systemImage: "sparkles")
+                }
+            }
+        }
     }
 }

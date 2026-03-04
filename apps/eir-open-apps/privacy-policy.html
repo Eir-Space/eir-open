@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eir - Privacy Policy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.3rem; margin-top: 2rem; }
+        p, li { font-size: 1rem; }
+        ul { padding-left: 1.5rem; }
+        .updated { color: #666; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <h1>Eir - Privacy Policy</h1>
+    <p class="updated">Last updated: March 3, 2026</p>
+
+    <h2>Overview</h2>
+    <p>Eir ("the app") is a personal health records viewer with on-device AI assistance. Your privacy is fundamental to our design: all data processing happens on your device, and we do not operate any servers that collect your information.</p>
+
+    <h2>Data We Access</h2>
+    <ul>
+        <li><strong>Apple HealthKit data</strong> &mdash; The app requests read-only access to health data (vitals, activity, lab values) from Apple Health. This data is displayed alongside your medical records and is never transmitted off your device.</li>
+        <li><strong>Medical record files</strong> &mdash; You may import medical records in EIR/YAML format from files or via QR code transfer from a Mac. These files are stored locally on your device.</li>
+        <li><strong>Camera</strong> &mdash; The app uses your camera solely to scan QR codes for transferring medical records from the companion Mac app. No images are stored or transmitted.</li>
+    </ul>
+
+    <h2>On-Device AI Processing</h2>
+    <p>Eir includes an on-device large language model (LLM) that helps you understand your medical records. This AI runs entirely on your device. No health data, medical records, or conversation history is sent to any external server when using the on-device model.</p>
+    <p>If you choose to configure a cloud-based LLM provider in Settings, your conversation data will be sent to that provider according to their privacy policy. This is entirely optional and requires explicit setup by you.</p>
+
+    <h2>Data Storage</h2>
+    <ul>
+        <li><strong>Medical records and chat history</strong> are stored locally on your device using encrypted storage.</li>
+        <li><strong>API keys</strong> (if you configure a cloud LLM) are stored securely in the iOS Keychain.</li>
+        <li><strong>HealthKit data</strong> remains in Apple Health; the app reads it on demand and does not duplicate or cache it.</li>
+    </ul>
+
+    <h2>Data Sharing</h2>
+    <p>We do not share your data with any third parties. The app contains no analytics, advertising, or tracking frameworks. We do not collect, transmit, or sell any personal or health information.</p>
+
+    <h2>Data Retention</h2>
+    <p>All data is stored locally on your device. Deleting the app removes all locally stored medical records, chat history, and settings. HealthKit data is managed by Apple Health and is not affected by uninstalling Eir.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>The app does not knowingly collect information from children under 13. The app is rated 4+ and is suitable for all ages.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, contact us at:<br>
+    <a href="mailto:birger.moell@gmail.com">birger.moell@gmail.com</a></p>
+</body>
+</html>

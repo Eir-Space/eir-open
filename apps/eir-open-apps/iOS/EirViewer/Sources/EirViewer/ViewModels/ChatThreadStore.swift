@@ -17,9 +17,16 @@ class ChatThreadStore: ObservableObject {
         messages = []
 
         let key = "eir_chat_threads_\(profileID.uuidString)"
-        if let data = UserDefaults.standard.data(forKey: key),
-           let decoded = try? JSONDecoder().decode([ChatThread].self, from: data) {
+
+        // Try encrypted store first, then migrate from UserDefaults
+        if let decoded = EncryptedStore.load([ChatThread].self, forKey: key) {
             threads = decoded.sorted { $0.updatedAt > $1.updatedAt }
+        } else if let data = UserDefaults.standard.data(forKey: key),
+                  let decoded = try? JSONDecoder().decode([ChatThread].self, from: data) {
+            threads = decoded.sorted { $0.updatedAt > $1.updatedAt }
+            // Migrate to encrypted store
+            EncryptedStore.save(decoded, forKey: key)
+            UserDefaults.standard.removeObject(forKey: key)
         } else {
             threads = []
         }
@@ -44,9 +51,14 @@ class ChatThreadStore: ObservableObject {
     func selectThread(_ threadID: UUID) {
         selectedThreadID = threadID
         let key = "eir_chat_messages_\(threadID.uuidString)"
-        if let data = UserDefaults.standard.data(forKey: key),
-           let decoded = try? JSONDecoder().decode([ChatMessage].self, from: data) {
+
+        if let decoded = EncryptedStore.load([ChatMessage].self, forKey: key) {
             messages = decoded
+        } else if let data = UserDefaults.standard.data(forKey: key),
+                  let decoded = try? JSONDecoder().decode([ChatMessage].self, from: data) {
+            messages = decoded
+            EncryptedStore.save(decoded, forKey: key)
+            UserDefaults.standard.removeObject(forKey: key)
         } else {
             messages = []
         }
@@ -54,7 +66,9 @@ class ChatThreadStore: ObservableObject {
 
     func deleteThread(_ threadID: UUID) {
         // Remove messages
-        UserDefaults.standard.removeObject(forKey: "eir_chat_messages_\(threadID.uuidString)")
+        let msgKey = "eir_chat_messages_\(threadID.uuidString)"
+        EncryptedStore.remove(forKey: msgKey)
+        UserDefaults.standard.removeObject(forKey: msgKey)
 
         // Remove thread
         threads.removeAll { $0.id == threadID }
@@ -82,9 +96,7 @@ class ChatThreadStore: ObservableObject {
     func persistMessages() {
         guard let threadID = selectedThreadID else { return }
         let key = "eir_chat_messages_\(threadID.uuidString)"
-        if let data = try? JSONEncoder().encode(messages) {
-            UserDefaults.standard.set(data, forKey: key)
-        }
+        EncryptedStore.save(messages, forKey: key)
     }
 
     func updateThreadTitle(_ threadID: UUID, title: String) {
@@ -103,16 +115,13 @@ class ChatThreadStore: ObservableObject {
 
     private func saveThreads(for profileID: UUID) {
         let key = "eir_chat_threads_\(profileID.uuidString)"
-        if let data = try? JSONEncoder().encode(threads) {
-            UserDefaults.standard.set(data, forKey: key)
-        }
+        EncryptedStore.save(threads, forKey: key)
     }
 
     private func touchThread() {
         guard let threadID = selectedThreadID,
               let index = threads.firstIndex(where: { $0.id == threadID }) else { return }
         threads[index].updatedAt = Date()
-        // Re-sort so most recent is first
         threads.sort { $0.updatedAt > $1.updatedAt }
         if let profileID = currentProfileID {
             saveThreads(for: profileID)

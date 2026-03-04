@@ -3,12 +3,6 @@ import SQLiteVec
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // SPM builds produce a raw executable, not an .app bundle.
-        // macOS won't deliver keyboard events unless we explicitly
-        // register as a regular (Dock-visible) app and activate.
-        NSApp.setActivationPolicy(.regular)
-        NSApp.activate(ignoringOtherApps: true)
-
         // Initialize sqlite-vec extension
         try? SQLiteVec.initialize()
     }
@@ -45,6 +39,7 @@ struct EirViewerApp: App {
     @StateObject private var agentMemoryStore = AgentMemoryStore()
     @StateObject private var embeddingStore = EmbeddingStore()
     @StateObject private var modelManager = ModelManager()
+    @StateObject private var localModelManager = LocalModelManager()
 
     var body: some Scene {
         WindowGroup {
@@ -58,6 +53,7 @@ struct EirViewerApp: App {
                 .environmentObject(agentMemoryStore)
                 .environmentObject(embeddingStore)
                 .environmentObject(modelManager)
+                .environmentObject(localModelManager)
                 .onAppear {
                     loadFromCommandLine()
                 }
@@ -91,6 +87,7 @@ struct EirViewerApp: App {
                 .environmentObject(embeddingStore)
                 .environmentObject(modelManager)
                 .environmentObject(profileStore)
+                .environmentObject(localModelManager)
         }
     }
 

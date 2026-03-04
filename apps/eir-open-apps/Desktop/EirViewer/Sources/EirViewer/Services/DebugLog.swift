@@ -5,7 +5,10 @@ import os
 enum DebugLog {
     private static let logger = Logger(subsystem: "com.eir.viewer", category: "AgentLoop")
     private static let logFileURL: URL = {
-        let url = URL(fileURLWithPath: "/tmp/eirviewer-debug.log")
+        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("EirViewer")
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let url = dir.appendingPathComponent("eirviewer-debug.log")
         // Clear on launch
         try? "".write(to: url, atomically: true, encoding: .utf8)
         return url

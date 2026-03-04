@@ -108,12 +108,16 @@ struct JournalView: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
+                    // Person list
                     ForEach(profileStore.profiles) { profile in
                         Button {
                             profileStore.selectProfile(profile.id)
                         } label: {
                             HStack {
                                 Text(profile.displayName)
+                                if let count = profile.totalEntries {
+                                    Text("(\(count))")
+                                }
                                 if profile.id == profileStore.selectedProfileID {
                                     Image(systemName: "checkmark")
                                 }
@@ -127,7 +131,14 @@ struct JournalView: View {
                         Label("Add Person...", systemImage: "person.badge.plus")
                     }
                 } label: {
-                    Image(systemName: "person.crop.circle")
+                    HStack(spacing: 4) {
+                        Image(systemName: "person.crop.circle")
+                        if profileStore.profiles.count > 1 {
+                            Text(profileStore.selectedProfile?.initials ?? "")
+                                .font(.caption2)
+                                .fontWeight(.semibold)
+                        }
+                    }
                 }
             }
         }

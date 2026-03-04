@@ -5,6 +5,7 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
     case anthropic = "Anthropic"
     case groq = "Groq"
     case custom = "Custom"
+    case local = "On-Device"
 
     var id: String { rawValue }
 
@@ -13,7 +14,7 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
         case .openai: return "https://api.openai.com/v1"
         case .anthropic: return "https://api.anthropic.com/v1"
         case .groq: return "https://api.groq.com/openai/v1"
-        case .custom: return ""
+        case .custom, .local: return ""
         }
     }
 
@@ -23,15 +24,18 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
         case .anthropic: return "claude-sonnet-4-5-20250929"
         case .groq: return "llama-3.3-70b-versatile"
         case .custom: return ""
+        case .local: return "mlx-community/Qwen3.5-0.8B-4bit"
         }
     }
 
     var usesOpenAICompat: Bool {
         switch self {
         case .openai, .groq, .custom: return true
-        case .anthropic: return false
+        case .anthropic, .local: return false
         }
     }
+
+    var isLocal: Bool { self == .local }
 }
 
 struct LLMProviderConfig: Codable, Identifiable {
