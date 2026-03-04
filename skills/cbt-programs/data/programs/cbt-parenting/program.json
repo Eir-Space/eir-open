@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-parenting",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "parenting-stress-emotional-reactivity",
+    "name": "Parenting Stress & Emotional Reactivity"
+  },
+  "tags": [
+    "cbt",
+    "parenting-stress-emotional-reactivity",
+    "emotional-regulation",
+    "trigger-identification",
+    "repair-connection",
+    "discipline-vs-punishment",
+    "parental-burnout"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-parenting.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 8-12 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Parenting Stress & Emotional Reactivity",
+      "Emotional Regulation",
+      "Trigger Identification",
+      "Repair & Connection",
+      "Discipline vs. Punishment",
+      "Parental Burnout"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

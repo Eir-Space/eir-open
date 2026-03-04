@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-workplace-communication",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "professional-development",
+    "name": "Professional Development"
+  },
+  "tags": [
+    "cbt",
+    "professional-development",
+    "written-communication",
+    "verbal-communication",
+    "video-communication",
+    "difficult-conversations",
+    "active-listening",
+    "professional-presence"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-work-place-communication.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6–8 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Professional Development",
+      "Written communication",
+      "Verbal communication",
+      "Video communication",
+      "Difficult conversations",
+      "Active listening",
+      "Professional presence"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

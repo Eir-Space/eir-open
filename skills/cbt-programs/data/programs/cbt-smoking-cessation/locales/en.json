@@ -1,0 +1,140 @@
+{
+  "language": "en",
+  "title": "Freedom from Smoking: A CBT Approach to Quitting",
+  "summary": "An evidence-based CBT program designed to help you quit smoking and stay quit. This program addresses the psychological and behavioral aspects of smoking, teaches craving management techniques, provides relapse prevention strategies, and helps you build a smoke-free identity. Learn to break free from nicotine dependence and create a healthier life.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding Your Relationship with Smoking",
+      "overview": "We begin by exploring your personal history with smoking. When did you start? Why? What role does smoking play in your life now? You will learn about 'Nicotine Dependence'—how nicotine affects your brain and creates physical and psychological dependence. We explore 'The Functions of Smoking'—what smoking does for you (stress relief, social connection, habit, etc.). Understanding these functions helps you find alternatives. The concept of 'Smoking Triggers' is introduced—situations, emotions, or thoughts that cue the urge to smoke. You will complete a 'Smoking Pattern Assessment'—tracking when, where, why, and with whom you smoke to identify patterns. We address 'Motivation & Readiness'—assessing your readiness to quit and strengthening your motivation. Finally, we set the foundation: Quitting smoking is a process, not an event. It requires preparation, support, and persistence.",
+      "takeaways": [
+        "Understanding why you smoke helps you quit effectively.",
+        "Smoking serves multiple functions; you'll need alternatives for each.",
+        "Triggers are predictable; knowing them helps you prepare.",
+        "Readiness and motivation are key to successful quitting."
+      ],
+      "exercises": [
+        "The Smoking History Timeline: Write your smoking story. When did you start? Why? How has your relationship with smoking changed over time?",
+        "The Function Analysis: List all the functions smoking serves for you (stress relief, social, habit, etc.). For each, rate how important it is (1-10).",
+        "The Smoking Pattern Log: Track your smoking for 3 days. Record: time, location, situation, emotions, who you're with, what you're doing. Identify patterns."
+      ],
+      "homework": [
+        "Continue your Smoking Pattern Log for 4 more days. The longer you track, the clearer patterns become.",
+        "List Your Reasons to Quit: Write down all reasons you want to quit. Be specific. Review this list daily. Add to it as you think of more reasons.",
+        "Assess Your Readiness: On a scale of 1-10, how ready are you to quit? What would need to change to increase your readiness?"
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Preparing to Quit: Building Your Quit Plan",
+      "overview": "This module focuses on preparation—the critical phase before quitting that significantly increases success rates. We explore 'Quit Date Selection'—choosing the right time to quit, considering stress levels, support availability, and life circumstances. You will learn 'Trigger Identification & Planning'—anticipating your triggers and creating specific plans for managing them. The concept of 'Alternative Coping Strategies' is introduced—building a toolkit of non-smoking ways to meet the functions smoking currently serves. We address 'Social Support'—identifying people who can support your quit attempt and how to enlist their help. You will create a 'Quit Plan'—a comprehensive, personalized plan for your quit attempt. Finally, we practice 'Confidence Building'—addressing doubts and building belief in your ability to quit.",
+      "takeaways": [
+        "Preparation significantly increases quit success rates.",
+        "Having a plan for triggers prevents impulsive smoking.",
+        "Social support is crucial—quitting alone is harder.",
+        "Building alternatives before quitting makes the transition smoother."
+      ],
+      "exercises": [
+        "The Trigger Map: List all situations, emotions, people, places, or times that trigger smoking. For each, create a specific plan: 'If [trigger], then I will [alternative strategy].'",
+        "Build Your Alternative Toolkit: For each function smoking serves, list 3-5 alternatives. Include immediate strategies (breathing) and longer-term strategies (exercise, hobbies).",
+        "Create Your Support Network: List 3-5 people who can support your quit attempt. How will you ask for their help? What specific support do you need?"
+      ],
+      "homework": [
+        "Set Your Quit Date: Choose a date 1-2 weeks away. Consider: low-stress period, support available, time to prepare. Mark it on your calendar.",
+        "Practice Your Alternatives: Before your quit date, practice 3 alternative strategies daily. Get comfortable with them. Notice which work best.",
+        "Finalize Your Quit Plan: Write it down. Include quit date, triggers and plans, alternatives, support system, reasons to quit. Review it daily until quit date."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Managing Cravings & Withdrawal",
+      "overview": "This module addresses the immediate challenges of quitting: cravings and withdrawal symptoms. We explore 'Understanding Cravings'—what they are, why they happen, and how long they typically last. You will learn 'Craving Management Techniques'—practical strategies for riding out cravings without smoking. The concept of 'Urge Surfing' is introduced—observing cravings without acting on them, knowing they will pass. We address 'Withdrawal Symptoms'—what to expect (irritability, anxiety, difficulty concentrating, etc.) and how to manage them. You will practice 'Distraction Techniques'—engaging your mind and body to reduce craving intensity. Finally, we create a 'Craving Emergency Kit'—immediate strategies you can use when cravings are intense.",
+      "takeaways": [
+        "Cravings are temporary—they peak and then subside, usually within 5-10 minutes.",
+        "Urge surfing—observing without acting—reduces craving power.",
+        "Withdrawal symptoms are temporary and manageable.",
+        "Distraction and alternative activities can reduce craving intensity."
+      ],
+      "exercises": [
+        "The Craving Observation Practice: Next time you have a craving (before or after quitting), observe it. Where do you feel it? What thoughts come? How long does it last? Practice urge surfing.",
+        "Create Your Distraction List: List 20 activities you can do when cravings hit (walk, call friend, puzzle, clean, etc.). Keep this list accessible.",
+        "Build Your Craving Emergency Kit: List 5 immediate strategies for intense cravings (breathing, cold water, movement, etc.). Practice them. Have them ready."
+      ],
+      "homework": [
+        "Practice urge surfing with current cravings (if still smoking) or past cravings (if quit). Notice how observing changes the experience.",
+        "Use distraction techniques when cravings hit. Try different activities. Notice which are most effective for you.",
+        "If experiencing withdrawal, track symptoms. Notice patterns: When are they worst? What helps? Remember: They're temporary."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Relapse Prevention: Staying Quit",
+      "overview": "This module focuses on the critical skill of relapse prevention—maintaining your quit long-term. We explore 'The Relapse Process'—understanding that relapse is usually a process, not a single event, and learning to recognize warning signs. You will learn 'High-Risk Situations'—identifying situations that increase relapse risk and creating specific plans for managing them. The concept of 'Lapse vs. Relapse' is introduced. A lapse (one cigarette) doesn't have to become a relapse (return to regular smoking). We address 'Cognitive Factors in Relapse'—thoughts that can lead to smoking ('just one won't hurt,' 'I've already failed') and how to challenge them. You will practice 'Problem-Solving for Challenges'—systematic approaches to addressing obstacles that arise. Finally, we create a 'Relapse Prevention Plan'—a personalized system for maintaining your quit long-term.",
+      "takeaways": [
+        "Relapse is usually a process with warning signs—recognizing them early helps prevent relapse.",
+        "High-risk situations are predictable—having a plan prevents impulsive smoking.",
+        "A lapse doesn't have to become a relapse—how you respond matters.",
+        "Challenging unhelpful thoughts prevents cognitive relapse."
+      ],
+      "exercises": [
+        "The Warning Signs Checklist: List warning signs that might precede relapse (stopping strategies, thinking about smoking, avoiding support, etc.). Review this weekly.",
+        "Identify Your High-Risk Situations: List 5-7 situations that increase your risk of smoking. For each, create a specific prevention plan.",
+        "The Lapse Response Plan: Write down: 'If I have a lapse (smoke one cigarette), I will...' Create a specific recovery plan."
+      ],
+      "homework": [
+        "Review your Warning Signs Checklist weekly. If you notice any signs, take action immediately. Return to your strategies.",
+        "Practice your High-Risk Situation plans. Visualize yourself in these situations, using your strategies successfully.",
+        "If you have a lapse, use your Lapse Response Plan. Don't let one cigarette become a relapse. Get back on track immediately."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Building a Smoke-Free Identity & Lifestyle",
+      "overview": "This module focuses on the longer-term work of building a smoke-free identity and lifestyle. We explore 'Identity Change'—shifting from 'I'm a smoker' to 'I'm a non-smoker' or 'I'm an ex-smoker.' You will learn 'Reward Systems'—celebrating milestones and rewarding yourself for staying quit. The concept of 'New Routines' is introduced—building new habits and routines that don't involve smoking. We address 'Social Changes'—navigating social situations, relationships with smokers, and building a smoke-free social life. You will practice 'Values-Based Living'—identifying what matters to you and how quitting supports those values. Finally, we create a 'Smoke-Free Lifestyle Plan'—a vision for your life as a non-smoker.",
+      "takeaways": [
+        "Identity change supports behavior change—seeing yourself as a non-smoker helps you stay quit.",
+        "Celebrating milestones reinforces your quit and builds confidence.",
+        "New routines replace old smoking routines, making quitting easier.",
+        "Living according to your values provides motivation to stay quit."
+      ],
+      "exercises": [
+        "The Identity Shift: Write 'I am a non-smoker' 10 times daily for one week. Notice how this affects your thoughts and cravings.",
+        "Create Your Milestone Rewards: Plan rewards for milestones (1 day, 1 week, 1 month, 3 months, 6 months, 1 year). Make them meaningful. Celebrate your progress.",
+        "Design Your New Routines: Identify 3 old routines that involved smoking. Create new, smoke-free routines to replace them. Practice them for 2 weeks."
+      ],
+      "homework": [
+        "Practice your identity statements daily. 'I am a non-smoker.' 'I don't smoke.' Notice how this language affects your mindset.",
+        "Celebrate your milestones. Use your reward system. Acknowledge your progress. You're doing something difficult—honor that.",
+        "Build your new routines. Replace old smoking routines with smoke-free alternatives. Make them consistent. Make them yours."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Long-Term Maintenance & Continued Success",
+      "overview": "The final module focuses on maintaining your quit long-term and handling ongoing challenges. We explore 'The Maintenance Phase'—understanding that quitting is a long-term process requiring ongoing attention. You will learn 'Ongoing Relapse Prevention'—strategies for maintaining your quit as time passes and life changes. The concept of 'Dealing with Slips' is addressed—how to handle lapses if they occur and get back on track. We address 'Life Changes & Smoking'—how major life events (stress, celebrations, losses) can trigger smoking urges and how to manage them. You will practice 'Problem-Solving for New Challenges'—addressing obstacles that arise as your smoke-free life evolves. Finally, we write a 'Smoke-Free Commitment'—a personal statement of your commitment to staying quit long-term.",
+      "takeaways": [
+        "Maintaining a quit requires ongoing attention and strategies.",
+        "Life changes can trigger smoking urges; having plans helps.",
+        "Slips can happen; how you respond determines the outcome.",
+        "You have the tools and knowledge to stay quit long-term."
+      ],
+      "exercises": [
+        "Create Your Long-Term Maintenance Plan: List strategies you'll continue using. Include: ongoing trigger management, support systems, alternative coping strategies, identity reinforcement.",
+        "The Life Change Preparation: List potential life changes that might trigger smoking urges (stress, celebrations, losses, etc.). For each, create a prevention plan.",
+        "Write Your Smoke-Free Commitment: In 200-300 words, write your personal commitment to staying quit. Include your reasons, your strategies, and your vision for your smoke-free future."
+      ],
+      "homework": [
+        "Review your Maintenance Plan monthly. Adjust as needed. Continue using your strategies. Stay vigilant.",
+        "Continue celebrating milestones. 3 months, 6 months, 1 year, 2 years—every milestone matters. Honor your progress.",
+        "If you experience a slip, use your Lapse Response Plan immediately. Don't let one cigarette become a relapse. Get back on track.",
+        "Share your Smoke-Free Commitment with someone you trust. Ask them to remind you of it if you ever struggle.",
+        "Continue building your smoke-free life. Every day is an opportunity. Every day you don't smoke is a success. You've got this."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

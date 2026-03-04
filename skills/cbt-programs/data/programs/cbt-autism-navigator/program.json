@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-autism-navigator",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "autism-spectrum-condition",
+    "name": "Autism Spectrum Condition"
+  },
+  "tags": [
+    "cbt",
+    "autism-spectrum-condition",
+    "social-navigation",
+    "sensory-regulation",
+    "emotional-literacy",
+    "executive-functioning",
+    "self-advocacy"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-autism-navigator.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 4–6 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Autism Spectrum Condition",
+      "Social navigation",
+      "Sensory regulation",
+      "Emotional literacy",
+      "Executive functioning",
+      "Self-advocacy"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

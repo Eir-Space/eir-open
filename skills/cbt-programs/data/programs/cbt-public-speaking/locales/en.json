@@ -1,0 +1,65 @@
+{
+  "language": "en",
+  "title": "The Fearless Presenter: Speaking with Confidence",
+  "summary": "A practical, exposure-based CBT program to transform stage fright into stage presence. You will learn to manage the physiological rush of adrenaline, challenge the 'Spotlight Effect,' structure your message for impact, and build confidence through graded exposure exercises.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Reframing the Rush",
+      "overview": "We normalize the fear: Glossophobia is one of the most common fears. The body perceives the audience as a 'predator pack.' We reframe the symptoms: A racing heart is not a heart attack; it is 'energy.' It is the body preparing you to perform. We distinguish between 'Anxiety' (fear of failure) and 'Excitement' (readiness). Physiologically, they are almost identical. We introduce 'The Pause.' Learning to stand in silence before speaking to ground the nervous system.",
+      "takeaways": [
+        "Adrenaline is fuel; don't try to get rid of it, use it.",
+        "The audience wants you to succeed; they are not waiting for you to die.",
+        "You don't need to be calm to be effective; you just need to be brave."
+      ],
+      "exercises": [
+        "The Re-labeling Drill: Run in place for 1 minute to get your heart rate up. Say out loud: 'I am excited! I am ready!'",
+        "The Power Pose: Practice standing tall (arms out or hands on hips) for 2 minutes before a low-stakes interaction."
+      ],
+      "homework": [
+        "Practice the Re-labeling Drill daily.",
+        "Watch a TED talk and observe how the speaker handles pauses."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • The Spotlight Effect & Cognitive Distortions",
+      "overview": "We tackle the 'Spotlight Effect'—the false belief that everyone is noticing every tiny mistake you make. We challenge 'Mind Reading' ('They look bored, they must hate me'). We explore 'Perfectionism.' The belief that a good speech must be flawless. We shift focus from 'How do I look?' to 'What can I give?' (Service mindset).",
+      "takeaways": [
+        "People notice 10% of what you think they notice.",
+        "A mistake is not a failure; it makes you relatable.",
+        "Focusing on the message (giving) reduces self-consciousness."
+      ],
+      "exercises": [
+        "The Mistake Practice: Record yourself speaking for 1 minute and deliberately stumble or say 'um.' Watch it back. Realize it's not a disaster.",
+        "Audience Perspective: Next time you watch a speaker, notice how forgiving you are. Apply that grace to yourself."
+      ],
+      "homework": [
+        "Record a 2-minute video on a topic you love. Watch it only once, looking for what went *right*."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Exposure: Climbing the Stage",
+      "overview": "We create a hierarchy of speaking situations. Low stakes: Speaking to a pet, a mirror, a voice memo. Medium stakes: Asking a question in a meeting, proposing a toast. High stakes: Giving a presentation. We use 'Toastmasters' style drills (Table Topics) to practice thinking on your feet.",
+      "takeaways": [
+        "Confidence comes from doing, not thinking.",
+        "Micro-exposures build tolerance.",
+        "Recovery from a stumble is more impressive than a perfect run."
+      ],
+      "exercises": [
+        "The Question Challenge: Ask one question in a group setting this week.",
+        "The Toast: Propose a short (30-second) toast at dinner with friends or family."
+      ],
+      "homework": [
+        "Complete one item from your hierarchy.",
+        "Sign up for a low-stakes speaking opportunity (or volunteer to present a small update at work)."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

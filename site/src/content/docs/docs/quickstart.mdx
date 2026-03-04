@@ -15,7 +15,7 @@ Run the unified install script for an interactive menu:
 bash <(curl -fsSL https://raw.githubusercontent.com/eir-space/eir-open/main/install.sh)
 ```
 
-Installs medication skills, Health.md, Eir Apps, and OpenClaw integration with an interactive menu. Requires macOS, Node.js 18+, and optionally Python 3.
+Installs medication skills, CBT programs module, Health.md, Eir Apps, and OpenClaw integration with an interactive menu. Requires macOS, Node.js 18+, and optionally Python 3.
 
 ## Individual installs
 
@@ -40,6 +40,23 @@ fass-lookup Alvedon
 
 ```bash
 pip install health-md pyyaml beautifulsoup4
+```
+
+### CBT Programs Module
+
+```bash
+cd /path/to/eir-open
+npm install -g ./skills/cbt-programs
+cbt-programs list
+```
+
+LLM-assisted improve flow (host agent provides JSON plan):
+
+```bash
+cbt-programs improve cbt-insomnia \
+  --llm \
+  --llm-plan-file ./llm-improve-plan.json \
+  --dry-run
 ```
 
 ### Eir Open Apps
@@ -74,12 +91,14 @@ After installing medication skills:
 ```bash
 fass-lookup paracetamol
 us-medications "lisinopril"
+cbt-programs list
 ```
 
 ## Next steps
 
 - [US FDA Medications](/eir-open/docs/us-medications/) — 81,212 medications, drug interactions
 - [Swedish Medications](/eir-open/docs/swedish-medications/) — FASS database, 9,064 medications
+- [CBT Programs Registry](/eir-open/docs/cbt-programs/) — modular, multilingual, provenance-aware CBT programs
 - [EIR Health Data Standard](/eir-open/docs/health-md-standard/) — LLM-optimized health data format
 - [Eir Open Apps](/eir-open/docs/eir-open-apps/) — Desktop, iOS, Chrome extension for Swedish medical records
 - [EIR Provider Directory](/eir-open/docs/eir-provider-directory/) — Sweden-wide care finder with verified service capabilities

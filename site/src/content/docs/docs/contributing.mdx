@@ -55,6 +55,29 @@ Browse [open issues](https://github.com/eir-space/eir-open/issues) and look for 
 
 ---
 
+## Contribute to CBT Programs (high impact)
+
+If you want to help quickly, this is one of the most useful contribution paths:
+
+1. Pick a program under `skills/cbt-programs/data/programs/<id>/`.
+2. Improve content quality, safety language, or recommendation signals.
+3. Add or improve translations in `locales/<lang>.json`.
+4. Update translation review status in `program.json`.
+5. Run validation and open a PR.
+
+Useful commands:
+
+```bash
+cd skills/cbt-programs
+node scripts/cbt_programs.js list
+node scripts/cbt_programs.js improve cbt-insomnia --interactive --dry-run
+node scripts/cbt_programs.js validate
+```
+
+For a full workflow guide, see [CBT Programs Registry](/eir-open/docs/cbt-programs/).
+
+---
+
 ## Dev Setup
 
 To run the docs site locally:

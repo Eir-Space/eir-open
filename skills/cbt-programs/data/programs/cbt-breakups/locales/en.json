@@ -1,0 +1,84 @@
+{
+  "language": "en",
+  "title": "Rebuilding the Self: Navigating Heartbreak",
+  "summary": "A compassionate, structured CBT program to help you navigate the grief, withdrawal, and identity crisis of a relationship ending. You will learn to manage intrusive thoughts of your ex, break the addiction cycle, rebuild your self-esteem, and create a future that feels hopeful and whole.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Neurobiology of Heartbreak",
+      "overview": "We validate the pain: MRI studies show heartbreak activates the same brain regions as physical pain. We explain the 'Addiction Model.' Love releases dopamine and oxytocin. A breakup puts you into chemical withdrawal. The urge to text is a craving, not a logical need. We normalize the symptoms: Obsessive thoughts, physical ache, insomnia, and panic. We introduce the 'No Contact' rule not as a game to get them back, but as a detox protocol for your brain. You will start a 'Craving Log' to track the urges to contact them.",
+      "takeaways": [
+        "You are not crazy; you are in withdrawal.",
+        "Contacting an ex resets the withdrawal clock.",
+        "The pain is a biological signal of separation, but it is not a command to act."
+      ],
+      "exercises": [
+        "The Digital Detox: Remove/Block/Mute the ex on all platforms. Delete the chat history (or archive it where you can't see it).",
+        "Craving Surfing: When the urge to text hits, set a timer for 10 minutes. Distract yourself. Notice if the urge fades."
+      ],
+      "homework": [
+        "Maintain strict No Contact for 7 days.",
+        "Journal the physical symptoms of grief (heaviness, tightness) to externalize them."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Stopping the Rumination",
+      "overview": "Heartbreak creates a loop of 'Why?' 'What if?' and 'If only.' This module targets obsessive rumination. We identify the 'Idealization Filter.' Your brain is replaying a highlight reel of the relationship, ignoring the bad parts. We use the 'Reality List.' Writing down every annoying, painful, or incompatible trait of the ex/relationship. Techniques for 'Thought Stopping' and 'Redirecting' when the memory loops start.",
+      "takeaways": [
+        "Your brain is lying to you about how perfect it was.",
+        "Searching for closure is a trap; you create your own closure.",
+        "Rumination keeps the wound open."
+      ],
+      "exercises": [
+        "The Ick List: Write a brutal list of everything you didn't like about them or the relationship. Read it whenever you miss them.",
+        "The 'Why' Ban: Stop asking 'Why did this happen?' Start asking 'What do I do now?'"
+      ],
+      "homework": [
+        "Read your Ick List 3 times a day.",
+        "Practice redirecting thoughts to the present moment (5-4-3-2-1 technique)."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Who Am I Now? Identity Reconstruction",
+      "overview": "Long relationships merge identities. The loss feels like losing a limb. This module focuses on 'Self-Concept Clarity.' We revisit the 'Venn Diagram of Me.' Reclaiming the parts of you that were suppressed or neglected in the relationship. We encourage 'Novelty.' Doing new things creates new neural pathways that don't have the ex's face on them. Addressing the fear of being alone.",
+      "takeaways": [
+        "You are not half a person; you are a whole person who was in a couple.",
+        "Recovery is an opportunity to redesign your life.",
+        "Solitude is not the same as loneliness."
+      ],
+      "exercises": [
+        "The Revival List: List 3 things you loved before the relationship that you stopped doing. Do one this week.",
+        "Solo Date: Go to a movie, dinner, or park alone. Practice enjoying your own company."
+      ],
+      "homework": [
+        "Execute one Revival activity.",
+        "Rearrange your furniture or change your bedding to signal a 'New Era' in your home."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • The Future Vision",
+      "overview": "Moving from looking back to looking forward. Challenging the 'scarcity mindset' ('I'll never find anyone like them'). Values clarification for future relationships. What do you actually want next time? Building a life that is so good you don't need a partner to complete it.",
+      "takeaways": [
+        "There are billions of people; scarcity is an illusion of grief.",
+        "You will love again, and it will be different.",
+        "The goal is a happy life, with or without a partner."
+      ],
+      "exercises": [
+        "The Future Letter: Write a letter to yourself 1 year from now. Describe what you hope to have achieved.",
+        "Non-Negotiables: List the top 5 qualities you need in a future partner (based on what was missing in the last one)."
+      ],
+      "homework": [
+        "Create a Vision Board or list for your new life.",
+        "Plan a trip or a major event for 6 months from now to give yourself a horizon point."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

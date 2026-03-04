@@ -1,0 +1,168 @@
+{
+  "language": "en",
+  "title": "Psychedelic Literacy: Science, Safety, and Navigation",
+  "summary": "A comprehensive, science-based program designed to demystify psychedelic experiences. Synthesizing ancient wisdom with modern neuroscience, this course covers the mechanisms of action in the brain, the critical importance of set and setting, navigation techniques for altered states, and the art of integration to maximize safety and therapeutic potential.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Psychedelic Renaissance: History and Context",
+      "overview": "⚠️ IMPORTANT LEGAL NOTICE: Many psychedelic compounds discussed in this program are illegal in most jurisdictions. This program is provided for educational and harm reduction purposes only. It is designed to improve understanding of psychedelic science, safety protocols, and integration practices. This program does not encourage, promote, or facilitate illegal activity. Laws regarding these substances vary significantly by location and are subject to change. Always research and comply with local laws in your jurisdiction. This educational content is not a substitute for professional medical or legal advice. Psychedelics are currently undergoing a massive scientific resurgence, moving from counter-culture stigma to potential breakthrough therapies. This module grounds you in the history of these substances, from indigenous sacramental use to the clinical trials of the 1950s and the modern 'Renaissance'. Understanding the context helps frame the experience not as a 'party drug' activity, but as a profound tool for consciousness exploration and healing.",
+      "takeaways": [
+        "Psychedelics have been used for millennia by indigenous cultures for healing and divination.",
+        "The 'War on Drugs' halted promising research for decades, but the data is now undeniable.",
+        "We are moving from a recreational model to a therapeutic and sacramental model.",
+        "Respect for the substance and its lineage is the first step in harm reduction."
+      ],
+      "exercises": [
+        "Motivation audit: Why are you interested in this topic? Is it curiosity, healing, or growth? Write down your 'Why'.",
+        "Stigma check: What fears or prejudices do you hold about altered states? Where did they come from?",
+        "Term definition: Define what 'healing' means to you in a mental health context."
+      ],
+      "homework": [
+        "Research review: Read one summary of a recent FDA-approved study on Psilocybin or MDMA.",
+        "Intention setting: Begin drafting a preliminary intention for your learning journey."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • The Neuroscience: Your Brain on Psychedelics",
+      "overview": "What actually happens physically when you ingest a psychedelic? It's not magic; it's neurochemistry. This module explains the 5-HT2A receptor, the Default Mode Network (DMN), and the concept of neuroplasticity. Understanding the biology helps you surrender to the experience, knowing that the 'chaos' you feel is actually the brain rewiring itself.",
+      "takeaways": [
+        "Classic psychedelics primarily act on the Serotonin 2A receptor (5-HT2A).",
+        "They relax the 'Default Mode Network' (DMN), which is the seat of the ego and rigid thinking patterns.",
+        "The brain becomes hyper-connected, allowing distinct regions to communicate (synesthesia).",
+        "Neuroplasticity is increased, opening a 'window of opportunity' for changing habits."
+      ],
+      "exercises": [
+        "DMN Observation: Spend 10 minutes strictly observing your thoughts. How many are about the past, future, or self-image? That is your DMN.",
+        "Pattern recognition: Identify one rigid thought pattern (e.g., 'I am not good at X') you would like to disrupt."
+      ],
+      "homework": [
+        "Video study: Watch a visualization of brain entropy or connectivity under psilocybin.",
+        "Neuroplasticity journal: Write down three habits you would change if your brain was temporarily more flexible."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Set and Setting: The Architecture of Experience",
+      "overview": "The drug is only a catalyst. The outcome is determined by 'Set' (internal state) and 'Setting' (external environment). This is the golden rule of psychedelic science. Ignoring this leads to 'bad trips'; respecting it leads to breakthroughs. This module provides a checklist for creating the optimal container for safety and depth.",
+      "takeaways": [
+        "Set includes your mindset, history, expectations, and current emotional state.",
+        "Setting includes the physical room, music, lighting, and the people present (sitters/guides).",
+        "Safety protocols (sitters, hydrate, access to restrooms) reduce anxiety.",
+        "Intention drives the experience: 'What do I need to learn?' vs 'I want to see pretty colors.'"
+      ],
+      "exercises": [
+        "Space Audit: Look at your room. Is it cluttered? Is the lighting harsh? How would it feel if you were as sensitive as an infant? Fix it.",
+        "Sitter Selection: Who would you trust with your soul? List 3 qualities a good sitter must have (e.g., non-judgmental, calm).",
+        "Intention drafting: Create a concise, positive intention."
+      ],
+      "homework": [
+        "Playlist curation: Create or find a playlist designed for the 'wave' of an experience (Ambient -> Rhythmic/Intense -> Melodic/Heart-opening).",
+        "Safety plan: Write a one-page safety plan. Who to call in an emergency? Where is the water? Where is the exit?"
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Navigation: Surrender and The Difficult Experience",
+      "overview": "Once the experience begins, how do you steer? The paradox is that you steer by letting go of the wheel. This module teaches the 'Flight Instructions': Trust, Let Go, Be Open. We cover breathwork as an anchor and how to transform a 'bad trip' into a 'challenging but educational experience'.",
+      "takeaways": [
+        "The primary resistance is fear of ego dissolution. The solution is surrender.",
+        "Technique: 'In and Through.' If you see a monster, ask it what it has to teach you. Do not run away.",
+        "Breath is the remote control: Long, slow exhales activate the parasympathetic nervous system.",
+        "Music can be changed to shift the emotional tone if you get stuck."
+      ],
+      "exercises": [
+        "Breathwork practice: Practice 'Box Breathing' (4-4-4-4) for 5 minutes. This is your emergency brake.",
+        "Visualization: Close your eyes and imagine a door you are afraid to open. Visualize yourself opening it and hugging whatever is behind it."
+      ],
+      "homework": [
+        "Memorize the mantra: Trust, Let Go, Be Open.",
+        "Create a 'Totem': Select a small physical object that reminds you of safety and reality to hold during the experience."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Compound Profiles: Knowing the Terrain",
+      "overview": "Not all psychedelics are the same. A psilocybin mushroom experience is vastly different from an MDMA therapy session. This module outlines the duration, specific effects, and unique safety considerations for the major compounds. Harm reduction requires knowing specifically what you are taking and how it behaves.",
+      "takeaways": [
+        "Psilocybin (Mushrooms): Earthy, emotional, 4-6 hours. Wavy intensity.",
+        "LSD (Acid): Electric, analytical, 8-12 hours. Long duration requires stamina.",
+        "MDMA (Ecstasy/Molly): Empathogen, heart-opening, reduces fear. 4-6 hours. High risk of dehydration/overheating.",
+        "Ketamine: Dissociative, separates mind from body. 45-90 mins. Used for depression."
+      ],
+      "exercises": [
+        "Risk Assessment: Choose one compound. List its 3 biggest physical risks and how to mitigate them (e.g., MDMA -> Overheating -> Cool room/Hydration).",
+        "Timeline planning: Map out a hypothetical 24-hour schedule for an LSD experience vs. a Psilocybin experience."
+      ],
+      "homework": [
+        "Resource check: Locate a reputable vendor for reagent test kits (e.g., DanceSafe, BunkPolice).",
+        "Contraindication check: Review your current medications. SSRIs (antidepressants) often blunt psychedelic effects or cause risks (Serotonin Syndrome)."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Integration: The Real Work Begins",
+      "overview": "The psychedelic experience is just the class; integration is the homework. Without integration, the experience is just a fleeting memory. This module covers the 'Neuroplastic Window'—the critical 2–4 weeks post-experience. Techniques for grounding insights into daily behavior.",
+      "takeaways": [
+        "Integration is the process of weaving the insights from the 'altered' state into the 'default' state.",
+        "The 'Afterglow' is a biological period of increased flexibility. Use it to build new habits.",
+        "Avoid making major life changes (quitting jobs, divorce) for at least 2 weeks after a deep journey.",
+        "Community and sharing help solidify the memory."
+      ],
+      "exercises": [
+        "Integration Journaling: Write a letter to yourself from the perspective of your 'higher self' or the insight you hope to gain.",
+        "Habit formation: Identify one tiny, physical action you can do daily to anchor a spiritual insight."
+      ],
+      "homework": [
+        "Find a community: Look up a local or online psychedelic integration circle.",
+        "The 'No' List: Create a list of 3 things you will NOT do for 7 days post-experience (e.g., no social media, no alcohol, no arguing)."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • Ethics and Harm Reduction: Safe Travels",
+      "overview": "Safety is the floor upon which the dance happens. This module summarizes the 'Zendo Project' principles and medical contraindications. We discuss the dark side: spiritual bypassing, power dynamics in shamanic circles, and legal risks. A final synthesis of how to be a responsible citizen of the psychedelic ecosystem.",
+      "takeaways": [
+        "Harm reduction puts safety above judgment.",
+        "Spiritual Bypassing: Using psychedelics to escape human problems rather than face them.",
+        "Consent is paramount. You are in a vulnerable state; ensure your sitters/guides are vetted.",
+        "Know your laws. These substances remain illegal in many jurisdictions. Legal safety is part of set and setting."
+      ],
+      "exercises": [
+        "Emergency simulation: unexpected knock at the door during a session. What do you do? Roleplay the response.",
+        "Medication check: Use a compatibility chart (like from TripSit) to check common meds against psilocybin and MDMA."
+      ],
+      "homework": [
+        "Final Safety Checklist: Compile a master checklist: Set, Setting, Substance (Tested), Sitter, Safety Plan, Integration Plan.",
+        "Commitment to respect: Write a personal code of ethics for your engagement with these substances."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Maps.org (Multidisciplinary Association for Psychedelic Studies)",
+      "url": "https://maps.org/"
+    },
+    {
+      "title": "Erowid.org (The Encyclopedia of Psychoactive Plants & Chemicals)",
+      "url": "https://www.erowid.org/"
+    },
+    {
+      "title": "The Zendo Project (Harm Reduction & Peer Support)",
+      "url": "https://zendoproject.org/"
+    },
+    {
+      "title": "DanceSafe (Reagent Testing Kits)",
+      "url": "https://dancesafe.org/"
+    },
+    {
+      "title": "Music for Psychedelic Therapy (Johns Hopkins Playlists)",
+      "url": "https://open.spotify.com/user/phillysblunt/playlist/5KWf8H2pM0tlVd7niMt1pf"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

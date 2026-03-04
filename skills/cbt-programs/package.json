@@ -1,0 +1,40 @@
+{
+  "name": "cbt-programs",
+  "version": "0.1.0",
+  "description": "Open CBT program registry with multilingual content, provenance badges, and CLI recommendation tools",
+  "main": "scripts/cbt_programs.js",
+  "bin": {
+    "cbt-programs": "./scripts/cbt_programs.js"
+  },
+  "scripts": {
+    "start": "node scripts/cbt_programs.js",
+    "list": "node scripts/cbt_programs.js list",
+    "import-legacy": "node scripts/import_legacy_yaml.js",
+    "test": "node scripts/cbt_programs.js validate"
+  },
+  "keywords": [
+    "cbt",
+    "mental-health",
+    "healthcare",
+    "skill",
+    "open-source",
+    "translation",
+    "ai-agent"
+  ],
+  "author": "Eir Space",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "scripts/",
+    "schemas/",
+    "templates/",
+    "data/",
+    "references/",
+    "agents/openai.yaml",
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ]
+}

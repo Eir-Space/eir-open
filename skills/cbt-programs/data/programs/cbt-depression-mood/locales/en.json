@@ -1,0 +1,45 @@
+{
+  "language": "en",
+  "title": "Renew Your Energy: CBT Program for Depression",
+  "summary": "A seven-module CBT journey combining psychoeducation, thought skills, activation, and relapse planning to improve mood and daily functioning.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Understanding Depression",
+      "overview": "Clarify emotional, cognitive, physical, and behavioral signs of depression and map your own pattern.",
+      "takeaways": [
+        "Depression is multifactorial and treatable.",
+        "Early signs can be recognized and acted on."
+      ],
+      "exercises": [
+        "Create a symptom map with recent examples.",
+        "Write possible contributors across stress, biology, and context."
+      ],
+      "homework": [
+        "Track two mood dips and context this week.",
+        "List support resources and questions for care professionals."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Thoughts, Emotions, and Behaviors",
+      "overview": "Learn the CBT model and challenge recurring negative thought patterns with evidence-based reframing.",
+      "takeaways": [
+        "Interpretation influences emotional response.",
+        "Thoughts can be examined and updated."
+      ],
+      "exercises": [
+        "Fill one thought record per day.",
+        "Label cognitive distortions in recurring thoughts."
+      ],
+      "homework": [
+        "Reframe one high-impact thought each day.",
+        "Note behavior change after reframing."
+      ]
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, empathetic",
+    "systemPrompt": "Act as a CBT support coach. Help apply one concrete exercise at a time and check safety boundaries."
+  }
+}

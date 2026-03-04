@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-smoking-cessation",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "smoking-cessation",
+    "name": "Smoking Cessation"
+  },
+  "tags": [
+    "cbt",
+    "smoking-cessation",
+    "understanding-nicotine-dependence",
+    "craving-management",
+    "trigger-identification-avoidance",
+    "relapse-prevention",
+    "building-a-smoke-free-identity"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-smoking-cessation.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 6,
+    "estimatedWeeks": "6 modules • 8-12 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Smoking Cessation",
+      "Understanding Nicotine Dependence",
+      "Craving Management",
+      "Trigger Identification & Avoidance",
+      "Relapse Prevention",
+      "Building a Smoke-Free Identity"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

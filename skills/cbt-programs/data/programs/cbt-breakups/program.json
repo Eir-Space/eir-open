@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-breakups",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "breakups-divorce",
+    "name": "Breakups & Divorce"
+  },
+  "tags": [
+    "cbt",
+    "breakups-divorce",
+    "grief-processing",
+    "no-contact-strategy",
+    "identity-reconstruction",
+    "rumination-control",
+    "future-planning"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-breakups.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 4,
+    "estimatedWeeks": "7 modules • 8-12 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Breakups & Divorce",
+      "Grief Processing",
+      "No-Contact Strategy",
+      "Identity Reconstruction",
+      "Rumination Control",
+      "Future Planning"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

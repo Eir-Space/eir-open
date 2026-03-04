@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-psychedelic-literacy",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "harm-reduction-education",
+    "name": "Harm Reduction & Education"
+  },
+  "tags": [
+    "cbt",
+    "harm-reduction-education",
+    "neuroscience-of-psychedelics",
+    "harm-reduction-and-safety",
+    "set-and-setting-protocols",
+    "navigating-altered-states",
+    "integration-practices",
+    "compound-specific-profiles"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-psychedelic-literacy.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • Self-paced educational journey"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Harm Reduction & Education",
+      "Neuroscience of psychedelics",
+      "Harm reduction and safety",
+      "Set and setting protocols",
+      "Navigating altered states",
+      "Integration practices",
+      "Compound-specific profiles"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

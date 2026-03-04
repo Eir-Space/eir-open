@@ -1,0 +1,53 @@
+{
+  "language": "en",
+  "title": "Reset Your Sleep: CBT-I Program",
+  "summary": "A six-week CBT-I protocol for improving sleep efficiency, reducing wake time, and lowering sleep-related anxiety through behavioral methods.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Sleep Baseline and Pattern Mapping",
+      "overview": "Track timing, awakenings, and daytime function to establish your baseline and target improvements.",
+      "takeaways": [
+        "Data reveals patterns and progress.",
+        "Sleep quality depends on consistency, not only total time in bed."
+      ],
+      "exercises": [
+        "Complete a daily sleep diary.",
+        "Identify top two habits that destabilize sleep."
+      ],
+      "homework": [
+        "Track sleep daily for seven days.",
+        "Write a one-paragraph goal for sleep consistency."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Stimulus Control",
+      "overview": "Rebuild the bed-sleep association and reduce wakeful rumination in bed.",
+      "takeaways": [
+        "The bed should cue sleep, not alertness.",
+        "Leaving bed during prolonged wakefulness can retrain sleep response."
+      ],
+      "exercises": [
+        "Define a pre-sleep wind-down sequence.",
+        "Practice leave-bed-return protocol when awake more than 20 minutes."
+      ],
+      "homework": [
+        "Apply stimulus control rules every night this week.",
+        "Record adherence and impact in the sleep diary."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Sleep Routine Hardening",
+      "overview": "Turn your evening and morning routines into stable sleep anchors.",
+      "takeaways": [],
+      "exercises": [],
+      "homework": []
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "calm, structured, accountability-oriented",
+    "systemPrompt": "Guide the user through CBT-I routines, reinforce consistency, and avoid diagnostic claims."
+  }
+}

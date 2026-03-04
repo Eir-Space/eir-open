@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-gad",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "generalized-anxiety-disorder",
+    "name": "Generalized Anxiety Disorder"
+  },
+  "tags": [
+    "cbt",
+    "generalized-anxiety-disorder",
+    "understanding-worry-and-gad",
+    "cognitive-restructuring",
+    "worry-time-technique",
+    "uncertainty-tolerance",
+    "mindfulness-and-present-moment-awareness",
+    "behavioral-experiments",
+    "long-term-maintenance"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-gad.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 8-12 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Generalized Anxiety Disorder",
+      "Understanding worry and GAD",
+      "Cognitive restructuring",
+      "Worry time technique",
+      "Uncertainty tolerance",
+      "Mindfulness and present-moment awareness",
+      "Behavioral experiments",
+      "Long-term maintenance"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

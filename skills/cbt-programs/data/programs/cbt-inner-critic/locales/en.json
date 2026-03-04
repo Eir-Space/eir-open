@@ -1,0 +1,132 @@
+{
+  "language": "en",
+  "title": "Silencing the Inner Critic",
+  "summary": "This CBT program is designed to help individuals soothe and manage an overly critical inner voice. Through this self-paced program, participants will learn to challenge negative self-talk and cultivate self-compassion, leading to improved self-esteem and emotional well-being.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding the Inner Critic",
+      "overview": "The first step in managing your inner critic is understanding its origins and impact. This module will explore how the inner critic develops and why it persists. We will examine the common characteristics of an inner critic and how it affects your thoughts, emotions, and behaviors. By identifying your specific inner critic patterns, you will gain clarity on the areas that need attention.",
+      "takeaways": [
+        "Recognize the origins of your inner critic.",
+        "Understand the impact of the inner critic on your daily life.",
+        "Identify specific patterns of critical self-talk."
+      ],
+      "exercises": [
+        "Reflect on the origins of your inner critic by journaling about early experiences that may have contributed to its development.",
+        "List common phrases or thoughts associated with your inner critic.",
+        "Create a mind map of the impact of your inner critic on different areas of your life."
+      ],
+      "homework": [
+        "Complete a daily journal entry describing instances of critical self-talk.",
+        "Identify and note any triggers that exacerbate your inner critic.",
+        "Record your emotional and behavioral responses to your inner critic."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Challenging Negative Self-Talk",
+      "overview": "In this module, you will learn how to challenge and reframe negative self-talk. We will explore cognitive distortions that fuel the inner critic and how to counteract them. You will be introduced to evidence-based techniques to dispute and replace unhelpful thoughts with more balanced perspectives. Practicing these techniques will help weaken the influence of your inner critic over time.",
+      "takeaways": [
+        "Identify cognitive distortions in your self-talk.",
+        "Learn techniques for disputing negative thoughts.",
+        "Develop healthier, more balanced perspectives."
+      ],
+      "exercises": [
+        "Practice identifying and labeling cognitive distortions in your daily thoughts.",
+        "Use a thought record to challenge and reframe negative self-talk.",
+        "Develop counter-statements to replace critical thoughts."
+      ],
+      "homework": [
+        "Complete a thought record for at least one instance of negative self-talk each day.",
+        "Reflect on the impact of reframing thoughts in your journal.",
+        "Monitor changes in your mood and behavior as you challenge your inner critic."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Cultivating Self-Compassion",
+      "overview": "This module focuses on building self-compassion as a counterbalance to the inner critic. You will learn about the benefits of self-compassion and how to practice it. We will introduce exercises that promote kindness and understanding towards oneself, which can help reduce self-criticism. Developing a self-compassionate mindset will foster a more supportive inner dialogue.",
+      "takeaways": [
+        "Understand the principles of self-compassion.",
+        "Learn practical exercises to increase self-compassion.",
+        "Recognize the relationship between self-compassion and reduced self-criticism."
+      ],
+      "exercises": [
+        "Practice self-compassionate letter writing to yourself.",
+        "Engage in guided self-compassion meditations.",
+        "Use affirmations to reinforce self-compassionate thinking."
+      ],
+      "homework": [
+        "Write a self-compassionate letter addressing a recent instance of self-criticism.",
+        "Set aside time each day for a self-compassion meditation.",
+        "Reflect on changes in your self-talk after practicing self-compassion."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Building Self-Esteem",
+      "overview": "This module is designed to help strengthen self-esteem, which can reduce the power of the inner critic. We will explore the relationship between self-esteem and self-criticism. You will learn strategies to enhance self-worth and recognize your positive attributes, accomplishments, and capabilities. By building self-esteem, you create a more resilient mindset that is less susceptible to critical self-talk.",
+      "takeaways": [
+        "Understand the link between self-esteem and the inner critic.",
+        "Learn strategies to build and maintain self-esteem.",
+        "Recognize and celebrate your strengths and achievements."
+      ],
+      "exercises": [
+        "Create a list of personal strengths and achievements.",
+        "Develop a self-esteem action plan with specific, achievable goals.",
+        "Practice positive affirmations centered on self-worth."
+      ],
+      "homework": [
+        "Update your list of strengths and achievements regularly.",
+        "Track progress on your self-esteem goals and reflect on your experiences.",
+        "Incorporate daily positive affirmations into your routine."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Strengthening Resilience",
+      "overview": "In this module, you will learn how to build resilience to better cope with adversities and setbacks, minimizing the influence of the inner critic. We will explore resilience-building techniques that enhance emotional regulation and adaptive thinking. A resilient mindset will help you manage challenges without resorting to self-criticism.",
+      "takeaways": [
+        "Understand the components of resilience.",
+        "Learn techniques to enhance emotional regulation.",
+        "Develop adaptive thinking patterns."
+      ],
+      "exercises": [
+        "Practice mindfulness exercises to enhance emotional awareness.",
+        "Engage in problem-solving exercises to improve adaptive thinking.",
+        "Identify and challenge unhelpful beliefs that undermine resilience."
+      ],
+      "homework": [
+        "Incorporate mindfulness practice into your daily routine.",
+        "Reflect on how resilience techniques impact your response to challenges.",
+        "Document examples of adaptive thinking in your journal."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Sustaining Progress",
+      "overview": "The final module focuses on maintaining the progress you've made and preventing relapse into old patterns of self-criticism. We will review strategies for sustaining change and addressing setbacks effectively. This module will empower you to continue your journey with confidence and self-compassion.",
+      "takeaways": [
+        "Recognize signs of relapse and how to address them.",
+        "Learn strategies for maintaining positive changes.",
+        "Develop a long-term plan for ongoing self-compassion and self-esteem."
+      ],
+      "exercises": [
+        "Create a relapse prevention plan with specific strategies.",
+        "Identify support systems and resources for ongoing growth.",
+        "Reflect on your journey and celebrate your progress."
+      ],
+      "homework": [
+        "Review and update your relapse prevention plan regularly.",
+        "Engage with a support group or community to reinforce positive changes.",
+        "Set intentions for continued personal growth and self-improvement."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

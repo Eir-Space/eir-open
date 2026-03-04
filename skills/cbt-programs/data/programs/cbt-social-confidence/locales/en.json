@@ -1,0 +1,145 @@
+{
+  "language": "en",
+  "title": "Stepping Into Connection: CBT Program for Social Confidence",
+  "summary": "A six-module CBT pathway for people who want to feel safer, steadier, and more connected in social situations. Learn how thoughts, body cues, and actions interact, practice brave experiments, and build self-trust through gradual exposure and compassionate reflection.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding Your Social Anxiety",
+      "overview": "Map how thoughts, body sensations, and behaviors reinforce social anxiety and avoidance. Clarify the values and relationships that motivate you to work on social confidence. Build a compassionate, science-based understanding of why your nervous system reacts the way it does.",
+      "takeaways": [
+        "Avoidance is a learned safety strategy; when you change the pattern, your brain can update the threat level.",
+        "Naming triggers and values helps you choose intentional experiments.",
+        "Self-criticism is not a prerequisite for change; curiosity and kindness fuel persistence."
+      ],
+      "exercises": [
+        "Create a Social Anxiety Cycle worksheet: Trigger → Thoughts → Body sensations → Behaviors → Short-term relief → Long-term cost.",
+        "Write your program intention: one paragraph on what social confidence would let you do more freely.",
+        "Identify three personal strengths or supports that can help during challenging moments."
+      ],
+      "homework": [
+        "Track two social situations this week. Capture the situation, automatic thoughts, body sensations, and what you did next.",
+        "Journal once about how avoidance protects you and where it also keeps you stuck.",
+        "Read your intention statement aloud daily to reinforce motivation."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Thought Work and Self-Talk",
+      "overview": "Learn to catch cognitive distortions common in social anxiety (mind-reading, catastrophizing, all-or-nothing thinking). Practice compassionate reappraisal that balances realism with hope. Develop coping statements and grounding cues for anxious moments.",
+      "takeaways": [
+        "Thoughts are hypotheses, not facts—you can test them against evidence.",
+        "Balanced thinking means acknowledging both risks and resources.",
+        "Prepared coping statements give your brain a script when anxiety surges."
+      ],
+      "exercises": [
+        "Complete a Thought Record for one recent anxious interaction (Situation → Automatic Thought → Emotion → Evidence For → Evidence Against → New Balanced Thought).",
+        "Draft 3–5 coping statements that feel believable (e.g., \"I can have a conversation imperfectly and still be valued.\").",
+        "Practice a 2-minute grounding routine (breath, senses, posture) twice this week and note the effect."
+      ],
+      "homework": [
+        "Use Thought Records on two additional situations; highlight what changed your emotion intensity.",
+        "Carry one coping statement on your phone lock screen or sticky note and read it before a social interaction.",
+        "Track which grounding cue helps you return to the present fastest."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Gradual Exposure Planning",
+      "overview": "Design a fear ladder that breaks intimidating social situations into doable steps. Learn exposure guidelines: start manageable, stay long enough for anxiety to peak and ease, reflect afterward. Plan support structures and rewards to reinforce courageous actions.",
+      "takeaways": [
+        "Exposure rewires fear by pairing feared situations with new, safe experiences.",
+        "Graded steps beat heroic leaps—you control the pace.",
+        "Celebrating effort keeps momentum alive."
+      ],
+      "exercises": [
+        "Brainstorm 8–12 social situations and rate anticipated anxiety (0–100). Sort them into a ladder from easiest to hardest.",
+        "Choose two lowest-level items and script specific actions, locations, people involved, and coping supports.",
+        "Plan an after-action reflection template: What happened? How anxious (0–100)? What did you learn?"
+      ],
+      "homework": [
+        "Complete at least one exposure from the lower rung. Stay until anxiety decreases by ~20 points or for an agreed time.",
+        "Complete the reflection template after each exposure, noting surprises and wins.",
+        "Reward yourself with a small celebration or soothing activity after exposures."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • In-the-Moment Skills",
+      "overview": "Practice body-based regulation to manage physical symptoms (breath, posture, progressive muscle relaxation). Use attention-shifting techniques to focus outward rather than on internal self-monitoring. Develop brief conversational tools (openers, curious questions, exits) to reduce performance pressure.",
+      "takeaways": [
+        "Regulating the body signals safety to the brain and steadies your presence.",
+        "Curiosity about others interrupts self-focused worry.",
+        "Prepared scripts ease the burden of improvising under stress."
+      ],
+      "exercises": [
+        "Practice 4-6-7 breathing or box breathing twice daily for one week; log sensations before and after.",
+        "Run a \"curiosity drill\": pick three conversation prompts and ask a friend to role-play short exchanges.",
+        "Create a conversation card with three openers, three follow-up questions, and two polite exit phrases."
+      ],
+      "homework": [
+        "Use one body regulation tool during a real social interaction; jot the effect within an hour.",
+        "Practice redirecting attention outward by naming three details about the person or environment in conversation.",
+        "Carry and review your conversation card before attending a social event."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Compassionate Exposure and Resilience",
+      "overview": "Integrate self-compassion practices to recover from awkward moments or setbacks. Learn repair strategies when interactions feel off (naming, clarifying, humor, follow-up). Strengthen supportive relationships and accountability for continued exposures.",
+      "takeaways": [
+        "Compassion turns stumbles into data instead of self-criticism.",
+        "Repair attempts often deepen connection and disprove catastrophic predictions.",
+        "Accountability partners help you keep practicing when avoidance urges return."
+      ],
+      "exercises": [
+        "Write a compassionate letter to yourself after recalling a tough social moment, focusing on common humanity, kindness, and encouragement.",
+        "List three repair phrases you could use (e.g., \"I noticed I got quiet—mind if we start over?\").",
+        "Identify one support person and plan a brief weekly check-in to share exposure wins and challenges."
+      ],
+      "homework": [
+        "After your next exposure, complete a self-compassion break: Notice → Name feelings → Offer kindness.",
+        "Attempt one small repair or follow-up message if an interaction felt awkward; record the outcome.",
+        "Schedule or conduct your first accountability check-in."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Maintaining Confidence and Growth",
+      "overview": "Review progress, update your fear ladder, and plan ongoing exposures. Create early warning signs and coping plans for setbacks or avoidance creep. Integrate identity statements that reflect your growing confidence.",
+      "takeaways": [
+        "Growth is maintained through regular practice, reflection, and recommitment.",
+        "Setbacks are data, not defeat—you can restart with the next small step.",
+        "Owning a confident identity comes from repeated evidence of courageous behavior."
+      ],
+      "exercises": [
+        "List top skills gained, favorite coping tools, and situations that now feel easier.",
+        "Update your fear ladder with new steps and note the next two exposures you will repeat or advance to.",
+        "Write three identity statements (e.g., \"I am someone who reaches out first.\") and pair them with evidence from recent weeks."
+      ],
+      "homework": [
+        "Schedule monthly review sessions to revisit your ladder, celebrate wins, and plan new challenges.",
+        "Create a relapse prevention plan: triggers, early signs, supports, and reset actions.",
+        "Share one insight or success story with a trusted person to reinforce your progress."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Social anxiety thought record worksheet",
+      "url": "https://www.anxietycanada.com/sites/default/files/GeneralThoughtRecord.pdf"
+    },
+    {
+      "title": "Psychoeducation on exposure therapy",
+      "url": "https://adaa.org/tips-manage-anxiety-and-stress"
+    },
+    {
+      "title": "Self-compassion break guided audio",
+      "url": "https://self-compassion.org/wp-content/uploads/2015/12/self-compassion.break_.mp3"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

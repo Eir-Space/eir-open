@@ -1,0 +1,118 @@
+{
+  "language": "en",
+  "title": "Movement Mastery: Building Sustainable Exercise Habits",
+  "summary": "A practical, evidence-based CBT program designed to help you build and maintain a consistent exercise routine. This program addresses the psychological barriers to physical activity, teaches activity pacing, and helps you overcome common obstacles like time constraints, motivation dips, and fear of injury. Learn to make movement a sustainable, enjoyable part of your life.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding Your Relationship with Exercise",
+      "overview": "We begin by exploring your personal history with physical activity. What activities have you enjoyed? What barriers have stopped you? Understanding your past is key to building your future. We identify your 'Exercise Beliefs'—the thoughts and assumptions that shape your relationship with movement. Many people hold limiting beliefs like 'I'm not athletic' or 'Exercise is punishment.' You will learn to distinguish between 'Exercise' (structured, often dreaded) and 'Movement' (any physical activity that feels good). This reframe opens up possibilities. We introduce the concept of 'Readiness for Change.' Where are you on the spectrum from 'not thinking about it' to 'actively maintaining'? This determines your starting point. You will complete a 'Barrier Assessment'—identifying the specific obstacles that prevent you from being active (time, energy, fear, motivation, access, etc.). We explore 'Activity Preferences'—what types of movement do you actually enjoy? Not what you think you should do, but what feels good in your body. Finally, we set realistic, process-based goals. Instead of 'lose 20 pounds,' we focus on 'move 3 times this week' or 'feel stronger.'",
+      "takeaways": [
+        "Your past relationship with exercise doesn't define your future.",
+        "Movement doesn't have to be intense or structured to be effective.",
+        "Identifying barriers is the first step to overcoming them.",
+        "Process goals (actions) are more sustainable than outcome goals (results)."
+      ],
+      "exercises": [
+        "The Exercise History Timeline: Write down your relationship with physical activity over your lifetime. What did you enjoy as a child? What stopped you? What patterns do you notice?",
+        "The Barrier Inventory: List all the reasons you don't exercise regularly. Be honest. Then categorize them: Which are real constraints? Which are beliefs? Which are fears?",
+        "The Preference Experiment: Try 3 different types of movement this week (e.g., walk, dance, stretch, garden). Rate each: enjoyment (1-10), how your body felt, likelihood to continue."
+      ],
+      "homework": [
+        "Complete your Barrier Assessment. For each barrier, brainstorm 2-3 potential solutions. Don't worry if they're perfect—just get ideas flowing.",
+        "Try one new type of movement this week. It doesn't have to be structured. Just move your body in a way that feels good.",
+        "Set 3 process-based goals for the next week (e.g., 'walk 10 minutes 3 times,' 'stretch every morning,' 'dance to one song daily')."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Overcoming Barriers: Time, Energy, and Access",
+      "overview": "This module provides practical strategies for the most common barriers to exercise: lack of time, low energy, and limited access to facilities or equipment. We introduce 'Micro-Movements'—short bursts of activity that fit into busy schedules. You'll learn that 10 minutes counts, and consistency matters more than duration. You will create a 'Movement Menu'—a list of activities you can do with different time constraints (5 min, 15 min, 30 min, 60 min). We explore 'Energy Management'—matching activity intensity to your current energy level. Some days are for vigorous movement; others are for gentle stretching. The concept of 'Home-Based Movement' is introduced. You don't need a gym or equipment to be active. Your body weight and creativity are enough. We address 'Scheduling Strategies'—how to fit movement into your existing routine without it feeling like another task. Finally, we practice 'Barrier Problem-Solving'—a systematic approach to identifying and overcoming obstacles as they arise.",
+      "takeaways": [
+        "Time constraints are real, but movement doesn't require large blocks of time.",
+        "Low energy days still allow for gentle movement—often movement increases energy.",
+        "You can be active anywhere, with or without equipment.",
+        "Problem-solving barriers is a skill that improves with practice."
+      ],
+      "exercises": [
+        "Create Your Movement Menu: List activities for different time slots: 5 min (e.g., stretch, walk around block), 15 min (e.g., brisk walk, bodyweight circuit), 30 min (e.g., longer walk, yoga video), 60 min (e.g., hike, full workout).",
+        "The Time Audit: Track your time for 3 days. Where does it go? Identify 3 'movement opportunities'—times when you could fit in 5-10 minutes of activity.",
+        "The Energy-Movement Match: For one week, rate your energy (1-10) before movement. Choose activity intensity to match. Notice how movement affects your energy afterward."
+      ],
+      "homework": [
+        "Use your Movement Menu this week. When you have 5 minutes, do a 5-minute activity. When you have 15, do a 15-minute activity. Notice how small movements add up.",
+        "Schedule 3 movement sessions this week. Put them in your calendar like appointments. Start with just 10 minutes each.",
+        "Try one home-based movement activity you've never done before (e.g., YouTube yoga, bodyweight circuit, dance video)."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Activity Pacing & Gradual Progression",
+      "overview": "This module teaches the critical skill of 'Activity Pacing'—building activity gradually to prevent injury, burnout, and the boom-bust cycle. We introduce the '10% Rule'—increasing activity by no more than 10% per week to allow your body to adapt safely. You will learn to identify your 'Baseline'—the amount of activity you can do consistently without pain or excessive fatigue. The concept of 'Progressive Overload' is explained in accessible terms. Your body adapts to what you ask of it, but gradually. We address the 'Weekend Warrior' trap—doing too much on good days and crashing afterward. We'll smooth out the peaks and valleys. You will create a 'Pacing Plan'—a structured approach to gradually increasing your activity over time. Finally, we practice 'Listening to Your Body'—recognizing the difference between good discomfort (muscle fatigue) and bad pain (injury signals).",
+      "takeaways": [
+        "Gradual progression prevents injury and builds sustainable habits.",
+        "Consistency beats intensity every time.",
+        "Your baseline is your foundation—build from there, not from where you 'should' be.",
+        "Pain is information; learn to read it correctly."
+      ],
+      "exercises": [
+        "Establish Your Baseline: For one week, do the same activity (e.g., walk 10 min) every day. Note: Can you do it consistently? Any pain or excessive fatigue? This is your baseline.",
+        "Create Your Pacing Plan: Starting from your baseline, plan 4 weeks of gradual increases (10% per week). Write it down. Stick to it, even if you feel you could do more.",
+        "The Pain vs. Discomfort Journal: For one week, track sensations during/after movement. Learn to distinguish 'good' muscle fatigue from 'bad' pain signals."
+      ],
+      "homework": [
+        "Follow your Pacing Plan for 4 weeks. Resist the urge to do more on 'good days.' Consistency is the goal.",
+        "Practice the 10% Rule with one activity. Track your progress. Notice how gradual increases feel sustainable.",
+        "If you experience pain (not just discomfort), stop. Rest. Assess. Don't push through—that's how injuries happen."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Motivation, Habits, and Overcoming Fear",
+      "overview": "This module addresses the psychological aspects of exercise adherence: motivation, habit formation, and fear reduction. We explore 'Motivation vs. Discipline.' Motivation is fickle; systems and habits are reliable. We'll build systems that work even when motivation is low. You will learn 'Habit Stacking'—attaching movement to existing habits (e.g., 'after I brush my teeth, I stretch'). The concept of 'Implementation Intentions' is introduced. 'If X happens, then I will Y' (e.g., 'If it rains, then I will do an indoor workout'). We address common fears: fear of injury, fear of judgment, fear of failure, fear of looking foolish. You will practice 'Cognitive Restructuring' for exercise-related thoughts—challenging limiting beliefs and replacing them with balanced perspectives. Finally, we create a 'Motivation Toolkit'—strategies to use when motivation dips (accountability, rewards, reframing, etc.).",
+      "takeaways": [
+        "Motivation is unreliable; systems and habits are not.",
+        "Fear is normal, but it doesn't have to stop you.",
+        "Small habits compound into big changes.",
+        "You can reframe exercise thoughts to be more supportive."
+      ],
+      "exercises": [
+        "The Motivation Audit: Track your motivation levels for one week. Notice patterns: When is it high? When is it low? What triggers changes?",
+        "Identify Your Fears: Write down all fears related to exercise (injury, judgment, failure, etc.). For each, ask: 'Is this fear realistic? What's the worst that could happen? How could I mitigate it?'",
+        "Create 3 Habit Stacks: Identify 3 existing habits. Attach a tiny movement to each (e.g., 'after coffee → 5 squats'). Practice for one week."
+      ],
+      "homework": [
+        "Implement your 3 Habit Stacks this week. Keep them tiny. Notice how automatic they become.",
+        "Create 3 Implementation Intentions: 'If [obstacle], then [movement alternative].' (e.g., 'If it's raining, then I'll do a YouTube workout.')",
+        "When motivation is low, use one strategy from your Motivation Toolkit. Notice what works for you."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Building Your Sustainable Movement Practice",
+      "overview": "The final module focuses on creating a personalized, sustainable movement practice that fits your life long-term. We explore 'Movement Variety'—mixing different types of activity to prevent boredom and overuse injuries. You will create a 'Weekly Movement Plan' that includes different activities, rest days, and flexibility for life's unpredictability. The concept of 'Movement Identity' is introduced. Shifting from 'I'm not a person who exercises' to 'I'm a person who moves.' We address 'Setback Management'—how to handle missed sessions, injuries, or life disruptions without giving up entirely. You will learn 'Maintenance Strategies'—how to keep your movement practice going when motivation dips or life gets busy. Finally, we write a 'Movement Commitment'—a personal statement of your values and intentions for long-term physical activity.",
+      "takeaways": [
+        "Sustainability requires flexibility and variety.",
+        "Setbacks are normal; how you respond matters.",
+        "Your movement practice should fit your life, not the other way around.",
+        "Identity change supports behavior change."
+      ],
+      "exercises": [
+        "Create Your Weekly Movement Plan: Design a flexible weekly schedule with 3-5 movement sessions. Include variety (strength, cardio, flexibility, rest). Make it realistic.",
+        "The Setback Simulation: Imagine you miss a week of movement. Write your response plan: How will you restart? What will you tell yourself? What's your first action?",
+        "Write Your Movement Commitment: In 200-300 words, write your personal statement about movement. Include your values, intentions, and how movement fits into your life vision."
+      ],
+      "homework": [
+        "Follow your Weekly Movement Plan for 4 weeks. Adjust as needed. Notice what works and what doesn't.",
+        "Practice your Setback Response Plan if you miss sessions. Don't wait for perfection—just restart.",
+        "Share your Movement Commitment with someone you trust. Ask them to remind you of it when you forget.",
+        "Continue building your movement practice. Remember: consistency over intensity, progress over perfection, movement over exercise."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

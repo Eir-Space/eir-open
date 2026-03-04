@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-public-speaking",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "performance-anxiety-public-speaking-phobia",
+    "name": "Performance Anxiety / Public Speaking Phobia"
+  },
+  "tags": [
+    "cbt",
+    "performance-anxiety-public-speaking-phobia",
+    "physiological-regulation",
+    "cognitive-restructuring",
+    "the-spotlight-effect",
+    "exposure-therapy",
+    "preparation-strategy"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-public-speaking.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 3,
+    "estimatedWeeks": "6 modules • 6-8 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Performance Anxiety / Public Speaking Phobia",
+      "Physiological Regulation",
+      "Cognitive Restructuring",
+      "The Spotlight Effect",
+      "Exposure Therapy",
+      "Preparation Strategy"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

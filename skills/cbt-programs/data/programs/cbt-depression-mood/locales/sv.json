@@ -1,0 +1,28 @@
+{
+  "language": "sv",
+  "title": "Fa tillbaks energi: KBT-program vid depression",
+  "summary": "Ett KBT-program med fokus pa psykoedukation, beteendeaktivering, tankefardigheter och plan for att forebygga aterfall.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Forsta depression",
+      "overview": "Identifiera symptom och personliga monster i kanslor, tankar, kropp och beteende.",
+      "takeaways": [
+        "Depression ar behandlingsbar.",
+        "Tidiga signaler gar att upptacka."
+      ],
+      "exercises": [
+        "Skapa en symptomkarta med egna exempel.",
+        "Skriv ner mojliga bidragande faktorer."
+      ],
+      "homework": [
+        "Logga tva tillfallen med nedstamdhet under veckan.",
+        "Lista vilket stod du kan anvanda."
+      ]
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "varm, tydlig, icke-domande",
+    "systemPrompt": "Agera som KBT-stod. Hjalp anvandaren att ta ett steg i taget utan att diagnostisera."
+  }
+}

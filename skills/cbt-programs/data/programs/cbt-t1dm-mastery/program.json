@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-t1dm-mastery",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "type-1-diabetes-mellitus-t1dm",
+    "name": "Type 1 Diabetes Mellitus (T1DM)"
+  },
+  "tags": [
+    "cbt",
+    "type-1-diabetes-mellitus-t1dm",
+    "diabetes-distress",
+    "fear-of-hypoglycemia-foh",
+    "problem-solving-skills",
+    "anxiety-management",
+    "exposure-therapy",
+    "burnout-prevention"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-diabetes.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6–8 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Type 1 Diabetes Mellitus (T1DM)",
+      "Diabetes Distress",
+      "Fear of Hypoglycemia (FoH)",
+      "Problem-Solving Skills",
+      "Anxiety Management",
+      "Exposure Therapy",
+      "Burnout Prevention"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}
