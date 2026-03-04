@@ -7,6 +7,7 @@ interface TranslationMeta {
   lang?: string;
   status?: string;
   completion?: number;
+  path?: string;
 }
 
 interface ProgramJson {
@@ -31,7 +32,9 @@ interface ProgramRow {
   version: string;
   status: string;
   moduleCount: number | string;
+  defaultLanguage: string;
   languages: string[];
+  translationPaths: Record<string, string>;
   translationSummary: string;
   lineage: string[];
   githubUrl: string;
@@ -66,10 +69,22 @@ const rows: ProgramRow[] = fs
     const moduleCount =
       typeof program.content?.moduleCount === 'number' ? program.content.moduleCount : '?';
     const translations = Array.isArray(program.translations) ? program.translations : [];
+
+    const translationPaths: Record<string, string> = {};
+    translations.forEach((t) => {
+      const lang = (t.lang || '').trim();
+      if (!lang) return;
+      translationPaths[lang] = t.path || `locales/${lang}.json`;
+    });
+
     const languages = (
       translations.map((t) => (t.lang || '').trim()).filter(Boolean) as string[]
     ).sort();
     if (languages.length === 0 && program.defaultLanguage) languages.push(program.defaultLanguage);
+    const defaultLanguage = program.defaultLanguage || languages[0] || 'en';
+    if (!translationPaths[defaultLanguage]) {
+      translationPaths[defaultLanguage] = `locales/${defaultLanguage}.json`;
+    }
 
     const translationSummary =
       translations
@@ -108,7 +123,9 @@ const rows: ProgramRow[] = fs
       version,
       status,
       moduleCount,
+      defaultLanguage,
       languages,
+      translationPaths,
       translationSummary,
       lineage,
       githubUrl,
@@ -150,11 +167,20 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
           <th>Languages</th>
           <th>Lineage</th>
           <th>Status</th>
+          <th>Viewer</th>
         </tr>
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr data-row data-search={row.searchText} data-languages={row.languages.join(',')}>
+          <tr
+            data-row
+            data-id={row.id}
+            data-condition={row.condition}
+            data-default-language={row.defaultLanguage}
+            data-search={row.searchText}
+            data-languages={row.languages.join(',')}
+            data-translation-paths={JSON.stringify(row.translationPaths)}
+          >
             <td>
               <a href={row.githubUrl} target="_blank" rel="noreferrer">
                 {row.id}
@@ -183,11 +209,39 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
               <span class="cbt-badge cbt-badge-status">{row.status}</span>
               <div class="cbt-viewer-meta">v{row.version}</div>
             </td>
+            <td>
+              <button type="button" class="cbt-open-button" data-role="open-reader">
+                Read program
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
+
+  <section class="cbt-program-reader" data-role="reader" hidden>
+    <div class="cbt-reader-header">
+      <div>
+        <h3 class="cbt-reader-title" data-role="reader-title">Program reader</h3>
+        <p class="cbt-viewer-meta" data-role="reader-subtitle"></p>
+      </div>
+      <div class="cbt-reader-controls">
+        <label class="cbt-viewer-meta">
+          Language
+          <select data-role="reader-language"></select>
+        </label>
+        <a data-role="reader-source" href="#" target="_blank" rel="noreferrer">
+          Open locale JSON
+        </a>
+      </div>
+    </div>
+    <p class="cbt-viewer-meta" data-role="reader-status"></p>
+    <p data-role="reader-summary"></p>
+    <div data-role="reader-modules"></div>
+    <div data-role="reader-resources"></div>
+    <div data-role="reader-ai"></div>
+  </section>
 </div>
 
 <script is:inline>
@@ -202,6 +256,180 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     const languageSelect = root.querySelector('[data-role="language"]');
     const countEl = root.querySelector('[data-role="visible-count"]');
     const rows = Array.from(root.querySelectorAll('tr[data-row]'));
+    const openButtons = Array.from(root.querySelectorAll('[data-role="open-reader"]'));
+    const reader = root.querySelector('[data-role="reader"]');
+    const readerTitle = root.querySelector('[data-role="reader-title"]');
+    const readerSubtitle = root.querySelector('[data-role="reader-subtitle"]');
+    const readerLanguage = root.querySelector('[data-role="reader-language"]');
+    const readerSource = root.querySelector('[data-role="reader-source"]');
+    const readerStatus = root.querySelector('[data-role="reader-status"]');
+    const readerSummary = root.querySelector('[data-role="reader-summary"]');
+    const readerModules = root.querySelector('[data-role="reader-modules"]');
+    const readerResources = root.querySelector('[data-role="reader-resources"]');
+    const readerAi = root.querySelector('[data-role="reader-ai"]');
+
+    let activeRow = null;
+
+    const createSectionList = (title, items) => {
+      if (!Array.isArray(items) || items.length === 0) return null;
+      const wrap = document.createElement('div');
+      wrap.className = 'cbt-reader-list';
+      const heading = document.createElement('h5');
+      heading.textContent = title;
+      const list = document.createElement('ul');
+      items.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = String(item);
+        list.appendChild(li);
+      });
+      wrap.appendChild(heading);
+      wrap.appendChild(list);
+      return wrap;
+    };
+
+    const renderProgram = (data, languageCode) => {
+      if (!readerSummary || !readerModules || !readerResources || !readerAi || !readerStatus) return;
+
+      readerSummary.textContent = data.summary || 'No summary available for this locale.';
+      readerModules.innerHTML = '';
+      readerResources.innerHTML = '';
+      readerAi.innerHTML = '';
+
+      const modules = Array.isArray(data.modules) ? data.modules : [];
+      readerStatus.textContent = `Loaded ${languageCode} locale • ${modules.length} module(s).`;
+
+      if (modules.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'cbt-viewer-meta';
+        empty.textContent = 'No module content found in this locale file.';
+        readerModules.appendChild(empty);
+      } else {
+        modules.forEach((module, index) => {
+          const details = document.createElement('details');
+          details.className = 'cbt-reader-module';
+          if (index === 0) details.open = true;
+
+          const summary = document.createElement('summary');
+          const moduleTitle = module.title || module.id || `Module ${index + 1}`;
+          summary.textContent = `${index + 1}. ${moduleTitle}`;
+          details.appendChild(summary);
+
+          if (module.overview) {
+            const overview = document.createElement('p');
+            overview.textContent = String(module.overview);
+            details.appendChild(overview);
+          }
+
+          const takeaways = createSectionList('Takeaways', module.takeaways);
+          const exercises = createSectionList('Exercises', module.exercises);
+          const homework = createSectionList('Homework', module.homework);
+          [takeaways, exercises, homework].forEach((section) => {
+            if (section) details.appendChild(section);
+          });
+
+          readerModules.appendChild(details);
+        });
+      }
+
+      if (Array.isArray(data.resources) && data.resources.length > 0) {
+        const wrap = document.createElement('div');
+        wrap.className = 'cbt-reader-list';
+        const heading = document.createElement('h4');
+        heading.textContent = 'Resources';
+        wrap.appendChild(heading);
+
+        const list = document.createElement('ul');
+        data.resources.forEach((resource) => {
+          const li = document.createElement('li');
+          if (resource && resource.url) {
+            const link = document.createElement('a');
+            link.href = String(resource.url);
+            link.target = '_blank';
+            link.rel = 'noreferrer';
+            link.textContent = resource.title ? String(resource.title) : String(resource.url);
+            li.appendChild(link);
+          } else {
+            li.textContent = resource?.title ? String(resource.title) : 'Unnamed resource';
+          }
+          list.appendChild(li);
+        });
+
+        wrap.appendChild(list);
+        readerResources.appendChild(wrap);
+      }
+
+      if (data.aiSupport) {
+        const wrap = document.createElement('div');
+        wrap.className = 'cbt-reader-ai-card';
+        const heading = document.createElement('h4');
+        heading.textContent = 'AI support profile';
+        wrap.appendChild(heading);
+
+        const tone = document.createElement('p');
+        const toneLabel = document.createElement('strong');
+        toneLabel.textContent = 'Tone: ';
+        tone.appendChild(toneLabel);
+        tone.appendChild(document.createTextNode(String(data.aiSupport.coachingTone || 'N/A')));
+        const prompt = document.createElement('p');
+        const promptLabel = document.createElement('strong');
+        promptLabel.textContent = 'System prompt: ';
+        prompt.appendChild(promptLabel);
+        prompt.appendChild(document.createTextNode(String(data.aiSupport.systemPrompt || 'N/A')));
+        wrap.appendChild(tone);
+        wrap.appendChild(prompt);
+        readerAi.appendChild(wrap);
+      }
+    };
+
+    const parseRowData = (row) => {
+      const translationPathsRaw = row.getAttribute('data-translation-paths') || '{}';
+      let translationPaths = {};
+      try {
+        translationPaths = JSON.parse(translationPathsRaw);
+      } catch {
+        translationPaths = {};
+      }
+      const languages = (row.getAttribute('data-languages') || '')
+        .split(',')
+        .map((lang) => lang.trim())
+        .filter(Boolean);
+      return {
+        id: row.getAttribute('data-id') || 'unknown-program',
+        condition: row.getAttribute('data-condition') || 'Unknown condition',
+        defaultLanguage: row.getAttribute('data-default-language') || languages[0] || 'en',
+        translationPaths,
+        languages,
+      };
+    };
+
+    const loadLocale = async (rowData, languageCode) => {
+      if (!readerStatus || !readerSource) return;
+
+      const pathFromMeta =
+        rowData.translationPaths[languageCode] || `locales/${languageCode}.json`;
+      const rawUrl =
+        `https://raw.githubusercontent.com/eir-space/eir-open/main/` +
+        `skills/cbt-programs/data/programs/${rowData.id}/${pathFromMeta}`;
+
+      readerStatus.textContent = `Loading ${languageCode} locale...`;
+      readerSource.href = rawUrl;
+
+      try {
+        const response = await fetch(rawUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const data = await response.json();
+        renderProgram(data, languageCode);
+      } catch (error) {
+        if (readerSummary) readerSummary.textContent = '';
+        if (readerModules) readerModules.innerHTML = '';
+        if (readerResources) readerResources.innerHTML = '';
+        if (readerAi) readerAi.innerHTML = '';
+        readerStatus.textContent =
+          `Could not load locale file (${languageCode}). ${String(error && error.message ? error.message : error)}`;
+      }
+    };
 
     const applyFilters = () => {
       const query = (searchInput?.value || '').toLowerCase().trim();
@@ -220,6 +448,49 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
 
       if (countEl) countEl.textContent = String(visible);
     };
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const row = button.closest('tr[data-row]');
+        if (!row || !reader || !readerTitle || !readerSubtitle || !readerLanguage) return;
+
+        rows.forEach((otherRow) => otherRow.classList.remove('cbt-row-selected'));
+        row.classList.add('cbt-row-selected');
+        activeRow = row;
+
+        const rowData = parseRowData(row);
+        const languageSet = new Set([
+          ...rowData.languages,
+          ...Object.keys(rowData.translationPaths || {}),
+          rowData.defaultLanguage,
+        ]);
+        const languages = Array.from(languageSet).filter(Boolean).sort();
+
+        readerTitle.textContent = rowData.id;
+        readerSubtitle.textContent = rowData.condition;
+        reader.hidden = false;
+
+        readerLanguage.innerHTML = '';
+        languages.forEach((lang) => {
+          const option = document.createElement('option');
+          option.value = lang;
+          option.textContent = lang;
+          readerLanguage.appendChild(option);
+        });
+
+        const selectedLang = languages.includes(rowData.defaultLanguage)
+          ? rowData.defaultLanguage
+          : languages[0] || 'en';
+        readerLanguage.value = selectedLang;
+        loadLocale(rowData, selectedLang);
+      });
+    });
+
+    readerLanguage?.addEventListener('change', () => {
+      if (!activeRow) return;
+      const rowData = parseRowData(activeRow);
+      loadLocale(rowData, readerLanguage.value || rowData.defaultLanguage || 'en');
+    });
 
     searchInput?.addEventListener('input', applyFilters);
     languageSelect?.addEventListener('change', applyFilters);
@@ -265,7 +536,7 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
   table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 62rem;
+    min-width: 70rem;
   }
 
   th,
@@ -318,5 +589,107 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     font-size: 0.75rem;
     color: var(--sl-color-gray-3);
     line-height: 1.4;
+  }
+
+  .cbt-open-button {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.8rem;
+  }
+
+  .cbt-open-button:hover {
+    border-color: var(--sl-color-accent);
+  }
+
+  .cbt-row-selected td {
+    background: color-mix(in srgb, var(--sl-color-accent) 12%, transparent);
+  }
+
+  .cbt-program-reader {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    background: color-mix(in srgb, var(--sl-color-bg) 92%, var(--sl-color-gray-7));
+  }
+
+  .cbt-reader-header {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .cbt-reader-title {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .cbt-reader-controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .cbt-reader-controls select {
+    margin-left: 0.35rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.4rem;
+    padding: 0.25rem 0.4rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+
+  .cbt-reader-module {
+    border: 1px solid var(--sl-color-gray-6);
+    border-radius: 0.6rem;
+    margin-top: 0.75rem;
+    padding: 0.55rem 0.65rem;
+    background: var(--sl-color-bg);
+  }
+
+  .cbt-reader-module summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .cbt-reader-list {
+    margin-top: 0.55rem;
+  }
+
+  .cbt-reader-list h4,
+  .cbt-reader-list h5 {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-2);
+  }
+
+  .cbt-reader-list ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .cbt-reader-ai-card {
+    margin-top: 0.9rem;
+    border: 1px dashed var(--sl-color-gray-5);
+    border-radius: 0.6rem;
+    padding: 0.7rem;
+  }
+
+  .cbt-reader-ai-card h4 {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.9rem;
+  }
+
+  .cbt-reader-ai-card p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
   }
 </style>
