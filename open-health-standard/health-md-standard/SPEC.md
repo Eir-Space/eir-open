@@ -1,4 +1,4 @@
-# Health.md Specification v1.0
+# Health.md Specification v1.1 (Draft)
 
 ## Overview
 
@@ -23,12 +23,15 @@ john-doe-2024.health.md
 
 ```yaml
 ---
-health_md_version: '1.0'
-record_id: 'anonymous-001'
-generated: '2024-02-17T10:00:00Z'
-privacy_level: 'anonymous' # anonymous, pseudonymized, identified
-last_updated: '2024-02-17T10:00:00Z'
-data_sources: ['epic', 'manual_entry']
+health_md_version: "1.1"
+record_id: "anonymous-001"
+generated: "2024-02-17T10:00:00Z"
+privacy_level: "anonymous"  # anonymous, pseudonymized, identified
+last_updated: "2024-02-17T10:00:00Z"
+data_sources: ["epic", "manual_entry"]
+# Optional agent interoperability fields
+agent_compatible: true
+provenance_policy: "required_for_agent_added_facts"
 ---
 ```
 
@@ -240,6 +243,144 @@ Laboratory data with temporal context and clinical significance.
 - **Contact:** +46-8-555-0123
 ```
 
+### 9. Active Health Contexts (Agent-Facing)
+Use this section for conditions or states that should influence how an agent responds right now, including non-disease contexts such as pregnancy or breastfeeding.
+
+```markdown
+## Active Health Contexts
+
+### Pregnancy
+- **Status:** Active
+- **Type:** Physiologic state
+- **Source:** user_reported
+- **Confidence:** High
+- **Last Confirmed:** 2026-02-26
+- **Notes:** Use pregnancy-safe guidance and medication caution checks
+
+### Type 2 Diabetes Mellitus
+- **Status:** Active
+- **Type:** Chronic condition
+- **Source:** ehr_export
+- **Confidence:** High
+- **Last Confirmed:** 2024-02-10
+```
+
+**Recommended values:**
+- `Status:` `active`, `resolved`, `unknown`
+- `Source:` `user_reported`, `ehr`, `ehr_export`, `journal_inferred`, `clinician_verified`, `manual_entry`
+- `Confidence:` `low`, `medium`, `high`
+
+### 10. Unconfirmed Findings (Agent Safety)
+Use this section for inferred findings from journals, chat, or uploads that require confirmation before being treated as confirmed conditions or contexts.
+
+```markdown
+## Unconfirmed Findings
+
+### Possible Pregnancy (journal mention, 2026-02-26)
+- **Type:** Potential health context
+- **Source:** journal_inferred
+- **Confidence:** Medium
+- **Evidence:** "Missed period and positive home test" in journal entry
+- **Action Needed:** Confirm with user before adding to Active Health Contexts
+- **Do Not Treat As Confirmed:** Yes
+```
+
+### 11. Skill Attachments (Agent Interoperability)
+Use this section to track which health skills are suggested or active for this record so any compatible agent can load the same context and behavior.
+
+```markdown
+## Skill Attachments
+
+### health
+- **Status:** Active
+- **Reason:** Base health record management and follow-up questions
+- **Added By:** user
+- **Last Reviewed:** 2026-02-26
+
+### diabetes
+- **Status:** Active
+- **Reason:** Active Type 2 Diabetes Mellitus in Medical History
+- **Added By:** agent
+- **Last Reviewed:** 2026-02-26
+
+### pregnancy
+- **Status:** Suggested
+- **Reason:** Unconfirmed finding indicates possible pregnancy
+- **Added By:** agent
+```
+
+**Recommended values:**
+- `Status:` `suggested`, `active`, `disabled`
+- `Added By:` `user`, `agent`, `clinician`, `system`
+
+### 12. Linked Health Files (Condition/Event Records)
+Use this section to list focused companion files for specific conditions or health events (for example `pregnancy.md`, `diabetes.md`). This keeps `health.md` as the master index while allowing richer condition-specific tracking in separate files.
+
+```markdown
+## Linked Health Files
+
+### pregnancy.md
+- **Type:** Condition/Event record
+- **Skill:** pregnancy
+- **Status:** Active
+- **Reason:** Active pregnancy context with trimester-specific follow-up
+- **Created:** 2026-02-26
+- **Last Updated:** 2026-02-26
+
+### diabetes.md
+- **Type:** Condition/Event record
+- **Skill:** diabetes
+- **Status:** Active
+- **Reason:** Detailed glucose tracking and diabetes-specific goals
+- **Created:** 2026-02-26
+- **Last Updated:** 2026-02-26
+```
+
+**Naming convention (recommended):**
+- Use simple canonical skill-aligned filenames: `pregnancy.md`, `diabetes.md`, `ms.md`
+- For multiple concurrent records of the same type, append a disambiguator: `pregnancy-2026.md`, `cancer-breast.md`
+
+**Recommended values:**
+- `Status:` `active`, `archived`, `planned`
+
+### 13. Active Programs (Optional)
+Use this section for structured monitoring or coaching workflows linked to a condition skill.
+
+```markdown
+## Active Programs
+
+### diabetes-monitoring
+- **Status:** Active
+- **Linked Skill:** diabetes
+- **Inputs Requested:** Glucose readings, meals, symptoms, medication adherence
+- **Frequency:** Up to 5x/day (user-configurable)
+- **Started:** 2026-02-26
+- **Safety Notes:** Escalate urgent symptoms or severe hypo/hyperglycemia concerns to emergency care guidance
+```
+
+### 14. Information Gaps & Follow-up Questions (Agent Workflow)
+Use this section to persist unanswered questions so agents can continue collecting missing health information over time.
+
+```markdown
+## Information Gaps & Follow-up Questions
+
+### Diabetes Monitoring Baseline
+- **Question:** Does the patient currently check glucose at home?
+- **Why It Matters:** Determines whether a monitoring program should be suggested
+- **Status:** Open
+- **Created By:** agent
+- **Created:** 2026-02-26
+
+### Pregnancy Confirmation
+- **Question:** Has a clinician confirmed the pregnancy?
+- **Why It Matters:** Determines whether to move pregnancy from Unconfirmed Findings to Active Health Contexts
+- **Status:** Open
+- **Created By:** agent
+```
+
+**Recommended values:**
+- `Status:` `open`, `answered`, `deferred`
+
 ## Data Types and Formats
 
 ### Dates
@@ -265,6 +406,11 @@ Laboratory data with temporal context and clinical significance.
 - **Record ID:** Unique identifier for the health record
 - **Provider NPI:** National Provider Identifier (US) or equivalent
 - **Facility ID:** Clinic/hospital identifier
+
+### Provenance and Confidence (Recommended for Agent-Added Data)
+- **Source values:** `user_reported`, `ehr`, `ehr_export`, `journal_inferred`, `manual_entry`, `clinician_verified`
+- **Confidence values:** `low`, `medium`, `high`
+- **Confirmation rule:** Inferred findings should be stored in `Unconfirmed Findings` until user or clinician confirmation
 
 ## Privacy Guidelines
 
@@ -337,6 +483,43 @@ Laboratory data with temporal context and clinical significance.
 2. **Sensitive Markers:** Mental health, substance use should be marked
 3. **Identifier Consistency:** Pseudonymized IDs should be consistent
 
+### Agent Interoperability Validation (Recommended)
+1. **Agent-added facts include provenance:** Any new condition/context added by an agent should include `Source`
+2. **Inferred findings are not silently promoted:** `journal_inferred` findings should remain unconfirmed until confirmed
+3. **Skill names are simple and portable:** Prefer canonical names like `health`, `pregnancy`, `diabetes`
+4. **Follow-up questions are explicit:** Missing critical information should be captured in `Information Gaps & Follow-up Questions`
+5. **Linked files are indexed in `health.md`:** Condition/event files (for example `pregnancy.md`) should be listed in `Linked Health Files`
+
+## Agent Interoperability Profile (`health` Skill)
+
+The `health.md` format is designed to support a portable `health` skill that can be used across agents.
+
+### Expected `health` Skill Behavior
+1. **Read and update `health.md`:** Use the file as the source of truth for longitudinal health context
+2. **Ask follow-up questions:** When key information is missing, ask the user and store open questions in `Information Gaps & Follow-up Questions`
+3. **Store provenance:** Mark whether information came from user report, EHR export, journal inference, or clinician verification
+4. **Separate inferred from confirmed facts:** Store uncertain findings in `Unconfirmed Findings` until confirmed
+5. **Attach relevant health skills:** Use `Skill Attachments` to record suggested/active skills like `pregnancy` or `diabetes`
+6. **Maintain linked condition/event files:** Record focused files like `pregnancy.md` in `Linked Health Files` when created
+7. **Activate optional programs:** Use `Active Programs` for monitoring workflows only when relevant and user-approved
+
+### Canonical Skill Naming (Recommended)
+- Base skill: `health`
+- Condition/context skills: `pregnancy`, `diabetes`, `ms`, `hypertension`
+- Discovery skill: `health-skill-finder`
+
+### Condition/Event File Pattern (Recommended)
+- `health.md` is the master record and index
+- Condition/event skills may create focused companion files (for example `pregnancy.md`)
+- The focused file stores detailed tracking and condition-specific notes
+- `health.md` must list those files in `Linked Health Files`
+
+### Agent Prompting Guidance (Recommended)
+- Prefer asking short, high-value clarifying questions before writing uncertain diagnoses
+- Confirm sensitive or high-impact facts (pregnancy, cancer, acute diagnoses, medication changes) before marking as confirmed
+- Preserve user wording in notes when useful, but normalize key facts into structured bullets
+- Update `last_updated` when the file changes
+
 ## Extensions and Customizations
 
 ### Specialty Extensions
@@ -386,6 +569,7 @@ Laboratory data with temporal context and clinical significance.
 
 ## Version History
 
+- **v1.1 (Draft):** Added agent interoperability sections (`Active Health Contexts`, `Unconfirmed Findings`, `Skill Attachments`, `Linked Health Files`, `Active Programs`, `Information Gaps & Follow-up Questions`) and `health` skill profile
 - **v1.0 (2024-02-17):** Initial specification release
 - **v0.9 (2024-02-10):** Beta release for community feedback
 - **v0.5 (2024-01-15):** Alpha specification draft
@@ -393,5 +577,5 @@ Laboratory data with temporal context and clinical significance.
 ---
 
 **Specification Maintained By:** [Birger Moëll](https://github.com/BirgerMoell), Uppsala University  
-**Last Updated:** 2024-02-17  
+**Last Updated:** 2026-02-26  
 **License:** MIT

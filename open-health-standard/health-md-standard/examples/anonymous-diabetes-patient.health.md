@@ -1,10 +1,12 @@
 ---
-health_md_version: '1.0'
-record_id: 'anonymous-001'
-generated: '2024-02-17T10:00:00Z'
-privacy_level: 'anonymous'
-last_updated: '2024-02-17T10:00:00Z'
-data_sources: ['ehr_export', 'manual_entry']
+health_md_version: "1.1"
+record_id: "anonymous-001"
+generated: "2024-02-17T10:00:00Z"
+privacy_level: "anonymous"
+last_updated: "2024-02-17T10:00:00Z"
+data_sources: ["ehr_export", "manual_entry"]
+agent_compatible: true
+provenance_policy: "required_for_agent_added_facts"
 ---
 
 # Health Record - Anonymous Patient 001
@@ -273,6 +275,74 @@ data_sources: ['ehr_export', 'manual_entry']
 - **Weight:** BMI <25 (Current: 28.7 - in progress)
 - **Diet:** Mediterranean-style, low glycemic index ✓
 
+## Active Health Contexts
+
+### Type 2 Diabetes Mellitus
+- **Status:** Active
+- **Type:** Chronic condition
+- **Source:** ehr_export
+- **Confidence:** High
+- **Last Confirmed:** 2024-02
+- **Notes:** Use diabetes-aware counseling and medication/lab context
+
+### Hypertension
+- **Status:** Active
+- **Type:** Chronic condition
+- **Source:** ehr_export
+- **Confidence:** High
+- **Last Confirmed:** 2024-02
+- **Notes:** Consider blood pressure targets and antihypertensive therapy in advice
+
+## Skill Attachments
+
+### health
+- **Status:** Active
+- **Reason:** Base health record management, follow-up questions, and updates
+- **Added By:** user
+- **Last Reviewed:** 2026-02-26
+
+### diabetes
+- **Status:** Active
+- **Reason:** Active Type 2 Diabetes Mellitus context and monitoring support
+- **Added By:** agent
+- **Last Reviewed:** 2026-02-26
+
+## Linked Health Files
+
+### diabetes.md
+- **Type:** Condition/Event record
+- **Skill:** diabetes
+- **Status:** Active
+- **Reason:** Detailed diabetes-specific tracking, glucose trends, and goals
+- **Created:** 2026-02-26
+- **Last Updated:** 2026-02-26
+
+## Active Programs
+
+### diabetes-monitoring
+- **Status:** Suggested
+- **Linked Skill:** diabetes
+- **Inputs Requested:** Glucose readings, meals, symptoms, medication adherence
+- **Frequency:** User-configurable (for example 1-5x/day)
+- **Started:** 2026-02-26
+- **Safety Notes:** Symptoms of severe hypoglycemia/hyperglycemia require urgent assessment
+
+## Information Gaps & Follow-up Questions
+
+### Home Glucose Monitoring
+- **Question:** Do you currently check blood glucose at home, and if so how often?
+- **Why It Matters:** Determines whether a monitoring program should be activated and what cadence is realistic
+- **Status:** Open
+- **Created By:** agent
+- **Created:** 2026-02-26
+
+### Pregnancy Status
+- **Question:** Are you currently pregnant or trying to become pregnant?
+- **Why It Matters:** Changes how medication and health guidance should be framed
+- **Status:** Open
+- **Created By:** agent
+- **Created:** 2026-02-26
+
 ## Notes and Observations
 
 ### Patient Engagement
@@ -291,4 +361,4 @@ data_sources: ['ehr_export', 'manual_entry']
 
 ---
 
-_Record generated for educational and research purposes. All identifying information has been removed or anonymized in accordance with privacy guidelines._
+*Record generated for educational and research purposes. All identifying information has been removed or anonymized in accordance with privacy guidelines.*
