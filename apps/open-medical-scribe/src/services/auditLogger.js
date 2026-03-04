@@ -1,5 +1,5 @@
-import { appendFileSync, mkdirSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { appendFileSync, mkdirSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
 
 export function createAuditLogger(config) {
   return {
@@ -13,8 +13,7 @@ export function createAuditLogger(config) {
       });
       const fullPath = resolve(process.cwd(), file);
       mkdirSync(dirname(fullPath), { recursive: true });
-      appendFileSync(fullPath, line + "\n");
+      appendFileSync(fullPath, line + '\n');
     },
   };
 }
-

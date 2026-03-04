@@ -18,6 +18,7 @@ This MCP server allows users to load `.eir` healthcare files directly into any M
 ## Quick Start
 
 ### Installation
+
 ```bash
 npm install -g eir-mcp-server
 # or
@@ -25,6 +26,7 @@ pip install eir-mcp-server
 ```
 
 ### Configuration
+
 Add to your MCP client (Claude Desktop, etc.):
 
 ```json
@@ -39,6 +41,7 @@ Add to your MCP client (Claude Desktop, etc.):
 ```
 
 ### Usage
+
 1. **Load EIR file**: "Load my healthcare data from patient-2024.eir"
 2. **Query data**: "What medications am I currently taking?"
 3. **Analyze trends**: "How has my HbA1c changed over time?"
@@ -47,69 +50,85 @@ Add to your MCP client (Claude Desktop, etc.):
 ## MCP Tools
 
 ### `load_eir_file`
+
 Load an EIR healthcare file into the conversation context.
 
 **Parameters:**
+
 - `file_path` (string): Path to the .eir file
 - `privacy_check` (boolean): Verify privacy level before loading
 
 **Returns:**
+
 - Structured healthcare data ready for AI analysis
 - Patient summary and key metrics
 - Validation status and warnings
 
-### `query_medications` 
+### `query_medications`
+
 Get current medications and treatment details.
 
 **Parameters:**
+
 - `active_only` (boolean): Show only active medications
 - `include_history` (boolean): Include medication history
 
 ### `query_lab_results`
+
 Retrieve lab results with filtering options.
 
 **Parameters:**
+
 - `test_name` (string, optional): Filter by specific test
 - `days_back` (number): How many days back to include
 - `include_trends` (boolean): Calculate trends and changes
 
 ### `query_conditions`
+
 Get medical conditions and diagnoses.
 
-**Parameters:**  
+**Parameters:**
+
 - `status` (enum): active, resolved, chronic, all
 - `include_icd_codes` (boolean): Include ICD-10/SNOMED codes
 
 ### `analyze_timeline`
+
 Generate clinical timeline and care journey analysis.
 
 **Parameters:**
+
 - `days_back` (number): Time period to analyze
 - `event_types` (array): Filter by visit types
 - `include_outcomes` (boolean): Include treatment outcomes
 
 ### `validate_eir_file`
+
 Validate EIR file format and content.
 
 **Parameters:**
+
 - `file_path` (string): Path to file to validate
 - `strict_mode` (boolean): Enable strict validation rules
 
 ### `generate_summary`
+
 Create comprehensive health summary for AI analysis.
 
 **Parameters:**
+
 - `summary_type` (enum): brief, detailed, clinical, patient_friendly
 - `focus_areas` (array): Specific areas to emphasize
 
 ## Example Conversations
 
 ### Loading and Basic Queries
+
 ```
 User: Load my healthcare data from ~/health/birger-2024.eir
 
 AI: I've loaded your healthcare data (privacy level: pseudonymized). I can see:
-- 2 active medical conditions (Type 2 Diabetes, Hypertension) 
+- 2 active medical conditions (Type 2 Diabetes, Hypertension)
 - 2 current medications (Metformin, Lisinopril)
 - Recent lab results showing excellent diabetes control (HbA1c: 6.8%)
 - 15 clinical events over the past year
@@ -140,6 +159,7 @@ Your endocrinologist Dr. Smith noted "excellent response to lifestyle and metfor
 ```
 
 ### Trend Analysis
+
 ```
 User: Show me how my lab values have changed over time
 
@@ -147,7 +167,7 @@ AI: Here's your lab trend analysis:
 
 **Hemoglobin A1C (Diabetes Control):**
 📉 Dec 2023: 8.2% (diagnostic)
-📉 Jan 2024: 7.4% (improving) 
+📉 Jan 2024: 7.4% (improving)
 📉 Feb 2024: 6.8% (target achieved!)
 Trend: -1.4% in 2 months (excellent improvement)
 
@@ -166,6 +186,7 @@ Trend: -7kg in 4 months (sustainable pace)
 ```
 
 ### Risk Assessment
+
 ```
 User: What should I be watching out for health-wise?
 
@@ -206,18 +227,21 @@ Your proactive approach and excellent clinical response suggest low risk for com
 ## Privacy and Security
 
 ### Privacy Levels
+
 - **Anonymous**: No personal identifiers displayed
 - **Pseudonymized**: Consistent fake names, full clinical data
 - **Identified**: Real names and contact information (use carefully)
 
 ### Security Features
+
 - **Local processing**: EIR files processed locally, not sent to servers
 - **Validation**: Schema validation prevents malformed data processing
 - **Access control**: Respects file permissions and privacy settings
 - **Audit trail**: Logs all data access for compliance
 
 ### GDPR/HIPAA Compliance
-- **Data minimization**: Only loads requested data sections  
+
+- **Data minimization**: Only loads requested data sections
 - **Retention limits**: Data cleared after conversation ends
 - **Consent tracking**: Records user consent for data processing
 - **Right to erasure**: Complete data deletion on request
@@ -225,12 +249,14 @@ Your proactive approach and excellent clinical response suggest low risk for com
 ## Swedish Healthcare Integration
 
 ### 1177 Vårdguiden Support
+
 - **Native terminology**: Understands Swedish medical terms
 - **Provider mapping**: Maps Swedish healthcare providers
 - **ICD-10-SE**: Supports Swedish ICD-10 extensions
 - **Referral system**: Understands Swedish referral patterns
 
 ### Regional Integration
+
 - **Uppsala Region**: Enhanced support for local providers
 - **Folktandvården**: Dental care integration
 - **Vaccination records**: Integration with Swedish vaccination system
@@ -238,6 +264,7 @@ Your proactive approach and excellent clinical response suggest low risk for com
 ## Development
 
 ### Contributing
+
 ```bash
 git clone https://github.com/BirgerMoell/eir-mcp-server
 cd eir-mcp-server
@@ -246,6 +273,7 @@ npm run dev
 ```
 
 ### Testing
+
 ```bash
 # Run tests
 npm test
@@ -258,19 +286,22 @@ npm run validate examples/*.eir
 ```
 
 ### API Documentation
+
 Full API documentation available at: https://docs.eir.space/mcp-server
 
 ## Roadmap
 
 ### Version 1.1 (Q2 2024)
+
 - **Real-time sync** with Swedish healthcare systems
-- **Family sharing** for caregiver access  
+- **Family sharing** for caregiver access
 - **Predictive analytics** for health risk assessment
 - **Integration** with Apple Health, Google Fit
 
 ### Version 2.0 (Q3 2024)
+
 - **Multi-patient** support for healthcare providers
-- **Clinical decision support** with evidence-based recommendations  
+- **Clinical decision support** with evidence-based recommendations
 - **Population health** analytics for research
 - **Blockchain integration** for data provenance
 

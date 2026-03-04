@@ -4,7 +4,7 @@
  */
 export function createMockStreamProvider() {
   return {
-    name: "mock-stream",
+    name: 'mock-stream',
 
     createSession({ language, onResult, onUtteranceEnd, onError, onClose }) {
       let frameCount = 0;
@@ -12,12 +12,12 @@ export function createMockStreamProvider() {
       let closed = false;
 
       const phrases = [
-        "Patient reports headache for two days.",
-        "Any associated symptoms like nausea or visual changes?",
-        "No nausea. Some light sensitivity.",
-        "Let me check your vitals. Blood pressure is 128 over 82.",
-        "I have been taking ibuprofen but it is not helping.",
-        "We will order some labs and consider imaging.",
+        'Patient reports headache for two days.',
+        'Any associated symptoms like nausea or visual changes?',
+        'No nausea. Some light sensitivity.',
+        'Let me check your vitals. Blood pressure is 128 over 82.',
+        'I have been taking ibuprofen but it is not helping.',
+        'We will order some labs and consider imaging.',
       ];
 
       return {
@@ -35,7 +35,7 @@ export function createMockStreamProvider() {
               text: phrase,
               speaker,
               isFinal: true,
-              words: phrase.split(" ").map((w, i) => ({
+              words: phrase.split(' ').map((w, i) => ({
                 word: w,
                 speaker,
                 start: i * 0.3,

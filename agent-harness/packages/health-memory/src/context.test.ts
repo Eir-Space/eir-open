@@ -32,7 +32,9 @@ describe('formatMemoryContext', () => {
   });
 
   it('excludes dismissed items', () => {
-    const result = formatMemoryContext([makeItem({ status: 'dismissed', label: 'Dismissed Item' })]);
+    const result = formatMemoryContext([
+      makeItem({ status: 'dismissed', label: 'Dismissed Item' }),
+    ]);
     assert.equal(result, '');
   });
 
@@ -56,7 +58,13 @@ describe('formatMemoryContext', () => {
   it('formats multiple items', () => {
     const items = [
       makeItem({ label: 'Diabetes', category: 'diagnosis' }),
-      makeItem({ id: 'test-2', label: 'Headache', category: 'concern', certaintyLevel: 'medium', status: 'inferred' }),
+      makeItem({
+        id: 'test-2',
+        label: 'Headache',
+        category: 'concern',
+        certaintyLevel: 'medium',
+        status: 'inferred',
+      }),
     ];
     const result = formatMemoryContext(items);
     assert.ok(result.includes('[diagnosis] Diabetes'));

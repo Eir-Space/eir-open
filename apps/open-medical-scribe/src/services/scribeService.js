@@ -1,7 +1,7 @@
-import { buildSoapNoteFromTranscript } from "./soapFormatter.js";
-import { createAuditLogger } from "./auditLogger.js";
-import { maybeRedactForProvider } from "./privacy.js";
-import { buildNotePrompt } from "./promptBuilder.js";
+import { buildSoapNoteFromTranscript } from './soapFormatter.js';
+import { createAuditLogger } from './auditLogger.js';
+import { maybeRedactForProvider } from './privacy.js';
+import { buildNotePrompt } from './promptBuilder.js';
 
 export function createScribeService({ config, transcriptionProvider, noteGenerator }) {
   const audit = createAuditLogger(config);
@@ -10,7 +10,7 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
     async transcribeOnly(input) {
       const transcript = await resolveTranscript({ input, transcriptionProvider });
       audit.log({
-        event: "transcribe_only",
+        event: 'transcribe_only',
         provider: transcriptionProvider.name,
         transcriptChars: transcript.length,
       });
@@ -21,15 +21,15 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
     },
 
     async processEncounter(input) {
-      if (!input || typeof input !== "object") {
-        const error = new Error("Request body must be an object");
+      if (!input || typeof input !== 'object') {
+        const error = new Error('Request body must be an object');
         error.statusCode = 400;
         throw error;
       }
 
       const transcript = await resolveTranscript({ input, transcriptionProvider });
-      const noteStyle = input.noteStyle || config.defaultNoteStyle || "soap";
-      const specialty = input.specialty || config.defaultSpecialty || "primary-care";
+      const noteStyle = input.noteStyle || config.defaultNoteStyle || 'soap';
+      const specialty = input.specialty || config.defaultSpecialty || 'primary-care';
       const redacted = maybeRedactForProvider({
         config,
         providerName: noteGenerator.name,
@@ -38,7 +38,7 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
 
       const notePromptArgs = {
         transcript: redacted.text,
-        noteStyle: input.customPrompt ? "custom" : noteStyle,
+        noteStyle: input.customPrompt ? 'custom' : noteStyle,
         specialty,
         patientContext: input.patientContext || {},
         clinicianContext: input.clinicianContext || {},
@@ -54,7 +54,7 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
       const draft = await noteGenerator.generateNote({
         transcript: redacted.text,
         sourceTranscript: transcript,
-        noteStyle: input.customPrompt ? "custom" : noteStyle,
+        noteStyle: input.customPrompt ? 'custom' : noteStyle,
         specialty,
         customPrompt: input.customPrompt || undefined,
         patientContext: input.patientContext || {},
@@ -62,7 +62,7 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
         encounterMetadata: input.encounterMetadata || {},
       });
 
-      const fallback = noteStyle === "soap" ? buildSoapNoteFromTranscript(transcript) : null;
+      const fallback = noteStyle === 'soap' ? buildSoapNoteFromTranscript(transcript) : null;
 
       const result = {
         id: `enc_${Date.now()}`,
@@ -72,12 +72,12 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
           note: noteGenerator.name,
         },
         transcript,
-        noteDraft: draft.noteText || (fallback ? fallback.noteText : "") || "",
+        noteDraft: draft.noteText || (fallback ? fallback.noteText : '') || '',
         sections: draft.sections || (fallback ? fallback.sections : {}),
         codingHints: draft.codingHints || [],
         followUpQuestions: draft.followUpQuestions || [],
         warnings: draft.warnings || [
-          "Draft note requires clinician review and sign-off before use.",
+          'Draft note requires clinician review and sign-off before use.',
         ],
         prompt: {
           system: prompt.system,
@@ -93,11 +93,11 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
       };
 
       audit.log({
-        event: "encounter_scribed",
+        event: 'encounter_scribed',
         transcriptionProvider: transcriptionProvider.name,
         noteProvider: noteGenerator.name,
         transcriptChars: transcript.length,
-        noteChars: String(result.noteDraft || "").length,
+        noteChars: String(result.noteDraft || '').length,
         noteStyle,
         specialty,
         redactionApplied: redacted.redactionApplied,
@@ -110,42 +110,40 @@ export function createScribeService({ config, transcriptionProvider, noteGenerat
 
 async function resolveTranscript({ input, transcriptionProvider }) {
   const transcriptionHints = {
-    language: typeof input.language === "string" ? input.language : undefined,
-    country: typeof input.country === "string" ? input.country : undefined,
-    locale: typeof input.locale === "string" ? input.locale : undefined,
+    language: typeof input.language === 'string' ? input.language : undefined,
+    country: typeof input.country === 'string' ? input.country : undefined,
+    locale: typeof input.locale === 'string' ? input.locale : undefined,
   };
 
-  if (typeof input.transcript === "string" && input.transcript.trim()) {
+  if (typeof input.transcript === 'string' && input.transcript.trim()) {
     return normalizeTranscript(input.transcript);
   }
 
-  if (typeof input.audioText === "string" && input.audioText.trim()) {
+  if (typeof input.audioText === 'string' && input.audioText.trim()) {
     const result = await transcriptionProvider.transcribe({
-      type: "text-simulated-audio",
+      type: 'text-simulated-audio',
       content: input.audioText,
-      mimeType: "text/plain",
+      mimeType: 'text/plain',
       ...transcriptionHints,
     });
     return normalizeTranscript(result.text);
   }
 
-  if (typeof input.audioBase64 === "string" && input.audioBase64.trim()) {
+  if (typeof input.audioBase64 === 'string' && input.audioBase64.trim()) {
     const result = await transcriptionProvider.transcribe({
-      type: "audio-base64",
+      type: 'audio-base64',
       content: input.audioBase64,
-      mimeType: input.audioMimeType || "audio/wav",
+      mimeType: input.audioMimeType || 'audio/wav',
       ...transcriptionHints,
     });
     return normalizeTranscript(result.text);
   }
 
-  const error = new Error(
-    'Provide either "transcript", "audioText" (dev), or "audioBase64".',
-  );
+  const error = new Error('Provide either "transcript", "audioText" (dev), or "audioBase64".');
   error.statusCode = 400;
   throw error;
 }
 
 function normalizeTranscript(text) {
-  return String(text).replace(/\s+/g, " ").trim();
+  return String(text).replace(/\s+/g, ' ').trim();
 }

@@ -222,96 +222,31 @@
     }
   ],
   "index": {
-    "warfarin": [
-      0,
-      1,
-      2,
-      17
-    ],
-    "ibuprofen": [
-      0,
-      4,
-      10,
-      16
-    ],
-    "diklofenak": [
-      1
-    ],
-    "acetylsalicylsyra": [
-      2
-    ],
-    "sertralin": [
-      3,
-      4,
-      19
-    ],
-    "moklobemid": [
-      3
-    ],
-    "enalapril": [
-      5,
-      6,
-      11
-    ],
-    "kalium": [
-      5
-    ],
-    "spironolakton": [
-      6
-    ],
-    "metformin": [
-      7
-    ],
-    "kontrastmedel": [
-      7
-    ],
-    "kodein": [
-      8,
-      18
-    ],
-    "oxazepam": [
-      8,
-      9
-    ],
-    "tramadol": [
-      9,
-      19
-    ],
-    "litium": [
-      10,
-      11
-    ],
-    "digoxin": [
-      12,
-      13
-    ],
-    "amiodaron": [
-      12
-    ],
-    "verapamil": [
-      13
-    ],
-    "atorvastatin": [
-      14
-    ],
-    "erytromycin": [
-      14
-    ],
-    "simvastatin": [
-      15
-    ],
-    "klaritromycin": [
-      15
-    ],
-    "metotrexat": [
-      16
-    ],
-    "paracetamol": [
-      17
-    ],
-    "pregabalin": [
-      18
-    ]
+    "warfarin": [0, 1, 2, 17],
+    "ibuprofen": [0, 4, 10, 16],
+    "diklofenak": [1],
+    "acetylsalicylsyra": [2],
+    "sertralin": [3, 4, 19],
+    "moklobemid": [3],
+    "enalapril": [5, 6, 11],
+    "kalium": [5],
+    "spironolakton": [6],
+    "metformin": [7],
+    "kontrastmedel": [7],
+    "kodein": [8, 18],
+    "oxazepam": [8, 9],
+    "tramadol": [9, 19],
+    "litium": [10, 11],
+    "digoxin": [12, 13],
+    "amiodaron": [12],
+    "verapamil": [13],
+    "atorvastatin": [14],
+    "erytromycin": [14],
+    "simvastatin": [15],
+    "klaritromycin": [15],
+    "metotrexat": [16],
+    "paracetamol": [17],
+    "pregabalin": [18]
   },
   "severityLegend": {
     "A": {

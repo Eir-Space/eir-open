@@ -40,15 +40,20 @@ import {
 
 const mockProvider: LlmProvider = {
   async createCompletion(request: LlmCompletionRequest): Promise<LlmCompletionResponse> {
-    const lastUserMsg = [...request.messages].reverse().find(m => m.role === 'user');
+    const lastUserMsg = [...request.messages].reverse().find((m) => m.role === 'user');
     const text = typeof lastUserMsg?.content === 'string' ? lastUserMsg.content : '';
 
     // Simple echo response for demo
     return {
-      choices: [{
-        message: { role: 'assistant', content: `Thank you for sharing. Regarding "${text}" — I recommend discussing this with your healthcare provider for personalized advice.` },
-        finish_reason: 'stop',
-      }],
+      choices: [
+        {
+          message: {
+            role: 'assistant',
+            content: `Thank you for sharing. Regarding "${text}" — I recommend discussing this with your healthcare provider for personalized advice.`,
+          },
+          finish_reason: 'stop',
+        },
+      ],
     };
   },
 };
@@ -115,9 +120,7 @@ const router = new KeywordModeRouter({
 const app = express();
 app.use(express.json());
 
-const skills = loadSkillDirectory(
-  new URL('../minimal-agent/skills', import.meta.url).pathname,
-);
+const skills = loadSkillDirectory(new URL('../minimal-agent/skills', import.meta.url).pathname);
 const memoryStore = new InMemoryHealthMemoryStore();
 
 app.post('/chat', async (req, res) => {
@@ -157,9 +160,10 @@ app.post('/chat', async (req, res) => {
     ];
 
     // 4. Filter tools for mode
-    const modeTools = decision.allowedTools.length > 0
-      ? tools.filter(t => decision.allowedTools.includes(t.function.name))
-      : [];
+    const modeTools =
+      decision.allowedTools.length > 0
+        ? tools.filter((t) => decision.allowedTools.includes(t.function.name))
+        : [];
 
     // 5. Run tool loop
     const result = await executeToolLoop({
@@ -198,5 +202,7 @@ const PORT = process.env.PORT ?? 3000;
 app.listen(PORT, () => {
   console.log(`Health agent server running on http://localhost:${PORT}`);
   console.log(`Loaded ${skills.size} skill(s)`);
-  console.log('\nTry: curl -X POST http://localhost:3000/chat -H "Content-Type: application/json" -d \'{"message":"I have been having headaches"}\'');
+  console.log(
+    '\nTry: curl -X POST http://localhost:3000/chat -H "Content-Type: application/json" -d \'{"message":"I have been having headaches"}\'',
+  );
 });

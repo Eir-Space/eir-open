@@ -1,9 +1,18 @@
 import type { LlmProvider, LlmCompletionRequest } from './provider.js';
-import type { LlmMessage, LlmToolCall, ToolDefinition, ToolHandler, ToolHandlerResult, AgentAction } from './types.js';
+import type {
+  LlmMessage,
+  ToolDefinition,
+  ToolHandler,
+  ToolHandlerResult,
+  AgentAction,
+} from './types.js';
 
 export interface ToolLoopHooks {
   /** Intercept/modify tool args before execution. Return false to block the call. */
-  beforeToolCall?(name: string, args: Record<string, unknown>): Record<string, unknown> | false | Promise<Record<string, unknown> | false>;
+  beforeToolCall?(
+    name: string,
+    args: Record<string, unknown>,
+  ): Record<string, unknown> | false | Promise<Record<string, unknown> | false>;
   /** Called after a tool executes. */
   afterToolCall?(name: string, result: ToolHandlerResult): void | Promise<void>;
   /** Control tool_choice for follow-up LLM calls. Default: 'auto' until last iteration, then 'none'. */
@@ -99,7 +108,10 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       if (allowedToolNames && !allowedToolNames.has(name)) {
         conversationMessages.push({
           role: 'tool',
-          content: JSON.stringify({ status: 'error', message: `Tool "${name}" is not allowed in the current mode.` }),
+          content: JSON.stringify({
+            status: 'error',
+            message: `Tool "${name}" is not allowed in the current mode.`,
+          }),
           tool_call_id: toolCall.id,
         });
         continue;
@@ -123,7 +135,10 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       if (hookResult === false) {
         conversationMessages.push({
           role: 'tool',
-          content: JSON.stringify({ status: 'error', message: `Tool call "${name}" was blocked by beforeToolCall hook.` }),
+          content: JSON.stringify({
+            status: 'error',
+            message: `Tool call "${name}" was blocked by beforeToolCall hook.`,
+          }),
           tool_call_id: toolCall.id,
         });
         continue;
@@ -137,7 +152,10 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       if (!handler) {
         conversationMessages.push({
           role: 'tool',
-          content: JSON.stringify({ status: 'error', message: `No handler registered for tool "${name}".` }),
+          content: JSON.stringify({
+            status: 'error',
+            message: `No handler registered for tool "${name}".`,
+          }),
           tool_call_id: toolCall.id,
         });
         continue;
@@ -152,7 +170,8 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       try {
         result = await handler(args);
       } catch (handlerError) {
-        const errMsg = handlerError instanceof Error ? handlerError.message : 'Unknown handler error';
+        const errMsg =
+          handlerError instanceof Error ? handlerError.message : 'Unknown handler error';
         result = { toolResponse: { status: 'error', message: errMsg } };
       }
 
@@ -170,7 +189,10 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
       try {
         serialized = JSON.stringify(result.toolResponse);
       } catch {
-        serialized = JSON.stringify({ status: 'error', message: 'Tool response could not be serialized.' });
+        serialized = JSON.stringify({
+          status: 'error',
+          message: 'Tool response could not be serialized.',
+        });
       }
       conversationMessages.push({
         role: 'tool',
@@ -185,8 +207,9 @@ export async function executeToolLoop(context: ToolLoopContext): Promise<ToolLoo
     }
 
     // Determine tool_choice for follow-up
-    const toolChoice = hooks.decideFollowupToolChoice?.(iteration, maxIterations)
-      ?? (iteration >= maxIterations ? 'none' : 'auto');
+    const toolChoice =
+      hooks.decideFollowupToolChoice?.(iteration, maxIterations) ??
+      (iteration >= maxIterations ? 'none' : 'auto');
 
     // Check for abort before follow-up call
     if (signal?.aborted) {

@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest'
-import { filterProviders } from '../lib/provider-filters'
+import { describe, expect, it } from 'vitest';
+import { filterProviders } from '../lib/provider-filters';
 
 const providers = [
   {
@@ -11,9 +11,9 @@ const providers = [
       self_referral: false,
       video_consultation: false,
       mvk_services: false,
-      e_services_structured: [{ text: 'Boka videobesök', description_text: '' }]
+      e_services_structured: [{ text: 'Boka videobesök', description_text: '' }],
     },
-    location: { address: 'Stockholm', coordinates: { lat: 59.3, lng: 18.0 } }
+    location: { address: 'Stockholm', coordinates: { lat: 59.3, lng: 18.0 } },
   },
   {
     id: 'b',
@@ -24,11 +24,11 @@ const providers = [
       self_referral: true,
       self_referral_verified: false,
       video_consultation: false,
-      mvk_services: true
+      mvk_services: true,
     },
-    location: { address: 'Uppsala', coordinates: { lat: 59.85, lng: 17.63 } }
-  }
-]
+    location: { address: 'Uppsala', coordinates: { lat: 59.85, lng: 17.63 } },
+  },
+];
 
 describe('filterProviders', () => {
   it('filters by type and service flags', () => {
@@ -39,10 +39,10 @@ describe('filterProviders', () => {
       careFocusFilters: [],
       userLocation: null,
       nearbyOnly: false,
-      nearbyRadiusKm: 25
-    })
-    expect(result).toHaveLength(0)
-  })
+      nearbyRadiusKm: 25,
+    });
+    expect(result).toHaveLength(0);
+  });
 
   it('filters by nearby radius when enabled', () => {
     const result = filterProviders(providers, {
@@ -52,11 +52,11 @@ describe('filterProviders', () => {
       careFocusFilters: [],
       userLocation: { lat: 59.3, lng: 18.0 },
       nearbyOnly: true,
-      nearbyRadiusKm: 10
-    })
-    expect(result).toHaveLength(1)
-    expect(result[0].id).toBe('a')
-  })
+      nearbyRadiusKm: 10,
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('a');
+  });
 
   it('filters video consultation using derived action capability', () => {
     const result = filterProviders(providers, {
@@ -66,11 +66,11 @@ describe('filterProviders', () => {
       careFocusFilters: [],
       userLocation: null,
       nearbyOnly: false,
-      nearbyRadiusKm: 50
-    })
-    expect(result).toHaveLength(1)
-    expect(result[0].id).toBe('a')
-  })
+      nearbyRadiusKm: 50,
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('a');
+  });
 
   it('matches any selected service filter (OR behavior)', () => {
     const result = filterProviders(providers, {
@@ -80,10 +80,10 @@ describe('filterProviders', () => {
       careFocusFilters: [],
       userLocation: null,
       nearbyOnly: false,
-      nearbyRadiusKm: 50
-    })
-    expect(result).toHaveLength(2)
-  })
+      nearbyRadiusKm: 50,
+    });
+    expect(result).toHaveLength(2);
+  });
 
   it('filters by care focus categories', () => {
     const result = filterProviders(providers, {
@@ -93,9 +93,9 @@ describe('filterProviders', () => {
       careFocusFilters: ['skin'],
       userLocation: null,
       nearbyOnly: false,
-      nearbyRadiusKm: 50
-    })
-    expect(result).toHaveLength(1)
-    expect(result[0].id).toBe('b')
-  })
-})
+      nearbyRadiusKm: 50,
+    });
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('b');
+  });
+});

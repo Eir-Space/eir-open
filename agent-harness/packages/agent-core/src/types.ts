@@ -36,14 +36,22 @@ export interface ToolHandlerResult {
   action?: AgentAction | AgentAction[];
 }
 
-export type ToolHandler = (args: Record<string, unknown>) => ToolHandlerResult | Promise<ToolHandlerResult>;
+export type ToolHandler = (
+  args: Record<string, unknown>,
+) => ToolHandlerResult | Promise<ToolHandlerResult>;
 
 // --- Agent Action ---
-export const agentActionStatusSchema = z.enum(['proposed', 'confirmed', 'rejected', 'executed', 'failed']);
+export const agentActionStatusSchema = z.enum([
+  'proposed',
+  'confirmed',
+  'rejected',
+  'executed',
+  'failed',
+]);
 export type AgentActionStatus = z.infer<typeof agentActionStatusSchema>;
 
 export interface AgentAction {
-  type: string;  // open string, not closed enum — platforms define their own types
+  type: string; // open string, not closed enum — platforms define their own types
   status?: AgentActionStatus;
   payload: Record<string, unknown>;
   validationErrors?: ValidationError[];

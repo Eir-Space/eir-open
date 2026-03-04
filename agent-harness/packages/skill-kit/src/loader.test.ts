@@ -65,7 +65,9 @@ describe('loadSkill', () => {
   it('loads a skill from SKILL.md', () => {
     const skillDir = path.join(tmpDir, 'my-skill');
     fs.mkdirSync(skillDir, { recursive: true });
-    fs.writeFileSync(path.join(skillDir, 'SKILL.md'), `---
+    fs.writeFileSync(
+      path.join(skillDir, 'SKILL.md'),
+      `---
 name: my-skill
 description: My test skill
 modes: [triage]
@@ -73,7 +75,8 @@ languages: [en]
 ---
 
 You are a helpful skill for triage.
-`);
+`,
+    );
 
     const skill = loadSkill(skillDir);
     assert.ok(skill, 'Skill should be loaded');
@@ -88,11 +91,14 @@ You are a helpful skill for triage.
   it('loads a skill from skill.json', () => {
     const skillDir = path.join(tmpDir, 'json-skill');
     fs.mkdirSync(skillDir, { recursive: true });
-    fs.writeFileSync(path.join(skillDir, 'skill.json'), JSON.stringify({
-      name: 'json-skill',
-      description: 'A JSON-based skill',
-      modes: ['consult'],
-    }));
+    fs.writeFileSync(
+      path.join(skillDir, 'skill.json'),
+      JSON.stringify({
+        name: 'json-skill',
+        description: 'A JSON-based skill',
+        modes: ['consult'],
+      }),
+    );
     fs.writeFileSync(path.join(skillDir, 'SKILL.en.md'), 'English prompt content');
 
     const skill = loadSkill(skillDir);
@@ -119,23 +125,29 @@ describe('loadSkillDirectory', () => {
     // Create two skills
     const skill1 = path.join(tmpDir, 'skill-a');
     fs.mkdirSync(skill1);
-    fs.writeFileSync(path.join(skill1, 'SKILL.md'), `---
+    fs.writeFileSync(
+      path.join(skill1, 'SKILL.md'),
+      `---
 name: skill-a
 modes: [triage]
 ---
 
 Skill A prompt.
-`);
+`,
+    );
 
     const skill2 = path.join(tmpDir, 'skill-b');
     fs.mkdirSync(skill2);
-    fs.writeFileSync(path.join(skill2, 'SKILL.md'), `---
+    fs.writeFileSync(
+      path.join(skill2, 'SKILL.md'),
+      `---
 name: skill-b
 modes: [consult]
 ---
 
 Skill B prompt.
-`);
+`,
+    );
   });
 
   after(() => {
@@ -165,8 +177,18 @@ Skill B prompt.
 describe('buildSkillPrompt', () => {
   it('combines prompts from multiple skills', () => {
     const skills = [
-      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Prompt A', en: 'Prompt A' }, path: '/a', scripts: [] },
-      { meta: { name: 'b', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Prompt B', en: 'Prompt B' }, path: '/b', scripts: [] },
+      {
+        meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] },
+        prompts: { default: 'Prompt A', en: 'Prompt A' },
+        path: '/a',
+        scripts: [],
+      },
+      {
+        meta: { name: 'b', modes: [], requiredTools: [], languages: ['en'], scripts: [] },
+        prompts: { default: 'Prompt B', en: 'Prompt B' },
+        path: '/b',
+        scripts: [],
+      },
     ];
     const combined = buildSkillPrompt(skills, 'en');
     assert.ok(combined.includes('Prompt A'));
@@ -176,7 +198,12 @@ describe('buildSkillPrompt', () => {
 
   it('falls back to default language', () => {
     const skills = [
-      { meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] }, prompts: { default: 'Default prompt' }, path: '/a', scripts: [] },
+      {
+        meta: { name: 'a', modes: [], requiredTools: [], languages: ['en'], scripts: [] },
+        prompts: { default: 'Default prompt' },
+        path: '/a',
+        scripts: [],
+      },
     ];
     const result = buildSkillPrompt(skills, 'fr');
     assert.equal(result, 'Default prompt');

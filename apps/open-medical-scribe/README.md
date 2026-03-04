@@ -182,118 +182,118 @@ All configuration is done through environment variables. Copy `.env.example` to 
 
 ### General
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PORT` | HTTP server port | `8787` |
-| `SCRIBE_MODE` | Operating mode: `api`, `local`, or `hybrid` | `hybrid` |
-| `DEFAULT_NOTE_STYLE` | Default note format: `soap`, `hp`, `progress`, `dap`, `procedure`, `journal` | `journal` |
-| `DEFAULT_SPECIALTY` | Default medical specialty | `primary-care` |
-| `DEFAULT_COUNTRY` | Default country code (e.g., `SE`, `US`). Empty = auto-detect. | `""` |
-| `ENABLE_WEB_UI` | Serve the browser UI | `true` |
+| Variable             | Description                                                                  | Default        |
+| -------------------- | ---------------------------------------------------------------------------- | -------------- |
+| `PORT`               | HTTP server port                                                             | `8787`         |
+| `SCRIBE_MODE`        | Operating mode: `api`, `local`, or `hybrid`                                  | `hybrid`       |
+| `DEFAULT_NOTE_STYLE` | Default note format: `soap`, `hp`, `progress`, `dap`, `procedure`, `journal` | `journal`      |
+| `DEFAULT_SPECIALTY`  | Default medical specialty                                                    | `primary-care` |
+| `DEFAULT_COUNTRY`    | Default country code (e.g., `SE`, `US`). Empty = auto-detect.                | `""`           |
+| `ENABLE_WEB_UI`      | Serve the browser UI                                                         | `true`         |
 
 ### Provider Selection
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `TRANSCRIPTION_PROVIDER` | Active transcription provider (see Providers section) | Depends on `SCRIBE_MODE` |
-| `NOTE_PROVIDER` | Active note generation provider (see Providers section) | Depends on `SCRIBE_MODE` |
+| Variable                 | Description                                             | Default                  |
+| ------------------------ | ------------------------------------------------------- | ------------------------ |
+| `TRANSCRIPTION_PROVIDER` | Active transcription provider (see Providers section)   | Depends on `SCRIBE_MODE` |
+| `NOTE_PROVIDER`          | Active note generation provider (see Providers section) | Depends on `SCRIBE_MODE` |
 
 When `SCRIBE_MODE` is `api`, defaults are `openai` / `openai`. When `local`, defaults are `whisper.cpp` / `ollama`. When `hybrid`, defaults are `mock` / `mock`.
 
 ### Privacy
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PHI_REDACTION_MODE` | PHI redaction strategy: `basic` (regex patterns) or `off` | `basic` |
-| `REDACT_BEFORE_API_CALLS` | Redact PHI before sending transcripts to cloud note providers | `true` |
-| `AUDIT_LOG_FILE` | Path to audit log file. Empty = no file logging. | `""` |
+| Variable                  | Description                                                   | Default |
+| ------------------------- | ------------------------------------------------------------- | ------- |
+| `PHI_REDACTION_MODE`      | PHI redaction strategy: `basic` (regex patterns) or `off`     | `basic` |
+| `REDACT_BEFORE_API_CALLS` | Redact PHI before sending transcripts to cloud note providers | `true`  |
+| `AUDIT_LOG_FILE`          | Path to audit log file. Empty = no file logging.              | `""`    |
 
 ### OpenAI
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `OPENAI_API_KEY` | OpenAI API key | `""` |
-| `OPENAI_BASE_URL` | Base URL (change for OpenAI-compatible services) | `https://api.openai.com` |
-| `OPENAI_TRANSCRIBE_MODEL` | Transcription model | `gpt-4o-mini-transcribe` |
-| `OPENAI_NOTE_MODEL` | Note generation model | `gpt-4.1-mini` |
+| Variable                  | Description                                      | Default                  |
+| ------------------------- | ------------------------------------------------ | ------------------------ |
+| `OPENAI_API_KEY`          | OpenAI API key                                   | `""`                     |
+| `OPENAI_BASE_URL`         | Base URL (change for OpenAI-compatible services) | `https://api.openai.com` |
+| `OPENAI_TRANSCRIBE_MODEL` | Transcription model                              | `gpt-4o-mini-transcribe` |
+| `OPENAI_NOTE_MODEL`       | Note generation model                            | `gpt-4.1-mini`           |
 
 Compatible services via `OPENAI_BASE_URL`: vLLM (`http://localhost:8000`), llama.cpp (`http://localhost:8080`), LiteLLM (`http://localhost:4000`), Together AI (`https://api.together.xyz`), Groq (`https://api.groq.com/openai`).
 
 ### Anthropic
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ANTHROPIC_API_KEY` | Anthropic API key | `""` |
-| `ANTHROPIC_BASE_URL` | Base URL | `https://api.anthropic.com` |
-| `ANTHROPIC_MODEL` | Claude model | `claude-sonnet-4-20250514` |
+| Variable             | Description       | Default                     |
+| -------------------- | ----------------- | --------------------------- |
+| `ANTHROPIC_API_KEY`  | Anthropic API key | `""`                        |
+| `ANTHROPIC_BASE_URL` | Base URL          | `https://api.anthropic.com` |
+| `ANTHROPIC_MODEL`    | Claude model      | `claude-sonnet-4-20250514`  |
 
 ### Google Gemini
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `GEMINI_API_KEY` | Gemini API key | `""` |
-| `GEMINI_MODEL` | Gemini model | `gemini-2.0-flash` |
+| Variable         | Description    | Default            |
+| ---------------- | -------------- | ------------------ |
+| `GEMINI_API_KEY` | Gemini API key | `""`               |
+| `GEMINI_MODEL`   | Gemini model   | `gemini-2.0-flash` |
 
 ### Ollama (Local LLM)
 
-| Variable | Description | Default |
-|----------|-------------|---------|
+| Variable          | Description       | Default                  |
+| ----------------- | ----------------- | ------------------------ |
 | `OLLAMA_BASE_URL` | Ollama server URL | `http://localhost:11434` |
-| `OLLAMA_MODEL` | Model name | `llama3.1:8b` |
+| `OLLAMA_MODEL`    | Model name        | `llama3.1:8b`            |
 
 ### Deepgram
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `DEEPGRAM_API_KEY` | Deepgram API key | `""` |
-| `DEEPGRAM_MODEL` | Deepgram model | `nova-3-medical` |
+| Variable           | Description      | Default          |
+| ------------------ | ---------------- | ---------------- |
+| `DEEPGRAM_API_KEY` | Deepgram API key | `""`             |
+| `DEEPGRAM_MODEL`   | Deepgram model   | `nova-3-medical` |
 
 ### Google Cloud Speech
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `GOOGLE_SPEECH_API_KEY` | Google Cloud Speech API key | `""` |
-| `GOOGLE_SPEECH_MODEL` | Speech model | `latest_long` |
+| Variable                | Description                 | Default       |
+| ----------------------- | --------------------------- | ------------- |
+| `GOOGLE_SPEECH_API_KEY` | Google Cloud Speech API key | `""`          |
+| `GOOGLE_SPEECH_MODEL`   | Speech model                | `latest_long` |
 
 ### Berget AI (EU Sovereign)
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `BERGET_API_KEY` | Berget API key | `""` |
-| `BERGET_BASE_URL` | Berget base URL | `https://api.berget.ai` |
+| Variable                  | Description         | Default                  |
+| ------------------------- | ------------------- | ------------------------ |
+| `BERGET_API_KEY`          | Berget API key      | `""`                     |
+| `BERGET_BASE_URL`         | Berget base URL     | `https://api.berget.ai`  |
 | `BERGET_TRANSCRIBE_MODEL` | Transcription model | `KBLab/kb-whisper-large` |
 
 ### Local Whisper (whisper.cpp / faster-whisper)
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `WHISPER_LOCAL_COMMAND` | Shell command to run for local transcription | `""` |
+| Variable                      | Description                                     | Default  |
+| ----------------------------- | ----------------------------------------------- | -------- |
+| `WHISPER_LOCAL_COMMAND`       | Shell command to run for local transcription    | `""`     |
 | `LOCAL_TRANSCRIBE_TIMEOUT_MS` | Timeout for local transcription in milliseconds | `120000` |
-| `LOCAL_TRANSCRIBE_EXPECTS` | Input method: `stdin` or `file` | `stdin` |
+| `LOCAL_TRANSCRIBE_EXPECTS`    | Input method: `stdin` or `file`                 | `stdin`  |
 
 ### Streaming (Real-time Audio)
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `STREAMING_TRANSCRIPTION_PROVIDER` | Streaming provider: `mock-stream`, `deepgram-stream`, `whisper-stream` | Auto from `TRANSCRIPTION_PROVIDER` |
-| `STREAMING_WHISPER_MODEL` | Whisper ONNX model for streaming | `onnx-community/kb-whisper-large-ONNX` |
-| `STREAMING_WHISPER_LANGUAGE` | Language for streaming Whisper | `sv` |
-| `STREAMING_WHISPER_INTERVAL_MS` | Transcription interval for streaming chunks | `5000` |
+| Variable                           | Description                                                            | Default                                |
+| ---------------------------------- | ---------------------------------------------------------------------- | -------------------------------------- |
+| `STREAMING_TRANSCRIPTION_PROVIDER` | Streaming provider: `mock-stream`, `deepgram-stream`, `whisper-stream` | Auto from `TRANSCRIPTION_PROVIDER`     |
+| `STREAMING_WHISPER_MODEL`          | Whisper ONNX model for streaming                                       | `onnx-community/kb-whisper-large-ONNX` |
+| `STREAMING_WHISPER_LANGUAGE`       | Language for streaming Whisper                                         | `sv`                                   |
+| `STREAMING_WHISPER_INTERVAL_MS`    | Transcription interval for streaming chunks                            | `5000`                                 |
 
 ### Speaker Diarization
 
-| Variable | Description | Default |
-|----------|-------------|---------|
+| Variable              | Description                                     | Default                 |
+| --------------------- | ----------------------------------------------- | ----------------------- |
 | `DIARIZE_SIDECAR_URL` | URL of the pyannote diarization sidecar service | `http://localhost:8786` |
-| `DIARIZE_ON_END` | Run diarization when a streaming session ends | `false` |
+| `DIARIZE_ON_END`      | Run diarization when a streaming session ends   | `false`                 |
 
 ### CLI Provider
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `CLI_TRANSCRIBE_COMMAND` | Custom CLI command for transcription | `""` |
-| `CLI_NOTE_COMMAND` | Custom CLI command for note generation | `""` |
-| `CLI_TIMEOUT_MS` | Timeout for CLI commands | `120000` |
+| Variable                 | Description                            | Default  |
+| ------------------------ | -------------------------------------- | -------- |
+| `CLI_TRANSCRIBE_COMMAND` | Custom CLI command for transcription   | `""`     |
+| `CLI_NOTE_COMMAND`       | Custom CLI command for note generation | `""`     |
+| `CLI_TIMEOUT_MS`         | Timeout for CLI commands               | `120000` |
 
 ## Architecture
 
@@ -373,64 +373,64 @@ open-medical-scribe/
 
 ### API Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/health` | Health check |
-| `GET` | `/config` | Current configuration summary |
-| `GET` | `/v1/providers` | List supported and configured providers |
-| `GET` | `/v1/settings` | Current settings (for UI) |
-| `POST` | `/v1/settings` | Update settings at runtime |
-| `POST` | `/v1/encounters/scribe` | Full pipeline: transcript/audio in, clinical note out |
-| `POST` | `/v1/transcribe` | Transcription only (JSON body with base64 audio) |
-| `POST` | `/v1/transcribe/upload` | Transcription only (multipart file upload) |
-| `POST` | `/v1/export/fhir-document-reference` | Export a note as FHIR R4 DocumentReference |
-| `WS` | `/v1/stream` | WebSocket endpoint for real-time streaming audio |
+| Method | Path                                 | Description                                           |
+| ------ | ------------------------------------ | ----------------------------------------------------- |
+| `GET`  | `/health`                            | Health check                                          |
+| `GET`  | `/config`                            | Current configuration summary                         |
+| `GET`  | `/v1/providers`                      | List supported and configured providers               |
+| `GET`  | `/v1/settings`                       | Current settings (for UI)                             |
+| `POST` | `/v1/settings`                       | Update settings at runtime                            |
+| `POST` | `/v1/encounters/scribe`              | Full pipeline: transcript/audio in, clinical note out |
+| `POST` | `/v1/transcribe`                     | Transcription only (JSON body with base64 audio)      |
+| `POST` | `/v1/transcribe/upload`              | Transcription only (multipart file upload)            |
+| `POST` | `/v1/export/fhir-document-reference` | Export a note as FHIR R4 DocumentReference            |
+| `WS`   | `/v1/stream`                         | WebSocket endpoint for real-time streaming audio      |
 
 ## Providers
 
 ### Transcription Providers
 
-| Provider | Env Value | Type | Required Config | Notes |
-|----------|-----------|------|-----------------|-------|
-| Whisper ONNX | `whisper-onnx` | Local | None (auto-downloads model) | Uses `@huggingface/transformers` with ONNX runtime. Default model: `onnx-community/kb-whisper-large-ONNX`. |
-| whisper.cpp | `whisper.cpp` | Local | `WHISPER_LOCAL_COMMAND` | Pipes audio to any CLI command that accepts audio on stdin and outputs text. |
-| faster-whisper | `faster-whisper` | Local | `WHISPER_LOCAL_COMMAND` | Same adapter as whisper.cpp. |
-| OpenAI Whisper | `openai` | Cloud | `OPENAI_API_KEY` | Also works with OpenAI-compatible services via `OPENAI_BASE_URL`. |
-| Deepgram | `deepgram` | Cloud | `DEEPGRAM_API_KEY` | Nova-3 Medical model with smart formatting. |
-| Google Cloud Speech | `google` | Cloud | `GOOGLE_SPEECH_API_KEY` | Speech-to-Text v1. |
-| Berget AI | `berget` | Cloud | `BERGET_API_KEY` | EU sovereign infrastructure. Default model: `KBLab/kb-whisper-large`. |
-| CLI | `cli` | Custom | `CLI_TRANSCRIBE_COMMAND` | Run any external command for transcription. |
-| Mock | `mock` | Dev | None | Returns placeholder text for development. |
+| Provider            | Env Value        | Type   | Required Config             | Notes                                                                                                      |
+| ------------------- | ---------------- | ------ | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Whisper ONNX        | `whisper-onnx`   | Local  | None (auto-downloads model) | Uses `@huggingface/transformers` with ONNX runtime. Default model: `onnx-community/kb-whisper-large-ONNX`. |
+| whisper.cpp         | `whisper.cpp`    | Local  | `WHISPER_LOCAL_COMMAND`     | Pipes audio to any CLI command that accepts audio on stdin and outputs text.                               |
+| faster-whisper      | `faster-whisper` | Local  | `WHISPER_LOCAL_COMMAND`     | Same adapter as whisper.cpp.                                                                               |
+| OpenAI Whisper      | `openai`         | Cloud  | `OPENAI_API_KEY`            | Also works with OpenAI-compatible services via `OPENAI_BASE_URL`.                                          |
+| Deepgram            | `deepgram`       | Cloud  | `DEEPGRAM_API_KEY`          | Nova-3 Medical model with smart formatting.                                                                |
+| Google Cloud Speech | `google`         | Cloud  | `GOOGLE_SPEECH_API_KEY`     | Speech-to-Text v1.                                                                                         |
+| Berget AI           | `berget`         | Cloud  | `BERGET_API_KEY`            | EU sovereign infrastructure. Default model: `KBLab/kb-whisper-large`.                                      |
+| CLI                 | `cli`            | Custom | `CLI_TRANSCRIBE_COMMAND`    | Run any external command for transcription.                                                                |
+| Mock                | `mock`           | Dev    | None                        | Returns placeholder text for development.                                                                  |
 
 ### Note Generation Providers
 
-| Provider | Env Value | Type | Required Config | Notes |
-|----------|-----------|------|-----------------|-------|
-| OpenAI | `openai` | Cloud | `OPENAI_API_KEY` | GPT-4.1, GPT-4o, etc. Works with any OpenAI-compatible API via `OPENAI_BASE_URL`. |
-| Anthropic Claude | `anthropic` | Cloud | `ANTHROPIC_API_KEY` | Claude Sonnet, Opus via the Messages API. |
-| Google Gemini | `gemini` | Cloud | `GEMINI_API_KEY` | Gemini 2.0 Flash default. |
-| Ollama | `ollama` | Local | `OLLAMA_BASE_URL` | Any Ollama-hosted model (Llama 3.1, Mistral, MedLlama2, BioMistral, etc.). |
-| CLI | `cli` | Custom | `CLI_NOTE_COMMAND` | Run any external command for note generation. |
-| Mock | `mock` | Dev | None | Returns placeholder note for development. |
+| Provider         | Env Value   | Type   | Required Config     | Notes                                                                             |
+| ---------------- | ----------- | ------ | ------------------- | --------------------------------------------------------------------------------- |
+| OpenAI           | `openai`    | Cloud  | `OPENAI_API_KEY`    | GPT-4.1, GPT-4o, etc. Works with any OpenAI-compatible API via `OPENAI_BASE_URL`. |
+| Anthropic Claude | `anthropic` | Cloud  | `ANTHROPIC_API_KEY` | Claude Sonnet, Opus via the Messages API.                                         |
+| Google Gemini    | `gemini`    | Cloud  | `GEMINI_API_KEY`    | Gemini 2.0 Flash default.                                                         |
+| Ollama           | `ollama`    | Local  | `OLLAMA_BASE_URL`   | Any Ollama-hosted model (Llama 3.1, Mistral, MedLlama2, BioMistral, etc.).        |
+| CLI              | `cli`       | Custom | `CLI_NOTE_COMMAND`  | Run any external command for note generation.                                     |
+| Mock             | `mock`      | Dev    | None                | Returns placeholder note for development.                                         |
 
 ### Streaming Transcription Providers
 
-| Provider | Env Value | Type | Required Config | Notes |
-|----------|-----------|------|-----------------|-------|
-| Whisper Stream | `whisper-stream` | Local | None | Server-side Whisper ONNX processing of streamed audio chunks. |
-| Deepgram Stream | `deepgram-stream` | Cloud | `DEEPGRAM_API_KEY` | Real-time Deepgram streaming with interim results. |
-| Mock Stream | `mock-stream` | Dev | None | Returns placeholder transcripts for development. |
+| Provider        | Env Value         | Type  | Required Config    | Notes                                                         |
+| --------------- | ----------------- | ----- | ------------------ | ------------------------------------------------------------- |
+| Whisper Stream  | `whisper-stream`  | Local | None               | Server-side Whisper ONNX processing of streamed audio chunks. |
+| Deepgram Stream | `deepgram-stream` | Cloud | `DEEPGRAM_API_KEY` | Real-time Deepgram streaming with interim results.            |
+| Mock Stream     | `mock-stream`     | Dev   | None               | Returns placeholder transcripts for development.              |
 
 ## Note Formats
 
-| Style | Env/API Value | Language | Description |
-|-------|---------------|----------|-------------|
-| **SOAP** | `soap` | English | Subjective, Objective, Assessment, Plan. The most common outpatient note format. |
-| **History & Physical** | `hp` | English | Comprehensive initial encounter note with Chief Complaint, HPI, PMH, Medications, Allergies, Family/Social History, ROS, Physical Exam, Assessment, and Plan. |
-| **Progress Note** | `progress` | English | Follow-up visit note with Interval History, Current Medications, Examination Findings, Assessment, and Plan. |
-| **DAP** | `dap` | English | Behavioral health note: Data (session observations), Assessment (clinical interpretation), Plan (next steps). |
-| **Procedure Note** | `procedure` | English | Procedure Name, Indication, Pre-procedure Diagnosis, Anesthesia, Description, Findings, Specimens, Complications, Post-procedure Condition, and Plan. |
-| **Swedish Journal** | `journal` | Swedish | Journalanteckning following Swedish clinical documentation standards: Aktuellt, Anamnes, Status, Bedomning, Planering. Uses standard Swedish medical abbreviations (AT, BT, Cor, Pulm, Buk). Includes ICD-10 coding hints where applicable. |
+| Style                  | Env/API Value | Language | Description                                                                                                                                                                                                                                 |
+| ---------------------- | ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SOAP**               | `soap`        | English  | Subjective, Objective, Assessment, Plan. The most common outpatient note format.                                                                                                                                                            |
+| **History & Physical** | `hp`          | English  | Comprehensive initial encounter note with Chief Complaint, HPI, PMH, Medications, Allergies, Family/Social History, ROS, Physical Exam, Assessment, and Plan.                                                                               |
+| **Progress Note**      | `progress`    | English  | Follow-up visit note with Interval History, Current Medications, Examination Findings, Assessment, and Plan.                                                                                                                                |
+| **DAP**                | `dap`         | English  | Behavioral health note: Data (session observations), Assessment (clinical interpretation), Plan (next steps).                                                                                                                               |
+| **Procedure Note**     | `procedure`   | English  | Procedure Name, Indication, Pre-procedure Diagnosis, Anesthesia, Description, Findings, Specimens, Complications, Post-procedure Condition, and Plan.                                                                                       |
+| **Swedish Journal**    | `journal`     | Swedish  | Journalanteckning following Swedish clinical documentation standards: Aktuellt, Anamnes, Status, Bedomning, Planering. Uses standard Swedish medical abbreviations (AT, BT, Cor, Pulm, Buk). Includes ICD-10 coding hints where applicable. |
 
 ## Streaming Transcription
 
@@ -492,13 +492,13 @@ Redaction is enabled by default (`REDACT_BEFORE_API_CALLS=true`) and applies to 
 
 ### What stays local vs. goes to cloud
 
-| Data | Local Providers | Cloud Providers |
-|------|-----------------|-----------------|
-| Raw audio | Local only | Sent to transcription API (e.g., OpenAI Whisper, Deepgram) |
-| Transcript text | Local only | Sent to note LLM API (redacted if enabled) |
-| Generated note | Local only | Returned from LLM API, then local only |
-| Settings/config | Always local | Always local |
-| Audit logs | Always local | Always local |
+| Data            | Local Providers | Cloud Providers                                            |
+| --------------- | --------------- | ---------------------------------------------------------- |
+| Raw audio       | Local only      | Sent to transcription API (e.g., OpenAI Whisper, Deepgram) |
+| Transcript text | Local only      | Sent to note LLM API (redacted if enabled)                 |
+| Generated note  | Local only      | Returned from LLM API, then local only                     |
+| Settings/config | Always local    | Always local                                               |
+| Audit logs      | Always local    | Always local                                               |
 
 ### Audit logging
 
@@ -569,7 +569,7 @@ Tests use the Node.js built-in test runner. No additional test framework is requ
    ```js
    export function createMyTranscriptionProvider(config) {
      return {
-       name: "my-provider",
+       name: 'my-provider',
        async transcribe({ type, content, mimeType, language, country, locale }) {
          // type is "audio-base64" or "text-simulated-audio"
          // content is base64-encoded audio or text
@@ -582,9 +582,9 @@ Tests use the Node.js built-in test runner. No additional test framework is requ
    ```
 2. Register it in `src/providers/transcription/index.js`:
    ```js
-   import { createMyTranscriptionProvider } from "./myProvider.js";
+   import { createMyTranscriptionProvider } from './myProvider.js';
    // In createTranscriptionProvider():
-   if (provider === "my-provider") return createMyTranscriptionProvider(config);
+   if (provider === 'my-provider') return createMyTranscriptionProvider(config);
    ```
 3. Add any new config keys to `src/config.js` and `.env.example`.
 4. Write tests in `test/myProvider.test.js`.

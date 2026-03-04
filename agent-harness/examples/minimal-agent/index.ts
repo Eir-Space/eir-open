@@ -38,30 +38,39 @@ const mockProvider: LlmProvider = {
     // If tools are available, simulate a tool call for greetings
     if (request.tools?.length && userText.toLowerCase().includes('hello')) {
       return {
-        choices: [{
-          message: {
-            role: 'assistant',
-            content: null,
-            tool_calls: [{
-              id: 'call_1',
-              type: 'function',
-              function: {
-                name: 'greet_user',
-                arguments: JSON.stringify({ name: 'friend' }),
-              },
-            }],
+        choices: [
+          {
+            message: {
+              role: 'assistant',
+              content: null,
+              tool_calls: [
+                {
+                  id: 'call_1',
+                  type: 'function',
+                  function: {
+                    name: 'greet_user',
+                    arguments: JSON.stringify({ name: 'friend' }),
+                  },
+                },
+              ],
+            },
+            finish_reason: 'tool_calls',
           },
-          finish_reason: 'tool_calls',
-        }],
+        ],
       };
     }
 
     // Default: text response
     return {
-      choices: [{
-        message: { role: 'assistant', content: `I understood: "${userText}". How can I help with your health?` },
-        finish_reason: 'stop',
-      }],
+      choices: [
+        {
+          message: {
+            role: 'assistant',
+            content: `I understood: "${userText}". How can I help with your health?`,
+          },
+          finish_reason: 'stop',
+        },
+      ],
     };
   },
 };
@@ -169,7 +178,7 @@ async function main() {
 
   console.log(`\nIterations: ${result.iterations}`);
   console.log(`Actions: ${result.actions.length}`);
-  result.actions.forEach(a => console.log(`  - ${a.type}: ${JSON.stringify(a.payload)}`));
+  result.actions.forEach((a) => console.log(`  - ${a.type}: ${JSON.stringify(a.payload)}`));
   console.log(`\nAssistant: ${result.responseMessage.content}`);
 }
 

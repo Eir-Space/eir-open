@@ -1,18 +1,18 @@
 export default function StatsPanel({ statistics }) {
   const formatNumber = (num) => {
-    if (!num) return '0'
-    return num.toLocaleString()
-  }
+    if (!num) return '0';
+    return num.toLocaleString();
+  };
 
   const calculatePercentage = (part, total) => {
-    if (!part || !total) return '0'
-    return ((part / total) * 100).toFixed(1)
-  }
+    if (!part || !total) return '0';
+    return ((part / total) * 100).toFixed(1);
+  };
 
   return (
     <div className="stats-panel">
       <h3>Database Statistics</h3>
-      
+
       <div className="stats-overview">
         <div className="main-stat">
           <span className="stat-number-large">{formatNumber(statistics.total)}</span>
@@ -28,7 +28,8 @@ export default function StatsPanel({ statistics }) {
           </div>
           <div className="stat-number">{formatNumber(statistics.with_coordinates)}</div>
           <div className="stat-subtitle">
-            {calculatePercentage(statistics.with_coordinates, statistics.total)}% with GPS coordinates
+            {calculatePercentage(statistics.with_coordinates, statistics.total)}% with GPS
+            coordinates
           </div>
         </div>
 
@@ -50,7 +51,8 @@ export default function StatsPanel({ statistics }) {
           </div>
           <div className="stat-number">{formatNumber(statistics.self_referral_eligible)}</div>
           <div className="stat-subtitle">
-            {calculatePercentage(statistics.self_referral_eligible, statistics.total)}% accept egen remiss
+            {calculatePercentage(statistics.self_referral_eligible, statistics.total)}% accept egen
+            remiss
           </div>
         </div>
 
@@ -70,13 +72,11 @@ export default function StatsPanel({ statistics }) {
         <h4>Provider Types</h4>
         <div className="breakdown-list">
           {Object.entries(statistics.by_type || {})
-            .sort(([,a], [,b]) => b - a)
+            .sort(([, a], [, b]) => b - a)
             .map(([type, count]) => (
               <div key={type} className="breakdown-item">
                 <div className="breakdown-label">
-                  <span className="breakdown-icon">
-                    {getTypeIcon(type)}
-                  </span>
+                  <span className="breakdown-icon">{getTypeIcon(type)}</span>
                   <span>{formatTypeName(type)}</span>
                 </div>
                 <div className="breakdown-stats">
@@ -86,8 +86,7 @@ export default function StatsPanel({ statistics }) {
                   </span>
                 </div>
               </div>
-            ))
-          }
+            ))}
         </div>
       </div>
 
@@ -97,11 +96,11 @@ export default function StatsPanel({ statistics }) {
           <div className="quality-item">
             <span className="quality-label">Completeness Score</span>
             <div className="quality-bar">
-              <div 
+              <div
                 className="quality-fill"
                 style={{
                   width: `${calculateCompleteness(statistics)}%`,
-                  backgroundColor: getQualityColor(calculateCompleteness(statistics))
+                  backgroundColor: getQualityColor(calculateCompleteness(statistics)),
                 }}
               ></div>
             </div>
@@ -110,7 +109,7 @@ export default function StatsPanel({ statistics }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function getTypeIcon(type) {
@@ -123,9 +122,9 @@ function getTypeIcon(type) {
     mental_health: '🧠',
     pediatric: '👶',
     maternity: '🤱',
-    other: '📋'
-  }
-  return icons[type] || '🏥'
+    other: '📋',
+  };
+  return icons[type] || '🏥';
 }
 
 function formatTypeName(type) {
@@ -138,24 +137,24 @@ function formatTypeName(type) {
     mental_health: 'Mental Health',
     pediatric: 'Pediatric Care',
     maternity: 'Maternity Care',
-    other: 'Other Services'
-  }
-  return names[type] || type.replace('_', ' ')
+    other: 'Other Services',
+  };
+  return names[type] || type.replace('_', ' ');
 }
 
 function calculateCompleteness(stats) {
-  const total = stats.total || 1
-  const coordinates = (stats.with_coordinates || 0) / total * 25
-  const phone = (stats.with_phone || 0) / total * 25
-  const address = (stats.with_address || 0) / total * 25
-  const baseline = 25 // Base score for having provider names and IDs
-  
-  return Math.round(coordinates + phone + address + baseline)
+  const total = stats.total || 1;
+  const coordinates = ((stats.with_coordinates || 0) / total) * 25;
+  const phone = ((stats.with_phone || 0) / total) * 25;
+  const address = ((stats.with_address || 0) / total) * 25;
+  const baseline = 25; // Base score for having provider names and IDs
+
+  return Math.round(coordinates + phone + address + baseline);
 }
 
 function getQualityColor(percentage) {
-  if (percentage >= 90) return '#10b981'
-  if (percentage >= 75) return '#f59e0b'
-  if (percentage >= 60) return '#ef4444'
-  return '#6b7280'
+  if (percentage >= 90) return '#10b981';
+  if (percentage >= 75) return '#f59e0b';
+  if (percentage >= 60) return '#ef4444';
+  return '#6b7280';
 }

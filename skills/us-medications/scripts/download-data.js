@@ -12,14 +12,14 @@ const silent = args.includes('--silent');
 const force = args.includes('--force');
 
 downloadDatabase({ silent, force })
-  .then(success => {
+  .then((success) => {
     if (!success && !silent) {
       console.log('\nNote: You can download the full database later with:');
       console.log('  us-medications --download\n');
     }
     process.exit(success ? 0 : 1);
   })
-  .catch(err => {
+  .catch((err) => {
     if (!silent) console.error('Download error:', err.message);
     process.exit(1);
   });

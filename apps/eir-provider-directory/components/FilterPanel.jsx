@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { CARE_FOCUS_LABELS } from '../lib/care-focus'
+import { useState } from 'react';
+import { CARE_FOCUS_LABELS } from '../lib/care-focus';
 
 const TYPE_LABELS = {
   all: 'All types',
@@ -11,8 +11,8 @@ const TYPE_LABELS = {
   mental_health: 'Mental health',
   pediatric: 'Pediatric',
   maternity: 'Maternity',
-  other: 'Other'
-}
+  other: 'Other',
+};
 
 const TYPE_ICONS = {
   all: '🏥',
@@ -24,14 +24,14 @@ const TYPE_ICONS = {
   mental_health: '🧠',
   pediatric: '👶',
   maternity: '🤱',
-  other: '📋'
-}
+  other: '📋',
+};
 
 const DEFAULT_SERVICE_FILTERS = {
   selfReferral: false,
   videoConsultation: false,
-  mvkServices: false
-}
+  mvkServices: false,
+};
 
 export default function FilterPanel({
   selectedType,
@@ -40,35 +40,33 @@ export default function FilterPanel({
   serviceFilters = DEFAULT_SERVICE_FILTERS,
   onServiceFiltersChange,
   careFocusFilters = [],
-  onCareFocusFiltersChange
+  onCareFocusFiltersChange,
 }) {
-  const [showAdvanced, setShowAdvanced] = useState(false)
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   const sortedTypes = Object.entries(statistics.by_type || {})
     .sort(([, a], [, b]) => b - a)
-    .map(([type, count]) => ({ type, count }))
+    .map(([type, count]) => ({ type, count }));
   const sortedFocuses = Object.entries(statistics.by_focus || {})
     .filter(([focus]) => focus !== 'general')
     .sort(([, a], [, b]) => b - a)
-    .map(([focus, count]) => ({ focus, count }))
+    .map(([focus, count]) => ({ focus, count }));
 
-  const toggleServiceFilter = filterName => {
-    if (!onServiceFiltersChange) return
+  const toggleServiceFilter = (filterName) => {
+    if (!onServiceFiltersChange) return;
     onServiceFiltersChange({
       ...serviceFilters,
-      [filterName]: !serviceFilters[filterName]
-    })
-  }
+      [filterName]: !serviceFilters[filterName],
+    });
+  };
 
-  const toggleCareFocus = focus => {
-    if (!onCareFocusFiltersChange) return
-    const exists = careFocusFilters.includes(focus)
+  const toggleCareFocus = (focus) => {
+    if (!onCareFocusFiltersChange) return;
+    const exists = careFocusFilters.includes(focus);
     onCareFocusFiltersChange(
-      exists
-        ? careFocusFilters.filter(item => item !== focus)
-        : [...careFocusFilters, focus]
-    )
-  }
+      exists ? careFocusFilters.filter((item) => item !== focus) : [...careFocusFilters, focus],
+    );
+  };
 
   return (
     <div className="filter-panel">
@@ -105,7 +103,11 @@ export default function FilterPanel({
       </div>
 
       <div className="filter-section">
-        <button className="advanced-toggle" type="button" onClick={() => setShowAdvanced(!showAdvanced)}>
+        <button
+          className="advanced-toggle"
+          type="button"
+          onClick={() => setShowAdvanced(!showAdvanced)}
+        >
           <span>Service filters</span>
           <span className={`toggle-icon ${showAdvanced ? 'open' : ''}`}>▼</span>
         </button>
@@ -163,37 +165,49 @@ export default function FilterPanel({
         </div>
       </div>
 
-      {(selectedType !== 'all' || Object.values(serviceFilters).some(Boolean) || careFocusFilters.length > 0) && (
+      {(selectedType !== 'all' ||
+        Object.values(serviceFilters).some(Boolean) ||
+        careFocusFilters.length > 0) && (
         <div className="filter-summary">
           <div className="active-filters">
             {selectedType !== 'all' && (
               <span className="active-filter">
                 {TYPE_LABELS[selectedType]}
-                <button type="button" onClick={() => onTypeFilter('all')}>✕</button>
+                <button type="button" onClick={() => onTypeFilter('all')}>
+                  ✕
+                </button>
               </span>
             )}
             {serviceFilters.selfReferral && (
               <span className="active-filter">
                 Self-referral
-                <button type="button" onClick={() => toggleServiceFilter('selfReferral')}>✕</button>
+                <button type="button" onClick={() => toggleServiceFilter('selfReferral')}>
+                  ✕
+                </button>
               </span>
             )}
             {serviceFilters.videoConsultation && (
               <span className="active-filter">
                 Video
-                <button type="button" onClick={() => toggleServiceFilter('videoConsultation')}>✕</button>
+                <button type="button" onClick={() => toggleServiceFilter('videoConsultation')}>
+                  ✕
+                </button>
               </span>
             )}
             {serviceFilters.mvkServices && (
               <span className="active-filter">
                 MVK
-                <button type="button" onClick={() => toggleServiceFilter('mvkServices')}>✕</button>
+                <button type="button" onClick={() => toggleServiceFilter('mvkServices')}>
+                  ✕
+                </button>
               </span>
             )}
-            {careFocusFilters.map(focus => (
+            {careFocusFilters.map((focus) => (
               <span key={focus} className="active-filter">
                 {CARE_FOCUS_LABELS[focus] || focus}
-                <button type="button" onClick={() => toggleCareFocus(focus)}>✕</button>
+                <button type="button" onClick={() => toggleCareFocus(focus)}>
+                  ✕
+                </button>
               </span>
             ))}
           </div>
@@ -201,9 +215,9 @@ export default function FilterPanel({
             className="clear-filters-btn"
             type="button"
             onClick={() => {
-              onTypeFilter('all')
-              onServiceFiltersChange?.(DEFAULT_SERVICE_FILTERS)
-              onCareFocusFiltersChange?.([])
+              onTypeFilter('all');
+              onServiceFiltersChange?.(DEFAULT_SERVICE_FILTERS);
+              onCareFocusFiltersChange?.([]);
             }}
           >
             Reset
@@ -214,7 +228,9 @@ export default function FilterPanel({
       <div className="filter-stats">
         <div className="stats-grid">
           <div className="stat-item">
-            <span className="stat-number">{(statistics.with_coordinates || 0).toLocaleString()}</span>
+            <span className="stat-number">
+              {(statistics.with_coordinates || 0).toLocaleString()}
+            </span>
             <span className="stat-label">Mapped</span>
           </div>
           <div className="stat-item">
@@ -222,11 +238,13 @@ export default function FilterPanel({
             <span className="stat-label">With phone</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number">{(statistics.self_referral_eligible || 0).toLocaleString()}</span>
+            <span className="stat-number">
+              {(statistics.self_referral_eligible || 0).toLocaleString()}
+            </span>
             <span className="stat-label">Self-referral</span>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

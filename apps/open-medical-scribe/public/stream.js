@@ -7,7 +7,7 @@
  * Exports: initStreaming(elements, callbacks) -> { start, stop, isStreaming }
  */
 
-const VAD_CDN = "https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.19/dist/bundle.min.js";
+const VAD_CDN = 'https://cdn.jsdelivr.net/npm/@ricky0123/vad-web@0.0.19/dist/bundle.min.js';
 
 let vadModule = null;
 let vadInstance = null;
@@ -29,9 +29,15 @@ let streaming = false;
  */
 export function initStreaming(callbacks) {
   return {
-    start(opts) { return startStreaming(opts, callbacks); },
-    stop() { return stopStreaming(callbacks); },
-    get isStreaming() { return streaming; },
+    start(opts) {
+      return startStreaming(opts, callbacks);
+    },
+    stop() {
+      return stopStreaming(callbacks);
+    },
+    get isStreaming() {
+      return streaming;
+    },
   };
 }
 
@@ -41,10 +47,10 @@ async function loadVad() {
   // Load VAD from CDN if not already available
   if (!window.vad) {
     await new Promise((resolve, reject) => {
-      const script = document.createElement("script");
+      const script = document.createElement('script');
       script.src = VAD_CDN;
       script.onload = resolve;
-      script.onerror = () => reject(new Error("Failed to load VAD library from CDN"));
+      script.onerror = () => reject(new Error('Failed to load VAD library from CDN'));
       document.head.appendChild(script);
     });
   }
@@ -56,7 +62,7 @@ async function loadVad() {
 async function startStreaming(opts = {}, callbacks) {
   if (streaming) return;
 
-  callbacks.onStateChange("Loading VAD...");
+  callbacks.onStateChange('Loading VAD...');
 
   try {
     // Get microphone access
@@ -75,42 +81,44 @@ async function startStreaming(opts = {}, callbacks) {
 
     // Set up AudioWorklet for continuous PCM16 streaming
     await audioContext.audioWorklet.addModule(createWorkletUrl());
-    workletNode = new AudioWorkletNode(audioContext, "pcm-processor");
+    workletNode = new AudioWorkletNode(audioContext, 'pcm-processor');
     sourceNode.connect(workletNode);
     workletNode.connect(audioContext.destination);
 
     // Open WebSocket
-    const protocol = location.protocol === "https:" ? "wss:" : "ws:";
+    const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
     const wsUrl = `${protocol}//${location.host}/v1/stream`;
     ws = new WebSocket(wsUrl);
-    ws.binaryType = "arraybuffer";
+    ws.binaryType = 'arraybuffer';
 
     await new Promise((resolve, reject) => {
       ws.onopen = resolve;
-      ws.onerror = () => reject(new Error("WebSocket connection failed"));
+      ws.onerror = () => reject(new Error('WebSocket connection failed'));
     });
 
     // Send config message
-    ws.send(JSON.stringify({
-      language: opts.language || "",
-      country: opts.country || "",
-      diarize: true,
-    }));
+    ws.send(
+      JSON.stringify({
+        language: opts.language || '',
+        country: opts.country || '',
+        diarize: true,
+      }),
+    );
 
     // Handle messages from server
     ws.onmessage = (event) => {
       try {
         const msg = JSON.parse(event.data);
-        if (msg.type === "transcript") {
+        if (msg.type === 'transcript') {
           callbacks.onTranscript(msg);
-        } else if (msg.type === "utterance_end") {
+        } else if (msg.type === 'utterance_end') {
           callbacks.onUtteranceEnd();
-        } else if (msg.type === "session_end") {
+        } else if (msg.type === 'session_end') {
           callbacks.onSessionEnd(msg);
           // Session complete — clean up the WebSocket
           cleanup();
-          callbacks.onStateChange("Stopped");
-        } else if (msg.type === "error") {
+          callbacks.onStateChange('Stopped');
+        } else if (msg.type === 'error') {
           callbacks.onError(msg.message);
         }
       } catch {
@@ -131,12 +139,11 @@ async function startStreaming(opts = {}, callbacks) {
     };
 
     streaming = true;
-    callbacks.onStateChange("Streaming");
-
+    callbacks.onStateChange('Streaming');
   } catch (error) {
     cleanup();
     callbacks.onError(String(error.message || error));
-    callbacks.onStateChange("Error");
+    callbacks.onStateChange('Error');
   }
 }
 
@@ -160,14 +167,14 @@ function stopStreaming(callbacks) {
 
   // Send stop message — server will run final transcription and send session_end
   if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ type: "stop" }));
+    ws.send(JSON.stringify({ type: 'stop' }));
   }
 
   // Safety timeout: cleanup if session_end never arrives (e.g. model still loading)
   setTimeout(() => {
     if (ws) {
       cleanup();
-      callbacks.onStateChange("Stopped");
+      callbacks.onStateChange('Stopped');
     }
   }, 60000);
 }
@@ -181,7 +188,7 @@ function cleanup() {
     sourceNode.disconnect();
     sourceNode = null;
   }
-  if (audioContext && audioContext.state !== "closed") {
+  if (audioContext && audioContext.state !== 'closed') {
     audioContext.close().catch(() => {});
     audioContext = null;
   }
@@ -227,6 +234,6 @@ function createWorkletUrl() {
     }
     registerProcessor('pcm-processor', PcmProcessor);
   `;
-  const blob = new Blob([code], { type: "application/javascript" });
+  const blob = new Blob([code], { type: 'application/javascript' });
   return URL.createObjectURL(blob);
 }

@@ -1,8 +1,8 @@
-import { WebSocketServer } from "ws";
-import { createStreamingTranscriptionProvider } from "../providers/transcription/streamIndex.js";
-import { createAuditLogger } from "../services/auditLogger.js";
-import { encodePcm16ToWav } from "../util/wav.js";
-import { requestDiarization } from "../services/diarizeClient.js";
+import { WebSocketServer } from 'ws';
+import { createStreamingTranscriptionProvider } from '../providers/transcription/streamIndex.js';
+import { createAuditLogger } from '../services/auditLogger.js';
+import { encodePcm16ToWav } from '../util/wav.js';
+import { requestDiarization } from '../services/diarizeClient.js';
 
 /**
  * Attach a WebSocket server to the HTTP server for streaming audio.
@@ -23,19 +23,19 @@ export function attachStreamHandler(server, config) {
   const audit = createAuditLogger(config);
   const streamProvider = createStreamingTranscriptionProvider(config);
 
-  server.on("upgrade", (req, socket, head) => {
+  server.on('upgrade', (req, socket, head) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    if (url.pathname !== "/v1/stream") {
+    if (url.pathname !== '/v1/stream') {
       socket.destroy();
       return;
     }
 
     wss.handleUpgrade(req, socket, head, (ws) => {
-      wss.emit("connection", ws, req);
+      wss.emit('connection', ws, req);
     });
   });
 
-  wss.on("connection", (ws) => {
+  wss.on('connection', (ws) => {
     let session = null;
     let configured = false;
     const pcmChunks = [];
@@ -48,7 +48,7 @@ export function attachStreamHandler(server, config) {
       }
     }
 
-    ws.on("message", (data, isBinary) => {
+    ws.on('message', (data, isBinary) => {
       // Binary frame = PCM16 audio
       if (isBinary) {
         if (!session) return;
@@ -66,7 +66,7 @@ export function attachStreamHandler(server, config) {
           // Config message — start the streaming session
           configured = true;
           session = streamProvider.createSession({
-            language: msg.language || "",
+            language: msg.language || '',
             diarize: msg.diarize !== false,
 
             onResult(result) {
@@ -81,7 +81,7 @@ export function attachStreamHandler(server, config) {
               }
 
               send({
-                type: "transcript",
+                type: 'transcript',
                 text: result.text,
                 speaker: result.speaker,
                 isFinal: result.isFinal,
@@ -95,11 +95,11 @@ export function attachStreamHandler(server, config) {
                 utterances.push({ ...currentUtterance });
                 currentUtterance = { speaker: -1, parts: [] };
               }
-              send({ type: "utterance_end" });
+              send({ type: 'utterance_end' });
             },
 
             onError(err) {
-              send({ type: "error", message: String(err.message || err) });
+              send({ type: 'error', message: String(err.message || err) });
             },
 
             onClose() {
@@ -107,23 +107,23 @@ export function attachStreamHandler(server, config) {
             },
           });
 
-          send({ type: "ready", provider: streamProvider.name });
+          send({ type: 'ready', provider: streamProvider.name });
           return;
         }
 
-        if (msg.type === "stop") {
+        if (msg.type === 'stop') {
           endSession();
         }
       } catch {
-        send({ type: "error", message: "Invalid JSON message" });
+        send({ type: 'error', message: 'Invalid JSON message' });
       }
     });
 
-    ws.on("close", () => {
+    ws.on('close', () => {
       endSession();
     });
 
-    ws.on("error", () => {
+    ws.on('error', () => {
       endSession();
     });
 
@@ -145,11 +145,11 @@ export function attachStreamHandler(server, config) {
       const hasRealSpeakers = [...speakers].some((s) => s >= 0);
       const fullTranscript = utterances
         .map((u) => {
-          const text = u.parts.join(" ");
+          const text = u.parts.join(' ');
           if (!hasRealSpeakers) return text;
           return `${speakerLabel(u.speaker)}: ${text}`;
         })
-        .join("\n");
+        .join('\n');
 
       // Optional: post-process with pyannote sidecar
       let diarization = null;
@@ -164,7 +164,7 @@ export function attachStreamHandler(server, config) {
       }
 
       send({
-        type: "session_end",
+        type: 'session_end',
         fullTranscript,
         speakers: [...speakers].map((s) => ({ id: s, label: speakerLabel(s) })),
         utteranceCount: utterances.length,
@@ -173,7 +173,7 @@ export function attachStreamHandler(server, config) {
       });
 
       audit.log({
-        event: "stream_session_end",
+        event: 'stream_session_end',
         provider: streamProvider.name,
         utteranceCount: utterances.length,
         speakerCount: speakers.size,
@@ -186,8 +186,8 @@ export function attachStreamHandler(server, config) {
 }
 
 function speakerLabel(speaker) {
-  if (speaker === 0) return "Speaker 1";
-  if (speaker === 1) return "Speaker 2";
+  if (speaker === 0) return 'Speaker 1';
+  if (speaker === 1) return 'Speaker 2';
   if (speaker >= 0) return `Speaker ${speaker + 1}`;
-  return "Unknown";
+  return 'Unknown';
 }

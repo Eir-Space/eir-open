@@ -20,7 +20,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
   background: radial-gradient(circle at 20% 0%, #ffffff, #eef3f9 45%, #e7edf5 100%);
   color: var(--ink);
 }
@@ -747,12 +747,30 @@ button {
   color: #64748b;
 }
 
-.type-badge.primary_care { background: #dcfce7; color: #166534; }
-.type-badge.specialist { background: #dbeafe; color: #1e40af; }
-.type-badge.hospital { background: #fee2e2; color: #991b1b; }
-.type-badge.dental { background: #fef3c7; color: #92400e; }
-.type-badge.emergency { background: #fee2e2; color: #dc2626; }
-.type-badge.mental_health { background: #ede9fe; color: #6d28d9; }
+.type-badge.primary_care {
+  background: #dcfce7;
+  color: #166534;
+}
+.type-badge.specialist {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.type-badge.hospital {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.type-badge.dental {
+  background: #fef3c7;
+  color: #92400e;
+}
+.type-badge.emergency {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.type-badge.mental_health {
+  background: #ede9fe;
+  color: #6d28d9;
+}
 
 .provider-details-overlay {
   position: fixed;

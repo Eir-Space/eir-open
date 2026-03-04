@@ -1,4 +1,4 @@
-import WebSocket from "ws";
+import WebSocket from 'ws';
 
 /**
  * Deepgram streaming transcription provider with real-time diarization.
@@ -6,27 +6,27 @@ import WebSocket from "ws";
  */
 export function createDeepgramStreamProvider(config) {
   return {
-    name: "deepgram-stream",
+    name: 'deepgram-stream',
 
     createSession({ language, diarize = true, onResult, onUtteranceEnd, onError, onClose }) {
       if (!config.deepgram.apiKey) {
-        onError(new Error("DEEPGRAM_API_KEY not configured for streaming transcription."));
+        onError(new Error('DEEPGRAM_API_KEY not configured for streaming transcription.'));
         return { sendAudio() {}, close() {} };
       }
 
       const params = new URLSearchParams({
-        model: config.deepgram.model || "nova-3-medical",
-        encoding: "linear16",
-        sample_rate: "16000",
-        channels: "1",
-        smart_format: "true",
-        punctuate: "true",
-        interim_results: "true",
-        utterance_end_ms: "1500",
+        model: config.deepgram.model || 'nova-3-medical',
+        encoding: 'linear16',
+        sample_rate: '16000',
+        channels: '1',
+        smart_format: 'true',
+        punctuate: 'true',
+        interim_results: 'true',
+        utterance_end_ms: '1500',
       });
 
-      if (diarize) params.set("diarize", "true");
-      if (language) params.set("language", language);
+      if (diarize) params.set('diarize', 'true');
+      if (language) params.set('language', language);
 
       const url = `wss://api.deepgram.com/v1/listen?${params}`;
       let closed = false;
@@ -37,25 +37,25 @@ export function createDeepgramStreamProvider(config) {
         },
       });
 
-      ws.on("open", () => {
+      ws.on('open', () => {
         // Connection ready — audio can be sent.
       });
 
-      ws.on("message", (data) => {
+      ws.on('message', (data) => {
         try {
           const msg = JSON.parse(String(data));
 
-          if (msg.type === "Results") {
+          if (msg.type === 'Results') {
             const alt = msg.channel?.alternatives?.[0];
             if (!alt) return;
 
-            const text = alt.transcript || "";
+            const text = alt.transcript || '';
             if (!text.trim()) return;
 
             // Extract dominant speaker from words
             const words = (alt.words || []).map((w) => ({
-              word: w.word || w.punctuated_word || "",
-              speaker: typeof w.speaker === "number" ? w.speaker : -1,
+              word: w.word || w.punctuated_word || '',
+              speaker: typeof w.speaker === 'number' ? w.speaker : -1,
               start: w.start,
               end: w.end,
               confidence: w.confidence,
@@ -72,7 +72,7 @@ export function createDeepgramStreamProvider(config) {
             });
           }
 
-          if (msg.type === "UtteranceEnd") {
+          if (msg.type === 'UtteranceEnd') {
             onUtteranceEnd();
           }
         } catch (err) {
@@ -80,11 +80,11 @@ export function createDeepgramStreamProvider(config) {
         }
       });
 
-      ws.on("error", (err) => {
+      ws.on('error', (err) => {
         onError(err);
       });
 
-      ws.on("close", () => {
+      ws.on('close', () => {
         closed = true;
         onClose();
       });
@@ -100,7 +100,7 @@ export function createDeepgramStreamProvider(config) {
           closed = true;
           // Send Deepgram close message to flush remaining audio
           if (ws.readyState === WebSocket.OPEN) {
-            ws.send(JSON.stringify({ type: "CloseStream" }));
+            ws.send(JSON.stringify({ type: 'CloseStream' }));
           }
           // Give Deepgram a moment to send final results before closing
           setTimeout(() => {

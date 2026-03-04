@@ -17,15 +17,13 @@ export type ScriptToolHandler = (args: Record<string, unknown>) => Promise<Scrip
  */
 export function createScriptToolHandler(
   script: SkillScript,
-  options?: { timeoutMs?: number }
+  options?: { timeoutMs?: number },
 ): ScriptToolHandler {
   return async (args) => {
     try {
-      const { stdout } = await execFileAsync(
-        'node',
-        [script.entrypoint, JSON.stringify(args)],
-        { timeout: options?.timeoutMs ?? 30_000 }
-      );
+      const { stdout } = await execFileAsync('node', [script.entrypoint, JSON.stringify(args)], {
+        timeout: options?.timeoutMs ?? 30_000,
+      });
       const trimmed = stdout.trim();
       if (!trimmed) {
         return { toolResponse: { status: 'success', message: 'Script completed with no output.' } };

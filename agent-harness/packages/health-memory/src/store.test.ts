@@ -50,20 +50,27 @@ describe('InMemoryHealthMemoryStore', () => {
 
     it('deduplicates evidence refs on merge', async () => {
       const store = new InMemoryHealthMemoryStore();
-      await store.upsert(makeItem({
-        id: 'a',
-        label: 'Headache',
-        evidenceRefs: [{ type: 'message', id: 'msg-1' }],
-      }));
-      await store.upsert(makeItem({
-        id: 'b',
-        label: 'Headache',
-        evidenceRefs: [{ type: 'message', id: 'msg-1' }, { type: 'document', id: 'doc-1' }],
-      }));
+      await store.upsert(
+        makeItem({
+          id: 'a',
+          label: 'Headache',
+          evidenceRefs: [{ type: 'message', id: 'msg-1' }],
+        }),
+      );
+      await store.upsert(
+        makeItem({
+          id: 'b',
+          label: 'Headache',
+          evidenceRefs: [
+            { type: 'message', id: 'msg-1' },
+            { type: 'document', id: 'doc-1' },
+          ],
+        }),
+      );
 
       const all = await store.getAll();
       assert.equal(all[0].evidenceRefs.length, 2, 'Should deduplicate message ref');
-      const types = all[0].evidenceRefs.map(r => `${r.type}:${r.id}`);
+      const types = all[0].evidenceRefs.map((r) => `${r.type}:${r.id}`);
       assert.ok(types.includes('message:msg-1'));
       assert.ok(types.includes('document:doc-1'));
     });
@@ -97,8 +104,12 @@ describe('InMemoryHealthMemoryStore', () => {
 
     it('updates certaintyLevel based on merged confidence', async () => {
       const store = new InMemoryHealthMemoryStore();
-      await store.upsert(makeItem({ id: 'a', label: 'Headache', confidence: 0.5, certaintyLevel: 'low' }));
-      await store.upsert(makeItem({ id: 'b', label: 'Headache', confidence: 0.9, certaintyLevel: 'high' }));
+      await store.upsert(
+        makeItem({ id: 'a', label: 'Headache', confidence: 0.5, certaintyLevel: 'low' }),
+      );
+      await store.upsert(
+        makeItem({ id: 'b', label: 'Headache', confidence: 0.9, certaintyLevel: 'high' }),
+      );
 
       const all = await store.getAll();
       assert.equal(all[0].certaintyLevel, 'high');

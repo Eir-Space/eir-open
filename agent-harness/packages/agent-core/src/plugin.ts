@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { ToolDefinition, ToolHandler, ToolHandlerResult } from './types.js';
+import type { ToolDefinition, ToolHandler } from './types.js';
 import type { ToolLoopHooks } from './toolLoop.js';
 
 // --- Plugin Manifest ---
@@ -8,14 +8,18 @@ export const pluginManifestSchema = z.object({
   name: z.string().min(1),
   version: z.string().default('0.1.0'),
   description: z.string().optional(),
-  provides: z.object({
-    tools: z.array(z.string()).default([]),
-    hooks: z.array(z.string()).default([]),
-  }).default({}),
-  requires: z.object({
-    tools: z.array(z.string()).default([]),
-    skills: z.array(z.string()).default([]),
-  }).default({}),
+  provides: z
+    .object({
+      tools: z.array(z.string()).default([]),
+      hooks: z.array(z.string()).default([]),
+    })
+    .default({}),
+  requires: z
+    .object({
+      tools: z.array(z.string()).default([]),
+      skills: z.array(z.string()).default([]),
+    })
+    .default({}),
   configSchema: z.record(z.unknown()).optional(),
 });
 
@@ -88,7 +92,9 @@ export class PluginRegistry {
       for (const tool of registration.tools ?? []) {
         const toolName = tool.definition.function.name;
         if (handlers[toolName]) {
-          console.warn(`[PluginRegistry] Duplicate tool name "${toolName}" — later registration overwrites earlier one.`);
+          console.warn(
+            `[PluginRegistry] Duplicate tool name "${toolName}" — later registration overwrites earlier one.`,
+          );
         }
         definitions.push(tool.definition);
         handlers[toolName] = tool.handler;
@@ -154,7 +160,7 @@ export class PluginRegistry {
     const merged: Partial<ToolLoopHooks> = {};
 
     // beforeToolCall — chain with short-circuit on false
-    const beforeHooks = hooksList.map(h => h.beforeToolCall).filter(Boolean);
+    const beforeHooks = hooksList.map((h) => h.beforeToolCall).filter(Boolean);
     if (beforeHooks.length > 0) {
       merged.beforeToolCall = async (name, args) => {
         let currentArgs = args;
@@ -175,7 +181,7 @@ export class PluginRegistry {
     }
 
     // afterToolCall — run all in order
-    const afterHooks = hooksList.map(h => h.afterToolCall).filter(Boolean);
+    const afterHooks = hooksList.map((h) => h.afterToolCall).filter(Boolean);
     if (afterHooks.length > 0) {
       merged.afterToolCall = async (name, result) => {
         for (const hook of afterHooks) {
@@ -189,7 +195,7 @@ export class PluginRegistry {
     }
 
     // decideFollowupToolChoice — last one wins
-    const decideHooks = hooksList.map(h => h.decideFollowupToolChoice).filter(Boolean);
+    const decideHooks = hooksList.map((h) => h.decideFollowupToolChoice).filter(Boolean);
     if (decideHooks.length > 0) {
       merged.decideFollowupToolChoice = (iteration, maxIterations) => {
         let result: 'auto' | 'none' = 'auto';
@@ -205,7 +211,7 @@ export class PluginRegistry {
     }
 
     // shouldBreakEarly — true if any returns true
-    const breakHooks = hooksList.map(h => h.shouldBreakEarly).filter(Boolean);
+    const breakHooks = hooksList.map((h) => h.shouldBreakEarly).filter(Boolean);
     if (breakHooks.length > 0) {
       merged.shouldBreakEarly = (iteration, maxIterations) => {
         for (const hook of breakHooks) {
@@ -220,7 +226,7 @@ export class PluginRegistry {
     }
 
     // onProviderError — first non-null recovery wins
-    const errorHooks = hooksList.map(h => h.onProviderError).filter(Boolean);
+    const errorHooks = hooksList.map((h) => h.onProviderError).filter(Boolean);
     if (errorHooks.length > 0) {
       merged.onProviderError = async (error, iteration) => {
         for (const hook of errorHooks) {
@@ -236,7 +242,7 @@ export class PluginRegistry {
     }
 
     // onSubagentSpawning — run all in order
-    const spawningHooks = hooksList.map(h => h.onSubagentSpawning).filter(Boolean);
+    const spawningHooks = hooksList.map((h) => h.onSubagentSpawning).filter(Boolean);
     if (spawningHooks.length > 0) {
       merged.onSubagentSpawning = async (agentId, context) => {
         for (const hook of spawningHooks) {
@@ -250,7 +256,7 @@ export class PluginRegistry {
     }
 
     // onSubagentEnded — run all in order
-    const endedHooks = hooksList.map(h => h.onSubagentEnded).filter(Boolean);
+    const endedHooks = hooksList.map((h) => h.onSubagentEnded).filter(Boolean);
     if (endedHooks.length > 0) {
       merged.onSubagentEnded = async (agentId, result) => {
         for (const hook of endedHooks) {

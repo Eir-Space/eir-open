@@ -9,7 +9,7 @@
 
 **Version 1.0** | [Website](https://birgermoell.github.io/health-md-standard/) | [Specification](EIR-SPEC.md) | [Examples](examples/) | [MCP Server](mcp-server/)
 
-*Named after Eir, the Norse goddess of healing and medicine*
+_Named after Eir, the Norse goddess of healing and medicine_
 
 ## 🎯 Mission
 
@@ -29,12 +29,15 @@ Healthcare data is complex, sensitive, and crucial. **EIR Format** defines an op
 # Health Record - Anonymous Patient 001
 
 ## Demographics
+
 - Age: 34
-- Sex: Female  
+- Sex: Female
 - Occupation: Software Engineer
 
 ## Current Medications
+
 ### Metformin 500mg
+
 - **Indication:** Type 2 Diabetes Mellitus
 - **Dosage:** 500mg twice daily with meals
 - **Started:** 2024-01-15
@@ -42,7 +45,9 @@ Healthcare data is complex, sensitive, and crucial. **EIR Format** defines an op
 - **Notes:** Well tolerated, no gastrointestinal issues
 
 ## Lab Results
+
 ### Hemoglobin A1C
+
 - **Date:** 2024-02-10
 - **Value:** 6.8%
 - **Reference:** <7.0% (target for diabetes)
@@ -50,9 +55,11 @@ Healthcare data is complex, sensitive, and crucial. **EIR Format** defines an op
 - **Clinical Significance:** Improving glycemic control
 
 ## Clinical Timeline
+
 ### 2024-01-15: Initial Diabetes Diagnosis
+
 - **HbA1c:** 8.2%
-- **Fasting Glucose:** 180 mg/dL  
+- **Fasting Glucose:** 180 mg/dL
 - **Action:** Started Metformin 500mg BID
 - **Goals:** HbA1c <7%, weight loss 5-10%
 ```
@@ -71,7 +78,7 @@ Healthcare data is complex, sensitive, and crucial. **EIR Format** defines an op
 The complete specification is available in [SPEC.md](SPEC.md). Key sections include:
 
 - [File Structure](SPEC.md#file-structure)
-- [Required Sections](SPEC.md#required-sections)  
+- [Required Sections](SPEC.md#required-sections)
 - [Optional Extensions](SPEC.md#optional-extensions)
 - [Privacy Guidelines](SPEC.md#privacy-guidelines)
 - [Validation Rules](SPEC.md#validation-rules)
@@ -99,13 +106,14 @@ summary = record.to_llm_context()
 
 - **Clinical Decision Support:** Structured data for AI diagnostic tools
 - **Patient Portals:** Human-readable health records
-- **Research:** Standardized datasets for health AI training  
+- **Research:** Standardized datasets for health AI training
 - **Health Apps:** Interoperable data format across platforms
 - **Telemedicine:** Efficient information sharing between providers
 
 ## 🤝 Contributing
 
 We welcome contributions from:
+
 - **Clinicians:** Medical accuracy and workflow insights
 - **Developers:** Parser improvements and tooling
 - **Researchers:** Validation studies and use cases
@@ -118,7 +126,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 Organizations using Health.md:
 
 - [EIR Space](https://eir.space/) - Health literacy platform
-- *Your organization here - submit a PR!*
+- _Your organization here - submit a PR!_
 
 ## 📄 License
 
@@ -127,14 +135,16 @@ MIT License - See [LICENSE](LICENSE)
 ## 🏆 Team
 
 **Created by:**
+
 - [Birger Moëll](https://github.com/BirgerMoell) - AI/NLP Researcher, Clinical Psychologist
 - Uppsala University, Department of Linguistics and Philology
 
 **Special Thanks:**
+
 - Healthcare professionals who provided clinical input
 - Privacy advocates who shaped our anonymization guidelines
 - LLM researchers who validated our structured approach
 
 ---
 
-*Healthcare data deserves better standards. Let's build them together.* 🏥💙
+_Healthcare data deserves better standards. Let's build them together._ 🏥💙

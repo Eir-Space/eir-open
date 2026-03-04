@@ -97,8 +97,9 @@ export class SessionManager {
 
     // LRU eviction if over limit
     if (this.sessions.size > this.maxSessions) {
-      const sorted = Array.from(this.sessions.entries())
-        .sort(([, a], [, b]) => a.lastActiveAt - b.lastActiveAt);
+      const sorted = Array.from(this.sessions.entries()).sort(
+        ([, a], [, b]) => a.lastActiveAt - b.lastActiveAt,
+      );
 
       const toEvict = sorted.slice(0, this.sessions.size - this.maxSessions);
       for (const [id, session] of toEvict) {

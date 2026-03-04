@@ -4,11 +4,11 @@
  * Run with: npm test
  */
 
-const { 
-  lookupMedication, 
-  findMedication, 
-  getFassUrl, 
-  COMMON_MEDICATIONS 
+const {
+  lookupMedication,
+  findMedication,
+  getFassUrl,
+  COMMON_MEDICATIONS,
 } = require('../scripts/fass_lookup.js');
 
 let passed = 0;
@@ -253,7 +253,7 @@ test('Brand name lookups should return same info as substance', () => {
     ['Alvedon', 'paracetamol'],
     ['Ipren', 'ibuprofen'],
     ['Zoloft', 'sertralin'],
-    ['Losec', 'omeprazol']
+    ['Losec', 'omeprazol'],
   ];
   for (const [brand, substance] of brands) {
     const byBrand = findMedication(brand);

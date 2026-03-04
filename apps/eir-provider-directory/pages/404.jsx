@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Custom404() {
   return (
@@ -7,7 +7,7 @@ export default function Custom404() {
       <Head>
         <title>404 - Page Not Found | EIR Provider Directory</title>
       </Head>
-      
+
       <div className="error-container">
         <div className="error-content">
           <h1 className="error-code">404</h1>
@@ -15,12 +15,12 @@ export default function Custom404() {
           <p className="error-description">
             The page you're looking for doesn't exist in our healthcare directory.
           </p>
-          
+
           <div className="error-actions">
             <Link href="/" className="primary-button">
               🏥 Browse All Providers
             </Link>
-            
+
             <Link href="/api/providers" className="secondary-button">
               📊 View API Documentation
             </Link>
@@ -104,7 +104,8 @@ export default function Custom404() {
           flex-wrap: wrap;
         }
 
-        .primary-button, .secondary-button {
+        .primary-button,
+        .secondary-button {
           padding: 12px 24px;
           border-radius: 8px;
           font-weight: 500;
@@ -221,5 +222,5 @@ export default function Custom404() {
         }
       `}</style>
     </div>
-  )
+  );
 }

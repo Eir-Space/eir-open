@@ -1,4 +1,4 @@
-import { spawn } from "node:child_process";
+import { spawn } from 'node:child_process';
 
 /**
  * Run a CLI command, passing data via stdin, reading result from stdout.
@@ -17,7 +17,7 @@ export async function runCliCommand({ command, args = [], stdin, timeoutMs = 120
 
   return new Promise((resolve, reject) => {
     const child = spawn(bin, fullArgs, {
-      stdio: ["pipe", "pipe", "pipe"],
+      stdio: ['pipe', 'pipe', 'pipe'],
       env: process.env,
     });
 
@@ -27,28 +27,28 @@ export async function runCliCommand({ command, args = [], stdin, timeoutMs = 120
 
     const timer = setTimeout(() => {
       timedOut = true;
-      child.kill("SIGTERM");
+      child.kill('SIGTERM');
     }, timeoutMs);
 
-    child.stdout.on("data", (chunk) => stdout.push(chunk));
-    child.stderr.on("data", (chunk) => stderr.push(chunk));
-    child.on("error", (err) => {
+    child.stdout.on('data', (chunk) => stdout.push(chunk));
+    child.stderr.on('data', (chunk) => stderr.push(chunk));
+    child.on('error', (err) => {
       clearTimeout(timer);
       reject(err);
     });
-    child.on("close", (code) => {
+    child.on('close', (code) => {
       clearTimeout(timer);
-      const out = Buffer.concat(stdout).toString("utf8").trim();
-      const err = Buffer.concat(stderr).toString("utf8").trim();
+      const out = Buffer.concat(stdout).toString('utf8').trim();
+      const err = Buffer.concat(stderr).toString('utf8').trim();
 
       if (timedOut) {
-        const e = new Error("CLI command timed out");
+        const e = new Error('CLI command timed out');
         e.statusCode = 504;
         return reject(e);
       }
 
       if (code !== 0) {
-        const e = new Error(`CLI command failed (${code}): ${err || "no stderr"}`);
+        const e = new Error(`CLI command failed (${code}): ${err || 'no stderr'}`);
         e.statusCode = 502;
         return reject(e);
       }

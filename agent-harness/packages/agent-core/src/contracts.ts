@@ -9,7 +9,7 @@ export const validationErrorSchema = z.object({
 });
 
 export const genericAgentActionSchema = z.object({
-  type: z.string().min(1),  // open — platforms define their own action types
+  type: z.string().min(1), // open — platforms define their own action types
   status: agentActionStatusSchema.default('proposed'),
   payload: z.record(z.unknown()).default({}),
   validationErrors: z.array(validationErrorSchema).optional(),
@@ -22,7 +22,7 @@ export const citationSchema = z.object({
 
 export const unifiedAgentResponseSchema = z.object({
   assistant_message: z.string(),
-  ui_blocks: z.array(z.record(z.unknown())).default([]),  // platform defines block schema
+  ui_blocks: z.array(z.record(z.unknown())).default([]), // platform defines block schema
   actions: z.array(genericAgentActionSchema).default([]),
   suggested_followups: z.array(z.string().min(1)).max(5).optional(),
   citations: z.array(citationSchema).optional(),

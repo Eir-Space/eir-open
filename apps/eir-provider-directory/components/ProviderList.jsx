@@ -1,67 +1,72 @@
-import { useEffect, useMemo, useState } from 'react'
-import { List } from 'react-window'
-import { distanceFromUser } from '../lib/distance'
+import { useEffect, useMemo, useState } from 'react';
+import { List } from 'react-window';
+import { distanceFromUser } from '../lib/distance';
 import {
   getSelfReferralVerificationLabel,
   getSelfReferralVerificationStatus,
-  hasVerifiedSelfReferral
-} from '../lib/self-referral'
+  hasVerifiedSelfReferral,
+} from '../lib/self-referral';
 
-const ROW_HEIGHT = 96
+const ROW_HEIGHT = 96;
 
-export default function ProviderList({ providers, onProviderSelect, selectedProvider, userLocation }) {
-  const [sortBy, setSortBy] = useState('name')
-  const [sortOrder, setSortOrder] = useState('asc')
-  const [listHeight, setListHeight] = useState(600)
+export default function ProviderList({
+  providers,
+  onProviderSelect,
+  selectedProvider,
+  userLocation,
+}) {
+  const [sortBy, setSortBy] = useState('name');
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [listHeight, setListHeight] = useState(600);
 
   useEffect(() => {
     const updateHeight = () => {
-      const next = Math.max(320, window.innerHeight - 300)
-      setListHeight(next)
-    }
-    updateHeight()
-    window.addEventListener('resize', updateHeight)
-    return () => window.removeEventListener('resize', updateHeight)
-  }, [])
+      const next = Math.max(320, window.innerHeight - 300);
+      setListHeight(next);
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, []);
 
   const sortedProviders = useMemo(() => {
     return [...providers].sort((a, b) => {
-      const aName = a.name.toLowerCase()
-      const bName = b.name.toLowerCase()
-      const aType = a.type || 'other'
-      const bType = b.type || 'other'
-      const aLocation = (a.location?.address || '').toLowerCase()
-      const bLocation = (b.location?.address || '').toLowerCase()
+      const aName = a.name.toLowerCase();
+      const bName = b.name.toLowerCase();
+      const aType = a.type || 'other';
+      const bType = b.type || 'other';
+      const aLocation = (a.location?.address || '').toLowerCase();
+      const bLocation = (b.location?.address || '').toLowerCase();
 
-      let lhs = aName
-      let rhs = bName
+      let lhs = aName;
+      let rhs = bName;
       if (sortBy === 'type') {
-        lhs = aType
-        rhs = bType
+        lhs = aType;
+        rhs = bType;
       }
       if (sortBy === 'location') {
-        lhs = aLocation
-        rhs = bLocation
+        lhs = aLocation;
+        rhs = bLocation;
       }
       if (sortBy === 'distance') {
-        lhs = distanceFromUser(a, userLocation)
-        rhs = distanceFromUser(b, userLocation)
+        lhs = distanceFromUser(a, userLocation);
+        rhs = distanceFromUser(b, userLocation);
       }
 
-      if (lhs < rhs) return sortOrder === 'asc' ? -1 : 1
-      if (lhs > rhs) return sortOrder === 'asc' ? 1 : -1
-      return 0
-    })
-  }, [providers, sortBy, sortOrder, userLocation])
+      if (lhs < rhs) return sortOrder === 'asc' ? -1 : 1;
+      if (lhs > rhs) return sortOrder === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }, [providers, sortBy, sortOrder, userLocation]);
 
-  const handleSort = field => {
+  const handleSort = (field) => {
     if (field === sortBy) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-      return
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+      return;
     }
-    setSortBy(field)
-    setSortOrder('asc')
-  }
+    setSortBy(field);
+    setSortOrder('asc');
+  };
 
   if (sortedProviders.length === 0) {
     return (
@@ -69,7 +74,7 @@ export default function ProviderList({ providers, onProviderSelect, selectedProv
         <h3>No providers found</h3>
         <p>Adjust your filters or search query.</p>
       </section>
-    )
+    );
   }
 
   return (
@@ -119,21 +124,21 @@ export default function ProviderList({ providers, onProviderSelect, selectedProv
           providers: sortedProviders,
           selectedId: selectedProvider?.id,
           onProviderSelect,
-          userLocation
+          userLocation,
         }}
         style={{ height: listHeight }}
         defaultHeight={600}
       />
     </section>
-  )
+  );
 }
 
 function ProviderRow({ index, style, providers, selectedId, onProviderSelect, userLocation }) {
-  const provider = providers[index]
-  const isSelected = selectedId === provider.id
-  const distance = userLocation ? distanceFromUser(provider, userLocation) : null
-  const verificationStatus = getSelfReferralVerificationStatus(provider)
-  const verificationLabel = getSelfReferralVerificationLabel(provider)
+  const provider = providers[index];
+  const isSelected = selectedId === provider.id;
+  const distance = userLocation ? distanceFromUser(provider, userLocation) : null;
+  const verificationStatus = getSelfReferralVerificationStatus(provider);
+  const verificationLabel = getSelfReferralVerificationLabel(provider);
 
   return (
     <div style={style} className="virtual-row-wrap">
@@ -161,5 +166,5 @@ function ProviderRow({ index, style, providers, selectedId, onProviderSelect, us
         </div>
       </button>
     </div>
-  )
+  );
 }

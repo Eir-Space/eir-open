@@ -19,6 +19,7 @@ Interactive menu installs medication skills, Health.md, Eir Apps, and OpenClaw i
 A comprehensive medication lookup tool for Swedish pharmaceuticals based on the FASS database. Built as an OpenClaw skill for AI agents, this tool provides quick access to medication information including brand to substance mapping, dosage information, side effects, and official FASS links.
 
 **Key Features:**
+
 - Quick lookup of common Swedish medications
 - Brand → substance mapping (e.g., Alvedon → paracetamol)
 - Dosage information, side effects, and warnings
@@ -35,6 +36,7 @@ Perfect for healthcare applications, AI assistants helping with Swedish healthca
 A comprehensive US FDA medication lookup tool with access to over 81,000 medications in the full database. Features 99 curated common medications for instant access and includes drug interaction checking capabilities.
 
 **Key Features:**
+
 - **81,212 FDA medications** in the full database
 - **99 curated** common medications with instant access (no download needed)
 - **Drug interactions** lookup functionality
@@ -52,8 +54,9 @@ Ideal for US healthcare applications, medical AI assistants, drug interaction ch
 An open YAML-based standard for structuring healthcare information optimized for Large Language Models. Named after Eir, the Norse goddess of healing and medicine, this format enables privacy-preserving, clinically-accurate health data exchange.
 
 **Key Features:**
+
 - **LLM-Optimized**: Structured for perfect AI comprehension and reasoning
-- **Privacy-First**: Built-in anonymization and data protection patterns  
+- **Privacy-First**: Built-in anonymization and data protection patterns
 - **Clinical-Accurate**: Preserves medical context and relationships
 - **Human-Readable**: Markdown format accessible to clinicians and patients
 - **Interoperable**: Works across systems, platforms, and use cases
@@ -73,6 +76,7 @@ App directory index: [`apps/README.md`](apps/README.md)
 Open-source applications for accessing, viewing, and understanding Swedish medical records from 1177.se with complete privacy - your data never leaves your device.
 
 **Desktop App - Eir Viewer (macOS):**
+
 - **Timeline view** with AI-powered health insights using OpenAI, Anthropic, or Groq
 - **Agent with tools** for intelligent record search and analysis
 - **Multi-profile support** for managing family health records
@@ -82,6 +86,7 @@ Open-source applications for accessing, viewing, and understanding Swedish medic
 - **Privacy-first** - everything runs locally, no cloud storage
 
 **Chrome Extension - 1177 Journal Downloader:**
+
 - **One-click download** of complete medical records from 1177.se
 - **Structured EIR format** exports (.eir/YAML and .txt)
 - **Complete history** with automatic timeline expansion
@@ -97,6 +102,7 @@ Ideal for patients wanting full control over their health data, healthcare devel
 An open-source AI medical scribe that transcribes clinical encounters in real-time and generates structured medical notes. Runs fully local for maximum privacy — no patient data ever leaves your machine.
 
 **Key Features:**
+
 - **Real-time transcription** with Whisper ONNX running locally (Swedish-optimized KB Whisper model)
 - **Structured note generation** via Ollama (local), OpenAI, Anthropic Claude, or Google Gemini
 - **Six note formats**: SOAP, H&P, Progress, DAP, Procedure, and Swedish Journalanteckning
@@ -108,17 +114,18 @@ An open-source AI medical scribe that transcribes clinical encounters in real-ti
 
 **Supported Providers:**
 
-| Transcription | Note Generation |
-|---|---|
-| Whisper ONNX (local) | Ollama (local) |
-| faster-whisper (local) | OpenAI |
-| whisper.cpp (local) | Anthropic Claude |
-| OpenAI Whisper | Google Gemini |
-| Deepgram | |
-| Google Cloud Speech | |
-| Berget AI (EU) | |
+| Transcription          | Note Generation  |
+| ---------------------- | ---------------- |
+| Whisper ONNX (local)   | Ollama (local)   |
+| faster-whisper (local) | OpenAI           |
+| whisper.cpp (local)    | Anthropic Claude |
+| OpenAI Whisper         | Google Gemini    |
+| Deepgram               |                  |
+| Google Cloud Speech    |                  |
+| Berget AI (EU)         |                  |
 
 **Quick Start:**
+
 ```bash
 cd apps/open-medical-scribe
 npm install
@@ -137,6 +144,7 @@ Ideal for clinicians who want AI-assisted documentation without sending patient 
 Production-grade healthcare provider discovery app for Sweden with map + list browsing, verified service capabilities, and Cloudflare-native data infrastructure.
 
 **Key Features:**
+
 - **Nationwide provider search** with map and list views
 - **Verified self-referral data** from 1177 clinic pages
 - **Detailed care metadata** including e-services and action capabilities
