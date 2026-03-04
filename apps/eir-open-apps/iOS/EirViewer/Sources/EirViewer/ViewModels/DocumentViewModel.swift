@@ -61,18 +61,25 @@ class DocumentViewModel: ObservableObject {
         let didStartAccess = url.startAccessingSecurityScopedResource()
 
         do {
-            document = try EirParser.parse(url: url)
+            let doc = try EirParser.parse(url: url)
+            document = doc
             selectedEntryID = nil
             searchText = ""
             selectedCategory = nil
             selectedProvider = nil
         } catch {
-            errorMessage = error.localizedDescription
+            // Only set error if we don't already have a document loaded
+            if document == nil {
+                errorMessage = error.localizedDescription
+            }
         }
 
         if didStartAccess {
             url.stopAccessingSecurityScopedResource()
         }
+
+        // Ensure file protection
+        EncryptedStore.protectFile(at: url)
 
         isLoading = false
     }

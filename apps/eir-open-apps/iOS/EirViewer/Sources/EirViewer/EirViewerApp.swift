@@ -8,6 +8,7 @@ struct EirViewerApp: App {
     @StateObject private var profileStore = ProfileStore()
     @StateObject private var chatThreadStore = ChatThreadStore()
     @StateObject private var agentMemoryStore = AgentMemoryStore()
+    @StateObject private var localModelManager = LocalModelManager()
 
     var body: some Scene {
         WindowGroup {
@@ -18,6 +19,7 @@ struct EirViewerApp: App {
                 .environmentObject(profileStore)
                 .environmentObject(chatThreadStore)
                 .environmentObject(agentMemoryStore)
+                .environmentObject(localModelManager)
                 .onOpenURL { url in
                     let ext = url.pathExtension.lowercased()
                     guard ext == "eir" || ext == "yaml" || ext == "yml" else { return }

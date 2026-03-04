@@ -125,6 +125,11 @@ struct WelcomeView: View {
         .sheet(isPresented: $showHealthKitImport) {
             HealthKitImportView()
         }
+        // Auto-dismiss sheets when a profile is loaded
+        .onReceive(NotificationCenter.default.publisher(for: .profileDidLoad)) { _ in
+            showQRScanner = false
+            showHealthKitImport = false
+        }
     }
 
     private func loadSampleData() {

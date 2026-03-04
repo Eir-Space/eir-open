@@ -6,6 +6,7 @@ struct SettingsView: View {
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
     @EnvironmentObject var embeddingStore: EmbeddingStore
     @EnvironmentObject var modelManager: ModelManager
+    @EnvironmentObject var localModelManager: LocalModelManager
 
     var body: some View {
         InlineSettingsView()
@@ -13,6 +14,7 @@ struct SettingsView: View {
             .environmentObject(agentMemoryStore)
             .environmentObject(embeddingStore)
             .environmentObject(modelManager)
+            .environmentObject(localModelManager)
             .frame(width: 600, height: 750)
     }
 }
@@ -23,6 +25,7 @@ struct InlineSettingsView: View {
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
     @EnvironmentObject var embeddingStore: EmbeddingStore
     @EnvironmentObject var modelManager: ModelManager
+    @EnvironmentObject var localModelManager: LocalModelManager
     @State private var showResetConfirmation = false
 
     var body: some View {
@@ -60,8 +63,14 @@ struct InlineSettingsView: View {
                     .padding(4)
                 }
 
-                // Provider cards
-                ForEach(settingsVM.providers) { config in
+                // Local model settings (shown when On-Device is active)
+                if settingsVM.activeProviderType.isLocal {
+                    LocalModelSettingsView()
+                    PromptStyleSettingsView()
+                }
+
+                // Provider cards (hide local from card list)
+                ForEach(settingsVM.providers.filter { !$0.type.isLocal }) { config in
                     ProviderCard(config: config)
                         .environmentObject(settingsVM)
                 }

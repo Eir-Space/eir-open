@@ -7,6 +7,7 @@ struct SidebarView: View {
     @EnvironmentObject var chatVM: ChatViewModel
     @Binding var selectedTab: NavTab
 
+    @State private var showingShareToiPhone = false
     @State private var renamingProfileID: UUID?
     @State private var renameText: String = ""
 
@@ -191,6 +192,18 @@ struct SidebarView: View {
 
             Divider()
 
+            if profileStore.selectedProfile != nil {
+                Button {
+                    showingShareToiPhone = true
+                } label: {
+                    Label("Share to iPhone", systemImage: "iphone.and.arrow.left.and.arrow.right")
+                        .font(.callout)
+                }
+                .buttonStyle(.plain)
+                .padding(.horizontal)
+                .padding(.vertical, 4)
+            }
+
             Button {
                 NotificationCenter.default.post(name: .showAddPersonSheet, object: nil)
             } label: {
@@ -200,6 +213,9 @@ struct SidebarView: View {
             .buttonStyle(.plain)
             .padding(.horizontal)
             .padding(.vertical, 8)
+        }
+        .sheet(isPresented: $showingShareToiPhone) {
+            ShareToiPhoneView()
         }
         .frame(minWidth: 200)
         .alert("Rename Person", isPresented: Binding(

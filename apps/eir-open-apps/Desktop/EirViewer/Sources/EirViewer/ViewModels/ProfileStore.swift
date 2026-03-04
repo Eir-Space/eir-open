@@ -27,8 +27,7 @@ class ProfileStore: ObservableObject {
         } catch {
             let detail = "\(error)"
             errorMessage = "Failed to load: \(detail)"
-            let log = "[ProfileStore] Failed to parse \(fileURL.path):\n\(detail)\n"
-            try? log.write(toFile: "/tmp/eirviewer_error.log", atomically: true, encoding: .utf8)
+            DebugLog.log("[ProfileStore] Failed to parse \(fileURL.path): \(detail)")
             return nil
         }
 

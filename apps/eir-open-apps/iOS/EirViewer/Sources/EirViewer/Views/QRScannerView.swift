@@ -1,5 +1,8 @@
 import SwiftUI
 import AVFoundation
+import os.log
+
+private let logger = Logger(subsystem: "com.eir.viewer", category: "QRScanner")
 
 struct QRScannerView: View {
     @EnvironmentObject var profileStore: ProfileStore
@@ -7,6 +10,7 @@ struct QRScannerView: View {
     @StateObject private var transferClient = LocalTransferClient()
     @State private var scannedURL: String?
     @State private var cameraError: String?
+    @State private var importError: String?
 
     var body: some View {
         NavigationStack {
@@ -41,6 +45,7 @@ struct QRScannerView: View {
             QRCameraPreview { code in
                 guard scannedURL == nil else { return }
                 scannedURL = code
+                logger.info("QR scanned: \(code)")
                 Task {
                     await transferClient.download(from: code)
                 }
@@ -99,16 +104,39 @@ struct QRScannerView: View {
                 .font(.callout)
                 .foregroundColor(.gray)
 
+            if let error = importError {
+                Text(error)
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 32)
+            }
+
             Button("Open Records") {
-                if let profile = profileStore.addProfile(displayName: "", fileURL: url) {
-                    profileStore.selectProfile(profile.id)
-                }
-                dismiss()
+                openRecords(url: url)
             }
             .buttonStyle(.borderedProminent)
             .tint(AppColors.primary)
 
             Spacer()
+        }
+    }
+
+    private func openRecords(url: URL) {
+        logger.info("Open Records tapped. File: \(url.path)")
+        logger.info("File exists: \(FileManager.default.fileExists(atPath: url.path))")
+
+        let profile = profileStore.addProfile(displayName: "", fileURL: url)
+
+        if let profile = profile {
+            logger.info("Profile created: \(profile.displayName), fileName: \(profile.fileName), entries: \(profile.totalEntries ?? 0)")
+            profileStore.selectProfile(profile.id)
+            logger.info("Profile selected: \(profile.id)")
+            // Parent sheet dismisses us via .profileDidLoad notification
+        } else {
+            let err = profileStore.errorMessage ?? "Unknown error"
+            logger.error("addProfile failed: \(err)")
+            importError = err
         }
     }
 

@@ -28,6 +28,7 @@ struct ContentView: View {
     @EnvironmentObject var clinicStore: ClinicStore
     @EnvironmentObject var embeddingStore: EmbeddingStore
     @EnvironmentObject var modelManager: ModelManager
+    @EnvironmentObject var localModelManager: LocalModelManager
 
     @State private var selectedTab: NavTab = .journal
     @State private var showingAddPerson = false
@@ -55,10 +56,7 @@ struct ContentView: View {
                 }
                 .navigationSplitViewStyle(.balanced)
                 .frame(minWidth: 800, minHeight: 500)
-                .onAppear {
-                    loadSelectedProfile()
-                }
-                .onChange(of: profileStore.selectedProfileID) {
+                .onReceive(profileStore.$selectedProfileID) { _ in
                     loadSelectedProfile()
                 }
             }
@@ -87,7 +85,6 @@ struct ContentView: View {
             guard let entry = notification.object as? EirEntry,
                   let profileID = profileStore.selectedProfileID else { return }
             chatVM.newConversation(chatThreadStore: chatThreadStore, profileID: profileID)
-            selectedTab = .chat
 
             var prompt = "Explain this journal entry in plain language. Help me understand what happened during this visit, what the medical terms mean, and if there's anything important I should be aware of:\n\n"
             prompt += "Entry ID: \(entry.id)\n"
@@ -102,19 +99,23 @@ struct ContentView: View {
                 prompt += "Notes:\n\(notes.joined(separator: "\n"))\n"
             }
 
+            // Send message BEFORE switching tabs so chatThreadStore.messages
+            // is non-empty when ChatView appears (prevents onboarding override).
+            // Pass nil for document — the entry details are already in the prompt,
+            // so we skip embedding all records in the system prompt (faster for local models).
             chatVM.inputText = prompt
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                chatVM.sendMessage(
-                    document: documentVM.document,
-                    settingsVM: settingsVM,
-                    chatThreadStore: chatThreadStore,
-                    profileID: profileID,
-                    agentMemoryStore: agentMemoryStore,
-                    clinicStore: clinicStore,
-                    profileStore: profileStore,
-                    embeddingStore: embeddingStore
-                )
-            }
+            chatVM.sendMessage(
+                document: nil,
+                settingsVM: settingsVM,
+                chatThreadStore: chatThreadStore,
+                profileID: profileID,
+                agentMemoryStore: agentMemoryStore,
+                clinicStore: clinicStore,
+                profileStore: profileStore,
+                embeddingStore: embeddingStore,
+                localModelManager: localModelManager
+            )
+            selectedTab = .chat
         }
         .sheet(isPresented: $showingAddPerson) {
             AddPersonSheet(initialURL: pendingFileURL)

@@ -90,6 +90,15 @@ struct AddPersonSheet: View {
                 handleDrop(providers)
             }
 
+            Button {
+                loadSampleData()
+            } label: {
+                Label("Try with Sample Data", systemImage: "doc.text")
+                    .font(.callout)
+            }
+            .buttonStyle(.borderless)
+            .foregroundColor(AppColors.primary)
+
             if let error = errorMessage {
                 Text(error)
                     .foregroundColor(AppColors.red)
@@ -153,6 +162,26 @@ struct AddPersonSheet: View {
     }
 
     // MARK: - Actions
+
+    private func loadSampleData() {
+        guard let bundleURL = Bundle.main.url(forResource: "sample-data", withExtension: "yaml") else {
+            errorMessage = "Sample data not found in app bundle"
+            return
+        }
+        let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("EirViewer/profiles")
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let destURL = dir.appendingPathComponent("sample-data.yaml")
+        do {
+            if FileManager.default.fileExists(atPath: destURL.path) {
+                try FileManager.default.removeItem(at: destURL)
+            }
+            try FileManager.default.copyItem(at: bundleURL, to: destURL)
+            parseFile(url: destURL)
+        } catch {
+            errorMessage = "Failed to load sample data: \(error.localizedDescription)"
+        }
+    }
 
     private func pickFile() {
         let panel = NSOpenPanel()
