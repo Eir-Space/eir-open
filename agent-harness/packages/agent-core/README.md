@@ -13,11 +13,7 @@ npm install @eir-open/agent-core
 ## Usage
 
 ```typescript
-import {
-  executeToolLoop,
-  OpenAICompatibleProvider,
-  KeywordModeRouter,
-} from '@eir-open/agent-core';
+import { executeToolLoop, OpenAICompatibleProvider, KeywordModeRouter } from '@eir-open/agent-core';
 ```
 
 See the [full documentation](https://github.com/Eir-Space/eir-open/tree/main/agent-harness) for API details and examples.

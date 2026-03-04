@@ -4,8 +4,18 @@ import { KeywordModeRouter, type KeywordModeRouterConfig } from './modeRouter.js
 
 const defaultConfig: KeywordModeRouterConfig = {
   modes: {
-    triage: { allowedTools: ['symptom_check'], activeSkills: ['triage-skill'], maxToolIterations: 3, retrievalBudget: 5 },
-    consult: { allowedTools: ['lookup', 'summarize'], activeSkills: ['consult-skill'], maxToolIterations: 5, retrievalBudget: 10 },
+    triage: {
+      allowedTools: ['symptom_check'],
+      activeSkills: ['triage-skill'],
+      maxToolIterations: 3,
+      retrievalBudget: 5,
+    },
+    consult: {
+      allowedTools: ['lookup', 'summarize'],
+      activeSkills: ['consult-skill'],
+      maxToolIterations: 5,
+      retrievalBudget: 10,
+    },
     general: { allowedTools: [], activeSkills: [], maxToolIterations: 2, retrievalBudget: 3 },
   },
   rules: [
@@ -81,9 +91,7 @@ describe('KeywordModeRouter', () => {
     it('skips rule when excludePatterns match the message', () => {
       const config: KeywordModeRouterConfig = {
         ...defaultConfig,
-        rules: [
-          { keywords: ['symptom'], mode: 'triage', excludePatterns: [/just kidding/i] },
-        ],
+        rules: [{ keywords: ['symptom'], mode: 'triage', excludePatterns: [/just kidding/i] }],
       };
       const router = new KeywordModeRouter(config);
       const result = router.resolve({ message: 'just kidding about that symptom' });
@@ -95,9 +103,7 @@ describe('KeywordModeRouter', () => {
     it('skips rule when message is informational and excludeInformational is true', () => {
       const config: KeywordModeRouterConfig = {
         ...defaultConfig,
-        rules: [
-          { keywords: ['symptom'], mode: 'triage', excludeInformational: true },
-        ],
+        rules: [{ keywords: ['symptom'], mode: 'triage', excludeInformational: true }],
       };
       const router = new KeywordModeRouter(config);
       const result = router.resolve({ message: 'what is a symptom?' });
@@ -107,9 +113,7 @@ describe('KeywordModeRouter', () => {
     it('matches rule when message is not informational', () => {
       const config: KeywordModeRouterConfig = {
         ...defaultConfig,
-        rules: [
-          { keywords: ['symptom'], mode: 'triage', excludeInformational: true },
-        ],
+        rules: [{ keywords: ['symptom'], mode: 'triage', excludeInformational: true }],
       };
       const router = new KeywordModeRouter(config);
       const result = router.resolve({ message: 'I have a symptom' });
@@ -130,7 +134,9 @@ describe('KeywordModeRouter', () => {
 
     it('skips rule when mode is not defined in modes config', () => {
       const config: KeywordModeRouterConfig = {
-        modes: { general: { allowedTools: [], activeSkills: [], maxToolIterations: 2, retrievalBudget: 3 } },
+        modes: {
+          general: { allowedTools: [], activeSkills: [], maxToolIterations: 2, retrievalBudget: 3 },
+        },
         rules: [{ keywords: ['test'], mode: 'nonexistent' }],
         defaultMode: 'general',
       };

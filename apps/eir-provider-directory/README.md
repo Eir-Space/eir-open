@@ -3,6 +3,7 @@
 Swedish healthcare provider discovery app for EIR Open.
 
 This app combines:
+
 - fast map + list discovery
 - verified service capabilities from 1177 provider pages (for example self-referral)
 - Cloudflare-native production infrastructure (Workers + D1 + R2)
@@ -12,6 +13,7 @@ This app combines:
 `apps/eir-provider-directory`
 
 Canonical source path:
+
 - [Eir-Space/eir-open/apps/eir-provider-directory](https://github.com/Eir-Space/eir-open/tree/main/apps/eir-provider-directory)
 
 ## What the app provides
@@ -27,6 +29,7 @@ Canonical source path:
 ## Runtime architecture
 
 ### Frontend
+
 - `pages/index.jsx` is the main UX shell
 - `components/ProviderMap.jsx` handles map rendering and interaction
 - `components/ProviderList.jsx` handles list rendering and provider selection
@@ -36,6 +39,7 @@ Canonical source path:
 - `/api/providers` and `/api/search` prefer D1 when bound
 - If D1 is unavailable, dataset loading falls back to JSON snapshots
 - Dataset loader order in runtime:
+
 1. local filesystem (`public/data/*.json`)
 2. R2 (`providers/*.json`)
 3. Workers assets (`/data/*.json`)
@@ -43,6 +47,7 @@ Canonical source path:
 ### Cloudflare resources
 
 Defined in [`wrangler.jsonc`](./wrangler.jsonc):
+
 - D1 database: `eir-provider-db`
 - R2 bucket: `eir-provider-data`
 - Worker service: `eir-provider-directory`
@@ -60,10 +65,12 @@ App runs at `http://localhost:3000`.
 ## Data model and enrichment
 
 Primary local snapshots:
+
 - `public/data/providers-sweden.json`
 - `public/data/providers-sweden-verified.json`
 
 1177 enrichment scripts:
+
 - `npm run verify:self-referral`
   - verifies self-referral support from 1177 pages
   - writes `providers-sweden-verified.json`
@@ -72,6 +79,7 @@ Primary local snapshots:
   - updates provider actions/e-services metadata
 
 Notes:
+
 - scripts include retry/backoff and concurrency controls
 - heavy scraping can trigger upstream rate limiting; use lower concurrency and delays when needed
 
@@ -102,6 +110,7 @@ npm run deploy:cloudflare
 ## URL shortcuts
 
 The app supports URL bootstrapping for verified self-referral specialists:
+
 - `?self_referral_verified=true`
 - `?self_referral_specialists=true`
 - `?shortcut=self-referral-specialists`

@@ -4,9 +4,9 @@ export async function postJson(url, { headers = {}, body, timeoutMs = 60000 }) {
 
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         ...headers,
       },
       body: JSON.stringify(body),
@@ -34,4 +34,3 @@ export async function postJson(url, { headers = {}, body, timeoutMs = 60000 }) {
     clearTimeout(timeout);
   }
 }
-

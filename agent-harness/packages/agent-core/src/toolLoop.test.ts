@@ -2,7 +2,7 @@ import { describe, it } from 'node:test';
 import * as assert from 'node:assert/strict';
 import { executeToolLoop, type ToolLoopHooks } from './toolLoop.js';
 import type { LlmProvider, LlmCompletionRequest, LlmCompletionResponse } from './provider.js';
-import type { ToolDefinition, ToolHandler, ToolHandlerResult } from './types.js';
+import type { ToolDefinition, ToolHandler } from './types.js';
 
 // --- Test Helpers ---
 
@@ -26,26 +26,34 @@ function textResponse(content: string): LlmCompletionResponse {
   return { choices: [{ message: { role: 'assistant', content }, finish_reason: 'stop' }] };
 }
 
-function toolCallResponse(calls: Array<{ id: string; name: string; args: Record<string, unknown> }>): LlmCompletionResponse {
+function toolCallResponse(
+  calls: Array<{ id: string; name: string; args: Record<string, unknown> }>,
+): LlmCompletionResponse {
   return {
-    choices: [{
-      message: {
-        role: 'assistant',
-        content: null,
-        tool_calls: calls.map(c => ({
-          id: c.id,
-          type: 'function' as const,
-          function: { name: c.name, arguments: JSON.stringify(c.args) },
-        })),
+    choices: [
+      {
+        message: {
+          role: 'assistant',
+          content: null,
+          tool_calls: calls.map((c) => ({
+            id: c.id,
+            type: 'function' as const,
+            function: { name: c.name, arguments: JSON.stringify(c.args) },
+          })),
+        },
+        finish_reason: 'tool_calls',
       },
-      finish_reason: 'tool_calls',
-    }],
+    ],
   };
 }
 
 const echoTool: ToolDefinition = {
   type: 'function',
-  function: { name: 'echo', description: 'Echoes input', parameters: { type: 'object', properties: { text: { type: 'string' } } } },
+  function: {
+    name: 'echo',
+    description: 'Echoes input',
+    parameters: { type: 'object', properties: { text: { type: 'string' } } },
+  },
 };
 
 const echoHandler: ToolHandler = async (args) => ({
@@ -59,7 +67,10 @@ describe('executeToolLoop', () => {
     it('returns text response when no tools provided', async () => {
       const { provider } = createMockProvider([textResponse('Hello!')]);
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [], toolHandlers: {},
+        provider,
+        model: 'test',
+        tools: [],
+        toolHandlers: {},
         messages: [{ role: 'user', content: 'Hi' }],
       });
       assert.equal(result.responseMessage.content, 'Hello!');
@@ -70,7 +81,10 @@ describe('executeToolLoop', () => {
     it('returns text response when LLM does not call tools', async () => {
       const { provider } = createMockProvider([textResponse('Just text')]);
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'Hi' }],
       });
       assert.equal(result.responseMessage.content, 'Just text');
@@ -80,7 +94,7 @@ describe('executeToolLoop', () => {
 
   describe('single tool call', () => {
     it('executes a tool call and returns follow-up response', async () => {
-      const { provider, requests } = createMockProvider([
+      const { provider } = createMockProvider([
         toolCallResponse([{ id: 'call-1', name: 'echo', args: { text: 'hello' } }]),
         textResponse('Done'),
       ]);
@@ -92,7 +106,10 @@ describe('executeToolLoop', () => {
       };
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'call echo' }],
       });
 
@@ -114,7 +131,10 @@ describe('executeToolLoop', () => {
       });
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -137,7 +157,10 @@ describe('executeToolLoop', () => {
       });
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -154,7 +177,10 @@ describe('executeToolLoop', () => {
       ]);
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'multi-step' }],
       });
 
@@ -170,7 +196,10 @@ describe('executeToolLoop', () => {
       ]);
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
         maxIterations: 2,
       });
@@ -190,7 +219,10 @@ describe('executeToolLoop', () => {
       ]);
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
         allowedToolNames: new Set(['other_tool']),
       });
@@ -200,23 +232,30 @@ describe('executeToolLoop', () => {
 
     it('returns error for invalid JSON in tool arguments', async () => {
       const badResponse: LlmCompletionResponse = {
-        choices: [{
-          message: {
-            role: 'assistant',
-            content: null,
-            tool_calls: [{
-              id: 'c1',
-              type: 'function',
-              function: { name: 'echo', arguments: 'not valid json' },
-            }],
+        choices: [
+          {
+            message: {
+              role: 'assistant',
+              content: null,
+              tool_calls: [
+                {
+                  id: 'c1',
+                  type: 'function',
+                  function: { name: 'echo', arguments: 'not valid json' },
+                },
+              ],
+            },
+            finish_reason: 'tool_calls',
           },
-          finish_reason: 'tool_calls',
-        }],
+        ],
       };
 
       const { provider } = createMockProvider([badResponse, textResponse('Done')]);
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -230,7 +269,10 @@ describe('executeToolLoop', () => {
       ]);
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -243,10 +285,15 @@ describe('executeToolLoop', () => {
         textResponse('Done'),
       ]);
 
-      const throwingHandler: ToolHandler = async () => { throw new Error('handler boom'); };
+      const throwingHandler: ToolHandler = async () => {
+        throw new Error('handler boom');
+      };
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: throwingHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: throwingHandler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -272,7 +319,10 @@ describe('executeToolLoop', () => {
       });
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'go' }],
       });
 
@@ -300,7 +350,10 @@ describe('executeToolLoop', () => {
       };
 
       await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -325,7 +378,10 @@ describe('executeToolLoop', () => {
       };
 
       await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: handler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: handler },
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -349,7 +405,10 @@ describe('executeToolLoop', () => {
       };
 
       await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -369,7 +428,10 @@ describe('executeToolLoop', () => {
       };
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -388,7 +450,10 @@ describe('executeToolLoop', () => {
       };
 
       await executeToolLoop({
-        provider, model: 'test', tools: [echoTool], toolHandlers: { echo: echoHandler },
+        provider,
+        model: 'test',
+        tools: [echoTool],
+        toolHandlers: { echo: echoHandler },
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -399,7 +464,9 @@ describe('executeToolLoop', () => {
 
     it('onProviderError recovers from provider failures', async () => {
       const provider: LlmProvider = {
-        async createCompletion() { throw new Error('API down'); },
+        async createCompletion() {
+          throw new Error('API down');
+        },
       };
 
       const hooks: ToolLoopHooks = {
@@ -407,7 +474,10 @@ describe('executeToolLoop', () => {
       };
 
       const result = await executeToolLoop({
-        provider, model: 'test', tools: [], toolHandlers: {},
+        provider,
+        model: 'test',
+        tools: [],
+        toolHandlers: {},
         messages: [{ role: 'user', content: 'go' }],
         hooks,
       });
@@ -417,7 +487,9 @@ describe('executeToolLoop', () => {
 
     it('onProviderError returning null causes error to propagate', async () => {
       const provider: LlmProvider = {
-        async createCompletion() { throw new Error('API down'); },
+        async createCompletion() {
+          throw new Error('API down');
+        },
       };
 
       const hooks: ToolLoopHooks = {
@@ -425,12 +497,16 @@ describe('executeToolLoop', () => {
       };
 
       await assert.rejects(
-        () => executeToolLoop({
-          provider, model: 'test', tools: [], toolHandlers: {},
-          messages: [{ role: 'user', content: 'go' }],
-          hooks,
-        }),
-        /API down/
+        () =>
+          executeToolLoop({
+            provider,
+            model: 'test',
+            tools: [],
+            toolHandlers: {},
+            messages: [{ role: 'user', content: 'go' }],
+            hooks,
+          }),
+        /API down/,
       );
     });
   });
@@ -442,12 +518,16 @@ describe('executeToolLoop', () => {
       controller.abort(new Error('cancelled'));
 
       await assert.rejects(
-        () => executeToolLoop({
-          provider, model: 'test', tools: [], toolHandlers: {},
-          messages: [{ role: 'user', content: 'go' }],
-          signal: controller.signal,
-        }),
-        /cancelled/
+        () =>
+          executeToolLoop({
+            provider,
+            model: 'test',
+            tools: [],
+            toolHandlers: {},
+            messages: [{ role: 'user', content: 'go' }],
+            signal: controller.signal,
+          }),
+        /cancelled/,
       );
     });
 
@@ -459,7 +539,10 @@ describe('executeToolLoop', () => {
 
       try {
         await executeToolLoop({
-          provider, model: 'test', tools: [], toolHandlers: {},
+          provider,
+          model: 'test',
+          tools: [],
+          toolHandlers: {},
           messages: [{ role: 'user', content: 'go' }],
           signal: controller.signal,
         });
@@ -476,7 +559,10 @@ describe('executeToolLoop', () => {
 
       try {
         await executeToolLoop({
-          provider, model: 'test', tools: [], toolHandlers: {},
+          provider,
+          model: 'test',
+          tools: [],
+          toolHandlers: {},
           messages: [{ role: 'user', content: 'go' }],
           signal: controller.signal,
         });
@@ -492,7 +578,10 @@ describe('executeToolLoop', () => {
       const { provider, requests } = createMockProvider([textResponse('Hi')]);
 
       await executeToolLoop({
-        provider, model: 'test', tools: [], toolHandlers: {},
+        provider,
+        model: 'test',
+        tools: [],
+        toolHandlers: {},
         messages: [{ role: 'user', content: 'go' }],
         signal: controller.signal,
       });
@@ -510,11 +599,15 @@ describe('executeToolLoop', () => {
       };
 
       await assert.rejects(
-        () => executeToolLoop({
-          provider, model: 'test', tools: [], toolHandlers: {},
-          messages: [{ role: 'user', content: 'go' }],
-        }),
-        /No response from LLM provider/
+        () =>
+          executeToolLoop({
+            provider,
+            model: 'test',
+            tools: [],
+            toolHandlers: {},
+            messages: [{ role: 'user', content: 'go' }],
+          }),
+        /No response from LLM provider/,
       );
     });
   });

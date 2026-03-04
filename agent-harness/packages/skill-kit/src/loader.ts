@@ -88,8 +88,9 @@ export function loadSkill(skillDir: string): LoadedSkill | null {
   if (scripts.length === 0) {
     const scriptsDir = path.join(skillDir, 'scripts');
     if (fs.existsSync(scriptsDir)) {
-      const scriptFiles = fs.readdirSync(scriptsDir)
-        .filter(f => f.endsWith('.js') || f.endsWith('.mjs'));
+      const scriptFiles = fs
+        .readdirSync(scriptsDir)
+        .filter((f) => f.endsWith('.js') || f.endsWith('.mjs'));
       for (const file of scriptFiles) {
         scripts.push({
           name: path.basename(file, path.extname(file)),
@@ -128,10 +129,13 @@ export function loadSkillDirectory(parentDir: string): Map<string, LoadedSkill> 
  * Filter skills by mode. Returns skills whose modes array includes the given mode,
  * or skills with an empty modes array (available in all modes).
  */
-export function getSkillsForMode(skills: Map<string, LoadedSkill> | LoadedSkill[], mode: string): LoadedSkill[] {
+export function getSkillsForMode(
+  skills: Map<string, LoadedSkill> | LoadedSkill[],
+  mode: string,
+): LoadedSkill[] {
   const skillArray = skills instanceof Map ? Array.from(skills.values()) : skills;
-  return skillArray.filter(skill =>
-    skill.meta.modes.length === 0 || skill.meta.modes.includes(mode)
+  return skillArray.filter(
+    (skill) => skill.meta.modes.length === 0 || skill.meta.modes.includes(mode),
   );
 }
 
@@ -143,9 +147,8 @@ export function buildSkillPrompt(skills: LoadedSkill[], language: string = 'en')
   const parts: string[] = [];
 
   for (const skill of skills) {
-    const prompt = skill.prompts[language]
-      ?? skill.prompts['default']
-      ?? Object.values(skill.prompts)[0];
+    const prompt =
+      skill.prompts[language] ?? skill.prompts['default'] ?? Object.values(skill.prompts)[0];
 
     if (prompt?.trim()) {
       parts.push(prompt.trim());

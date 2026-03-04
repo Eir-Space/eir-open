@@ -1,13 +1,29 @@
 import { z } from 'zod';
 
 // --- Enums ---
-export const memoryCategorySchema = z.enum(['diagnosis', 'concern', 'interest', 'observation', 'summary']);
+export const memoryCategorySchema = z.enum([
+  'diagnosis',
+  'concern',
+  'interest',
+  'observation',
+  'summary',
+]);
 export type MemoryCategory = z.infer<typeof memoryCategorySchema>;
 
-export const memorySourceTypeSchema = z.enum(['chat', 'journal', 'uploaded_record', 'manual_user_confirmed']);
+export const memorySourceTypeSchema = z.enum([
+  'chat',
+  'journal',
+  'uploaded_record',
+  'manual_user_confirmed',
+]);
 export type MemorySourceType = z.infer<typeof memorySourceTypeSchema>;
 
-export const memoryStatusSchema = z.enum(['inferred', 'user_confirmed', 'record_backed', 'dismissed']);
+export const memoryStatusSchema = z.enum([
+  'inferred',
+  'user_confirmed',
+  'record_backed',
+  'dismissed',
+]);
 export type MemoryStatus = z.infer<typeof memoryStatusSchema>;
 
 export const memoryCertaintySchema = z.enum(['low', 'medium', 'high']);

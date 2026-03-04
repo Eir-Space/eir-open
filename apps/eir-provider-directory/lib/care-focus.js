@@ -3,138 +3,140 @@ const CARE_FOCUS_DEFINITIONS = [
     id: 'primary-care',
     label: 'Primary care',
     typeMatches: ['primary_care'],
-    keywords: ['vårdcentral', 'halsocentral', 'hälsocentral', 'allmanmedicin', 'allmänmedicin']
+    keywords: ['vårdcentral', 'halsocentral', 'hälsocentral', 'allmanmedicin', 'allmänmedicin'],
   },
   {
     id: 'mental-health',
     label: 'Mental health',
     typeMatches: ['mental_health'],
-    keywords: ['psykiatri', 'psykologi', 'bup', 'depression', 'angest', 'ångest', 'ocd']
+    keywords: ['psykiatri', 'psykologi', 'bup', 'depression', 'angest', 'ångest', 'ocd'],
   },
   {
     id: 'women-health',
     label: 'Women health',
     typeMatches: ['maternity'],
-    keywords: ['gynekologi', 'barnmorska', 'gravid', 'forlossning', 'förlossning']
+    keywords: ['gynekologi', 'barnmorska', 'gravid', 'forlossning', 'förlossning'],
   },
   {
     id: 'children',
     label: 'Children',
     typeMatches: ['pediatric'],
-    keywords: ['barn', 'bvc', 'ungdom']
+    keywords: ['barn', 'bvc', 'ungdom'],
   },
   {
     id: 'dental',
     label: 'Dental',
     typeMatches: ['dental'],
-    keywords: ['tand', 'dent']
+    keywords: ['tand', 'dent'],
   },
   {
     id: 'heart-circulation',
     label: 'Heart & circulation',
-    keywords: ['kardiologi', 'hjart', 'hjärt', 'cardio']
+    keywords: ['kardiologi', 'hjart', 'hjärt', 'cardio'],
   },
   {
     id: 'skin',
     label: 'Skin',
-    keywords: ['dermatologi', 'hud']
+    keywords: ['dermatologi', 'hud'],
   },
   {
     id: 'bones-joints',
     label: 'Bones & joints',
-    keywords: ['ortopedi', 'reumatologi', 'fysioterapi', 'rehab', 'smarta', 'smärta']
+    keywords: ['ortopedi', 'reumatologi', 'fysioterapi', 'rehab', 'smarta', 'smärta'],
   },
   {
     id: 'brain-neuro',
     label: 'Brain & neuro',
-    keywords: ['neurologi', 'neuro']
+    keywords: ['neurologi', 'neuro'],
   },
   {
     id: 'eyes-ent',
     label: 'Eyes, ears, nose, throat',
-    keywords: ['ogon', 'ögon', 'ent', 'oron', 'öron', 'nasa', 'näsa', 'hals']
+    keywords: ['ogon', 'ögon', 'ent', 'oron', 'öron', 'nasa', 'näsa', 'hals'],
   },
   {
     id: 'digestive',
     label: 'Digestive',
-    keywords: ['gastro', 'mage', 'tarm']
+    keywords: ['gastro', 'mage', 'tarm'],
   },
   {
     id: 'urology-kidney',
     label: 'Urology & kidney',
-    keywords: ['urologi', 'njur', 'urin']
+    keywords: ['urologi', 'njur', 'urin'],
   },
   {
     id: 'cancer',
     label: 'Cancer',
-    keywords: ['onkologi', 'cancer', 'tumor']
+    keywords: ['onkologi', 'cancer', 'tumor'],
   },
   {
     id: 'imaging-lab',
     label: 'Imaging & lab',
-    keywords: ['radiologi', 'rontgen', 'röntgen', 'patologi', 'lab']
+    keywords: ['radiologi', 'rontgen', 'röntgen', 'patologi', 'lab'],
   },
   {
     id: 'acute',
     label: 'Acute & emergency',
     typeMatches: ['emergency', 'hospital'],
-    keywords: ['akut', 'ambulans', 'sjukhus', 'hospital']
-  }
-]
+    keywords: ['akut', 'ambulans', 'sjukhus', 'hospital'],
+  },
+];
 
 export const CARE_FOCUS_LABELS = CARE_FOCUS_DEFINITIONS.reduce((acc, definition) => {
-  acc[definition.id] = definition.label
-  return acc
-}, {})
+  acc[definition.id] = definition.label;
+  return acc;
+}, {});
 
 export function deriveProviderCareFocuses(provider) {
-  const type = (provider?.type || '').toLowerCase()
-  const name = (provider?.name || '').toLowerCase()
-  const specialties = Array.isArray(provider?.specialty) ? provider.specialty.join(' ').toLowerCase() : ''
-  const text = `${name} ${specialties}`
-  const focuses = new Set()
+  const type = (provider?.type || '').toLowerCase();
+  const name = (provider?.name || '').toLowerCase();
+  const specialties = Array.isArray(provider?.specialty)
+    ? provider.specialty.join(' ').toLowerCase()
+    : '';
+  const text = `${name} ${specialties}`;
+  const focuses = new Set();
 
   for (const definition of CARE_FOCUS_DEFINITIONS) {
     if (definition.typeMatches?.includes(type)) {
-      focuses.add(definition.id)
-      continue
+      focuses.add(definition.id);
+      continue;
     }
 
-    if (definition.keywords?.some(keyword => text.includes(keyword))) {
-      focuses.add(definition.id)
+    if (definition.keywords?.some((keyword) => text.includes(keyword))) {
+      focuses.add(definition.id);
     }
   }
 
   if (focuses.size === 0) {
-    focuses.add('general')
+    focuses.add('general');
   }
 
-  return Array.from(focuses)
+  return Array.from(focuses);
 }
 
 export function providerHasCareFocus(provider, selectedFocuses = []) {
-  if (!selectedFocuses || selectedFocuses.length === 0) return true
-  const providerFocuses = deriveProviderCareFocuses(provider)
-  return selectedFocuses.some(focus => providerFocuses.includes(focus))
+  if (!selectedFocuses || selectedFocuses.length === 0) return true;
+  const providerFocuses = deriveProviderCareFocuses(provider);
+  return selectedFocuses.some((focus) => providerFocuses.includes(focus));
 }
 
 export function findCareFocusesInText(query) {
-  const normalized = (query || '').toLowerCase()
-  if (!normalized) return []
+  const normalized = (query || '').toLowerCase();
+  if (!normalized) return [];
 
-  const matches = new Set()
+  const matches = new Set();
   for (const definition of CARE_FOCUS_DEFINITIONS) {
     if (normalized.includes(definition.id.replace('-', ' '))) {
-      matches.add(definition.id)
-      continue
+      matches.add(definition.id);
+      continue;
     }
     if (normalized.includes((definition.label || '').toLowerCase())) {
-      matches.add(definition.id)
-      continue
+      matches.add(definition.id);
+      continue;
     }
-    if (definition.keywords?.some(keyword => normalized.includes(keyword))) {
-      matches.add(definition.id)
+    if (definition.keywords?.some((keyword) => normalized.includes(keyword))) {
+      matches.add(definition.id);
     }
   }
-  return Array.from(matches)
+  return Array.from(matches);
 }

@@ -45,11 +45,11 @@ us-medications --list
 ### JavaScript API
 
 ```javascript
-const { 
-  lookupMedication, 
+const {
+  lookupMedication,
   searchMedications,
   lookupInteractions,
-  getDatabaseStats 
+  getDatabaseStats,
 } = require('us-medications');
 
 // Look up a specific medication
@@ -58,7 +58,7 @@ console.log(med.uses, med.warnings);
 
 // Search for medications
 const results = await searchMedications('diabetes');
-results.forEach(m => console.log(m.name));
+results.forEach((m) => console.log(m.name));
 
 // Get drug interactions
 const interactions = await lookupInteractions('lisinopril');
@@ -71,6 +71,7 @@ All medication data comes from the **US Food and Drug Administration (FDA)** dru
 ## Output Fields
 
 Each medication includes:
+
 - `name` - Brand/generic name
 - `altNames` - Alternative names
 - `substances` - Active ingredients

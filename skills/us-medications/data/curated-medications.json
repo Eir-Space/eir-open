@@ -2,15 +2,9 @@
   {
     "id": "fda_14499781-b90e-47d5-a7de-006965439b94_10",
     "name": ".Insulin Aspart Protamine and Insulin Aspart",
-    "altNames": [
-      "INSULIN ASPART"
-    ],
-    "substances": [
-      "INSULIN ASPART"
-    ],
-    "class": [
-      "Insulin Analog [EPC]"
-    ],
+    "altNames": ["INSULIN ASPART"],
+    "substances": ["INSULIN ASPART"],
+    "class": ["Insulin Analog [EPC]"],
     "form": " (SUBCUTANEOUS)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Insulin Aspart Protamine and Insulin Aspart Mix 70/30 is a mixture of insulin aspart protamine and insulin aspart indicated to improve glycemic control in adult patients with diabetes mellitus.",
@@ -19,16 +13,9 @@
   {
     "id": "fda_36adb053-3189-4c91-87dd-e122a2c8e812_3",
     "name": "24 hr omeprazole",
-    "altNames": [
-      "OMEPRAZOLE"
-    ],
-    "substances": [
-      "OMEPRAZOLE",
-      "Active ingredient (in each tablet) Omeprazole 20 mg"
-    ],
-    "class": [
-      "Proton Pump Inhibitor [EPC]"
-    ],
+    "altNames": ["OMEPRAZOLE"],
+    "substances": ["OMEPRAZOLE", "Active ingredient (in each tablet) Omeprazole 20 mg"],
+    "class": ["Proton Pump Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Use • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
@@ -37,13 +24,8 @@
   {
     "id": "fda_57f89574-98e5-40e5-8dd4-e868a668adaa_3",
     "name": "365 whole foods market acetaminophen",
-    "altNames": [
-      "ACETAMINOPHEN"
-    ],
-    "substances": [
-      "ACETAMINOPHEN",
-      "Active ingredient (in each caplet) Acetaminophen 500 mg"
-    ],
+    "altNames": ["ACETAMINOPHEN"],
+    "substances": ["ACETAMINOPHEN", "Active ingredient (in each caplet) Acetaminophen 500 mg"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses • temporarily relieves minor aches and pains due to: • the common cold • headache • backache • minor pain of arthritis • toothache • muscular aches • premenstrual and menstrual cramps • temporarily reduces fever",
@@ -52,16 +34,12 @@
   {
     "id": "fda_e914472b-c785-4c73-b37c-4d459166cf41_3",
     "name": "365 whole foods market ibuprofen",
-    "altNames": [
-      "IBUPROFEN"
-    ],
+    "altNames": ["IBUPROFEN"],
     "substances": [
       "IBUPROFEN",
       "Active ingredient (in each tablet) Ibuprofen 200 mg (NSAID)* *nonsteroidal anti-inflammatory drug"
     ],
-    "class": [
-      "Nonsteroidal Anti-inflammatory Drug [EPC]"
-    ],
+    "class": ["Nonsteroidal Anti-inflammatory Drug [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses • temporarily relieves minor aches and pains due to: • headache • muscular aches • minor pain of arthritis • toothache • backache • the common cold • menstrual cramps • temporarily reduces fever",
@@ -70,13 +48,8 @@
   {
     "id": "fda_bba4e7c8-db8e-4522-915c-48ee809e3bce_1",
     "name": "365 Whole Foods Market Loratadine",
-    "altNames": [
-      "LORATADINE"
-    ],
-    "substances": [
-      "LORATADINE",
-      "Active ingredient (in each tablet) Loratadine USP 10 mg"
-    ],
+    "altNames": ["LORATADINE"],
+    "substances": ["LORATADINE", "Active ingredient (in each tablet) Loratadine USP 10 mg"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses temporarily relieves these symptoms due to hay fever or other upper respiratory allergies: runny nose itchy, watery eyes sneezing itching of the nose or throat",
@@ -91,10 +64,7 @@
       "CAFFEINE",
       "Active ingredients (in each geltab) Acetaminophen 250 mg Aspirin 250 mg Caffeine 65 mg"
     ],
-    "class": [
-      "Nonsteroidal Anti-inflammatory Drug [EPC]",
-      "Platelet Aggregation Inhibitor [EPC]"
-    ],
+    "class": ["Nonsteroidal Anti-inflammatory Drug [EPC]", "Platelet Aggregation Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses Temporarily relieves minor aches and pains due to: • headache • a cold • arthritis • muscular aches • toothache • premenstrual and menstrual cramps",
@@ -103,9 +73,7 @@
   {
     "id": "fda_ff9b287b-e4a4-4c12-ad2f-6b7d55b20dc6_3",
     "name": "Albuterol",
-    "substances": [
-      "ALBUTEROL SULFATE"
-    ],
+    "substances": ["ALBUTEROL SULFATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Albuterol tablets are indicated for the relief of bronchospasm in adults and children 6 years of age and older with reversible obstructive airway disease.",
@@ -115,10 +83,7 @@
   {
     "id": "fda_14d98490-4f8f-4d2f-a4e9-7a3d7a0199ba_18",
     "name": "alogliptin and metformin hydrochloride",
-    "substances": [
-      "ALOGLIPTIN BENZOATE",
-      "METFORMIN HYDROCHLORIDE"
-    ],
+    "substances": ["ALOGLIPTIN BENZOATE", "METFORMIN HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Alogliptin and metformin HCl tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
@@ -128,13 +93,8 @@
   {
     "id": "fda_642b1e90-701e-42f2-bac6-a4918738e2c9_11",
     "name": "Alogliptin and Pioglitazone",
-    "altNames": [
-      "ALOGLIPTIN BENZOATE AND PIOGLITAZONE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "ALOGLIPTIN BENZOATE",
-      "PIOGLITAZONE HYDROCHLORIDE"
-    ],
+    "altNames": ["ALOGLIPTIN BENZOATE AND PIOGLITAZONE HYDROCHLORIDE"],
+    "substances": ["ALOGLIPTIN BENZOATE", "PIOGLITAZONE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Alogliptin and pioglitazone tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus .",
@@ -144,12 +104,8 @@
   {
     "id": "fda_717ce509-f92e-4ec1-a3c6-aeae54d56f4d_6",
     "name": "Alprazolam",
-    "substances": [
-      "ALPRAZOLAM"
-    ],
-    "class": [
-      "Benzodiazepine [EPC]"
-    ],
+    "substances": ["ALPRAZOLAM"],
+    "class": ["Benzodiazepine [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Anxiety Disorders Alprazolam tablets are indicated for the management of anxiety disorder (a condition corresponding most closely to the APA Diagnostic and Statistical Manual [DSM-III-R] diagnosis of generalized anxiety disorder) or the short-term relief of symptoms of anxiety.",
@@ -159,13 +115,8 @@
   {
     "id": "fda_8b2c581a-f955-4a8e-bf85-e768e903fd10_12",
     "name": "Amiloride Hydrochloride and Hydrochlorothiazide",
-    "substances": [
-      "AMILORIDE HYDROCHLORIDE",
-      "HYDROCHLOROTHIAZIDE"
-    ],
-    "class": [
-      "Thiazide Diuretic [EPC]"
-    ],
+    "substances": ["AMILORIDE HYDROCHLORIDE", "HYDROCHLOROTHIAZIDE"],
+    "class": ["Thiazide Diuretic [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Amiloride hydrochloride and hydrochlorothiazide tablets are indicated in those patients with hypertension or with congestive heart failure who develop hypokalemia when thiazides or other kaliuretic diuretics are used alone, or in whom maintenance of normal serum potassium level...",
@@ -175,10 +126,7 @@
   {
     "id": "fda_5d7ca186-f22b-465f-913b-c020240b2c66_103",
     "name": "Amlodipine and Atorvastatin",
-    "substances": [
-      "AMLODIPINE BESYLATE",
-      "ATORVASTATIN CALCIUM TRIHYDRATE"
-    ],
+    "substances": ["AMLODIPINE BESYLATE", "ATORVASTATIN CALCIUM TRIHYDRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Amlodipine and atorvastatin tablets are indicated in patients for whom treatment with both amlodipine and atorvastatin is appropriate. Amlodipine Hypertension Amlodipine is indicated for the treatment of hypertension, to lower blood pressure.",
@@ -187,10 +135,7 @@
   {
     "id": "fda_bed1710f-edd9-488d-855b-603d50ee212c_103",
     "name": "Amlodipine and Atorvastatin",
-    "substances": [
-      "AMLODIPINE BESYLATE",
-      "ATORVASTATIN CALCIUM TRIHYDRATE"
-    ],
+    "substances": ["AMLODIPINE BESYLATE", "ATORVASTATIN CALCIUM TRIHYDRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Amlodipine and atorvastatin tablets are indicated in patients for whom treatment with both amlodipine and atorvastatin is appropriate. Amlodipine Hypertension Amlodipine is indicated for the treatment of hypertension, to lower blood pressure.",
@@ -199,9 +144,7 @@
   {
     "id": "fda_6a3d1af5-6e93-4f06-8d82-1c87290c46aa_4",
     "name": "Amoxicillin",
-    "substances": [
-      "AMOXICILLIN"
-    ],
+    "substances": ["AMOXICILLIN"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Adults and Pediatric Patients Upper Respiratory Tract Infections of the Ear, Nose, and Throat: Amoxicillin for oral suspension is indicated in the treatment of infections due to susceptible (ONLY β-lactamase–negative) isolates of Streptococcus species.",
@@ -210,12 +153,8 @@
   {
     "id": "fda_aedf70e4-1949-44bc-bf1b-0f282c4f0705_1",
     "name": "apomorphine hydrocloride",
-    "altNames": [
-      "APOMORPHINE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "APOMORPHINE HYDROCHLORIDE"
-    ],
+    "altNames": ["APOMORPHINE HYDROCHLORIDE"],
+    "substances": ["APOMORPHINE HYDROCHLORIDE"],
     "form": " (SUBCUTANEOUS)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Apomorphine hydrochloride injection is indicated for the acute, intermittent treatment of hypomobility, \"off\" episodes (\"end-of-dose wearing off\" and unpredictable \"on/off\" episodes) in patients with advanced Parkinson's disease.",
@@ -224,12 +163,8 @@
   {
     "id": "fda_d8183eaf-0093-4720-b8ed-20e570697511_1",
     "name": "Aripiprazole",
-    "substances": [
-      "ARIPIPRAZOLE"
-    ],
-    "class": [
-      "Atypical Antipsychotic [EPC]"
-    ],
+    "substances": ["ARIPIPRAZOLE"],
+    "class": ["Atypical Antipsychotic [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Aripiprazole tablets are indicated for the treatment of: Schizophrenia Irritability Associated with Autistic Disorder Treatment of Tourette’s Disorder Aripiprazole is an atypical antipsychotic.",
@@ -239,12 +174,8 @@
   {
     "id": "fda_ee143f2f-be60-bc67-e053-2a95a90ae6e6_4",
     "name": "Atenolol",
-    "substances": [
-      "ATENOLOL"
-    ],
-    "class": [
-      "beta-Adrenergic Blocker [EPC]"
-    ],
+    "substances": ["ATENOLOL"],
+    "class": ["beta-Adrenergic Blocker [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Atenolol tablets USP are indicated for the treatment of hypertension, to lower blood pressure. Lowering blood pressure lowers the risk of fatal and non-fatal cardiovascular events, primarily strokes and myocardial infarctions.",
@@ -253,10 +184,7 @@
   {
     "id": "fda_7bbc6514-bea3-0be0-e673-a8f6069025ff_14",
     "name": "Azelastine hydrochloride and Fluticasone propionate",
-    "substances": [
-      "AZELASTINE HYDROCHLORIDE",
-      "FLUTICASONE PROPIONATE"
-    ],
+    "substances": ["AZELASTINE HYDROCHLORIDE", "FLUTICASONE PROPIONATE"],
     "form": " (NASAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Azelastine hydrochloride and fluticasone propionate nasal spray is indicated for the relief of symptoms of seasonal allergic rhinitis in adult and pediatric patients 6 years of age and older.",
@@ -265,9 +193,7 @@
   {
     "id": "fda_d564d91e-3039-c120-e053-2995a90ae6db_2",
     "name": "AZITHROMYCIN",
-    "substances": [
-      "AZITHROMYCIN MONOHYDRATE"
-    ],
+    "substances": ["AZITHROMYCIN MONOHYDRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Azithromycin for oral suspension USP is a macrolide antibacterial drug indicated for the treatment of patients with mild to moderate infections caused by susceptible strains of the designated microorganisms in the specific conditions listed below.",
@@ -276,16 +202,12 @@
   {
     "id": "fda_2466913b-7292-4dfd-8ac9-429256faacee_3",
     "name": "basic care esomeprazole magnesium",
-    "altNames": [
-      "ESOMEPRAZOLE"
-    ],
+    "altNames": ["ESOMEPRAZOLE"],
     "substances": [
       "ESOMEPRAZOLE",
       "Active ingredient (in each capsule) Esomeprazole 20 mg (Each delayed-release capsule corresponds to 22 mg esomeprazole magnesium dihydrate)"
     ],
-    "class": [
-      "Proton Pump Inhibitor [EPC]"
-    ],
+    "class": ["Proton Pump Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
@@ -294,16 +216,9 @@
   {
     "id": "fda_5ab07bf7-140a-4ca0-9b3a-38da7aa454db_3",
     "name": "basic care lansoprazole",
-    "altNames": [
-      "LANSOPRAZOLE"
-    ],
-    "substances": [
-      "LANSOPRAZOLE",
-      "Active ingredient (in each capsule) Lansoprazole 15 mg"
-    ],
-    "class": [
-      "Proton Pump Inhibitor [EPC]"
-    ],
+    "altNames": ["LANSOPRAZOLE"],
+    "substances": ["LANSOPRAZOLE", "Active ingredient (in each capsule) Lansoprazole 15 mg"],
+    "class": ["Proton Pump Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Use • treats frequent heartburn (occurs 2 or more days a week) • not intended for immediate relief of heartburn; this drug may take 1 to 4 days for full effect",
@@ -312,16 +227,9 @@
   {
     "id": "fda_93c857e4-72b3-433e-ae6f-281cd57e3996_10",
     "name": "berkley and jensen famotidine",
-    "altNames": [
-      "FAMOTIDINE"
-    ],
-    "substances": [
-      "FAMOTIDINE",
-      "Active ingredient (in each tablet) Famotidine 20 mg"
-    ],
-    "class": [
-      "Histamine-2 Receptor Antagonist [EPC]"
-    ],
+    "altNames": ["FAMOTIDINE"],
+    "substances": ["FAMOTIDINE", "Active ingredient (in each tablet) Famotidine 20 mg"],
+    "class": ["Histamine-2 Receptor Antagonist [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses • relieves heartburn associated with acid indigestion and sour stomach • prevents heartburn associated with acid indigestion and sour stomach brought on by eating or drinking certain food and beverages",
@@ -330,13 +238,8 @@
   {
     "id": "fda_2facb092-a71f-8bdd-e063-6394a90a61e2_2",
     "name": "Bestmade Natural Products Lithium Chloride (Lith Mur)",
-    "altNames": [
-      "LITHIUM CHLORIDE"
-    ],
-    "substances": [
-      "LITHIUM CHLORIDE",
-      "Active Ingredients"
-    ],
+    "altNames": ["LITHIUM CHLORIDE"],
+    "substances": ["LITHIUM CHLORIDE", "Active Ingredients"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "Uses: Use the leaflet enclosed for detail.",
@@ -363,14 +266,8 @@
   {
     "id": "fda_c4d66e80-f0bc-4e64-a0f0-630ef673da1b_16",
     "name": "Bismuth Subcitrate Potassium, Metronidazole and Tetracycline Hydrochloride",
-    "substances": [
-      "BISMUTH SUBCITRATE POTASSIUM",
-      "METRONIDAZOLE",
-      "TETRACYCLINE HYDROCHLORIDE"
-    ],
-    "class": [
-      "Nitroimidazole Antimicrobial [EPC]"
-    ],
+    "substances": ["BISMUTH SUBCITRATE POTASSIUM", "METRONIDAZOLE", "TETRACYCLINE HYDROCHLORIDE"],
+    "class": ["Nitroimidazole Antimicrobial [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Bismuth subcitrate potassium, metronidazole and tetracycline hydrochloride capsules are a combination of metronidazole, a nitroimidazole antimicrobial, tetracycline, a tetracycline class antimicrobial and bismuth subcitrate potassium, indicated for use, in combination with om...",
@@ -380,9 +277,7 @@
   {
     "id": "fda_47ceb7e1-b2f7-47f8-8b6a-85eea36606b8_3",
     "name": "bupropion",
-    "substances": [
-      "BUPROPION HYDROCHLORIDE"
-    ],
+    "substances": ["BUPROPION HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1. INDICATIONS AND USAGE Bupropion hydrochloride extended-release tablets, USP (XL) is an aminoketone antidepressant, indicated for the treatment of major depressive disorder (MDD) and prevention of seasonal affective disorder (SAD).",
@@ -392,9 +287,7 @@
   {
     "id": "fda_f83219c9-8081-fe55-e053-6394a90aa924_2",
     "name": "Buspirone HCL",
-    "substances": [
-      "BUSPIRONE HYDROCHLORIDE"
-    ],
+    "substances": ["BUSPIRONE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Buspirone hydrochloride tablets are indicated for the management of anxiety disorders or the short-term relief of the symptoms of anxiety. Anxiety or tension associated with the stress of everyday life usually does not require treatment with an anxiolytic.",
@@ -403,9 +296,7 @@
   {
     "id": "fda_0eaf9d27-e221-4cdd-97bc-478c775e3d67_1",
     "name": "Cabinet Allergy Relief Refill Cetirizine HCI",
-    "altNames": [
-      "CETIRIZINE HYDROCHLORIDE"
-    ],
+    "altNames": ["CETIRIZINE HYDROCHLORIDE"],
     "substances": [
       "CETIRIZINE HYDROCHLORIDE",
       "Active Ingredient (in each caplet) Cetirizine HCl 10mg Purpose Antihistamine"
@@ -418,12 +309,8 @@
   {
     "id": "fda_df6076ca-b8c2-5439-e053-2995a90a716a_2",
     "name": "Carbamazepine",
-    "substances": [
-      "CARBAMAZEPINE"
-    ],
-    "class": [
-      "Mood Stabilizer [EPC]"
-    ],
+    "substances": ["CARBAMAZEPINE"],
+    "class": ["Mood Stabilizer [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Epilepsy Carbamazepine is indicated for use as an anticonvulsant drug. Evidence supporting efficacy of carbamazepine as an anticonvulsant was derived from active drug-controlled studies that enrolled patients with the following seizure types: Partial seizures with complex sympt...",
@@ -433,13 +320,8 @@
   {
     "id": "fda_fe462198-32ae-4f6c-befc-acb97fb017c9_102",
     "name": "CARVEDILOL",
-    "substances": [
-      "CARVEDILOL"
-    ],
-    "class": [
-      "alpha-Adrenergic Blocker [EPC]",
-      "beta-Adrenergic Blocker [EPC]"
-    ],
+    "substances": ["CARVEDILOL"],
+    "class": ["alpha-Adrenergic Blocker [EPC]", "beta-Adrenergic Blocker [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Carvedilol is an alpha-/beta-adrenergic blocking agent indicated for the treatment of: mild to severe chronic heart failure  left ventricular dysfunction following myocardial infarction in clinically stable patients  hypertension  1.",
@@ -448,9 +330,7 @@
   {
     "id": "fda_602fae70-3b8a-4f09-8db1-41fef4a2ecd7_2",
     "name": "Cephalexin",
-    "substances": [
-      "CEPHALEXIN"
-    ],
+    "substances": ["CEPHALEXIN"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Cephalexin capsules are a cephalosporin antibacterial drug indicated for the treatment of the following infections caused by susceptible isolates of designated bacteria: Respiratory tract infection  Otitis media  Skin and skin structure infections  Bone infections  Genitourin...",
@@ -459,12 +339,8 @@
   {
     "id": "fda_d38b5160-4c1c-41d9-8f13-f9f877778f9c_1",
     "name": "Ciprofloxacin",
-    "altNames": [
-      "CIPROFOLXACIN"
-    ],
-    "substances": [
-      "CIPROFLOXACIN HYDROCHLORIDE"
-    ],
+    "altNames": ["CIPROFOLXACIN"],
+    "substances": ["CIPROFLOXACIN HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Ciprofloxacin is a fluoroquinolone antibacterial indicated in adults (18 years of age and older) with the following infections caused by designated, susceptible bacteria and in pediatric patients where indicated: Skin and Skin Structure Infections  Bone and Joint Infections  ...",
@@ -474,9 +350,7 @@
   {
     "id": "fda_0dfb11d9-f48d-56ee-e063-6294a90ad256_1",
     "name": "Citalopram",
-    "substances": [
-      "CITALOPRAM HYDROBROMIDE"
-    ],
+    "substances": ["CITALOPRAM HYDROBROMIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Citalopram tablets are indicated for the treatment of major depressive disorder (MDD) in adults  . Citalopram tablets are a selective serotonin reuptake inhibitor (SSRI) indicated for the treatment of major depressive disorder (MDD) in adults ( 1 ) .",
@@ -486,12 +360,8 @@
   {
     "id": "fda_dc8b8a09-3eed-1998-e053-2995a90a2f60_3",
     "name": "Clindamycin",
-    "altNames": [
-      "CLINDAMYCIN PHOSPHATE"
-    ],
-    "substances": [
-      "CLINDAMYCIN PHOSPHATE"
-    ],
+    "altNames": ["CLINDAMYCIN PHOSPHATE"],
+    "substances": ["CLINDAMYCIN PHOSPHATE"],
     "form": " (INTRAMUSCULAR, INTRAVENOUS)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Clindamycin Injection, USP is indicated in the treatment of serious infections caused by susceptible anaerobic bacteria. Clindamycin Injection, USP is also indicated in the treatment of serious infections due to susceptible strains of streptococci, pneumococci, and staphylococc...",
@@ -501,12 +371,8 @@
   {
     "id": "fda_30d674f9-f1b3-4c2d-a8e9-3bc8e476f1ec_3",
     "name": "Clonazepam",
-    "substances": [
-      "CLONAZEPAM"
-    ],
-    "class": [
-      "Benzodiazepine [EPC]"
-    ],
+    "substances": ["CLONAZEPAM"],
+    "class": ["Benzodiazepine [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Seizure Disorders: Clonazepam tablets are useful alone or as an adjunct in the treatment of the Lennox- Gastaut syndrome (petit mal variant), akinetic and myoclonic seizures.",
@@ -516,12 +382,8 @@
   {
     "id": "fda_4cd07a3c-9673-4aa0-b76a-d79df2399ee1_10",
     "name": "Clopidogrel",
-    "altNames": [
-      "CLOPIDOGREL BISULFATE"
-    ],
-    "substances": [
-      "CLOPIDOGREL BISULFATE"
-    ],
+    "altNames": ["CLOPIDOGREL BISULFATE"],
+    "substances": ["CLOPIDOGREL BISULFATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Clopidogrel tablets are a P2Y 12 platelet inhibitor indicated for: • Acute coronary syndrome - For patients with non-ST-segment elevation ACS (unstable angina [UA]/non-ST-elevation myocardial infarction [NSTEMI]), clopidogrel tablets has been shown to reduce the rate of myoca...",
@@ -531,16 +393,9 @@
   {
     "id": "fda_83198ef1-11c4-11e4-9191-0800200c9a66_14",
     "name": "CombiPatch (estradiol/norethindrone acetate transdermal system)",
-    "altNames": [
-      "ESTRADIOL/NORETHINDRONE ACETATE TRANSDERMAL SYSTEM"
-    ],
-    "substances": [
-      "ESTRADIOL",
-      "NORETHINDRONE ACETATE"
-    ],
-    "class": [
-      "Estrogen [EPC]"
-    ],
+    "altNames": ["ESTRADIOL/NORETHINDRONE ACETATE TRANSDERMAL SYSTEM"],
+    "substances": ["ESTRADIOL", "NORETHINDRONE ACETATE"],
+    "class": ["Estrogen [EPC]"],
     "form": " (TRANSDERMAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE CombiPatch is indicated in a woman with a uterus for: Treatment of moderate to severe vasomotor symptoms due to menopause. Treatment of moderate to severe symptoms of vulvar and vaginal atrophy due to menopause.",
@@ -550,9 +405,7 @@
   {
     "id": "fda_3a397e88-d267-feed-e063-6294a90a7710_1",
     "name": "Cyclobenzaprine HCL",
-    "substances": [
-      "CYCLOBENZAPRINE HYDROCHLORIDE"
-    ],
+    "substances": ["CYCLOBENZAPRINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Indications and Usage Section INDICATIONS AND USAGE Cyclobenzaprine hydrochloride tablets, USP are indicated as an adjunct to rest and physical therapy for relief of muscle spasm associated with acute, painful musculoskeletal conditions.",
@@ -561,12 +414,8 @@
   {
     "id": "fda_25bdfc41-c7cb-4d16-b6a8-f102f9b8c984_23",
     "name": "Desvenlafaxine",
-    "altNames": [
-      "DESVENLAFAXINE SUCCINATE"
-    ],
-    "substances": [
-      "DESVENLAFAXINE SUCCINATE"
-    ],
+    "altNames": ["DESVENLAFAXINE SUCCINATE"],
+    "substances": ["DESVENLAFAXINE SUCCINATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Desvenlafaxine is indicated for the treatment of adults with major depressive disorder (MDD)  . Desvenlafaxine is a serotonin and norepinephrine reuptake inhibitor (SNRI) indicated for the treatment of adults with major depressive disorder (MDD) ( 1 ).",
@@ -576,9 +425,7 @@
   {
     "id": "fda_f930af78-760b-42c7-af30-ffcc64c4d35d_104",
     "name": "Dexmethylphenidate Hydrochloride",
-    "substances": [
-      "DEXMETHYLPHENIDATE HYDROCHLORIDE"
-    ],
+    "substances": ["DEXMETHYLPHENIDATE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Dexmethylphenidate hydrochloride tablets are indicated for the treatment of Attention Deficit Hyperactivity Disorder (ADHD)  . Dexmethylphenidate hydrochloride tablets are a central nervous system (CNS) stimulant indicated for the treatment of Attention Deficit Hyperactivity ...",
@@ -588,12 +435,8 @@
   {
     "id": "fda_078bbb41-7e3a-48db-87f0-ec6a6ec0194e_12",
     "name": "Diazepam",
-    "substances": [
-      "DIAZEPAM"
-    ],
-    "class": [
-      "Benzodiazepine [EPC]"
-    ],
+    "substances": ["DIAZEPAM"],
+    "class": ["Benzodiazepine [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS Diazepam tablets are indicated for the management of anxiety disorders or for the short-term relief of the symptoms of anxiety. Anxiety or tension associated with the stress of everyday life usually does not require treatment with an anxiolytic.",
@@ -602,12 +445,8 @@
   {
     "id": "fda_2c656550-7e5b-445f-e063-6294a90a8f52_2",
     "name": "Dicyclomine",
-    "altNames": [
-      "DICYCLOMINE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "DICYCLOMINE HYDROCHLORIDE"
-    ],
+    "altNames": ["DICYCLOMINE HYDROCHLORIDE"],
+    "substances": ["DICYCLOMINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Dicyclomine hydrochloride tablets are indicated for the treatment of patients with functional bowel/irritable bowel syndrome. Dicyclomine hydrochloride tablets are an antispasmodic and anticholinergic (antimuscarinic) agent indicated for the treatment of functional bowel/irri...",
@@ -616,12 +455,8 @@
   {
     "id": "fda_dcf9b23b-5840-46ff-bb61-c57a02831a03_103",
     "name": "Digoxin",
-    "substances": [
-      "DIGOXIN"
-    ],
-    "class": [
-      "Cardiac Glycoside [EPC]"
-    ],
+    "substances": ["DIGOXIN"],
+    "class": ["Cardiac Glycoside [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS & USAGE Digoxin is a cardiac glycoside indicated for: Treatment of mild to moderate heart failure in adults.  Increasing myocardial contractility in pediatric patients with heart failure.  Control of resting ventricular rate in patients with chronic atrial fibrillation in adults.  1.",
@@ -630,9 +465,7 @@
   {
     "id": "fda_99c5813f-1ffe-0eaa-e053-2a95a90a751b_5",
     "name": "DILTIAZEM HCI",
-    "substances": [
-      "DILTIAZEM HYDROCHLORIDE"
-    ],
+    "substances": ["DILTIAZEM HYDROCHLORIDE"],
     "form": " (INTRAVENOUS)",
     "rx": true,
     "uses": "INDICATIONS & USAGE Diltiazem Hydrochloride Injection or Diltiazem Hydrochloride for Injection are indicated for the following: Atrial Fibrillation or Atrial Flutter Temporary control of rapid ventricular rate in atrial fibrillation or atrial flutter.",
@@ -641,9 +474,7 @@
   {
     "id": "fda_9454f948-584f-59de-e053-2a95a90a9f01_4",
     "name": "DOXY 100(TM) DOXYCYCLINE",
-    "substances": [
-      "DOXYCYCLINE HYCLATE"
-    ],
+    "substances": ["DOXYCYCLINE HYCLATE"],
     "form": " (INTRAVENOUS)",
     "rx": true,
     "uses": "INDICATIONS & USAGE To reduce the development of drug-resistant bacteria and maintain the effectiveness of Doxycycline for Injection, USP and other antibacterial drugs, Doxycycline for Injection, USP should be used only to treat or prevent infections that are proven or strongly suspected to be cause...",
@@ -652,12 +483,8 @@
   {
     "id": "fda_fdc774b5-c8f2-4daf-94cb-7e73548b541a_8",
     "name": "Duloxetine",
-    "altNames": [
-      "DULOXETINE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "DULOXETINE HYDROCHLORIDE"
-    ],
+    "altNames": ["DULOXETINE HYDROCHLORIDE"],
+    "substances": ["DULOXETINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Duloxetine delayed-release capsules are indicated for the treatment of: • Major depressive disorder in adults • Generalized anxiety disorder in adults and pediatric patients 7 years of age and older • Diabetic peripheral neuropathic pain in adults • Fibromyalgia in adults and...",
@@ -667,13 +494,8 @@
   {
     "id": "fda_8c6031b3-b6a8-4ec7-b0d3-286f50d29353_18",
     "name": "Dutasteride and Tamsulosin Hydrochloride",
-    "substances": [
-      "DUTASTERIDE",
-      "TAMSULOSIN HYDROCHLORIDE"
-    ],
-    "class": [
-      "5-alpha Reductase Inhibitor [EPC]"
-    ],
+    "substances": ["DUTASTERIDE", "TAMSULOSIN HYDROCHLORIDE"],
+    "class": ["5-alpha Reductase Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Dutasteride and tamsulosin hydrochloride capsules are a combination of dutasteride, a 5-alpha-reductase inhibitor, and tamsulosin, an alpha-adrenergic antagonist, indicated for the treatment of symptomatic benign prostatic hyperplasia (BPH) in men with an enlarged prostate.",
@@ -682,9 +504,7 @@
   {
     "id": "fda_dffdb225-c87c-4182-87be-b6a20ae14c85_9",
     "name": "Escitalopram",
-    "substances": [
-      "ESCITALOPRAM OXALATE"
-    ],
+    "substances": ["ESCITALOPRAM OXALATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Escitalopram is a selective serotonin reuptake inhibitor (SSRI) indicated for: • Acute and Maintenance Treatment of Major Depressive Disorder (MDD) in adults and adolescents aged 12-17 years  • Acute Treatment of Generalized Anxiety Disorder (GAD) in adults  1.",
@@ -694,16 +514,9 @@
   {
     "id": "fda_44125b2f-10ac-435c-bdb4-a29bf8450dbf_10",
     "name": "Estradiol / Norethindrone Acetate",
-    "altNames": [
-      "ESTRADIOL AND NORETHINDRONE ACETATE"
-    ],
-    "substances": [
-      "ESTRADIOL",
-      "NORETHINDRONE ACETATE"
-    ],
-    "class": [
-      "Estrogen [EPC]"
-    ],
+    "altNames": ["ESTRADIOL AND NORETHINDRONE ACETATE"],
+    "substances": ["ESTRADIOL", "NORETHINDRONE ACETATE"],
+    "class": ["Estrogen [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Estradiol/Norethindrone Acetate Tablets are indicated for: Estradiol/Norethindrone Acetate Tablets are an estrogen and progestin combination indicated in a woman with a uterus for: Treatment of Moderate to Severe Vasomotor Symptoms due to Menopause  Treatment of Moderate to S...",
@@ -723,10 +536,7 @@
       "ASIAN GINSENG",
       "BLACK COHOSH"
     ],
-    "class": [
-      "Standardized Insect Venom Allergenic Extract [EPC]",
-      "Estrogen [EPC]"
-    ],
+    "class": ["Standardized Insect Venom Allergenic Extract [EPC]", "Estrogen [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "INDICATIONS: Temporarily supports the body to rebalance estrogen output. Symptoms may include: mood swings, hot flashes, irritability, lack of energy.",
@@ -735,12 +545,8 @@
   {
     "id": "fda_a7bfb3aa-5226-4a48-8156-a9ecc4536fdf_1",
     "name": "Extended Phenytoin Sodium",
-    "altNames": [
-      "PHENYTOIN SODIUM"
-    ],
-    "substances": [
-      "PHENYTOIN SODIUM"
-    ],
+    "altNames": ["PHENYTOIN SODIUM"],
+    "substances": ["PHENYTOIN SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Extended phenytoin sodium capsules are indicated for the treatment of tonic-clonic (grand mal) and psychomotor (temporal lobe) seizures and prevention and treatment of seizures occurring during or following neurosurgery.",
@@ -749,10 +555,7 @@
   {
     "id": "fda_88cd0e7b-e8dc-6125-e053-2a95a90aaa27_7",
     "name": "Ezetimibe and Simvastatin",
-    "substances": [
-      "EZETIMIBE",
-      "SIMVASTATIN"
-    ],
+    "substances": ["EZETIMIBE", "SIMVASTATIN"],
     "class": [
       "Dietary Cholesterol Absorption Inhibitor [EPC]",
       "HMG-CoA Reductase Inhibitor [EPC]"
@@ -765,12 +568,8 @@
   {
     "id": "fda_1c1bf77c-f99a-44e4-b71e-ce766afa99b6_6",
     "name": "Finasteride",
-    "substances": [
-      "FINASTERIDE"
-    ],
-    "class": [
-      "5-alpha Reductase Inhibitor [EPC]"
-    ],
+    "substances": ["FINASTERIDE"],
+    "class": ["5-alpha Reductase Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Finasteride tablets is a 5α-reductase inhibitor, indicated for the treatment of symptomatic benign prostatic hyperplasia (BPH) in men with an enlarged prostate to  : Improve symptoms Reduce the risk of acute urinary retention Reduce the risk of the need for surgery including ...",
@@ -779,12 +578,8 @@
   {
     "id": "fda_0b3da881-475d-cdee-e063-6394a90aee99_2",
     "name": "Fluoxetine",
-    "altNames": [
-      "FLUOXETINE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "FLUOXETINE HYDROCHLORIDE"
-    ],
+    "altNames": ["FLUOXETINE HYDROCHLORIDE"],
+    "substances": ["FLUOXETINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Fluoxetine is indicated for the treatment of: Acute and maintenance treatment of Major Depressive Disorder  . Acute and maintenance treatment of obsessions and compulsions in patients with Obsessive Compulsive Disorder (OCD)  .",
@@ -794,12 +589,8 @@
   {
     "id": "fda_39fd32f2-6bb7-4a65-d298-e48d26bc80c7_32",
     "name": "Furosemide",
-    "substances": [
-      "FUROSEMIDE"
-    ],
-    "class": [
-      "Loop Diuretic [EPC]"
-    ],
+    "substances": ["FUROSEMIDE"],
+    "class": ["Loop Diuretic [EPC]"],
     "form": " (INTRAMUSCULAR, INTRAVENOUS)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE FUROSEMIDE INJECTION is a loop diuretic indicated for: • The treatment of edema associated with heart failure, cirrhosis of the liver, and renal disease  • Acute pulmonary edema as adjunctive therapy  1.",
@@ -808,9 +599,7 @@
   {
     "id": "fda_b7a29b99-ce23-950e-e053-2995a90a1934_2",
     "name": "Gabapentin",
-    "substances": [
-      "GABAPENTIN"
-    ],
+    "substances": ["GABAPENTIN"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Gabapentin is indicated for: Management of postherpetic neuralgia in adults Adjunctive therapy in the treatment of partial onset seizures, with and without secondary generalization, in adults and pediatric patients 3 years and older with epilepsy Gabapentin is indicated for: ...",
@@ -819,12 +608,8 @@
   {
     "id": "fda_560448dd-3690-43d9-9667-925f20bb816e_103",
     "name": "Glipizide",
-    "substances": [
-      "GLIPIZIDE"
-    ],
-    "class": [
-      "Sulfonylurea [EPC]"
-    ],
+    "substances": ["GLIPIZIDE"],
+    "class": ["Sulfonylurea [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Glipizide tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
@@ -834,12 +619,8 @@
   {
     "id": "fda_1fd8cf42-66ae-4af5-a5ae-7c9679a0e532_3",
     "name": "Hydralazine",
-    "altNames": [
-      "HYDRALAZINE HYDROCHLORIDE"
-    ],
-    "substances": [
-      "HYDRALAZINE HYDROCHLORIDE"
-    ],
+    "altNames": ["HYDRALAZINE HYDROCHLORIDE"],
+    "substances": ["HYDRALAZINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Essential hypertension, alone or as an adjunct.",
@@ -849,10 +630,7 @@
   {
     "id": "fda_deaa53c1-81ed-7497-e053-2995a90a07cc_6",
     "name": "Hydrocodone APAP",
-    "substances": [
-      "ACETAMINOPHEN",
-      "HYDROCODONE BITARTRATE"
-    ],
+    "substances": ["ACETAMINOPHEN", "HYDROCODONE BITARTRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Hydrocodone bitartrate and acetaminophen tablets, USP are indicated for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
@@ -861,9 +639,7 @@
   {
     "id": "fda_851e7439-bb0a-4a09-9279-e3c33bff8965_5",
     "name": "Hydroxyzine",
-    "substances": [
-      "HYDROXYZINE DIHYDROCHLORIDE"
-    ],
+    "substances": ["HYDROXYZINE DIHYDROCHLORIDE"],
     "form": " (INTRAMUSCULAR)",
     "rx": true,
     "uses": "Indications and Usage The total management of anxiety, tension, and psychomotor agitation in conditions of emotional stress requires in most instances a combined approach of psychotherapy and chemotherapy.",
@@ -872,15 +648,9 @@
   {
     "id": "fda_9498fa14-1614-4a8e-b872-41c11745b01e_1",
     "name": "Isosorbide",
-    "altNames": [
-      "ISOSORBIDE DINITRATE"
-    ],
-    "substances": [
-      "ISOSORBIDE DINITRATE"
-    ],
-    "class": [
-      "Nitrate Vasodilator [EPC]"
-    ],
+    "altNames": ["ISOSORBIDE DINITRATE"],
+    "substances": ["ISOSORBIDE DINITRATE"],
+    "class": ["Nitrate Vasodilator [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Isosorbide Dinitrate Tablets, USP are indicated for the prevention of angina pectoris due to coronary artery disease. The onset of action of immediate-release oral isosorbide dinitrate is not sufficiently rapid for this product to be useful in aborting an acute anginal episode.",
@@ -890,13 +660,8 @@
   {
     "id": "fda_47fd2592-2fc6-9787-e063-6394a90a8f01_1",
     "name": "Lamotrigine",
-    "substances": [
-      "LAMOTRIGINE"
-    ],
-    "class": [
-      "Anti-epileptic Agent [EPC]",
-      "Mood Stabilizer [EPC]"
-    ],
+    "substances": ["LAMOTRIGINE"],
+    "class": ["Anti-epileptic Agent [EPC]", "Mood Stabilizer [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Lamotrigine is indicated for: Epilepsy—adjunctive therapy in patients aged 2 years and older: partial-onset seizures. primary generalized tonic-clonic (PGTC) seizures. generalized seizures of Lennox-Gastaut syndrome.",
@@ -906,9 +671,7 @@
   {
     "id": "fda_0a688786-879b-4e27-a46a-5c86bbfa1292_6",
     "name": "Levetiracetam",
-    "substances": [
-      "LEVETIRACETAM"
-    ],
+    "substances": ["LEVETIRACETAM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Levetiracetam tablets are indicated for the treatment of partial-onset seizures in patients 1 month of age and older  Levetiracetam tablets are indicated for adjunctive therapy for the treatment of: Myoclonic seizures in patients 12 years of age and older with juvenile myoclo..."
@@ -916,13 +679,8 @@
   {
     "id": "fda_1a467f8b-2611-4936-af2b-098e4791d6ae_3",
     "name": "Levothyroxine",
-    "substances": [
-      "LEVOTHYROXINE",
-      "ACTIVE INGREDIENT"
-    ],
-    "class": [
-      "l-Thyroxine [EPC]"
-    ],
+    "substances": ["LEVOTHYROXINE", "ACTIVE INGREDIENT"],
+    "class": ["l-Thyroxine [EPC]"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "HOMEOPATHIC INDICATIONS: For the temporary relief of symptoms such as backache, constipation, and vomiting.** **These statements are based upon traditional homeopathic principles. They have not been reviewed by the Food and Drug Administration.",
@@ -931,9 +689,7 @@
   {
     "id": "fda_38ef3766-bb9a-402e-9e4a-ad8bb5b26e4c_9",
     "name": "Liothyronine Sodium",
-    "substances": [
-      "LIOTHYRONINE SODIUM"
-    ],
+    "substances": ["LIOTHYRONINE SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Liothyronine sodium is an L-triiodothyronine (T3) indicated for: Hypothyroidism: As replacement in primary (thyroidal), secondary (pituitary), and tertiary (hypothalamic) congenital or acquired hypothyroidism  Pituitary Thyrotropin (Thyroid-Stimulating Hormone, TSH) Suppressi...",
@@ -943,9 +699,7 @@
   {
     "id": "fda_5f05d7c1-e681-4321-b1c2-7dfd262b88f9_6",
     "name": "Lisinopril",
-    "substances": [
-      "LISINOPRIL"
-    ],
+    "substances": ["LISINOPRIL"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Lisinopril tablet USP is an angiotensin converting enzyme (ACE) inhibitor indicated for: Treatment of hypertension in adults and pediatric patients 6 years of age and older  Adjunct therapy for heart failure  Treatment of Acute Myocardial Infarction  1.",
@@ -955,9 +709,7 @@
   {
     "id": "fda_ba76eb91-bea6-4e37-e053-2a95a90a065a_2",
     "name": "Losartan Potassium",
-    "substances": [
-      "LOSARTAN POTASSIUM"
-    ],
+    "substances": ["LOSARTAN POTASSIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Losartan Potassium tablets are an angiotensin II receptor blocker (ARB) indicated for: • Treatment of hypertension, to lower blood pressure in adults and children greater than 6 years old.",
@@ -967,12 +719,8 @@
   {
     "id": "fda_dfaac71c-dcc5-4b57-bf3b-616fccab96de_5",
     "name": "Meloxicam",
-    "substances": [
-      "MELOXICAM"
-    ],
-    "class": [
-      "Nonsteroidal Anti-inflammatory Drug [EPC]"
-    ],
+    "substances": ["MELOXICAM"],
+    "class": ["Nonsteroidal Anti-inflammatory Drug [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Meloxicam tablets are a non-steroidal anti-inflammatory drug indicated for: Osteoarthritis (OA)  Rheumatoid Arthritis (RA)  Juvenile Rheumatoid Arthritis (JRA) in patients who weigh ≥60 kg  1.",
@@ -982,9 +730,7 @@
   {
     "id": "fda_7678bcd5-1071-0a9b-e053-2a91aa0a3853_8",
     "name": "METOCLOPRAMIDE",
-    "substances": [
-      "METOCLOPRAMIDE HYDROCHLORIDE"
-    ],
+    "substances": ["METOCLOPRAMIDE HYDROCHLORIDE"],
     "form": " (INTRAMUSCULAR, INTRAVENOUS)",
     "rx": true,
     "uses": "INDICATIONS & USAGE Diabetic Gastroparesis (Diabetic Gastric Stasis) Metoclopramide is indicated for the relief of symptoms associated with acute and recurrent diabetic gastric stasis.",
@@ -993,12 +739,8 @@
   {
     "id": "fda_d6ae40f1-bc7d-4d3a-b2e9-8d4fc4d1d759_12",
     "name": "Metoprolol",
-    "altNames": [
-      "METOPROLOL TARTRATE"
-    ],
-    "substances": [
-      "METOPROLOL TARTRATE"
-    ],
+    "altNames": ["METOPROLOL TARTRATE"],
+    "substances": ["METOPROLOL TARTRATE"],
     "form": " (INTRAVENOUS)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Metoprolol tartrate injection is indicated in the treatment of definite or suspected acute myocardial infarction in hemodynamically stable patients to reduce cardiovascular mortality when used in conjunction with oral metoprolol maintenance therapy.",
@@ -1007,9 +749,7 @@
   {
     "id": "fda_e0c5b856-3f70-4ca6-9763-a90673bb82fb_11",
     "name": "Montelukast",
-    "substances": [
-      "MONTELUKAST SODIUM"
-    ],
+    "substances": ["MONTELUKAST SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS & USAGE Montelukast sodium tablets are a leukotriene receptor antagonist indicated for: Prophylaxis and chronic treatment of asthma in patients 15 years of age and older . Acute prevention of exercise-induced bronchoconstriction (EIB) in patients 15 years of age and older .",
@@ -1019,12 +759,8 @@
   {
     "id": "fda_c98ecf77-ae9a-438b-9bad-ffbed25d95bc_3",
     "name": "Nifedipine",
-    "substances": [
-      "NIFEDIPINE"
-    ],
-    "class": [
-      "Dihydropyridine Calcium Channel Blocker [EPC]"
-    ],
+    "substances": ["NIFEDIPINE"],
+    "class": ["Dihydropyridine Calcium Channel Blocker [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE I.Vasospastic Angina Nifedipine extended-release tablets are indicated for the management of vasospastic angina confirmed by any of the following criteria: 1) classical pattern of angina at rest accompanied by ST segment elevation, 2) angina or coronary artery spasm provoked by...",
@@ -1034,12 +770,8 @@
   {
     "id": "fda_26c314ea-077e-490b-826b-2aafcb6e9564_1",
     "name": "NITROGLYCERIN",
-    "substances": [
-      "NITROGLYCERIN"
-    ],
-    "class": [
-      "Nitrate Vasodilator [EPC]"
-    ],
+    "substances": ["NITROGLYCERIN"],
+    "class": ["Nitrate Vasodilator [EPC]"],
     "form": " (SUBLINGUAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Nitroglycerin sublingual tablets are indicated for the acute relief of an attack or acute prophylaxis of angina pectoris due to coronary artery disease.",
@@ -1048,12 +780,8 @@
   {
     "id": "fda_2cb1bebe-0ced-46d8-bf21-c28a9acc4a15_17",
     "name": "OLANZAPINE",
-    "substances": [
-      "OLANZAPINE"
-    ],
-    "class": [
-      "Atypical Antipsychotic [EPC]"
-    ],
+    "substances": ["OLANZAPINE"],
+    "class": ["Atypical Antipsychotic [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Olanzapine is an atypical antipsychotic indicated: As oral formulation for the: • Treatment of schizophrenia.  • Adults: Efficacy was established in three clinical trials in patients with schizophrenia: two 6-week trials and one maintenance trial.",
@@ -1063,12 +791,8 @@
   {
     "id": "fda_c83821ad-822e-47dc-8108-612312cf3a16_1",
     "name": "Ondansetron",
-    "substances": [
-      "ONDANSETRON"
-    ],
-    "class": [
-      "Serotonin-3 Receptor Antagonist [EPC]"
-    ],
+    "substances": ["ONDANSETRON"],
+    "class": ["Serotonin-3 Receptor Antagonist [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Ondansetron is a 5-HT 3 receptor antagonist indicated for the prevention of: nausea and vomiting associated with highly emetogenic cancer chemotherapy, including cisplatin greater than or equal to 50 mg/m 2 .",
@@ -1077,10 +801,7 @@
   {
     "id": "fda_916ff456-a27e-49dc-a312-274126a8c30c_8",
     "name": "Oxycodone and Acetaminophen",
-    "substances": [
-      "ACETAMINOPHEN",
-      "OXYCODONE HYDROCHLORIDE"
-    ],
+    "substances": ["ACETAMINOPHEN", "OXYCODONE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Oxycodone and Acetaminophen Tablets is indicated for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
@@ -1089,24 +810,16 @@
   {
     "id": "fda_2de07baf-1add-f3d1-e063-6394a90a41d8_2",
     "name": "P- PACK PREDNISONE 20MG, 7- DAY TAPERING DOSE PACK",
-    "altNames": [
-      "DR ADAM AU"
-    ],
-    "substances": [
-      "PREDNISONE"
-    ],
-    "class": [
-      "Corticosteroid [EPC]"
-    ],
+    "altNames": ["DR ADAM AU"],
+    "substances": ["PREDNISONE"],
+    "class": ["Corticosteroid [EPC]"],
     "form": " (ORAL)",
     "rx": true
   },
   {
     "id": "fda_2bed1bae-519f-1bb9-e063-6294a90a795b_2",
     "name": "Pantoprazole",
-    "substances": [
-      "PANTOPRAZOLE SODIUM"
-    ],
+    "substances": ["PANTOPRAZOLE SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Pantoprazole sodium delayed-release tablets are indicated for: Pantoprazole sodium is a proton pump inhibitor (PPI) indicated for the following: Short-Term Treatment of Erosive Esophagitis Associated with Gastroesophageal Reflux Disease (GERD)  Maintenance of Healing of Erosi...",
@@ -1124,9 +837,7 @@
       "SODIUM BICARBONATE",
       "SODIUM CHLORIDE"
     ],
-    "class": [
-      "Osmotic Laxative [EPC]"
-    ],
+    "class": ["Osmotic Laxative [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE PEG-3350, sodium chloride, sodium bicarbonate and potassium chloride for oral solution is indicated for bowel cleansing prior to colonoscopy in adults and pediatric patients aged 6 months or greater.",
@@ -1135,14 +846,8 @@
   {
     "id": "fda_876bd763-13fa-481e-b579-c2fc44dbf3c2_3",
     "name": "phentermine and topiramate",
-    "substances": [
-      "PHENTERMINE HYDROCHLORIDE",
-      "TOPIRAMATE"
-    ],
-    "class": [
-      "Cytochrome P450 3A4 Inducers [MoA]",
-      "Cytochrome P450 2C19 Inhibitors [MoA]"
-    ],
+    "substances": ["PHENTERMINE HYDROCHLORIDE", "TOPIRAMATE"],
+    "class": ["Cytochrome P450 3A4 Inducers [MoA]", "Cytochrome P450 2C19 Inhibitors [MoA]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Phentermine and topiramate extended-release capsules are indicated in combination with a reduced-calorie diet and increased physical activity to reduce excess body weight and maintain weight reduction long term in: Adults and pediatric patients aged 12 years and older with ob...",
@@ -1151,9 +856,7 @@
   {
     "id": "fda_635062df-9a84-4ff8-874c-dcee581a5555_1",
     "name": "PRAVASTATIN SODIUM",
-    "substances": [
-      "PRAVASTATIN SODIUM"
-    ],
+    "substances": ["PRAVASTATIN SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Pravastatin sodium tablets are indicated: To reduce the risk of myocardial infarction, myocardial revascularization procedures, and cardiovascular mortality in adults with elevated low- density lipoprotein cholesterol (LDL-C) without clinically evident coronary heart disease ...",
@@ -1162,9 +865,7 @@
   {
     "id": "fda_4f681538-7ac4-484c-9e6d-b571d73b9e0b_2",
     "name": "Promethazine",
-    "substances": [
-      "PROMETHAZINE HYDROCHLORIDE"
-    ],
+    "substances": ["PROMETHAZINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Promethazine hydrochloride tablets, USP are useful for: Perennial and seasonal allergic rhinitis. Vasomotor rhinitis. Allergic conjunctivitis due to inhalant allergens and foods. Mild, uncomplicated allergic skin manifestations of urticaria and angioedema.",
@@ -1173,12 +874,8 @@
   {
     "id": "fda_9e50d1ee-b7f3-e549-e053-2995a90a4a86_2",
     "name": "Propranolol",
-    "altNames": [
-      "PROPRANOLOL HYDROCHLORIDE"
-    ],
-    "substances": [
-      "PROPRANOLOL HYDROCHLORIDE"
-    ],
+    "altNames": ["PROPRANOLOL HYDROCHLORIDE"],
+    "substances": ["PROPRANOLOL HYDROCHLORIDE"],
     "form": " (INTRAVENOUS)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Cardiac Arrhythmias Intravenous administration is usually reserved for life-threatening arrhythmias or those occurring under anesthesia. 1.",
@@ -1187,9 +884,7 @@
   {
     "id": "fda_c6e25a58-96b4-47b7-a5f3-33e5ffce1d1e_1",
     "name": "Quetiapine",
-    "substances": [
-      "QUETIAPINE FUMARATE"
-    ],
+    "substances": ["QUETIAPINE FUMARATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Quetiapine is an atypical antipsychotic indicated for the treatment of: Schizophrenia  Bipolar I disorder, manic, or mixed episodes  Bipolar disorder, depressive episodes  Major depressive disorder, adjunctive therapy with antidepressants  1.",
@@ -1199,13 +894,8 @@
   {
     "id": "fda_aab81d9f-397d-49fb-8083-77a1872cc71f_11",
     "name": "Ranitidine",
-    "altNames": [
-      "Ranitidine cool mint"
-    ],
-    "substances": [
-      "RANITIDINE HYDROCHLORIDE",
-      "ACTIVE INGREDIENT(S) Ranitidine 150 mg"
-    ],
+    "altNames": ["Ranitidine cool mint"],
+    "substances": ["RANITIDINE HYDROCHLORIDE", "ACTIVE INGREDIENT(S) Ranitidine 150 mg"],
     "form": " (ORAL)",
     "rx": false,
     "uses": "USE(S) ◾ relieves heartburn associated with acid indigestion and sour stomach ◾ prevents heartburn associated with acid indigestion and sour stomach brought on by eating or drinking certain foods and beverages",
@@ -1214,12 +904,8 @@
   {
     "id": "fda_390904c2-fcfa-466e-e063-6394a90a03af_1",
     "name": "Risperidone",
-    "substances": [
-      "RISPERIDONE"
-    ],
-    "class": [
-      "Atypical Antipsychotic [EPC]"
-    ],
+    "substances": ["RISPERIDONE"],
+    "class": ["Atypical Antipsychotic [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Risperidone is an atypical antipsychotic indicated for: Treatment of schizophrenia  As monotherapy or adjunctive therapy with lithium or valproate, for the treatment of acute manic or mixed episodes associated with Bipolar I Disorder  Treatment of irritability associated with...",
@@ -1229,12 +915,8 @@
   {
     "id": "fda_11701a6e-9b34-4939-e063-6294a90a09c9_3",
     "name": "Rosuvastatin",
-    "substances": [
-      "ROSUVASTATIN"
-    ],
-    "class": [
-      "HMG-CoA Reductase Inhibitor [EPC]"
-    ],
+    "substances": ["ROSUVASTATIN"],
+    "class": ["HMG-CoA Reductase Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Rosuvastatin tablets are indicated: To reduce the risk of stroke, myocardial infarction, and arterial revascularization procedures in adults without established coronary heart disease who are at increased risk of cardiovascular (CV) disease based on age, hsCRP ≥2 mg/L, and at...",
@@ -1243,9 +925,7 @@
   {
     "id": "fda_ad69cbfe-5b42-4714-a999-77d474e0849d_1",
     "name": "Sertraline",
-    "substances": [
-      "SERTRALINE HYDROCHLORIDE"
-    ],
+    "substances": ["SERTRALINE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Sertraline hydrochloride tablets are indicated for the treatment of the following : • Major depressive disorder (MDD) • Obsessive-compulsive disorder (OCD) • Panic disorder (PD) • Posttraumatic stress disorder (PTSD) • Social anxiety disorder (SAD) • Premenstrual dysphoric di...",
@@ -1255,9 +935,7 @@
   {
     "id": "fda_53078688-ad66-4bb2-808c-b76acedd00e3_3",
     "name": "SILDENAFIL",
-    "substances": [
-      "SILDENAFIL CITRATE"
-    ],
+    "substances": ["SILDENAFIL CITRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Sildenafil tablets are indicated for the treatment of erectile dysfunction. Sildenafil tablets are phosphodiesterase-5 (PDE5) inhibitor indicated for the treatment of erectile dysfunction (ED) ( 1 )",
@@ -1266,12 +944,8 @@
   {
     "id": "fda_6a970e80-b753-48fa-9fff-87e7a5044982_7",
     "name": "Sitagliptin",
-    "substances": [
-      "SITAGLIPTIN"
-    ],
-    "class": [
-      "Dipeptidyl Peptidase 4 Inhibitor [EPC]"
-    ],
+    "substances": ["SITAGLIPTIN"],
+    "class": ["Dipeptidyl Peptidase 4 Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Sitagliptin Tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus. Limitations of Use Sitagliptin Tablets is not recommended in patients with type 1 diabetes mellitus.",
@@ -1280,12 +954,8 @@
   {
     "id": "fda_eb27a2d2-1d28-4780-8e69-5fe613a0335e_3",
     "name": "spironolactone",
-    "substances": [
-      "SPIRONOLACTONE"
-    ],
-    "class": [
-      "Aldosterone Antagonist [EPC]"
-    ],
+    "substances": ["SPIRONOLACTONE"],
+    "class": ["Aldosterone Antagonist [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Spironolactone is an aldosterone antagonist indicated for: The treatment of NYHA Class III-IV heart failure and reduced ejection fraction to increase survival, manage edema, and to reduce the need for hospitalization for heart failure .",
@@ -1294,9 +964,7 @@
   {
     "id": "fda_85bf8e58-0984-427b-9ed4-7e0df4e444d2_1",
     "name": "Sumatriptan",
-    "substances": [
-      "SUMATRIPTAN SUCCINATE"
-    ],
+    "substances": ["SUMATRIPTAN SUCCINATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Sumatriptan tablets are indicated for the acute treatment of migraine with or without aura in adults. Limitations of Use: • Use only if a clear diagnosis of migraine headache has been established.",
@@ -1305,12 +973,8 @@
   {
     "id": "fda_741102c1-8809-44d4-9098-3dc8c0604764_5",
     "name": "Tadalafil",
-    "substances": [
-      "TADALAFIL"
-    ],
-    "class": [
-      "Phosphodiesterase 5 Inhibitor [EPC]"
-    ],
+    "substances": ["TADALAFIL"],
+    "class": ["Phosphodiesterase 5 Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Tadalafil tablets USP are phosphodiesterase 5 (PDE5) inhibitor indicated for the treatment of: · erectile dysfunction (ED)  · the signs and symptoms of benign prostatic hyperplasia (BPH)  · ED and the signs and symptoms of BPH (ED/BPH)  If tadalafil tablets USP are used with ...",
@@ -1319,9 +983,7 @@
   {
     "id": "fda_af87fc31-07c2-b1f7-e053-2995a90a499f_9",
     "name": "Tramadol HCL",
-    "substances": [
-      "TRAMADOL HYDROCHLORIDE"
-    ],
+    "substances": ["TRAMADOL HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1. Indications and Usage Tramadol hydrochloride tablets are indicated in adults for the management of pain severe enough to require an opioid analgesic and for which alternative treatments are inadequate.",
@@ -1331,13 +993,8 @@
   {
     "id": "fda_39bad727-af4c-4d20-933b-7f287e88099a_12",
     "name": "Trandolapril and Verapamil Hydrochloride",
-    "substances": [
-      "TRANDOLAPRIL",
-      "VERAPAMIL HYDROCHLORIDE"
-    ],
-    "class": [
-      "Angiotensin Converting Enzyme Inhibitor [EPC]"
-    ],
+    "substances": ["TRANDOLAPRIL", "VERAPAMIL HYDROCHLORIDE"],
+    "class": ["Angiotensin Converting Enzyme Inhibitor [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "INDICATIONS AND USAGE Trandolapril and verapamil hydrochloride extended-release tablets are indicated for the treatment of hypertension. This fixed combination drug is not indicated for the initial therapy of hypertension (see DOSAGE AND ADMINISTRATION ).",
@@ -1347,9 +1004,7 @@
   {
     "id": "fda_1fd0fc6d-5b1c-9f6a-e063-6394a90a3b7c_1",
     "name": "Trazodone HCL",
-    "substances": [
-      "TRAZODONE HYDROCHLORIDE"
-    ],
+    "substances": ["TRAZODONE HYDROCHLORIDE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "Trazodone hydrochloride tablets, USP are indicated for the treatment of major depressive disorder (MDD) in adults.",
@@ -1359,16 +1014,9 @@
   {
     "id": "fda_cef3e335-5891-412f-89c4-79fcd2f145b7_19",
     "name": "Valproic",
-    "altNames": [
-      "VALPROIC ACID"
-    ],
-    "substances": [
-      "VALPROIC ACID"
-    ],
-    "class": [
-      "Anti-epileptic Agent [EPC]",
-      "Mood Stabilizer [EPC]"
-    ],
+    "altNames": ["VALPROIC ACID"],
+    "substances": ["VALPROIC ACID"],
+    "class": ["Anti-epileptic Agent [EPC]", "Mood Stabilizer [EPC]"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Valproic Acid is an anti-epileptic drug indicated for: Monotherapy and adjunctive therapy of complex partial seizures; sole and adjunctive therapy of simple and complex absence seizures; adjunctive therapy in patients with multiple seizure types that include absence seizures ...",
@@ -1378,9 +1026,7 @@
   {
     "id": "fda_f827bb9a-6afd-4d0c-a7ca-bdef0667be52_100",
     "name": "Warfarin Sodium",
-    "substances": [
-      "WARFARIN SODIUM"
-    ],
+    "substances": ["WARFARIN SODIUM"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Warfarin sodium tablets are indicated for: Prophylaxis and treatment of venous thrombosis and its extension, pulmonary embolism (PE). Prophylaxis and treatment of thromboembolic complications associated with atrial fibrillation (AF) and/or cardiac valve replacement.",
@@ -1390,12 +1036,8 @@
   {
     "id": "fda_c6824c69-76bc-4ca0-a6b1-5cddc2c42fc9_7",
     "name": "Zolpidem",
-    "altNames": [
-      "ZOLPIDEM TARTRATE"
-    ],
-    "substances": [
-      "ZOLPIDEM TARTRATE"
-    ],
+    "altNames": ["ZOLPIDEM TARTRATE"],
+    "substances": ["ZOLPIDEM TARTRATE"],
     "form": " (ORAL)",
     "rx": true,
     "uses": "1 INDICATIONS AND USAGE Zolpidem Tartrate Tablets is indicated for the short-term treatment of insomnia characterized by difficulties with sleep initiation. Zolpidem Tartrate Tablets has been shown to decrease sleep latency for up to 35 days in controlled clinical studies .",

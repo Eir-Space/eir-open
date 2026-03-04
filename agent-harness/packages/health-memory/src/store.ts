@@ -50,9 +50,9 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
   private dedupIndex = new Map<string, string>();
 
   async getAll(options?: { category?: MemoryCategory }): Promise<MemoryItem[]> {
-    const all = Array.from(this.items.values()).filter(item => item.status !== 'dismissed');
+    const all = Array.from(this.items.values()).filter((item) => item.status !== 'dismissed');
     if (options?.category) {
-      return all.filter(item => item.category === options.category);
+      return all.filter((item) => item.category === options.category);
     }
     return all;
   }
@@ -129,25 +129,25 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
     let items = await this.getAll({ category });
 
     if (minConfidence > 0) {
-      items = items.filter(item => item.confidence >= minConfidence);
+      items = items.filter((item) => item.confidence >= minConfidence);
     }
 
-    const scored: MemorySearchResult[] = items.map(item => {
+    const scored: MemorySearchResult[] = items.map((item) => {
       const text = `${item.label} ${item.detail ?? ''} ${item.category}`.toLowerCase();
-      const matches = queryTerms.filter(term => text.includes(term));
+      const matches = queryTerms.filter((term) => text.includes(term));
       const score = matches.length / queryTerms.length;
       return { item, score };
     });
 
     return scored
-      .filter(r => r.score > 0)
+      .filter((r) => r.score > 0)
       .sort((a, b) => b.score - a.score)
       .slice(0, limit);
   }
 
   private deduplicateRefs(refs: MemoryItem['evidenceRefs']): MemoryItem['evidenceRefs'] {
     const seen = new Set<string>();
-    return refs.filter(ref => {
+    return refs.filter((ref) => {
       const key = `${ref.type}:${ref.id}`;
       if (seen.has(key)) return false;
       seen.add(key);
@@ -162,6 +162,8 @@ export class InMemoryHealthMemoryStore implements HealthMemoryStore {
       record_backed: 2,
       user_confirmed: 3,
     };
-    return (rank[a] ?? 0) >= (rank[b] ?? 0) ? a as MemoryItem['status'] : b as MemoryItem['status'];
+    return (rank[a] ?? 0) >= (rank[b] ?? 0)
+      ? (a as MemoryItem['status'])
+      : (b as MemoryItem['status']);
   }
 }

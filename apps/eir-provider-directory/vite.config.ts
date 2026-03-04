@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite'
-import vinext from 'vinext'
-import { cloudflare } from '@cloudflare/vite-plugin'
+import { defineConfig } from 'vite';
+import vinext from 'vinext';
+import { cloudflare } from '@cloudflare/vite-plugin';
 
 export default defineConfig(() => {
-  const plugins = [vinext()]
+  const plugins = [vinext()];
 
   if (process.env.CLOUDFLARE_DEPLOY === '1') {
-    plugins.push(cloudflare())
+    plugins.push(cloudflare());
   }
 
-  return { plugins }
-})
+  return { plugins };
+});

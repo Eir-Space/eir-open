@@ -1,8 +1,8 @@
-import { buildSoapNoteFromTranscript } from "../../services/soapFormatter.js";
+import { buildSoapNoteFromTranscript } from '../../services/soapFormatter.js';
 
 export function createMockNoteGenerator() {
   return {
-    name: "mock",
+    name: 'mock',
     async generateNote({ transcript, noteStyle, specialty }) {
       const soap = buildSoapNoteFromTranscript(transcript);
 
@@ -11,13 +11,13 @@ export function createMockNoteGenerator() {
         sections: soap.sections,
         codingHints: [],
         followUpQuestions: [
-          "Verify symptom onset and duration.",
-          "Confirm medication allergies before finalizing plan.",
+          'Verify symptom onset and duration.',
+          'Confirm medication allergies before finalizing plan.',
         ],
         warnings: [
-          "Mock note generator used. Replace with API/local LLM provider for production use.",
+          'Mock note generator used. Replace with API/local LLM provider for production use.',
           `Requested note style: ${noteStyle}`,
-          `Specialty context: ${specialty || "primary-care"}`,
+          `Specialty context: ${specialty || 'primary-care'}`,
         ],
       };
     },

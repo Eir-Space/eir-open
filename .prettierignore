@@ -1,0 +1,8 @@
+dist/
+node_modules/
+site/
+*.min.js
+*.min.css
+package-lock.json
+apps/eir-open-apps/
+apps/eir-provider-directory/public/data/providers-sweden-verified.json

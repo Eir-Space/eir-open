@@ -5,7 +5,14 @@ import type { LoadedSkill } from './types.js';
 
 function makeSkill(name: string, scripts: LoadedSkill['scripts'] = []): LoadedSkill {
   return {
-    meta: { name, description: `${name} skill`, modes: [], requiredTools: [], languages: ['en'], scripts: [] },
+    meta: {
+      name,
+      description: `${name} skill`,
+      modes: [],
+      requiredTools: [],
+      languages: ['en'],
+      scripts: [],
+    },
     prompts: { default: `Prompt for ${name}` },
     path: `/skills/${name}`,
     scripts,
@@ -14,10 +21,12 @@ function makeSkill(name: string, scripts: LoadedSkill['scripts'] = []): LoadedSk
 
 describe('buildToolsFromSkills', () => {
   it('creates tool definitions from skills with scripts', () => {
-    const skills = [makeSkill('analyzer', [
-      { name: 'run', entrypoint: '/scripts/run.js', description: 'Run analysis' },
-      { name: 'check', entrypoint: '/scripts/check.js' },
-    ])];
+    const skills = [
+      makeSkill('analyzer', [
+        { name: 'run', entrypoint: '/scripts/run.js', description: 'Run analysis' },
+        { name: 'check', entrypoint: '/scripts/check.js' },
+      ]),
+    ];
 
     const result = buildToolsFromSkills(skills);
     assert.equal(result.definitions.length, 2);
@@ -35,17 +44,15 @@ describe('buildToolsFromSkills', () => {
   });
 
   it('uses script description if provided', () => {
-    const skills = [makeSkill('s', [
-      { name: 'run', entrypoint: '/x.js', description: 'Custom description' },
-    ])];
+    const skills = [
+      makeSkill('s', [{ name: 'run', entrypoint: '/x.js', description: 'Custom description' }]),
+    ];
     const result = buildToolsFromSkills(skills);
     assert.equal(result.definitions[0].function.description, 'Custom description');
   });
 
   it('falls back to default description format', () => {
-    const skills = [makeSkill('myskill', [
-      { name: 'execute', entrypoint: '/x.js' },
-    ])];
+    const skills = [makeSkill('myskill', [{ name: 'execute', entrypoint: '/x.js' }])];
     const result = buildToolsFromSkills(skills);
     assert.ok(result.definitions[0].function.description.includes('execute'));
     assert.ok(result.definitions[0].function.description.includes('myskill'));
@@ -57,17 +64,15 @@ describe('buildToolsFromSkills', () => {
       properties: { input: { type: 'string' }, count: { type: 'number' } },
       required: ['input'],
     };
-    const skills = [makeSkill('s', [
-      { name: 'run', entrypoint: '/x.js', parameters: customParams },
-    ])];
+    const skills = [
+      makeSkill('s', [{ name: 'run', entrypoint: '/x.js', parameters: customParams }]),
+    ];
     const result = buildToolsFromSkills(skills);
     assert.deepEqual(result.definitions[0].function.parameters, customParams);
   });
 
   it('falls back to default query parameter', () => {
-    const skills = [makeSkill('s', [
-      { name: 'run', entrypoint: '/x.js' },
-    ])];
+    const skills = [makeSkill('s', [{ name: 'run', entrypoint: '/x.js' }])];
     const result = buildToolsFromSkills(skills);
     const params = result.definitions[0].function.parameters as Record<string, unknown>;
     assert.equal(params.type, 'object');
@@ -87,7 +92,7 @@ describe('buildToolsFromSkills', () => {
     ];
     const result = buildToolsFromSkills(skills);
     assert.equal(result.definitions.length, 4);
-    const names = result.definitions.map(d => d.function.name);
+    const names = result.definitions.map((d) => d.function.name);
     assert.ok(names.includes('skill-a__run'));
     assert.ok(names.includes('skill-a__check'));
     assert.ok(names.includes('skill-b__analyze'));

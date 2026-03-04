@@ -28,7 +28,15 @@ export interface LlmProvider {
  * Works with openai, groq, together, mistral, ollama, etc.
  */
 export class ChatCompletionsProvider implements LlmProvider {
-  constructor(private client: { chat: { completions: { create: (params: any) => Promise<any> } } }) {}
+  constructor(
+    private client: {
+      chat: {
+        completions: {
+          create: (params: LlmCompletionRequest) => Promise<unknown>;
+        };
+      };
+    },
+  ) {}
 
   async createCompletion(request: LlmCompletionRequest): Promise<LlmCompletionResponse> {
     const response = await this.client.chat.completions.create(request);

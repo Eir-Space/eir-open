@@ -3,16 +3,16 @@
  * POSTs a WAV file and receives speaker segments.
  */
 export async function requestDiarization(config, wavBuffer) {
-  const url = `${config.streaming.diarizeSidecarUrl.replace(/\/+$/, "")}/diarize`;
+  const url = `${config.streaming.diarizeSidecarUrl.replace(/\/+$/, '')}/diarize`;
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 120000);
 
   try {
     const response = await fetch(url, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "audio/wav",
+        'Content-Type': 'audio/wav',
       },
       body: wavBuffer,
       signal: controller.signal,

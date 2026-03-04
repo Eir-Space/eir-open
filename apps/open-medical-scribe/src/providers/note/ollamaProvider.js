@@ -1,10 +1,17 @@
-import { buildNotePrompt } from "../../services/promptBuilder.js";
-import { postJson } from "../shared/http.js";
+import { buildNotePrompt } from '../../services/promptBuilder.js';
+import { postJson } from '../shared/http.js';
 
 export function createOllamaNoteGenerator(config) {
   return {
-    name: "ollama",
-    async generateNote({ transcript, noteStyle, specialty, patientContext, clinicianContext, customPrompt }) {
+    name: 'ollama',
+    async generateNote({
+      transcript,
+      noteStyle,
+      specialty,
+      patientContext,
+      clinicianContext,
+      customPrompt,
+    }) {
       const prompt = buildNotePrompt({
         transcript,
         noteStyle,
@@ -15,27 +22,27 @@ export function createOllamaNoteGenerator(config) {
 
       const systemPrompt = customPrompt || prompt.system;
 
-      const { json } = await postJson(`${config.ollama.baseUrl.replace(/\/+$/, "")}/api/generate`, {
+      const { json } = await postJson(`${config.ollama.baseUrl.replace(/\/+$/, '')}/api/generate`, {
         body: {
           model: config.ollama.model,
           stream: false,
           prompt: `${systemPrompt}\n\nUser input:\n${prompt.user}`,
-          format: "json",
+          format: 'json',
           options: {
             temperature: 0.2,
           },
         },
       });
 
-      const parsed = safeParseJson(json?.response || "{}");
+      const parsed = safeParseJson(json?.response || '{}');
       return {
-        noteText: String(parsed.noteText || ""),
-        sections: parsed.sections && typeof parsed.sections === "object" ? parsed.sections : {},
+        noteText: String(parsed.noteText || ''),
+        sections: parsed.sections && typeof parsed.sections === 'object' ? parsed.sections : {},
         codingHints: Array.isArray(parsed.codingHints) ? parsed.codingHints : [],
         followUpQuestions: Array.isArray(parsed.followUpQuestions) ? parsed.followUpQuestions : [],
         warnings: Array.isArray(parsed.warnings)
           ? parsed.warnings
-          : ["Generated via local Ollama model."],
+          : ['Generated via local Ollama model.'],
       };
     },
   };
@@ -43,14 +50,14 @@ export function createOllamaNoteGenerator(config) {
 
 function safeParseJson(raw) {
   try {
-    return JSON.parse(String(raw || "{}"));
+    return JSON.parse(String(raw || '{}'));
   } catch {
     return {
-      noteText: String(raw || ""),
+      noteText: String(raw || ''),
       sections: {},
       codingHints: [],
       followUpQuestions: [],
-      warnings: ["Ollama returned non-JSON content; passed through raw text."],
+      warnings: ['Ollama returned non-JSON content; passed through raw text.'],
     };
   }
 }

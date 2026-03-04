@@ -2,29 +2,27 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "eir-provider-directory",
   "compatibility_date": "2026-03-03",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "main": "./worker/manual.ts",
   "assets": {
     "directory": "./dist/deploy-assets",
     "not_found_handling": "none",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "images": {
-    "binding": "IMAGES"
+    "binding": "IMAGES",
   },
   "r2_buckets": [
     {
       "binding": "PROVIDER_DATA_BUCKET",
-      "bucket_name": "eir-provider-data"
-    }
+      "bucket_name": "eir-provider-data",
+    },
   ],
   "d1_databases": [
     {
       "binding": "PROVIDER_DB",
       "database_name": "eir-provider-db",
-      "database_id": "6e487a09-1d30-4d55-a9b1-d9d0b59d002a"
-    }
-  ]
+      "database_id": "6e487a09-1d30-4d55-a9b1-d9d0b59d002a",
+    },
+  ],
 }

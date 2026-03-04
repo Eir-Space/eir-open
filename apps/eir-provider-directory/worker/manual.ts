@@ -1,4 +1,4 @@
-import { handleApiRoute, renderPage } from "../dist/server/entry.js";
+import { handleApiRoute, renderPage } from '../dist/server/entry.js';
 
 interface Env {
   ASSETS: Fetcher;
@@ -39,7 +39,10 @@ async function ensureVinextManifests(env: Env, request: Request, origin: string)
       g.__VINEXT_SSR_MANIFEST__ = ssrManifest;
     }
 
-    const viteManifest = await fetchAssetJson<Record<string, { file?: string; isEntry?: boolean }>>('/.vite/manifest.json');
+    const viteManifest =
+      await fetchAssetJson<Record<string, { file?: string; isEntry?: boolean }>>(
+        '/.vite/manifest.json',
+      );
     if (!viteManifest) return;
 
     for (const key of Object.keys(viteManifest)) {

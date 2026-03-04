@@ -1,19 +1,19 @@
-import { createMockNoteGenerator } from "./mockProvider.js";
-import { createOllamaNoteGenerator } from "./ollamaProvider.js";
-import { createOpenAiNoteGenerator } from "./openAiProvider.js";
-import { createAnthropicNoteGenerator } from "./anthropicProvider.js";
-import { createGeminiNoteGenerator } from "./geminiProvider.js";
-import { createCliNoteGenerator } from "./cliProvider.js";
+import { createMockNoteGenerator } from './mockProvider.js';
+import { createOllamaNoteGenerator } from './ollamaProvider.js';
+import { createOpenAiNoteGenerator } from './openAiProvider.js';
+import { createAnthropicNoteGenerator } from './anthropicProvider.js';
+import { createGeminiNoteGenerator } from './geminiProvider.js';
+import { createCliNoteGenerator } from './cliProvider.js';
 
 export function createNoteGenerator(config) {
   const provider = config.noteProvider;
 
-  if (provider === "mock") return createMockNoteGenerator();
-  if (provider === "openai") return createOpenAiNoteGenerator(config);
-  if (provider === "ollama") return createOllamaNoteGenerator(config);
-  if (provider === "anthropic") return createAnthropicNoteGenerator(config);
-  if (provider === "gemini") return createGeminiNoteGenerator(config);
-  if (provider === "cli") return createCliNoteGenerator(config);
+  if (provider === 'mock') return createMockNoteGenerator();
+  if (provider === 'openai') return createOpenAiNoteGenerator(config);
+  if (provider === 'ollama') return createOllamaNoteGenerator(config);
+  if (provider === 'anthropic') return createAnthropicNoteGenerator(config);
+  if (provider === 'gemini') return createGeminiNoteGenerator(config);
+  if (provider === 'cli') return createCliNoteGenerator(config);
 
   throw new Error(`Unsupported note provider: ${provider}`);
 }

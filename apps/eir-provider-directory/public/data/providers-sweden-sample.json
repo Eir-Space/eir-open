@@ -308,9 +308,7 @@
       "id": "SE2321000206-E00943",
       "name": "Psykiatrisk mottagning Kramfors",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0612-861 17",
         "internationalPhone": "+4661286117",
@@ -775,9 +773,7 @@
       "id": "SE2321000206-E01729",
       "name": "Ögonmottagning Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "ophthalmology"
-      ],
+      "specialty": ["ophthalmology"],
       "contact": {
         "phone": "0620-191 87",
         "internationalPhone": "+4662019187",
@@ -1180,9 +1176,7 @@
       "id": "SE2321000206-E01671",
       "name": "Öron-näsa-halsmottagning Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "ent"
-      ],
+      "specialty": ["ent"],
       "contact": {
         "phone": "060-18 22 90",
         "internationalPhone": "+4660182290",
@@ -1306,9 +1300,7 @@
       "id": "SE2321000206-E01644",
       "name": "Gynekologisk mottagning Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "0620-191 71",
         "internationalPhone": "+4662019171",
@@ -1370,9 +1362,7 @@
       "id": "SE2321000206-E00890",
       "name": "Röntgenmottagning Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "0620-195 10",
         "internationalPhone": "+4662019510",
@@ -1620,9 +1610,7 @@
       "id": "SE2321000206-E00942",
       "name": "Psykiatrisk mottagning Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0620-191 37",
         "internationalPhone": "+4662019137",
@@ -1684,9 +1672,7 @@
       "id": "SE2321000206-E01147",
       "name": "Specialistpsykiatriskt Omvårdnadsteam SPOT Sollefteå",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0620-195 95",
         "internationalPhone": "+4662019595",
@@ -2275,9 +2261,7 @@
       "id": "SE2321000206-E00892",
       "name": "Röntgenmottagning Härnösand",
       "type": "specialist",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "060-18 21 00",
         "internationalPhone": "+4660182100",
@@ -2463,9 +2447,7 @@
       "id": "SE2321000206-E00944",
       "name": "Psykiatrisk mottagning Härnösand",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0611-844 00",
         "internationalPhone": "+4661184400",
@@ -2527,9 +2509,7 @@
       "id": "SE2321000206-E00089",
       "name": "Ögonmottagning Härnösand",
       "type": "specialist",
-      "specialty": [
-        "ophthalmology"
-      ],
+      "specialty": ["ophthalmology"],
       "contact": {
         "phone": "060-18 22 55",
         "internationalPhone": "+4660182255",
@@ -3397,9 +3377,7 @@
       "id": "SE2321000206-E00953",
       "name": "Psykiatrisk akutmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 18 71",
         "internationalPhone": "+4660181871",
@@ -3430,9 +3408,7 @@
       "id": "SE2321000206-E00939",
       "name": "Psykiatrisk avdelning 52 Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 19 23",
         "internationalPhone": "+4660181923",
@@ -3463,9 +3439,7 @@
       "id": "SE2321000206-E00937",
       "name": "Psykiatrisk avdelning 51 Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 19 10",
         "internationalPhone": "+4660181910",
@@ -3496,9 +3470,7 @@
       "id": "SE2321000206-E01722",
       "name": "Specialistpsykiatriskt Omvårdnadsteam SPOT Medelpad Härnösand",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 28 28",
         "internationalPhone": "+4660182828",
@@ -3529,9 +3501,7 @@
       "id": "SE2321000206-E00459",
       "name": "Onkologi dagvård och mottagning Sundsvall, Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "oncology"
-      ],
+      "specialty": ["oncology"],
       "contact": {
         "phone": "060-18 22 14",
         "internationalPhone": "+4660182214",
@@ -3593,9 +3563,7 @@
       "id": "SE2321000206-E00948",
       "name": "Psykiatrisk mottagning B Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 19 04",
         "internationalPhone": "+4660181904",
@@ -3626,9 +3594,7 @@
       "id": "SE2321000206-E00950",
       "name": "Psykiatrisk mottagning C Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 12 28",
         "internationalPhone": "+4660181228",
@@ -3659,9 +3625,7 @@
       "id": "SE2321000206-E00947",
       "name": "Psykiatrisk mottagning A Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 19 04",
         "internationalPhone": "+4660181904",
@@ -3754,9 +3718,7 @@
       "id": "SE2321000206-E00946",
       "name": "Psykiatrisk bedömningsmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 12 28",
         "internationalPhone": "+4660181228",
@@ -3787,9 +3749,7 @@
       "id": "SE2321000206-E00936",
       "name": "Psykiatrisk avdelning 50 Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 10 92",
         "internationalPhone": "+4660181092",
@@ -3975,10 +3935,7 @@
       "id": "SE2321000206-E00071",
       "name": "Sekreterarenhet Kirurgi Urologi ÖNH Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "urology",
-        "ent"
-      ],
+      "specialty": ["urology", "ent"],
       "contact": {
         "phone": "060-18 10 00",
         "internationalPhone": "+4660181000",
@@ -4040,9 +3997,7 @@
       "id": "SE2321000206-E01166",
       "name": "Gastromottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "gastroenterology"
-      ],
+      "specialty": ["gastroenterology"],
       "contact": {
         "phone": "060-18 20 25",
         "internationalPhone": "+4660182025",
@@ -4135,9 +4090,7 @@
       "id": "SE2321000206-E00601",
       "name": "Öron-näsa-halsmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "ent"
-      ],
+      "specialty": ["ent"],
       "contact": {
         "phone": "060-18 22 90",
         "internationalPhone": "+4660182290",
@@ -4416,10 +4369,7 @@
       "id": "SE2321000206-E00616",
       "name": "Neurologimottagning Sundsvall, Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "neurology",
-        "urology"
-      ],
+      "specialty": ["neurology", "urology"],
       "contact": {
         "phone": "060-18 17 03",
         "internationalPhone": "+4660181703",
@@ -4481,9 +4431,7 @@
       "id": "SE2321000206-E00076",
       "name": "Onkologi vårdavdelning 27B Sundsvall, Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "oncology"
-      ],
+      "specialty": ["oncology"],
       "contact": {
         "phone": "060-18 14 36",
         "internationalPhone": "+4660181436",
@@ -4700,9 +4648,7 @@
       "id": "SE2321000206-E01816",
       "name": "Endokrinmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "endocrinology"
-      ],
+      "specialty": ["endocrinology"],
       "contact": {
         "phone": "060-18 20 25",
         "internationalPhone": "+4660182025",
@@ -4795,9 +4741,7 @@
       "id": "SE2321000206-E01156",
       "name": "Reumatologimottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "rheumatology"
-      ],
+      "specialty": ["rheumatology"],
       "contact": {
         "phone": "060-18 20 25",
         "internationalPhone": "+4660182025",
@@ -4983,9 +4927,7 @@
       "id": "SE2321000206-E00086",
       "name": "Ögonmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "ophthalmology"
-      ],
+      "specialty": ["ophthalmology"],
       "contact": {
         "phone": "060-18 22 55",
         "internationalPhone": "+4660182255",
@@ -5326,9 +5268,7 @@
       "id": "SE2321000206-E00247",
       "name": "Odontologisk radiologi Sundsvall",
       "type": "other",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "060-18 21 71",
         "internationalPhone": "+4660182171",
@@ -5421,10 +5361,7 @@
       "id": "SE2321000206-E01745",
       "name": "Stroke och neurologi avd 26B Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "neurology",
-        "urology"
-      ],
+      "specialty": ["neurology", "urology"],
       "contact": {
         "phone": "060-18 16 45",
         "internationalPhone": "+4660181645",
@@ -5579,9 +5516,7 @@
       "id": "SE2321000206-E00706",
       "name": "Gynekologisk mottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "060-18 15 20",
         "internationalPhone": "+4660181520",
@@ -5612,9 +5547,7 @@
       "id": "SE2321000206-E01110",
       "name": "Mottagning för gynekologisk cancer Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "060-18 20 50",
         "internationalPhone": "+4660182050",
@@ -5831,9 +5764,7 @@
       "id": "SE2321000206-E00705",
       "name": "Gynekologisk avdelning 12",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "060-18 15 35",
         "internationalPhone": "+4660181535",
@@ -5926,9 +5857,7 @@
       "id": "SE2321000206-E00893",
       "name": "Röntgenmottagning Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "060-18 21 00",
         "internationalPhone": "+4660182100",
@@ -6300,9 +6229,7 @@
       "id": "SE2321000206-E00935",
       "name": "Psykiatrisk avdelning 7 Sundsvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "060-18 18 70",
         "internationalPhone": "+4660181870",
@@ -6519,9 +6446,7 @@
       "id": "SE165567766992-1M80",
       "name": "Evidia Sundsvall Röntgen, Sundsvall",
       "type": "other",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "010-171 61 90",
         "internationalPhone": "+46101716190",
@@ -8567,9 +8492,7 @@
       "id": "SE2321000206-E01516",
       "name": "Specialistpsykiatriskt Omvårdnadsteam SPOT Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0660-897 24",
         "internationalPhone": "+4666089724",
@@ -8631,9 +8554,7 @@
       "id": "SE2321000206-E01723",
       "name": "Psykiatrisk mottagning B Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0660-897 26",
         "internationalPhone": "+4666089726",
@@ -8664,9 +8585,7 @@
       "id": "SE2321000206-E00945",
       "name": "Psykiatrisk mottagning A Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0660-897 26",
         "internationalPhone": "+4666089726",
@@ -9441,9 +9360,7 @@
       "id": "SE2321000206-E01640",
       "name": "Gynekologisk mottagning Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "0660-893 30",
         "internationalPhone": "+4666089330",
@@ -9505,9 +9422,7 @@
       "id": "SE2321000206-E01638",
       "name": "Gynekologisk avdelning Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "0660-893 52",
         "internationalPhone": "+4666089352",
@@ -9879,9 +9794,7 @@
       "id": "SE2321000206-E01670",
       "name": "Öron-näsa-halsmottagning Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "ent"
-      ],
+      "specialty": ["ent"],
       "contact": {
         "phone": "0660-893 66",
         "internationalPhone": "+4666089366",
@@ -9974,9 +9887,7 @@
       "id": "SE2321000206-E01728",
       "name": "Ögonmottagning Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "ophthalmology"
-      ],
+      "specialty": ["ophthalmology"],
       "contact": {
         "phone": "0660-892 60",
         "internationalPhone": "+4666089260",
@@ -10348,9 +10259,7 @@
       "id": "SE2321000206-E00895",
       "name": "Röntgenmottagning Örnsköldsvik",
       "type": "specialist",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "0660-891 55",
         "internationalPhone": "+4666089155",
@@ -11404,9 +11313,7 @@
       "id": "SE2321000198-019063",
       "name": "Psykiatrisk vårdavdelning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0650-927 70",
         "internationalPhone": "+4665092770",
@@ -12243,9 +12150,7 @@
       "id": "SE2321000198-048872",
       "name": "Psykiatrisk akutmottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0650-921 56",
         "internationalPhone": "+4665092156",
@@ -12493,9 +12398,7 @@
       "id": "SE2321000198-019031",
       "name": "Gynekologisk mottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "0650-923 25",
         "internationalPhone": "+4665092325",
@@ -12526,9 +12429,7 @@
       "id": "SE2321000198-020997",
       "name": "Gastromottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "gastroenterology"
-      ],
+      "specialty": ["gastroenterology"],
       "contact": {
         "phone": "0650-918 21",
         "internationalPhone": "+4665091821",
@@ -12559,9 +12460,7 @@
       "id": "SE2321000198-019067",
       "name": "Psykiatrisk mottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0650-924 72",
         "internationalPhone": "+4665092472",
@@ -12778,9 +12677,7 @@
       "id": "SE2321000198-021018",
       "name": "Öronavdelning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "ent"
-      ],
+      "specialty": ["ent"],
       "contact": {
         "phone": "0650-920 61",
         "internationalPhone": "+4665092061",
@@ -12873,9 +12770,7 @@
       "id": "SE2321000198-019266",
       "name": "Öron- näs- halsmottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "ent"
-      ],
+      "specialty": ["ent"],
       "contact": {
         "phone": "0650-927 40",
         "internationalPhone": "+4665092740",
@@ -13030,9 +12925,7 @@
       "id": "SE2321000198-019003",
       "name": "Barn- och ungdomspsykiatrimottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "psychiatry"
-      ],
+      "specialty": ["psychiatry"],
       "contact": {
         "phone": "0650-924 58",
         "internationalPhone": "+4665092458",
@@ -13063,9 +12956,7 @@
       "id": "SE2321000198-018926",
       "name": "Röntgen Hudiksvall",
       "type": "other",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "077-128 78 00",
         "internationalPhone": "+46771287800",
@@ -13251,9 +13142,7 @@
       "id": "SE2321000198-039611",
       "name": "BB och gynekologisk avdelning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "gynecology"
-      ],
+      "specialty": ["gynecology"],
       "contact": {
         "phone": "0560-923 16",
         "internationalPhone": "+4656092316",
@@ -13284,9 +13173,7 @@
       "id": "SE2321000198-019252",
       "name": "Ögonmottagning Hudiksvall",
       "type": "specialist",
-      "specialty": [
-        "ophthalmology"
-      ],
+      "specialty": ["ophthalmology"],
       "contact": {
         "phone": "0650-923 02",
         "internationalPhone": "+4665092302",
@@ -14216,9 +14103,7 @@
       "id": "SE2321000198-018932",
       "name": "Röntgen Ljusdal",
       "type": "other",
-      "specialty": [
-        "radiology"
-      ],
+      "specialty": ["radiology"],
       "contact": {
         "phone": "0651-171 29",
         "internationalPhone": "+4665117129",
@@ -14869,9 +14754,7 @@
       "id": "SE2321000214-E014968",
       "name": "Reumatologimottagningen, Östersund",
       "type": "specialist",
-      "specialty": [
-        "rheumatology"
-      ],
+      "specialty": ["rheumatology"],
       "contact": {
         "phone": "063-15 48 60",
         "internationalPhone": "+4663154860",

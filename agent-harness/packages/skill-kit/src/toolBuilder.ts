@@ -21,7 +21,7 @@ export interface SkillToolSet {
  */
 export function buildToolsFromSkills(
   skills: LoadedSkill[],
-  options?: { timeoutMs?: number }
+  options?: { timeoutMs?: number },
 ): SkillToolSet {
   const definitions: SkillToolDefinition[] = [];
   const handlers: Record<string, ScriptToolHandler> = {};

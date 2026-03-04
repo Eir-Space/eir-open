@@ -103,4 +103,3 @@ Avoid making the clinician wait on a single heavyweight step. Final note quality
 3. Real-time websocket streaming with VAD and turn events
 4. UI note editor and correction loop
 5. Export adapters + deployment hardening
-
