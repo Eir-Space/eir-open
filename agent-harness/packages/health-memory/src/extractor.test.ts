@@ -20,7 +20,7 @@ describe('toMemoryItems', () => {
 
   it('generates unique randomUUID IDs', () => {
     const items = toMemoryItems(conditions);
-    const ids = items.map(i => i.id);
+    const ids = items.map((i) => i.id);
     const uniqueIds = new Set(ids);
     assert.equal(uniqueIds.size, 3, 'All IDs should be unique');
 
@@ -48,8 +48,8 @@ describe('toMemoryItems', () => {
   it('maps confidence to correct certaintyLevel', () => {
     const items = toMemoryItems(conditions);
     assert.equal(items[0].certaintyLevel, 'medium'); // 0.7
-    assert.equal(items[1].certaintyLevel, 'high');   // 0.9
-    assert.equal(items[2].certaintyLevel, 'low');    // 0.4
+    assert.equal(items[1].certaintyLevel, 'high'); // 0.9
+    assert.equal(items[2].certaintyLevel, 'low'); // 0.4
   });
 
   it('uses chat as default sourceType', () => {

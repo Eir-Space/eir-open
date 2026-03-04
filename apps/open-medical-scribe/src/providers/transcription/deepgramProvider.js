@@ -1,32 +1,32 @@
 export function createDeepgramTranscriptionProvider(config) {
   return {
-    name: "deepgram",
+    name: 'deepgram',
     async transcribe(input) {
-      if (input.type === "text-simulated-audio") {
+      if (input.type === 'text-simulated-audio') {
         return { text: input.content };
       }
 
       if (!config.deepgram.apiKey) {
         return {
-          text: "[deepgram provider not configured] Set DEEPGRAM_API_KEY to enable Deepgram transcription.",
+          text: '[deepgram provider not configured] Set DEEPGRAM_API_KEY to enable Deepgram transcription.',
         };
       }
 
-      if (input.type !== "audio-base64") {
-        return { text: "" };
+      if (input.type !== 'audio-base64') {
+        return { text: '' };
       }
 
-      const audioBytes = Buffer.from(input.content, "base64");
-      const mimeType = input.mimeType || "audio/wav";
+      const audioBytes = Buffer.from(input.content, 'base64');
+      const mimeType = input.mimeType || 'audio/wav';
 
       const params = new URLSearchParams({
         model: config.deepgram.model,
-        smart_format: "true",
-        punctuate: "true",
+        smart_format: 'true',
+        punctuate: 'true',
       });
 
       if (input.language) {
-        params.set("language", String(input.language));
+        params.set('language', String(input.language));
       }
 
       const url = `https://api.deepgram.com/v1/listen?${params}`;
@@ -36,10 +36,10 @@ export function createDeepgramTranscriptionProvider(config) {
 
       try {
         const response = await fetch(url, {
-          method: "POST",
+          method: 'POST',
           headers: {
             Authorization: `Token ${config.deepgram.apiKey}`,
-            "Content-Type": mimeType,
+            'Content-Type': mimeType,
           },
           body: audioBytes,
           signal: controller.signal,
@@ -55,8 +55,7 @@ export function createDeepgramTranscriptionProvider(config) {
         }
 
         const json = safeJson(text);
-        const transcript =
-          json?.results?.channels?.[0]?.alternatives?.[0]?.transcript || "";
+        const transcript = json?.results?.channels?.[0]?.alternatives?.[0]?.transcript || '';
 
         return { text: transcript };
       } finally {

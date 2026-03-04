@@ -1,6 +1,11 @@
 import { describe, it } from 'node:test';
 import * as assert from 'node:assert/strict';
-import { buildHistoryMessages, buildModeToolInstruction, buildSystemContent, formatMemoryContext } from './contextBuilder.js';
+import {
+  buildHistoryMessages,
+  buildModeToolInstruction,
+  buildSystemContent,
+  formatMemoryContext,
+} from './contextBuilder.js';
 
 describe('buildHistoryMessages', () => {
   it('converts ChatHistoryItem[] to LlmMessage[]', () => {
@@ -61,7 +66,10 @@ describe('buildHistoryMessages', () => {
 
 describe('buildModeToolInstruction', () => {
   it('formats mode and tool list', () => {
-    const result = buildModeToolInstruction({ mode: 'triage', toolNames: ['symptom_check', 'lookup'] });
+    const result = buildModeToolInstruction({
+      mode: 'triage',
+      toolNames: ['symptom_check', 'lookup'],
+    });
     assert.ok(result.includes('MODE: triage'));
     assert.ok(result.includes('ALLOWED_TOOLS_NOW: symptom_check, lookup'));
   });
@@ -103,13 +111,28 @@ describe('buildSystemContent', () => {
 
 describe('formatMemoryContext', () => {
   it('formats memory items with category, label, certainty, status', () => {
-    const items = [{ label: 'Diabetes', category: 'diagnosis', certaintyLevel: 'high', status: 'user_confirmed' }];
+    const items = [
+      {
+        label: 'Diabetes',
+        category: 'diagnosis',
+        certaintyLevel: 'high',
+        status: 'user_confirmed',
+      },
+    ];
     const result = formatMemoryContext(items);
     assert.ok(result.includes('[diagnosis] Diabetes (high, user_confirmed)'));
   });
 
   it('includes detail when present', () => {
-    const items = [{ label: 'Diabetes', category: 'diagnosis', certaintyLevel: 'high', status: 'inferred', detail: 'Type 2' }];
+    const items = [
+      {
+        label: 'Diabetes',
+        category: 'diagnosis',
+        certaintyLevel: 'high',
+        status: 'inferred',
+        detail: 'Type 2',
+      },
+    ];
     const result = formatMemoryContext(items);
     assert.ok(result.includes('  Type 2'));
   });

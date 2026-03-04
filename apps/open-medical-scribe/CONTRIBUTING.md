@@ -213,7 +213,7 @@ open-medical-scribe/
    ```js
    export function createMyServiceTranscriptionProvider(config) {
      return {
-       name: "my-service",
+       name: 'my-service',
 
        async transcribe(input) {
          // input.type     - "audio-base64" or "text-simulated-audio"
@@ -221,7 +221,7 @@ open-medical-scribe/
          // input.mimeType - MIME type of the audio (e.g. "audio/wav", "audio/mp3")
          // input.language - optional language hint (e.g. "en", "sv")
 
-         const text = "..."; // your transcription logic here
+         const text = '...'; // your transcription logic here
          return { text };
        },
      };
@@ -232,10 +232,10 @@ open-medical-scribe/
    an import and a new `if` branch inside `createTranscriptionProvider()`:
 
    ```js
-   import { createMyServiceTranscriptionProvider } from "./myServiceProvider.js";
+   import { createMyServiceTranscriptionProvider } from './myServiceProvider.js';
 
    // Inside createTranscriptionProvider():
-   if (provider === "my-service") return createMyServiceTranscriptionProvider(config);
+   if (provider === 'my-service') return createMyServiceTranscriptionProvider(config);
    ```
 
 4. **Add any new configuration** keys to `src/config.js` if your provider
@@ -252,23 +252,36 @@ open-medical-scribe/
    provider interface:
 
    ```js
-   import { buildNotePrompt } from "../../services/promptBuilder.js";
+   import { buildNotePrompt } from '../../services/promptBuilder.js';
 
    export function createMyLlmNoteGenerator(config) {
      return {
-       name: "my-llm",
+       name: 'my-llm',
 
-       async generateNote({ transcript, noteStyle, specialty, patientContext, clinicianContext, customPrompt }) {
-         const prompt = buildNotePrompt({ transcript, noteStyle, specialty, patientContext, clinicianContext });
+       async generateNote({
+         transcript,
+         noteStyle,
+         specialty,
+         patientContext,
+         clinicianContext,
+         customPrompt,
+       }) {
+         const prompt = buildNotePrompt({
+           transcript,
+           noteStyle,
+           specialty,
+           patientContext,
+           clinicianContext,
+         });
 
          // Call your LLM with prompt.system and prompt.user
          // Parse the response and return the standard result shape:
          return {
-           noteText: "...",          // The full note as a string
-           sections: {},             // Structured sections (keys depend on noteStyle)
-           codingHints: [],          // Optional ICD/CPT coding suggestions
-           followUpQuestions: [],    // Items the clinician should verify
-           warnings: [],             // Any warnings for the end user
+           noteText: '...', // The full note as a string
+           sections: {}, // Structured sections (keys depend on noteStyle)
+           codingHints: [], // Optional ICD/CPT coding suggestions
+           followUpQuestions: [], // Items the clinician should verify
+           warnings: [], // Any warnings for the end user
          };
        },
      };
@@ -279,10 +292,10 @@ open-medical-scribe/
    import and a new `if` branch inside `createNoteGenerator()`:
 
    ```js
-   import { createMyLlmNoteGenerator } from "./myLlmProvider.js";
+   import { createMyLlmNoteGenerator } from './myLlmProvider.js';
 
    // Inside createNoteGenerator():
-   if (provider === "my-llm") return createMyLlmNoteGenerator(config);
+   if (provider === 'my-llm') return createMyLlmNoteGenerator(config);
    ```
 
 4. **Add configuration** to `src/config.js` as needed.

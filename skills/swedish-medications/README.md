@@ -45,6 +45,7 @@ cp -R swedish-medications ~/.codex/skills/swedish-medications
 Then restart the Codex app. The skill will appear as **Swedish Medications** in the skills list.
 
 Notes:
+
 - The Codex app reads `SKILL.md` and `agents/openai.yaml` from `~/.codex/skills/swedish-medications`.
 - If you update the repo, re-copy the folder into `~/.codex/skills/` and restart Codex.
 
@@ -69,7 +70,7 @@ console.log(lookupMedication('Alvedon'));
 
 // Just the data
 const med = findMedication('ibuprofen');
-console.log(med.dose);  // "Adult: 200-400mg every 4-6h, max 1200mg/day (OTC)"
+console.log(med.dose); // "Adult: 200-400mg every 4-6h, max 1200mg/day (OTC)"
 ```
 
 ## Usage
@@ -80,7 +81,7 @@ console.log(med.dose);  // "Adult: 200-400mg every 4-6h, max 1200mg/day (OTC)"
 # By substance name
 fass-lookup paracetamol
 
-# By brand name  
+# By brand name
 fass-lookup Alvedon
 
 # Multi-word queries
@@ -101,10 +102,12 @@ fass-lookup "alvedon 500mg"
 **Warnings:** Avoid with liver disease, limit alcohol
 
 ### Full Information on FASS
+
 🔗 https://fass.se/search?query=paracetamol
 
 ---
-*This is informational only. Always consult healthcare professionals for medical advice.*
+
+_This is informational only. Always consult healthcare professionals for medical advice._
 ```
 
 ## For AI Agents
@@ -119,6 +122,7 @@ This package works as an [OpenClaw](https://openclaw.ai) skill. When installed, 
 4. Link to official FASS documentation
 
 **Trigger phrases the agent recognizes:**
+
 - "What is Alvedon?"
 - "Tell me about paracetamol"
 - "Can I take Ipren for headaches?"
@@ -133,12 +137,12 @@ const { lookupMedication, findMedication, COMMON_MEDICATIONS } = require('swedis
 
 // For tool/function calling
 const medicationTool = {
-  name: "swedish_medication_lookup",
-  description: "Look up Swedish medication information by name",
+  name: 'swedish_medication_lookup',
+  description: 'Look up Swedish medication information by name',
   parameters: {
-    query: { type: "string", description: "Medication name (brand or substance)" }
+    query: { type: 'string', description: 'Medication name (brand or substance)' },
   },
-  execute: (params) => lookupMedication(params.query)
+  execute: (params) => lookupMedication(params.query),
 };
 ```
 
@@ -176,15 +180,15 @@ The raw medications database object.
 
 The quick-lookup database includes common Swedish medications:
 
-| Category | Examples |
-|----------|----------|
-| Pain/Fever | Paracetamol, Ibuprofen, Diclofenac |
-| Allergies | Loratadin, Cetirizin |
-| Stomach | Omeprazol |
-| Mental Health | Sertralin |
-| Diabetes | Metformin |
-| Cholesterol | Atorvastatin |
-| Antibiotics | Amoxicillin |
+| Category      | Examples                           |
+| ------------- | ---------------------------------- |
+| Pain/Fever    | Paracetamol, Ibuprofen, Diclofenac |
+| Allergies     | Loratadin, Cetirizin               |
+| Stomach       | Omeprazol                          |
+| Mental Health | Sertralin                          |
+| Diabetes      | Metformin                          |
+| Cholesterol   | Atorvastatin                       |
+| Antibiotics   | Amoxicillin                        |
 
 For medications not in the database, it generates a FASS search link.
 
@@ -205,6 +209,7 @@ Runs 26 tests covering database integrity, lookup functions, and edge cases.
 ## ⚠️ Disclaimer
 
 This tool provides **information only**, not medical advice. Always:
+
 - Follow prescribed dosages
 - Consult healthcare professionals for medical decisions
 - Check official sources (FASS.se) for complete information

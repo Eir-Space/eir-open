@@ -20,13 +20,18 @@ export interface ConditionExtractor {
    * Extract health conditions from conversation messages.
    * Returns raw extracted conditions (not yet stored in memory).
    */
-  extract(messages: Array<{ role: 'user' | 'assistant'; content: string }>): Promise<ExtractedCondition[]>;
+  extract(
+    messages: Array<{ role: 'user' | 'assistant'; content: string }>,
+  ): Promise<ExtractedCondition[]>;
 }
 
 /**
  * Convert raw extracted conditions to MemoryItems.
  */
-export function toMemoryItems(conditions: ExtractedCondition[], sourceType: 'chat' | 'journal' = 'chat'): MemoryItem[] {
+export function toMemoryItems(
+  conditions: ExtractedCondition[],
+  sourceType: 'chat' | 'journal' = 'chat',
+): MemoryItem[] {
   const now = new Date().toISOString();
   return conditions.map((condition) => ({
     id: randomUUID(),

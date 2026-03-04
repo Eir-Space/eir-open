@@ -34,22 +34,22 @@ let hospitalClinics = [];
 
 try {
   console.log('📊 Loading source data...');
-  
+
   if (fs.existsSync(mainClinicFile)) {
     allClinics = JSON.parse(fs.readFileSync(mainClinicFile, 'utf8'));
     console.log(`   • Loaded ${allClinics.length} total clinics`);
   }
-  
+
   if (fs.existsSync(specialistFile)) {
     specialistClinics = JSON.parse(fs.readFileSync(specialistFile, 'utf8'));
     console.log(`   • Loaded ${specialistClinics.length} specialist clinics`);
   }
-  
+
   if (fs.existsSync(vardcentralFile)) {
     vardcentralClinics = JSON.parse(fs.readFileSync(vardcentralFile, 'utf8'));
     console.log(`   • Loaded ${vardcentralClinics.length} vårdcentraler`);
   }
-  
+
   if (fs.existsSync(hospitalFile)) {
     hospitalClinics = JSON.parse(fs.readFileSync(hospitalFile, 'utf8'));
     console.log(`   • Loaded ${hospitalClinics.length} hospitals`);
@@ -60,18 +60,18 @@ try {
 }
 
 // Create lookup sets for efficient categorization
-const specialistIds = new Set(specialistClinics.map(c => c.hsaId));
-const vardcentralIds = new Set(vardcentralClinics.map(c => c.hsaId));
-const hospitalIds = new Set(hospitalClinics.map(c => c.hsaId));
+const specialistIds = new Set(specialistClinics.map((c) => c.hsaId));
+const vardcentralIds = new Set(vardcentralClinics.map((c) => c.hsaId));
+const hospitalIds = new Set(hospitalClinics.map((c) => c.hsaId));
 
 function categorizeClinic(clinic) {
   const name = clinic.name.toLowerCase();
-  
+
   // Use explicit categorization first
   if (specialistIds.has(clinic.hsaId)) return 'specialist';
   if (vardcentralIds.has(clinic.hsaId)) return 'primary_care';
   if (hospitalIds.has(clinic.hsaId)) return 'hospital';
-  
+
   // Fallback to name-based categorization
   if (name.includes('vårdcentral') || name.includes('hälsocentral')) return 'primary_care';
   if (name.includes('sjukhus') || name.includes('hospital')) return 'hospital';
@@ -81,14 +81,14 @@ function categorizeClinic(clinic) {
   if (name.includes('psykiatri') || name.includes('bup')) return 'mental_health';
   if (name.includes('barnavård') || name.includes('bvc')) return 'pediatric';
   if (name.includes('mödravård') || name.includes('förlossning')) return 'maternity';
-  
+
   return 'other';
 }
 
 function extractSpecialty(clinic) {
   const name = clinic.name.toLowerCase();
   const specialties = [];
-  
+
   if (name.includes('dermatologi')) specialties.push('dermatology');
   if (name.includes('ortopedi')) specialties.push('orthopedics');
   if (name.includes('kardiologi')) specialties.push('cardiology');
@@ -104,51 +104,51 @@ function extractSpecialty(clinic) {
   if (name.includes('psykiatri')) specialties.push('psychiatry');
   if (name.includes('röntgen') || name.includes('radiologi')) specialties.push('radiology');
   if (name.includes('patologi')) specialties.push('pathology');
-  
+
   return specialties;
 }
 
 // Process all clinics into standardized format
 console.log('🔄 Converting to standardized format...');
 
-const standardizedClinics = allClinics.map(clinic => {
+const standardizedClinics = allClinics.map((clinic) => {
   const type = categorizeClinic(clinic);
   const specialties = extractSpecialty(clinic);
-  
+
   return {
     id: clinic.hsaId,
     name: clinic.name,
     type: type,
     specialty: specialties,
-    
+
     contact: {
       phone: clinic.phone || null,
       internationalPhone: clinic.internationalPhone || null,
       email: null, // TODO: Email acquisition
-      website: clinic.url || null
+      website: clinic.url || null,
     },
-    
+
     location: {
       address: clinic.address || null,
       coordinates: {
         lat: clinic.lat,
-        lng: clinic.lng
-      }
+        lng: clinic.lng,
+      },
     },
-    
+
     services: {
       self_referral: specialistIds.has(clinic.hsaId) || vardcentralIds.has(clinic.hsaId),
       video_consultation: clinic.videoOrChat || false,
       mvk_services: clinic.hasMvkServices || false,
-      has_listing: clinic.hasListing || false
+      has_listing: clinic.hasListing || false,
     },
-    
+
     metadata: {
       country: 'SE',
       source: '1177.se',
       updated: new Date().toISOString(),
-      eigen_remiss_research: specialistIds.has(clinic.hsaId) || vardcentralIds.has(clinic.hsaId)
-    }
+      eigen_remiss_research: specialistIds.has(clinic.hsaId) || vardcentralIds.has(clinic.hsaId),
+    },
   };
 });
 
@@ -156,14 +156,16 @@ const standardizedClinics = allClinics.map(clinic => {
 const stats = {
   total: standardizedClinics.length,
   by_type: {},
-  with_coordinates: standardizedClinics.filter(c => c.location.coordinates.lat && c.location.coordinates.lng).length,
-  with_phone: standardizedClinics.filter(c => c.contact.phone).length,
-  with_address: standardizedClinics.filter(c => c.location.address).length,
-  self_referral_eligible: standardizedClinics.filter(c => c.services.self_referral).length
+  with_coordinates: standardizedClinics.filter(
+    (c) => c.location.coordinates.lat && c.location.coordinates.lng,
+  ).length,
+  with_phone: standardizedClinics.filter((c) => c.contact.phone).length,
+  with_address: standardizedClinics.filter((c) => c.location.address).length,
+  self_referral_eligible: standardizedClinics.filter((c) => c.services.self_referral).length,
 };
 
 // Count by type
-standardizedClinics.forEach(clinic => {
+standardizedClinics.forEach((clinic) => {
   stats.by_type[clinic.type] = (stats.by_type[clinic.type] || 0) + 1;
 });
 
@@ -174,10 +176,10 @@ const output = {
     source: 'eir-chrome-plugin + EgenRemiss research',
     country: 'Sweden',
     total_providers: standardizedClinics.length,
-    data_version: '1.0'
+    data_version: '1.0',
   },
   statistics: stats,
-  providers: standardizedClinics
+  providers: standardizedClinics,
 };
 
 fs.writeFileSync(outputFile, JSON.stringify(output, null, 2));
@@ -185,9 +187,12 @@ fs.writeFileSync(outputFile, JSON.stringify(output, null, 2));
 // Also create a smaller sample for testing
 const sampleOutput = {
   ...output,
-  providers: standardizedClinics.slice(0, 500)
+  providers: standardizedClinics.slice(0, 500),
 };
-fs.writeFileSync(path.join(outputDir, 'providers-sweden-sample.json'), JSON.stringify(sampleOutput, null, 2));
+fs.writeFileSync(
+  path.join(outputDir, 'providers-sweden-sample.json'),
+  JSON.stringify(sampleOutput, null, 2),
+);
 
 console.log('\n✅ Processing complete!');
 console.log(`📄 Full dataset: ${outputFile}`);
@@ -195,14 +200,22 @@ console.log(`📄 Sample dataset: ${path.join(outputDir, 'providers-sweden-sampl
 
 console.log('\n📊 Statistics:');
 console.log(`   Total providers: ${stats.total}`);
-console.log(`   With coordinates: ${stats.with_coordinates} (${(stats.with_coordinates/stats.total*100).toFixed(1)}%)`);
-console.log(`   With phone: ${stats.with_phone} (${(stats.with_phone/stats.total*100).toFixed(1)}%)`);
-console.log(`   With address: ${stats.with_address} (${(stats.with_address/stats.total*100).toFixed(1)}%)`);
-console.log(`   Self-referral eligible: ${stats.self_referral_eligible} (${(stats.self_referral_eligible/stats.total*100).toFixed(1)}%)`);
+console.log(
+  `   With coordinates: ${stats.with_coordinates} (${((stats.with_coordinates / stats.total) * 100).toFixed(1)}%)`,
+);
+console.log(
+  `   With phone: ${stats.with_phone} (${((stats.with_phone / stats.total) * 100).toFixed(1)}%)`,
+);
+console.log(
+  `   With address: ${stats.with_address} (${((stats.with_address / stats.total) * 100).toFixed(1)}%)`,
+);
+console.log(
+  `   Self-referral eligible: ${stats.self_referral_eligible} (${((stats.self_referral_eligible / stats.total) * 100).toFixed(1)}%)`,
+);
 
 console.log('\n📈 By Type:');
 Object.entries(stats.by_type)
-  .sort(([,a], [,b]) => b - a)
+  .sort(([, a], [, b]) => b - a)
   .forEach(([type, count]) => {
     console.log(`   ${type}: ${count}`);
   });

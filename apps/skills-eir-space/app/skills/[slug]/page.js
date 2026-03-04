@@ -1,19 +1,19 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getSkillBySlug } from "@/lib/skill-store";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { getSkillBySlug } from '@/lib/skill-store';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 const reviewLabel = {
-  not_medically_reviewed: "Not medically reviewed",
-  clinician_reviewed: "Clinician reviewed",
-  not_applicable: "Not applicable"
+  not_medically_reviewed: 'Not medically reviewed',
+  clinician_reviewed: 'Clinician reviewed',
+  not_applicable: 'Not applicable',
 };
 
 const tierLabel = {
-  community: "Community",
-  verified: "Verified",
-  clinician_reviewed: "Clinician-reviewed tier"
+  community: 'Community',
+  verified: 'Verified',
+  clinician_reviewed: 'Clinician-reviewed tier',
 };
 
 export default async function SkillPage({ params }) {
@@ -23,7 +23,7 @@ export default async function SkillPage({ params }) {
   try {
     skill = await getSkillBySlug(slug);
   } catch (error) {
-    console.error("Failed to load skill detail:", error?.message || error);
+    console.error('Failed to load skill detail:', error?.message || error);
   }
   if (!skill) notFound();
 
@@ -35,10 +35,18 @@ export default async function SkillPage({ params }) {
           <h1>{skill.title}</h1>
           <p className="lede">{skill.summary}</p>
           <div className="pillRow">
-            <span className={`pill tier ${skill.moderationTier}`}>{tierLabel[skill.moderationTier]}</span>
-            <span className={`pill review ${skill.reviewStatus}`}>{reviewLabel[skill.reviewStatus]}</span>
-            {skill.healthMdCompatible ? <span className="pill soft">Health.md compatible</span> : null}
-            {skill.createsLinkedFile ? <span className="pill soft">Creates {skill.linkedFileNames?.join(", ")}</span> : null}
+            <span className={`pill tier ${skill.moderationTier}`}>
+              {tierLabel[skill.moderationTier]}
+            </span>
+            <span className={`pill review ${skill.reviewStatus}`}>
+              {reviewLabel[skill.reviewStatus]}
+            </span>
+            {skill.healthMdCompatible ? (
+              <span className="pill soft">Health.md compatible</span>
+            ) : null}
+            {skill.createsLinkedFile ? (
+              <span className="pill soft">Creates {skill.linkedFileNames?.join(', ')}</span>
+            ) : null}
           </div>
         </div>
         <div className="detailActions">
@@ -57,11 +65,15 @@ export default async function SkillPage({ params }) {
           <dl className="kvList">
             <div>
               <dt>Skill name</dt>
-              <dd><code>{skill.name}</code></dd>
+              <dd>
+                <code>{skill.name}</code>
+              </dd>
             </div>
             <div>
               <dt>Skill path</dt>
-              <dd><code>{skill.skillPath}</code></dd>
+              <dd>
+                <code>{skill.skillPath}</code>
+              </dd>
             </div>
             <div>
               <dt>Version</dt>
@@ -69,15 +81,15 @@ export default async function SkillPage({ params }) {
             </div>
             <div>
               <dt>Last reviewed</dt>
-              <dd>{skill.lastReviewed || "Not provided"}</dd>
+              <dd>{skill.lastReviewed || 'Not provided'}</dd>
             </div>
             <div>
               <dt>Populations</dt>
-              <dd>{(skill.populations || []).join(", ") || "Not specified"}</dd>
+              <dd>{(skill.populations || []).join(', ') || 'Not specified'}</dd>
             </div>
             <div>
               <dt>Regions</dt>
-              <dd>{(skill.regions || []).join(", ") || "Not specified"}</dd>
+              <dd>{(skill.regions || []).join(', ') || 'Not specified'}</dd>
             </div>
             <div>
               <dt>Status</dt>
@@ -96,7 +108,9 @@ export default async function SkillPage({ params }) {
             ))}
           </div>
           <p className="muted">
-            Health skills should clearly disclose review status and source links. This registry uses moderation tiers to separate fast community publishing from higher-trust reviewed listings.
+            Health skills should clearly disclose review status and source links. This registry uses
+            moderation tiers to separate fast community publishing from higher-trust reviewed
+            listings.
           </p>
         </div>
 
@@ -120,10 +134,11 @@ export default async function SkillPage({ params }) {
         <div className="panel">
           <h2>Install / Use</h2>
           <p className="muted">
-            This registry is repo-first. Submit or update by pointing to a GitHub repo and skill path, similar to general skill directories.
+            This registry is repo-first. Submit or update by pointing to a GitHub repo and skill
+            path, similar to general skill directories.
           </p>
           <pre className="codeBlock">
-{`# Example (generic)
+            {`# Example (generic)
 # install from repo path if your agent runtime supports repo-based skills
 repo: ${skill.repoUrl}
 skill_path: ${skill.skillPath}`}

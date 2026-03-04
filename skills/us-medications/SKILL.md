@@ -38,13 +38,13 @@ us-medications --help
 ### JavaScript API
 
 ```javascript
-const { 
-  lookupMedication, 
+const {
+  lookupMedication,
   searchMedications,
   lookupInteractions,
   downloadDatabase,
   getDatabaseStats,
-  CURATED_MEDICATIONS 
+  CURATED_MEDICATIONS,
 } = require('us-medications');
 
 // Look up a specific medication
@@ -53,7 +53,7 @@ console.log(med.uses, med.warnings);
 
 // Search for medications
 const results = await searchMedications('diabetes');
-results.forEach(m => console.log(m.name));
+results.forEach((m) => console.log(m.name));
 
 // Get drug interactions
 const interactions = await lookupInteractions('lisinopril');
@@ -82,6 +82,7 @@ https://birgermoell.github.io/us-medications/skill.md
 ## Output Format
 
 Each medication includes:
+
 - **name**: Brand/generic name
 - **altNames**: Alternative names
 - **substances**: Active ingredients
@@ -94,10 +95,12 @@ Each medication includes:
 ## Data Management
 
 The full database is stored in `~/.us-medications/`:
+
 - `medications.json` - Main medication database
 - `interactions.json` - Drug interaction data
 
 To refresh data:
+
 ```bash
 us-medications --download --force
 ```
@@ -105,18 +108,23 @@ us-medications --download --force
 ## Common Medication Categories
 
 ### Cardiovascular
+
 - Lisinopril, Metoprolol, Amlodipine, Losartan, Atorvastatin
 
 ### Diabetes
+
 - Metformin, Insulin (various), Glipizide, Januvia
 
 ### Pain/Inflammation
+
 - Ibuprofen, Acetaminophen, Naproxen, Tramadol
 
 ### Mental Health
+
 - Sertraline, Escitalopram, Alprazolam, Trazodone
 
 ### Antibiotics
+
 - Amoxicillin, Azithromycin, Ciprofloxacin, Doxycycline
 
 ## Disclaimer

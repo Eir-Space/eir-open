@@ -2,12 +2,7 @@
   "appId": "com.openmedicalscribe.app",
   "productName": "Open Medical Scribe",
   "asar": true,
-  "files": [
-    "src",
-    "public",
-    "electron",
-    "package.json"
-  ],
+  "files": ["src", "public", "electron", "package.json"],
   "asarUnpack": [
     "node_modules/onnxruntime-node/**",
     "node_modules/sharp/**",

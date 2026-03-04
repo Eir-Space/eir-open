@@ -4,20 +4,20 @@ import type { ChatHistoryItem, LlmMessage } from './types.js';
  * Build LLM message array from chat history.
  * Applies a sliding window (default last 20 items).
  */
-export function buildHistoryMessages(history: ChatHistoryItem[] = [], windowSize: number = 20): LlmMessage[] {
+export function buildHistoryMessages(
+  history: ChatHistoryItem[] = [],
+  windowSize: number = 20,
+): LlmMessage[] {
   return history
-    .filter(item => item.role && item.content?.trim())
+    .filter((item) => item.role && item.content?.trim())
     .slice(-windowSize)
-    .map(item => ({ role: item.role, content: item.content.trim() }));
+    .map((item) => ({ role: item.role, content: item.content.trim() }));
 }
 
 /**
  * Build mode/tool restriction instruction for the system prompt.
  */
-export function buildModeToolInstruction(params: {
-  mode: string;
-  toolNames: string[];
-}): string {
+export function buildModeToolInstruction(params: { mode: string; toolNames: string[] }): string {
   const { mode, toolNames } = params;
   const toolList = toolNames.length > 0 ? toolNames.join(', ') : '(none)';
 
@@ -42,10 +42,18 @@ export function buildSystemContent(sections: Array<string | null | undefined>): 
  * Format health memory items for injection into system prompt.
  * Uses the "untrusted factual snippets" framing.
  */
-export function formatMemoryContext(items: Array<{ label: string; category: string; certaintyLevel: string; status: string; detail?: string }>): string {
+export function formatMemoryContext(
+  items: Array<{
+    label: string;
+    category: string;
+    certaintyLevel: string;
+    status: string;
+    detail?: string;
+  }>,
+): string {
   if (!items.length) return '';
 
-  const lines = items.map(item => {
+  const lines = items.map((item) => {
     const parts = [`- [${item.category}] ${item.label} (${item.certaintyLevel}, ${item.status})`];
     if (item.detail) parts.push(`  ${item.detail}`);
     return parts.join('\n');

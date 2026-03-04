@@ -1,14 +1,14 @@
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { dirname } from "node:path";
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
 
-const SETTINGS_FILE = "data/settings.json";
+const SETTINGS_FILE = 'data/settings.json';
 
 /**
  * Load saved settings from disk. Returns empty object if no file exists.
  */
 export function loadSavedSettings() {
   try {
-    const raw = readFileSync(SETTINGS_FILE, "utf8");
+    const raw = readFileSync(SETTINGS_FILE, 'utf8');
     return JSON.parse(raw);
   } catch {
     return {};
@@ -23,7 +23,7 @@ export function saveSettings(patch) {
   const merged = deepMerge(existing, patch);
 
   mkdirSync(dirname(SETTINGS_FILE), { recursive: true });
-  writeFileSync(SETTINGS_FILE, JSON.stringify(merged, null, 2) + "\n");
+  writeFileSync(SETTINGS_FILE, JSON.stringify(merged, null, 2) + '\n');
 
   return merged;
 }
@@ -36,21 +36,39 @@ export function applySavedSettings(config) {
   if (!saved || !Object.keys(saved).length) return;
 
   // Top-level simple values
-  const topLevel = ["transcriptionProvider", "noteProvider", "defaultNoteStyle", "defaultSpecialty", "defaultCountry", "scribeMode"];
+  const topLevel = [
+    'transcriptionProvider',
+    'noteProvider',
+    'defaultNoteStyle',
+    'defaultSpecialty',
+    'defaultCountry',
+    'scribeMode',
+  ];
   for (const key of topLevel) {
     if (saved[key] !== undefined) config[key] = saved[key];
   }
 
   // Privacy
   if (saved.privacy) {
-    if (saved.privacy.phiRedactionMode !== undefined) config.privacy.phiRedactionMode = saved.privacy.phiRedactionMode;
-    if (typeof saved.privacy.redactBeforeApiCalls === "boolean") {
+    if (saved.privacy.phiRedactionMode !== undefined)
+      config.privacy.phiRedactionMode = saved.privacy.phiRedactionMode;
+    if (typeof saved.privacy.redactBeforeApiCalls === 'boolean') {
       config.privacy.redactBeforeApiCalls = saved.privacy.redactBeforeApiCalls;
     }
   }
 
   // Provider configs — apply all saved values including empty strings (to allow clearing)
-  const providerSections = ["openai", "anthropic", "gemini", "ollama", "deepgram", "google", "berget", "whisper", "streaming"];
+  const providerSections = [
+    'openai',
+    'anthropic',
+    'gemini',
+    'ollama',
+    'deepgram',
+    'google',
+    'berget',
+    'whisper',
+    'streaming',
+  ];
   for (const section of providerSections) {
     if (saved[section] && config[section]) {
       for (const [key, value] of Object.entries(saved[section])) {
@@ -62,8 +80,8 @@ export function applySavedSettings(config) {
   }
 
   // Auto-configure streaming provider when whisper-onnx is selected
-  if (config.transcriptionProvider === "whisper-onnx") {
-    config.streaming.transcriptionProvider = "whisper-stream";
+  if (config.transcriptionProvider === 'whisper-onnx') {
+    config.streaming.transcriptionProvider = 'whisper-stream';
   }
 }
 
@@ -132,15 +150,20 @@ export function configToSettingsResponse(config) {
 }
 
 function maskKey(key) {
-  if (!key) return "";
-  if (key.length <= 8) return "****";
-  return key.slice(0, 4) + "****" + key.slice(-4);
+  if (!key) return '';
+  if (key.length <= 8) return '****';
+  return key.slice(0, 4) + '****' + key.slice(-4);
 }
 
 function deepMerge(target, source) {
   const result = { ...target };
   for (const [key, value] of Object.entries(source)) {
-    if (value && typeof value === "object" && !Array.isArray(value) && typeof result[key] === "object") {
+    if (
+      value &&
+      typeof value === 'object' &&
+      !Array.isArray(value) &&
+      typeof result[key] === 'object'
+    ) {
       result[key] = deepMerge(result[key] || {}, value);
     } else {
       result[key] = value;

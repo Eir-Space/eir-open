@@ -4,10 +4,10 @@ A lightweight, open-source agent harness for building health agents. Extracted f
 
 ## Packages
 
-| Package | Description |
-|---|---|
-| [`@eir-open/agent-core`](packages/agent-core/) | Tool loop engine, LLM provider interface, mode router, types |
-| [`@eir-open/skill-kit`](packages/skill-kit/) | Skill format spec, loader, and prompt assembly |
+| Package                                              | Description                                                                      |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------- |
+| [`@eir-open/agent-core`](packages/agent-core/)       | Tool loop engine, LLM provider interface, mode router, types                     |
+| [`@eir-open/skill-kit`](packages/skill-kit/)         | Skill format spec, loader, and prompt assembly                                   |
 | [`@eir-open/health-memory`](packages/health-memory/) | Open Health Memory Standard — schemas, store interface, reference implementation |
 
 **Independent consumption:** Skill authors need only `skill-kit`. Health apps need only `health-memory`. Agent builders use all three.
@@ -33,7 +33,10 @@ const skills = loadSkillDirectory('./skills');
 const result = await executeToolLoop({
   provider,
   model: 'gpt-4o',
-  messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: userMessage }],
+  messages: [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: userMessage },
+  ],
   tools: myToolDefinitions,
   toolHandlers: myToolHandlers,
   maxIterations: 5,
@@ -66,6 +69,7 @@ languages: [en, sv]
 ---
 
 # Base Personality
+
 You are a health agent...
 ```
 

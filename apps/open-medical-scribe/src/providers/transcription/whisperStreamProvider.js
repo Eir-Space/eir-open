@@ -5,10 +5,10 @@
  * Buffers incoming PCM16 audio and periodically runs whisper inference
  * on the accumulated audio, sending interim results back to the client.
  */
-import { pipeline } from "@huggingface/transformers";
-import { existsSync } from "node:fs";
+import { pipeline } from '@huggingface/transformers';
+import { existsSync } from 'node:fs';
 
-const DEFAULT_MODEL = "onnx-community/kb-whisper-large-ONNX";
+const DEFAULT_MODEL = 'onnx-community/kb-whisper-large-ONNX';
 const DEFAULT_INTERVAL_MS = 3000;
 const MIN_SAMPLES = 8000; // 0.5s at 16kHz — skip transcription below this
 const SILENCE_RMS_THRESHOLD = 0.01;
@@ -21,7 +21,7 @@ async function getTranscriber(model) {
   if (cachedPipeline) return cachedPipeline;
   if (pipelinePromise) return pipelinePromise;
 
-  const opts = { dtype: "q4" };
+  const opts = { dtype: 'q4' };
   const bundledDir = process.env.BUNDLED_WHISPER_CACHE_DIR;
   if (bundledDir && existsSync(bundledDir)) {
     opts.cache_dir = bundledDir;
@@ -30,7 +30,7 @@ async function getTranscriber(model) {
   }
 
   console.log(`[whisper-stream] Loading model: ${model} ...`);
-  pipelinePromise = pipeline("automatic-speech-recognition", model, opts);
+  pipelinePromise = pipeline('automatic-speech-recognition', model, opts);
   cachedPipeline = await pipelinePromise;
   pipelinePromise = null;
   console.log(`[whisper-stream] Model loaded.`);
@@ -39,23 +39,17 @@ async function getTranscriber(model) {
 
 export function createWhisperStreamProvider(config) {
   const model = config.streaming.whisperModel || DEFAULT_MODEL;
-  const language = config.streaming.whisperLanguage || "sv";
+  const language = config.streaming.whisperLanguage || 'sv';
   const intervalMs = config.streaming.whisperIntervalMs || DEFAULT_INTERVAL_MS;
 
   return {
-    name: "whisper-stream",
+    name: 'whisper-stream',
 
-    createSession({
-      language: sessionLang,
-      onResult,
-      onUtteranceEnd,
-      onError,
-      onClose,
-    }) {
+    createSession({ language: sessionLang, onResult, onUtteranceEnd, onError, onClose }) {
       const chunks = []; // Float32Array segments
       let totalSamples = 0;
       let transcribedUpTo = 0;
-      let pendingText = "";
+      let pendingText = '';
       let closed = false;
       let transcribing = false;
       let silentSince = null;
@@ -67,11 +61,7 @@ export function createWhisperStreamProvider(config) {
       });
 
       function pcm16ToFloat32(pcm16Buf) {
-        const int16 = new Int16Array(
-          pcm16Buf.buffer,
-          pcm16Buf.byteOffset,
-          pcm16Buf.byteLength / 2,
-        );
+        const int16 = new Int16Array(pcm16Buf.buffer, pcm16Buf.byteOffset, pcm16Buf.byteLength / 2);
         const float32 = new Float32Array(int16.length);
         for (let i = 0; i < int16.length; i++) {
           float32[i] = int16[i] / 32768.0;
@@ -130,15 +120,15 @@ export function createWhisperStreamProvider(config) {
           const lang = sessionLang || language;
           const result = await transcriber(audio, {
             language: lang,
-            task: "transcribe",
+            task: 'transcribe',
           });
 
           if (closed) return;
-          const text = (result.text || "").trim();
+          const text = (result.text || '').trim();
           if (!text && !isFinal) return;
 
           if (text !== pendingText || isFinal) {
-            pendingText = isFinal ? "" : text;
+            pendingText = isFinal ? '' : text;
             onResult({
               text,
               speaker: -1,
@@ -176,10 +166,7 @@ export function createWhisperStreamProvider(config) {
           const rms = computeRms(float32);
           if (rms < SILENCE_RMS_THRESHOLD) {
             if (!silentSince) silentSince = Date.now();
-            else if (
-              Date.now() - silentSince >= SILENCE_DURATION_MS &&
-              pendingText
-            ) {
+            else if (Date.now() - silentSince >= SILENCE_DURATION_MS && pendingText) {
               silentSince = null;
               transcribeSegment(transcribedUpTo, totalSamples, true);
             }
@@ -207,9 +194,9 @@ export function createWhisperStreamProvider(config) {
                 const lang = sessionLang || language;
                 const result = await transcriber(audio, {
                   language: lang,
-                  task: "transcribe",
+                  task: 'transcribe',
                 });
-                const text = (result.text || "").trim();
+                const text = (result.text || '').trim();
                 if (text) {
                   onResult({
                     text,

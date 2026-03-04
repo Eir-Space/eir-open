@@ -46,16 +46,19 @@ export class KeywordModeRouter implements ModeRouter {
 
     // Build context string from recent history
     const recentHistory = history.slice(-(this.config.historyScanDepth ?? 3));
-    const contextText = recentHistory.map(m => m.content).join(' ').toLowerCase();
+    const contextText = recentHistory
+      .map((m) => m.content)
+      .join(' ')
+      .toLowerCase();
     const fullText = `${messageLower} ${contextText}`;
 
     // Check rules in priority order
     for (const rule of this.config.rules) {
-      const matched = rule.keywords.some(kw => fullText.includes(kw.toLowerCase()));
+      const matched = rule.keywords.some((kw) => fullText.includes(kw.toLowerCase()));
       if (!matched) continue;
 
       // Check exclude patterns
-      if (rule.excludePatterns?.some(p => p.test(messageLower))) continue;
+      if (rule.excludePatterns?.some((p) => p.test(messageLower))) continue;
 
       // Check informational exclusion
       if (rule.excludeInformational && this.isInformational(messageLower)) continue;
@@ -79,6 +82,6 @@ export class KeywordModeRouter implements ModeRouter {
       /^(what|how|why|when|where|who|which|can you explain|tell me about)\b/i,
       /\b(what is|what are|how does|how do|explain)\b/i,
     ];
-    return informationalPatterns.some(p => p.test(text));
+    return informationalPatterns.some((p) => p.test(text));
   }
 }

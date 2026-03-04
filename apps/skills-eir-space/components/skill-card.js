@@ -1,15 +1,15 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const reviewLabel = {
-  not_medically_reviewed: "Not medically reviewed",
-  clinician_reviewed: "Clinician reviewed",
-  not_applicable: "Not applicable"
+  not_medically_reviewed: 'Not medically reviewed',
+  clinician_reviewed: 'Clinician reviewed',
+  not_applicable: 'Not applicable',
 };
 
 const tierLabel = {
-  community: "Community",
-  verified: "Verified",
-  clinician_reviewed: "Clinician-reviewed tier"
+  community: 'Community',
+  verified: 'Verified',
+  clinician_reviewed: 'Clinician-reviewed tier',
 };
 
 export function SkillCard({ skill }) {
@@ -22,8 +22,12 @@ export function SkillCard({ skill }) {
           <p className="skillSlug">{skill.name}</p>
         </div>
         <div className="stackBadges">
-          <span className={`pill tier ${skill.moderationTier}`}>{tierLabel[skill.moderationTier] || skill.moderationTier}</span>
-          <span className={`pill review ${skill.reviewStatus}`}>{reviewLabel[skill.reviewStatus] || skill.reviewStatus}</span>
+          <span className={`pill tier ${skill.moderationTier}`}>
+            {tierLabel[skill.moderationTier] || skill.moderationTier}
+          </span>
+          <span className={`pill review ${skill.reviewStatus}`}>
+            {reviewLabel[skill.reviewStatus] || skill.reviewStatus}
+          </span>
         </div>
       </div>
 
@@ -43,8 +47,12 @@ export function SkillCard({ skill }) {
       </div>
 
       <div className="metaRow compact">
-        <span>{skill.healthMdCompatible ? "Health.md compatible" : "No Health.md contract"}</span>
-        <span>{skill.createsLinkedFile ? `Creates ${skill.linkedFileNames?.join(", ")}` : "No linked file"}</span>
+        <span>{skill.healthMdCompatible ? 'Health.md compatible' : 'No Health.md contract'}</span>
+        <span>
+          {skill.createsLinkedFile
+            ? `Creates ${skill.linkedFileNames?.join(', ')}`
+            : 'No linked file'}
+        </span>
       </div>
 
       <div className="cardFooter">

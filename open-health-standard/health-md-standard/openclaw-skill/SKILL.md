@@ -19,6 +19,7 @@ Parse and analyze Health.md files - the open standard for LLM-optimized healthca
 ## Setup
 
 ### Install Dependencies
+
 ```bash
 pip install health-md pyyaml beautifulsoup4
 ```
@@ -68,6 +69,7 @@ Question: What are the key health concerns for this patient?
 ## Clinical Use Cases
 
 ### **1. Clinical Decision Support**
+
 ```python
 # Extract current medications and conditions
 medications = record.get_current_medications()
@@ -78,6 +80,7 @@ analysis = analyze_clinical_context(medications, conditions)
 ```
 
 ### **2. Patient Education**
+
 ```python
 # Generate patient-friendly summaries
 summary = record.to_patient_summary()
@@ -87,6 +90,7 @@ education = generate_patient_education(record.get_conditions())
 ```
 
 ### **3. Research & Analytics**
+
 ```python
 # Extract de-identified data for research
 if record.get_privacy_level() == 'anonymous':
@@ -98,7 +102,7 @@ if record.get_privacy_level() == 'anonymous':
 This skill respects Health.md privacy levels:
 
 - **Anonymous**: No identifiable information processed
-- **Pseudonymized**: Consistent fake identifiers maintained  
+- **Pseudonymized**: Consistent fake identifiers maintained
 - **Identified**: Full access (requires appropriate permissions)
 
 All processing follows HIPAA/GDPR principles and the Health.md privacy specification.
@@ -113,7 +117,7 @@ Supports all Health.md specification features:
 - ✅ **Medical History** with ICD coding
 - ✅ **Clinical Timeline** with provider context
 - ✅ **Vital Signs** with temporal tracking
-- ✅ **Allergies & Intolerances** 
+- ✅ **Allergies & Intolerances**
 - ✅ **Care Team** information
 
 ## Examples
@@ -147,7 +151,7 @@ try:
 except HealthMdValidationError as e:
     # Handle validation errors (missing sections, invalid dates, etc.)
     print(f"Validation error: {e}")
-except HealthMdPrivacyError as e:  
+except HealthMdPrivacyError as e:
     # Handle privacy violations
     print(f"Privacy error: {e}")
 ```
@@ -155,13 +159,15 @@ except HealthMdPrivacyError as e:
 ## Advanced Features
 
 ### **Clinical Reasoning**
+
 ```python
 # Generate clinical insights
 insights = record.generate_clinical_insights()
 # Returns: medication adherence, lab trends, care gaps, etc.
 ```
 
-### **Timeline Analysis** 
+### **Timeline Analysis**
+
 ```python
 # Analyze patient journey over time
 timeline = record.get_clinical_timeline(days=365)
@@ -169,6 +175,7 @@ events = analyze_clinical_progression(timeline)
 ```
 
 ### **Risk Assessment**
+
 ```python
 # Calculate health risks based on available data
 risks = calculate_health_risks(record)

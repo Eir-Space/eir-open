@@ -13,12 +13,12 @@ export function encodePcm16ToWav(pcmBuffer, sampleRate = 16000) {
   const buffer = Buffer.alloc(headerSize + dataSize);
 
   // RIFF header
-  buffer.write("RIFF", 0);
+  buffer.write('RIFF', 0);
   buffer.writeUInt32LE(36 + dataSize, 4);
-  buffer.write("WAVE", 8);
+  buffer.write('WAVE', 8);
 
   // fmt sub-chunk
-  buffer.write("fmt ", 12);
+  buffer.write('fmt ', 12);
   buffer.writeUInt32LE(16, 16); // sub-chunk size
   buffer.writeUInt16LE(1, 20); // PCM format
   buffer.writeUInt16LE(numChannels, 22);
@@ -28,7 +28,7 @@ export function encodePcm16ToWav(pcmBuffer, sampleRate = 16000) {
   buffer.writeUInt16LE(bitsPerSample, 34);
 
   // data sub-chunk
-  buffer.write("data", 36);
+  buffer.write('data', 36);
   buffer.writeUInt32LE(dataSize, 40);
   pcmBuffer.copy(buffer, headerSize);
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
+import { spawn } from 'node:child_process';
 
-const DEFAULT_API_BASE = process.env.EIR_SKILLS_API || "https://skills.eir.space";
+const DEFAULT_API_BASE = process.env.EIR_SKILLS_API || 'https://skills.eir.space';
 
 function printHelp() {
   console.log(`skills - CLI for skills.eir.space
@@ -47,13 +47,13 @@ function parseArgs(argv) {
 
   for (let i = 0; i < argv.length; i += 1) {
     const token = argv[i];
-    if (!token.startsWith("--")) {
+    if (!token.startsWith('--')) {
       positional.push(token);
       continue;
     }
     const key = token.slice(2);
     const next = argv[i + 1];
-    if (!next || next.startsWith("--")) {
+    if (!next || next.startsWith('--')) {
       options[key] = true;
       continue;
     }
@@ -65,20 +65,20 @@ function parseArgs(argv) {
 }
 
 function csv(input) {
-  return String(input || "")
-    .split(",")
+  return String(input || '')
+    .split(',')
     .map((x) => x.trim())
     .filter(Boolean);
 }
 
 function apiBase(options) {
-  return String(options.api || DEFAULT_API_BASE).replace(/\/+$/, "");
+  return String(options.api || DEFAULT_API_BASE).replace(/\/+$/, '');
 }
 
 async function fetchJson(url, config = {}) {
   const response = await fetch(url, config);
-  const contentType = response.headers.get("content-type") || "";
-  const data = contentType.includes("application/json")
+  const contentType = response.headers.get('content-type') || '';
+  const data = contentType.includes('application/json')
     ? await response.json()
     : { error: await response.text() };
 
@@ -91,7 +91,7 @@ async function fetchJson(url, config = {}) {
 
 async function runSearch(query, options) {
   if (!query) {
-    throw new Error("search requires a query.");
+    throw new Error('search requires a query.');
   }
   const base = apiBase(options);
   const url = `${base}/api/skills?q=${encodeURIComponent(query)}`;
@@ -99,7 +99,7 @@ async function runSearch(query, options) {
   const skills = Array.isArray(data.skills) ? data.skills : [];
 
   if (!skills.length) {
-    console.log("No skills found.");
+    console.log('No skills found.');
     return;
   }
 
@@ -114,20 +114,22 @@ async function runSearch(query, options) {
 }
 
 function normalizeRepoRef(repoRef) {
-  const clean = String(repoRef || "").replace(/^https?:\/\/github\.com\//i, "").replace(/\.git$/, "");
-  const parts = clean.split("/");
+  const clean = String(repoRef || '')
+    .replace(/^https?:\/\/github\.com\//i, '')
+    .replace(/\.git$/, '');
+  const parts = clean.split('/');
   if (parts.length !== 2 || !parts[0] || !parts[1]) {
-    throw new Error("add requires <owner/repo>.");
+    throw new Error('add requires <owner/repo>.');
   }
   return { owner: parts[0], repo: parts[1], repoUrl: `https://github.com/${parts[0]}/${parts[1]}` };
 }
 
-function runClone(repoUrl, targetDir = "") {
+function runClone(repoUrl, targetDir = '') {
   return new Promise((resolve, reject) => {
-    const args = ["clone", repoUrl];
+    const args = ['clone', repoUrl];
     if (targetDir) args.push(targetDir);
-    const proc = spawn("git", args, { stdio: "inherit" });
-    proc.on("exit", (code) => {
+    const proc = spawn('git', args, { stdio: 'inherit' });
+    proc.on('exit', (code) => {
       if (code === 0) resolve();
       else reject(new Error(`git clone failed with exit code ${code}`));
     });
@@ -136,23 +138,23 @@ function runClone(repoUrl, targetDir = "") {
 
 async function runAdd(repoRef, options) {
   const { owner, repo, repoUrl } = normalizeRepoRef(repoRef);
-  const skillName = String(options.skill || "").trim();
+  const skillName = String(options.skill || '').trim();
 
   console.log(`Registry quick-add instructions`);
   console.log(`- repo: ${repoUrl}`);
   if (skillName) console.log(`- skill: ${skillName}`);
-  console.log(`- suggested alias: ${owner}/${repo}${skillName ? `#${skillName}` : ""}`);
+  console.log(`- suggested alias: ${owner}/${repo}${skillName ? `#${skillName}` : ''}`);
 
   if (options.clone) {
-    await runClone(repoUrl, String(options.dir || ""));
-    console.log("Repository cloned.");
+    await runClone(repoUrl, String(options.dir || ''));
+    console.log('Repository cloned.');
   } else {
-    console.log("Use --clone to clone the repository locally.");
+    console.log('Use --clone to clone the repository locally.');
   }
 }
 
 function toPayload(options) {
-  const required = ["name", "repo", "summary"];
+  const required = ['name', 'repo', 'summary'];
   for (const req of required) {
     if (!options[req]) {
       throw new Error(`Missing required option --${req}`);
@@ -161,24 +163,24 @@ function toPayload(options) {
 
   return {
     name: options.name,
-    title: options.title || "",
-    owner: options.owner || "community",
+    title: options.title || '',
+    owner: options.owner || 'community',
     repoUrl: options.repo,
-    skillPath: options.path || "",
+    skillPath: options.path || '',
     summary: options.summary,
     domainTags: csv(options.tags),
     populations: csv(options.populations),
-    regions: csv(options.regions || "global"),
-    reviewStatus: options["review-status"] || "not_medically_reviewed",
-    lastReviewed: options["last-reviewed"] || "",
-    sourceUrls: csv(options["source-urls"]),
-    healthMdCompatible: Boolean(options["health-md"]),
-    createsLinkedFile: Boolean(options["creates-linked-file"]),
-    linkedFileNames: csv(options["linked-files"]),
-    version: options.version || "0.1.0",
-    submitter: options.submitter || "",
-    moderationTierRequested: options.tier || "community",
-    notes: options.notes || ""
+    regions: csv(options.regions || 'global'),
+    reviewStatus: options['review-status'] || 'not_medically_reviewed',
+    lastReviewed: options['last-reviewed'] || '',
+    sourceUrls: csv(options['source-urls']),
+    healthMdCompatible: Boolean(options['health-md']),
+    createsLinkedFile: Boolean(options['creates-linked-file']),
+    linkedFileNames: csv(options['linked-files']),
+    version: options.version || '0.1.0',
+    submitter: options.submitter || '',
+    moderationTierRequested: options.tier || 'community',
+    notes: options.notes || '',
   };
 }
 
@@ -186,9 +188,9 @@ async function runSubmitOrUpdate(kind, options) {
   const base = apiBase(options);
   const payload = toPayload(options);
   const result = await fetchJson(`${base}/api/submit`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(payload)
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
   });
 
   console.log(`${kind} completed.`);
@@ -203,28 +205,28 @@ async function main() {
   const { positional, options } = parseArgs(process.argv.slice(2));
   const command = positional[0];
 
-  if (!command || command === "help" || command === "--help") {
+  if (!command || command === 'help' || command === '--help') {
     printHelp();
     return;
   }
 
-  if (command === "search") {
-    await runSearch(positional.slice(1).join(" "), options);
+  if (command === 'search') {
+    await runSearch(positional.slice(1).join(' '), options);
     return;
   }
 
-  if (command === "add") {
+  if (command === 'add') {
     await runAdd(positional[1], options);
     return;
   }
 
-  if (command === "submit") {
-    await runSubmitOrUpdate("submit", options);
+  if (command === 'submit') {
+    await runSubmitOrUpdate('submit', options);
     return;
   }
 
-  if (command === "update") {
-    await runSubmitOrUpdate("update", options);
+  if (command === 'update') {
+    await runSubmitOrUpdate('update', options);
     return;
   }
 

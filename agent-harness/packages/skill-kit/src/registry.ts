@@ -38,13 +38,13 @@ export class EirSkillRegistryClient implements SkillRegistryClient {
     if (!response.ok) {
       throw new Error(`Registry search failed: ${response.status} ${response.statusText}`);
     }
-    const data = await response.json() as { skills?: SkillRegistryEntry[] };
+    const data = (await response.json()) as { skills?: SkillRegistryEntry[] };
     return data.skills ?? [];
   }
 
   async getBySlug(slug: string): Promise<SkillRegistryEntry | null> {
     const results = await this.search(slug);
-    return results.find(s => s.slug === slug) ?? null;
+    return results.find((s) => s.slug === slug) ?? null;
   }
 }
 
@@ -55,7 +55,10 @@ export class EirSkillRegistryClient implements SkillRegistryClient {
  * Fetches the SKILL.md from the GitHub raw URL and parses it.
  * Scripts are not supported for remote skills (scripts array will be empty).
  */
-export async function loadRemoteSkill(entry: SkillRegistryEntry, options?: { branch?: string }): Promise<LoadedSkill | null> {
+export async function loadRemoteSkill(
+  entry: SkillRegistryEntry,
+  options?: { branch?: string },
+): Promise<LoadedSkill | null> {
   // Build raw GitHub URL for SKILL.md
   const repoMatch = entry.repoUrl.match(/github\.com\/([^/]+)\/([^/]+)/);
   if (!repoMatch) return null;

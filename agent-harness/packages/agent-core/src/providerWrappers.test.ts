@@ -10,10 +10,17 @@ function textResponse(content: string): LlmCompletionResponse {
 }
 
 function succeedingProvider(content = 'ok'): LlmProvider {
-  return { async createCompletion() { return textResponse(content); } };
+  return {
+    async createCompletion() {
+      return textResponse(content);
+    },
+  };
 }
 
-function failThenSucceed(error: Error, failCount: number): { provider: LlmProvider; callCount: () => number } {
+function failThenSucceed(
+  error: Error,
+  failCount: number,
+): { provider: LlmProvider; callCount: () => number } {
   let calls = 0;
   return {
     provider: {
@@ -31,7 +38,10 @@ function alwaysFailing(error: Error): { provider: LlmProvider; callCount: () => 
   let calls = 0;
   return {
     provider: {
-      async createCompletion() { calls++; throw error; },
+      async createCompletion() {
+        calls++;
+        throw error;
+      },
     },
     callCount: () => calls,
   };
@@ -47,7 +57,7 @@ function makeRequest(overrides: Partial<LlmCompletionRequest> = {}): LlmCompleti
 
 function statusError(status: number, message = `HTTP ${status}`): Error {
   const err = new Error(message);
-  (err as any).status = status;
+  (err as unknown as Record<string, number>).status = status;
   return err;
 }
 
@@ -118,7 +128,10 @@ describe('RetryProvider', () => {
   it('passes request through unchanged', async () => {
     let capturedReq: LlmCompletionRequest | undefined;
     const inner: LlmProvider = {
-      async createCompletion(req) { capturedReq = req; return textResponse('ok'); },
+      async createCompletion(req) {
+        capturedReq = req;
+        return textResponse('ok');
+      },
     };
     const provider = new RetryProvider(inner);
     const req = makeRequest({ model: 'special-model', temperature: 0.7 });
@@ -321,11 +334,15 @@ describe('FallbackProvider', () => {
   it('does not fall back when signal is aborted', async () => {
     const controller = new AbortController();
     controller.abort('cancelled');
-    const { provider: p1 } = alwaysFailing(new Error('fail'));
+    const { provider: _p1 } = alwaysFailing(new Error('fail'));
     const { provider: p2, callCount } = alwaysFailing(new Error('should not reach'));
     // The inner provider throws because the signal is aborted
     const provider = new FallbackProvider([
-      { async createCompletion() { throw new Error('fail'); } },
+      {
+        async createCompletion() {
+          throw new Error('fail');
+        },
+      },
       p2,
     ]);
     await assert.rejects(() =>

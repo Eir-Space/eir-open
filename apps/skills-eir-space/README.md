@@ -1,6 +1,7 @@
 # skills.eir.space (MVP)
 
 Minimal Next.js registry for health-focused agent skills with:
+
 - public submissions
 - badges and moderation tiers
 - health.md compatibility metadata
@@ -35,6 +36,7 @@ Open `http://localhost:3000`.
 This app is ready to deploy to Cloudflare as a Next.js app.
 
 ### Option A: Cloudflare Pages with Next.js support
+
 1. Create a new Pages project connected to this repo
 2. Set root directory: `apps/skills-eir-space`
 3. Build command: `npm run build`
@@ -42,19 +44,23 @@ This app is ready to deploy to Cloudflare as a Next.js app.
 5. Add custom domain: `skills.eir.space`
 
 ### Option B: OpenNext + Cloudflare Workers (recommended for production APIs)
+
 Use OpenNext Cloudflare adapter and move store from local JSON to Cloudflare D1 or KV.
 
 Project files already include:
+
 - `wrangler.jsonc`
 - `open-next.config.ts`
 - `npm run deploy`
 
 Recommended Cloudflare build settings:
+
 - Root directory: `apps/skills-eir-space`
 - Build command: `npm run build`
 - Deploy command: `npm run deploy`
 
 Important:
+
 - Do not use `npx wrangler deploy` directly as deploy command in CI.
 - It may run migration prompts in non-interactive mode and generate mismatched self-bindings.
 
