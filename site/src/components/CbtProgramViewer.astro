@@ -246,29 +246,26 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
 
 <script is:inline>
   (() => {
-    const script = document.currentScript;
-    if (!script) return;
+    const initViewer = (root) => {
+      if (!root) return;
 
-    const root = script.closest('[data-cbt-program-viewer]');
-    if (!root) return;
+      const searchInput = root.querySelector('[data-role="search"]');
+      const languageSelect = root.querySelector('[data-role="language"]');
+      const countEl = root.querySelector('[data-role="visible-count"]');
+      const rows = Array.from(root.querySelectorAll('tr[data-row]'));
+      const openButtons = Array.from(root.querySelectorAll('[data-role="open-reader"]'));
+      const reader = root.querySelector('[data-role="reader"]');
+      const readerTitle = root.querySelector('[data-role="reader-title"]');
+      const readerSubtitle = root.querySelector('[data-role="reader-subtitle"]');
+      const readerLanguage = root.querySelector('[data-role="reader-language"]');
+      const readerSource = root.querySelector('[data-role="reader-source"]');
+      const readerStatus = root.querySelector('[data-role="reader-status"]');
+      const readerSummary = root.querySelector('[data-role="reader-summary"]');
+      const readerModules = root.querySelector('[data-role="reader-modules"]');
+      const readerResources = root.querySelector('[data-role="reader-resources"]');
+      const readerAi = root.querySelector('[data-role="reader-ai"]');
 
-    const searchInput = root.querySelector('[data-role="search"]');
-    const languageSelect = root.querySelector('[data-role="language"]');
-    const countEl = root.querySelector('[data-role="visible-count"]');
-    const rows = Array.from(root.querySelectorAll('tr[data-row]'));
-    const openButtons = Array.from(root.querySelectorAll('[data-role="open-reader"]'));
-    const reader = root.querySelector('[data-role="reader"]');
-    const readerTitle = root.querySelector('[data-role="reader-title"]');
-    const readerSubtitle = root.querySelector('[data-role="reader-subtitle"]');
-    const readerLanguage = root.querySelector('[data-role="reader-language"]');
-    const readerSource = root.querySelector('[data-role="reader-source"]');
-    const readerStatus = root.querySelector('[data-role="reader-status"]');
-    const readerSummary = root.querySelector('[data-role="reader-summary"]');
-    const readerModules = root.querySelector('[data-role="reader-modules"]');
-    const readerResources = root.querySelector('[data-role="reader-resources"]');
-    const readerAi = root.querySelector('[data-role="reader-ai"]');
-
-    let activeRow = null;
+      let activeRow = null;
 
     const createSectionList = (title, items) => {
       if (!Array.isArray(items) || items.length === 0) return null;
@@ -492,9 +489,21 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
       loadLocale(rowData, readerLanguage.value || rowData.defaultLanguage || 'en');
     });
 
-    searchInput?.addEventListener('input', applyFilters);
-    languageSelect?.addEventListener('change', applyFilters);
-    applyFilters();
+      searchInput?.addEventListener('input', applyFilters);
+      languageSelect?.addEventListener('change', applyFilters);
+      applyFilters();
+    };
+
+    const boot = () => {
+      const viewerRoots = Array.from(document.querySelectorAll('[data-cbt-program-viewer]'));
+      viewerRoots.forEach((viewerRoot) => initViewer(viewerRoot));
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', boot, { once: true });
+    } else {
+      boot();
+    }
   })();
 </script>
 
