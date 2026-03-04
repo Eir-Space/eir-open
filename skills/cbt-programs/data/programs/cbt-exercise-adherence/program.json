@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/program.schema.json",
   "id": "cbt-exercise-adherence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "draft",
   "condition": {
     "key": "exercise-adherence-physical-activity",
@@ -40,6 +40,12 @@
       "status": "draft",
       "completion": 100,
       "path": "locales/en.json"
+    },
+    {
+      "lang": "sv",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/sv.json"
     }
   ],
   "content": {

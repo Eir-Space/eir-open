@@ -1,0 +1,117 @@
+{
+  "language": "sv",
+  "title": "Rörelse som håller: bygg hållbara träningsvanor",
+  "summary": "Ett praktiskt, evidensbaserat KBT-program som hjälper dig bygga och behålla en jämn rörelserutin. Programmet fokuserar på psykologiska hinder, smart dosering av aktivitet och strategier för motivation, trygghet och långsiktig hållbarhet.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå din relation till rörelse",
+      "overview": "Vi börjar med din personliga historia av fysisk aktivitet: vad som fungerat, vad som skavt och vilka hinder som funnits. Du identifierar motionsrelaterade antaganden, till exempel \"jag är inte en träningsperson\" eller \"träning är straff\". Vi omformulerar från \"träning\" till \"rörelse\" för att bredda vad som räknas. Du kartlägger beredskap för förändring och gör en hinderinventering (tid, energi, motivation, rädsla, tillgång). Slutligen sätter du processmål som är görbara i vardagen.",
+      "takeaways": [
+        "Din tidigare relation till träning bestämmer inte framtiden.",
+        "Rörelse behöver inte vara hård eller perfekt planerad för att ge effekt.",
+        "Tydliga hinder är lättare att lösa än diffusa känslor av motstånd.",
+        "Processmål håller bättre än resultatmål."
+      ],
+      "exercises": [
+        "Rörelse-tidslinje: skriv viktiga perioder i ditt liv och vad som hjälpt/hindrat aktivitet.",
+        "Hinderinventering: lista alla skäl till att rörelse blir av eller uteblir och sortera i verkliga begränsningar, antaganden och rädslor.",
+        "Preferenstest: prova tre typer av rörelse och skatta njutning, kroppskänsla och sannolikhet att fortsätta."
+      ],
+      "homework": [
+        "Gör en konkret plan för dina tre största hinder med 2-3 möjliga lösningar per hinder.",
+        "Testa en ny rörelseform den här veckan.",
+        "Sätt tre processmål för nästa vecka, till exempel korta promenader eller daglig stretch."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Övervinn hinder: tid, energi och tillgång",
+      "overview": "Här arbetar vi med de vanligaste hindren: tidsbrist, låg energi och begränsad tillgång till gym/utrustning. Du lär dig mikrorörelse, korta pass som går att få in även i pressade dagar. Vi bygger en rörelsemeny för olika tidsluckor (5, 15, 30, 60 minuter). Du tränar energimatchning, alltså att välja intensitet efter dagsform. Hemmabaserad aktivitet lyfts som fullgott alternativ. Avslutningsvis tränar vi strukturerad problemlösning när hinder uppstår.",
+      "takeaways": [
+        "Även korta pass räknas när de görs regelbundet.",
+        "Låg energi betyder inte noll rörelse; mild aktivitet kan öka energi.",
+        "Du kan vara aktiv utan gym och specialutrustning.",
+        "Hinderhantering är en färdighet som blir bättre med övning."
+      ],
+      "exercises": [
+        "Bygg rörelsemeny: skriv aktiviteter för 5, 15, 30 och 60 minuter.",
+        "Tidsaudit: följ tre dagar och markera tre realistiska rörelsefönster.",
+        "Energimatchning: skatta energi före aktivitet och välj intensitet därefter under en vecka."
+      ],
+      "homework": [
+        "Använd rörelsemenyn aktivt under veckan utifrån tillgänglig tid.",
+        "Schemalägg tre korta rörelsepass i kalendern.",
+        "Testa en ny hemaktivitet, exempelvis kroppsviktsövningar eller guidat pass."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Dosera rätt och bygg gradvis",
+      "overview": "Du lär dig activity pacing för att undvika överdrivna toppar och efterföljande krascher. Vi använder 10%-regeln för gradvis ökning och tar fram en baslinje som är hållbar varje vecka. Progression ses som långsam träning av tolerans, inte snabba ryck. Du lär dig skilja mellan normal ansträngning och varningssmärta. Målet är jämnhet som kan upprätthållas över tid.",
+      "takeaways": [
+        "Gradvis progression minskar skaderisk och ökar hållbarhet.",
+        "Jämn regelbundenhet ger bättre effekt än sporadisk maxinsats.",
+        "Baslinjen är en styrka, inte ett misslyckande.",
+        "Kroppssignaler är information som hjälper dig dosera klokt."
+      ],
+      "exercises": [
+        "Baslinjetest: välj en aktivitet och genomför samma dos under en vecka för att hitta hållbar nivå.",
+        "Pacingplan: planera fyra veckors progression med små ökningar.",
+        "Signaljournal: notera skillnad mellan träningsömhet och varningssignaler."
+      ],
+      "homework": [
+        "Följ pacingplanen utan att öka extra på \"bra dagar\".",
+        "Använd 10%-regeln på en vald aktivitet.",
+        "Vid tydlig smärtsignal: pausa, justera och återgå stegvis."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Motivation, vanor och rädsla",
+      "overview": "Modulen fokuserar på psykologin bakom följsamhet. Du skiljer mellan tillfällig motivation och stabila system. Vi tränar vanestapling (koppla rörelse till befintliga rutiner) och if-then-planer för hinder. Du identifierar träningsrelaterade rädslor, som skada, bedömning och misslyckande, och utmanar dem med mer balanserade tankar. Du bygger en personlig verktygslåda för dagar med låg motivation.",
+      "takeaways": [
+        "System och rutiner bär när motivationen svajar.",
+        "Rädsla är vanligt och går att hantera stegvis.",
+        "Små vanor blir stora effekter över tid.",
+        "Hjälpsamt självprat ökar sannolikheten att fortsätta."
+      ],
+      "exercises": [
+        "Motivationsaudit: följ motivation under en vecka och se mönster.",
+        "Rädslokarta: skriv träningsrädslor och planera riskreducering för varje.",
+        "Skapa tre vanekopplingar, t.ex. efter kaffe -> 5 knäböj."
+      ],
+      "homework": [
+        "Genomför dina tre vanekopplingar varje dag den här veckan.",
+        "Skriv tre if-then-planer för vanliga hinder.",
+        "Testa ett verktyg ur motivationslådan vid låg motivation och utvärdera."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Bygg en hållbar rörelsepraktik",
+      "overview": "Avslutningsvis integrerar du allt till en realistisk långsiktsmodell. Du planerar variation i rörelseformer, återhämtning och flexibilitet för oförutsedda veckor. Vi arbetar med setbacks: missade pass, sjukdom eller hög belastning utan att tappa allt. Du tränar identitetsskifte till \"jag är en person som rör på mig\". Modulen avslutas med ett personligt rörelseåtagande.",
+      "takeaways": [
+        "Hållbarhet kräver flexibilitet, inte perfektion.",
+        "Bakslag är normala; återstarten är det viktiga.",
+        "Rörelserutinen ska stödja ditt liv, inte konkurrera med det.",
+        "Identitet och beteende förstärker varandra."
+      ],
+      "exercises": [
+        "Veckoplan: skapa en flexibel plan med 3-5 rörelsepass och återhämtning.",
+        "Bakslagssimulering: skriv exakt hur du återstartar efter en missad vecka.",
+        "Rörelseåtagande: skriv ett kort personligt åtagande med värden och riktning."
+      ],
+      "homework": [
+        "Följ veckoplanen i fyra veckor och justera efter utfallet.",
+        "Använd återstartsplanen direkt vid avbrott.",
+        "Dela ditt rörelseåtagande med en stödperson för ansvar och påminnelse."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "language": "sv",
+  "title": "Magens kompass: hantera IBS och maghälsa",
+  "summary": "Ett omfattande, evidensbaserat KBT-program för IBS och funktionella mag-tarmbesvär. Programmet arbetar med tarm-hjärna-sambandet, stressreglering, triggerkartläggning, koststrategier och kognitiva verktyg för att minska symtomstress och öka vardagsfunktion.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå tarm-hjärna-sambandet",
+      "overview": "Vi inleder med hur hjärna och tarm kommunicerar via nervsystem, hormoner och stressreaktioner. Du får en tydlig modell för varför känsloläge och oro kan påverka magfunktionen. Visceral överkänslighet förklaras, liksom IBS-cykeln där symtom triggar oro som i sin tur förstärker symtom. Vi tydliggör att IBS är reellt och påverkningsbart, även om psykologiska faktorer spelar roll. Målet är att förstå var i cykeln du kan bryta mönstret.",
+      "takeaways": [
+        "Tarm och hjärna påverkar varandra kontinuerligt.",
+        "Stress och ångest kan förstärka mag-tarmbesvär.",
+        "IBS är inte inbillning; det är ett tillstånd med både kroppsliga och psykologiska komponenter.",
+        "Kunskap om sambanden ökar handlingsutrymmet."
+      ],
+      "exercises": [
+        "Tarm-hjärna-journal: följ symtom, stress och känsloläge i en vecka.",
+        "Symtominventering: lista symtom och skatta frekvens/intensitet.",
+        "IBS-cykelkarta: rita din personliga trigger -> tanke -> reaktion -> symtom-loop."
+      ],
+      "homework": [
+        "Fortsätt journalen i 7 dagar och markera tydliga mönster.",
+        "Läs in dig på din IBS-profil om sådan är utredd.",
+        "Öva en kort stressregleringsteknik dagligen och notera påverkan på symtom."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Stresshantering för mag-tarmsymtom",
+      "overview": "Den här modulen fokuserar på metoder som kan lugna tarm-hjärna-systemet: diafragmaandning, avslappning och lugnande visualisering. Du lär dig aktivera kroppens återhämtningssystem och minska fysiologisk överaktivering. Vi introducerar en personlig maglugn-verktygslåda för akuta och förebyggande insatser. Kontinuitet betonas: regelbunden träning ger bättre effekt än sporadiska punktinsatser.",
+      "takeaways": [
+        "Nedreglering av stress kan minska symtomintensitet.",
+        "Andning och avslappning påverkar vagala signaler och kroppsligt lugn.",
+        "Förebyggande träning är centralt, inte bara krishantering.",
+        "Du kan påverka tarmens reaktivitet via nervsystemet."
+      ],
+      "exercises": [
+        "Diafragmaandning: 10 minuter dagligen i en vecka.",
+        "Maglugn-visualisering: öva en lugnande bild av jämn matsmältning.",
+        "Bygg verktygslådan: välj 5-7 tekniker som hjälper vid symptomupptrappning."
+      ],
+      "homework": [
+        "Öva andning två gånger per dag och notera effekt.",
+        "Använd visualisering vid symptomflamma.",
+        "Träna progressiv avslappning med fokus på bukspänning tre gånger under veckan."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Symtomspårning och triggeridentifiering",
+      "overview": "Här tränar du systematisk kartläggning av symptomtriggers. Du följer måltider, tidpunkter, stressnivå, sömn och symtom för att hitta mönster. Vi introducerar triggerkategorier (kost, stress, sömn, hormonella faktorer, ätbeteenden). Du arbetar hypotesdrivet: testa en möjlig trigger i taget i stället för breda antaganden. Målet är en personlig triggerprofil som stöd för vardagsbeslut.",
+      "takeaways": [
+        "Triggerprofiler är individuella.",
+        "Systematisk loggning är mer träffsäker än gissning.",
+        "Kost är viktig men sällan den enda faktorn.",
+        "Små kontrollerade tester ger tydligare lärande."
+      ],
+      "exercises": [
+        "Symtom- och matdagbok: följ under 7 dagar med tid, innehåll, stress, sömn och symtom.",
+        "Triggerkategorikarta: lista möjliga triggers i varje kategori.",
+        "Mönsteranalys: identifiera 2-3 sannolika mönster efter första veckan."
+      ],
+      "homework": [
+        "Fortsätt dagboken i två veckor för stabilare mönster.",
+        "Testa en hypotes i taget med kort eliminering/återintroduktion när det är lämpligt.",
+        "Välj en icke-kostfaktor att påverka och följ effekten på symtom."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Kostanpassning och FODMAP som verktyg",
+      "overview": "Du får en praktisk introduktion till kostanpassning med fokus på FODMAP som identifieringsverktyg, inte livslång restriktion. Vi går igenom eliminering, återintroduktion och individualisering på en nivå som stödjer samarbete med dietist/vårdgivare. Portioner och ätmönster lyfts som centrala faktorer. Målet är hållbar kostflexibilitet med minsta möjliga onödiga begränsning.",
+      "takeaways": [
+        "Kostförändringar bör vara hållbara och individanpassade.",
+        "FODMAP är ett utredningsverktyg, inte en permanent universallösning.",
+        "Hur du äter kan vara lika viktigt som vad du äter.",
+        "Små justeringar med uppföljning ger bäst beslutsunderlag."
+      ],
+      "exercises": [
+        "FODMAP-översikt: kartlägg vanliga livsmedel i din vardag och tänkbara alternativ.",
+        "Ätbeteendeaudit: följ måltidstempo, portionsstorlek och stress vid måltid i tre dagar.",
+        "Tre kostbyten: planera och prova tre rimliga kostjusteringar."
+      ],
+      "homework": [
+        "Om du överväger strikt FODMAP-fas, planera med professionell vägledning.",
+        "Testa ett nytt ätmönster i 3 dagar, t.ex. lugnare tempo eller mindre portioner oftare.",
+        "Lägg till en magvänlig komponent i kosten och följ tolerans."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Kognitiv omstrukturering vid magoro",
+      "overview": "Modulen adresserar oro och katastroftolkningar kring symtom, till exempel rädsla för att inte hitta toalett eller att symtom ska eskalera. Du tränar på att identifiera och utmana automatiska tankar med tankeprotokoll. Vi kartlägger säkerhetsbeteenden som ger kort lättnad men långsiktigt håller oro vid liv. Gradvis exponering används för att återta situationer som tidigare undvikits.",
+      "takeaways": [
+        "Symptomoro kan förstärka symtomcykeln.",
+        "Katastroftankar går att omformulera till mer hjälpsamma perspektiv.",
+        "Säkerhetsbeteenden lindrar kortsiktigt men kan vidmakthålla rädsla.",
+        "Gradvis exponering minskar undvikande och ökar självförtroende."
+      ],
+      "exercises": [
+        "Katastroftankeprotokoll: skriv oro-tanke, bevis för/emot och alternativ tanke.",
+        "Säkerhetsbeteendeaudit: lista undvikanden och kontroller kopplade till magoro.",
+        "Exponeringsstege: rangordna 5-7 undvikna situationer och välj låg nivå att starta med."
+      ],
+      "homework": [
+        "Utmana tre återkommande orostankar under veckan.",
+        "Minska ett säkerhetsbeteende och observera utfallet.",
+        "Genomför ett steg i exponeringsstegen."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Modul 6 • Integrering och långsiktig hantering",
+      "overview": "I slutmodulen integrerar du stressreglering, triggerkunskap, koststrategier och kognitiva verktyg i en hållbar vardagsplan. Vi betonar symtomhantering och livskvalitet i stället för snabb fix. Du bygger en bakslagsplan för perioder med ökade symtom och tränar problemlösning för nya utmaningar. Avslutningsvis formulerar du ett personligt åtagande för långsiktig maghälsa.",
+      "takeaways": [
+        "IBS-hantering är en process över tid.",
+        "Flera verktyg tillsammans ger bäst effekt.",
+        "Bakslag är normala och hanterbara med plan.",
+        "Du kan bygga en stabil och trygg egenvårdsmodell."
+      ],
+      "exercises": [
+        "Underhållsplan: skriv veckostruktur för stressreglering, kostrutiner och symtomuppföljning.",
+        "Bakslagssvar: formulera steg-för-steg-plan vid symptomtopp.",
+        "Maghälsolöfte: skriv en kort personlig text om värden, riktning och prioriteringar."
+      ],
+      "homework": [
+        "Följ underhållsplanen i fyra veckor och justera utifrån resultat.",
+        "Fortsätt periodisk symtomspårning för tidig mönsterupptäckt.",
+        "Läs ditt maghälsolöfte varje månad och uppdatera vid behov.",
+        "Notera framsteg löpande för att förstärka långsiktig motivation."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
