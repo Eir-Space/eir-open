@@ -136,20 +136,43 @@ const rows: ProgramRow[] = fs
   .sort((a, b) => a.id.localeCompare(b.id));
 
 const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).sort();
+const swedishReadyCount = rows.filter((row) => row.languages.includes('sv')).length;
+const expertVerifiedCount = rows.filter((row) => row.lineage.includes('Expert-verified')).length;
 ---
 
 <div class="cbt-viewer not-content" data-cbt-program-viewer>
+  <div class="cbt-viewer-hero">
+    <div class="cbt-viewer-stat">
+      <span class="cbt-viewer-stat-value">{rows.length}</span>
+      <span class="cbt-viewer-stat-label">Total programs</span>
+    </div>
+    <div class="cbt-viewer-stat">
+      <span class="cbt-viewer-stat-value">{swedishReadyCount}</span>
+      <span class="cbt-viewer-stat-label">With Swedish locale</span>
+    </div>
+    <div class="cbt-viewer-stat">
+      <span class="cbt-viewer-stat-value">{expertVerifiedCount}</span>
+      <span class="cbt-viewer-stat-label">Expert-verified lineage</span>
+    </div>
+  </div>
+
   <div class="cbt-viewer-toolbar">
-    <input
-      type="search"
-      placeholder="Search by program, condition, language, or lineage..."
-      aria-label="Search CBT programs"
-      data-role="search"
-    />
-    <select aria-label="Filter by language" data-role="language">
-      <option value="all">All languages</option>
-      {allLanguages.map((lang) => <option value={lang}>{lang}</option>)}
-    </select>
+    <label class="cbt-viewer-field">
+      <span>Search</span>
+      <input
+        type="search"
+        placeholder="Program, condition, language, lineage..."
+        aria-label="Search CBT programs"
+        data-role="search"
+      />
+    </label>
+    <label class="cbt-viewer-field cbt-viewer-field-lang">
+      <span>Language</span>
+      <select aria-label="Filter by language" data-role="language">
+        <option value="all">All languages</option>
+        {allLanguages.map((lang) => <option value={lang}>{lang}</option>)}
+      </select>
+    </label>
   </div>
 
   <p class="cbt-viewer-summary">
@@ -220,6 +243,10 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     </table>
   </div>
 
+  <p class="cbt-viewer-empty cbt-viewer-meta" data-role="empty" hidden>
+    No programs matched your current search/filter.
+  </p>
+
   <section class="cbt-program-reader" data-role="reader" hidden>
     <div class="cbt-reader-header">
       <div>
@@ -252,6 +279,7 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
       const searchInput = root.querySelector('[data-role="search"]');
       const languageSelect = root.querySelector('[data-role="language"]');
       const countEl = root.querySelector('[data-role="visible-count"]');
+      const emptyEl = root.querySelector('[data-role="empty"]');
       const rows = Array.from(root.querySelectorAll('tr[data-row]'));
       const openButtons = Array.from(root.querySelectorAll('[data-role="open-reader"]'));
       const reader = root.querySelector('[data-role="reader"]');
@@ -428,10 +456,10 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
       }
     };
 
-    const applyFilters = () => {
-      const query = (searchInput?.value || '').toLowerCase().trim();
-      const language = (languageSelect?.value || 'all').toLowerCase();
-      let visible = 0;
+      const applyFilters = () => {
+        const query = (searchInput?.value || '').toLowerCase().trim();
+        const language = (languageSelect?.value || 'all').toLowerCase();
+        let visible = 0;
 
       rows.forEach((row) => {
         const rowSearch = (row.getAttribute('data-search') || '').toLowerCase();
@@ -441,10 +469,11 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
         const show = matchesQuery && matchesLanguage;
         row.hidden = !show;
         if (show) visible += 1;
-      });
+        });
 
-      if (countEl) countEl.textContent = String(visible);
-    };
+        if (countEl) countEl.textContent = String(visible);
+        if (emptyEl) emptyEl.hidden = visible !== 0;
+      };
 
     openButtons.forEach((button) => {
       button.addEventListener('click', () => {
@@ -510,9 +539,57 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
 <style>
   .cbt-viewer-toolbar {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.9rem;
     flex-wrap: wrap;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.7rem 0;
+    align-items: flex-end;
+  }
+
+  .cbt-viewer-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.7rem;
+    margin: 0 0 0.8rem 0;
+  }
+
+  .cbt-viewer-stat {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.7rem;
+    padding: 0.65rem 0.75rem;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--sl-color-bg) 86%, var(--sl-color-gray-7)),
+      var(--sl-color-bg)
+    );
+  }
+
+  .cbt-viewer-stat-value {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--sl-color-text-accent);
+    line-height: 1.15;
+  }
+
+  .cbt-viewer-stat-label {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.78rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .cbt-viewer-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    min-width: 12rem;
+    flex: 1 1 22rem;
+  }
+
+  .cbt-viewer-field-lang {
+    flex: 0 0 14rem;
   }
 
   .cbt-viewer-toolbar input,
@@ -526,14 +603,25 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     color: var(--sl-color-text);
   }
 
-  .cbt-viewer-toolbar input {
-    flex: 1 1 22rem;
+  .cbt-viewer-toolbar input:focus,
+  .cbt-viewer-toolbar select:focus {
+    outline: 2px solid color-mix(in srgb, var(--sl-color-accent) 45%, transparent);
+    outline-offset: 0;
+    border-color: color-mix(in srgb, var(--sl-color-accent) 45%, var(--sl-color-gray-5));
   }
 
   .cbt-viewer-summary {
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 0.6rem 0;
     color: var(--sl-color-gray-2);
-    font-size: 0.95rem;
+    font-size: 0.84rem;
+  }
+
+  .cbt-viewer-empty {
+    margin-top: 0.7rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px dashed var(--sl-color-gray-5);
+    border-radius: 0.6rem;
+    background: color-mix(in srgb, var(--sl-color-bg) 90%, var(--sl-color-gray-7));
   }
 
   .cbt-viewer-table-wrap {
@@ -545,26 +633,38 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
   table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 70rem;
+    min-width: 76rem;
   }
 
   th,
   td {
     text-align: left;
     vertical-align: top;
-    padding: 0.65rem 0.75rem;
+    padding: 0.58rem 0.7rem;
     border-bottom: 1px solid var(--sl-color-gray-6);
   }
 
   th {
-    font-size: 0.85rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--sl-color-gray-2);
     background: var(--sl-color-gray-7);
+    letter-spacing: 0.015em;
   }
 
   tr:last-child td {
     border-bottom: none;
+  }
+
+  tbody tr:nth-child(odd) td {
+    background: color-mix(in srgb, var(--sl-color-bg) 94%, var(--sl-color-gray-7));
+  }
+
+  tbody tr:hover td {
+    background: color-mix(in srgb, var(--sl-color-accent) 10%, var(--sl-color-bg));
   }
 
   .cbt-viewer-badges {
@@ -578,8 +678,8 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     display: inline-block;
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 999px;
-    padding: 0.1rem 0.45rem;
-    font-size: 0.75rem;
+    padding: 0.08rem 0.44rem;
+    font-size: 0.72rem;
     line-height: 1.4;
     color: var(--sl-color-gray-2);
     background: var(--sl-color-gray-7);
@@ -592,27 +692,30 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
 
   .cbt-badge-status {
     text-transform: lowercase;
+    font-weight: 600;
   }
 
   .cbt-viewer-meta {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     color: var(--sl-color-gray-3);
     line-height: 1.4;
   }
 
   .cbt-open-button {
-    border: 1px solid var(--sl-color-gray-5);
+    border: 1px solid color-mix(in srgb, var(--sl-color-accent) 45%, var(--sl-color-gray-5));
     border-radius: 0.5rem;
-    background: var(--sl-color-bg);
-    color: var(--sl-color-text);
-    padding: 0.3rem 0.6rem;
+    background: color-mix(in srgb, var(--sl-color-accent) 16%, var(--sl-color-bg));
+    color: var(--sl-color-text-accent);
+    padding: 0.34rem 0.62rem;
     cursor: pointer;
     font: inherit;
-    font-size: 0.8rem;
+    font-size: 0.76rem;
+    font-weight: 600;
   }
 
   .cbt-open-button:hover {
     border-color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 26%, var(--sl-color-bg));
   }
 
   .cbt-row-selected td {
@@ -624,7 +727,8 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     border-radius: 0.75rem;
     padding: 1rem;
     margin-top: 1rem;
-    background: color-mix(in srgb, var(--sl-color-bg) 92%, var(--sl-color-gray-7));
+    background: color-mix(in srgb, var(--sl-color-bg) 95%, var(--sl-color-gray-7));
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   }
 
   .cbt-reader-header {
@@ -637,7 +741,7 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
 
   .cbt-reader-title {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .cbt-reader-controls {
@@ -660,7 +764,7 @@ const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).s
     border: 1px solid var(--sl-color-gray-6);
     border-radius: 0.6rem;
     margin-top: 0.75rem;
-    padding: 0.55rem 0.65rem;
+    padding: 0.6rem 0.68rem;
     background: var(--sl-color-bg);
   }
 
