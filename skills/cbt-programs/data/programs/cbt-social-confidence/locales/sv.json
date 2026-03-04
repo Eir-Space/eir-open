@@ -1,0 +1,145 @@
+{
+  "language": "sv",
+  "title": "In i kontakt: KBT-program för social trygghet",
+  "summary": "En KBT-väg med sex moduler för dig som vill känna dig tryggare, stabilare och mer närvarande i sociala situationer. Du tränar samspelet mellan tankar, kroppssignaler och handlingar, gör modiga beteendeexperiment och bygger självförtroende genom gradvis exponering och medkännande reflektion.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå din sociala ångest",
+      "overview": "Kartlägg hur tankar, kroppsliga signaler och beteenden tillsammans vidmakthåller social ångest och undvikande. Du tydliggör vilka relationer och värden som motiverar dig att träna social trygghet. Modulen ger en medkännande, forskningsförankrad förståelse för varför nervsystemet reagerar som det gör i sociala sammanhang.",
+      "takeaways": [
+        "Undvikande är en inlärd trygghetsstrategi; när mönstret ändras kan hjärnan uppdatera hotbedömningen.",
+        "Att namnge triggers och värden gör experiment mer riktade.",
+        "Självkritik behövs inte för förändring; nyfikenhet och vänlighet ökar uthållighet."
+      ],
+      "exercises": [
+        "Skapa ett arbetsblad för social ångestcykel: Trigger -> Tankar -> Kroppssignaler -> Beteenden -> Kort lättnad -> Lång kostnad.",
+        "Skriv en programintention: ett stycke om vad social trygghet skulle möjliggöra i ditt liv.",
+        "Identifiera tre personliga styrkor eller stödresurser för utmanande stunder."
+      ],
+      "homework": [
+        "Följ två sociala situationer denna vecka och notera tankar, kroppssignaler och beteenden.",
+        "Journalför en gång om hur undvikande skyddar dig och samtidigt begränsar dig.",
+        "Läs din intention högt dagligen för att stärka motivationen."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Tankearbete och självprat",
+      "overview": "Du tränar på att upptäcka vanliga tankefällor vid social ångest, som tankeläsning, katastrofiering och allt-eller-inget. Genom medkännande omtolkning balanserar du realism med hopp. Du tar fram copingfraser och grounding-signaler att använda när ångesten stiger.",
+      "takeaways": [
+        "Tankar är hypoteser, inte fakta, och kan testas mot bevis.",
+        "Balanserat tänkande rymmer både risker och resurser.",
+        "Förberedda copingfraser hjälper vid ångesttopp."
+      ],
+      "exercises": [
+        "Fyll i ett tankeprotokoll för en nylig socialt utmanande situation.",
+        "Skriv 3-5 trovärdiga copingfraser (t.ex. \"jag kan prata ofullkomligt och ändå vara värdefull\").",
+        "Öva en tvåminuters groundingrutin (andning, sinnen, hållning) två gånger denna vecka."
+      ],
+      "homework": [
+        "Använd tankeprotokoll i två ytterligare situationer och notera vad som minskade känslointensiteten.",
+        "Ha en copingfras synlig i mobilen eller på lapp och läs innan social interaktion.",
+        "Följ vilken grounding-signal som snabbast hjälper dig till närvaro."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Planera gradvis exponering",
+      "overview": "Du bygger en exponeringsstege där sociala situationer delas upp i hanterbara steg. Vi går igenom riktlinjer: börja lagom, stanna kvar tillräckligt länge och reflektera efteråt. Du planerar stödstrukturer och belöningar som förstärker modiga handlingar.",
+      "takeaways": [
+        "Exponering omskolar rädsla genom nya säkra erfarenheter.",
+        "Gradvisa steg fungerar bättre än heroiska hopp.",
+        "Att uppmärksamma ansträngning hjälper motivationen att hålla."
+      ],
+      "exercises": [
+        "Lista 8-12 sociala situationer och skatta förväntad ångest (0-100). Sortera från lättast till svårast.",
+        "Välj två låga steg och specificera handling, plats, personer och stödstrategier.",
+        "Skapa en efterreflektionsmall: vad hände, ångestnivå, vad lärde jag mig?"
+      ],
+      "homework": [
+        "Genomför minst en exponering på lägre nivå och stanna kvar enligt plan.",
+        "Fyll i reflektionsmallen efter varje exponering.",
+        "Ge dig själv en liten återhämtande belöning efter genomförda steg."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Färdigheter i stunden",
+      "overview": "Du tränar kroppsnära reglering för fysiska symtom (andning, hållning, progressiv avslappning). Du övar uppmärksamhetsförskjutning från intern självkoll till yttre fokus. Dessutom bygger du korta samtalsverktyg, som öppningsfraser, nyfikna följdfrågor och artiga avslut, för att minska prestationspress.",
+      "takeaways": [
+        "Kroppsreglering signalerar trygghet till hjärnan.",
+        "Nyfikenhet på andra bryter självfokuserad oro.",
+        "Förberedda samtalsmallar minskar stress under interaktion."
+      ],
+      "exercises": [
+        "Öva box breathing eller 4-6-7-andning två gånger dagligen i en vecka.",
+        "Gör en nyfikenhetsövning: träna tre samtalsfrågor i rollspel med en vän.",
+        "Skapa ett samtalskort med tre öppningar, tre följdfrågor och två avslutsfraser."
+      ],
+      "homework": [
+        "Använd ett kroppsligt regleringsverktyg i en verklig social situation och notera effekten.",
+        "Öva yttre fokus genom att medvetet lägga märke till tre detaljer i person/miljö under samtal.",
+        "Bär med och repetera ditt samtalskort inför sociala tillfällen."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Medkännande exponering och resiliens",
+      "overview": "Nu integrerar du självmedkänsla för att återhämta dig efter obekväma stunder och bakslag. Du tränar reparationsstrategier när interaktioner känns fel, som att benämna, förtydliga, använda lätt humor eller följa upp i efterhand. Du stärker även socialt stöd och ansvarstagande för fortsatt träning.",
+      "takeaways": [
+        "Självmedkänsla gör misstag till data i stället för självangrepp.",
+        "Reparation kan fördjupa kontakt och utmana katastrofprognoser.",
+        "Ansvarspartner ökar chansen att fortsätta exponera när undvikande lockar."
+      ],
+      "exercises": [
+        "Skriv ett medkännande brev till dig själv om en socialt svår situation.",
+        "Formulera tre reparationsfraser du kan använda i vardagen.",
+        "Välj en stödperson och planera en kort veckovis check-in kring exponeringar."
+      ],
+      "homework": [
+        "Gör en självmedkänslopaus efter nästa exponering: notera, namnge känslor, ge vänlighet.",
+        "Testa en liten reparationshandling eller uppföljning efter en situation som kändes stel.",
+        "Genomför din första check-in med ansvarspartner."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Modul 6 • Behåll tryggheten och fortsätt växa",
+      "overview": "Du summerar framsteg, uppdaterar exponeringsstegen och planerar fortsatt träning. Du tar fram tidiga varningssignaler för återgång till undvikande och tydliga återstartsstrategier. Modulen hjälper dig också bygga en identitet som stämmer med dina nya erfarenheter av modigt beteende.",
+      "takeaways": [
+        "Utveckling hålls vid liv genom regelbunden träning, reflektion och återengagemang.",
+        "Bakslag är information, inte nederlag.",
+        "Trygg identitet växer av upprepade bevis på mod i handling."
+      ],
+      "exercises": [
+        "Lista viktigaste färdigheter, favorithjälpmedel och situationer som blivit lättare.",
+        "Uppdatera exponeringsstegen och välj två nästa steg att repetera eller avancera till.",
+        "Skriv tre identitetspåståenden och koppla dem till konkreta exempel från senaste veckorna."
+      ],
+      "homework": [
+        "Schemalägg månadsvisa uppföljningar av stege, framsteg och nästa utmaningar.",
+        "Skapa en återfallspreventionsplan med triggers, tidiga signaler, stöd och reset-åtgärder.",
+        "Dela en insikt eller framgång med en trygg person för att förstärka lärandet."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Arbetsblad för tankeprotokoll vid social ångest",
+      "url": "https://www.anxietycanada.com/sites/default/files/GeneralThoughtRecord.pdf"
+    },
+    {
+      "title": "Psykoedukation om exponering",
+      "url": "https://adaa.org/tips-manage-anxiety-and-stress"
+    },
+    {
+      "title": "Guidad självmedkänslopaus (audio)",
+      "url": "https://self-compassion.org/wp-content/uploads/2015/12/self-compassion.break_.mp3"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}

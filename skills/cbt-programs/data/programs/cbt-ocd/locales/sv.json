@@ -1,0 +1,103 @@
+{
+  "language": "sv",
+  "title": "Bryt ritualen: ta tillbaka din handlingsfrihet",
+  "summary": "Ett specialiserat program baserat på exponering med responsprevention (ERP), förstahandsmetoden vid OCD. Du lär dig skilja på påträngande, egodystona tankar och faktisk fara, möta osäkerhet utan ritualer och träna hjärnan att minska falska larmsignaler.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Glappet i varningssystemet",
+      "overview": "Vi externaliserar OCD: det är inte en karaktärsbrist, utan ett felkalibrerat varningssystem. Du kartlägger OCD-cykeln: trigger/tvångstanke -> ångest -> tvångshandling -> kort lättnad. Vi normaliserar påträngande tankar och förklarar varför OCD-hjärnan fastnar i dem. Negativ förstärkning förklaras: ritualen sänker ångest kortsiktigt men gör den starkare på sikt. Vi skiljer mellan egosyntona och egodystona tankar; OCD-tankar är oftast egodystona, dvs. i konflikt med dina värderingar. Du startar en ritual-logg som följer trigger, ritual och lättnadens varaktighet. Kärnprincipen introduceras: målet är inte att stoppa tanken utan att stoppa ritualreaktionen.",
+      "takeaways": [
+        "Tvångshandlingar lindrar kortsiktigt men underhåller långsiktigt lidande.",
+        "Påträngande tankar är mentalt skräppostmaterial, inte bevis på fara.",
+        "Du kan inte styra att tanken dyker upp, men du kan styra handlingen efteråt.",
+        "Innehållet i tvångstanken är mindre viktigt än cykeln den driver."
+      ],
+      "exercises": [
+        "Cykelkarta: välj ett nyligt OCD-tillfälle och skriv trigger, tanke, känsla, ritual och resultat.",
+        "Skräppoststämpling: när en påträngande tanke kommer, märk den mentalt som \"SPAM\" utan att gå in i den."
+      ],
+      "homework": [
+        "Fyll i ritual-loggen i 7 dagar.",
+        "Identifiera din kärnrädsla: vad tror du händer om ritualen uteblir?"
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Bygg hierarkin: ERP-stegen",
+      "overview": "Här bygger du exponeringsplanen. Du listar triggers och skattar obehag 0-100 (SUDS) för att skapa en hierarki från lättare till svårare situationer. Responsprevention betyder att möta triggern utan ritual, alltså utan kontroll, tvätt, försäkringssökande eller mental neutralisering. Vi identifierar dolda ritualer som ruminering, räkning eller mentala \"motbilder\". Habituering förklaras: om du stannar kvar utan ritual sjunker obehaget över tid. Exponering ska vara tillräckligt lång, upprepad och utan undvikandedistraktion.",
+      "takeaways": [
+        "Arbetet börjar med hanterbara steg, inte med högsta nivån direkt.",
+        "Mentala ritualer förstärker OCD lika mycket som synliga ritualer.",
+        "Ångestkurvan sjunker över tid även utan ritual om du stannar kvar."
+      ],
+      "exercises": [
+        "Hierarkibyggaren: lista 10-15 triggers och sätt SUDS-nivå för varje.",
+        "Säkerhetsbeteenden: identifiera subtila sätt du \"säkrar\" dig i vardagen."
+      ],
+      "homework": [
+        "Slutför din ERP-hierarki.",
+        "Välj ett första exponeringssteg runt SUDS 30."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Möt rädslan: exponering startar",
+      "overview": "Nu genomför du aktiv exponering. Du framkallar obehag via en vald trigger, avstår ritualen och väntar tills SUDS sjunker tydligt. Vi arbetar med inhibitoriskt lärande: viktigast är att bryta förväntningen om katastrof, inte bara att känna mindre ångest. Vi hanterar hinder som långdragen ångest och bakslag. Ibland blir obehaget först starkare innan det minskar, en så kallad extinction burst. Detta är väntat och inte ett tecken på att metoden misslyckas.",
+      "takeaways": [
+        "Vägen ut går genom obehaget, inte runt det.",
+        "Exponering tränar om hjärnans rädslesystem via erfarenhet.",
+        "Obehag är inte samma sak som fara."
+      ],
+      "exercises": [
+        "Första exponeringen: genomför låg nivå-exponering och registrera SUDS var femte minut.",
+        "Manusskrivning: skriv och läs ett kort katastrofmanus utan neutralisering i 10 minuter."
+      ],
+      "homework": [
+        "Upprepa samma exponering dagligen tills nivån blir låg eller hanterbar.",
+        "Gå vidare till nästa steg i hierarkin."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Träna osäkerhetstolerans",
+      "overview": "Kärnan i OCD är ofta intolerans för osäkerhet: behov av total visshet. Den här modulen tränar att leva med \"kanske\". Du övar svar som \"kanske, kanske inte\" när tvångstvivlet aktiveras. Vi adresserar försäkringssökande och hur det flyttar ångest till andra i stället för att bygga egen tolerans. Du arbetar med osäkerhetsmanus där oönskat utfall kan inträffa, och tränar acceptans av denna möjlighet utan ritualer.",
+      "takeaways": [
+        "Total säkerhet är en illusion; OCD lovar kontroll den inte kan ge.",
+        "Att hålla med tvångstanken på ett avväpnande sätt kan minska dess kraft.",
+        "Att tåla \"jag vet inte\" är en färdighet som kan byggas."
+      ],
+      "exercises": [
+        "Kanske-mantrat: svara OCD-tvivel med \"kanske, kanske inte\" under en dag.",
+        "Försäkringsstopp: informera närstående att de vänligt avstår från att ge försäkringssvar."
+      ],
+      "homework": [
+        "Öva försäkringsstopp i en vecka.",
+        "Fortsätt klättra i ERP-hierarkin."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Vidmakthållande: odla återhämtningen",
+      "overview": "OCD är ofta långvarigt men behandlingsbart. Fokus flyttas till underhåll. Vi skiljer på tillfällig svacka och återfall i mönster. Du tar fram en villighetsplan: att tankar kan komma tillbaka utan att du engagerar ritualer. Vi går också igenom livsstilsfaktorer som sömn, stress och alkohol som kan sänka tröskeln för symtom. Avslutningsvis planerar du värderingsstyrda aktiviteter du vill återta från OCD.",
+      "takeaways": [
+        "Återhämtning betyder inte inga tankar, utan färre eller inga ritualsvar.",
+        "Du kan ha ett aktivt tankeliv och samtidigt leva lugnt och meningsfullt.",
+        "Uppmärksamhet på nya \"smygritualer\" är avgörande över tid."
+      ],
+      "exercises": [
+        "Värdeåtertagande: välj en aktivitet OCD tagit ifrån dig och planera att göra den denna månad.",
+        "Svackplan: skriv hur du agerar om du fastnar i ritual igen, med direkt återgång till exponering."
+      ],
+      "homework": [
+        "Skapa ett underhållskort med dina tre viktigaste påminnelser.",
+        "Schemalägg en månadsvis självkoll för att upptäcka återkommande ritualer tidigt."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
