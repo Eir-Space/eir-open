@@ -34,7 +34,7 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "test": "node --test dist/**/*.test.js",
+    "test": "node --test $(find dist -name '*.test.js' | tr '\\n' ' ')",
     "clean": "rm -rf dist",
     "prepublishOnly": "npm run build"
   },
