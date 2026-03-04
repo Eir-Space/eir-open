@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/program.schema.json",
   "id": "cbt-stress-resilience",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "draft",
   "condition": {
     "key": "professional-development",
@@ -41,6 +41,12 @@
       "status": "draft",
       "completion": 100,
       "path": "locales/en.json"
+    },
+    {
+      "lang": "sv",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/sv.json"
     }
   ],
   "content": {
