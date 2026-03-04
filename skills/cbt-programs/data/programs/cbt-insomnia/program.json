@@ -1,0 +1,82 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-insomnia",
+  "version": "1.0.1",
+  "status": "published",
+  "condition": {
+    "key": "insomnia",
+    "name": "Insomnia"
+  },
+  "tags": [
+    "cbt-i",
+    "sleep",
+    "stimulus-control",
+    "sleep-restriction",
+    "relaxation",
+    "sleep-hygiene"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": false,
+    "humanCreated": true,
+    "humanReviewed": true,
+    "healthcareExpertVerified": true,
+    "notes": "Created from clinician-authored protocol, then quality checked by editorial team."
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Sleep Care Working Group",
+        "role": "human-author"
+      }
+    ],
+    "reviewers": [
+      {
+        "name": "Behavioral Health Editor",
+        "role": "human-reviewer",
+        "reviewedAt": "2026-03-01"
+      }
+    ],
+    "experts": [
+      {
+        "name": "Dr. Johan S",
+        "credentials": "Sleep Medicine Physician",
+        "specialty": "Behavioral Sleep Medicine",
+        "verifiedAt": "2026-03-03"
+      }
+    ]
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "expert-verified",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 3,
+    "estimatedWeeks": "6"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "difficulty falling asleep",
+      "night waking",
+      "unrefreshing sleep",
+      "sleep anxiety",
+      "early morning waking"
+    ],
+    "contraindications": [
+      "untreated sleep apnea",
+      "high-risk bipolar episode"
+    ],
+    "severity": "mild-to-moderate"
+  },
+  "safety": {
+    "intendedUse": "behavioral sleep support",
+    "medicalDisclaimer": "This program is educational and should not replace direct medical care.",
+    "crisisAdvice": "If there is immediate danger, contact emergency services."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

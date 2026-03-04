@@ -1,0 +1,52 @@
+{
+  "id": "cbt-example-program",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "replace-condition-key",
+    "name": "Replace Condition Name"
+  },
+  "tags": ["cbt", "replace-tag"],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Set these flags truthfully so users can trust provenance."
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Replace Author",
+        "role": "ai-agent|human"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "source",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 6,
+    "estimatedWeeks": "6-8"
+  },
+  "recommendationSignals": {
+    "problems": ["replace symptom or problem"],
+    "contraindications": ["replace if needed"],
+    "severity": "mild-to-moderate"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and is not a diagnosis or treatment plan.",
+    "crisisAdvice": "If there is immediate risk to safety, call your local emergency number now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

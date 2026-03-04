@@ -1,0 +1,25 @@
+{
+  "language": "en",
+  "title": "Replace Program Title",
+  "summary": "Replace with 2-3 sentence summary.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Replace Module Title",
+      "overview": "Replace with the module overview.",
+      "takeaways": [
+        "Replace key takeaway"
+      ],
+      "exercises": [
+        "Replace exercise"
+      ],
+      "homework": [
+        "Replace homework"
+      ]
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply module steps safely and practically. Do not diagnose."
+  }
+}

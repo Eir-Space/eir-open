@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-emotional-regulation-mastery",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "mental-wellness-resilience",
+    "name": "Mental Wellness & Resilience"
+  },
+  "tags": [
+    "cbt",
+    "mental-wellness-resilience",
+    "neuroscience-of-emotion",
+    "somatic-awareness-body-mind-connection",
+    "distress-tolerance-dbt-skills",
+    "cognitive-reframing-cbt",
+    "nervous-system-regulation",
+    "self-compassion"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-emotion-regulation.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6–8 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Mental Wellness & Resilience",
+      "Neuroscience of emotion",
+      "Somatic awareness (Body-mind connection)",
+      "Distress tolerance (DBT skills)",
+      "Cognitive reframing (CBT)",
+      "Nervous system regulation",
+      "Self-compassion"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

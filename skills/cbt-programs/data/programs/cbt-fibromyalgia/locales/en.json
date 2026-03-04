@@ -1,0 +1,139 @@
+{
+  "language": "en",
+  "title": "Living Well with Fibromyalgia: Pain, Fatigue & Energy Management",
+  "summary": "A compassionate, evidence-based CBT program designed to help you manage fibromyalgia symptoms including widespread pain, fatigue, and sleep disturbances. This program teaches activity pacing, energy conservation, pain management techniques, and sleep improvement strategies. Learn to work with your body's rhythms and build a life of value despite chronic symptoms.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding Fibromyalgia: Your Body's Amplified Signals",
+      "overview": "We begin by validating your experience: Fibromyalgia is real, and your symptoms are not imaginary. We explore what fibromyalgia is and how it affects the body. You will learn about 'Central Sensitization'—how your nervous system becomes hypersensitive, amplifying pain signals and creating widespread discomfort. We explore the 'Fibromyalgia Symptom Complex'—pain, fatigue, sleep disturbances, brain fog, and how they interact. The concept of 'Pain vs. Suffering' is introduced. Pain may be unavoidable, but suffering can be reduced through management strategies. You will start a 'Symptom & Activity Log'—tracking pain levels, fatigue, sleep, and activities to identify patterns. We address common misconceptions about fibromyalgia and validate the challenges you face. Finally, we set the foundation: Managing fibromyalgia requires a comprehensive approach—addressing pain, fatigue, sleep, and activity together.",
+      "takeaways": [
+        "Fibromyalgia is a real condition involving central nervous system sensitization.",
+        "Your symptoms are valid and not 'all in your head'—though your head (thoughts) can influence them.",
+        "Pain and fatigue are interconnected; managing one helps the other.",
+        "You are not alone, and there are effective management strategies."
+      ],
+      "exercises": [
+        "The Symptom Education: Research fibromyalgia. Write down: What is central sensitization? What are common symptoms? How do symptoms typically interact?",
+        "Start Your Symptom & Activity Log: Track for 7 days: pain levels (0-10), fatigue levels (0-10), sleep quality, activities, and any symptom flares. Look for patterns.",
+        "The Symptom Impact Assessment: List how fibromyalgia affects different areas of your life (work, relationships, hobbies, daily tasks). Which impacts are most significant?"
+      ],
+      "homework": [
+        "Continue your Symptom & Activity Log for 2 more weeks. The longer you track, the clearer patterns become.",
+        "Identify your top 3 most disruptive symptoms. These will be our focus areas.",
+        "Schedule a conversation with your healthcare provider about your fibromyalgia management plan. Bring your symptom log."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Activity Pacing & Energy Conservation",
+      "overview": "This module addresses one of the most critical skills for managing fibromyalgia: Activity Pacing—balancing activity and rest to prevent the boom-bust cycle. We explore 'The Boom-Bust Cycle'—doing too much on good days and crashing afterward, which perpetuates symptoms. You will learn to identify your 'Activity Baselines'—the amount of activity you can do consistently without flaring symptoms. The concept of 'Time-Contingent vs. Pain-Contingent Activity' is introduced. Stopping based on time, not pain, prevents overdoing. We address 'Energy Conservation'—strategies for doing daily tasks with less energy expenditure. You will create a 'Pacing Plan'—a structured approach to gradually increasing activity while respecting your body's limits. Finally, we practice 'The 10% Rule'—increasing activity by no more than 10% per week to allow adaptation.",
+      "takeaways": [
+        "Pacing prevents the boom-bust cycle and reduces symptom flares.",
+        "Consistency beats intensity—doing a little regularly is better than doing a lot occasionally.",
+        "Your baseline is your foundation; build from there, not from where you 'should' be.",
+        "Energy conservation techniques help you do more with less fatigue."
+      ],
+      "exercises": [
+        "Establish Your Baselines: For one week, do the same activities daily (e.g., walk 10 min, light housework 15 min). Note: Can you do them consistently? Any flares? This is your baseline.",
+        "The Boom-Bust Analysis: Reflect on past weeks. Identify boom days (overdoing) and bust days (crashing). What patterns do you notice? What triggered the booms?",
+        "Create Your Pacing Plan: Starting from your baseline, plan 4 weeks of gradual increases (10% per week). Include rest breaks. Write it down. Commit to following it."
+      ],
+      "homework": [
+        "Follow your Pacing Plan for 4 weeks. Resist the urge to do more on 'good days.' Consistency is the goal.",
+        "Practice time-contingent pacing: Set a timer. Stop when it goes off, even if you feel you could continue.",
+        "Use energy conservation techniques: Sit while doing tasks. Break tasks into smaller chunks. Use assistive devices if helpful."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Pain Management: Turning Down the Volume",
+      "overview": "This module focuses on strategies for managing fibromyalgia pain, recognizing that complete pain elimination may not be possible, but pain reduction and better coping are achievable. We explore 'Pain Gate Control Theory'—how your brain can amplify or reduce pain signals based on attention, emotions, and other factors. You will learn 'Distraction Techniques'—engaging your mind in activities that reduce pain awareness. The concept of 'Pleasant Activity Scheduling' is introduced—engaging in enjoyable activities despite pain, which can reduce pain intensity. We address 'Relaxation for Pain'—using breathing, progressive muscle relaxation, and imagery to reduce pain and muscle tension. You will practice 'Cognitive Restructuring for Pain'—challenging catastrophic thoughts about pain and replacing them with balanced perspectives. Finally, we create a 'Pain Management Toolkit'—a collection of strategies you can use when pain flares.",
+      "takeaways": [
+        "Pain intensity can be influenced by attention, emotions, and thoughts.",
+        "Distraction and pleasant activities can reduce pain awareness.",
+        "Relaxation techniques can reduce muscle tension and pain.",
+        "Catastrophic thoughts about pain often worsen the experience."
+      ],
+      "exercises": [
+        "The Pain-Focus Experiment: For one day, notice how pain intensity changes based on what you're doing. When is it worse? When is it better? What activities reduce awareness?",
+        "Create Your Pleasant Activity List: List 20 activities you enjoy (or used to enjoy) that are still possible. Include both active and passive activities.",
+        "The Pain Thought Record: When pain is high, write down your thoughts. Are they catastrophic? ('This will never end.') Challenge them. Find balanced alternatives."
+      ],
+      "homework": [
+        "Schedule 3 pleasant activities this week, even if pain is present. Notice how engagement affects pain awareness.",
+        "Practice relaxation techniques daily (breathing, progressive muscle relaxation). Notice impact on pain and muscle tension.",
+        "Use distraction techniques when pain flares: engage in an absorbing activity (puzzle, book, conversation, etc.)."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Sleep Improvement: Restoring Restorative Sleep",
+      "overview": "This module addresses the critical role of sleep in fibromyalgia management, as poor sleep directly worsens pain and fatigue. We explore 'Why Sleep Matters'—how sleep disruption creates a vicious cycle with pain and fatigue. You will learn 'Sleep Hygiene Principles'—creating conditions that promote better sleep (routine, environment, behaviors). The concept of 'Sleep Restriction' is introduced—limiting time in bed to improve sleep efficiency (adapted for fibromyalgia). We address 'Pain-Sleep Interactions'—managing pain at night to improve sleep, and improving sleep to reduce pain. You will practice 'Relaxation for Sleep'—techniques to calm the nervous system before bed. Finally, we create a 'Sleep Improvement Plan'—a personalized approach to better sleep.",
+      "takeaways": [
+        "Sleep quality directly impacts pain and fatigue in fibromyalgia.",
+        "Sleep hygiene creates conditions for better sleep.",
+        "Pain management at night improves sleep; better sleep reduces pain.",
+        "Improving sleep is a gradual process requiring consistency."
+      ],
+      "exercises": [
+        "The Sleep Diary: Track for 7 days: bedtime, sleep onset time, awakenings, rise time, total sleep, sleep quality (1-10), pain levels at night.",
+        "The Sleep Environment Audit: Evaluate your bedroom: temperature, light, noise, comfort. What could be improved?",
+        "Create Your Pre-Sleep Routine: Design a 30-60 minute wind-down routine. Include relaxation, pain management, and sleep-promoting activities."
+      ],
+      "homework": [
+        "Implement sleep hygiene improvements: consistent bedtime/wake time, cool/dark/quiet bedroom, no screens 1 hour before bed.",
+        "Practice your Pre-Sleep Routine every night for 2 weeks. Notice impact on sleep quality.",
+        "If pain disrupts sleep, try pain management techniques before bed (gentle stretching, heat, relaxation, medication if prescribed)."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Cognitive Restructuring & Values-Based Living",
+      "overview": "This module addresses the psychological aspects of living with fibromyalgia, including challenging unhelpful thoughts and building a meaningful life despite symptoms. We explore 'Pain Catastrophizing'—exaggerated negative thoughts about pain that worsen the experience. You will learn 'Cognitive Restructuring'—challenging unhelpful thoughts and replacing them with balanced perspectives. The concept of 'Acceptance vs. Resignation' is introduced—accepting the reality of fibromyalgia without giving up on living well. We address 'Values-Based Living'—identifying what matters to you and finding ways to engage with those values despite limitations. You will practice 'Activity Engagement Despite Pain'—participating in meaningful activities even when symptoms are present. Finally, we create a 'Life Values Plan'—identifying your values and planning activities that align with them.",
+      "takeaways": [
+        "Thoughts about pain influence pain experience.",
+        "Acceptance doesn't mean giving up—it means working with reality.",
+        "Living according to your values improves quality of life despite symptoms.",
+        "You can have a meaningful life with fibromyalgia."
+      ],
+      "exercises": [
+        "The Catastrophic Thought Challenge: When pain or fatigue is high, write down your thoughts. Challenge each: 'Is this helpful? Is it true? What's a more balanced perspective?'",
+        "The Values Identification: List 10 things that matter to you (relationships, creativity, nature, learning, etc.). Rank your top 5 values.",
+        "The Values-Activity Connection: For each of your top 5 values, list 3 activities that align with it and are still possible with fibromyalgia (even if adapted)."
+      ],
+      "homework": [
+        "Challenge 3 catastrophic thoughts this week. Write them down. Find balanced alternatives. Notice how this affects your experience.",
+        "Engage in one values-based activity this week, even if symptoms are present. Adapt as needed. Notice how meaning affects your experience.",
+        "Practice acceptance statements: 'I have fibromyalgia, and I can still live a meaningful life.' 'Pain is present, and I can still engage in activities I value.'"
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Integration & Long-Term Management",
+      "overview": "The final module focuses on integrating all components—pacing, pain management, sleep improvement, and cognitive strategies—into a sustainable lifestyle. We explore 'The Comprehensive Approach'—how all pieces work together to manage fibromyalgia. You will create a 'Fibromyalgia Management Plan'—a personalized system for managing symptoms long-term. The concept of 'Flare Management' is addressed—having a plan for when symptoms worsen. We address 'Setback Recovery'—how to get back on track after periods of increased symptoms or difficulty with management. You will learn 'Problem-Solving Skills'—systematic approaches to addressing challenges as they arise. Finally, we write a 'Fibromyalgia Management Commitment'—a personal statement of your approach to living well with fibromyalgia.",
+      "takeaways": [
+        "Managing fibromyalgia is a long-term process requiring a comprehensive approach.",
+        "All components work together—pacing, pain management, sleep, cognitive strategies.",
+        "Flares and setbacks are normal; having a plan helps.",
+        "You have the tools to manage fibromyalgia and live a meaningful life."
+      ],
+      "exercises": [
+        "Create Your Fibromyalgia Management Plan: Integrate pacing, pain management, sleep improvement, and cognitive strategies into a weekly routine. Make it sustainable.",
+        "The Flare Management Plan: Write down: 'If I have a symptom flare, I will...' Create a specific action plan for managing flares.",
+        "Write Your Fibromyalgia Management Commitment: In 200-300 words, write your personal statement about living with fibromyalgia. Include your values, intentions, and how you'll manage symptoms long-term."
+      ],
+      "homework": [
+        "Implement your Fibromyalgia Management Plan for 4 weeks. Adjust as needed. Notice what works and what needs refinement.",
+        "Continue tracking symptoms periodically to monitor patterns and adjust strategies.",
+        "Review your Management Commitment monthly. Use it as a reminder of your approach and intentions.",
+        "Celebrate your progress. Every symptom managed, every activity paced, every value lived—it all adds up. You're taking care of yourself. You're living well with fibromyalgia."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

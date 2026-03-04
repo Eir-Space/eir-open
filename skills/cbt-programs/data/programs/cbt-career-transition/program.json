@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-career-transition",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "career-anxiety-imposter-syndrome",
+    "name": "Career Anxiety & Imposter Syndrome"
+  },
+  "tags": [
+    "cbt",
+    "career-anxiety-imposter-syndrome",
+    "identity-shift",
+    "limiting-beliefs",
+    "resilience-to-rejection",
+    "transferable-value",
+    "networking-anxiety"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-career-transition.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6-10 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Career Anxiety & Imposter Syndrome",
+      "Identity Shift",
+      "Limiting Beliefs",
+      "Resilience to Rejection",
+      "Transferable Value",
+      "Networking Anxiety"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-ptsd-trauma",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "ptsd-and-trauma",
+    "name": "PTSD and Trauma"
+  },
+  "tags": [
+    "cbt",
+    "ptsd-and-trauma",
+    "understanding-trauma-and-ptsd",
+    "safety-and-stabilization",
+    "trauma-processing",
+    "cognitive-restructuring",
+    "gradual-exposure",
+    "rebuilding-meaning-and-connection",
+    "long-term-recovery"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-ptsd-trauma.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 12-16 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "PTSD and Trauma",
+      "Understanding trauma and PTSD",
+      "Safety and stabilization",
+      "Trauma processing",
+      "Cognitive restructuring",
+      "Gradual exposure",
+      "Rebuilding meaning and connection",
+      "Long-term recovery"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

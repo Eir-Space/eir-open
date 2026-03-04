@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-social-confidence",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "social-anxiety-disorder",
+    "name": "Social Anxiety Disorder"
+  },
+  "tags": [
+    "cbt",
+    "social-anxiety-disorder",
+    "cognitive-restructuring",
+    "gradual-exposure",
+    "self-compassion",
+    "communication-skills"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-social-confidence.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 6,
+    "estimatedWeeks": "6 modules • 4–5 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Social Anxiety Disorder",
+      "Cognitive restructuring",
+      "Gradual exposure",
+      "Self-compassion",
+      "Communication skills"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

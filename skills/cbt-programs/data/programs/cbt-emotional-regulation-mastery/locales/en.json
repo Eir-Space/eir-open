@@ -1,0 +1,162 @@
+{
+  "language": "en",
+  "title": "Emotional Regulation Mastery: The Art of Inner Balance",
+  "summary": "A world-class, seven-module program designed to transform your relationship with your emotions. Synthesizing neuroscience, somatic experiencing, CBT, and DBT, this course teaches you how to move from reactive chaos to responsive calm. Learn to master your nervous system, navigate intense feelings without being overwhelmed, and cultivate an unshakeable inner balance.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Science of Emotion: Understanding the Machine",
+      "overview": "You cannot regulate what you do not understand. Emotions are not random storms; they are biological data packets. This module demystifies the neuroscience of emotional reactivity, explaining the 'Amygdala Hijack' and why your rational brain goes offline during stress. We shift the paradigm from 'controlling' emotions to 'regulating' them—a crucial distinction for long-term health.",
+      "takeaways": [
+        "Emotions are data, not directives: they give you information, but they shouldn't drive the car.",
+        "The 'Hand Model of the Brain': understand how your 'thinking brain' disconnects from your 'feeling brain'.",
+        "The 90-Second Rule: the chemical surge of an emotion lasts only 90 seconds; the rest is rumination.",
+        "Name it to tame it: labeling an emotion calms the amygdala."
+      ],
+      "exercises": [
+        "Affect Labeling: For the next 24 hours, simply name your emotions as they arise. 'I am feeling anxiety.' 'I am feeling frustration.' Do not try to fix them, just label them.",
+        "The 90-Second Observer: Next time you feel a spike of irritation, look at a clock. Wait 90 seconds before speaking. Observe the physical sensation fading."
+      ],
+      "homework": [
+        "Trigger Journal: Write down 3 times you 'flipped your lid' this week. What was the trigger? What happened in your body immediately before?",
+        "Video Study: Watch Dr. Dan Siegel explain the Hand Model of the Brain."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Somatic Awareness: Bottom-Up Regulation",
+      "overview": "You cannot think your way out of a feeling; you have to feel your way out. Emotions live in the body. This module focuses on 'Bottom-Up' regulation—using the body to calm the mind. This is often faster and more effective than positive thinking during high stress. Learn to read your body's subtle signals (Interoception) before they become overwhelming storms.",
+      "takeaways": [
+        "Interoception is the superpower of regulation: the ability to feel the inside of your body.",
+        "The Vagus Nerve is the brake pedal: stimulating it signals safety to the brain.",
+        "Grounding brings you back to the present: anxiety lives in the future; the body lives in the now.",
+        "Postures of power: your physical stance dictates your emotional state."
+      ],
+      "exercises": [
+        "Body Scan: Spend 5 minutes scanning your body from toe to head. Where are you holding tension? Release it consciously.",
+        "Box Breathing: Inhale 4 seconds, Hold 4 seconds, Exhale 4 seconds, Hold 4 seconds. Repeat for 2 minutes."
+      ],
+      "homework": [
+        "Grounding Practice: Use the 5-4-3-2-1 technique once a day. (5 things you see, 4 you feel, 3 you hear, 2 you smell, 1 you taste).",
+        "Posture experiment: Notice your posture when you feel stressed. Deliberately change it (shoulders down, chest open). Note the shift in feeling."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • The Pause: Breaking the Reaction Cycle",
+      "overview": "Between stimulus and response, there is a space. In that space is our power to choose our growth and our freedom. — Viktor Frankl. This module teaches you how to widen that space. You will learn the 'STOP' skill from DBT to prevent impulsive reactions that you regret later. We move from 'reacting' (automatic, habit-based) to 'responding' (intentional, values-based).",
+      "takeaways": [
+        "Reactivity is a habit: you can rewire the habit of immediate reaction.",
+        "The STOP skill: Stop, Take a step back, Observe, Proceed mindfully.",
+        "Urge Surfing: desires to react (yell, send the text, eat) are like waves; they peak and crash. You don't have to act on them.",
+        "The 'Check the Facts' skill: is your emotion fitting the actual facts of the situation?"
+      ],
+      "exercises": [
+        "The STOP Drill: Set an alarm for 3 random times tomorrow. When it goes off, practice the full STOP sequence, no matter what you are doing.",
+        "Urge Surf: Identify one small habit (checking phone, snacking). When the urge hits, set a timer for 3 minutes. Wait. Surf the urge. If you still want to do it after 3 minutes, go ahead."
+      ],
+      "homework": [
+        "Reaction Audit: At the end of the day, review one time you reacted and one time you responded. What made the difference?",
+        "Values check: Write down your top 3 values (e.g., Kindness, Integrity, Patience). Keep them visible. Before acting, ask: 'Is this consistent with my values?'"
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Cognitive Reframing: Changing the Narrative",
+      "overview": "Events don't upset us; our beliefs about the events upset us. — Epictetus. This module applies Cognitive Behavioral Therapy (CBT) to emotional regulation. You will learn to identify the 'stories' that fuel your emotions. We cover cognitive distortions like catastrophic thinking and mind-reading that hijack your peace.",
+      "takeaways": [
+        "Thoughts are not facts: they are mental events, often biased or incorrect.",
+        "The ABC Model: Activating Event -> Belief -> Consequence (Emotion). You can change the B to change the C.",
+        "Cognitive Distortions: learn to spot the mental traps that amplify negative emotions.",
+        "Flexible thinking is resilient thinking: rigidity causes breakage."
+      ],
+      "exercises": [
+        "Catch the distortion: Write down 3 negative thoughts you had today. Match them to a distortion (e.g., 'I'm an idiot' = Labeling).",
+        "The Reframe: Take one stressful thought. Rewrite it to be more accurate and neutral."
+      ],
+      "homework": [
+        "Thought Record: Keep a log for 3 days. Event -> Thought -> Emotion -> Alternative Thought -> New Emotion.",
+        "Perspective shifting: Pick a conflict. Write a paragraph describing it from the *other person's* point of view, completely neutrally."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Distress Tolerance: Surviving the Storm",
+      "overview": "Sometimes, you can't reframe or breathe your way to calm. The pain is too high. In these moments, the goal is simply: Don't make it worse. This module covers high-intensity DBT skills (TIPP) for crisis survival. Learn Radical Acceptance: the art of accepting reality as it is to reduce suffering.",
+      "takeaways": [
+        "Pain is inevitable; suffering is optional. Suffering = Pain + Resistance.",
+        "TIPP Skills: Temperature, Intense Exercise, Paced Breathing, Paired Muscle Relaxation.",
+        "Radical Acceptance: acknowledging reality without approving of it.",
+        "Distraction is a valid tool: knowing when to consciously disengage to prevent implosion."
+      ],
+      "exercises": [
+        "The Ice Dive: Fill a bowl with ice water. Hold your breath and dip your face in for 30 seconds. Note the immediate physiological shift.",
+        "Radical Acceptance Statement: Identify one thing you are fighting (traffic, a past mistake). Say aloud: 'I accept that this happened. It is reality.' Notice if the tension shifts."
+      ],
+      "homework": [
+        "Build a Crisis Kit: Assemble a physical or digital box with sensory soothers (playlist, photos, essential oils).",
+        "Practice TIPP: Use one TIPP skill this week when you feel a rise in intensity (even if just a 4/10)."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Self-Compassion: The Antidote to Shame",
+      "overview": "Many people try to regulate emotions by beating themselves up. 'Stop crying! Be stronger!' This actually increases stress hormones. Self-compassion is not weak; it is a physiological regulator. It activates the care-giving system (oxytocin) to soothe the threat system (cortisol). This module teaches you to treat yourself with the same kindness you offer a friend.",
+      "takeaways": [
+        "The three components of Self-Compassion: Self-kindness, Common Humanity, Mindfulness.",
+        "Shame shuts down the learning centers of the brain; compassion opens them.",
+        "Soothing touch: hand on heart can lower cortisol levels.",
+        "The Inner Critic vs. The Inner Coach: motivating through support rather than fear."
+      ],
+      "exercises": [
+        "Hand on Heart: When stressed, place your hand firmly on your chest. Feel the warmth. Breathe into your hand for 2 minutes.",
+        "Letter to Self: Write a letter to yourself about a recent mistake, but write it from the perspective of an unconditionally loving friend."
+      ],
+      "homework": [
+        "Critic Catching: Notice when you insult yourself. Stop and replace it with: 'I am learning. It's okay to make mistakes.'",
+        "The Self-Compassion Break: Practice the 3-step mantra once a day."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • Sustainable Balance: Lifestyle as Medicine",
+      "overview": "Emotional regulation isn't just about what you do in the moment of crisis; it's about the baseline you establish every day. This module focuses on the 'Emotional Bank Account.' Sleep, nutrition, movement, and connection are the pillars that widen your window of tolerance. We create a long-term protocol for staying balanced.",
+      "takeaways": [
+        "The HALT trigger: Never make big decisions when Hungry, Angry, Lonely, or Tired.",
+        "Sleep is emotional first aid: REM sleep processes emotional memories.",
+        "Gut-Brain Axis: 95% of serotonin is produced in the gut; food affects mood.",
+        "Routine is safety: predictability calms the nervous system."
+      ],
+      "exercises": [
+        "The HALT Check: Before any difficult conversation or task, check: Am I Hungry? Angry? Lonely? Tired? Fix the biology first.",
+        "Design your Protocol: Write down your Green, Yellow, and Red zone strategies."
+      ],
+      "homework": [
+        "Sleep audit: Commit to 7-8 hours of sleep this week. Note the difference in your patience levels.",
+        "30-Day Commitment: Choose one tool from this course (e.g., Box Breathing) and commit to doing it daily for a month."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Self-Compassion Guided Meditations (Dr. Kristin Neff)",
+      "url": "https://self-compassion.org/category/exercises/"
+    },
+    {
+      "title": "The DBT Skills Training Manual (Linehan)",
+      "url": "https://behavioraltech.org/resources/faqs/dialectical-behavior-therapy-dbt/"
+    },
+    {
+      "title": "Guided Box Breathing",
+      "url": "https://www.healthline.com/health/box-breathing"
+    },
+    {
+      "title": "Hand Model of the Brain (Video)",
+      "url": "https://www.youtube.com/watch?v=gm9CIJ74Oxw"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

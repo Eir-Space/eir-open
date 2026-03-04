@@ -1,0 +1,136 @@
+{
+  "language": "en",
+  "title": "The FINGER Protocol: Mastering Brain Health",
+  "summary": "Based on the groundbreaking FINGER study—the first trial in the world to prove that lifestyle changes can prevent cognitive decline. This comprehensive, multidomain program guides you through the five pillars of brain health: nutrition, physical activity, cognitive training, social engagement, and vascular monitoring. It is a roadmap to building a resilient, sharper mind at any age.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Multidomain Approach: You Are the Architect",
+      "overview": "We introduce the revolutionary findings of the FINGER study: cognitive decline is not inevitable. Even with genetic risk factors (like the ApoE 4 allele), lifestyle intervention is effective. The concept of 'Multidomain Intervention' is explained. It is not just one thing (like a crossword puzzle) that saves the brain; it is the synergy of five specific lifestyle factors working together. We explore the mechanism of 'Cognitive Reserve.' How building resilience now helps your brain compensate for nerve cell changes later. You will establish your baseline. Understanding your current status in the five key areas: Diet, Exercise, Brain Training, Heart Health, and Social Activity. We set the stage for a 2-year mindset. The FINGER study showed results over two years; this is a marathon, not a sprint.",
+      "takeaways": [
+        "Lifestyle can prevent cognitive decline, even in at-risk populations.",
+        "There is no 'magic bullet'; the magic is in the combination of habits.",
+        "Improving heart health directly improves brain resilience."
+      ],
+      "exercises": [
+        "The 5-Finger Audit: Rate your current habits on a scale of 1-10 for: Diet, Exercise, Social Life, Brain Challenges, and Heart Health.",
+        "The 'Why' Statement: Write down why you want to protect your brain. (e.g., 'To keep reading books,' 'To recognize my grandchildren')."
+      ],
+      "homework": [
+        "Schedule a check-up with your GP to get your baseline blood pressure and cholesterol numbers (essential for the Vascular module)."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • The Nordic Brain Diet",
+      "overview": "Nutrition is fuel for the brain. We adopt the 'Nordic Nutrition Recommendations' used in the study. Focus on anti-inflammatory foods: Berries, fish (Omega-3s), whole grains, and rapeseed oil. We address the connection between gut health and brain health. Reducing sugar and saturated fats to lower the risk of oxidative stress. Practical meal planning: shifting from 'restriction' to 'nourishment.'",
+      "takeaways": [
+        "The Nordic Diet is similar to the Mediterranean diet but adapted for different staples.",
+        "Food directly influences inflammation, which affects cognitive speed.",
+        "Consistency in diet is more important than perfection."
+      ],
+      "exercises": [
+        "The Kitchen Swap: Replace one 'brain drain' food (e.g., white bread) with a 'brain gain' food (e.g., rye bread or oats).",
+        "Berry Loading: Aim to eat one cup of berries (fresh or frozen) every day this week."
+      ],
+      "homework": [
+        "Plan 3 dinners this week based on the Nordic Nutrition guidelines (Fish, root vegetables, whole grains)."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Physical Training: Cardio, Strength, & Balance",
+      "overview": "The FINGER physical protocol was rigorous: it included cardio, strength, and balance. We break this down. Cardio (Aerobic) training improves blood circulation to the brain, delivering oxygen and nutrients. Strength training (Muscle) releases myokines that support brain health. Balance training challenges the cerebellum and proprioception. We create a graduated plan, starting where you are and building up.",
+      "takeaways": [
+        "Exercise is arguably the strongest medicine for the brain.",
+        "Psychomotor speed improved by 150% in the intervention group—largely due to movement.",
+        "You need a mix of heart-pumping and muscle-building activity."
+      ],
+      "exercises": [
+        "The Talk Test: Go for a walk. Walk fast enough that you can talk, but you can't sing. This is your target cardio zone.",
+        "The Flamingo: Practice standing on one leg while brushing your teeth (safety first: hold the sink if needed)."
+      ],
+      "homework": [
+        "Accumulate 150 minutes of moderate activity this week.",
+        "Complete one 20-minute strength session (bodyweight or bands)."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Cognitive Training: The Mental Gym",
+      "overview": "Using it or losing it. The intervention group used computer-based training for memory and speed. We target specific domains: Executive Function (planning/organizing), Psychomotor Speed (reaction time), and Complex Memory. Learning to embrace the frustration of learning. If it feels easy, it's not training. Moving beyond passive activities (like watching TV) to active engagement (puzzles, languages, strategy games).",
+      "takeaways": [
+        "The brain grows when challenged.",
+        "Executive function (the CEO of the brain) showed the biggest improvement in the study.",
+        "Variety is key; don't just do one type of puzzle."
+      ],
+      "exercises": [
+        "Speed Drill: Take a deck of cards. Sort them into suits as fast as you possibly can. Time yourself. Try to beat your time tomorrow.",
+        "The Wrong Hand: Brush your teeth or eat with your non-dominant hand to force new neural firing."
+      ],
+      "homework": [
+        "Engage in a 'Complex Memory' task daily (e.g., memorize a grocery list and leave the paper at home).",
+        "Spend 15 minutes learning a new skill (language, instrument, or game)."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Vascular Health: The Heart-Head Connection",
+      "overview": "What is good for the heart is good for the brain. The study carefully monitored BP, cholesterol, and glucose. Understanding 'Vascular Dementia' risks. Small vessel damage stops the brain from getting nutrients. Strategies for managing blood pressure through stress reduction and diet. The importance of weight management to reduce systemic inflammation.",
+      "takeaways": [
+        "High blood pressure is a silent killer of cognitive function.",
+        "Managing metabolic factors (sugar, lipids) reduces the risk of inflammation.",
+        "You are the project manager of your cardiovascular numbers."
+      ],
+      "exercises": [
+        "The Numbers Game: Review your blood work. Do you know your BP? Your LDL? If not, find out.",
+        "Salt Audit: Check the labels in your pantry. Reduce sodium intake to support blood pressure."
+      ],
+      "homework": [
+        "If you have medication for BP or cholesterol, set a foolproof system to never miss a dose.",
+        "Practice 10 minutes of relaxation breathing to lower acute blood pressure."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Social Activity: The Human Network",
+      "overview": "The FINGER study included group sessions. Social isolation is a major risk factor for dementia. Socializing is a complex cognitive task. It requires listening, processing, reading faces, and recalling names. Building a 'Social Portfolio.' diversifying your interactions. Combining social + physical (e.g., walking groups) for a double benefit.",
+      "takeaways": [
+        "Loneliness is toxic to the brain.",
+        "Social interaction drives complex memory improvement (40% higher in the intervention group).",
+        "You need 'active' socializing, not just being in a room with people."
+      ],
+      "exercises": [
+        "The Reach Out: Call (don't text) one friend or family member you haven't spoken to in a while.",
+        "Group Interest: Research a local club, choir, or walking group. Plan to attend once."
+      ],
+      "homework": [
+        "Schedule two social activities for next week.",
+        "Combine domains: Eat a healthy Nordic meal with a friend."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • The Long-Term FINGER Plan",
+      "overview": "Consolidating the 5 fingers into a sustainable lifestyle. Results from the study showed reduced risk of multimorbidity by 60%. This is about total health. Creating a 'Day in the Life' schedule that incorporates all domains. Dealing with setbacks. If you fall off the wagon, how to get back on. Future-proofing: Keeping up with new research (World-Wide FINGERS).",
+      "takeaways": [
+        "Consistency beats intensity.",
+        "The benefits compound over time (11-year follow-ups show continued value).",
+        "You have a toolkit to prevent decline and build a reserve."
+      ],
+      "exercises": [
+        "The Master Schedule: Create a weekly routine that hits all 5 domains (Diet, Exercise, Brain, Heart, Social).",
+        "The Commitment Letter: Sign a contract with yourself to prioritize your brain health for the next year."
+      ],
+      "homework": [
+        "Celebrate the completion of the program.",
+        "Join the mailing list for World-Wide FINGERS to stay updated on new research."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

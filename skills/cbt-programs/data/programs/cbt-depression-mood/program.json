@@ -1,0 +1,88 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-depression-mood",
+  "version": "1.0.0",
+  "status": "published",
+  "condition": {
+    "key": "depression",
+    "name": "Depression"
+  },
+  "tags": [
+    "cbt",
+    "mood",
+    "behavioral-activation",
+    "cognitive-restructuring",
+    "mindfulness"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": true,
+    "healthcareExpertVerified": true,
+    "notes": "Drafted with AI support and clinically reviewed before publication."
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Eir CBT Authoring Agent",
+        "role": "ai-agent",
+        "version": "v1"
+      }
+    ],
+    "reviewers": [
+      {
+        "name": "Editorial Team",
+        "role": "human-reviewer",
+        "reviewedAt": "2026-03-01"
+      }
+    ],
+    "experts": [
+      {
+        "name": "Dr. Linnea M",
+        "credentials": "Clinical Psychologist",
+        "specialty": "Mood Disorders",
+        "verifiedAt": "2026-03-02"
+      }
+    ]
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "expert-verified",
+      "completion": 100,
+      "path": "locales/en.json"
+    },
+    {
+      "lang": "sv",
+      "status": "human-reviewed",
+      "completion": 100,
+      "path": "locales/sv.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "5-7"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "depressed mood",
+      "low energy",
+      "behavioral withdrawal",
+      "negative automatic thoughts",
+      "low mood"
+    ],
+    "contraindications": [
+      "acute mania",
+      "active psychosis"
+    ],
+    "severity": "mild-to-moderate"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program does not replace professional diagnosis or treatment.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

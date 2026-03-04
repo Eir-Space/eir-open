@@ -1,0 +1,138 @@
+{
+  "language": "en",
+  "title": "The Responsive Parent: From Reaction to Connection",
+  "summary": "A compassionate, seven-module CBT pathway designed to help parents manage their own emotional reactivity. This program shifts the focus from 'fixing the child' to 'regulating the parent.' You will learn to identify your triggers, pause before reacting, shift from punishment to discipline, and model the emotional intelligence you wish to see in your family.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Parent’s Pause: Breaking the Reactivity Cycle",
+      "overview": "We begin by normalizing parental anger and overwhelm. You are not a 'bad parent' for losing your cool; you are a dysregulated human. We introduce the biology of the 'Flipped Lid' (Dan Siegel’s model). When you are shouting, your prefrontal cortex is offline. You cannot parent effectively from this state. The core skill of 'The Pause' is introduced. Learning to stop the action between the trigger (spilled milk) and the reaction (yelling). We map your 'Shark Music.' Identifying the specific physiological cues that signal you are about to explode.",
+      "takeaways": [
+        "A dysregulated parent cannot regulate a dysregulated child.",
+        "The 'Pause' is the most powerful tool in your parenting toolkit.",
+        "Anger is a signal that a boundary has been crossed or a resource is depleted."
+      ],
+      "exercises": [
+        "Trigger Mapping: List the top 3 times of day or behaviors that trigger your 'shark music' (e.g., Bedtime, Backtalk, sibling fighting).",
+        "The 10-Second Exit: Practice saying, 'I am frustrated and need a moment' and walking away for 10 seconds."
+      ],
+      "homework": [
+        "Use the 10-Second Exit at least once this week.",
+        "Track your 'Shark Music' symptoms in a notebook."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Ghosts in the Nursery: Understanding Your Triggers",
+      "overview": "Why does backtalk make you so angry? Often, it’s not about the child; it’s about your own history. We explore 'Ghosts in the Nursery.' We use CBT to identify 'Parenting Schemas.' e.g., 'If my child misbehaves, it means I am failing' or 'Children must be seen and not heard.' Cognitive Restructuring for 'Catastrophizing.' (e.g., 'If he doesn't share his toy now, he will be a selfish adult'). Separating the child’s behavior from your self-worth.",
+      "takeaways": [
+        "Your intense reactions often point to an unhealed part of your own childhood.",
+        "A child's behavior is communication, not a report card on your parenting.",
+        "Catastrophizing future outcomes creates unnecessary urgency in the present."
+      ],
+      "exercises": [
+        "The 'Why' Ladder: Ask yourself 'Why does this bother me?' 3 times to get to the core belief. (e.g., They are ignoring me -> I am not respected -> I am invisible).",
+        "The Mantra: Create a coping thought: 'He is not giving me a hard time; he is having a hard time.'"
+      ],
+      "homework": [
+        "Identify one 'Ghost' from your past that influences your parenting.",
+        "Practice the Mantra during a moment of friction."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Discipline vs. Punishment",
+      "overview": "We clarify the difference: Punishment is about making a child pay for a mistake (fear-based). Discipline is about teaching a child how to do better (growth-based). We introduce 'Natural and Logical Consequences' instead of arbitrary punishments. The concept of 'Connection before Correction.' You must re-establish the relationship bridge before you can drive the teaching truck across it. Moving away from shame and threats.",
+      "takeaways": [
+        "Punishment suppresses behavior; discipline changes character.",
+        "A child who feels bad behaves bad. A child who feels connected behaves better.",
+        "Consequences should be related, reasonable, and respectful."
+      ],
+      "exercises": [
+        "The Empathy Guess: Before correcting, guess the child's feeling out loud. 'You seem really frustrated that playtime is over.'",
+        "Consequence Audit: Review your current punishments. Are they logical? (e.g., taking away a tablet for hitting a sibling isn't logical. Doing a chore for the sibling is)."
+      ],
+      "homework": [
+        "Practice 'Connection before Correction' 3 times.",
+        "Design one logical consequence for a recurring behavior."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • The Art of Repair",
+      "overview": "You will mess up. You will yell. This module is about 'Rupture and Repair.' We learn the 'Good Apology.' Not 'I'm sorry you made me yell,' but 'I'm sorry I yelled. I was frustrated and I lost my temper. I am working on staying calm.' Repair builds resilience. It teaches children that relationships can survive conflict. Letting go of the 'Perfect Parent' perfectionism.",
+      "takeaways": [
+        "Repair is more important than perfection.",
+        "A genuine apology from a parent models accountability.",
+        "Shame ('I am a bad parent') prevents repair; Guilt ('I made a mistake') prompts repair."
+      ],
+      "exercises": [
+        "The Repair Script: Write down your standard repair script. Keep it simple and owning your part.",
+        "Self-Forgiveness Letter: Write a short note forgiving yourself for a recent parenting mistake."
+      ],
+      "homework": [
+        "Execute a repair conversation within 24 hours of a rupture.",
+        "Notice how the child responds when you take responsibility."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Modeling Emotional Intelligence",
+      "overview": "Children download our OS. This module focuses on narrating your own emotional process. The 'Sportscasting' technique. Narrating what you are doing to calm down in real-time. Teaching 'Emotion Vocabulary.' Moving beyond happy/mad/sad. Creating a 'Calm Down Plan' for the whole family, not just the kids.",
+      "takeaways": [
+        "You cannot teach what you do not do.",
+        "Narrating your regulation teaches the child *how* to regulate.",
+        "Emotions are like weather; they pass."
+      ],
+      "exercises": [
+        "Emotion Charades: Play a game acting out complex emotions (disappointed, nervous, grateful).",
+        "Sportscasting: Once a day, narrate your own regulation strategy out loud."
+      ],
+      "homework": [
+        "Create a 'Family Calm Down Menu' (list of things that help: hugs, water, music, jumping jacks).",
+        "Use the Sportscasting technique."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Parenting Together (or Solo)",
+      "overview": "Navigating differences in parenting styles with a partner or co-parent. The 'United Front' myth vs. respectful disagreement. If single parenting: building a 'Village' and managing isolation. Setting boundaries with grandparents and unsolicited advice.",
+      "takeaways": [
+        "You don't have to agree on everything, but you must agree on respect.",
+        "Undermining each other creates insecurity for the child.",
+        "Boundaries with extended family protect the nuclear family culture."
+      ],
+      "exercises": [
+        "The Tag-Out Signal: Agree on a non-verbal signal with your partner (or a friend/relative) that means 'I need to tap out.'",
+        "Values Audit: List the top 3 values you want your child to have. Compare with your partner."
+      ],
+      "homework": [
+        "Hold a 15-minute 'Parenting Logistics' meeting without the kids present.",
+        "Practice the Tag-Out signal."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • Joy & Resilience",
+      "overview": "Ending on connection. Parenting is also about delight. The 5:1 Ratio. Research shows healthy relationships need 5 positive interactions for every 1 negative. Creating 'Rituals of Connection' (special handshakes, bedtime songs). Planning for the long game: Raising an adult, not just managing a child.",
+      "takeaways": [
+        "Delighting in your child is the greatest nutrient for their self-esteem.",
+        "Rituals create safety and belonging.",
+        "You are the right parent for your child."
+      ],
+      "exercises": [
+        "The 5-Minute Special Time: Spend 5 minutes doing exactly what the child wants to do, with zero phone and zero direction.",
+        "Ritual Design: Create one small daily ritual of connection."
+      ],
+      "homework": [
+        "Practice the 'Face Light Up' every time they enter the room for a week.",
+        "Reflect on the journey of the last 7 modules."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

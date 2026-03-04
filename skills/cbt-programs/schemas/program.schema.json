@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eir.space/schemas/cbt-program.json",
+  "title": "CBT Program",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "condition",
+    "tags",
+    "defaultLanguage",
+    "lineage",
+    "translations",
+    "content",
+    "recommendationSignals"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^cbt-[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "published", "archived"]
+    },
+    "condition": {
+      "type": "object",
+      "required": ["key", "name"],
+      "properties": {
+        "key": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "defaultLanguage": {
+      "type": "string"
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "aiCreated",
+        "humanCreated",
+        "humanReviewed",
+        "healthcareExpertVerified"
+      ],
+      "properties": {
+        "aiCreated": { "type": "boolean" },
+        "humanCreated": { "type": "boolean" },
+        "humanReviewed": { "type": "boolean" },
+        "healthcareExpertVerified": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "translations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lang", "status", "path"],
+        "properties": {
+          "lang": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["source", "draft", "human-reviewed", "expert-verified"]
+          },
+          "path": { "type": "string" },
+          "completion": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": ["moduleCount", "estimatedWeeks"],
+      "properties": {
+        "moduleCount": { "type": "integer", "minimum": 1 },
+        "estimatedWeeks": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "recommendationSignals": {
+      "type": "object",
+      "required": ["problems"],
+      "properties": {
+        "problems": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "contraindications": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "severity": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "changeLog": { "type": "string" },
+    "progressDir": { "type": "string" }
+  },
+  "additionalProperties": true
+}

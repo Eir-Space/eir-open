@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-ms-resilience",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "multiple-sclerosis-ms",
+    "name": "Multiple Sclerosis (MS)"
+  },
+  "tags": [
+    "cbt",
+    "multiple-sclerosis-ms",
+    "ms-fatigue-management",
+    "cognitive-restructuring",
+    "grief-acceptance",
+    "the-spoon-theory-pacing",
+    "uncertainty-tolerance",
+    "identity-reconstruction"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-ms.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6–8 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Multiple Sclerosis (MS)",
+      "MS Fatigue Management",
+      "Cognitive Restructuring",
+      "Grief & Acceptance",
+      "The 'Spoon Theory' Pacing",
+      "Uncertainty Tolerance",
+      "Identity Reconstruction"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

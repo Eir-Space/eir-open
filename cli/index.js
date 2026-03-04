@@ -3,7 +3,8 @@
 import { execSync, spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { homedir, platform } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Command } from 'commander';
 import * as p from '@clack/prompts';
 import chalk from 'chalk';
@@ -14,6 +15,9 @@ const OPENCLAW_DOCS = 'https://eir-space.github.io/eir-open/docs/openclaw-integr
 const VIEWER_DMG =
   'https://github.com/BirgerMoell/eir-open-apps/releases/latest/download/EirViewer-macOS.dmg';
 const VIEWER_RELEASES = 'https://github.com/BirgerMoell/eir-open-apps/releases/latest';
+const CLI_DIR = dirname(fileURLToPath(import.meta.url));
+const EIR_OPEN_ROOT = join(CLI_DIR, '..');
+const CBT_PROGRAMS_LOCAL_PACKAGE = join(EIR_OPEN_ROOT, 'skills', 'cbt-programs');
 
 // ── Brand palette (EIR Serenity, from site/src/styles/global.css) ───────────
 
@@ -330,6 +334,21 @@ async function installMedications({ verbose, dryRun }) {
   }
 }
 
+async function installCbtPrograms({ verbose, dryRun }) {
+  if (dryRun) return 'ok';
+  if (!checkNode().ok) return 'skip';
+
+  try {
+    if (existsSync(join(CBT_PROGRAMS_LOCAL_PACKAGE, 'package.json'))) {
+      await runAsync('npm', ['install', '-g', CBT_PROGRAMS_LOCAL_PACKAGE], { verbose });
+      return 'ok';
+    }
+    return 'skip';
+  } catch {
+    return 'fail';
+  }
+}
+
 async function installHealthMd({ verbose, dryRun }) {
   if (dryRun) return 'ok';
   if (!checkPython().ok) return 'skip';
@@ -438,6 +457,18 @@ function verify() {
       /* ignore */
     }
   }
+  if (hasCmd('cbt-programs')) {
+    try {
+      const out = execSync('cbt-programs list', { encoding: 'utf8', timeout: 10000 })
+        .split('\n')
+        .slice(0, 5)
+        .join('\n')
+        .trim();
+      if (out) lines.push(out);
+    } catch {
+      /* ignore */
+    }
+  }
   if (lines.length > 0) {
     p.log.step('Verification');
     for (const line of lines) {
@@ -450,6 +481,7 @@ function verify() {
 
 const STEPS = [
   { key: 'medications', label: 'Installing medication skills', fn: installMedications },
+  { key: 'cbt-programs', label: 'Installing CBT programs module', fn: installCbtPrograms },
   { key: 'health-md', label: 'Installing Health.md standard', fn: installHealthMd },
   { key: 'eir-apps', label: 'Downloading Eir Viewer', fn: installEirApps },
   { key: 'openclaw', label: 'Adding OpenClaw skills', fn: installOpenClaw },
@@ -482,7 +514,9 @@ const program = new Command();
 
 program
   .name('eir-open')
-  .description('Install medication skills, Health.md, Eir Apps, and OpenClaw integration')
+  .description(
+    'Install medication skills, CBT programs module, Health.md, Eir Apps, and OpenClaw integration',
+  )
   .version(VERSION)
   .option('--all', 'Install everything (no interactive menu)')
   .option('--dry-run', 'Print what would be installed without making changes')
@@ -521,6 +555,11 @@ program
             value: 'medications',
             label: 'Medication skills',
             hint: theme.muted('npm install -g swedish-medications us-medications'),
+          },
+          {
+            value: 'cbt-programs',
+            label: 'CBT programs module',
+            hint: theme.muted('npm install -g ./skills/cbt-programs'),
           },
           {
             value: 'health-md',

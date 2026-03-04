@@ -1,0 +1,121 @@
+---
+title: CBT Programs Registry
+description: Build, localize, review, and publish open CBT programs with clear provenance and agent-ready tooling.
+---
+
+The CBT Programs Registry makes CBT content easy to share, verify, and translate at scale.
+
+It is designed for teams that want:
+
+- reusable CBT programs for many health problems,
+- transparent authorship and review status,
+- fast multilingual expansion,
+- easy integration into AI agent workflows.
+
+## Why this is valuable
+
+- **Trust-first metadata**: every program tracks `aiCreated`, `humanCreated`, `humanReviewed`, and `healthcareExpertVerified`.
+- **Easy localization**: each language lives in `locales/<lang>.json` so translation is independent from core metadata.
+- **Safe collaboration**: all updates are tracked in `changelog.md` and `progress/*.md`.
+- **Agent-native**: `SKILL.md` + CLI commands support recommendation and guided support flows.
+
+## Program structure
+
+Each program lives in:
+
+```text
+skills/cbt-programs/data/programs/<program-id>/
+```
+
+Core files:
+
+- `program.json` — metadata, lineage, recommendation signals, translation status
+- `locales/<lang>.json` — language-specific content
+- `changelog.md` — user-facing release log
+- `progress/*.md` — implementation and review notes
+
+## Install
+
+```bash
+cd /path/to/eir-open
+npm install -g ./skills/cbt-programs
+```
+
+## Core workflows
+
+List and recommend:
+
+```bash
+cbt-programs list --lang en
+cbt-programs recommend --problem "difficulty sleeping" --lang en --limit 3
+```
+
+Create a new program:
+
+```bash
+cbt-programs scaffold cbt-shift-work-sleep \
+  --title "CBT for Shift Work Sleep" \
+  --condition "Shift Work Sleep Disturbance" \
+  --creator ai-assisted
+```
+
+Improve an existing program:
+
+```bash
+cbt-programs improve cbt-shift-work-sleep \
+  --lang en \
+  --add-tags "sleep-hygiene,relapse-prevention" \
+  --add-problems "night waking,rumination" \
+  --mark-human-reviewed \
+  --note "Improved symptom coverage and review state"
+```
+
+LLM-driven improve (host agent provides plan JSON):
+
+```bash
+cbt-programs improve cbt-shift-work-sleep \
+  --llm \
+  --llm-plan-file ./llm-improve-plan.json \
+  --dry-run
+```
+
+Validate:
+
+```bash
+cbt-programs validate
+```
+
+## Contributing new languages
+
+This is intentionally lightweight:
+
+1. Pick a program folder under `data/programs/<id>/`.
+2. Add `locales/<lang>.json` (example: `locales/es.json`).
+3. Add translation record in `program.json.translations[]`:
+   `lang`, `status`, `completion`, `path`.
+4. Keep status explicit: `draft`, `human-reviewed`, or `expert-verified`.
+5. Run `cbt-programs validate <id>`.
+6. Add a `progress/*.md` entry describing what was translated and reviewed.
+
+This model lets many contributors work in parallel across languages without merge conflicts in core program metadata.
+
+## Contributing new programs
+
+1. Use `cbt-programs scaffold` to create baseline files.
+2. Fill in module content in `locales/en.json` (or your source language).
+3. Set lineage and recommendation signals in `program.json`.
+4. Add changelog and progress entries.
+5. Run validation and open a PR.
+
+## Migrating legacy YAML
+
+Import from the old CBT YAML folder:
+
+```bash
+node skills/cbt-programs/scripts/import_legacy_yaml.js \
+  --source /Users/birger/Community/egen_journal/backend/content/programs \
+  --target /Users/birger/Community/eir-open/skills/cbt-programs/data/programs \
+  --status draft
+```
+
+Use `--overwrite` only when you intentionally want to replace existing program folders.

@@ -1,0 +1,103 @@
+{
+  "language": "en",
+  "title": "Breaking the Ritual: Reclaiming Your Agency",
+  "summary": "A specialized, gold-standard program based on Exposure and Response Prevention (ERP). This program helps you distinguish between 'ego-dystonic' intrusive thoughts and reality. You will learn to face your fears without performing rituals, tolerate the distress of uncertainty, and retrain your brain to stop sending false 'danger' signals.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Glitch in the Gearbox",
+      "overview": "We begin by externalizing OCD. It is not a character flaw; it is a mechanical glitch in the brain's warning system. We map the OCD Cycle: Obsession (Trigger) → Anxiety (Distress) → Compulsion (Ritual) → Temporary Relief. Psycho-education focuses on 'Intrusive Thoughts.' Everyone has weird thoughts; the OCD brain just gets 'sticky' on them, interpreting them as significant or dangerous. We introduce the concept of 'Negative Reinforcement.' You will learn how performing a ritual (checking, washing, ruminating) momentarily lowers anxiety but guarantees the anxiety will return stronger next time. We distinguish between 'Ego-Syntonic' (thoughts that align with your values) and 'Ego-Dystonic' (thoughts that horrify you). OCD thoughts are almost always the latter. You will start a 'Ritual Log.' Tracking not just the trigger, but the specific compulsion you performed and how long the relief lasted. We introduce the core philosophy of recovery: 'The goal is not to stop the thoughts; the goal is to stop the reaction.' Finally, we prepare for the work ahead. We are going to learn to sit with anxiety without fixing it. This is hard, but it is the only way out.",
+      "takeaways": [
+        "Compulsions provide short-term relief but fuel long-term suffering.",
+        "Intrusive thoughts are junk mail; your brain just keeps marking them 'Urgent.'",
+        "You cannot control the thought (Obsession), but you can control the action (Compulsion).",
+        "The content of the obsession matters less than the cycle itself."
+      ],
+      "exercises": [
+        "The Cycle Map: Pick one recent OCD episode. Write down the Trigger, the Obsession (Thought), the Feeling, the Compulsion (Action), and the Result.",
+        "Junk Mail Labeling: For one day, whenever an intrusive thought appears, visualize stamping it with a big red 'SPAM' stamp. Do not open the email, just stamp it."
+      ],
+      "homework": [
+        "Maintain the Ritual Log for 7 days.",
+        "Identify your 'Core Fear'—what is the terrible thing you believe will happen if you don't do the ritual?"
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Building the Hierarchy: The ERP Ladder",
+      "overview": "This module builds the roadmap for Exposure and Response Prevention (ERP). We create a 'Fear Hierarchy' or 'Ladder.' You will list your triggers—situations, objects, or thoughts that cause distress—and rate them from 0-100 (SUDS: Subjective Units of Distress Scale). We discuss 'Response Prevention.' This is the 'RP' in ERP. It means facing the trigger *without* doing the ritual. No checking, no washing, no asking for reassurance. We identify 'covert' rituals. These are mental compulsions (praying, counting, neutralizing bad thoughts with good ones) that are harder to spot but just as damaging. The concept of 'Habituation' is explained. If you stay in a cold pool, the water eventually feels warm. If you stay with anxiety without a ritual, the anxiety eventually fades. We set rules for exposure: It must be prolonged, repeated, and without distraction.",
+      "takeaways": [
+        "We start small; we don't jump to the top of the ladder on day one.",
+        "Mental rituals (rumination) are just as reinforcing as physical rituals.",
+        "Anxiety always comes down eventually, even without a ritual. This is the 'Habituation Curve.'"
+      ],
+      "exercises": [
+        "The Ladder Builder: List 10-15 triggers. Rate them 1-100. (e.g., 'Touching doorknob' = 30, 'Touching bin' = 60, 'Touching floor' = 90).",
+        "Identify Safety Behaviors: List the sneaky things you do to cope (e.g., opening doors with elbows, asking 'Are you sure?' repeatedly)."
+      ],
+      "homework": [
+        "Finalize your Fear Ladder.",
+        "Select one item rated roughly '30' for your first exposure next week."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Facing the Fear: Exposure Begins",
+      "overview": "We begin active exposure. You will engage with the first item on your ladder. We guide you through the process: Trigger the anxiety, resist the compulsion, and wait for the SUDS score to drop by half. We address 'Inhibitory Learning.' The goal isn't just to lower anxiety, but to violate your expectations. 'I thought X would happen, but Y happened.' Troubleshooting: What if the anxiety doesn't drop? (Answer: We wait longer, or we accept the discomfort as the new normal). We discuss the 'Backdoor Spike.' Sometimes anxiety gets worse right before it gets better. This is called an 'Extinction Burst.'",
+      "takeaways": [
+        "The only way out is through.",
+        "You are retraining your amygdala (fear center) through direct experience.",
+        "Discomfort is not danger."
+      ],
+      "exercises": [
+        "The First Exposure: Perform your chosen low-level exposure. Track your SUDS every 5 minutes until it drops by half.",
+        "The Script: Write a script of your worst fear happening (e.g., 'I get sick'). Read it aloud for 10 minutes without neutralizing it."
+      ],
+      "homework": [
+        "Repeat the chosen exposure daily until it becomes boring (SUDS < 20).",
+        "Move to the next item on the ladder."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Embracing Uncertainty",
+      "overview": "The core of OCD is the intolerance of uncertainty. 'I need to know for sure.' This module targets the need for certainty. We introduce thoughts like 'Maybe, Maybe Not.' When OCD says 'Did you lock the door?', we answer 'Maybe I didn't. I'm willing to risk it.' We tackle 'Reassurance Seeking.' Asking others 'Is this okay?' transfers the anxiety to them and prevents you from learning to cope. We practice 'Scripting for Uncertainty.' Writing stories where the bad thing *might* happen and accepting that possibility.",
+      "takeaways": [
+        "Certainty is an illusion; no one is 100% safe, OCD just pretends it can make you safe.",
+        "Agreeing with the obsession ('Yes, maybe I am a monster') disarms it.",
+        "Living with 'I don't know' is a skill you can build."
+      ],
+      "exercises": [
+        "The 'Maybe' Mantra: For one day, answer every OCD doubt with 'Maybe, maybe not.'",
+        "Reassurance Ban: Tell your family/friends: 'If I ask for reassurance, please tell me you love me but you won't answer the question.'"
+      ],
+      "homework": [
+        "Practice the Reassurance Ban for one week.",
+        "Continue climbing the ERP ladder."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Maintenance: The OCD Gardener",
+      "overview": "OCD is chronic but manageable. We shift to a maintenance mindset. We identify 'Lapse vs. Relapse.' A lapse is doing a ritual once; a relapse is falling back into the cycle. We create a 'Willingness Plan.' Being willing to have the thoughts return without engaging them. We discuss lifestyle factors: Stress, sleep, and alcohol can lower the threshold for obsessions. Celebration of reclaiming values. Doing the things you love that OCD stole from you.",
+      "takeaways": [
+        "Recovery is not the absence of intrusive thoughts; it is the absence of rituals.",
+        "You can have a noisy brain and a quiet life.",
+        "Vigilance against 'sneaky' new rituals is key."
+      ],
+      "exercises": [
+        "Values Reclamation: Choose one activity OCD took from you (e.g., cooking, traveling). Plan to do it this month.",
+        "The Slip-Up Plan: Write down: 'If I get stuck in a ritual, I will not beat myself up. I will just do an exposure immediately after.'"
+      ],
+      "homework": [
+        "Create a 'Maintenance Card' for your wallet with your top 3 reminders.",
+        "Schedule a monthly self-check-in to review any creeping rituals."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

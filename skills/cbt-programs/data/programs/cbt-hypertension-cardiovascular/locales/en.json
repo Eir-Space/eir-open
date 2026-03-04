@@ -1,0 +1,139 @@
+{
+  "language": "en",
+  "title": "Heart Health Mastery: Managing Hypertension & Cardiovascular Wellness",
+  "summary": "A comprehensive, evidence-based CBT program designed to help you manage hypertension and improve cardiovascular health through stress reduction, medication adherence, and sustainable lifestyle modifications. This program addresses the psychological and behavioral factors that impact heart health, empowering you to take an active role in your cardiovascular wellness.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • Understanding Hypertension & Your Heart Health",
+      "overview": "We begin by demystifying hypertension (high blood pressure). You will learn what blood pressure means, why it matters, and how it affects your cardiovascular system. We explore the 'Silent Killer' nature of hypertension—often symptomless but potentially dangerous. Understanding the risks motivates action. You will learn about the factors that influence blood pressure: genetics, lifestyle, stress, diet, exercise, and medication. We introduce the concept of 'Cardiovascular Risk Factors'—understanding how hypertension fits into the bigger picture of heart health. You will start 'Blood Pressure Tracking'—learning to monitor your readings and understand what they mean. We address common misconceptions about hypertension (e.g., 'I feel fine, so it's not serious' or 'Medication alone is enough'). Finally, we set the foundation: Managing hypertension requires a holistic approach—medication, lifestyle, and stress management work together.",
+      "takeaways": [
+        "Hypertension is manageable, not a life sentence.",
+        "Blood pressure fluctuates; trends matter more than single readings.",
+        "Multiple factors influence heart health; addressing them all is most effective.",
+        "You are an active partner in your cardiovascular health, not a passive patient."
+      ],
+      "exercises": [
+        "The Blood Pressure Education: Research and write down: What do systolic and diastolic numbers mean? What's your target range? What factors affect readings?",
+        "The Risk Factor Assessment: List all cardiovascular risk factors that apply to you (hypertension, family history, smoking, inactivity, stress, etc.). Circle the ones you can control.",
+        "Start Blood Pressure Tracking: Take readings at the same time daily for one week. Record: time, systolic, diastolic, and what you were doing before (e.g., just woke up, after coffee, stressed)."
+      ],
+      "homework": [
+        "Continue daily blood pressure tracking for 7 days. Look for patterns: When are readings higher? Lower? What might explain the differences?",
+        "Schedule a conversation with your healthcare provider about your blood pressure goals and treatment plan. Write down questions beforehand.",
+        "Identify one lifestyle factor you'd like to change first (diet, exercise, stress, sleep). Why this one? What would success look like?"
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Stress Reduction for Heart Health",
+      "overview": "This module addresses the critical connection between stress and blood pressure. Chronic stress keeps your body in 'fight or flight' mode, raising blood pressure. We explore 'Stress Response Physiology'—how your body reacts to stress and why this impacts cardiovascular health. You will learn to identify your personal 'Stress Triggers'—situations, thoughts, or behaviors that activate your stress response. We introduce 'Stress Reduction Techniques' specifically for heart health: deep breathing, progressive muscle relaxation, meditation, and mindfulness. The concept of 'Stress Inoculation' is explained—building resilience through regular practice of stress management techniques. You will create a 'Stress Management Toolkit'—a personalized collection of strategies you can use when stress spikes. Finally, we practice 'Lifestyle Stress Reduction'—making changes to reduce chronic stressors (boundaries, time management, saying no).",
+      "takeaways": [
+        "Chronic stress directly impacts blood pressure and heart health.",
+        "Stress management is a skill that improves with practice.",
+        "You can't eliminate all stress, but you can change how you respond to it.",
+        "Regular stress reduction practice has cumulative benefits for cardiovascular health."
+      ],
+      "exercises": [
+        "The Stress Trigger Map: List 10 situations, thoughts, or behaviors that trigger stress. Rate each (1-10). Which ones are most connected to your blood pressure spikes?",
+        "The Breathing Practice: Learn diaphragmatic breathing. Practice 5 minutes daily for one week. Notice how it affects your stress levels and blood pressure readings.",
+        "Create Your Stress Management Toolkit: List 5-7 stress reduction strategies that work for you. Include both immediate techniques (breathing) and longer-term strategies (exercise, boundaries)."
+      ],
+      "homework": [
+        "Practice diaphragmatic breathing for 5 minutes, twice daily. Take your blood pressure before and after. Notice any changes.",
+        "Use one technique from your Stress Management Toolkit each day this week. Track which ones are most effective.",
+        "Identify one chronic stressor you can reduce or eliminate. Make a plan. Take one action this week."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Medication Adherence: Making It Stick",
+      "overview": "This module addresses one of the biggest challenges in hypertension management: taking medication consistently as prescribed. We explore 'Barriers to Adherence'—common reasons people miss doses (forgetting, side effects, cost, beliefs about medication, etc.). You will learn 'Adherence Strategies'—practical tools to remember medications: pill organizers, phone alarms, habit stacking, visual reminders. The concept of 'Medication Beliefs' is introduced. Negative beliefs ('I don't want to be dependent') can undermine adherence. We'll challenge and reframe these. We address 'Side Effect Management'—working with your healthcare provider to minimize or manage medication side effects. You will create a 'Medication Routine'—integrating medication-taking into your daily life so it becomes automatic. Finally, we practice 'Problem-Solving for Adherence'—addressing specific barriers as they arise.",
+      "takeaways": [
+        "Medication adherence is critical for blood pressure control.",
+        "Forgetting is normal; systems prevent forgetting.",
+        "Side effects can often be managed; don't suffer in silence.",
+        "Your beliefs about medication affect your adherence."
+      ],
+      "exercises": [
+        "The Adherence Audit: Track your medication-taking for one week. Mark each dose: taken on time, taken late, missed. What patterns do you notice?",
+        "Identify Your Barriers: List all reasons you might miss medication (forgetting, side effects, cost, beliefs, etc.). Rank them by frequency.",
+        "Design Your Medication System: Choose 2-3 adherence strategies (pill organizer, alarm, habit stacking). Set them up. Test for one week."
+      ],
+      "homework": [
+        "Use your Medication System for 7 days. Track adherence. What works? What needs adjustment?",
+        "If you experience side effects, document them. Schedule a conversation with your healthcare provider to discuss options.",
+        "Challenge one negative belief about medication. Write it down. Find evidence for a more balanced perspective."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Dietary Modifications for Heart Health",
+      "overview": "This module addresses the critical role of diet in blood pressure management, focusing on the DASH (Dietary Approaches to Stop Hypertension) principles. We explore 'Sodium and Blood Pressure'—understanding how excess salt affects cardiovascular health and learning to reduce sodium intake. You will learn about 'Heart-Healthy Nutrients'—potassium, magnesium, calcium, and fiber—and how to incorporate them into your diet. The concept of 'Portion Awareness' is introduced. You don't need to diet—just become aware of portions and make gradual adjustments. We address 'Practical Meal Planning'—making heart-healthy eating realistic and sustainable, not restrictive. You will create a 'Food & Blood Pressure Log'—tracking how different foods and meals affect your readings. Finally, we practice 'Sustainable Changes'—making small, gradual dietary modifications that stick long-term.",
+      "takeaways": [
+        "Diet significantly impacts blood pressure, but extreme restrictions are unsustainable.",
+        "Reducing sodium is one of the most effective dietary changes for hypertension.",
+        "Small, gradual changes are more sustainable than major overhauls.",
+        "Heart-healthy eating can be delicious and satisfying."
+      ],
+      "exercises": [
+        "The Sodium Audit: Track your sodium intake for 3 days. Read labels. Add it up. Compare to the recommended 2,300mg (ideally 1,500mg) per day. Where is most sodium coming from?",
+        "The Food-BP Connection: For one week, log meals and take blood pressure readings 1-2 hours after eating. Notice patterns: Do certain foods affect your readings?",
+        "Create 5 Heart-Healthy Swaps: Identify 5 high-sodium or processed foods you eat regularly. Find healthier alternatives. Try one swap this week."
+      ],
+      "homework": [
+        "Reduce sodium intake by 25% this week. Use the Sodium Audit to identify your biggest sources. Make targeted reductions.",
+        "Add one serving of potassium-rich food daily (banana, spinach, sweet potato, etc.). Notice how this feels.",
+        "Plan and prepare one heart-healthy meal this week. Make it something you'll actually enjoy and want to repeat."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Physical Activity for Cardiovascular Health",
+      "overview": "This module addresses the role of physical activity in blood pressure management and overall cardiovascular health. We explore 'How Exercise Lowers Blood Pressure'—the physiological mechanisms by which movement benefits the heart. You will learn about 'Aerobic Exercise' for heart health—activities that strengthen the cardiovascular system (walking, swimming, cycling, etc.). The concept of 'Moderate-Intensity Activity' is explained. You don't need to run marathons—moderate activity is highly effective. We address 'Safety Considerations'—understanding your limits, monitoring exertion, and knowing when to consult your healthcare provider. You will create a 'Cardiovascular Activity Plan'—a realistic, sustainable approach to increasing physical activity. Finally, we practice 'Activity Pacing'—building activity gradually to prevent injury and ensure sustainability.",
+      "takeaways": [
+        "Regular physical activity is one of the most effective non-pharmacological treatments for hypertension.",
+        "Moderate-intensity activity is sufficient—you don't need to push to extremes.",
+        "Consistency matters more than intensity.",
+        "Activity should be enjoyable and sustainable to be effective long-term."
+      ],
+      "exercises": [
+        "The Activity Assessment: What physical activities do you currently do? How often? How intense? Be honest about your baseline.",
+        "Create Your Cardiovascular Activity Plan: Plan 150 minutes of moderate-intensity activity per week. Break it into manageable sessions. Choose activities you enjoy.",
+        "The Safety Check: List any concerns about starting or increasing activity. Consult your healthcare provider if you have cardiovascular symptoms or concerns."
+      ],
+      "homework": [
+        "Start your Cardiovascular Activity Plan this week. Begin with 10-15 minute sessions if you're new to exercise. Track your activity.",
+        "Monitor your blood pressure before and after activity (when safe to do so). Notice how movement affects your readings.",
+        "Try one new cardiovascular activity this week (walking, swimming, cycling, dancing). Notice how it feels in your body."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Integration & Long-Term Management",
+      "overview": "The final module focuses on integrating all components—medication, stress management, diet, and exercise—into a sustainable lifestyle. We explore 'The Big Picture'—how all the pieces work together to support cardiovascular health. You will create a 'Heart Health Maintenance Plan'—a personalized system for managing hypertension long-term. The concept of 'Monitoring & Adjustment' is introduced. Blood pressure management is an ongoing process that requires regular monitoring and occasional course corrections. We address 'Setback Management'—how to handle periods when blood pressure is elevated or when you struggle with adherence. You will learn 'Problem-Solving Skills'—systematic approaches to addressing challenges as they arise. Finally, we write a 'Heart Health Commitment'—a personal statement of your values and intentions for long-term cardiovascular wellness.",
+      "takeaways": [
+        "Managing hypertension is a marathon, not a sprint.",
+        "All components work together—medication, lifestyle, and stress management.",
+        "Setbacks are normal; persistence is key.",
+        "You have the tools and knowledge to manage your cardiovascular health long-term."
+      ],
+      "exercises": [
+        "Create Your Heart Health Maintenance Plan: Integrate medication, stress management, diet, and exercise into a weekly schedule. Make it realistic and sustainable.",
+        "The Setback Response Plan: Write down: 'If my blood pressure is elevated or I struggle with adherence, I will...' Create a specific action plan.",
+        "Write Your Heart Health Commitment: In 200-300 words, write your personal statement about cardiovascular health. Include your values, intentions, and how you'll maintain heart health long-term."
+      ],
+      "homework": [
+        "Implement your Heart Health Maintenance Plan for 4 weeks. Adjust as needed. Notice what works and what needs refinement.",
+        "Continue monitoring blood pressure regularly. Track trends, not just individual readings. Share results with your healthcare provider.",
+        "Review your Heart Health Commitment monthly. Use it as a reminder of why this matters and what you're working toward.",
+        "Celebrate your progress. Every medication taken, every healthy meal, every moment of stress management, every movement session—it all adds up. You're taking care of your heart."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

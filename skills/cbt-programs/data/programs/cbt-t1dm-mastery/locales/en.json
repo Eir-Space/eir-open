@@ -1,0 +1,144 @@
+{
+  "language": "en",
+  "title": "Diabetes Mastery: Overcoming Distress and Fear",
+  "summary": "A clinically grounded, 7-module digital intervention designed to reduce diabetes-related distress and the Fear of Hypoglycemia (FoH). By combining structured Problem-Solving Therapy with graded Exposure techniques, this program helps you break the cycle of avoidance and burnout, allowing you to manage your diabetes with confidence rather than fear.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Invisible Burden: Diabetes Distress vs. Depression",
+      "overview": "Type 1 Diabetes requires 24/7 decision-making. This constant cognitive load often leads to 'Diabetes Distress'—a state of feeling overwhelmed, defeated, or burnt out by the demands of self-care. This module helps you distinguish between general depression and diabetes-specific distress, validating that your frustration is a normal reaction to an abnormal demand. We establish the biological link between stress hormones (cortisol/adrenaline) and blood glucose, helping you see why mental health is actually physical health.",
+      "takeaways": [
+        "Diabetes distress is distinct from depression; it is directly linked to the burden of management.",
+        "Stress hormones can cause blood sugar spikes, creating a vicious cycle of frustration.",
+        "You are not 'bad' at diabetes; you are likely reacting to a high disease burden."
+      ],
+      "exercises": [
+        "The Distress Inventory: Complete the PAID (Problem Areas in Diabetes) assessment to pinpoint exactly where your burden lies (e.g., food, social situations, doctor visits).",
+        "Stress-Sugar Log: For three days, note your stress level (1-10) alongside your blood glucose readings to see if there is a correlation."
+      ],
+      "homework": [
+        "Psychoeducation Review: Read the guide on 'The fight-or-flight response in T1DM' to understand your body's signals."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • The Problem-Solving Engine",
+      "overview": "Diabetes problems often feel too big to solve (e.g., 'I want to lose weight but insulin makes it hard'). This module teaches a structured 4-step Problem-Solving technique to break vague worries into actionable plans. We move away from emotional reasoning and toward logical strategy, helping you tackle issues regarding diet, insulin timing, and social navigation. You will build a 'Solution Bank' to prevent decision fatigue.",
+      "takeaways": [
+        "A problem well-defined is a problem half-solved.",
+        "Brainstorming requires suspending judgment to find creative solutions.",
+        "Action plans must be specific, measurable, and realistic."
+      ],
+      "exercises": [
+        "Problem Selection: Choose one specific issue from your Distress Inventory (Module 1).",
+        "The Solution Generator: Write down 5 potential solutions for this problem, then rank them by feasibility."
+      ],
+      "homework": [
+        "The One-Week Test: Implement your chosen solution for 7 days. Do not judge it until the week is over."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Decoding Fear of Hypoglycemia (FoH)",
+      "overview": "Fear of Hypoglycemia (FoH) is a specific anxiety regarding low blood sugar. It is a survival instinct gone into overdrive. FoH leads to 'safety behaviors'—like keeping blood sugar chronically high (running sweet) or avoiding exercise—that protect you today but hurt you tomorrow. This module helps you distinguish between actual physiological hypoglycemia and the anxiety about hypoglycemia, which often feel identical.",
+      "takeaways": [
+        "Running blood sugar high to avoid lows is a common but dangerous coping mechanism.",
+        "Anxiety symptoms (sweating, racing heart) mimic low blood sugar symptoms.",
+        "Avoidance restricts your life and reinforces the fear."
+      ],
+      "exercises": [
+        "Safety Behavior Audit: List things you do to prevent lows that might be excessive (e.g., carrying 5 juice boxes for a 10-minute walk, keeping glucose above 12 mmol/L).",
+        "Symptom Differentiation: Create a checklist of your specific 'Low' symptoms vs. your 'Anxiety' symptoms."
+      ],
+      "homework": [
+        "The Pause Technique: This week, whenever you feel 'low,' commit to checking your number before eating (unless it is an obvious emergency)."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Building the Exposure Ladder",
+      "overview": "Exposure therapy is the gold standard for reducing fear. We will use a 'graded' approach, meaning we start small. You will sort potential situations (e.g., going to the gym, sleeping alone) into a hierarchy from 'mildly uncomfortable' to 'terrifying.' This preparation phase ensures you feel in control of the process.",
+      "takeaways": [
+        "We do not jump into the deep end; we climb a ladder.",
+        "Subjective Units of Distress (SUDs) help us measure fear objectively.",
+        "The goal is habituation: getting bored of the fear, rather than eliminating the risk."
+      ],
+      "exercises": [
+        "Card Sorting: Categorize 10 common situations into Green (Easy), Yellow (Challenging), and Red (Hard).",
+        "The Ladder Construction: Select 5 situations to form your exposure plan for the next few weeks."
+      ],
+      "homework": [
+        "Motivation Anchor: Write a letter to your future self about *why* you are doing this hard work (e.g., 'To hike with my family again')."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Safety Planning & Experiment Design",
+      "overview": "Exposure in T1DM is different from regular phobias because the risk is real. Therefore, safety planning is non-negotiable. We integrate problem-solving here to mitigate *actual* risk while challenging *perceived* risk. You will design a 'Behavioral Experiment' to test your fears safely.",
+      "takeaways": [
+        "Medical safety comes first; we expose to the *feeling* of fear, not dangerous medical states.",
+        "Preparation reduces the likelihood of catastrophic thinking.",
+        "Every exposure needs an 'exit strategy' to keep you feeling safe."
+      ],
+      "exercises": [
+        "Safety Checklist: Verify you have the necessary medical supplies for your planned exposure.",
+        "Prediction Log: Write down: 'I predict that if I do X, anxiety will be at level Y, and [Bad Thing] will happen.'"
+      ],
+      "homework": [
+        "The Setup: Prepare your environment for the first exposure (e.g., pack the light bag, charge the phone)."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Exposure: Facing the Fear",
+      "overview": "This is the action phase. You will systematically engage with the situations on your ladder. We focus on 'Expectancy Violation'—the powerful moment you realize the catastrophe you predicted did not happen. You will learn to sit with high anxiety without performing a safety behavior (like checking your pump every 30 seconds).",
+      "takeaways": [
+        "Anxiety creates a bell curve; it rises, peaks, and eventually falls if you stay in the situation.",
+        "Learning happens when the 'bad thing' doesn't happen.",
+        "Repetition is essential for the brain to rewire its fear response."
+      ],
+      "exercises": [
+        "Live Exposure: Complete your planned activity.",
+        "Debriefing: Record your starting anxiety, peak anxiety, and ending anxiety. Note what actually happened vs. what you feared."
+      ],
+      "homework": [
+        "Repetition: Repeat this specific exposure 3 times this week until it feels boring. Then move to the next rung on the ladder."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • Mastery and Maintenance",
+      "overview": "You have built skills in problem-solving and exposure. Now we look at the long term. This module focuses on relapse prevention, handling new life phases (job changes, pregnancy, aging), and maintaining the gains you've made. We revisit the outcome measures to celebrate your progress.",
+      "takeaways": [
+        "Diabetes is a marathon; these tools are your endurance kit.",
+        "Setbacks are normal; return to the basics (Problem-Solving) when they happen.",
+        "Integrating these skills leads to a life defined by values, not glucose numbers."
+      ],
+      "exercises": [
+        "Final Assessment: Retake the PAID Scale and compare it to Week 1.",
+        "Future Blueprint: Identify one large life goal you avoided in the past due to diabetes, and draft a plan to achieve it using your new skills."
+      ],
+      "homework": [
+        "The Monthly Check-in: Set a recurring calendar reminder to review your distress levels and practice one exposure exercise."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Understanding Diabetes Distress",
+      "url": "https://diabetes.org/mental-health"
+    },
+    {
+      "title": "Hypoglycemia Awareness & Safety",
+      "url": "https://jdrf.org/t1d-resources/living-with-t1d/hypoglycemia/"
+    },
+    {
+      "title": "Problem-Solving Worksheets",
+      "url": "https://www.cci.health.wa.gov.au/Resources/Looking-After-Yourself/Problem-Solving"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

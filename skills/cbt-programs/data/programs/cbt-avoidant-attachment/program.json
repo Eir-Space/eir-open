@@ -1,0 +1,70 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-avoidant-attachment",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "avoidant-attachment",
+    "name": "Avoidant Attachment"
+  },
+  "tags": [
+    "cbt",
+    "avoidant-attachment",
+    "understanding-avoidant-attachment",
+    "building-emotional-awareness",
+    "developing-intimacy-skills",
+    "trust-and-vulnerability",
+    "secure-communication",
+    "building-secure-attachment"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-avoidant-attachment.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 7,
+    "estimatedWeeks": "7 modules • 6–8 weeks self‑paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Avoidant Attachment",
+      "Understanding avoidant attachment",
+      "Building emotional awareness",
+      "Developing intimacy skills",
+      "Trust and vulnerability",
+      "Secure communication",
+      "Building secure attachment"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-exercise-adherence",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "exercise-adherence-physical-activity",
+    "name": "Exercise Adherence & Physical Activity"
+  },
+  "tags": [
+    "cbt",
+    "exercise-adherence-physical-activity",
+    "barrier-identification-problem-solving",
+    "activity-pacing-gradual-progression",
+    "motivation-habit-formation",
+    "fear-reduction-confidence-building",
+    "sustainable-routine-development"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-exercise-adherence.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 5,
+    "estimatedWeeks": "5 modules • 8-12 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Exercise Adherence & Physical Activity",
+      "Barrier Identification & Problem-Solving",
+      "Activity Pacing & Gradual Progression",
+      "Motivation & Habit Formation",
+      "Fear Reduction & Confidence Building",
+      "Sustainable Routine Development"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

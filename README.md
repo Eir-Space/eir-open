@@ -8,7 +8,7 @@ Open Source Eir Space code — focused on AI for empowering people in their heal
 bash <(curl -fsSL https://raw.githubusercontent.com/eir-space/eir-open/main/install.sh)
 ```
 
-Interactive menu installs medication skills, Health.md, Eir Apps, and OpenClaw integration. See the [Quickstart guide](https://eir-space.github.io/eir-open/docs/quickstart/) for individual installs and OpenClaw setup.
+Interactive menu installs medication skills, CBT programs module, Health.md, Eir Apps, and OpenClaw integration. See the [Quickstart guide](https://eir-space.github.io/eir-open/docs/quickstart/) for individual installs and OpenClaw setup.
 
 ## Open Source Projects
 
@@ -46,6 +46,39 @@ A comprehensive US FDA medication lookup tool with access to over 81,000 medicat
 - Comprehensive medication information including uses, warnings, and interactions
 
 Ideal for US healthcare applications, medical AI assistants, drug interaction checkers, and developers building healthcare applications for the American market.
+
+### 🧠 CBT Programs Registry
+
+**Location**: [`skills/cbt-programs/`](skills/cbt-programs/)
+
+A modular open-source CBT registry for different health problems with multilingual support, provenance labels, and agent-ready workflows.
+
+**Key Features:**
+
+- **Modular structure**: one folder per program with machine-readable metadata + locale content
+- **Multilingual by design**: language packs under `locales/<lang>.json` with translation review status
+- **Trust labels**: explicit flags for AI-created, human-created, human-reviewed, and healthcare-expert-verified
+- **Change tracking**: markdown `progress/*.md` logs and `changelog.md` per program
+- **CLI included**: `cbt-programs` for list/search/recommend/validate/scaffold workflows
+- **Agent skill included**: `SKILL.md` for integration in agent systems
+
+Ideal for teams publishing transparent, auditable CBT programs and for agents that need safe recommendation and guided-support workflows.
+
+**Why this matters:**
+
+- Anyone can inspect exactly who authored and reviewed a program.
+- Programs are easy to localize without touching core metadata.
+- Teams can collaborate safely with traceable markdown updates.
+
+**How to contribute quickly:**
+
+1. Scaffold or import a program.
+2. Add or improve `locales/<lang>.json`.
+3. Mark review/verification status in `program.json`.
+4. Run `cbt-programs validate`.
+5. Open a PR with your `progress/` note and changelog update.
+
+See detailed docs in [`site/src/content/docs/docs/cbt-programs.mdx`](site/src/content/docs/docs/cbt-programs.mdx).
 
 ### 🏥 EIR Health Data Standard
 

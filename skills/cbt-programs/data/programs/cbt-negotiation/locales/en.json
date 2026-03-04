@@ -1,0 +1,132 @@
+{
+  "language": "en",
+  "title": "The Collaborative Negotiator: Psychology of Influence",
+  "summary": "A comprehensive seven-module journey to master the psychology of negotiation. Negotiation often triggers a 'fight or flight' response that clouds judgment. This program teaches you to regulate your emotions, understand the other party’s perspective, separate the people from the problem, and achieve outcomes that maximize value while preserving relationships.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Module 1 • The Psychology of Conflict",
+      "overview": "Why is negotiation so scary? We explore the evolutionary roots of conflict anxiety (risk of tribal rejection). We distinguish between 'Distributive' (Pie splitting) and 'Integrative' (Pie growing) negotiation. Identifying your 'Negotiation Style': Avoider, Accommodator, Competitor, Collaborator. Reframing negotiation: It is not a battle; it is a joint problem-solving session.",
+      "takeaways": [
+        "Conflict is natural; it is the engine of change.",
+        "You don't have to be aggressive to be effective.",
+        "Collaboration yields higher value than competition."
+      ],
+      "exercises": [
+        "Style Quiz: Identify your default negotiation style.",
+        "Reframing: Rewrite 'I have to fight them for more money' to 'We need to find a number that works for both of us.'"
+      ],
+      "homework": [
+        "Observe a negotiation in real life (or a movie). Identify the styles used."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Module 2 • Regulating the Amygdala",
+      "overview": "High stakes trigger the Amygdala Hijack. You can't think when you are in fight-or-flight. Techniques for 'Cooling the Hot Cognition.' Breathing, grounding, and pausing. The 'Poker Face' vs. 'Authentic Calm.' It's not about hiding emotion, but managing it. Dealing with the physical symptoms of adrenaline.",
+      "takeaways": [
+        "He who stays calmest, wins.",
+        "You can take a break in the middle of a negotiation.",
+        "Emotion is data, not a directive."
+      ],
+      "exercises": [
+        "The Balcony Practice: In a low-stakes argument, visualize stepping onto the balcony.",
+        "Box Breathing: Practice 4-4-4-4 breathing to lower heart rate before a tough conversation."
+      ],
+      "homework": [
+        "Use the 'Can I have a moment to think?' line in a conversation."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Module 3 • Preparation: The Power of BATNA",
+      "overview": "Anxiety comes from lack of options. We introduce the BATNA (Best Alternative to a Negotiated Agreement). Knowing your BATNA gives you the power to walk away. This is your anchor. Researching *their* perspective. What do *they* want? What are *their* pressures? Setting your Target Point (Ideal) and Reservation Point (Walk-away).",
+      "takeaways": [
+        "The person with the best Plan B has the most power.",
+        "Preparation reduces anxiety by 80%.",
+        "Understanding their constraints is as important as understanding your desires."
+      ],
+      "exercises": [
+        "BATNA Brainstorm: For a current issue, list 3 alternatives if you don't reach a deal.",
+        "The Other Side: Write a paragraph describing the problem from *their* point of view."
+      ],
+      "homework": [
+        "Define your BATNA for one upcoming decision."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Module 4 • Separation: People vs. Problem",
+      "overview": "The Harvard Principle: 'Separate the people from the problem.' We can be 'Soft on the people, hard on the problem.' Using 'I' statements to avoid accusation. Building rapport before business. The importance of 'Schmooze.'",
+      "takeaways": [
+        " attacking the person makes them defend themselves; attacking the problem makes them solve it.",
+        "Likability is a leverage point.",
+        "You can disagree without being disagreeable."
+      ],
+      "exercises": [
+        "The 'We' Rephrase: Change 'You are too expensive' to 'We have a budget constraint we need to solve.'",
+        "Rapport Building: Start a difficult conversation with a genuine compliment or check-in."
+      ],
+      "homework": [
+        "Practice sitting side-by-side (physically or metaphorically) in a conflict."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Module 5 • Listening as a Weapon",
+      "overview": "Most people listen to reply. Negotiators listen to understand. The power of 'Tactical Empathy' (Chris Voss). Labeling their emotions. Using silence. Silence makes people talk, often revealing more than they intended. Mirroring. Repeating the last 3 words to encourage elaboration.",
+      "takeaways": [
+        "Listening gives you information; information is power.",
+        "When people feel heard, they lower their defenses.",
+        "Silence is uncomfortable; use it."
+      ],
+      "exercises": [
+        "The Mirror Drill: Have a conversation where you only mirror the last 3 words the person said.",
+        "Labeling: Practice saying 'It sounds like you are worried about...' during a disagreement."
+      ],
+      "homework": [
+        "Use 3 seconds of silence after a question."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Module 6 • Handling Objections & Aggression",
+      "overview": "What to do when they say 'No' or get angry. Interpreting 'No' not as rejection, but as 'I need more information.' The 'Judo' approach. Don't push back; step aside and let their momentum carry them. Reframing objections as questions.",
+      "takeaways": [
+        "Aggression is often anxiety disguised.",
+        "Don't take the bait.",
+        "Curiosity defuses anger."
+      ],
+      "exercises": [
+        "The Pause-And-Probe: When attacked, pause, then ask 'How am I supposed to do that?' (Calibrated Question).",
+        "Objection Translation: Translate 'That's impossible' to 'What barriers do you see?'"
+      ],
+      "homework": [
+        "Practice not defending yourself when someone disagrees. Just ask 'Why?'"
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Module 7 • The Win-Win Close",
+      "overview": "Expanding the pie. Adding non-monetary value (time, reputation, flexibility). Closing with gratitude. The 'Peak-End Rule' means how you end matters most. Writing it down. Ensuring clarity. Maintaining the relationship for the next negotiation.",
+      "takeaways": [
+        "A deal isn't good if they feel cheated.",
+        "Creativity solves deadlocks.",
+        "Relationships are long-term assets."
+      ],
+      "exercises": [
+        "The Variable Audit: List 5 things you can trade besides money.",
+        "The Appreciation Note: Draft a follow-up that cements the relationship."
+      ],
+      "homework": [
+        "Negotiate something small (a late fee, a coffee order, a deadline) using these tools.",
+        "Reflect on how it felt to be collaborative."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "supportive, practical, non-judgmental",
+    "systemPrompt": "Help the user apply one concrete module step at a time. Do not diagnose. Escalate urgent safety concerns to emergency care."
+  }
+}

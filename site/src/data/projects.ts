@@ -36,6 +36,15 @@ export const projects: Project[] = [
     category: 'library',
   },
   {
+    title: 'CBT Programs Registry',
+    description:
+      'Open modular CBT program registry with multilingual locales, provenance labels, and CLI tooling for recommendation and improvement.',
+    slug: 'cbt-programs',
+    icon: 'brain',
+    tags: ['npm', 'CLI', 'Multilingual'],
+    category: 'library',
+  },
+  {
     title: 'Agent Core',
     description:
       'Tool loop engine, LLM provider abstraction, mode routing, and context building for health AI agents.',

@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-ocd",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "obsessive-compulsive-disorder-ocd",
+    "name": "Obsessive-Compulsive Disorder (OCD)"
+  },
+  "tags": [
+    "cbt",
+    "obsessive-compulsive-disorder-ocd",
+    "exposure-response-prevention-erp",
+    "intolerance-of-uncertainty",
+    "cognitive-defusion",
+    "mental-rituals",
+    "distress-tolerance"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-ocd.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 5,
+    "estimatedWeeks": "7 modules • 10-14 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Obsessive-Compulsive Disorder (OCD)",
+      "Exposure & Response Prevention (ERP)",
+      "Intolerance of Uncertainty",
+      "Cognitive Defusion",
+      "Mental Rituals",
+      "Distress Tolerance"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}

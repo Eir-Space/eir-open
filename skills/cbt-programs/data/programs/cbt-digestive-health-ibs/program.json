@@ -1,0 +1,68 @@
+{
+  "$schema": "../../../schemas/program.schema.json",
+  "id": "cbt-digestive-health-ibs",
+  "version": "0.1.0",
+  "status": "draft",
+  "condition": {
+    "key": "digestive-health-ibs",
+    "name": "Digestive Health & IBS"
+  },
+  "tags": [
+    "cbt",
+    "digestive-health-ibs",
+    "gut-brain-connection",
+    "stress-management-for-digestive-symptoms",
+    "symptom-tracking-trigger-identification",
+    "dietary-modifications",
+    "cognitive-restructuring-for-digestive-anxiety"
+  ],
+  "defaultLanguage": "en",
+  "lineage": {
+    "aiCreated": true,
+    "humanCreated": false,
+    "humanReviewed": false,
+    "healthcareExpertVerified": false,
+    "notes": "Imported from legacy YAML: cbt-digestive-health-ibs.yaml"
+  },
+  "provenance": {
+    "authors": [
+      {
+        "name": "Legacy CBT Importer",
+        "role": "ai-migration"
+      }
+    ],
+    "reviewers": [],
+    "experts": []
+  },
+  "translations": [
+    {
+      "lang": "en",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/en.json"
+    }
+  ],
+  "content": {
+    "moduleCount": 6,
+    "estimatedWeeks": "6 modules • 10-14 weeks self-paced"
+  },
+  "recommendationSignals": {
+    "problems": [
+      "Digestive Health & IBS",
+      "Gut-Brain Connection",
+      "Stress Management for Digestive Symptoms",
+      "Symptom Tracking & Trigger Identification",
+      "Dietary Modifications",
+      "Cognitive Restructuring for Digestive Anxiety"
+    ],
+    "contraindications": [],
+    "severity": "unknown"
+  },
+  "safety": {
+    "intendedUse": "psychoeducation and structured self-help",
+    "medicalDisclaimer": "This program is educational support and does not replace diagnosis or treatment planning.",
+    "crisisAdvice": "If there is immediate danger, call local emergency services now."
+  },
+  "changeLog": "changelog.md",
+  "progressDir": "progress"
+}
