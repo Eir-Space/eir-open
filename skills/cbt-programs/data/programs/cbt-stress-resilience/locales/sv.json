@@ -1,0 +1,179 @@
+{
+  "language": "sv",
+  "title": "Stresshantering och resiliens i arbetet: prestera hållbart under press",
+  "summary": "Ett program med sju moduler som hjälper dig att identifiera arbetsrelaterad stress, använda fungerande stresstekniker, bygga psykologisk resiliens, hantera press och deadlines och förebygga utmattning utan att kompromissa med välmående.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå arbetsrelaterad stress: identifiera källorna",
+      "overview": "Arbetsrelaterad stress är vanligt, men förståelse är första steget till kontroll. I modulen kartlägger du dina stresskällor, känner igen stressignaler och ser hur stress påverkar prestation och välmående. Vi skiljer på hjälpsam press och skadlig stress och bygger en grund för hållbar stresshantering. När du förstår din stress blir det lättare att påverka den.",
+      "takeaways": [
+        "Stress är en respons, inte bara en situation.",
+        "Inte all stress är negativ: viss press kan hjälpa, långvarig stress skadar.",
+        "Stressignaler är information från kropp och psyke.",
+        "Du kan inte hantera det du inte har kartlagt."
+      ],
+      "exercises": [
+        "Kartlägg stresskällor: Lista alla källor till arbetsstress. Vilka är mest betydande och vilka kan du påverka?",
+        "Signalcheck: Vilka stressignaler märker du fysiskt, känslomässigt, kognitivt och beteendemässigt? När uppstår de?",
+        "Stress-prestationsreflektion: Var ligger du på kurvan mellan stress och prestation just nu? Hjälper eller hindrar stressen dig?"
+      ],
+      "homework": [
+        "Stresslogg: Följ din stress i en vecka. Notera trigger, signaler, påverkan på arbete och vad som hjälpte.",
+        "Källanalys: För varje större stresskälla, markera vad du kan kontrollera, påverka eller acceptera.",
+        "Signalkännedom: Träna på att upptäcka tidiga signaler under veckan och notera mönster.",
+        "Baslinje: Skatta stressnivå 1-10 och prestation 1-10. Notera sambandet."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Stresstekniker: verktyg för daglig träning",
+      "overview": "Stresshantering handlar inte om att ta bort all stress, utan om att utveckla färdigheter för att möta den. Du lär dig konkreta tekniker för andning, mindfulness, kognitiv omtolkning och beteendeverktyg som hjälper dig svara medvetet i stället för att reagera automatiskt. Effekten blir starkast med regelbunden träning.",
+      "takeaways": [
+        "Stresshantering är en träningsbar färdighet.",
+        "Regelbunden övning ger bättre effekt än sporadiska insatser.",
+        "Olika situationer kräver olika verktyg.",
+        "Förebyggande arbete är lättare än återhämtning efter överbelastning."
+      ],
+      "exercises": [
+        "Andningsövning: Träna en andningsteknik dagligen och använd den när du märker stress.",
+        "Mindfulness 5 minuter: Öva varje dag och notera vad som är svårt respektive hjälpsamt.",
+        "Omtolkningsövning: Välj en stressande tanke, omformulera den och notera skillnaden i upplevelse."
+      ],
+      "homework": [
+        "Daglig teknik: Välj en stressteknik och öva varje dag denna vecka.",
+        "Verktygslåda: Testa tre tekniker och dokumentera vilka som fungerar bäst för dig.",
+        "Integrering: Lägg in tekniker i din dagliga rytm, t.ex. morgonandning, lunchpaus med närvaro, kvällsreflektion.",
+        "Effektspårning: Följ hur övningarna påverkar stressnivå, humör och prestation."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Återhämtning: återställ dina resurser",
+      "overview": "Återhämtning är en förutsättning för hållbar prestation, men prioriteras ofta bort. I modulen arbetar du med olika former av återhämtning: fysisk, mental, emotionell och social. Återhämtning är inte lathet, utan en nödvändig del av prestation. Utan återhämtning byggs stress på, kapaciteten sjunker och risken för utmattning ökar.",
+      "takeaways": [
+        "Återhämtning är nödvändig för att fungera väl över tid.",
+        "Olika återhämtningsformer fyller olika behov.",
+        "Återhämtning behöver planeras aktivt.",
+        "Små pauser under dagen gör stor skillnad."
+      ],
+      "exercises": [
+        "Återhämtningsskattning: Bedöm nuläget i fysisk, mental, emotionell och social återhämtning.",
+        "Mikroåterhämtningsplan: Planera tre korta återhämtningsstunder per dag.",
+        "Hinderanalys: Identifiera vad som hindrar återhämtning (tid, skuld, krav) och möjliga motdrag."
+      ],
+      "homework": [
+        "Mikroåterhämtning dagligen: Genomför tre korta pauser varje dag denna vecka.",
+        "Skapa en daglig återhämtningsrutin och genomför den konsekvent.",
+        "Följ upp återhämtning: typ, mängd och upplevd effekt.",
+        "Planera veckans återhämtning i förväg och skydda tiden."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Hantera press och deadlines: prestera under stress",
+      "overview": "Press och deadlines är en del av arbetslivet. Hur du hanterar dem avgör om de motiverar eller överväldigar. Du tränar på att planera realistiskt, bygga tidsbuffertar, fokusera på det du kan kontrollera och bevara kvalitet när tempot är högt. Med rätt strategier kan press bli hanterbar och ibland till och med hjälpsam.",
+      "takeaways": [
+        "Press kan vara hjälpsam när den är doserad och riktad.",
+        "Förberedelse och planering minskar upplevd press.",
+        "Fokusera på det du kan påverka och släpp resten.",
+        "Håll kvalitet även under tidspress."
+      ],
+      "exercises": [
+        "Presskartläggning: Vilken press möter du nu? Vad är hjälpsamt respektive skadligt?",
+        "Deadlinegenomgång: Granska aktuella deadlines. Är de realistiska? Finns buffertar?",
+        "Reflektion: Välj en nylig högpress-situation. Vad fungerade, och vad vill du göra annorlunda nästa gång?"
+      ],
+      "homework": [
+        "Deadlineplan: Skapa en konkret plan för nästa deadline med delsteg och buffertar.",
+        "Pressträning: Använd veckans strategier vid pressade lägen och notera vad som hjälper.",
+        "Förväntanshantering: Kommunicera realistiskt, förhandla vid behov och sätt gränser.",
+        "Efterreflektion: Sammanfatta lärdomar efter pressade situationer."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Bygg psykologisk resiliens: stärk din kapacitet",
+      "overview": "Psykologisk resiliens är förmågan att återhämta sig efter stress, anpassa sig till utmaningar och bibehålla välmående. Resiliens handlar inte om att undvika svårigheter, utan om att utveckla kapacitet att hantera dem. Du tränar mindset, färdigheter, relationer och egenomsorg som tillsammans bygger långsiktig motståndskraft.",
+      "takeaways": [
+        "Resiliens kan tränas och stärkas över tid.",
+        "Resiliens byggs av flera komponenter: tankesätt, färdigheter, relationer och egenomsorg.",
+        "Utmaningar kan öka kapaciteten när de hanteras aktivt.",
+        "Resiliens är en löpande process, inte ett slutmål."
+      ],
+      "exercises": [
+        "Resiliensskattning: Bedöm din nivå 1-10 och identifiera styrkor/svagheter.",
+        "Mindset-övning: Välj en utmaning och omtolka den med ett resilient perspektiv.",
+        "Stödnätverk: Kartlägg personer du kan vända dig till och hur du kan stärka kontakterna."
+      ],
+      "homework": [
+        "Öva resilient tankesätt dagligen och notera effekt på stress och självprat.",
+        "Välj en resiliensfärdighet att träna under veckan.",
+        "Investera i en relation med fokus på kontakt, stöd och hjälpsökande.",
+        "Välj ett område för egenomsorg och genomför en konkret insats."
+      ]
+    },
+    {
+      "id": "module-6",
+      "title": "Modul 6 • Förebygg utmattning: upptäck och agera tidigt",
+      "overview": "Utmattning är fysisk, emotionell och mental uttröttning efter långvarig stress. I den här modulen lär du dig identifiera tidiga tecken, förstå riskfaktorer och agera innan belastningen blir allvarlig. Tidig upptäckt och tidiga åtgärder gör stor skillnad. Utmattning är allvarligt, men går att förebygga och behandla med rätt stöd.",
+      "takeaways": [
+        "Utmattning påverkar hälsa, relationer och arbetsförmåga.",
+        "Tidiga signaler är avgörande för att förebygga fördjupning.",
+        "Med medvetenhet och handling går utmattning ofta att förebygga.",
+        "Återhämtning är möjlig, särskilt med tidigt stöd."
+      ],
+      "exercises": [
+        "Utmattningsskattning: Bedöm risk 1-10 och notera aktuella tecken.",
+        "Riskfaktoranalys: Identifiera riskfaktorer och vad du kan påverka.",
+        "Förebyggande plan: Skriv en konkret plan för uppföljning och åtgärder."
+      ],
+      "homework": [
+        "Självmonitorering: Följ tidiga tecken under veckan och agera snabbt vid signaler.",
+        "Riskreducering: Välj en riskfaktor att påverka med ett konkret steg.",
+        "Förebyggande handling: Genomför en åtgärd denna vecka (gränser, stöd, stressverktyg).",
+        "Hjälpsökande: Om risknivån är hög, ta ett konkret steg mot professionellt stöd."
+      ]
+    },
+    {
+      "id": "module-7",
+      "title": "Modul 7 • Integrering och långsiktigt välmående: håll i din praktik",
+      "overview": "Avslutningsmodulen hjälper dig integrera allt du lärt dig till ett hållbart system. Du bygger en personlig stresshanteringsmodell, etablerar vanor som stödjer resiliens och gör en plan för långsiktigt underhåll. Stresshantering är inte en engångslösning, utan en pågående praktik som behöver följas upp och justeras över tid.",
+      "takeaways": [
+        "Färdigheter blir robusta när de används regelbundet.",
+        "Hållbarhet är viktigare än intensitet.",
+        "Personanpassning ökar sannolikheten att vanor håller.",
+        "Kontinuerlig förbättring kräver uppföljning och justering."
+      ],
+      "exercises": [
+        "Systembygge: Definiera dina viktigaste stressrutiner och när de ska göras.",
+        "Vaneplan: Välj en vana att bygga denna vecka och bestäm hur den ska följas upp.",
+        "Långsiktig vision: Beskriv hur hållbart välmående ser ut för dig och vilka praktiker som stödjer det."
+      ],
+      "homework": [
+        "Implementera ditt system dagligen denna vecka och justera efter utfall.",
+        "Bygg en ny vana med daglig träning och enkel uppföljning.",
+        "Veckogenomgång: vad fungerar, vad fungerar inte, vad behöver ändras?",
+        "Skriv ett personligt åtagande för långsiktigt välmående och läs det regelbundet."
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "title": "Resurser om stresshantering",
+      "url": "https://www.apa.org/topics/stress"
+    },
+    {
+      "title": "Välmående på arbetsplatsen",
+      "url": "https://www.who.int/news-room/questions-and-answers/item/ccupational-health-stress-at-the-workplace"
+    },
+    {
+      "title": "Förebygga och återhämta sig från utmattning",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642"
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}

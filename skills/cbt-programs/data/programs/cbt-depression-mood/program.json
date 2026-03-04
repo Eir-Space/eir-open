@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/program.schema.json",
   "id": "cbt-depression-mood",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "status": "published",
   "condition": {
     "key": "depression",
@@ -55,7 +55,7 @@
     },
     {
       "lang": "sv",
-      "status": "human-reviewed",
+      "status": "draft",
       "completion": 100,
       "path": "locales/sv.json"
     }

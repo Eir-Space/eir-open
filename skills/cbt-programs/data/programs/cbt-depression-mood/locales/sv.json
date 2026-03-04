@@ -1,28 +1,45 @@
 {
   "language": "sv",
-  "title": "Fa tillbaks energi: KBT-program vid depression",
-  "summary": "Ett KBT-program med fokus pa psykoedukation, beteendeaktivering, tankefardigheter och plan for att forebygga aterfall.",
+  "title": "Förnya din energi: KBT-program vid depression",
+  "summary": "En KBT-resa som kombinerar psykoedukation, tankefärdigheter, beteendeaktivering och återfallsplanering för att förbättra stämningsläge och vardagsfunktion.",
   "modules": [
     {
       "id": "module-1",
-      "title": "Forsta depression",
-      "overview": "Identifiera symptom och personliga monster i kanslor, tankar, kropp och beteende.",
+      "title": "Förstå depression",
+      "overview": "Identifiera emotionella, kognitiva, kroppsliga och beteendemässiga tecken på depression och kartlägg ditt eget mönster.",
       "takeaways": [
-        "Depression ar behandlingsbar.",
-        "Tidiga signaler gar att upptacka."
+        "Depression är multifaktoriell och behandlingsbar.",
+        "Tidiga signaler går att känna igen och agera på."
       ],
       "exercises": [
-        "Skapa en symptomkarta med egna exempel.",
-        "Skriv ner mojliga bidragande faktorer."
+        "Skapa en symtomkarta med nyliga exempel.",
+        "Skriv möjliga bidragande faktorer kopplade till stress, biologi och livssituation."
       ],
       "homework": [
-        "Logga tva tillfallen med nedstamdhet under veckan.",
-        "Lista vilket stod du kan anvanda."
+        "Följ två svackor i stämningsläge och deras kontext denna vecka.",
+        "Lista stödresurser och frågor att ta med till vårdprofession."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Tankar, känslor och beteenden",
+      "overview": "Lär dig KBT-modellen och utmana återkommande negativa tankemönster med evidensbaserad omformulering.",
+      "takeaways": [
+        "Tolkningar påverkar känslomässiga reaktioner.",
+        "Tankar kan granskas och uppdateras."
+      ],
+      "exercises": [
+        "Fyll i ett tankeprotokoll per dag.",
+        "Identifiera kognitiva förvrängningar i återkommande tankar."
+      ],
+      "homework": [
+        "Omformulera en tanke med stor påverkan varje dag.",
+        "Notera beteendeförändring efter omformuleringen."
       ]
     }
   ],
   "aiSupport": {
-    "coachingTone": "varm, tydlig, icke-domande",
-    "systemPrompt": "Agera som KBT-stod. Hjalp anvandaren att ta ett steg i taget utan att diagnostisera."
+    "coachingTone": "stödjande, praktisk, empatisk",
+    "systemPrompt": "Agera som KBT-stödcoach. Hjälp användaren att tillämpa en konkret övning i taget och kontrollera säkerhetsgränser."
   }
 }
