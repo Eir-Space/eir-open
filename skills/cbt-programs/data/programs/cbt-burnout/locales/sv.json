@@ -1,0 +1,119 @@
+{
+  "language": "sv",
+  "title": "Ny energi: en medkännande väg genom utmattning",
+  "summary": "Ett medkännande, evidensbaserat KBT-program som steg för steg hjälper dig från långvarig utmattning till hållbar energi. Genom psykoedukation, kognitiv omstrukturering och färdighetsträning lär du dig känna igen mönster, omforma ohjälpsamma tankar och bygga ett mer balanserat liv.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Förstå utmattning: grunden",
+      "overview": "Utmattning är mer än tillfällig trötthet. Det är en gradvis nedbrytning av energi, effektivitet och mening. I den första modulen går vi igenom begreppet utmattning och hur det visar sig i vardagen. Vi tittar på stressfysiologi, inklusive HPA-axeln och långvarig aktivering av kamp-eller-flykt, för att förstå varför kroppen kan kännas fast i överbelastning. Psykoedukation minskar osäkerhet och hjälper dig sätta ord på upplevelser: emotionell utmattning, distansering och minskad känsla av prestation. Vi introducerar KBT-triangeln (tankar, känslor, beteenden) och visar hur stresshändelser kan trigga negativt självprat, kroppslig spänning och undvikande. Du startar självobservation med en enkel daglig logg över energi, triggers och tankar. Modulen innehåller även en kort mindfulnessintroduktion för att upptäcka tidiga varningssignaler. Återhämtning är sällan linjär, och bakslag är en normal del av processen.",
+      "takeaways": [
+        "Utmattning har fysiska, emotionella och kognitiva komponenter.",
+        "KBT-triangeln tydliggör hur mönster vidmakthålls.",
+        "Daglig självmonitorering ger data för riktade insatser.",
+        "Närvaroträning kan hjälpa dig se tidiga tecken på överbelastning."
+      ],
+      "exercises": [
+        "Daglig utmattningslogg: notera situation, känsla, automatisk tanke, energinivå (1-10) och kort reflektion under två veckor.",
+        "Tre negativa tankemönster: välj tre återkommande tankar vid stress och skriv ett medkännande motpåstående för varje.",
+        "Två minuters andningsankare: sitt upprätt, följ andningen och för tillbaka uppmärksamheten varsamt när sinnet vandrar."
+      ],
+      "homework": [
+        "Fyll i loggen minst 10 dagar i följd.",
+        "Identifiera tre personliga kärnvärden och skriv hur de kan vägleda vardagsbeslut.",
+        "Öva andningsankaret tre gånger per dag och notera effekt på energi och humör."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Kognitiv omstrukturering: förändra relationen till tankar",
+      "overview": "Kognitiv omstrukturering är en kärndel i KBT. Du tränar på att känna igen och utmana tankar som förstärker utmattning. Vi går igenom vanliga tankefällor som katastrofiering, svart-vitt tänkande och övergeneralisering. Med tankeprotokoll gör du diffus oro konkret och granskningsbar. Du övar på evidensfrågor: vilka fakta stödjer tanken, vilka talar emot, och vad är en mer balanserad tolkning? Vi arbetar också med grundantaganden om värde och prestation som ofta ligger under automatisk självkritik. Du lär dig dubbelstandardtekniken: att tala till dig själv med samma vänlighet som till en vän. Modulen introducerar självmedkänsla som ett aktivt verktyg för återhämtning och emotionell reglering. Slutligen planerar du beteendeexperiment för att testa nya, mer hjälpsamma perspektiv i verkligheten.",
+      "takeaways": [
+        "Tankefällor förstorar stress och är möjliga att bryta.",
+        "Tankeprotokoll gör ohjälpsamma mönster synliga och påverkbara.",
+        "Grundantaganden påverkar hur du tolkar vardagliga händelser.",
+        "Självmedkänsla motverkar självkritik och stödjer hållbar förändring."
+      ],
+      "exercises": [
+        "Tankeprotokoll: fyll i minst fem protokoll denna vecka med situation, tankar, känslor, bevis för/emot och alternativ tanke.",
+        "Grundantaganden: skriv återkommande \"jag är...\"-påståenden och pröva mer balanserade alternativ.",
+        "Dubbelstandardövning: skriv vad du skulle säga till en vän i samma situation och rikta sedan samma ton till dig själv."
+      ],
+      "homework": [
+        "Fortsätt med minst ett tankeprotokoll per dag i två veckor.",
+        "Skriv ett medkännande brev till dig själv och läs det på kvällen.",
+        "Genomför ett beteendeexperiment per vecka och dokumentera utfall."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Beteendeaktivering och energihantering",
+      "overview": "Beteendeaktivering hjälper dig bryta passivitet och undvikande som ofta följer utmattning. Du kartlägger nuvarande aktivitetsmönster och identifierar vad som tömmer respektive återladdar. Med en aktivitetshierarki prioriterar du handlingar som ligger i linje med värden och ger positiv återkoppling. Du arbetar med mikroaktiviteter, små genomförbara steg som bygger momentum utan att överbelasta. Energi budgeteras med en energihjul-modell där fysisk, mental, emotionell och existentiell energi följs över dagen. Vi går också igenom sömn, näring och ljusexponering som grundpelare, samt enkel rörelse som promenad eller mjuk stretching.",
+      "takeaways": [
+        "Undvikande håller utmattning vid liv; aktivering bryter mönstret.",
+        "Mikroaktiviteter bygger känsla av framsteg med låg tröskel.",
+        "Energibudget hjälper dig skydda resurser till det viktigaste.",
+        "Sömn, näring och rörelse är bas, inte bonus."
+      ],
+      "exercises": [
+        "Aktivitetshierarki: lista värden, koppla aktiviteter till varje värde och välj tre mikroaktiviteter för veckan.",
+        "Energihjul-logg: skatta fysisk, mental, emotionell och existentiell energi tre gånger per dag under en vecka.",
+        "Skrivbordsrutin: gör korta stretchpauser tre gånger per dag och notera effekt på spänning och fokus."
+      ],
+      "homework": [
+        "Schemalägg och genomför dina valda mikroaktiviteter även vid låg motivation.",
+        "Följ energihjulet i en vecka och summera mönster.",
+        "För sömn- och kostdagbok i sju dagar och välj en liten förbättring att testa."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Stressreduktion och mindfulness: återställ nervsystemet",
+      "overview": "I den här modulen tränar du metoder som aktiverar kroppens återhämtningssystem. Du får verktyg som progressiv muskelavslappning (PMR), guidad visualisering och korta mindfulnessövningar. Målet är inte perfektion utan regelbundenhet, eftersom korta dagliga övningar ofta ger bättre effekt än sporadiska längre pass. Vi går igenom parasympatiska nervsystemets roll och hur medveten andning och avslappning kan sänka stressnivåer. Du skapar ett personligt \"lugnt hörn\" för återställning. PMR tränar kroppskännedom genom att spänna och släppa muskelgrupper. Guidade bilder ger mental återhämtning och kan vara särskilt hjälpsamma före sömn. Du lär dig också box breathing och andra enkla andningsmönster som kan användas diskret i pressade situationer.",
+      "takeaways": [
+        "Avslappningsövningar kan aktivera kroppens återhämtningsrespons.",
+        "Korta, frekventa pass är ofta mest hållbara.",
+        "Ett lugnt hörn skapar tydlig signal om återhämtning.",
+        "Mindfulness ökar förmågan att upptäcka stresseskalering tidigt."
+      ],
+      "exercises": [
+        "PMR: följ en 15-minutersrutin på kvällen under två veckor.",
+        "Guidad visualisering: visualisera en trygg plats i 10 minuter före sömn.",
+        "Box breathing: öva 4-4-4-4 tre gånger dagligen och före krävande uppgifter."
+      ],
+      "homework": [
+        "Skapa ditt lugna hörn och använd det minst fem minuter dagligen.",
+        "Fortsätt PMR i två veckor och logga trötthet, humör och sömnkvalitet före/efter.",
+        "Integrera box breathing i vardagsrutiner och notera effekten över veckan."
+      ]
+    },
+    {
+      "id": "module-5",
+      "title": "Modul 5 • Självmedkänsla, värden och långsiktigt vidmakthållande",
+      "overview": "Avslutningsmodulen knyter ihop programmet med fokus på hållbarhet. Du fördjupar självmedkänsla, klargör värden och bygger en plan för att förebygga återfall i överbelastning. Vi arbetar med tre delar av självmedkänsla: vänlighet mot sig själv, gemensam mänsklighet och medveten närvaro. Du gör en värdeövning där vardagliga handlingar kopplas till det som är viktigt på riktigt. Modulen innehåller även återfallsplanering: varningssignaler, tidiga åtgärder och stödpersoner. Du skapar ett personligt resilienskontrakt med dina åtaganden, resurser och handlingsplaner. Programmet avslutas med en medveten markering av framsteg och tydliga nästa steg.",
+      "takeaways": [
+        "Självmedkänsla skyddar mot självkritik och bevarar motivation.",
+        "Värdestyrda handlingar skapar mening och minskar risk för återfall.",
+        "Återfallsplanering gör framtida stress mer hanterbar.",
+        "Socialt stöd stärker följsamhet till nya vanor."
+      ],
+      "exercises": [
+        "Spegelövning med självmedkänsla: säg tre vänliga meningar till dig själv varje morgon i fem minuter.",
+        "Värdeplanerare: koppla dina tre viktigaste värden till konkreta veckohandlingar och följ upp varje söndag.",
+        "Brev från framtida jag: skriv ett stödjande brev från dig själv sex månader framåt.",
+        "Personligt resilienskontrakt: dokumentera varningssignaler, åtgärder, stöd och värdestyrda åtaganden."
+      ],
+      "homework": [
+        "Slutför resilienskontraktet och dela det med en ansvarspartner.",
+        "Följ värdeplaneraren i fyra veckor och justera veckovis.",
+        "Planera en avslutningsritual där du uppmärksammar framsteg och nästa utvecklingssteg.",
+        "Bygg en underhållsverktygslåda med de övningar som hjälpt dig mest."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}

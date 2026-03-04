@@ -1,0 +1,84 @@
+{
+  "language": "sv",
+  "title": "Bygg upp dig igen: navigera genom hjärtesorg",
+  "summary": "Ett medkännande och strukturerat KBT-program som hjälper dig hantera sorg, abstinensliknande reaktioner och identitetskris efter ett uppbrott. Du tränar på att hantera påträngande tankar, bryta kontaktcykler, återuppbygga självkänsla och skapa en hoppfull framtidsbild.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Hjärtesorgens neurobiologi",
+      "overview": "Vi bekräftar smärtan: hjärtesorg kan upplevas lika starkt som fysisk smärta. Vi går igenom en abstinensmodell där relationens belöningssystem bryts abrupt. Driften att höra av sig kan likna sug, inte ett verkligt behov. Vi normaliserar symtom som påträngande tankar, kroppslig värk, sömnsvårigheter och panikkänslor. Du introduceras till ingen-kontakt-regeln som ett avgiftningsprotokoll för hjärnan, inte en strategi för att få tillbaka någon. Du börjar också med en sugslogg för att kartlägga impulser att ta kontakt.",
+      "takeaways": [
+        "Du är inte \"galen\"; du är i en stark omställningsreaktion.",
+        "Kontakt med ex kan starta om abstinenscykeln.",
+        "Smärtan är en biologisk signal, inte ett krav på handling."
+      ],
+      "exercises": [
+        "Digital avgiftning: blockera, tysta eller göm exet på plattformar och flytta chattar så du inte ser dem.",
+        "Sugsurfing: när impulsen att skriva kommer, sätt timer på 10 minuter, gör något annat och notera om intensiteten sjunker."
+      ],
+      "homework": [
+        "Håll strikt ingen kontakt i 7 dagar.",
+        "Journalför kroppsliga sorgsymtom för att externalisera dem."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Stoppa ältandet",
+      "overview": "Efter uppbrott fastnar många i \"varför\", \"tänk om\" och \"om jag bara\". Den här modulen riktar in sig på ältande. Vi identifierar idealiseringsfiltret där hjärnan spelar upp höjdpunkter och bortser från det svåra. Du använder en verklighetslista med sådant som var smärtsamt, svårt eller oförenligt i relationen. Du tränar tankeavbrott och omstyrning när minnesloopar drar i gång.",
+      "takeaways": [
+        "Hjärnan kan idealisera i sorg och ge en skev bild.",
+        "Att jaga avslut från den andre blir ofta en fälla; du kan skapa eget avslut.",
+        "Ältande håller såret öppet."
+      ],
+      "exercises": [
+        "Verklighetslistan: skriv en ärlig lista över vad som inte fungerade i relationen och läs vid behov.",
+        "\"Varför\"-stopp: byt frågan \"varför hände detta\" mot \"vad är mitt nästa hjälpsamma steg nu\"."
+      ],
+      "homework": [
+        "Läs verklighetslistan tre gånger dagligen första veckan.",
+        "Träna omstyrning till nuet med 5-4-3-2-1-tekniken när tankeloopar startar."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Vem är jag nu? Återbygg identiteten",
+      "overview": "Långa relationer kan göra identiteter sammanflätade. Förlusten kan kännas som att tappa en del av sig själv. Här jobbar du med självkoncept-tydlighet och återtar delar av dig som lagts åt sidan. Vi använder nyhetsprincipen: nya aktiviteter skapar nya spår och nya minnen. Vi adresserar också rädslan för ensamhet och tränar förmågan att trivas i eget sällskap.",
+      "takeaways": [
+        "Du är hel även utan relationen.",
+        "Återhämtning är en möjlighet att designa livet på nytt.",
+        "Ensamhet och avskildhet är inte samma sak."
+      ],
+      "exercises": [
+        "Återupplivningslista: skriv tre saker du gillade innan relationen och återuppta en av dem denna vecka.",
+        "Solo-dejt: gör en aktivitet själv (film, middag, promenad) med fokus på att vara vänlig med dig själv."
+      ],
+      "homework": [
+        "Genomför en aktivitet från återupplivningslistan.",
+        "Gör en konkret förändring hemma för att markera en ny fas."
+      ]
+    },
+    {
+      "id": "module-4",
+      "title": "Modul 4 • Framtidsvisionen",
+      "overview": "Nu flyttas fokus från bakåtblick till framåtriktning. Vi utmanar knapphetstänkande (\"jag kommer aldrig hitta någon igen\") och klargör värderingar för framtida relationer. Målet är inte att bli komplett genom någon annan, utan att bygga ett rikt liv där relationer får vara ett tillskott.",
+      "takeaways": [
+        "Knapphetstankar är vanliga i sorg men ofta missvisande.",
+        "Du kan älska igen, på ett nytt och mer moget sätt.",
+        "Målet är ett meningsfullt liv med eller utan partner."
+      ],
+      "exercises": [
+        "Framtidsbrevet: skriv ett brev till dig själv ett år framåt om vad du vill ha byggt upp.",
+        "Icke-förhandlingsbart: lista fem kvaliteter du behöver i en framtida relation."
+      ],
+      "homework": [
+        "Skapa en visionslista eller moodboard för ditt nya liv.",
+        "Planera en resa eller större aktivitet om sex månader för att skapa en framåthorisont."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
