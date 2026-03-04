@@ -1,0 +1,322 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+interface TranslationMeta {
+  lang?: string;
+  status?: string;
+  completion?: number;
+}
+
+interface ProgramJson {
+  id?: string;
+  version?: string;
+  status?: string;
+  condition?: { name?: string };
+  defaultLanguage?: string;
+  content?: { moduleCount?: number };
+  translations?: TranslationMeta[];
+  lineage?: {
+    aiCreated?: boolean;
+    humanCreated?: boolean;
+    humanReviewed?: boolean;
+    healthcareExpertVerified?: boolean;
+  };
+}
+
+interface ProgramRow {
+  id: string;
+  condition: string;
+  version: string;
+  status: string;
+  moduleCount: number | string;
+  languages: string[];
+  translationSummary: string;
+  lineage: string[];
+  githubUrl: string;
+  searchText: string;
+}
+
+const componentDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.resolve(componentDir, '../../..');
+const programsDir = path.join(repoRoot, 'skills', 'cbt-programs', 'data', 'programs');
+
+const lineageLabels = [
+  ['aiCreated', 'AI-created'],
+  ['humanCreated', 'Human-created'],
+  ['humanReviewed', 'Human-reviewed'],
+  ['healthcareExpertVerified', 'Expert-verified'],
+] as const;
+
+const rows: ProgramRow[] = fs
+  .readdirSync(programsDir, { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map((entry) => {
+    const programPath = path.join(programsDir, entry.name, 'program.json');
+    if (!fs.existsSync(programPath)) return null;
+
+    const raw = fs.readFileSync(programPath, 'utf8');
+    const program = JSON.parse(raw) as ProgramJson;
+
+    const id = program.id || entry.name;
+    const condition = program.condition?.name || 'Unknown condition';
+    const version = program.version || '0.0.0';
+    const status = program.status || 'draft';
+    const moduleCount =
+      typeof program.content?.moduleCount === 'number' ? program.content.moduleCount : '?';
+    const translations = Array.isArray(program.translations) ? program.translations : [];
+    const languages = (
+      translations.map((t) => (t.lang || '').trim()).filter(Boolean) as string[]
+    ).sort();
+    if (languages.length === 0 && program.defaultLanguage) languages.push(program.defaultLanguage);
+
+    const translationSummary =
+      translations
+        .map((t) => {
+          const lang = t.lang || 'unknown';
+          const review = t.status || 'unknown';
+          const completion =
+            typeof t.completion === 'number' ? ` ${Math.max(0, Math.min(100, t.completion))}%` : '';
+          return `${lang}:${review}${completion}`;
+        })
+        .join(' | ') || 'No translation metadata';
+
+    const lineage = lineageLabels
+      .filter(([key]) => Boolean(program.lineage?.[key]))
+      .map(([, label]) => label);
+
+    const githubUrl =
+      `https://github.com/eir-space/eir-open/tree/main/` +
+      `skills/cbt-programs/data/programs/${id}`;
+
+    const searchText = [
+      id,
+      condition,
+      status,
+      version,
+      languages.join(' '),
+      translationSummary,
+      lineage.join(' '),
+    ]
+      .join(' ')
+      .toLowerCase();
+
+    return {
+      id,
+      condition,
+      version,
+      status,
+      moduleCount,
+      languages,
+      translationSummary,
+      lineage,
+      githubUrl,
+      searchText,
+    };
+  })
+  .filter((row): row is ProgramRow => Boolean(row))
+  .sort((a, b) => a.id.localeCompare(b.id));
+
+const allLanguages = Array.from(new Set(rows.flatMap((row) => row.languages))).sort();
+---
+
+<div class="cbt-viewer not-content" data-cbt-program-viewer>
+  <div class="cbt-viewer-toolbar">
+    <input
+      type="search"
+      placeholder="Search by program, condition, language, or lineage..."
+      aria-label="Search CBT programs"
+      data-role="search"
+    />
+    <select aria-label="Filter by language" data-role="language">
+      <option value="all">All languages</option>
+      {allLanguages.map((lang) => <option value={lang}>{lang}</option>)}
+    </select>
+  </div>
+
+  <p class="cbt-viewer-summary">
+    <strong data-role="visible-count">{rows.length}</strong> of <strong>{rows.length}</strong> programs
+    shown.
+  </p>
+
+  <div class="cbt-viewer-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Program</th>
+          <th>Condition</th>
+          <th>Modules</th>
+          <th>Languages</th>
+          <th>Lineage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr data-row data-search={row.searchText} data-languages={row.languages.join(',')}>
+            <td>
+              <a href={row.githubUrl} target="_blank" rel="noreferrer">
+                {row.id}
+              </a>
+            </td>
+            <td>{row.condition}</td>
+            <td>{row.moduleCount}</td>
+            <td>
+              <div class="cbt-viewer-badges">
+                {row.languages.map((lang) => (
+                  <span class="cbt-badge">{lang}</span>
+                ))}
+              </div>
+              <div class="cbt-viewer-meta">{row.translationSummary}</div>
+            </td>
+            <td>
+              <div class="cbt-viewer-badges">
+                {row.lineage.length > 0 ? (
+                  row.lineage.map((label) => <span class="cbt-badge cbt-badge-lineage">{label}</span>)
+                ) : (
+                  <span class="cbt-viewer-meta">No lineage labels</span>
+                )}
+              </div>
+            </td>
+            <td>
+              <span class="cbt-badge cbt-badge-status">{row.status}</span>
+              <div class="cbt-viewer-meta">v{row.version}</div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const script = document.currentScript;
+    if (!script) return;
+
+    const root = script.closest('[data-cbt-program-viewer]');
+    if (!root) return;
+
+    const searchInput = root.querySelector('[data-role="search"]');
+    const languageSelect = root.querySelector('[data-role="language"]');
+    const countEl = root.querySelector('[data-role="visible-count"]');
+    const rows = Array.from(root.querySelectorAll('tr[data-row]'));
+
+    const applyFilters = () => {
+      const query = (searchInput?.value || '').toLowerCase().trim();
+      const language = (languageSelect?.value || 'all').toLowerCase();
+      let visible = 0;
+
+      rows.forEach((row) => {
+        const rowSearch = (row.getAttribute('data-search') || '').toLowerCase();
+        const rowLanguages = (row.getAttribute('data-languages') || '').toLowerCase().split(',');
+        const matchesQuery = !query || rowSearch.includes(query);
+        const matchesLanguage = language === 'all' || rowLanguages.includes(language);
+        const show = matchesQuery && matchesLanguage;
+        row.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      if (countEl) countEl.textContent = String(visible);
+    };
+
+    searchInput?.addEventListener('input', applyFilters);
+    languageSelect?.addEventListener('change', applyFilters);
+    applyFilters();
+  })();
+</script>
+
+<style>
+  .cbt-viewer-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .cbt-viewer-toolbar input,
+  .cbt-viewer-toolbar select {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    min-height: 2.5rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+  }
+
+  .cbt-viewer-toolbar input {
+    flex: 1 1 22rem;
+  }
+
+  .cbt-viewer-summary {
+    margin: 0 0 0.75rem 0;
+    color: var(--sl-color-gray-2);
+    font-size: 0.95rem;
+  }
+
+  .cbt-viewer-table-wrap {
+    overflow: auto;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.75rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 62rem;
+  }
+
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid var(--sl-color-gray-6);
+  }
+
+  th {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-2);
+    background: var(--sl-color-gray-7);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .cbt-viewer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .cbt-badge {
+    display: inline-block;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 999px;
+    padding: 0.1rem 0.45rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--sl-color-gray-2);
+    background: var(--sl-color-gray-7);
+    white-space: nowrap;
+  }
+
+  .cbt-badge-lineage {
+    border-color: color-mix(in srgb, var(--sl-color-accent) 35%, var(--sl-color-gray-5));
+  }
+
+  .cbt-badge-status {
+    text-transform: lowercase;
+  }
+
+  .cbt-viewer-meta {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+    line-height: 1.4;
+  }
+</style>
