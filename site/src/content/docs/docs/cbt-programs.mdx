@@ -99,6 +99,55 @@ This is intentionally lightweight:
 
 This model lets many contributors work in parallel across languages without merge conflicts in core program metadata.
 
+Example translation metadata entry in `program.json`:
+
+```json
+{
+  "lang": "es",
+  "status": "draft",
+  "completion": 45,
+  "path": "locales/es.json"
+}
+```
+
+Example `locales/es.json` starter:
+
+```json
+{
+  "language": "es",
+  "title": "Titulo del programa",
+  "summary": "Resumen del programa.",
+  "modules": [],
+  "aiSupport": {
+    "coachingTone": "apoyo, practico, sin juicios",
+    "systemPrompt": "Ayuda al usuario a aplicar un paso concreto por respuesta sin diagnosticar."
+  }
+}
+```
+
+## LLM improve plan format
+
+When using `--llm`, your host agent can provide a JSON plan via `--llm-plan` or `--llm-plan-file`.
+
+Example plan:
+
+```json
+{
+  "programSummary": "Shorter, clearer summary for better adherence.",
+  "addTags": ["relapse-prevention", "sleep-hygiene"],
+  "addProblems": ["night waking", "bedtime inconsistency"],
+  "newModule": {
+    "title": "Relapse Prevention Toolkit",
+    "overview": "Build a rapid recovery plan for setbacks.",
+    "takeaways": ["Setbacks are expected and manageable."],
+    "exercises": ["Create an early warning checklist."],
+    "homework": ["Run a weekly relapse prevention review."]
+  },
+  "markHumanReviewed": true,
+  "note": "Expanded relapse prevention and adherence support."
+}
+```
+
 ## Contributing new programs
 
 1. Use `cbt-programs scaffold` to create baseline files.
@@ -106,6 +155,14 @@ This model lets many contributors work in parallel across languages without merg
 3. Set lineage and recommendation signals in `program.json`.
 4. Add changelog and progress entries.
 5. Run validation and open a PR.
+
+Recommended PR checklist:
+
+- Program validates with `cbt-programs validate <id>`
+- Translation metadata is accurate (`status`, `completion`, `path`)
+- Lineage flags are updated truthfully
+- `progress/*.md` includes a clear change summary
+- `changelog.md` includes a user-facing update note
 
 ## Migrating legacy YAML
 
