@@ -1,0 +1,53 @@
+{
+  "language": "sv",
+  "title": "Återställ din sömn: KBT-I-program",
+  "summary": "Ett sexveckors KBT-I-upplägg för att förbättra sömneffektivitet, minska vaken tid nattetid och dämpa sömnrelaterad oro med beteendebaserade metoder.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Sömnkartläggning och nuläge",
+      "overview": "Följ tider, uppvaknanden och dagsfunktion för att förstå ditt nuläge och sätta tydliga förbättringsmål.",
+      "takeaways": [
+        "Data gör mönster och framsteg synliga.",
+        "Sömnkvalitet påverkas mer av regelbundenhet än enbart tid i sängen."
+      ],
+      "exercises": [
+        "Fyll i en daglig sömndagbok.",
+        "Identifiera två vanor som stör din sömn mest."
+      ],
+      "homework": [
+        "Logga sömn dagligen i sju dagar.",
+        "Skriv ett kort mål för mer stabil sömnrytm."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Stimuluskontroll",
+      "overview": "Bygg upp kopplingen mellan säng och sömn igen och minska vaken grubblande tid i sängen.",
+      "takeaways": [
+        "Sängen ska signalera sömn, inte vakenhet.",
+        "Att lämna sängen vid längre vakenhet kan återträna sömnresponsen."
+      ],
+      "exercises": [
+        "Skapa en nedvarvningsrutin före läggdags.",
+        "Öva lämna-sängen-och-kom-tillbaka-protokollet när du varit vaken i mer än 20 minuter."
+      ],
+      "homework": [
+        "Följ stimuluskontrollreglerna varje kväll den här veckan.",
+        "Notera följsamhet och effekt i sömndagboken."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Stabila sömnrutiner",
+      "overview": "Gör kvälls- och morgonrutiner till stabila ankare för bättre sömn.",
+      "takeaways": [],
+      "exercises": [],
+      "homework": []
+    }
+  ],
+  "aiSupport": {
+    "coachingTone": "lugn, strukturerad, ansvarsstärkande",
+    "systemPrompt": "Vägled användaren genom KBT-I-rutiner, förstärk konsekvens och undvik diagnostiska påståenden."
+  }
+}

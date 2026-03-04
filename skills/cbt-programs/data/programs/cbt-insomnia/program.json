@@ -1,7 +1,7 @@
 {
   "$schema": "../../../schemas/program.schema.json",
   "id": "cbt-insomnia",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "published",
   "condition": {
     "key": "insomnia",
@@ -52,6 +52,12 @@
       "status": "expert-verified",
       "completion": 100,
       "path": "locales/en.json"
+    },
+    {
+      "lang": "sv",
+      "status": "draft",
+      "completion": 100,
+      "path": "locales/sv.json"
     }
   ],
   "content": {
@@ -66,10 +72,7 @@
       "sleep anxiety",
       "early morning waking"
     ],
-    "contraindications": [
-      "untreated sleep apnea",
-      "high-risk bipolar episode"
-    ],
+    "contraindications": ["untreated sleep apnea", "high-risk bipolar episode"],
     "severity": "mild-to-moderate"
   },
   "safety": {
