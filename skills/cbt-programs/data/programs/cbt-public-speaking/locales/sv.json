@@ -1,0 +1,65 @@
+{
+  "language": "sv",
+  "title": "Tala utan skräck: presentera med trygghet",
+  "summary": "Ett praktiskt, exponeringsbaserat KBT-program som hjälper dig omvandla scenskräck till närvaro. Du tränar på att reglera kroppens stresspåslag, utmana spotlight-effekten, strukturera budskapet tydligt och bygga självförtroende genom gradvis exponering.",
+  "modules": [
+    {
+      "id": "module-1",
+      "title": "Modul 1 • Omrama stresspåslaget",
+      "overview": "Vi normaliserar rädslan: talrädsla är en av de vanligaste rädslorna. Kroppen kan tolka publiken som ett hot och aktivera kamp-eller-flykt. Vi omtolkar symtomen: hjärtklappning är inte fara, utan energi som gör kroppen redo att prestera. Vi skiljer mellan ångest (rädsla för misslyckande) och förväntansenergi (beredskap). Fysiologiskt liknar de varandra. Du introduceras också till pausen, att stå stilla i tystnad innan du börjar prata för att reglera nervsystemet.",
+      "takeaways": [
+        "Adrenalin är bränsle: använd det i stället för att bekämpa det.",
+        "Publiken vill oftast att det ska gå bra för dig.",
+        "Du behöver inte vara helt lugn för att vara effektiv; du behöver vara modig."
+      ],
+      "exercises": [
+        "Ometiketteringsövning: spring på stället i en minut och säg högt \"jag är redo\" eller \"jag är taggad\".",
+        "Styrkeposition: stå upprätt med stabil hållning i två minuter före en lågtröskelsituation."
+      ],
+      "homework": [
+        "Öva ometiketteringsövningen dagligen.",
+        "Titta på ett TED-talk och observera hur talaren använder pauser."
+      ]
+    },
+    {
+      "id": "module-2",
+      "title": "Modul 2 • Spotlight-effekten och tankefällor",
+      "overview": "Här arbetar vi med spotlight-effekten, den felaktiga upplevelsen att alla ser varje liten miss. Vi utmanar tankefällor som tankeläsning (\"de ser uttråkade ut, de måste hata det här\") och perfektionism (\"ett bra tal måste vara felfritt\"). Fokus flyttas från \"hur ser jag ut?\" till \"vad vill jag ge publiken?\". När syftet blir att bidra minskar självkritisk självobservation.",
+      "takeaways": [
+        "Andra lägger märke till långt mindre än du tror.",
+        "Misstag är inte ett misslyckande, de gör dig mänsklig.",
+        "Fokus på budskapet minskar självmedvetenhet."
+      ],
+      "exercises": [
+        "Misstagsövning: spela in dig själv i en minut och tillåt en liten snubbling eller ett \"eh\". Titta tillbaka och notera att det är hanterbart.",
+        "Publikperspektiv: när du ser någon annan tala, notera hur förlåtande du själv är och ge dig samma marginal."
+      ],
+      "homework": [
+        "Spela in en tvåminutersvideo om ett ämne du gillar. Titta en gång och markera vad som fungerade bra."
+      ]
+    },
+    {
+      "id": "module-3",
+      "title": "Modul 3 • Exponering: stegvis upp på scen",
+      "overview": "Du bygger en exponeringshierarki för talande situationer. Låg nivå kan vara att tala till spegeln eller spela in röstmeddelanden. Mellannivå kan vara att ställa en fråga på möte eller hålla en kort skål. Hög nivå kan vara en planerad presentation. Du tränar också på korta improvisationsövningar för att öka flexibilitet och återhämtningsförmåga.",
+      "takeaways": [
+        "Självförtroende byggs genom handling, inte bara tänkande.",
+        "Små exponeringar ökar tolerans för obehag.",
+        "Att återhämta sig efter en snubbling är ofta mer imponerande än perfektion."
+      ],
+      "exercises": [
+        "Frågeutmaningen: ställ minst en fråga i en gruppsituation den här veckan.",
+        "Skålen: håll en kort skål (ca 30 sekunder) vid en middag eller familjesituation."
+      ],
+      "homework": [
+        "Genomför minst ett steg från din exponeringshierarki.",
+        "Anmäl dig till ett lågtröskeltillfälle att tala, eller erbjud dig att ge en kort uppdatering på jobbet."
+      ]
+    }
+  ],
+  "resources": [],
+  "aiSupport": {
+    "coachingTone": "stödjande, praktisk, icke-dömande",
+    "systemPrompt": "Hjälp användaren att tillämpa ett konkret modulsteg i taget. Ställ inte diagnos. Hänvisa akuta säkerhetsrisker till akut vård."
+  }
+}
