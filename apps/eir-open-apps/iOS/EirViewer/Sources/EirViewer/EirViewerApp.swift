@@ -9,6 +9,7 @@ struct EirViewerApp: App {
     @StateObject private var chatThreadStore = ChatThreadStore()
     @StateObject private var agentMemoryStore = AgentMemoryStore()
     @StateObject private var localModelManager = LocalModelManager()
+    @StateObject private var healthDataExtractor = HealthDataExtractor()
 
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct EirViewerApp: App {
                 .environmentObject(chatThreadStore)
                 .environmentObject(agentMemoryStore)
                 .environmentObject(localModelManager)
+                .environmentObject(healthDataExtractor)
                 .onOpenURL { url in
                     let ext = url.pathExtension.lowercased()
                     guard ext == "eir" || ext == "yaml" || ext == "yml" else { return }
