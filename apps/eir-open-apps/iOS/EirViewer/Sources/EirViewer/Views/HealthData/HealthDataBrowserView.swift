@@ -5,11 +5,12 @@ import WebKit
 
 struct HealthDataBrowserView: View {
     @EnvironmentObject var profileStore: ProfileStore
+    @EnvironmentObject var extractor: HealthDataExtractor
     @StateObject private var viewModel = HealthDataBrowserViewModel()
-    @StateObject private var extractor = HealthDataExtractor()
     @State private var showingExtractionSheet = false
     @State private var importedPersonIds: Set<String> = []
     @State private var importError: String?
+    @State private var showGuide: Bool = !UserDefaults.standard.bool(forKey: "healthDataGuideShown")
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -22,7 +23,14 @@ struct HealthDataBrowserView: View {
                     .padding(.bottom, 16)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
+
+            // Guide overlay
+            if showGuide {
+                guideOverlay
+                    .transition(.opacity)
+            }
         }
+        .animation(.easeInOut(duration: 0.25), value: showGuide)
         .navigationTitle("Health Data")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -34,6 +42,10 @@ struct HealthDataBrowserView: View {
                 Button { viewModel.reload() } label: { Image(systemName: "arrow.clockwise") }
             }
             ToolbarItemGroup(placement: .topBarTrailing) {
+                Button { showGuide = true } label: {
+                    Image(systemName: "questionmark.circle")
+                }
+
                 if extractor.isExtracting {
                     Button {
                         extractor.cancelExtraction()
@@ -77,7 +89,7 @@ struct HealthDataBrowserView: View {
             extractionResultsSheet
         }
         .onChange(of: extractor.results.count) { _, newCount in
-            if newCount > 0 && !extractor.isExtracting {
+            if newCount > 0 {
                 showingExtractionSheet = true
             }
         }
@@ -239,6 +251,99 @@ struct HealthDataBrowserView: View {
         if line.contains("WARNING") { return AppColors.orange }
         if line.contains("===") { return AppColors.primary }
         return AppColors.text
+    }
+
+    // MARK: - Guide Overlay
+
+    private var guideOverlay: some View {
+        ZStack {
+            Color.black.opacity(0.5)
+                .ignoresSafeArea()
+                .onTapGesture { dismissGuide() }
+
+            VStack(spacing: 20) {
+                Image(systemName: "cross.case.fill")
+                    .font(.system(size: 40))
+                    .foregroundColor(AppColors.primary)
+
+                Text("Så hämtar du din journal")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(AppColors.text)
+
+                VStack(alignment: .leading, spacing: 16) {
+                    guideStep(
+                        number: 1,
+                        icon: "person.badge.shield.checkmark",
+                        title: "Logga in med BankID",
+                        description: "Identifiera dig med BankID eller Freja eID"
+                    )
+                    guideStep(
+                        number: 2,
+                        icon: "arrow.right.circle",
+                        title: "Vi navigerar till din journal",
+                        description: "Appen tar dig automatiskt till Journalöversikten"
+                    )
+                    guideStep(
+                        number: 3,
+                        icon: "arrow.down.circle",
+                        title: "Nedladdningen startar automatiskt",
+                        description: "Dina journalanteckningar hämtas och sparas i appen"
+                    )
+                }
+                .padding(.horizontal, 8)
+
+                Button {
+                    dismissGuide()
+                } label: {
+                    Text("Förstått!")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppColors.primary)
+            }
+            .padding(24)
+            .background(AppColors.card)
+            .cornerRadius(20)
+            .shadow(radius: 20)
+            .padding(.horizontal, 32)
+        }
+    }
+
+    private func guideStep(number: Int, icon: String, title: String, description: String) -> some View {
+        HStack(alignment: .top, spacing: 12) {
+            ZStack {
+                Circle()
+                    .fill(AppColors.primary)
+                    .frame(width: 28, height: 28)
+                Text("\(number)")
+                    .font(.callout)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 6) {
+                    Image(systemName: icon)
+                        .font(.callout)
+                        .foregroundColor(AppColors.primary)
+                    Text(title)
+                        .font(.callout)
+                        .fontWeight(.semibold)
+                        .foregroundColor(AppColors.text)
+                }
+                Text(description)
+                    .font(.caption)
+                    .foregroundColor(AppColors.textSecondary)
+            }
+        }
+    }
+
+    private func dismissGuide() {
+        showGuide = false
+        UserDefaults.standard.set(true, forKey: "healthDataGuideShown")
     }
 
     @ViewBuilder
@@ -763,6 +868,9 @@ extension HealthDataWebView {
     class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         let viewModel: HealthDataBrowserViewModel
         let extractor: HealthDataExtractor
+        private var hasAutoStartedExtraction = false
+        private var hasClickedJournalen = false
+        private var hasNavigatedToOverview = false
 
         init(viewModel: HealthDataBrowserViewModel, extractor: HealthDataExtractor) {
             self.viewModel = viewModel
@@ -827,11 +935,64 @@ extension HealthDataWebView {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            let url = webView.url?.absoluteString ?? ""
+
             Task { @MainActor in
                 viewModel.isLoading = false
-                viewModel.currentURL = webView.url?.absoluteString ?? ""
+                viewModel.currentURL = url
                 viewModel.canGoBack = webView.canGoBack
                 viewModel.canGoForward = webView.canGoForward
+            }
+
+            let isOnOverview = url.lowercased().contains("journaloverview")
+            let isOnDashboard = url.contains("e-tjanster.1177.se") && !url.contains("login") && !url.contains("Login") && !url.contains("authn") && !url.contains("callback") && !url.contains("saml")
+            let isOnJournalen = url.contains("journalen.1177.se") && !url.contains("login") && !url.contains("Login")
+
+            // Step 1: On the dashboard after login → click the Journalen link via JS
+            if isOnDashboard && !hasClickedJournalen {
+                hasClickedJournalen = true
+                Task {
+                    // Let the dashboard fully load and session establish
+                    try? await Task.sleep(nanoseconds: 4_000_000_000)
+                    // Click the Journalen link naturally — this triggers SSO session handoff
+                    let js = """
+                    (function() {
+                        var links = document.querySelectorAll('a[href]');
+                        for (var i = 0; i < links.length; i++) {
+                            var href = links[i].href || '';
+                            var text = links[i].textContent || '';
+                            if (href.includes('journalen.1177.se') || text.trim() === 'Journalen') {
+                                links[i].click();
+                                return 'clicked';
+                            }
+                        }
+                        // Fallback: navigate via the known path
+                        window.location.href = 'https://journalen.1177.se';
+                        return 'fallback';
+                    })();
+                    """
+                    try? await webView.evaluateJavaScript(js)
+                }
+            }
+
+            // Step 2: On journalen.1177.se but not on overview → navigate to overview
+            if isOnJournalen && !isOnOverview && !hasNavigatedToOverview {
+                hasNavigatedToOverview = true
+                Task {
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    // Use relative navigation within same domain to preserve session
+                    let js = "window.location.href = '/JournalCategories/JournalOverview';"
+                    try? await webView.evaluateJavaScript(js)
+                }
+            }
+
+            // Step 3: On JournalOverview → auto-start extraction
+            if isOnOverview && !hasAutoStartedExtraction && !extractor.isExtracting {
+                hasAutoStartedExtraction = true
+                Task {
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    await extractor.startAPIExtraction()
+                }
             }
         }
 
