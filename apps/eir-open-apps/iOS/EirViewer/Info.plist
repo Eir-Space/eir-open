@@ -93,5 +93,16 @@
 	<array>
 		<string>bankid</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.eir.viewer</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>eir</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

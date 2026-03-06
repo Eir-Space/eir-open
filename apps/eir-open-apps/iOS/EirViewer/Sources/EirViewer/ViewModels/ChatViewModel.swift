@@ -5,10 +5,44 @@ class ChatViewModel: ObservableObject {
     @Published var inputText: String = ""
     @Published var isStreaming = false
     @Published var errorMessage: String?
+    @Published var pendingCloudConsent: LLMProviderType?
 
     private var streamingTask: Task<Void, Never>?
     private let toolRegistry = ToolRegistry()
     private let maxToolIterations = 5
+
+    // Pending message state for consent flow
+    private var pendingSendArgs: (EirDocument?, SettingsViewModel, ChatThreadStore, UUID, AgentMemoryStore, LocalModelManager?)?
+
+    static func hasCloudConsent(for provider: LLMProviderType) -> Bool {
+        UserDefaults.standard.bool(forKey: "cloudConsent_\(provider.rawValue)")
+    }
+
+    static func grantCloudConsent(for provider: LLMProviderType) {
+        UserDefaults.standard.set(true, forKey: "cloudConsent_\(provider.rawValue)")
+    }
+
+    func consentGrantedAndSend() {
+        guard let provider = pendingCloudConsent else { return }
+        Self.grantCloudConsent(for: provider)
+        pendingCloudConsent = nil
+        if let args = pendingSendArgs {
+            pendingSendArgs = nil
+            sendMessage(
+                document: args.0,
+                settingsVM: args.1,
+                chatThreadStore: args.2,
+                profileID: args.3,
+                agentMemoryStore: args.4,
+                localModelManager: args.5
+            )
+        }
+    }
+
+    func consentDenied() {
+        pendingCloudConsent = nil
+        pendingSendArgs = nil
+    }
 
     func sendMessage(
         document: EirDocument?,
@@ -21,6 +55,18 @@ class ChatViewModel: ObservableObject {
         let text = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty, !isStreaming else { return }
 
+        guard let config = settingsVM.activeProvider else {
+            errorMessage = "No LLM provider selected. Configure one in Settings."
+            return
+        }
+
+        // Check cloud consent before sending data to third-party providers
+        if !config.type.isLocal && !Self.hasCloudConsent(for: config.type) {
+            pendingSendArgs = (document, settingsVM, chatThreadStore, profileID, agentMemoryStore, localModelManager)
+            pendingCloudConsent = config.type
+            return
+        }
+
         // Auto-create thread if none selected
         if chatThreadStore.selectedThreadID == nil {
             chatThreadStore.createThread(profileID: profileID)
@@ -29,11 +75,6 @@ class ChatViewModel: ObservableObject {
         let userMessage = ChatMessage(role: .user, content: text)
         chatThreadStore.addMessage(userMessage)
         inputText = ""
-
-        guard let config = settingsVM.activeProvider else {
-            errorMessage = "No LLM provider selected. Configure one in Settings."
-            return
-        }
 
         // Validate provider readiness
         if config.type.isLocal {
@@ -327,6 +368,10 @@ class ChatViewModel: ObservableObject {
         // Start a new conversation and send the message
         newConversation(chatThreadStore: chatThreadStore, profileID: profileID)
         inputText = prompt
+
+        // Switch to chat tab first, then sendMessage will handle consent if needed
+        NotificationCenter.default.post(name: .navigateToChat, object: nil)
+
         sendMessage(
             document: document,
             settingsVM: settingsVM,
@@ -335,9 +380,6 @@ class ChatViewModel: ObservableObject {
             agentMemoryStore: agentMemoryStore,
             localModelManager: localModelManager
         )
-
-        // Switch to chat tab
-        NotificationCenter.default.post(name: .navigateToChat, object: nil)
     }
 }
 
