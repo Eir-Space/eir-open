@@ -1,4 +1,5 @@
 import SwiftUI
+import HealthKit
 
 struct SettingsView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
@@ -45,11 +46,13 @@ struct SettingsView: View {
                     Label("Add Person...", systemImage: "person.badge.plus")
                 }
 
-                Button {
-                    showHealthKitImport = true
-                } label: {
-                    Label("Import from Apple Health", systemImage: "heart.fill")
-                        .foregroundColor(AppColors.pink)
+                if HKHealthStore.isHealthDataAvailable() {
+                    Button {
+                        showHealthKitImport = true
+                    } label: {
+                        Label("Import from Apple Health", systemImage: "heart.fill")
+                            .foregroundColor(AppColors.pink)
+                    }
                 }
             }
 
@@ -107,14 +110,32 @@ struct SettingsView: View {
             .onChange(of: agentMemoryStore.memory.memory) { _, _ in agentMemoryStore.save() }
             .onChange(of: agentMemoryStore.memory.agents) { _, _ in agentMemoryStore.save() }
 
-            // MARK: - Info
-            Section {
+            // MARK: - Privacy & Data
+            Section("Privacy & Data") {
                 HStack(spacing: 8) {
                     Image(systemName: "lock.shield")
                         .foregroundColor(AppColors.primary)
-                    Text("API keys are stored securely in Keychain")
-                        .font(.caption)
-                        .foregroundColor(AppColors.textSecondary)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("API keys are stored securely in Keychain")
+                            .font(.caption)
+                            .foregroundColor(AppColors.textSecondary)
+                        Text("On-device models keep all data on your phone")
+                            .font(.caption)
+                            .foregroundColor(AppColors.textSecondary)
+                    }
+                }
+
+                if hasAnyCloudConsent {
+                    Button(role: .destructive) {
+                        resetCloudConsent()
+                    } label: {
+                        Label("Reset Cloud Data Sharing Consent", systemImage: "arrow.counterclockwise")
+                            .font(.callout)
+                    }
+                }
+
+                Link(destination: URL(string: "https://eir.health/privacy")!) {
+                    Label("Privacy Policy", systemImage: "hand.raised")
                 }
             }
         }
@@ -141,6 +162,18 @@ struct SettingsView: View {
             }
         } message: {
             Text("Enter a new display name for this person.")
+        }
+    }
+
+    private var hasAnyCloudConsent: Bool {
+        LLMProviderType.allCases.filter { !$0.isLocal }.contains { type in
+            ChatViewModel.hasCloudConsent(for: type)
+        }
+    }
+
+    private func resetCloudConsent() {
+        for type in LLMProviderType.allCases where !type.isLocal {
+            UserDefaults.standard.removeObject(forKey: "cloudConsent_\(type.rawValue)")
         }
     }
 }

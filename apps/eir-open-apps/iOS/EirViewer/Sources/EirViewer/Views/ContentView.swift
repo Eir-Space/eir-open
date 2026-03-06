@@ -25,6 +25,7 @@ struct ContentView: View {
     @EnvironmentObject var profileStore: ProfileStore
     @EnvironmentObject var chatThreadStore: ChatThreadStore
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
+    @EnvironmentObject var healthDataExtractor: HealthDataExtractor
 
     @State private var selectedTab: NavTab = .journal
 
@@ -58,6 +59,32 @@ struct ContentView: View {
                 .tag(NavTab.settings)
             }
             .tint(AppColors.primary)
+            .overlay(alignment: .top) {
+                if healthDataExtractor.isExtracting && selectedTab != .healthData {
+                    Button {
+                        selectedTab = .healthData
+                    } label: {
+                        HStack(spacing: 8) {
+                            ProgressView()
+                                .tint(.white)
+                                .scaleEffect(0.8)
+                            Text("Downloading health data... \(Int(healthDataExtractor.progress * 100))%")
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(AppColors.primary)
+                        .cornerRadius(20)
+                        .shadow(radius: 6)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, 8)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.3), value: healthDataExtractor.isExtracting)
+                }
+            }
             .onAppear {
                 // Auto-select first profile if none selected
                 if profileStore.selectedProfileID == nil,

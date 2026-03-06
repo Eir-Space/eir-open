@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ChatView: View {
     @EnvironmentObject var chatVM: ChatViewModel
@@ -81,6 +82,17 @@ struct ChatView: View {
                     .padding(10)
                     .background(AppColors.divider)
                     .cornerRadius(20)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Klar") {
+                                UIApplication.shared.sendAction(
+                                    #selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil
+                                )
+                            }
+                        }
+                    }
 
                 if chatVM.isStreaming {
                     Button {
@@ -159,6 +171,22 @@ struct ChatView: View {
             if agentMemoryStore.isOnboardingNeeded {
                 showOnboarding = true
             }
+        }
+        .alert(
+            "Share Data with \(chatVM.pendingCloudConsent?.rawValue ?? "Cloud Provider")?",
+            isPresented: Binding(
+                get: { chatVM.pendingCloudConsent != nil },
+                set: { if !$0 { chatVM.consentDenied() } }
+            )
+        ) {
+            Button("Cancel", role: .cancel) {
+                chatVM.consentDenied()
+            }
+            Button("I Agree") {
+                chatVM.consentGrantedAndSend()
+            }
+        } message: {
+            Text("Your medical records and conversation will be sent to \(chatVM.pendingCloudConsent?.rawValue ?? "the selected provider") for AI processing. This data may include personal health information. The provider's privacy policy applies. On-device models keep all data on your phone.")
         }
     }
 

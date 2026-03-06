@@ -52,6 +52,7 @@ class HealthDataExtractor: ObservableObject {
     @Published var hasActiveSession: Bool = false  // true if we have a valid session + token
 
     private weak var webView: WKWebView?
+    private var retainedWebView: WKWebView?  // strong ref keeps webView alive during extraction
     private let journalBaseURL = "https://journalen.1177.se"
     private var cachedCSRFToken: String?
     private var sessionKeepAliveTask: Task<Void, Never>?
@@ -109,12 +110,13 @@ class HealthDataExtractor: ObservableObject {
         }
 
         let currentURL = webView.url?.absoluteString ?? ""
-        guard currentURL.contains("journalen.1177.se") else {
-            status = .error("Please navigate to journalen.1177.se first and make sure you're logged in.")
+        guard currentURL.contains("1177.se") else {
+            status = .error("Please navigate to 1177.se first and make sure you're logged in.")
             return
         }
 
         isExtracting = true
+        retainedWebView = webView
         results = []
         statusLog = []
         eirFilePaths = [:]
@@ -129,6 +131,7 @@ class HealthDataExtractor: ObservableObject {
         guard navOK else {
             status = .error("Could not navigate to overview. Are you logged in?")
             isExtracting = false
+            retainedWebView = nil
             return
         }
 
@@ -143,6 +146,7 @@ class HealthDataExtractor: ObservableObject {
         guard let csrfToken = await extractCSRFToken(webView) else {
             status = .error("Could not extract CSRF token")
             isExtracting = false
+            retainedWebView = nil
             return
         }
         log("CSRF token: \(csrfToken.prefix(20))...")
@@ -200,7 +204,9 @@ class HealthDataExtractor: ObservableObject {
                 log("Category pages added \(categoryEntries.count) entries (total: \(entries.count))")
             }
 
-            results.append(ExtractionResult(personName: member.name, personId: member.personId, entries: entries))
+            let personResult = ExtractionResult(personName: member.name, personId: member.personId, entries: entries)
+            results.append(personResult)
+            saveAsEirForResult(personResult)  // save immediately so import button appears
 
             if memberIdx < allMembers.count - 1 {
                 try? await Task.sleep(nanoseconds: 3_000_000_000)
@@ -219,12 +225,14 @@ class HealthDataExtractor: ObservableObject {
         status = .done(totalEntries)
         progress = 1.0
         isExtracting = false
+        retainedWebView = nil
 
         await saveResults()
     }
 
     func cancelExtraction() {
         isExtracting = false
+        retainedWebView = nil
         status = .idle
         log("Extraction cancelled by user")
     }
@@ -243,12 +251,13 @@ class HealthDataExtractor: ObservableObject {
         }
 
         let currentURL = webView.url?.absoluteString ?? ""
-        guard currentURL.contains("journalen.1177.se") else {
-            status = .error("Navigate to journalen.1177.se and log in first.")
+        guard currentURL.contains("1177.se") else {
+            status = .error("Navigate to 1177.se and log in first.")
             return
         }
 
         isExtracting = true
+        retainedWebView = webView  // keep webView alive even if view is dismissed
         results = []
         statusLog = []
         eirFilePaths = [:]
@@ -263,6 +272,7 @@ class HealthDataExtractor: ObservableObject {
         guard navOK else {
             status = .error("Could not navigate to overview. Are you logged in?")
             isExtracting = false
+            retainedWebView = nil
             return
         }
         try? await Task.sleep(nanoseconds: 3_000_000_000)
@@ -275,6 +285,7 @@ class HealthDataExtractor: ObservableObject {
         guard let csrfToken = await extractCSRFToken(webView) else {
             status = .error("Could not extract CSRF token")
             isExtracting = false
+            retainedWebView = nil
             return
         }
         log("CSRF token: \(csrfToken.prefix(20))...")
@@ -307,7 +318,7 @@ class HealthDataExtractor: ObservableObject {
                 status = .navigating
                 log("Reloading overview for \(member.name)...")
                 try? await webView.evaluateJavaScript("window.location.href = '/JournalCategories/JournalOverview';")
-                try? await Task.sleep(nanoseconds: 4_000_000_000)
+                try? await Task.sleep(nanoseconds: 3_000_000_000)  // 3s for page reload
             }
 
             // Re-extract CSRF token (it changes per page load)
@@ -326,42 +337,53 @@ class HealthDataExtractor: ObservableObject {
                 continue
             }
 
-            // Fetch full details for each entry
+            // Fetch full details in batches using concurrent JS fetch
+            let batchSize = 5
             var entries: [ExtractedEntry] = []
-            for (idx, summary) in entrySummaries.enumerated() {
+            let totalSummaries = entrySummaries.count
+
+            for batchStart in stride(from: 0, to: totalSummaries, by: batchSize) {
                 guard isExtracting else { break }
-                status = .fetchingDetails(idx + 1, entrySummaries.count)
-                progress = (Double(memberIdx) + Double(idx) / Double(entrySummaries.count)) / Double(allMembers.count)
+                let batchEnd = min(batchStart + batchSize, totalSummaries)
+                let batch = Array(entrySummaries[batchStart..<batchEnd])
 
-                let detail = await fetchEntryDetail(webView, csrfToken: token, entryId: summary.id, endpoint: summary.detailEndpoint)
+                status = .fetchingDetails(batchEnd, totalSummaries)
+                progress = (Double(memberIdx) + Double(batchEnd) / Double(totalSummaries)) / Double(allMembers.count)
 
-                entries.append(ExtractedEntry(
-                    id: summary.id,
-                    date: summary.date,
-                    time: summary.time,
-                    category: summary.category,
-                    type: summary.type,
-                    provider: detail?.provider ?? summary.provider,
-                    responsiblePerson: detail?.responsiblePerson,
-                    responsibleRole: detail?.responsibleRole,
-                    summary: summary.summary,
-                    details: detail?.details ?? summary.summary,
-                    notes: detail?.notes,
-                    person: member.name
-                ))
+                let details = await fetchEntryDetailsBatch(webView, csrfToken: token, entries: batch)
 
-                if (idx + 1) % 25 == 0 {
-                    log("  Fetched details: \(idx + 1)/\(entrySummaries.count)")
+                for (i, summary) in batch.enumerated() {
+                    let detail = i < details.count ? details[i] : nil
+                    entries.append(ExtractedEntry(
+                        id: summary.id,
+                        date: summary.date,
+                        time: summary.time,
+                        category: summary.category,
+                        type: summary.type,
+                        provider: detail?.provider ?? summary.provider,
+                        responsiblePerson: detail?.responsiblePerson,
+                        responsibleRole: detail?.responsibleRole,
+                        summary: summary.summary,
+                        details: detail?.details ?? summary.summary,
+                        notes: detail?.notes,
+                        person: member.name
+                    ))
                 }
 
-                try? await Task.sleep(nanoseconds: 200_000_000)
+                if batchEnd % 25 == 0 || batchEnd == totalSummaries {
+                    log("  Fetched details: \(batchEnd)/\(totalSummaries)")
+                }
+
+                try? await Task.sleep(nanoseconds: 150_000_000)  // 150ms between batches
             }
 
             log("Extracted \(entries.count) entries for \(member.name)")
-            results.append(ExtractionResult(personName: member.name, personId: member.personId, entries: entries))
+            let personResult = ExtractionResult(personName: member.name, personId: member.personId, entries: entries)
+            results.append(personResult)
+            saveAsEirForResult(personResult)  // save immediately so import button appears
 
             if memberIdx < allMembers.count - 1 {
-                try? await Task.sleep(nanoseconds: 2_000_000_000)
+                try? await Task.sleep(nanoseconds: 1_000_000_000)  // 1s between members
             }
         }
 
@@ -377,6 +399,7 @@ class HealthDataExtractor: ObservableObject {
         status = .done(totalEntries)
         progress = 1.0
         isExtracting = false
+        retainedWebView = nil
 
         await saveResults()
     }
@@ -500,7 +523,7 @@ class HealthDataExtractor: ObservableObject {
             // Check if data is still loading (async from multiple providers)
             if let dataLoading = response["dataLoading"] as? Bool, dataLoading {
                 log("  Data still loading from providers, waiting...")
-                try? await Task.sleep(nanoseconds: 3_000_000_000)
+                try? await Task.sleep(nanoseconds: 1_500_000_000)  // 1.5s
                 continue  // retry same page
             }
 
@@ -585,7 +608,7 @@ class HealthDataExtractor: ObservableObject {
             }
 
             skip += take
-            try? await Task.sleep(nanoseconds: 500_000_000)  // 500ms between pages
+            try? await Task.sleep(nanoseconds: 250_000_000)  // 250ms between pages
         }
 
         return allEntries
@@ -723,6 +746,148 @@ class HealthDataExtractor: ObservableObject {
             details: detailLines.joined(separator: "\n"),
             notes: notes
         )
+    }
+
+    /// Fetch details for a batch of entries concurrently using Promise.all in a single JS evaluation.
+    private func fetchEntryDetailsBatch(_ webView: WKWebView, csrfToken: String, entries: [TimelineEntry]) async -> [EntryDetail?] {
+        guard !entries.isEmpty else { return [] }
+
+        // Build JS that fetches all entries in parallel via Promise.all
+        let idsJSON = entries.map { "'\($0.id.replacingOccurrences(of: "'", with: "\\'"))'" }.joined(separator: ",")
+        let endpoint = entries[0].detailEndpoint
+
+        let js = """
+        try {
+            var ids = [\(idsJSON)];
+            var token = '\(csrfToken.replacingOccurrences(of: "'", with: "\\'"))';
+
+            function parseDetail(data) {
+                var html = data.PartialView || '';
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var result = {provider: '', responsiblePerson: '', responsibleRole: '', sections: [], fullText: ''};
+
+                var heading = doc.querySelector('.nc-heading__information-type, .information-type, h2, h3');
+                if (heading) result.informationType = heading.textContent.trim();
+
+                var timestamp = doc.querySelector('.nc-document-timestamp, .document-timestamp, time');
+                if (timestamp) result.timestamp = timestamp.textContent.trim();
+
+                var titles = doc.querySelectorAll('.detail-title, dt, .nc-detail-title');
+                var descs = doc.querySelectorAll('.detail-description, dd, .nc-detail-description');
+                for (var i = 0; i < titles.length; i++) {
+                    var title = titles[i].textContent.trim();
+                    var desc = i < descs.length ? descs[i].textContent.trim() : '';
+                    if (title || desc) result.sections.push({title: title, desc: desc});
+                }
+
+                doc.querySelectorAll('.detail-title, dt').forEach(function(el, idx) {
+                    var t = el.textContent.trim().toLowerCase();
+                    if (t.includes('vårdenhet') || t.includes('vårdgivare') || t.includes('enhet')) {
+                        var dd = idx < descs.length ? descs[idx] : null;
+                        if (dd) result.provider = dd.textContent.trim();
+                    }
+                    if (t.includes('författare') || t.includes('ansvarig') || t.includes('signerad av')) {
+                        var dd = idx < descs.length ? descs[idx] : null;
+                        if (dd) result.responsiblePerson = dd.textContent.trim();
+                    }
+                    if (t.includes('befattning') || t.includes('roll') || t.includes('yrkestitel')) {
+                        var dd = idx < descs.length ? descs[idx] : null;
+                        if (dd) result.responsibleRole = dd.textContent.trim();
+                    }
+                });
+
+                var contentBlocks = doc.querySelectorAll('.information-details .docbook, .ids .docbook, .docbook, .nc-content, .journal-content, [class*="content-body"]');
+                var contentTexts = [];
+                contentBlocks.forEach(function(block) {
+                    var t = block.textContent.trim();
+                    if (t.length > 5) contentTexts.push(t);
+                });
+
+                if (contentTexts.length === 0) {
+                    var body = doc.querySelector('.nc-journal-detail, .journal-detail, .detail-view, main') || doc.body;
+                    var uiNoise = ['Ladda ner', 'Stäng', 'Skriv ut', 'Tillbaka', 'Osignerad'];
+                    var lines = (body.textContent || '').split('\\n')
+                        .map(function(l) { return l.replace(/[ \\t]+/g, ' ').trim(); })
+                        .filter(function(l) { return l.length > 0 && uiNoise.indexOf(l) === -1; });
+                    contentTexts = [lines.join('\\n')];
+                }
+
+                result.fullText = contentTexts.join('\\n\\n');
+                return result;
+            }
+
+            var promises = ids.map(function(id) {
+                return fetch('\(endpoint)', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        '__RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({id: id})
+                }).then(function(r) { return r.json(); })
+                  .then(function(data) { return parseDetail(data); })
+                  .catch(function(e) { return {error: e.message}; });
+            });
+
+            var results = await Promise.all(promises);
+            return JSON.stringify(results);
+        } catch(e) {
+            return JSON.stringify({error: e.message});
+        }
+        """
+
+        guard let resultStr = try? await webView.callAsyncJavaScript(js, arguments: [:], contentWorld: .page) as? String,
+              let data = resultStr.data(using: .utf8),
+              let parsed = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]] else {
+            return entries.map { _ in nil }
+        }
+
+        return parsed.map { item -> EntryDetail? in
+            if item["error"] != nil { return nil }
+
+            let fullText = item["fullText"] as? String ?? ""
+            let sections = item["sections"] as? [[String: String]] ?? []
+
+            var detailLines: [String] = []
+            if let infoType = item["informationType"] as? String, !infoType.isEmpty {
+                detailLines.append(infoType)
+            }
+            if let ts = item["timestamp"] as? String, !ts.isEmpty {
+                detailLines.append(ts)
+            }
+            for s in sections {
+                let title = s["title"] ?? ""
+                let desc = s["desc"] ?? ""
+                if !title.isEmpty && !desc.isEmpty {
+                    detailLines.append("\(title): \(desc)")
+                } else if !title.isEmpty {
+                    detailLines.append(title)
+                }
+            }
+            if !fullText.isEmpty {
+                detailLines.append(fullText)
+            }
+
+            var notes: [String]?
+            if sections.count > 1 {
+                notes = sections.compactMap { s in
+                    let t = s["title"] ?? ""
+                    let d = s["desc"] ?? ""
+                    guard !t.isEmpty else { return nil }
+                    return d.isEmpty ? t : "\(t): \(d)"
+                }
+            }
+
+            return EntryDetail(
+                provider: (item["provider"] as? String).flatMap { $0.isEmpty ? nil : $0 },
+                responsiblePerson: (item["responsiblePerson"] as? String).flatMap { $0.isEmpty ? nil : $0 },
+                responsibleRole: (item["responsibleRole"] as? String).flatMap { $0.isEmpty ? nil : $0 },
+                details: detailLines.joined(separator: "\n"),
+                notes: notes
+            )
+        }
     }
 
     /// Map API type strings to Swedish category names.

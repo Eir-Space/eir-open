@@ -3,9 +3,11 @@ import UniformTypeIdentifiers
 
 struct WelcomeView: View {
     @EnvironmentObject var profileStore: ProfileStore
+    @EnvironmentObject var extractor: HealthDataExtractor
     @State private var showFilePicker = false
     @State private var showQRScanner = false
     @State private var showHealthKitImport = false
+    @State private var show1177Browser = false
 
     var body: some View {
         VStack(spacing: 24) {
@@ -45,6 +47,17 @@ struct WelcomeView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(AppColors.primary)
+
+                Button {
+                    show1177Browser = true
+                } label: {
+                    Label("Hämta journal från 1177", systemImage: "cross.case")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(AppColors.green)
 
                 Button {
                     showQRScanner = true
@@ -125,10 +138,23 @@ struct WelcomeView: View {
         .sheet(isPresented: $showHealthKitImport) {
             HealthKitImportView()
         }
+        .sheet(isPresented: $show1177Browser) {
+            NavigationStack {
+                HealthDataBrowserView()
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Stäng") { show1177Browser = false }
+                        }
+                    }
+            }
+            .environmentObject(profileStore)
+            .environmentObject(extractor)
+        }
         // Auto-dismiss sheets when a profile is loaded
         .onReceive(NotificationCenter.default.publisher(for: .profileDidLoad)) { _ in
             showQRScanner = false
             showHealthKitImport = false
+            show1177Browser = false
         }
     }
 
