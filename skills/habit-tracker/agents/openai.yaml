@@ -1,0 +1,3 @@
+interface:
+  display_name: 'Habit Tracker'
+  short_description: 'Build small habits, track consistency, and recover from missed days'
