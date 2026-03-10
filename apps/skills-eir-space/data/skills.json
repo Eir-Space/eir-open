@@ -49,6 +49,46 @@
       "updatedAt": "2026-02-26T23:20:00Z"
     },
     {
+      "id": "human-alignment",
+      "slug": "human-alignment",
+      "name": "human-alignment",
+      "title": "Human Alignment",
+      "owner": "eir-space",
+      "repoUrl": "https://github.com/Eir-Space/eir-open",
+      "skillPath": "skills/human-alignment/",
+      "domainTags": [
+        "mental-health",
+        "grounding",
+        "safety"
+      ],
+      "populations": [
+        "general"
+      ],
+      "regions": [
+        "global"
+      ],
+      "healthMdCompatible": true,
+      "createsLinkedFile": false,
+      "linkedFileNames": [],
+      "reviewStatus": "not_medically_reviewed",
+      "moderationTier": "verified",
+      "status": "published",
+      "badges": [
+        "Grounding",
+        "Anti-Sycophancy",
+        "Human Feedback"
+      ],
+      "summary": "Grounding skill for keeping AI conversations optimistic but reality-based, helping the agent resist sycophancy, calibrate big ideas, preserve the user’s own judgment, and encourage real human feedback before an AI-only loop distorts perspective.",
+      "sourceUrls": [
+        "https://www.nimh.nih.gov/health/topics/schizophrenia/raise/what-is-psychosis",
+        "https://www.nhs.uk/conditions/psychosis/",
+        "https://988lifeline.org/talk-to-someone-now/"
+      ],
+      "lastReviewed": "2026-03-10",
+      "version": "0.1.0",
+      "updatedAt": "2026-03-10T00:30:00Z"
+    },
+    {
       "id": "sleep-upgrade",
       "slug": "sleep-upgrade",
       "name": "sleep-upgrade",
