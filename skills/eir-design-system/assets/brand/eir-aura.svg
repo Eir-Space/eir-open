@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="eir-aura" x1="118" y1="118" x2="1012" y2="782" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4A76A"/>
+      <stop offset=".32" stop-color="#C9B88A"/>
+      <stop offset=".7" stop-color="#A8C5D4"/>
+      <stop offset="1" stop-color="#8BB8CE"/>
+    </linearGradient>
+    <radialGradient id="eir-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 450) rotate(90) scale(420 560)">
+      <stop stop-color="white" stop-opacity=".38"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" rx="72" fill="url(#eir-aura)"/>
+  <circle cx="600" cy="450" r="420" fill="url(#eir-glow)"/>
+</svg>
