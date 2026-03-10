@@ -13,7 +13,7 @@ const postgresConfig = {
   url: env.DATABASE_URL || env.POSTGRES_URL || '',
 };
 
-const DEPRECATED_SKILL_SLUGS = new Set(['eir-design-system']);
+const DEPRECATED_SKILL_SLUGS = new Set(['eir-design-system', 'reality-check-support']);
 const LOCAL_SKILL_DOC_CANDIDATES = ['', 'SKILL.md'];
 
 function usePostgresStore() {
@@ -60,6 +60,17 @@ function sanitizeSkill(skill) {
     return {
       ...skill,
       sourceUrls: [],
+    };
+  }
+
+  if (skill.slug === 'reality-check-support') {
+    return {
+      ...skill,
+      id: 'human-alignment',
+      slug: 'human-alignment',
+      name: 'human-alignment',
+      title: 'Human Alignment',
+      skillPath: 'skills/human-alignment/',
     };
   }
 
