@@ -1,0 +1,3 @@
+interface:
+  display_name: 'Health Actions'
+  short_description: 'Suggest brief, context-aware health actions the user can do next'
