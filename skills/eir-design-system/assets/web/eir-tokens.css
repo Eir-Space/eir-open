@@ -1,0 +1,86 @@
+:root {
+  --eir-50: #f0fafb;
+  --eir-100: #d5eff4;
+  --eir-200: #abe0ea;
+  --eir-300: #74cbd8;
+  --eir-400: #3db5c6;
+  --eir-500: #1e94a8;
+  --eir-600: #197a8e;
+  --eir-700: #1a6474;
+  --eir-800: #1c5260;
+  --eir-900: #1b4350;
+  --eir-950: #0d2d37;
+
+  --gold-50: #fff9f0;
+  --gold-100: #fef0db;
+  --gold-200: #fddcb0;
+  --gold-300: #f5c178;
+  --gold-400: #edab55;
+  --gold-500: #d4a76a;
+  --gold-600: #b8894e;
+  --gold-700: #96703e;
+  --gold-800: #755832;
+  --gold-900: #5a4428;
+
+  --blue-50: #f0f7fb;
+  --blue-100: #ddeef7;
+  --blue-200: #b8dbef;
+  --blue-300: #8bc4e3;
+  --blue-400: #6ea8c9;
+  --blue-500: #4a8db4;
+  --blue-600: #3a7399;
+  --blue-700: #2d5b7a;
+  --blue-800: #234860;
+  --blue-900: #1b3648;
+
+  --health-50: #f0fdf4;
+  --health-100: #dcfce7;
+  --health-200: #bbf7d0;
+  --health-400: #4ade80;
+  --health-500: #22c55e;
+  --health-600: #16a34a;
+  --health-800: #166534;
+
+  --sand-50: #fafaf7;
+  --sand-100: #f5f4f0;
+  --sand-200: #e8e6e1;
+  --sand-300: #d4d1cb;
+  --sand-400: #a8a49e;
+  --sand-500: #7a766f;
+  --sand-600: #5a5650;
+  --sand-700: #3d3a36;
+  --sand-800: #252320;
+  --sand-900: #1a1917;
+  --sand-950: #111110;
+
+  --eir-aura: linear-gradient(135deg, #d4a76a 0%, #c9b88a 30%, #a8c5d4 70%, #8bb8ce 100%);
+  --eir-aura-subtle: linear-gradient(
+    135deg,
+    rgba(212, 167, 106, 0.08) 0%,
+    rgba(139, 184, 206, 0.08) 100%
+  );
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+
+  --dur-instant: 50ms;
+  --dur-fast: 100ms;
+  --dur-base: 200ms;
+  --dur-slow: 300ms;
+}

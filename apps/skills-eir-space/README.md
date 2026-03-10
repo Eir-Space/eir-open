@@ -31,6 +31,63 @@ Open `http://localhost:3000`.
   - `POST /api/ingest/sync` (ingest many repos)
 - Local persistence in `data/skills.json` (fast MVP)
 
+## Fly.io Hosting
+
+This app now supports durable Postgres-backed storage on Fly.io.
+
+### Recommended production setup
+
+1. Provision a Fly Postgres database
+2. Set `DATABASE_URL` on the app
+3. Deploy the Next.js app as a normal Node service
+
+### Included deployment files
+
+- `apps/skills-eir-space/fly.toml`
+- `apps/skills-eir-space/Dockerfile.fly`
+- root `.dockerignore`
+
+### Deploy commands
+
+From the repo root:
+
+```bash
+flyctl apps create skills-eir-space --org personal
+flyctl mpg create --name skills-eir-space-db --org personal --region arn --plan development
+flyctl mpg attach skills-eir-space-db --app skills-eir-space
+flyctl deploy -c apps/skills-eir-space/fly.toml
+```
+
+### Custom domain
+
+After deploy:
+
+```bash
+flyctl certs add skills.eir.space -a skills-eir-space
+flyctl certs check skills.eir.space -a skills-eir-space
+flyctl certs setup skills.eir.space -a skills-eir-space
+```
+
+At runtime the store resolves in this order:
+
+1. `DATABASE_URL` / `POSTGRES_URL` -> Postgres
+2. Cloudflare D1 credentials -> D1
+3. Local `data/skills.json` -> local dev fallback
+
+### Minimal schema
+
+The app auto-creates:
+
+```sql
+CREATE TABLE IF NOT EXISTS skill_store (
+  store_key TEXT PRIMARY KEY,
+  store_value JSONB NOT NULL
+);
+```
+
+The current production store is still a single JSON document keyed by `main`. That is durable and
+working on Fly, but not yet normalized for advanced moderation, audit trails, or analytics.
+
 ## Cloudflare Hosting (Fast Path)
 
 This app is ready to deploy to Cloudflare as a Next.js app.
@@ -66,7 +123,7 @@ Important:
 
 ## Production TODO (Required)
 
-- Replace file writes in `lib/skill-store.js` with Cloudflare D1/KV persistence
+- Normalize the registry store beyond the single JSON document when moderation workflows grow
 - Add auth for moderation actions
 - Add validation worker for repo ingestion and `SKILL.md` parsing
 - Add moderation dashboard
