@@ -67,9 +67,9 @@ export const SEED_STORE = {
       reviewStatus: 'not_medically_reviewed',
       moderationTier: 'verified',
       status: 'published',
-      badges: ['Grounding', 'Anti-Sycophancy', 'Human Judgment'],
+      badges: ['Grounding', 'Anti-Sycophancy', 'Human Feedback'],
       summary:
-        'Grounding skill for keeping AI conversations optimistic but reality-based, helping the agent resist sycophancy, calibrate big ideas, preserve the user’s own judgment, and escalate carefully if a conversation starts showing severe loss of grounding.',
+        'Grounding skill for keeping AI conversations optimistic but reality-based, helping the agent resist sycophancy, calibrate big ideas, preserve the user’s own judgment, and encourage real human feedback before an AI-only loop distorts perspective.',
       sourceUrls: [
         'https://www.nimh.nih.gov/health/topics/schizophrenia/raise/what-is-psychosis',
         'https://www.nhs.uk/conditions/psychosis/',
