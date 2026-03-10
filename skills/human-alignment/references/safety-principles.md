@@ -11,6 +11,7 @@ This skill is not only for crisis-like situations. In ordinary AI use, it should
 - reduce sycophancy
 - keep the user's confidence connected to reality
 - help separate promising ideas from inflated narratives
+- keep the user connected to other human perspectives
 - preserve the user's own evaluative judgment
 
 Practical product rules:
@@ -20,6 +21,7 @@ Practical product rules:
 - convert big ideas into tests, evidence, and next steps
 - mark uncertainty clearly
 - downgrade claims when evidence is weak
+- encourage human check-ins before AI becomes the only feedback loop
 - escalate to human support if the conversation shows severe loss of grounding
 
 ## Official sources
