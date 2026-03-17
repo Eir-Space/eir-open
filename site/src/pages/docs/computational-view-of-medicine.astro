@@ -1,0 +1,247 @@
+---
+import '@/styles/global.css';
+import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
+import ComputationalMedicineBrief from '@/components/ComputationalMedicineBrief.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Computational View of Medicine | Eir Open</title>
+    <meta
+      name="description"
+      content="A white paper by Birger Moëll on why AI matters most where disease becomes a patient-specific search problem."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <ThemeProvider />
+    <SiteHeader current="docs" />
+    <main class="page-shell">
+      <section class="hero-card">
+        <p class="eyebrow">White Paper</p>
+        <h1>A Computational View of Medicine</h1>
+        <p class="lede">
+          Why AI will matter most where disease becomes a search problem.
+        </p>
+        <div class="meta-row">
+          <span>Birger Moëll</span>
+          <span>Co-Founder, Eir Space</span>
+          <span>September 2025</span>
+        </div>
+        <div class="cta-row">
+          <a class="primary-link" href="/papers/computational-view-of-medicine.pdf" target="_blank" rel="noreferrer">
+            Open PDF
+          </a>
+          <a class="secondary-link" href="/docs/ai-compute-disease-ranking/">View the ranking</a>
+        </div>
+      </section>
+
+      <section class="copy-grid">
+        <article class="copy-card">
+          <p class="section-kicker">Abstract</p>
+          <h2>The core claim</h2>
+          <p>
+            The paper argues that the most important use of advanced AI in health
+            is not generic automation. It is high-context reasoning over disease
+            classes where better synthesis can change diagnosis, treatment
+            selection, escalation, or trial matching for a specific patient.
+          </p>
+          <p>
+            Precision oncology, rare-disease genomics, resistant infection, and
+            sepsis rise to the top because they combine large search spaces with
+            fragmented multimodal data and decisions that are highly sensitive
+            to patient context.
+          </p>
+        </article>
+
+        <article class="copy-card">
+          <p class="section-kicker">Why it matters</p>
+          <h2>From records to leverage</h2>
+          <p>
+            Once patients can access and assemble their own records, compute
+            becomes part of personal health infrastructure. The paper makes the
+            case that data access without reasoning access is incomplete
+            empowerment.
+          </p>
+          <p>
+            The operational goal is not “AI doctor in a box.” It is stronger,
+            better-prepared patient-clinician reasoning around the cases where
+            synthesis is the bottleneck.
+          </p>
+        </article>
+      </section>
+
+      <section class="copy-card full-width">
+        <p class="section-kicker">Evidence base</p>
+        <h2>What the paper uses</h2>
+        <ul class="sources-list">
+          <li>Personalized RNA cancer vaccines in melanoma</li>
+          <li>AlphaFold and protein consequence modeling</li>
+          <li>Genome sequencing for rare-disease diagnosis</li>
+          <li>Deep learning-guided antibiotic discovery</li>
+          <li>TREWS prospective sepsis deployment</li>
+          <li>Longitudinal EHR deep learning</li>
+          <li>OpenNotes and patient access to records</li>
+        </ul>
+      </section>
+
+      <ComputationalMedicineBrief />
+
+      <section class="paper-frame">
+        <iframe
+          title="A Computational View of Medicine PDF"
+          src="/papers/computational-view-of-medicine.pdf#view=FitH"
+        />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background:
+      radial-gradient(circle at top left, rgba(232, 168, 48, 0.12), transparent 28%),
+      linear-gradient(180deg, var(--background), var(--background-soft));
+    color: var(--foreground);
+    font-family: var(--sl-font);
+  }
+
+  .page-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1.25rem 0 4rem;
+  }
+
+  .hero-card,
+  .copy-card,
+  .paper-frame {
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.75rem;
+    background: color-mix(in srgb, var(--card) 94%, white 6%);
+    box-shadow: var(--card-shadow);
+  }
+
+  .hero-card {
+    padding: 2.5rem;
+    background:
+      radial-gradient(circle at 88% 14%, rgba(232, 168, 48, 0.14), transparent 24%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, white 8%), var(--card));
+  }
+
+  .eyebrow,
+  .section-kicker {
+    margin: 0 0 0.75rem;
+    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    max-width: 12ch;
+    font-size: clamp(2.5rem, 6vw, 4.7rem);
+    line-height: 0.96;
+  }
+
+  h2 {
+    margin: 0 0 0.8rem;
+    font-size: 1.35rem;
+  }
+
+  .lede,
+  p,
+  li {
+    color: var(--muted-foreground);
+    line-height: 1.8;
+  }
+
+  .lede {
+    max-width: 42rem;
+    margin: 1.2rem 0 0;
+    font-size: 1.05rem;
+  }
+
+  .meta-row,
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.4rem;
+  }
+
+  .meta-row span,
+  .primary-link,
+  .secondary-link {
+    border-radius: 999px;
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .meta-row span {
+    border: 1px solid var(--border-subtle);
+    background: var(--background-soft);
+  }
+
+  .primary-link {
+    background: var(--accent);
+    color: white;
+  }
+
+  .secondary-link {
+    border: 1px solid var(--border-subtle);
+    color: var(--foreground);
+  }
+
+  .copy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .copy-card,
+  .paper-frame {
+    margin-top: 1rem;
+    padding: 1.6rem;
+  }
+
+  .sources-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .paper-frame {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: min(78vh, 1100px);
+    border: 0;
+    display: block;
+    background: white;
+  }
+
+  @media (max-width: 900px) {
+    .copy-grid,
+    .sources-list {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
