@@ -1,85 +1,113 @@
 ---
 title: "Why a Computational View of Disease Matters Now"
-description: "AI is forcing medicine to confront a simple fact: many diseases are not just labels but search problems over data, time, and intervention space."
+description: "AI is changing medicine because more and more diseases are best understood as hard search problems over personal data, time, and treatment options."
 pubDate: 2025-09-29
 author: Eir Open
 tags:
   - AI
   - medicine
   - computation
-  - disease modeling
+  - patient empowerment
 featured: true
 ---
 
-I think a lot of medical thinking still starts from the wrong unit of analysis.
+The most important shift in medicine over the next decade may not be a new drug class or a new device. It may be a new way of seeing the problem.
 
-We talk about disease names as if the name is the thing. Lung cancer. Lupus. Sepsis. Alzheimer's. That is useful for billing, for communication, and often for clinical workflow. But it is increasingly a bad way to think about where good outcomes come from, especially if you care about what AI can and cannot actually improve.
+For a long time, medicine has treated disease labels as the main unit of understanding. Cancer. Lupus. Epilepsy. Heart failure. Those labels matter. They give clinicians a common language. They shape guidelines. They help patients name what is happening to them.
 
-The practical unit is not the label. It is the search problem.
+But the label is often only the doorway.
 
-For one patient, the real problem might be: which mutation matters, which prior treatment changed the biology, which drug combination still has a plausible mechanism, which contraindications narrow the field, which trial is geographically reachable, and which decision has to happen this week rather than next month. For another patient, it might be: which variant in the exome is actually causal, which phenotype details are noise, which family-history detail changes the ranking, and which confirmatory test is worth spending money on.
+The real problem, especially in the age of AI, is often computational. A patient is not just "a cancer case" or "an autoimmune case." A patient is a large, messy, time-dependent reasoning problem. Their records live across systems. Their biology changes over time. Their treatment history matters. The difference between a good next step and a bad one may depend on a subtle interaction between labs, imaging, pathology, prior failures, family history, side effects, and constraints that never make it into the neat diagnostic label.
 
-That is a computational view of disease. Not "computation" in the shallow sense of dashboards or automation, but in the older sense: a hard problem made of many interacting variables, imperfect observations, and an enormous space of possible actions.
+That is why this matters so much.
 
-Once you look at medicine that way, a few things become obvious.
+If you think of disease only as a category, you build static systems. If you think of disease as a search problem, you build systems that can actually reason.
 
-## Some diseases are much more computational than others
+## Some medical problems are fundamentally compute-hungry
 
-A sore throat is usually not a giant reasoning problem. The data is thin, the action space is narrow, and the downside of missing some obscure branch in the decision tree is often small.
+Not every case needs a large reasoning budget.
 
-Metastatic cancer is the opposite. So is rare genetic disease. So are resistant infections in complex patients. These are cases where you can drown in relevant information. Genomics, scans, pathology, medication history, progression timeline, prior failures, lab drift, comorbidities, local constraints, and a literature base that no human can keep fully in working memory.
+A simple sore throat usually does not. A routine urinary infection often does not. Many medical decisions are still best handled by short protocols and straightforward pattern recognition.
 
-That matters because AI is not equally useful everywhere. The phrase "AI in healthcare" hides a huge category error. The right question is not whether AI helps with medicine in general. The right question is where more inference changes the decision boundary.
+But some problems are different. They expand the moment you touch them.
 
-If a disease area already runs on short protocols with little ambiguity, bigger models and longer context do not buy you much. If the case is a compressed search problem with many possible branches, they might matter a lot.
+Metastatic cancer can involve genomics, scans, pathology, treatment sequencing, resistance mechanisms, and trial matching. Rare genetic disease can require stitching together phenotype notes, family pedigrees, prior negative tests, and variant interpretation. Drug-resistant infection can depend on organism identity, resistance genes, prior exposure, host factors, and local treatment constraints.
 
-## More compute is not magic, but it changes the kind of work you can do
+These are not just "hard cases." They are cases where more synthesis can change the answer.
 
-People sometimes talk about AI compute as if it only means larger training runs. In practice, inference budget matters too. If a model can inspect more records, compare more hypotheses, weigh more conflicting evidence, and spend more tokens refining a ranked list of options, it can do a different class of work.
+That is the key distinction. The value of AI is not that it makes every medical interaction feel futuristic. The value is that, in the right disease classes, more compute can meaningfully reduce uncertainty, surface overlooked options, and help people reason through branches that would otherwise remain invisible.
 
-That does not mean it becomes a doctor. It does not mean it becomes reliable by default. It does mean it can participate in tasks that look less like "answer this question" and more like "search this ugly, high-dimensional case space and tell me what is still plausible."
+This is why we built the [AI compute disease ranking](/docs/ai-compute-disease-ranking/): to make that distinction explicit. Some diseases are much more likely than others to benefit from large-context reasoning and higher inference budgets. That is not hype. It is triage.
 
-That is why the most interesting use cases are not generic chatbot ones. They are cases where the human team is already struggling with combinatorics.
+## The future patient will not just carry records. They will carry leverage.
 
-In oncology, that can mean narrowing from hundreds of biologically relevant facts to a tractable treatment strategy. In rare disease, it can mean cutting years off a diagnostic odyssey. In ICU care, it can mean catching a pattern across notes, labs, vitals, and medications before the pattern becomes obvious to a tired team at 3 a.m.
+This is the part I think many people still underestimate.
 
-The common theme is not the organ system. It is the shape of the reasoning problem.
+Once patients have access to their own structured data, the center of gravity starts to move. A patient with their labs, imaging reports, medication history, pathology, wearable signals, discharge notes, and family history is no longer limited to whatever can be reconstructed in a rushed appointment from memory. They can bring the full case with them. More than that, they can run serious reasoning on top of it.
 
-## Medicine has been richer in data than in synthesis
+That changes the balance.
 
-Modern medicine does not mainly suffer from a lack of measurements. It suffers from fragmentation.
+Today, the typical patient experience is shaped by fragmentation. One system has the scan. Another has the prescription history. A specialist has one interpretation. A generalist has another. The patient, who is the one person present for the entire timeline, often has the least effective tooling.
 
-One patient can have pathology reports in one system, radiology in another, prescriptions in a third, family history buried in prose, and the clinically important detail hidden in a scanned PDF or a note that nobody reopened. In theory this is "all available." In reality it is cognitively unavailable.
+That is backwards.
 
-That is where a computational view becomes more than a metaphor. It gives you a way to ask: how much of the difficulty here comes from biology, and how much comes from the fact that the information is too spread out for ordinary human synthesis?
+In the future, patients will increasingly be able to take their own data, run it through AI systems with large reasoning budgets, and ask better questions before, during, and after clinical encounters. Not "diagnose me from scratch" in some naive way. Something much more powerful than that:
 
-AI is unusually well matched to that second problem. It can read a lot, compare a lot, and keep a lot of weak signals alive long enough to see whether they matter together.
+- summarize the true timeline of this illness,
+- identify the missing pieces in the record,
+- surface the highest-value hypotheses,
+- rank the most important next tests or specialist questions,
+- explain tradeoffs between options,
+- and keep track of how the case changes over time.
 
-Not always. Not perfectly. But often enough that the bottleneck has shifted.
+That does not replace clinicians. It changes the quality of the interaction between patient and clinician.
 
-## The bottleneck is moving from access to judgment
+The patient arrives less helpless. Less dependent on memory. Less dependent on whether the right sentence was said in the right ten-minute window. They arrive with a working model of their own case.
 
-As models improve, the hard part is less "can we retrieve the information?" and more "do we trust the synthesis, and under what constraints?"
+That is empowering in a real sense, not in the fake self-help sense. It gives people more capacity to participate in the reasoning around their own body.
 
-That is a healthier conversation. It forces people to talk about evidence quality, actionability, and whether a better ranking of possibilities can actually change the patient's outcome.
+## Compute will become part of personal health infrastructure
 
-It also forces a more honest prioritization. We should not aim the biggest models at every disease uniformly. That is lazy strategy. We should aim them where:
+We already accept that storage matters. We already accept that access matters. Soon it will be obvious that compute matters too.
 
-- the search space is large,
-- the data is multimodal,
-- the choice is patient-specific,
-- and the downstream action can still change something meaningful.
+If two patients have the same raw records, but one can only glance through PDFs while the other can run deep synthesis over years of data, literature, prior outcomes, and differential possibilities, those two patients do not have the same practical access to care. One of them has a much stronger ability to convert information into action.
 
-That is why a computational ranking of disease areas is useful. It is not a philosophical exercise. It is a deployment map.
+That is the next frontier: not just data portability, but reasoning portability.
 
-## Disease categories will survive, but they will matter less on their own
+A future personal health stack should let someone:
 
-I do not think diagnosis labels disappear. Clinicians still need shared language. Regulators still need categories. Patients still need a name for what is happening to them.
+- collect their own records in an interoperable format,
+- preserve a longitudinal view of symptoms, treatments, and responses,
+- run high-context AI over the full timeline,
+- compare changing hypotheses over time,
+- and carry those outputs into clinical care.
 
-But the label is becoming the entry point, not the endpoint.
+Once that exists, compute stops being an abstract infrastructure story and becomes something intimate. A patient with enough context and enough inference can ask better questions, catch contradictions earlier, notice patterns sooner, and push harder for the right referral or follow-up.
 
-The future system does not stop at "this is lung cancer" or "this looks autoimmune." It asks what kind of computational object this case is. How much hidden structure is in the record. How much heterogeneity sits behind the umbrella term. How many plausible interventions exist. How much value there is in spending another thousand seconds of machine reasoning on it.
+That will matter most in exactly the disease areas where the reasoning burden is highest.
 
-That shift matters because AI is making medicine less about static categories and more about dynamic resolution. Not every case needs that. Some absolutely do.
+## The real opportunity is not automation. It is asymmetry reduction.
 
-If we miss that distinction, we will waste enormous effort building flashy AI for the wrong problems. If we get it right, we can direct serious compute toward the parts of medicine where better synthesis genuinely changes the odds.
+Medicine is full of asymmetries.
+
+The system knows more than the patient. The specialist knows more than the generalist. The academic center knows more than the local clinic. The patient has lived inside the case the longest but often has the weakest tools to assemble it.
+
+AI will not erase those asymmetries completely. But it can narrow some of them.
+
+A patient with strong personal data access and strong compute can begin to close the gap between "I have pieces of my story" and "I can reason across the whole story." That is a profound shift. It means difficult cases no longer depend entirely on whether the institution around you is unusually organized, unusually well-resourced, or unusually curious.
+
+That is why a computational view of disease is not just a research lens. It is a patient-rights lens.
+
+If the core challenge in many serious diseases is synthesis, then access to synthesis matters. If synthesis can be improved with compute, then access to compute matters too.
+
+## We should build for the patient who has the full timeline
+
+I think the winning systems in this space will be the ones that assume the patient is not a passive recipient of medical output. They will assume the patient is a participant in an ongoing reasoning process.
+
+That means building tools that respect the full complexity of the case. Tools that can absorb years of records without collapsing into generic advice. Tools that can show their work. Tools that can distinguish between strong evidence, weak evidence, missing evidence, and open questions. Tools that help someone prepare for an oncology consult, a genetics workup, an autoimmune evaluation, or a treatment-resistance discussion with more clarity than they had the day before.
+
+And it means being honest about where this matters most. We should not spread compute evenly across all of medicine just because we can. We should aim it where more reasoning has the best chance of changing the outcome.
+
+That is the point of taking a computational view seriously.
+
+It helps us see that the future of medicine is not just better models. It is better leverage for the people living inside the case.
