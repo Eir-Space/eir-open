@@ -1,0 +1,93 @@
+---
+const compact = Astro.props.compact ?? false;
+---
+
+<aside class={`paper-callout ${compact ? 'compact' : ''}`}>
+  <div class="copy">
+    <p class="kicker">White Paper</p>
+    <h2>A Computational View of Medicine</h2>
+    <p class="summary">
+      A research paper by Birger Moëll on why AI matters most where disease becomes a patient-specific search problem, and why compute is becoming part of personal health infrastructure.
+    </p>
+    <ul class="points">
+      <li>Precision oncology, rare disease, resistant infection, and deterioration surveillance</li>
+      <li>Real citations plus pragmatic trial evidence, not just model demos</li>
+      <li>Available both as a web page and a downloadable PDF</li>
+    </ul>
+    <div class="actions">
+      <a class="primary" href="/docs/computational-view-of-medicine/">Read the paper</a>
+      <a class="secondary" href="/papers/computational-view-of-medicine.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .paper-callout {
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(circle at 88% 12%, rgba(232, 168, 48, 0.12), transparent 22%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, white 5%), var(--card));
+    box-shadow: var(--card-shadow);
+    padding: 1.45rem;
+  }
+
+  .kicker {
+    margin: 0 0 0.55rem;
+    color: var(--muted-foreground);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1.08;
+  }
+
+  .summary,
+  .points li {
+    color: var(--muted-foreground);
+    line-height: 1.7;
+  }
+
+  .summary {
+    margin: 0.75rem 0 0;
+  }
+
+  .points {
+    margin: 0.95rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .actions a {
+    border-radius: 999px;
+    padding: 0.75rem 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .primary {
+    background: var(--accent);
+    color: white;
+  }
+
+  .secondary {
+    border: 1px solid var(--border-subtle);
+    background: var(--card);
+    color: var(--foreground);
+  }
+
+  .compact .points {
+    margin-top: 0.75rem;
+  }
+</style>
