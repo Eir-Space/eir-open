@@ -40,6 +40,7 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
 
       <section class="copy-grid">
         <article class="copy-card">
+          <p class="section-kicker">Method</p>
           <h2>How the ranking works</h2>
           <p>
             Each disease is scored from 0 to 5 on search-space size, data burden,
@@ -60,6 +61,7 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
         </article>
 
         <article class="copy-card">
+          <p class="section-kicker">Interpretation</p>
           <h2>Why the top looks this way</h2>
           <p>
             Precision oncology, rare genetic disease, resistant infection, and
@@ -76,6 +78,7 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
       </section>
 
       <section class="copy-card full-width">
+        <p class="section-kicker">Argument</p>
         <h2>Defense of the ranking</h2>
         <p>
           Cancer ranks first because it is already a search problem: mutation
@@ -99,8 +102,9 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
       </section>
 
       <section class="copy-card full-width">
+        <p class="section-kicker">References</p>
         <h2>Sources used to justify the ordering</h2>
-        <ul>
+        <ul class="sources-list">
           <li><a href="https://www.who.int/news-room/fact-sheets/detail/icd-11">WHO ICD-11 fact sheet</a></li>
           <li><a href="https://www.who.int/news/item/14-02-2025-who-releases-2025-update-to-the-international-classification-of-diseases-%28icd-11%29">WHO ICD-11 2025 update</a></li>
           <li><a href="https://www.abc.net.au/listen/programs/healthreport/dog-owner-ai-cancer-treatment/105462166">ABC report on AI-guided dog cancer treatment</a></li>
@@ -145,12 +149,17 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
   .table-wrap {
     border: 1px solid var(--border-subtle);
     border-radius: 1.75rem;
-    background: color-mix(in srgb, var(--card) 92%, white 8%);
+    background: color-mix(in srgb, var(--card) 94%, white 6%);
     box-shadow: var(--card-shadow);
   }
 
   .hero-card {
+    position: relative;
+    overflow: hidden;
     padding: 2.5rem;
+    background:
+      radial-gradient(circle at 88% 14%, rgba(232, 168, 48, 0.14), transparent 24%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, white 8%), var(--card));
   }
 
   .eyebrow {
@@ -178,8 +187,8 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
   }
 
   .pill-row {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, max-content));
     gap: 0.75rem;
     margin-top: 1.75rem;
   }
@@ -206,6 +215,15 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
     padding: 1.6rem;
   }
 
+  .section-kicker {
+    margin: 0 0 0.6rem;
+    color: var(--muted-foreground);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
   .full-width {
     margin-top: 1rem;
   }
@@ -226,6 +244,16 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
     padding-left: 1.2rem;
   }
 
+  .sources-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.25rem;
+  }
+
+  .sources-list li {
+    padding-left: 0.1rem;
+  }
+
   a {
     color: var(--primary);
   }
@@ -233,7 +261,7 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
   @media (max-width: 800px) {
     .page-shell {
       width: min(100% - 1rem, 1180px);
-      padding-top: 1rem;
+      padding: 0.85rem 0 3rem;
     }
 
     .hero-card,
@@ -243,11 +271,64 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
     }
 
     .hero-card {
-      padding: 1.4rem;
+      padding: 1.3rem;
     }
 
     .copy-grid {
       grid-template-columns: 1fr;
+    }
+
+    h1 {
+      max-width: 12.5ch;
+      font-size: clamp(2.1rem, 10vw, 3rem);
+      line-height: 0.98;
+    }
+
+    .lede {
+      margin-top: 1rem;
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    .pill-row {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+      margin-top: 1.35rem;
+    }
+
+    .pill-row span {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.83rem;
+      text-align: center;
+    }
+
+    .copy-card,
+    .table-wrap {
+      padding: 1.15rem;
+    }
+
+    h2 {
+      margin-bottom: 0.7rem;
+      font-size: 1.16rem;
+      line-height: 1.2;
+    }
+
+    p,
+    li {
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    :global(code) {
+      display: inline-block;
+      margin-top: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .sources-list {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
     }
   }
 </style>

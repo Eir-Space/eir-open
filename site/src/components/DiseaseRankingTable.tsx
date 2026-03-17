@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useMemo, useState, type Dispatch, type SetStateAction } from 'react';
 import {
   top100DiseaseRankings,
   scoreDisease,
@@ -173,7 +173,20 @@ export default function DiseaseRankingTable() {
         </label>
       </div>
 
-      <div className="overflow-hidden rounded-[1.5rem] border border-[var(--border-subtle)] bg-[var(--card)] shadow-[var(--card-shadow)]">
+      <div className="space-y-4 md:hidden">
+        {filtered.map((ranking) => (
+          <MobileDiseaseCard
+            key={ranking.disease}
+            ranking={ranking}
+            expandedDisease={expandedDisease}
+            copiedKey={copiedKey}
+            onCopy={copyText}
+            onToggle={setExpandedDisease}
+          />
+        ))}
+      </div>
+
+      <div className="hidden overflow-hidden rounded-[1.5rem] border border-[var(--border-subtle)] bg-[var(--card)] shadow-[var(--card-shadow)] md:block">
         <div className="overflow-x-auto">
           <table className="min-w-full w-full table-fixed border-collapse">
             <colgroup>
@@ -326,9 +339,150 @@ export default function DiseaseRankingTable() {
   );
 }
 
+function MobileDiseaseCard({
+  ranking,
+  expandedDisease,
+  copiedKey,
+  onCopy,
+  onToggle,
+}: {
+  ranking: RankedDisease;
+  expandedDisease: string | null;
+  copiedKey: string | null;
+  onCopy: (key: string, text: string) => Promise<void>;
+  onToggle: Dispatch<SetStateAction<string | null>>;
+}) {
+  const isExpanded = expandedDisease === ranking.disease;
+
+  return (
+    <article className="overflow-hidden rounded-[1.35rem] border border-[var(--border-subtle)] bg-[var(--card)] shadow-[var(--card-shadow)]">
+      <div className="space-y-4 p-4">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+              Rank #{ranking.rank}
+            </div>
+            <h3 className="mt-2 text-lg font-semibold leading-7 text-[var(--foreground)]">
+              {ranking.disease}
+            </h3>
+          </div>
+          <div className="shrink-0 rounded-full bg-[var(--primary)] px-3 py-1 text-sm font-semibold text-[var(--primary-foreground)]">
+            {ranking.total}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <span className="inline-flex rounded-full bg-[var(--background-soft)] px-2.5 py-1 text-[11px] font-medium leading-5 text-[var(--foreground)]">
+            {ranking.category}
+          </span>
+        </div>
+
+        <div className="rounded-[1rem] border border-[var(--border-subtle)] bg-[var(--background-soft)] p-3">
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+            Dimensions
+          </div>
+          <div className="mt-3 grid gap-2">
+            <Metric label="Search" value={ranking.searchSpace} />
+            <Metric label="Data" value={ranking.dataBurden} />
+            <Metric label="Personal." value={ranking.personalization} />
+            <Metric label="Action." value={ranking.actionability} />
+            <Metric label="Compute" value={ranking.computeElasticity} />
+          </div>
+        </div>
+
+        <div>
+          <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+            Why AI compute helps
+          </div>
+          <p className="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">{ranking.why}</p>
+        </div>
+
+        <button
+          className="inline-flex w-full items-center justify-center rounded-full border border-[var(--border-subtle)] bg-[var(--card)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--foreground)] transition hover:border-[var(--primary)] hover:text-[var(--primary)]"
+          onClick={() => onToggle((current) => (current === ranking.disease ? null : ranking.disease))}
+          type="button"
+        >
+          {isExpanded ? 'Hide kit' : 'Show kit'}
+        </button>
+      </div>
+
+      {isExpanded && (
+        <div
+          className="grid gap-4 border-t border-[var(--border-subtle)] bg-[var(--background-soft)] p-4"
+          style={{
+            animation: 'kitReveal 240ms cubic-bezier(0.22, 1, 0.36, 1)',
+            transformOrigin: 'top center',
+          }}
+        >
+          <div className="rounded-[1.15rem] border border-[var(--border-subtle)] bg-[var(--card)] p-4 shadow-[var(--card-shadow)]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+                  Copyable prompt
+                </div>
+                <div className="mt-1 text-sm font-semibold text-[var(--foreground)]">
+                  Paste this into an AI system for {ranking.disease}
+                </div>
+              </div>
+              <button
+                className="inline-flex rounded-full bg-[var(--primary)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--primary-foreground)]"
+                onClick={() => onCopy(`prompt-${ranking.disease}`, ranking.prompt)}
+                type="button"
+              >
+                {copiedKey === `prompt-${ranking.disease}` ? 'Copied' : 'Copy prompt'}
+              </button>
+            </div>
+            <pre className="mt-4 overflow-x-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--background)] p-4 text-xs leading-6 whitespace-pre-wrap text-[var(--foreground)]">
+              {ranking.prompt}
+            </pre>
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-[1.15rem] border border-[var(--border-subtle)] bg-[var(--card)] p-4 shadow-[var(--card-shadow)]">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+                  Information needed
+                </div>
+                <button
+                  className="inline-flex rounded-full border border-[var(--border-subtle)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]"
+                  onClick={() =>
+                    onCopy(
+                      `info-${ranking.disease}`,
+                      ranking.requiredInformation.map((item, index) => `${index + 1}. ${item}`).join('\n')
+                    )
+                  }
+                  type="button"
+                >
+                  {copiedKey === `info-${ranking.disease}` ? 'Copied' : 'Copy checklist'}
+                </button>
+              </div>
+              <ol className="mt-3 space-y-2 pl-5 text-sm leading-6 text-[var(--muted-foreground)]">
+                {ranking.requiredInformation.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="rounded-[1.15rem] border border-[var(--border-subtle)] bg-[var(--card)] p-4 shadow-[var(--card-shadow)]">
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+                Expected output from the AI
+              </div>
+              <ol className="mt-3 space-y-2 pl-5 text-sm leading-6 text-[var(--muted-foreground)]">
+                {ranking.expectedOutput.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      )}
+    </article>
+  );
+}
+
 function Metric({ label, value }: { label: string; value: number }) {
   return (
-    <div className="grid grid-cols-[5rem_auto] items-center gap-2">
+    <div className="grid grid-cols-[4.5rem_auto] items-center gap-2 sm:grid-cols-[5rem_auto]">
       <span className="min-w-0 text-[10px] uppercase tracking-[0.12em] text-[var(--muted-foreground)]">
         {label}
       </span>
