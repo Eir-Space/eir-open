@@ -1,14 +1,11 @@
 ---
 import ProjectCard from './ProjectCard.astro';
 import type { Project } from '@/data/projects';
-
-interface Props {
+const { projects, linkPrefix = '', class: className } = Astro.props as {
   projects: Project[];
   linkPrefix?: string;
   class?: string;
-}
-
-const { projects, linkPrefix = '', class: className } = Astro.props;
+};
 const classList = ['projects-grid', 'not-content', className].filter(Boolean);
 ---
 

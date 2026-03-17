@@ -1,0 +1,112 @@
+---
+import '@/styles/global.css';
+import ThemeProvider from '@/components/ThemeProvider.astro';
+import { docsPageMap, docsPages } from '@/data/docsPages';
+
+export function getStaticPaths() {
+  return docsPages
+    .map((page) => page.slug)
+    .filter((slug) => slug && slug !== 'ai-compute-disease-ranking')
+    .map((slug) => ({
+      params: { slug },
+    }));
+}
+
+const rawSlug = Astro.params.slug;
+const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : rawSlug || '';
+const page = docsPageMap.get(slug);
+const title = page?.title || 'Documentation page';
+const description =
+  page?.description ||
+  'This legacy docs route is preserved for GitHub Pages compatibility during the site migration.';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Eir Open</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <ThemeProvider />
+    <main class="legacy-shell">
+      <section class="legacy-card">
+        <p class="eyebrow">Legacy Docs Route</p>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <p>
+          This route is preserved so existing links still resolve on GitHub Pages while
+          the documentation stack is being migrated away from the failing Starlight build.
+        </p>
+        <div class="actions">
+          <a class="primary" href="/docs/">Documentation home</a>
+          <a href="/docs/ai-compute-disease-ranking/">AI compute ranking</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .legacy-shell {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    width: min(100% - 1rem, 960px);
+    margin: 0 auto;
+  }
+
+  .legacy-card {
+    width: 100%;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.5rem;
+    background: color-mix(in srgb, var(--card) 92%, white 8%);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.8rem 0 0;
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1;
+  }
+
+  p {
+    color: var(--muted-foreground);
+    line-height: 1.75;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .actions a {
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.8rem 1.05rem;
+    background: var(--card);
+    color: var(--foreground);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .actions .primary {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+ </style>

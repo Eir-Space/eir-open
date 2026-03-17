@@ -1,16 +1,13 @@
 ---
 import Card from './Card.astro';
-
-interface Props {
+const { title, description, link, badge, icon, tags } = Astro.props as {
   title: string;
   description: string;
   link: string;
   badge?: string;
   icon?: string;
   tags?: string[];
-}
-
-const { title, description, link, badge, icon, tags } = Astro.props;
+};
 ---
 
 <Card tag="a" href={link} variant="project" icon={icon} title={title} iconSize={18}>

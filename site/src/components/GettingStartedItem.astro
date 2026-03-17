@@ -1,12 +1,6 @@
 ---
 import Icon from './Icon';
-
-interface Props {
-  title: string;
-  icon: string;
-}
-
-const { title, icon } = Astro.props;
+const { title, icon } = Astro.props as { title: string; icon: string };
 ---
 
 <div class="getting-started-item">
