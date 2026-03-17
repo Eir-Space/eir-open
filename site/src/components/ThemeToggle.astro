@@ -1,0 +1,118 @@
+<theme-toggle>
+  <button type="button" class="theme-toggle-btn" aria-label="Toggle color theme" title="Toggle color theme">
+    <span class="theme-toggle-track">
+      <span class="theme-toggle-label theme-light">Light</span>
+      <span class="theme-toggle-thumb" aria-hidden="true"></span>
+      <span class="theme-toggle-label theme-dark">Dark</span>
+    </span>
+  </button>
+</theme-toggle>
+
+<script is:inline>
+  (() => {
+    const storageKey = 'starlight-theme';
+
+    const readTheme = () => {
+      const stored = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null;
+      return stored === 'dark' ? 'dark' : 'light';
+    };
+
+    const applyTheme = (theme) => {
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      const toggle = document.querySelector('theme-toggle');
+      if (toggle) toggle.setAttribute('data-theme', theme);
+    };
+
+    class ThemeToggle extends HTMLElement {
+      connectedCallback() {
+        const button = this.querySelector('button');
+        applyTheme(readTheme());
+        button?.addEventListener('click', () => {
+          const nextTheme = readTheme() === 'light' ? 'dark' : 'light';
+          if (typeof localStorage !== 'undefined') localStorage.setItem(storageKey, nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+    }
+
+    if (!customElements.get('theme-toggle')) {
+      customElements.define('theme-toggle', ThemeToggle);
+    }
+  })();
+</script>
+
+<style>
+  .theme-toggle-btn {
+    border: 1px solid color-mix(in srgb, var(--border-subtle) 78%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--card) 84%, transparent);
+    color: var(--foreground);
+    cursor: pointer;
+    padding: 0.3rem;
+    transition:
+      border-color var(--dur-base) ease,
+      background var(--dur-base) ease,
+      transform var(--dur-fast) ease;
+  }
+
+  .theme-toggle-btn:hover {
+    border-color: color-mix(in srgb, var(--primary) 36%, transparent);
+  }
+
+  .theme-toggle-btn:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  .theme-toggle-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 8rem;
+  }
+
+  .theme-toggle-label {
+    position: relative;
+    z-index: 1;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    transition: color var(--dur-base) ease;
+  }
+
+  .theme-toggle-thumb {
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    width: calc(50% - 0.2rem);
+    height: calc(100% - 0.3rem);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #d4a76a 0%, #c9b88a 34%, #a8c5d4 72%, #8bb8ce 100%);
+    box-shadow: 0 10px 22px -16px rgba(30, 148, 168, 0.7);
+    transition: transform var(--dur-base) ease;
+  }
+
+  theme-toggle[data-theme='dark'] .theme-toggle-thumb {
+    transform: translateX(100%);
+  }
+
+  theme-toggle[data-theme='light'] .theme-light,
+  theme-toggle[data-theme='dark'] .theme-dark {
+    color: #111110;
+  }
+
+  @media (max-width: 800px) {
+    .theme-toggle-track {
+      min-width: 7.2rem;
+    }
+
+    .theme-toggle-label {
+      padding: 0.4rem 0.7rem;
+      font-size: 0.76rem;
+    }
+  }
+</style>

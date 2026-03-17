@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from '@/components/ThemeToggle.astro';
+
 const { current = '' } = Astro.props as { current?: 'home' | 'docs' | 'blog' | 'ranking' | '' };
 
 const navItems = [
@@ -26,6 +28,10 @@ const navItems = [
         </a>
       ))}
     </nav>
+
+    <div class="header-actions">
+      <ThemeToggle />
+    </div>
   </div>
 </header>
 
@@ -37,9 +43,9 @@ const navItems = [
   }
 
   .site-header-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
     border: 1px solid color-mix(in srgb, var(--border-subtle) 75%, transparent);
     border-radius: 1.35rem;
@@ -86,7 +92,13 @@ const navItems = [
   .site-nav {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
+  }
+
+  .header-actions {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .nav-link {
@@ -117,8 +129,7 @@ const navItems = [
     }
 
     .site-header-inner {
-      flex-direction: column;
-      align-items: stretch;
+      grid-template-columns: 1fr;
       border-radius: 1.1rem;
       padding: 0.85rem;
     }
@@ -126,6 +137,10 @@ const navItems = [
     .site-nav {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .header-actions {
+      justify-content: center;
     }
 
     .nav-link {
