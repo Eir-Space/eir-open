@@ -33,7 +33,7 @@
   citecolor=eirblue,
   urlcolor=eirblue,
   pdftitle={A Computational View of Medicine},
-  pdfauthor={Birger Moëll}
+  pdfauthor={Birger Moëll and Erica Hughberg}
 }
 
 \setlength{\parindent}{0pt}
@@ -43,7 +43,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\textcolor{eirslate}{A Computational View of Medicine}}
-\rhead{\textcolor{eirslate}{Moëll}}
+\rhead{\textcolor{eirslate}{Moëll \& Hughberg}}
 \cfoot{\textcolor{eirslate}{\thepage}}
 \renewcommand{\headrulewidth}{0pt}
 
@@ -78,7 +78,7 @@ A Computational View of Medicine\par}
 \vspace{0.45cm}
 {\Large Why AI will matter most where disease becomes a search problem\par}
 \vspace{0.9cm}
-{\large Birger Mo\"ell\\Co-Founder, Eir Space\par}
+{\large Birger Mo\"ell and Erica Hughberg\\Co-Founders, Eir Space\par}
 \vspace{0.35cm}
 {\normalsize March 17, 2026\par}
 
@@ -135,20 +135,22 @@ A Computational View of Medicine\par}
 \pagenumbering{arabic}
 
 \begin{abstract}
-AI will not improve every part of medicine equally. Its highest-value role is emerging in disease classes that generate large patient-specific search problems across genomics, pathology, imaging, longitudinal records, treatment history, and rapidly changing clinical context. This paper argues for a computational view of medicine: one that treats many serious illnesses as reasoning problems whose difficulty is partly measurable and whose outcomes can improve when synthesis improves. Drawing on evidence from precision oncology, genome-scale rare disease diagnosis, antibiotic discovery, sepsis early warning, and longitudinal record modeling, the paper proposes a practical framework for deciding where additional compute should be deployed. It also argues that as patients gain access to their own data, compute itself becomes part of personal health infrastructure rather than something that lives only inside institutions.
+Artificial intelligence will not improve every part of medicine equally. Its highest-value role is emerging in disease settings where the central bottleneck is not data collection alone or workflow automation alone, but high-context reasoning over multimodal evidence under uncertainty. We argue for a computational view of medicine: one that treats many serious illnesses as search problems over longitudinal records, pathology, imaging, genomics, patient-generated data, prior treatment history, and branching therapeutic options. Under this view, the key design question is not whether a model can produce clinically fluent text, but whether additional inference changes the next real decision for a specific patient. We synthesize evidence from precision oncology, rare-disease genomics, antimicrobial discovery, sepsis surveillance, patient-reported outcome monitoring, open-notes adoption, and emerging N-of-1 medicine. We further argue that patient access to records is necessary but insufficient; the practical value of data access rises sharply when patients and clinicians can repeatedly compute over the full timeline of illness. The result is a framework for directing AI toward cases where reasoning is the bottleneck, outcomes are sensitive to synthesis quality, and patient-held data can become a force multiplier rather than a static archive.
 \end{abstract}
 
 \section{Introduction}
-Medicine has long been organized around disease labels, specialty boundaries, and care pathways. Those abstractions are necessary, but they are incomplete. In many of the cases that matter most, the main challenge is not naming the condition. It is navigating a search space: identifying which facts matter, reconciling conflicting signals, selecting among branching interventions, and updating the working model as new evidence arrives.
+Medicine has long been organized around disease labels, organ systems, and specialty workflows. Those abstractions are useful, but they often obscure where the real difficulty lies. In many of the cases that matter most, the limiting factor is neither the absence of a diagnosis code nor the absence of a single decisive test. It is the burden of synthesis: reconciling longitudinal evidence, deciding which signals matter, ranking plausible interventions, and updating the model of the case as new data arrive.
 
-This paper argues that AI should be evaluated through that lens first. The core question is not whether a model can sound clinical. It is whether more inference can change the answer in settings where the answer is difficult, high-stakes, and patient-specific. That framing is consistent with the broader case for human-plus-machine medicine made by Topol, but it shifts the emphasis from augmentation in general to computational leverage in particular \citep{topol2019}.
+This paper argues that advanced AI should be judged through that lens first. The central question is not whether a system can imitate clinical language. It is whether additional inference changes a meaningful next decision in settings where the decision is difficult, high-stakes, and patient-specific. This framing is consistent with the broader case for human-plus-machine medicine made by Topol, but it places computational leverage rather than generic augmentation at the center \citep{topol2019}.
+
+The argument has three parts. First, disease classes differ sharply in how much more computation can improve outcomes. Second, patient access to longitudinal records changes the practical location of medical intelligence: once records can be assembled across sites, compute can move with the patient rather than remaining trapped inside an institution. Third, the future of high-value health AI is likely to look increasingly N-of-1: iterative, longitudinal, individualized, and explicitly tied to decisions rather than one-shot answers.
 
 \summarybox{
 \textbf{Definition.} A \emph{computational view of medicine} treats disease management as the problem of converting fragmented, multimodal, longitudinal evidence into better patient-specific decisions under uncertainty.
 }
 
 \section{A framework for computational leverage}
-Five properties determine whether a disease class is likely to benefit from larger inference budgets:
+We propose five properties that determine whether a disease class is likely to benefit from larger inference budgets:
 
 \begin{enumerate}
   \item \textbf{Search-space size}: how many plausible hypotheses, targets, interventions, or sequences must be evaluated.
@@ -158,7 +160,7 @@ Five properties determine whether a disease class is likely to benefit from larg
   \item \textbf{Compute elasticity}: whether additional reasoning depth is likely to improve the result instead of merely restating the same answer more fluently.
 \end{enumerate}
 
-Under this framework, precision oncology, rare disease genomics, resistant infection, and certain critical care problems rise to the top. They combine large search spaces with heterogeneous data and decisions whose quality directly affects outcome.
+Under this framework, precision oncology, rare-disease genomics, resistant infection, certain critical care syndromes, and selected long-horizon chronic conditions rise to the top. These domains combine large search spaces with heterogeneous data and decisions whose quality directly affects outcome. By contrast, diseases governed primarily by narrow protocols or limited action space may benefit more from automation than from massive inference.
 
 \summarybox{
 \textbf{Why prevalence is not enough.} Common diseases are not automatically the best targets for large inference budgets. The relevant question is whether more synthesis can change a meaningful patient-specific decision. That is why prevalence rankings and compute-opportunity rankings diverge.
@@ -187,17 +189,26 @@ Under this framework, precision oncology, rare disease genomics, resistant infec
 \label{fig:loop}
 \end{figure}
 
+\section{Why patient-held data matter}
+The computational view becomes much stronger once the patient can assemble data across encounters, institutions, and modalities. OpenNotes demonstrated that patients value direct access to clinicians' notes and that transparency can improve engagement with care \citep{delbanco2010}. Follow-on work showed that patients often shared those notes with family members and caregivers, turning the note into a coordination artifact rather than a static document \citep{jackson2014}. In parallel, patient-generated data streams have become increasingly common across chronic disease, symptom tracking, wearables, and home monitoring \citep{park2018}. The strategic implication is that records are no longer only institutional memory; they are becoming a substrate for patient-clinician reasoning.
+
+Raw access, however, is not enough. Tuttle and colleagues argued that precision medicine will remain incomplete if patients are not active participants in how data are interpreted and used \citep{tuttle2021}. Hassan and colleagues similarly emphasize that AI for shared decision-making must improve understanding and deliberation, not simply generate recommendations \citep{hassan2024}. More recently, Salmi and colleagues showed in a proof-of-concept study that patients can already use large language models on open notes to interpret and work with their records \citep{salmi2025}. That result should be read carefully: it is early evidence, not mature clinical validation. But it clarifies the direction of travel. Once patients can access timelines, test results, notes, and symptom logs, the missing layer is repeatable reasoning over that history.
+
+\summarybox{
+\textbf{Access versus leverage.} Data access creates possibility. Computational interpretation creates leverage. In a patient-centered health stack, the two should be designed together.
+}
+
 \section{Evidence from the highest-leverage domains}
 
 \subsection{Precision oncology}
-Cancer is already a computational problem. Molecular diagnosis, resistance interpretation, treatment sequencing, and trial matching require synthesis across pathology, imaging, genomics, prior therapy, and time. Personalized cancer vaccines make that explicit: the clinical workflow depends on identifying patient-specific tumor mutations, predicting which neoantigens are immunogenic, and manufacturing a bespoke intervention. In a landmark study, Sahin and colleagues demonstrated that individualized RNA mutanome vaccines could mobilize poly-specific immunity against melanoma \citep{sahin2017}. Structure prediction systems such as AlphaFold further expand the search surface by making protein consequence analysis more tractable across vast molecular spaces \citep{jumper2021}.
+Cancer is already a computational problem. Molecular diagnosis, resistance interpretation, treatment sequencing, and trial matching require synthesis across pathology, imaging, genomics, prior therapy, and time. Personalized cancer vaccines make that explicit: the workflow depends on identifying patient-specific tumor mutations, ranking neoantigens, and manufacturing a bespoke intervention. In a landmark study, Sahin and colleagues showed that individualized RNA mutanome vaccines could mobilize poly-specific immunity against melanoma \citep{sahin2017}. Structure-prediction systems such as AlphaFold further expand the search surface by making protein consequence analysis more tractable across large molecular spaces \citep{jumper2021}.
 
-The importance of compute here is not cosmetic. It sits inside the decision itself: which mutation matters, which escape mechanisms are plausible, which combination is worth pursuing, and which clinical trial is defensible for this patient now. Oncology is one of the clearest examples of a disease domain where the burden of reasoning has become part of the disease burden itself.
+The importance of compute here is not cosmetic. It sits inside the decision itself: which mutation matters, which escape mechanisms are plausible, which combination is worth pursuing, and which trial remains defensible for this patient now. Oncology is one of the clearest examples of a disease domain where the burden of reasoning has become part of the disease burden itself.
 
 \subsection{Rare disease genomics}
-Rare disease diagnosis is where long-context reasoning becomes immediately clinically useful. The problem is not only finding a variant. It is aligning phenotype, pedigree, prior negative workup, and the growing literature fast enough to affect care. In 2024, Wojcik and colleagues reported in the \emph{New England Journal of Medicine} that genome sequencing materially improved diagnosis for patients with suspected rare disease and supported its use as a first-tier test in appropriate settings \citep{wojcik2024}.
+Rare-disease diagnosis is where long-context reasoning becomes immediately clinically useful. The problem is not only finding a variant. It is aligning phenotype, pedigree, prior negative workup, and the literature fast enough to affect care. In 2024, Wojcik and colleagues reported in the \emph{New England Journal of Medicine} that genome sequencing materially improved diagnosis for patients with suspected rare disease and supported its use as a first-tier test in appropriate settings \citep{wojcik2024}.
 
-This is a canonical compute-heavy domain: large hypothesis spaces, sparse signal, fragmented records, and a direct payoff when the reasoning succeeds. The same logic applies to critically ill infants, undiagnosed neurologic disease, and multisystem pediatric cases where small delays compound. When diagnosis arrives late in these settings, the cost is not abstract. It shows up in additional procedures, avoidable admissions, and years spent navigating the wrong branch of care.
+This is a canonical compute-heavy domain: large hypothesis spaces, sparse signal, fragmented records, and a direct payoff when reasoning succeeds. The same logic applies to critically ill infants, undiagnosed neurologic disease, and multisystem pediatric cases where delay compounds. When diagnosis arrives late, the cost appears as additional procedures, avoidable admissions, and years spent navigating the wrong branch of care.
 
 \subsection{Resistant infection and antibiotic discovery}
 In antimicrobial resistance, the search problem has two layers. The first is patient-specific treatment selection: organism identity, susceptibility, host state, prior exposure, organ function, and drug interactions. The second is discovery itself: how to search chemical space for compounds with novel activity. Stokes and colleagues used deep learning to identify halicin, demonstrating that machine learning can materially accelerate antibiotic discovery in regions of chemical space that were not obvious to standard pipelines \citep{stokes2020}.
@@ -205,33 +216,82 @@ In antimicrobial resistance, the search problem has two layers. The first is pat
 This is exactly the kind of problem where more compute can change outcomes: better regimen ranking in the clinic and better exploration of candidate space in the lab.
 
 \subsection{Sepsis and critical care}
-Critical care is different from oncology and rare disease, but it is no less computational. Here the challenge is time. Dozens of measurements update continuously, and the relevant signal is often distributed across trends rather than single observations. Adams and colleagues showed that a machine-learning sepsis early warning system deployed prospectively across multiple hospitals was associated with faster antibiotic administration and lower mortality \citep{adams2022}. Rajkomar and colleagues had earlier shown that deep learning on electronic health records could scale across broad clinical prediction tasks using the raw longitudinal record itself \citep{rajkomar2018}.
+Critical care is different from oncology and rare disease, but it is no less computational. Here the challenge is time. Dozens of measurements update continuously, and the relevant signal is often distributed across trends rather than single observations. Adams and colleagues showed that a machine-learning sepsis early-warning system deployed prospectively across multiple hospitals was associated with faster antibiotic administration and lower mortality \citep{adams2022}. Rajkomar and colleagues had earlier shown that deep learning on electronic health records could scale across broad clinical prediction tasks using the raw longitudinal record itself \citep{rajkomar2018}. Moses and colleagues extended this logic into pragmatic deterioration surveillance, showing that real-time systems can be attached to live escalation pathways \citep{moses2025}.
 
 These results matter because they establish two parts of the same claim: longitudinal records contain clinically actionable signal, and systems that can hold more of that context together can improve timing-sensitive decisions.
 
-\subsection{Patient access as a force multiplier}
-The computational view becomes more important, not less, as patients gain access to their own records. OpenNotes showed that patients value direct access to clinicians' notes and that such access can change engagement with care \citep{delbanco2010}. Follow-on work showed that patients often shared transparent visit notes with family members and caregivers, turning the note into a practical coordination tool rather than a static archive \citep{jackson2014}. More recently, Salmi and colleagues showed in a proof-of-concept study that patients can use large language models on open notes in ways that help them interpret and work with their records \citep{salmi2025}. Once records become portable and patients can assemble their own longitudinal timelines, compute becomes part of their effective care capacity. The patient is the one actor present for the entire course of illness; what has historically been missing is tooling that lets them reason over that full timeline.
+\subsection{Patient-reported outcomes and symptom monitoring}
+Not all high-value computation depends on genomics. Basch and colleagues demonstrated that electronic patient-reported symptom monitoring during cancer treatment improved overall survival, likely by enabling earlier clinical response to deterioration patterns that would otherwise be missed \citep{basch2016,basch2017}. This is an important bridge between institutional and patient-held data. Symptoms, side effects, and treatment tolerability often live outside the hospital until they are severe enough to trigger contact. In a computational paradigm, those signals become first-class inputs into the case model.
+
+\section{N-of-1 medicine and personal computation}
+The computational view converges naturally with N-of-1 medicine. Schork argued that precision medicine should increasingly be understood at the level of the individual rather than the cohort average \citep{schork2015}. More recent work has pushed this further. Augustine and colleagues proposed a roadmap for N-of-1 therapies, describing the scientific, operational, and regulatory requirements for highly individualized interventions \citep{augustine2024}. Jonker and colleagues similarly outline how N-of-1 medicine could reshape the development and evaluation of treatments for rare and heterogeneous disease \citep{jonker2025}. These papers matter because they move the discussion from personalization as a slogan to personalization as an organizing scientific unit.
+
+Longitudinal self-measurement provides a parallel line of evidence. Chen and colleagues showed in 2012 that integrative personal omics profiling could reveal dynamic molecular and medical phenotypes within a single individual over time \citep{chen2012}. Piening and colleagues later demonstrated that personal, dense, dynamic data clouds can be used to monitor health transitions with much greater temporal resolution than standard episodic care \citep{piening2018}. These studies do not imply that every patient should become a self-quantification project. They do show that biology, symptoms, and risk are often more legible in longitudinal within-person data than in sparse snapshot encounters.
+
+This is where public self-experimentation becomes relevant. Programmes such as Bryan Johnson's highly instrumented self-tracking should not be mistaken for validated clinical evidence. But they do reveal strong demand for dense longitudinal data loops and continuous interpretation. The scientific path forward is not celebrity optimization. It is the translation of those loops into audited N-of-1 workflows that combine patient goals, better measurement, and clinically accountable reasoning.
 
 \section{Case examples}
-Table~\ref{tab:cases} shows why a single mental model fits these otherwise different domains.
+Table~\ref{tab:cases} shows why a single computational model fits these otherwise different domains.
 
 \begin{table}[t]
 \centering
 \small
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.7cm}}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.5cm}}
 \toprule
-\textbf{Domain} & \textbf{Core data} & \textbf{Why compute matters} & \textbf{Representative evidence} \\
+\textbf{Domain} & \textbf{Core data} & \textbf{How computation is leveraged} & \textbf{Representative evidence} \\
 \midrule
-Precision oncology & Genomics, pathology, imaging, treatment history & Patient-specific target prioritization, resistance modeling, trial matching, bespoke vaccine design & \citet{sahin2017}; \citet{jumper2021} \\
-Rare disease & Phenotype timeline, pedigree, genome sequencing, prior workup & Diagnosis depends on long-context synthesis across sparse and distributed clues & \citet{wojcik2024} \\
-Resistant infection & Microbiology, susceptibilities, organ function, prior antibiotic exposure & Better ranking of therapies and faster search across chemical or regimen space & \citet{stokes2020} \\
-Sepsis / ICU & Streaming vitals, labs, notes, medication events & Earlier detection and escalation from weak, time-distributed signals & \citet{adams2022}; \citet{rajkomar2018} \\
-Patient-held records & Notes, meds, labs, imaging reports, symptoms, goals & Converts raw access into reasoning leverage before clinical encounters & \citet{delbanco2010} \\
+Precision oncology & Genomics, pathology, imaging, treatment history & Variant interpretation, resistance modeling, neoantigen ranking, regimen sequencing, trial matching & \citet{sahin2017}; \citet{jumper2021} \\
+Rare disease & Phenotype timeline, pedigree, genome sequencing, prior workup & Cross-linking phenotype ontologies, literature, family history, and candidate variants & \citet{wojcik2024} \\
+Resistant infection & Microbiology, susceptibilities, organ function, prior antibiotic exposure & Better ranking of therapies and faster search across compound or regimen space & \citet{stokes2020} \\
+Sepsis / ICU & Streaming vitals, labs, notes, medication events & Earlier escalation from weak, time-distributed patterns across the longitudinal record & \citet{adams2022}; \citet{rajkomar2018}; \citet{moses2025} \\
+Patient-reported symptoms & Patient-reported outcomes, treatments, toxicities, goals & Detecting deterioration and treatment intolerance before they become acute & \citet{basch2016}; \citet{basch2017} \\
+Patient-held records & Notes, meds, labs, imaging reports, symptoms, goals & Converts raw data access into usable reasoning leverage before and between encounters & \citet{delbanco2010}; \citet{salmi2025} \\
 \bottomrule
 \end{tabularx}
 \caption{High-value disease areas under a computational lens.}
 \label{tab:cases}
 \end{table}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \fill[eirsand, rounded corners=14pt] (0,0) rectangle (15.2,7.9);
+  \draw[eirmist, line width=0.9pt, rounded corners=14pt] (0,0) rectangle (15.2,7.9);
+
+  \foreach \y in {6.2,3.9,1.6} {
+    \draw[eirmist, line width=0.7pt] (4.1,\y+0.9) -- (4.1,\y-0.9);
+    \draw[eirmist, line width=0.7pt] (9.45,\y+0.9) -- (9.45,\y-0.9);
+  }
+
+  \node[anchor=west, font=\bfseries\fontsize{10}{12}\selectfont, text=eirslate] at (0.6,7.3) {Future patient personas};
+  \node[anchor=west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirslate] at (0.7,6.95) {Patient};
+  \node[anchor=west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirslate] at (4.45,6.95) {Data substrate};
+  \node[anchor=west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirslate] at (9.8,6.95) {Computational leverage};
+
+  \node[anchor=west, text width=3.0cm, align=left, font=\bfseries\fontsize{10}{12}\selectfont, text=eirink] at (0.7,6.45) {Asha, 58\\metastatic NSCLC};
+  \node[anchor=west, text width=4.55cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirslate] at (4.45,6.45) {Tumour DNA/RNA, pathology, CT trends, prior lines, toxicities, performance status};
+  \node[anchor=west, text width=5.0cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirink] at (9.8,6.45) {Variant prioritization, resistance hypotheses, neoantigen ranking, and live trial matching change the next therapeutic branch.};
+
+  \node[anchor=west, text width=3.0cm, align=left, font=\bfseries\fontsize{10}{12}\selectfont, text=eirink] at (0.7,4.15) {Mateo, 6\\undiagnosed neurodevelopmental syndrome};
+  \node[anchor=west, text width=4.55cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirslate] at (4.45,4.15) {Phenotype timeline, EEG, MRI, family history, genome sequencing, prior negative workup};
+  \node[anchor=west, text width=5.0cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirink] at (9.8,4.15) {Phenotype-variant ranking and literature synthesis narrow candidate mechanisms and guide targeted confirmatory testing.};
+
+  \node[anchor=west, text width=3.0cm, align=left, font=\bfseries\fontsize{10}{12}\selectfont, text=eirink] at (0.7,1.85) {Leila, 34\\Crohn's disease on biologics};
+  \node[anchor=west, text width=4.55cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirslate] at (4.45,1.85) {Symptoms, calprotectin, medication adherence, wearables, sleep, diet, clinician notes};
+  \node[anchor=west, text width=5.0cm, align=left, font=\fontsize{8.7}{10.6}\selectfont, text=eirink] at (9.8,1.85) {Within-person pattern detection turns fragmented self-tracking into actionable flare prediction and better-timed escalation.};
+\end{tikzpicture}
+\caption{Concrete personas for a computational health stack. The same design principle appears across specialties: assemble the full timeline, compute over it repeatedly, and use the result to improve the next decision.}
+\label{fig:personas}
+\end{figure}
+
+\subsection{Concrete pathways for future use}
+Figure~\ref{fig:personas} makes the future-oriented claim concrete. In each case, the point of computation is not to replace the clinician. It is to improve preparation, ranking, and timing for the next branch in the care pathway.
+
+\begin{enumerate}
+  \item \textbf{Precision oncology pathway.} A patient-assembled case file combines sequencing, pathology, imaging, and prior therapies. Compute is used to rank candidate drivers, plausible resistance mechanisms, toxic trade-offs, and live trials. The output is not ``the answer'' but a defensible next branch with explicit uncertainty.
+  \item \textbf{Rare disease pathway.} Parents or clinicians maintain a phenotype timeline with milestones, regressions, imaging, and prior exclusions. Compute links that timeline to genome evidence and the literature, reducing time spent re-deriving the case from scratch at each tertiary referral.
+  \item \textbf{Chronic inflammatory pathway.} A patient with a relapsing condition integrates symptoms, labs, wearable data, and medication exposure over time. Compute is used within-person, not only across populations, to identify recurrent precursors of flare, intolerance, or non-response.
+\end{enumerate}
 
 \begin{table}[t]
 \centering
@@ -263,22 +323,25 @@ The implication is not that every patient should be left alone with a chatbot. T
   \item \textbf{Decision-oriented outputs.} The output should not just summarize. It should rank the next tests, consultations, or therapeutic branches.
   \item \textbf{Re-runnable reasoning.} Every major disease course changes over time. The right unit is a living case model, not a one-time answer.
   \item \textbf{Patient-clinician collaboration.} The design target is a stronger clinical conversation, not consumer isolation.
+  \item \textbf{N-of-1 evidence layers.} Systems should support repeated within-person hypothesis testing when disease is relapsing, heterogeneous, or highly treatment-sensitive.
 \end{enumerate}
 
 \section{Risks and constraints}
-The computational view does not weaken the need for evidence or clinical oversight. It sharpens it. High-burden disease is precisely where hallucinated synthesis, hidden bias, and brittle prompting are most dangerous. Better reasoning systems must therefore be auditable, source-grounded, and explicit about what they do not know.
+The computational view does not weaken the need for evidence or clinical oversight. It sharpens it. High-burden disease is precisely where hallucinated synthesis, hidden bias, dataset shift, and brittle prompting are most dangerous. Better reasoning systems must therefore be auditable, source-grounded, and explicit about what they do not know.
 
 There is also a distributional risk: if compute meaningfully improves outcomes, unequal access to compute will become a health inequity. Data access without reasoning access will be incomplete empowerment. A future health stack that gives patients records but not useful synthesis will still leave too much leverage with the institution.
+
+The paper also argues against a common failure mode in AI health discourse: treating ``personalization'' as a vague user-experience feature. In the computational paradigm, personalization is a property of the reasoning problem itself. It requires timeline integrity, provenance, repeated re-analysis, and outcome feedback.
 
 \section{Operational consequences}
 If this view is correct, the agenda for health AI changes. Product teams should stop treating every workflow as though it deserves the same level of model complexity. Clinical systems should separate protocol problems from search problems. Regulators should ask not only whether a model is accurate on average, but whether it improves the quality of reasoning in the cases where reasoning is the bottleneck. And patient-facing tools should be built around timeline integrity, evidence provenance, and re-runnable case synthesis rather than one-shot conversational convenience.
 
-The practical payoff is concentration. More compute should go to the places where it buys something real: fewer missed mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, clearer preparation for specialist visits, and better continuity when care fragments across institutions. Results from pragmatic intervention studies in ECG alerting and patient-deterioration surveillance suggest that this shift can move from theory into deployed clinical operations when the system is attached to a real decision path \citep{lin2024,moses2025}.
+The practical payoff is concentration. More compute should go to the places where it buys something real: fewer missed driver mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, cleaner preparation for specialist visits, and better continuity when care fragments across institutions. Results from pragmatic intervention studies in ECG alerting, patient deterioration surveillance, and electronic symptom monitoring suggest that this shift can move from theory into deployed operations when the system is attached to a real decision path \citep{lin2024,moses2025,basch2016}.
 
 \section{Conclusion}
-The next decade of medical AI should be judged less by how often it automates paperwork and more by how often it helps solve the hard cases. The diseases that matter most here are not simply the most prevalent ones. They are the ones that become search problems when viewed at patient resolution. Precision oncology, rare disease genomics, resistant infection, and certain critical care settings are early proof that this lens is practical, not rhetorical.
+The next decade of medical AI should be judged less by how often it automates paperwork and more by how often it helps solve the hard cases. The diseases that matter most here are not simply the most prevalent ones. They are the ones that become search problems when viewed at patient resolution. Precision oncology, rare-disease genomics, resistant infection, selected critical care settings, and some chronic relapsing diseases are early proof that this lens is practical rather than rhetorical.
 
-The broader shift is cultural as much as technical. Once patients can assemble their own records and run high-context reasoning over them, compute becomes part of care capacity itself. That is why a computational view of medicine matters: it gives us a way to aim AI where additional inference has the best chance of changing outcomes.
+The broader shift is cultural as much as technical. Once patients can assemble their own records and run high-context reasoning over them with clinicians, compute becomes part of care capacity itself. That is why a computational view of medicine matters: it provides a principled way to direct AI toward settings where additional inference can genuinely change outcomes, and where health understanding can become a shared, longitudinal capability rather than a privilege of the institution.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
