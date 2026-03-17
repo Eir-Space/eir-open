@@ -2,24 +2,31 @@
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
-import { docsPageMap, docsPages } from '@/data/docsPages';
+import { getCollection, render } from 'astro:content';
 
-export function getStaticPaths() {
-  return docsPages
-    .map((page) => page.slug)
-    .filter((slug) => slug && slug !== 'ai-compute-disease-ranking')
-    .map((slug) => ({
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs
+    .map((doc) => ({
+      doc,
+      slug: doc.id.replace(/\.(md|mdx)$/i, '').replace(/\/index$/i, '').replace(/^index$/i, ''),
+    }))
+    .filter(({ slug }) => slug && slug !== 'ai-compute-disease-ranking')
+    .map(({ doc, slug }) => ({
       params: { slug },
+      props: { doc },
     }));
 }
 
 const rawSlug = Astro.params.slug;
 const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : rawSlug || '';
-const page = docsPageMap.get(slug);
-const title = page?.title || 'Documentation page';
-const description =
-  page?.description ||
-  'This legacy docs route is preserved for GitHub Pages compatibility during the site migration.';
+const { doc } = Astro.props;
+if (typeof Astro.locals.t !== 'function') {
+  Astro.locals.t = (key: string) => key;
+}
+const { Content } = await render(doc);
+const title = doc.data.title || 'Documentation page';
+const description = doc.data.description || 'Project documentation for Eir Open.';
 ---
 
 <!doctype html>
@@ -35,41 +42,45 @@ const description =
   <body>
     <ThemeProvider />
     <SiteHeader current="docs" />
-    <main class="legacy-shell">
-      <section class="legacy-card">
-        <p class="eyebrow">Legacy Docs Route</p>
+    <main class="doc-shell">
+      <article class="doc-card">
+        <a class="back-link" href="/docs/">Back to docs</a>
+        <p class="eyebrow">Documentation</p>
         <h1>{title}</h1>
-        <p>{description}</p>
-        <p>
-          This route is preserved so existing links still resolve on GitHub Pages while
-          the documentation stack is being migrated away from the failing Starlight build.
-        </p>
-        <div class="actions">
-          <a class="primary" href="/docs/">Documentation home</a>
-          <a href="/docs/ai-compute-disease-ranking/">AI compute ranking</a>
+        <p class="doc-description">{description}</p>
+        <div class="doc-body">
+          <Content />
         </div>
-      </section>
+      </article>
     </main>
   </body>
 </html>
 
 <style>
-  .legacy-shell {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    width: min(100% - 1rem, 960px);
+  .doc-shell {
+    width: min(100% - 1rem, 980px);
     margin: 0 auto;
-    padding-top: 1.25rem;
+    padding: 1.25rem 0 4rem;
   }
 
-  .legacy-card {
+  .doc-card {
     width: 100%;
     border: 1px solid var(--border-subtle);
-    border-radius: 1.5rem;
-    background: color-mix(in srgb, var(--card) 92%, white 8%);
+    border-radius: 1.75rem;
+    background:
+      radial-gradient(circle at top right, rgba(139, 184, 206, 0.14), transparent 24%),
+      color-mix(in srgb, var(--card) 95%, white 5%);
     box-shadow: var(--card-shadow);
-    padding: 2rem;
+    padding: 2.2rem;
+  }
+
+  .back-link {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
   }
 
   .eyebrow {
@@ -87,31 +98,103 @@ const description =
     line-height: 1;
   }
 
-  p {
+  .doc-description {
+    margin-top: 1rem;
     color: var(--muted-foreground);
     line-height: 1.75;
   }
 
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 1.2rem;
+  .doc-body {
+    margin-top: 2rem;
   }
 
-  .actions a {
-    border: 1px solid var(--border-subtle);
-    border-radius: 999px;
-    padding: 0.8rem 1.05rem;
-    background: var(--card);
+  .doc-body :global(p),
+  .doc-body :global(li),
+  .doc-body :global(td),
+  .doc-body :global(th) {
     color: var(--foreground);
-    font-weight: 600;
-    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
-  .actions .primary {
-    border-color: var(--primary);
-    background: var(--primary);
-    color: var(--primary-foreground);
+  .doc-body :global(h2) {
+    margin: 2.25rem 0 0.85rem;
+    font-size: 1.75rem;
+    line-height: 1.15;
+  }
+
+  .doc-body :global(h3) {
+    margin: 1.75rem 0 0.7rem;
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .doc-body :global(a) {
+    color: var(--primary);
+  }
+
+  .doc-body :global(code) {
+    background: var(--background-soft);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.55rem;
+    padding: 0.12rem 0.35rem;
+  }
+
+  .doc-body :global(pre) {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--background-soft) 88%, black 12%);
+    padding: 1rem;
+  }
+
+  .doc-body :global(pre code) {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .doc-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+
+  .doc-body :global(th),
+  .doc-body :global(td) {
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .doc-body :global(.section-divider) {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 2rem 0;
+  }
+
+  .doc-body :global(.starlight-aside) {
+    margin: 1.25rem 0;
+  }
+
+  .doc-body :global(.not-content) {
+    margin: 1.25rem 0;
+  }
+
+  @media (max-width: 800px) {
+    .doc-shell {
+      padding-top: 0.85rem;
+    }
+
+    .doc-card {
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+    }
+
+    .doc-body :global(table) {
+      display: block;
+      overflow-x: auto;
+    }
   }
  </style>
