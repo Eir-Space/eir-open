@@ -1,30 +1,19 @@
-{/* Override: default to dark theme to match the Eir design system home state */}
+{/* Default to light theme and keep dataset/color-scheme in sync before paint */}
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
 		let storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
 		if (!storedTheme) {
-			storedTheme = 'dark';
-			if (typeof localStorage !== 'undefined') localStorage.setItem('starlight-theme', 'dark');
+			storedTheme = 'light';
+			if (typeof localStorage !== 'undefined') localStorage.setItem('starlight-theme', 'light');
 		}
-		const theme = storedTheme === 'auto'
-			? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
-			: storedTheme;
-		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		const theme = storedTheme === 'dark' ? 'dark' : 'light';
+		document.documentElement.dataset.theme = theme;
+		document.documentElement.style.colorScheme = theme;
 		return {
-			updatePickers(theme = storedTheme || 'auto') {
-				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
-					const select = picker.querySelector('select');
-					if (select) select.value = theme;
-					/** @type {HTMLTemplateElement | null} */
-					const tmpl = document.querySelector(`#theme-icons`);
-					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
-					if (newIcon) {
-						const oldIcon = picker.querySelector('svg.label-icon');
-						if (oldIcon) {
-							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
-						}
-					}
+			updatePickers(theme = storedTheme || 'light') {
+				document.querySelectorAll('theme-toggle').forEach((picker) => {
+					picker.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
 				});
 			},
 		};
