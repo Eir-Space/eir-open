@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
 import DiseaseRankingTable from '@/components/DiseaseRankingTable';
+import ComputationalMedicineBrief from '@/components/ComputationalMedicineBrief.astro';
 ---
 
 <!doctype html>
@@ -39,6 +40,12 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
           <span>100 diseases</span>
           <span>12 categories</span>
           <span>5 scoring dimensions</span>
+        </div>
+        <div class="hero-actions">
+          <a class="primary-link" href="/docs/computational-view-of-medicine/">Read the white paper</a>
+          <a class="secondary-link" href="/papers/computational-view-of-medicine.pdf" target="_blank" rel="noreferrer">
+            Open PDF
+          </a>
         </div>
       </section>
 
@@ -101,6 +108,8 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
         </p>
       </section>
 
+      <ComputationalMedicineBrief />
+
       <section class="table-wrap">
         <DiseaseRankingTable client:load />
       </section>
@@ -109,16 +118,16 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
         <p class="section-kicker">References</p>
         <h2>Sources used to justify the ordering</h2>
         <ul class="sources-list">
-          <li><a href="https://www.who.int/news-room/fact-sheets/detail/icd-11">WHO ICD-11 fact sheet</a></li>
-          <li><a href="https://www.who.int/news/item/14-02-2025-who-releases-2025-update-to-the-international-classification-of-diseases-%28icd-11%29">WHO ICD-11 2025 update</a></li>
-          <li><a href="https://www.abc.net.au/listen/programs/healthreport/dog-owner-ai-cancer-treatment/105462166">ABC report on AI-guided dog cancer treatment</a></li>
-          <li><a href="https://www.cancer.gov/news-events/cancer-currents-blog/2022/mrna-vaccines-to-treat-cancer">NCI on mRNA cancer vaccines</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/38838312/">NEJM genome sequencing in critically ill infants</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/38725273/">Review on AI in antimicrobial resistance</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/36251306/">Review on sepsis prediction and early detection</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/39365481/">Review on AI in autoimmune disease</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/37100933/">Review on AI decision support in cardiovascular medicine</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/39186631/">Review on AI in mental health</a></li>
+          <li><a href="https://www.nature.com/articles/s41591-018-0300-7">Topol on high-performance medicine</a></li>
+          <li><a href="https://www.nature.com/articles/nature23003">Sahin et al. on personalized RNA mutanome vaccines</a></li>
+          <li><a href="https://www.nature.com/articles/s41586-021-03819-2">Jumper et al. on AlphaFold</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/38838312/">Wojcik et al. on genome sequencing for rare disease</a></li>
+          <li><a href="https://www.cell.com/cell/fulltext/S0092-8674(20)30102-1">Stokes et al. on deep-learning antibiotic discovery</a></li>
+          <li><a href="https://www.nature.com/articles/s41591-022-01894-0">Adams et al. on TREWS for sepsis</a></li>
+          <li><a href="https://www.nature.com/articles/s41746-018-0029-1">Rajkomar et al. on deep learning with longitudinal EHRs</a></li>
+          <li><a href="https://www.acpjournals.org/doi/10.7326/0003-4819-153-2-201007200-00008">Delbanco et al. on OpenNotes</a></li>
+          <li><a href="https://www.abc.net.au/listen/programs/healthreport/dog-owner-ai-cancer-treatment/105462166">ABC report on Rosie</a></li>
+          <li><a href="/docs/computational-view-of-medicine/">A Computational View of Medicine white paper</a></li>
         </ul>
       </section>
     </main>
@@ -197,6 +206,13 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
     margin-top: 1.75rem;
   }
 
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
   .pill-row span {
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
@@ -204,6 +220,25 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
     padding: 0.65rem 0.9rem;
     font-size: 0.9rem;
     font-weight: 600;
+  }
+
+  .primary-link,
+  .secondary-link {
+    border-radius: 999px;
+    padding: 0.78rem 1rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .primary-link {
+    background: var(--accent);
+    color: white;
+  }
+
+  .secondary-link {
+    border: 1px solid var(--border-subtle);
+    color: var(--foreground);
+    background: var(--card);
   }
 
   .copy-grid {

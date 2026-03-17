@@ -1,0 +1,273 @@
+---
+const domains = [
+  {
+    name: 'Precision oncology',
+    score: 96,
+    reason: 'Large search space across genomics, pathology, resistance, and trial matching.',
+    evidence: 'Sahin 2017, Jumper 2021',
+  },
+  {
+    name: 'Rare-disease genomics',
+    score: 92,
+    reason: 'Sparse signals spread across phenotype, pedigree, sequencing, and time.',
+    evidence: 'Wojcik 2024',
+  },
+  {
+    name: 'Resistant infection',
+    score: 87,
+    reason: 'Therapy choice depends on organism, host state, prior exposure, and susceptibility.',
+    evidence: 'Stokes 2020',
+  },
+  {
+    name: 'Sepsis and ICU deterioration',
+    score: 82,
+    reason: 'Weak signals are distributed across trends, notes, vitals, and medication events.',
+    evidence: 'Adams 2022, Rajkomar 2018',
+  },
+];
+
+const steps = [
+  'Assemble the full patient timeline',
+  'Compress multimodal evidence into a working case model',
+  'Rank the next diagnostic or treatment branches',
+  'Re-run when new evidence arrives',
+];
+
+const evidenceRows = [
+  ['Personalized cancer vaccines', 'Patient-specific neoantigen selection and treatment design', 'Nature 2017'],
+  ['AlphaFold', 'Structure prediction expands feasible molecular interpretation', 'Nature 2021'],
+  ['Rare-disease genome sequencing', 'Long-context synthesis improves diagnosis', 'NEJM 2024'],
+  ['Antibiotic discovery', 'Deep learning explores non-obvious chemical space', 'Cell 2020'],
+  ['TREWS for sepsis', 'Prospective deployment improved time-sensitive decisions', 'Nature Medicine 2022'],
+  ['OpenNotes', 'Patient access turns records into usable leverage', 'Annals 2010'],
+];
+---
+
+<section class="brief-shell">
+  <div class="signal-card">
+    <p class="kicker">Signal map</p>
+    <h2>Where more compute changes the answer</h2>
+    <div class="domain-list">
+      {domains.map((domain) => (
+        <article class="domain-row">
+          <div class="domain-copy">
+            <h3>{domain.name}</h3>
+            <p>{domain.reason}</p>
+          </div>
+          <div class="score-wrap" aria-label={`${domain.score} out of 100`}>
+            <div class="score-track">
+              <div class="score-fill" style={`width: ${domain.score}%`} />
+            </div>
+            <span>{domain.score}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="grid-row">
+    <article class="flow-card">
+      <p class="kicker">Workflow</p>
+      <h2>The computational loop</h2>
+      <ol class="step-list">
+        {steps.map((step, index) => (
+          <li>
+            <span>{index + 1}</span>
+            <p>{step}</p>
+          </li>
+        ))}
+      </ol>
+    </article>
+
+    <article class="table-card">
+      <p class="kicker">Evidence backbone</p>
+      <h2>Why this argument is grounded</h2>
+      <div class="evidence-table">
+        <div class="evidence-head">Domain</div>
+        <div class="evidence-head">Claim supported</div>
+        <div class="evidence-head">Source</div>
+        {evidenceRows.map((row) => (
+          <>
+            <div>{row[0]}</div>
+            <div>{row[1]}</div>
+            <div>{row[2]}</div>
+          </>
+        ))}
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .brief-shell {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .signal-card,
+  .flow-card,
+  .table-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.5rem;
+    background: color-mix(in srgb, var(--card) 95%, white 5%);
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+  }
+
+  .grid-row {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 1rem;
+  }
+
+  .kicker {
+    margin: 0 0 0.65rem;
+    color: var(--muted-foreground);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  p,
+  div {
+    color: var(--muted-foreground);
+  }
+
+  .domain-list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .domain-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 10rem;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .domain-row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .domain-copy p {
+    margin: 0.35rem 0 0;
+    line-height: 1.65;
+  }
+
+  .score-wrap {
+    display: grid;
+    gap: 0.4rem;
+    justify-items: end;
+  }
+
+  .score-track {
+    width: 100%;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--background-soft);
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--accent) 64%, var(--primary) 36%));
+  }
+
+  .score-wrap span {
+    color: var(--foreground);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  .step-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .step-list li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: start;
+  }
+
+  .step-list span {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 18%, var(--card) 82%);
+    color: var(--foreground);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .step-list p {
+    margin: 0.15rem 0 0;
+    line-height: 1.55;
+  }
+
+  .evidence-table {
+    display: grid;
+    grid-template-columns: 1.1fr 1.7fr 0.75fr;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .evidence-table > div {
+    padding: 0.75rem 0.5rem 0.75rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: 1.5;
+  }
+
+  .evidence-head {
+    color: var(--foreground);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .grid-row {
+      grid-template-columns: 1fr;
+    }
+
+    .domain-row {
+      grid-template-columns: 1fr;
+    }
+
+    .score-wrap {
+      justify-items: start;
+    }
+
+    .evidence-table {
+      grid-template-columns: 1fr;
+    }
+
+    .evidence-head {
+      padding-bottom: 0.2rem;
+      border-bottom: 0;
+    }
+  }
+</style>

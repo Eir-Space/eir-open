@@ -5,6 +5,7 @@ export function getStaticPaths() {
   return [
     { params: { slug: 'docs' } },
     { params: { slug: 'docs/ai-compute-disease-ranking' } },
+    { params: { slug: 'docs/computational-view-of-medicine' } },
     ...docsPages
       .filter((page) => page.slug)
       .map((page) => ({ params: { slug: `docs/${page.slug}` } })),

@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
+import ComputationalMedicineBrief from '@/components/ComputationalMedicineBrief.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const showComputationalBrief = post.id.replace(/\.(md|mdx)$/, '') === 'computational-view-of-disease';
 ---
 
 <!doctype html>
@@ -48,6 +50,7 @@ const { Content } = await render(post);
         </header>
 
         <div class="post-body">
+          {showComputationalBrief && <ComputationalMedicineBrief />}
           <Content />
         </div>
       </article>
