@@ -68,6 +68,17 @@ Primary local snapshots:
 
 - `public/data/providers-sweden.json`
 - `public/data/providers-sweden-verified.json`
+- `public/data/agent/self-referral-clinics-sweden.json`
+  - compact agent-facing index of clinics with verified `Egen vårdbegäran`
+  - includes location, 1177 profile URL, short description, tags, booking/contact signals, and self-referral evidence
+  - per-clinic keys: `name`, `type`, `specialties`, `tags`, `location`, `contact`, `links`, `self_referral`, `access`, `summary`
+
+Agent export generation:
+
+- `npm run build:agent-self-referral`
+  - reads `providers-sweden-verified.json`
+  - keeps only clinics with `services.self_referral_verified === true`
+  - writes a compact JSON file intended for AI-agent skill use
 
 1177 enrichment scripts:
 
