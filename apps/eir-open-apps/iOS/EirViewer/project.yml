@@ -27,6 +27,21 @@ targets:
         SWIFT_VERSION: "5.9"
         TARGETED_DEVICE_FAMILY: "1,2"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
     dependencies:
       - package: Yams
       - sdk: HealthKit.framework
+
+  EirViewerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/EirViewerTests
+    dependencies:
+      - target: EirViewer
+      - package: Yams
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        GENERATE_INFOPLIST_FILE: "YES"

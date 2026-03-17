@@ -6,8 +6,11 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
     case minimax = "MiniMax"
     case groq = "Groq"
     case custom = "Custom"
+    case local = "On-Device"
 
     var id: String { rawValue }
+
+    var isLocal: Bool { self == .local }
 
     var defaultBaseURL: String {
         switch self {
@@ -16,6 +19,7 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
         case .minimax: return "https://api.minimax.io/anthropic/v1"
         case .groq: return "https://api.groq.com/openai/v1"
         case .custom: return ""
+        case .local: return ""
         }
     }
 
@@ -26,6 +30,7 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
         case .minimax: return "MiniMax-M1"
         case .groq: return "llama-3.3-70b-versatile"
         case .custom: return ""
+        case .local: return ""
         }
     }
 
@@ -33,6 +38,7 @@ enum LLMProviderType: String, CaseIterable, Identifiable, Codable {
         switch self {
         case .openai, .groq, .custom: return true
         case .anthropic, .minimax: return false
+        case .local: return false
         }
     }
 }

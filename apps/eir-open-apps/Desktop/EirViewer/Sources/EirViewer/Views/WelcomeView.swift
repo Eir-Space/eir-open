@@ -63,6 +63,14 @@ struct WelcomeView: View {
                 handleDrop(providers)
             }
 
+            Button {
+                loadSampleData()
+            } label: {
+                Label("Try with Sample Data", systemImage: "doc.text")
+            }
+            .buttonStyle(.borderless)
+            .foregroundColor(AppColors.primary)
+
             if let error = documentVM.errorMessage ?? profileStore.errorMessage {
                 Text(error)
                     .foregroundColor(AppColors.red)
@@ -81,6 +89,28 @@ struct WelcomeView: View {
         .background(AppColors.background)
         .sheet(isPresented: $showingAddPerson) {
             AddPersonSheet(initialURL: pendingFileURL)
+        }
+    }
+
+    private func loadSampleData() {
+        guard let bundleURL = Bundle.main.url(forResource: "sample-data", withExtension: "yaml") else {
+            profileStore.errorMessage = "Sample data not found in app bundle"
+            return
+        }
+        let docs = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("EirViewer/profiles")
+        try? FileManager.default.createDirectory(at: docs, withIntermediateDirectories: true)
+        let destURL = docs.appendingPathComponent("sample-data.yaml")
+        do {
+            if FileManager.default.fileExists(atPath: destURL.path) {
+                try FileManager.default.removeItem(at: destURL)
+            }
+            try FileManager.default.copyItem(at: bundleURL, to: destURL)
+            if let profile = profileStore.addProfile(displayName: "Anna Lindgren", fileURL: destURL) {
+                profileStore.selectProfile(profile.id)
+            }
+        } catch {
+            profileStore.errorMessage = "Failed to copy sample data: \(error.localizedDescription)"
         }
     }
 

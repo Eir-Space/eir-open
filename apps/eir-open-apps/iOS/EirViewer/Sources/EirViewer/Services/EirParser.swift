@@ -35,12 +35,40 @@ struct EirParser {
     }
 
     static func parse(yaml: String) throws -> EirDocument {
-        let fixed = fixMalformedYAML(yaml)
         let decoder = YAMLDecoder()
+
+        // Try parsing raw YAML first (avoids corrupting valid YAML with fix-up functions)
+        if let doc = try? decoder.decode(EirDocument.self, from: yaml) {
+            return doc
+        }
+
+        // If raw parse fails, try with malformed-YAML fixes
+        let fixed = fixMalformedYAML(yaml)
         do {
             return try decoder.decode(EirDocument.self, from: fixed)
+        } catch let error as DecodingError {
+            // Provide detailed error info for debugging
+            let detail: String
+            switch error {
+            case .typeMismatch(let type, let ctx):
+                let path = ctx.codingPath.map(\.stringValue).joined(separator: ".")
+                detail = "type mismatch for \(type) at '\(path)': \(ctx.debugDescription)"
+            case .keyNotFound(let key, let ctx):
+                let path = ctx.codingPath.map(\.stringValue).joined(separator: ".")
+                detail = "missing key '\(key.stringValue)' at '\(path)'"
+            case .valueNotFound(let type, let ctx):
+                let path = ctx.codingPath.map(\.stringValue).joined(separator: ".")
+                detail = "null value for \(type) at '\(path)'"
+            case .dataCorrupted(let ctx):
+                let path = ctx.codingPath.map(\.stringValue).joined(separator: ".")
+                let preview = String(yaml.prefix(200))
+                detail = "corrupted at '\(path)': \(ctx.debugDescription)\nFile starts with: \(preview)"
+            @unknown default:
+                detail = "\(error)"
+            }
+            throw EirParserError.decodingFailed(detail)
         } catch {
-            throw EirParserError.decodingFailed(error.localizedDescription)
+            throw EirParserError.decodingFailed("\(error)")
         }
     }
 
@@ -176,6 +204,7 @@ struct EirParser {
 
     /// Fixes unescaped double quotes inside double-quoted YAML strings.
     /// Example: `- "text with "word" inside"` → `- "text with \"word\" inside"`
+    /// Skips lines where quotes are already properly escaped.
     private static func escapeEmbeddedQuotes(in line: String) -> String {
         let stripped = line.trimmingCharacters(in: .whitespaces)
         let leading = String(line.prefix(while: { $0 == " " }))
@@ -184,7 +213,9 @@ struct EirParser {
         if stripped.hasPrefix("- \"") && stripped.hasSuffix("\"") && stripped.count > 4 {
             let content = String(stripped.dropFirst(3).dropLast(1))
             if content.contains("\"") {
-                let escaped = content.replacingOccurrences(of: "\"", with: "\\\"")
+                // Normalize: unescape existing \" first, then re-escape all
+                let unescaped = content.replacingOccurrences(of: "\\\"", with: "\"")
+                let escaped = unescaped.replacingOccurrences(of: "\"", with: "\\\"")
                 return "\(leading)- \"\(escaped)\""
             }
         }
@@ -199,7 +230,9 @@ struct EirParser {
             guard valueStart < valueEnd else { return line }
             let content = String(stripped[valueStart..<valueEnd])
             if content.contains("\"") {
-                let escaped = content.replacingOccurrences(of: "\"", with: "\\\"")
+                // Normalize: unescape existing \" first, then re-escape all
+                let unescaped = content.replacingOccurrences(of: "\\\"", with: "\"")
+                let escaped = unescaped.replacingOccurrences(of: "\"", with: "\\\"")
                 return "\(leading)\(key): \"\(escaped)\""
             }
         }

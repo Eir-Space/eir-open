@@ -9,9 +9,11 @@ struct ChatView: View {
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
     @EnvironmentObject var clinicStore: ClinicStore
     @EnvironmentObject var embeddingStore: EmbeddingStore
+    @EnvironmentObject var localModelManager: LocalModelManager
 
     @State private var hasTriggeredOnboarding = false
     @State private var showContextInfo = false
+    @State private var showRecordsContext = false
 
     private var contextBreakdown: SystemPrompt.ContextBreakdown {
         SystemPrompt.estimateContext(
@@ -56,7 +58,44 @@ struct ChatView: View {
                     ContextInfoPopover(breakdown: contextBreakdown)
                 }
 
-                if let provider = settingsVM.activeProvider {
+                // Medical records context manager
+                Button {
+                    showRecordsContext.toggle()
+                } label: {
+                    let total = documentVM.document?.entries.count ?? 0
+                    let excluded = chatThreadStore.excludedEntryIDs.count
+                    let included = max(0, total - excluded)
+                    HStack(spacing: 4) {
+                        Image(systemName: "doc.text")
+                            .font(.caption2)
+                        Text("\(included)/\(total) records")
+                            .font(.caption)
+                    }
+                    .foregroundColor(excluded > 0 ? AppColors.primary : AppColors.textSecondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(AppColors.divider)
+                    .cornerRadius(4)
+                }
+                .buttonStyle(.plain)
+                .help("Manage medical records in context")
+                .popover(isPresented: $showRecordsContext) {
+                    MedicalRecordsContextPopover()
+                }
+
+                if settingsVM.activeProviderType.isLocal {
+                    HStack(spacing: 4) {
+                        Image(systemName: "cpu")
+                            .font(.caption2)
+                        Text(localModelManager.activeModelDisplayName ?? "No model")
+                            .font(.caption)
+                    }
+                    .foregroundColor(localModelManager.isReady ? AppColors.green : AppColors.textSecondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(AppColors.divider)
+                    .cornerRadius(4)
+                } else if let provider = settingsVM.activeProvider {
                     Text("\(provider.type.rawValue) · \(provider.model)")
                         .font(.caption)
                         .foregroundColor(AppColors.textSecondary)
@@ -107,9 +146,8 @@ struct ChatView: View {
                         LazyVStack(spacing: 12) {
                             ForEach(chatThreadStore.messages.filter { msg in
                                 // Hide tool messages and empty assistant messages
-                                // BUT: keep empty assistant messages while streaming (they're being filled)
                                 msg.role != .tool &&
-                                !(msg.role == .assistant && msg.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !chatVM.isStreaming)
+                                !(msg.role == .assistant && msg.content.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                             }) { message in
                                 ChatBubbleView(
                                     message: message,
@@ -119,11 +157,11 @@ struct ChatView: View {
                                     .id(message.id)
                             }
 
-                            // Thinking indicator during tool execution
-                            if chatVM.isThinking {
+                            // Thinking indicator: during tool execution or waiting for first token
+                            if chatVM.isThinking || (chatVM.isStreaming && (chatThreadStore.messages.last(where: { $0.role == .assistant })?.content.isEmpty ?? false)) {
                                 ThinkingBubbleView(
                                     agentName: agentMemoryStore.agentName,
-                                    toolNames: chatVM.thinkingTools
+                                    toolNames: chatVM.isThinking ? chatVM.thinkingTools : []
                                 )
                                 .id("thinking-indicator")
                             }
@@ -224,7 +262,8 @@ struct ChatView: View {
             agentMemoryStore: agentMemoryStore,
             clinicStore: clinicStore,
             profileStore: profileStore,
-            embeddingStore: embeddingStore
+            embeddingStore: embeddingStore,
+            localModelManager: localModelManager
         )
     }
 
@@ -234,9 +273,15 @@ struct ChatView: View {
               !chatVM.isStreaming,
               chatThreadStore.messages.isEmpty,
               let profileID = profileStore.selectedProfileID,
-              settingsVM.activeProvider != nil,
-              !settingsVM.apiKey(for: settingsVM.activeProviderType).isEmpty
+              settingsVM.activeProvider != nil
         else { return }
+
+        // Check provider readiness: local needs a loaded model, cloud needs an API key
+        if settingsVM.activeProviderType.isLocal {
+            guard localModelManager.isReady else { return }
+        } else {
+            guard !settingsVM.apiKey(for: settingsVM.activeProviderType).isEmpty else { return }
+        }
 
         hasTriggeredOnboarding = true
         chatVM.startOnboarding(
@@ -247,7 +292,8 @@ struct ChatView: View {
             agentMemoryStore: agentMemoryStore,
             clinicStore: clinicStore,
             profileStore: profileStore,
-            embeddingStore: embeddingStore
+            embeddingStore: embeddingStore,
+            localModelManager: localModelManager
         )
     }
 }

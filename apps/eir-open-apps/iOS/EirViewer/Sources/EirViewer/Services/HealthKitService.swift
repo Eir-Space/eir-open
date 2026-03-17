@@ -124,11 +124,12 @@ enum DateRangeOption: String, CaseIterable, Identifiable {
 
     var startDate: Date {
         let cal = Calendar.current
+        let now = Date()
         switch self {
-        case .thirtyDays: return cal.date(byAdding: .day, value: -30, to: Date())!
-        case .sixMonths: return cal.date(byAdding: .month, value: -6, to: Date())!
-        case .oneYear: return cal.date(byAdding: .year, value: -1, to: Date())!
-        case .allTime: return cal.date(byAdding: .year, value: -50, to: Date())!
+        case .thirtyDays: return cal.date(byAdding: .day, value: -30, to: now) ?? now
+        case .sixMonths: return cal.date(byAdding: .month, value: -6, to: now) ?? now
+        case .oneYear: return cal.date(byAdding: .year, value: -1, to: now) ?? now
+        case .allTime: return cal.date(byAdding: .year, value: -50, to: now) ?? now
         }
     }
 }

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Eir Viewer</string>
+	<string>Eir</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -37,6 +37,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -85,5 +87,22 @@
 	</array>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Eir imports your health data (vitals, activity, lab values) from Apple Health to display alongside your medical records.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Eir does not write any data to Apple Health. This permission is required by the HealthKit framework.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>bankid</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.eir.viewer</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>eir</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

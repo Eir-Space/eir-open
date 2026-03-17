@@ -1,6 +1,6 @@
 import XCTest
 import Yams
-@testable import EirViewer
+@testable import Eir_Viewer
 
 final class EirParserTests: XCTestCase {
 

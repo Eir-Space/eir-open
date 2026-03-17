@@ -22,7 +22,8 @@ class ChatViewModel: ObservableObject {
         agentMemoryStore: AgentMemoryStore? = nil,
         clinicStore: ClinicStore? = nil,
         profileStore: ProfileStore? = nil,
-        embeddingStore: EmbeddingStore? = nil
+        embeddingStore: EmbeddingStore? = nil,
+        localModelManager: LocalModelManager? = nil
     ) {
         let text = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty, !isStreaming else { return }
@@ -38,6 +39,24 @@ class ChatViewModel: ObservableObject {
 
         guard let config = settingsVM.activeProvider else {
             errorMessage = "No LLM provider selected. Configure one in Settings."
+            return
+        }
+
+        // Local model path — no API key needed
+        if config.type.isLocal {
+            guard let lmm = localModelManager, lmm.isReady else {
+                errorMessage = "No local model loaded. Download one in Settings."
+                return
+            }
+            sendLocalMessage(
+                text: text,
+                document: document,
+                settingsVM: settingsVM,
+                chatThreadStore: chatThreadStore,
+                profileID: profileID,
+                localModelManager: lmm,
+                profileStore: profileStore
+            )
             return
         }
 
@@ -73,12 +92,14 @@ class ChatViewModel: ObservableObject {
         DebugLog.log("sendMessage: assistantIndex=\(assistantIndex), total messages=\(chatThreadStore.messages.count)")
 
         // Build system prompt — use agent memory if available, else legacy
+        let excludedIDs = chatThreadStore.excludedEntryIDs
         let systemPrompt: String
         if let memoryStore = agentMemoryStore {
             systemPrompt = SystemPrompt.build(
                 memory: memoryStore.memory,
                 document: document,
-                allDocuments: allDocuments
+                allDocuments: allDocuments,
+                excludedEntryIDs: excludedIDs
             )
         } else {
             systemPrompt = SystemPrompt.build(from: document)
@@ -289,6 +310,76 @@ class ChatViewModel: ObservableObject {
         }
     }
 
+    // MARK: - Local Model Streaming (no tools, no agent loop)
+
+    private func sendLocalMessage(
+        text: String,
+        document: EirDocument?,
+        settingsVM: SettingsViewModel,
+        chatThreadStore: ChatThreadStore,
+        profileID: UUID,
+        localModelManager: LocalModelManager,
+        profileStore: ProfileStore?
+    ) {
+        isStreaming = true
+        errorMessage = nil
+
+        let assistantMessage = ChatMessage(role: .assistant, content: "")
+        chatThreadStore.addMessage(assistantMessage)
+        let assistantIndex = chatThreadStore.messages.count - 1
+
+        let promptVersion = settingsVM.activePromptVersion
+        let userName = profileStore?.profiles.first(where: { $0.id == profileID })?.displayName
+
+        let systemPrompt = SystemPrompt.buildLocal(
+            document: document,
+            userName: userName,
+            promptVersion: promptVersion,
+            excludedEntryIDs: chatThreadStore.excludedEntryIDs
+        )
+
+        let conversationId = chatThreadStore.selectedThreadID ?? UUID()
+        let isNewThread = chatThreadStore.messages.count == 2
+        let threadID = chatThreadStore.selectedThreadID
+        let service = localModelManager.service
+
+        streamingTask = Task {
+            do {
+                _ = try await service.streamResponse(
+                    userMessage: text,
+                    systemPrompt: systemPrompt,
+                    conversationId: conversationId
+                ) { [weak chatThreadStore] token in
+                    Task { @MainActor in
+                        guard let store = chatThreadStore,
+                              assistantIndex < store.messages.count else { return }
+                        store.messages[assistantIndex].content += token
+                    }
+                }
+
+                chatThreadStore.persistMessages()
+
+                // Title generation — skip for local (no spare API key); use first words
+                if isNewThread, let threadID = threadID {
+                    let content = chatThreadStore.messages[assistantIndex].content
+                    let words = content.split(separator: " ").prefix(5).joined(separator: " ")
+                    if !words.isEmpty {
+                        chatThreadStore.updateThreadTitle(threadID, title: String(words))
+                    }
+                }
+            } catch {
+                DebugLog.log("[LocalLLM] ERROR: \(error)")
+                self.errorMessage = error.localizedDescription
+                if assistantIndex < chatThreadStore.messages.count,
+                   chatThreadStore.messages[assistantIndex].content.isEmpty {
+                    chatThreadStore.messages.remove(at: assistantIndex)
+                    chatThreadStore.persistMessages()
+                }
+            }
+            self.isStreaming = false
+        }
+    }
+
     /// Start conversational onboarding — sends a greeting that triggers Eir's onboarding flow
     func startOnboarding(
         document: EirDocument?,
@@ -298,7 +389,8 @@ class ChatViewModel: ObservableObject {
         agentMemoryStore: AgentMemoryStore,
         clinicStore: ClinicStore?,
         profileStore: ProfileStore? = nil,
-        embeddingStore: EmbeddingStore? = nil
+        embeddingStore: EmbeddingStore? = nil,
+        localModelManager: LocalModelManager? = nil
     ) {
         inputText = "Hey, I'm new here."
         sendMessage(
@@ -309,7 +401,8 @@ class ChatViewModel: ObservableObject {
             agentMemoryStore: agentMemoryStore,
             clinicStore: clinicStore,
             profileStore: profileStore,
-            embeddingStore: embeddingStore
+            embeddingStore: embeddingStore,
+            localModelManager: localModelManager
         )
     }
 

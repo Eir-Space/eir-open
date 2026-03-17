@@ -90,5 +90,6 @@ class AgentMemoryStore: ObservableObject {
     private func writeFile(dir: URL, name: String, content: String) {
         let path = dir.appendingPathComponent(name)
         try? content.write(to: path, atomically: true, encoding: .utf8)
+        EncryptedStore.protectFile(at: path)
     }
 }

@@ -7,6 +7,7 @@ enum SystemPrompt {
         memory: AgentMemory,
         document: EirDocument?,
         allDocuments: [(personName: String, document: EirDocument)] = [],
+        excludedEntryIDs: Set<String> = [],
         includeToolInstructions: Bool = true
     ) -> String {
         var sections: [String] = []
@@ -33,11 +34,19 @@ enum SystemPrompt {
         let tzName = tz.localizedName(for: .standard, locale: Locale.current) ?? tz.identifier
         sections.append("# Current Date & Time\n\nToday is **\(df.string(from: Date()))** (\(tzName), UTC\(tz.secondsFromGMT() >= 0 ? "+" : "")\(tz.secondsFromGMT() / 3600))")
 
-        // 6. Medical Records — metadata overview, use get_medical_records tool for full data
-        if !allDocuments.isEmpty {
-            sections.append(buildAllRecordsMetadata(from: allDocuments))
+        // 6. Medical Records — metadata overview, filtered by excluded entries
+        let filteredDocs: [(personName: String, document: EirDocument)]
+        if excludedEntryIDs.isEmpty {
+            filteredDocs = allDocuments
+        } else {
+            filteredDocs = allDocuments.map { (personName: $0.personName, document: $0.document.filteringEntries(excluding: excludedEntryIDs)) }
+        }
+
+        if !filteredDocs.isEmpty {
+            sections.append(buildAllRecordsMetadata(from: filteredDocs))
         } else if let doc = document {
-            sections.append(buildRecordsMetadata(from: doc))
+            let filtered = excludedEntryIDs.isEmpty ? doc : doc.filteringEntries(excluding: excludedEntryIDs)
+            sections.append(buildRecordsMetadata(from: filtered))
         }
 
         return sections.joined(separator: "\n\n---\n\n")
@@ -52,6 +61,66 @@ enum SystemPrompt {
             agents: AgentDefaults.defaultAgents
         )
         return build(memory: defaultMemory, document: document, includeToolInstructions: false)
+    }
+
+    // MARK: - Local (On-Device) Prompt
+
+    /// Build a compact system prompt for on-device models — no tool instructions, records inlined
+    static func buildLocal(
+        document: EirDocument?,
+        userName: String? = nil,
+        promptVersion: PromptVersion? = nil,
+        excludedEntryIDs: Set<String> = []
+    ) -> String {
+        var sections: [String] = []
+
+        // 1. Prompt style (or default)
+        let style = promptVersion?.systemPrompt ?? PromptLibrary.versions.first(where: { $0.id == PromptLibrary.defaultVersionId })?.systemPrompt ?? "You are Eir, a medical records assistant."
+        sections.append(style)
+
+        // 2. User name
+        if let name = userName, !name.isEmpty {
+            sections.append("The user's name is **\(name)**.")
+        }
+
+        // 3. Current date
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        sections.append("Today is \(df.string(from: Date())).")
+
+        // 4. Inline medical records (filtered by excluded entries)
+        if let doc = document, !doc.entries.isEmpty {
+            let entries = excludedEntryIDs.isEmpty
+                ? Array(doc.entries)
+                : doc.entries.filter { !excludedEntryIDs.contains($0.id) }
+
+            if !entries.isEmpty {
+                var recordText = "# Medical Records\n\n"
+                for entry in entries.prefix(15) {
+                    let date = entry.date ?? "Unknown date"
+                    let category = entry.category ?? "Other"
+                    recordText += "## \(date) — \(category)\n"
+                    if let c = entry.content {
+                        var parts: [String] = []
+                        if let s = c.summary { parts.append(s) }
+                        if let d = c.details { parts.append(d) }
+                        if let n = c.notes, !n.isEmpty { parts.append(n.joined(separator: "\n")) }
+                        let flat = parts.joined(separator: "\n")
+                        if !flat.isEmpty {
+                            let truncated = flat.count > 500 ? String(flat.prefix(500)) + "..." : flat
+                            recordText += truncated + "\n"
+                        }
+                    }
+                    recordText += "\n"
+                }
+                if entries.count > 15 {
+                    recordText += "(Showing 15 of \(entries.count) records)\n"
+                }
+                sections.append(recordText)
+            }
+        }
+
+        return sections.joined(separator: "\n\n")
     }
 
     // MARK: - Records Metadata (lightweight — details via tools)
