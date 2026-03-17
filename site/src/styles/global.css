@@ -52,105 +52,97 @@
 
 :root {
     --radius: 0.5rem;
-    /* EIR Serenity - Light */
-    --background: #f2f6f5;
-    --foreground: #1a2f35;
-    --card: #ffffff;
-    --card-foreground: #1a2f35;
-    --popover: #ffffff;
-    --popover-foreground: #1a2f35;
-    --primary: #1e5f6d;
+    --background: #111110;
+    --foreground: #f3eee3;
+    --card: #1a1917;
+    --card-foreground: #f3eee3;
+    --popover: #1a1917;
+    --popover-foreground: #f3eee3;
+    --primary: #1e94a8;
     --primary-foreground: #ffffff;
-    --secondary: #e9efed;
-    --secondary-foreground: #1a2f35;
-    --muted: #e9efed;
-    --muted-foreground: #4a7c8a;
-    --accent: #e9efed;
-    --accent-foreground: #1a2f35;
+    --secondary: #252320;
+    --secondary-foreground: #f3eee3;
+    --muted: #201f1c;
+    --muted-foreground: #aebbc0;
+    --accent: #252320;
+    --accent-foreground: #f3eee3;
     --destructive: #ef4444;
-    --border: #e2ddd4;
-    --input: #d4cec5;
-    --ring: #1e5f6d;
-    /* EIR Serenity chart colors - teal/gold palette */
-    --chart-1: #1e5f6d;
-    --chart-2: #0d5070;
-    --chart-3: #4a7c8a;
-    --chart-4: #e8a830;
-    --chart-5: #d4952a;
-    /* Sidebar - teal-tinted */
-    --sidebar: #f2f6f5;
-    --sidebar-foreground: #1a2f35;
-    --sidebar-primary: #1e5f6d;
+    --border: #312e2a;
+    --input: #2d2a26;
+    --ring: #1e94a8;
+    --chart-1: #1e94a8;
+    --chart-2: #d4a76a;
+    --chart-3: #8bb8ce;
+    --chart-4: #4a8db4;
+    --chart-5: #22c55e;
+    --sidebar: #111110;
+    --sidebar-foreground: #f3eee3;
+    --sidebar-primary: #1e94a8;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #e9efed;
-    --sidebar-accent-foreground: #1a2f35;
-    --sidebar-border: #e2ddd4;
-    --sidebar-ring: #1e5f6d;
-    /* EIR-specific vars */
-    --background-soft: #e9efed;
-    --border-subtle: #e2ddd4;
-    --border-strong: #e8a830;
-    --header-gradient-start: #1e5f6d;
-    --header-gradient-end: #0d5070;
-    --header-text-color: #ffffff;
-    --surface-shadow: 0 20px 45px -28px rgba(26, 47, 53, 0.25);
-    --focus-ring: rgba(30, 95, 109, 0.15);
-    --card-shadow: 0 2px 8px -2px rgba(26, 47, 53, 0.08), 0 4px 12px -4px rgba(26, 47, 53, 0.06);
-    --card-shadow-hover: 0 4px 12px -2px rgba(26, 47, 53, 0.1), 0 8px 20px -4px rgba(26, 47, 53, 0.08);
+    --sidebar-accent: #252320;
+    --sidebar-accent-foreground: #f3eee3;
+    --sidebar-border: #312e2a;
+    --sidebar-ring: #1e94a8;
+    --background-soft: #1f1d1b;
+    --border-subtle: #312e2a;
+    --border-strong: #d4a76a;
+    --header-gradient-start: #d4a76a;
+    --header-gradient-end: #8bb8ce;
+    --header-text-color: #f3eee3;
+    --surface-shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.55);
+    --focus-ring: rgba(30, 148, 168, 0.22);
+    --card-shadow: 0 16px 34px -28px rgba(0, 0, 0, 0.55), 0 8px 18px -16px rgba(0, 0, 0, 0.35);
+    --card-shadow-hover: 0 22px 48px -26px rgba(0, 0, 0, 0.55), 0 12px 24px -16px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme='dark'],
 .dark {
-    /* EIR Serenity - Dark */
-    --background: #141e22;
-    --foreground: #e4ded5;
-    --card: #1a2930;
-    --card-foreground: #e4ded5;
-    --popover: #1a2930;
-    --popover-foreground: #e4ded5;
-    --primary: #2a7a8a;
-    --primary-foreground: #f5f0e8;
-    --secondary: #22353e;
-    --secondary-foreground: #e4ded5;
-    --muted: #1a2930;
-    --muted-foreground: #7fb3bf;
-    --accent: #22353e;
-    --accent-foreground: #e4ded5;
+    --background: #111110;
+    --foreground: #f3eee3;
+    --card: #1a1917;
+    --card-foreground: #f3eee3;
+    --popover: #1a1917;
+    --popover-foreground: #f3eee3;
+    --primary: #1e94a8;
+    --primary-foreground: #ffffff;
+    --secondary: #252320;
+    --secondary-foreground: #f3eee3;
+    --muted: #201f1c;
+    --muted-foreground: #aebbc0;
+    --accent: #252320;
+    --accent-foreground: #f3eee3;
     --destructive: #ef4444;
-    --border: #263840;
-    --input: #2e4450;
-    --ring: #2a7a8a;
-    /* Chart colors - dark teal/gold */
-    --chart-1: #2a7a8a;
-    --chart-2: #1e5f6d;
-    --chart-3: #7fb3bf;
-    --chart-4: #d4952a;
-    --chart-5: #e8a830;
-    /* Sidebar - dark teal */
-    --sidebar: #141e22;
-    --sidebar-foreground: #e4ded5;
-    --sidebar-primary: #2a7a8a;
-    --sidebar-primary-foreground: #f5f0e8;
-    --sidebar-accent: #22353e;
-    --sidebar-accent-foreground: #e4ded5;
-    --sidebar-border: #263840;
-    --sidebar-ring: #2a7a8a;
-    /* EIR-specific vars - dark */
-    --background-soft: #1a2930;
-    --border-subtle: #263840;
-    --border-strong: #d4952a;
-    --header-gradient-start: #1e5f6d;
-    --header-gradient-end: #0d5070;
-    --header-text-color: #f5f0e8;
-    --surface-shadow: 0 20px 45px -28px rgba(0, 0, 0, 0.5);
-    --focus-ring: rgba(42, 122, 138, 0.25);
-    --card-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.2), 0 4px 12px -4px rgba(0, 0, 0, 0.15);
-    --card-shadow-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.25), 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+    --border: #312e2a;
+    --input: #2d2a26;
+    --ring: #1e94a8;
+    --chart-1: #1e94a8;
+    --chart-2: #d4a76a;
+    --chart-3: #8bb8ce;
+    --chart-4: #4a8db4;
+    --chart-5: #22c55e;
+    --sidebar: #111110;
+    --sidebar-foreground: #f3eee3;
+    --sidebar-primary: #1e94a8;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #252320;
+    --sidebar-accent-foreground: #f3eee3;
+    --sidebar-border: #312e2a;
+    --sidebar-ring: #1e94a8;
+    --background-soft: #1f1d1b;
+    --border-subtle: #312e2a;
+    --border-strong: #d4a76a;
+    --header-gradient-start: #d4a76a;
+    --header-gradient-end: #8bb8ce;
+    --header-text-color: #f3eee3;
+    --surface-shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.55);
+    --focus-ring: rgba(30, 148, 168, 0.22);
+    --card-shadow: 0 16px 34px -28px rgba(0, 0, 0, 0.55), 0 8px 18px -16px rgba(0, 0, 0, 0.35);
+    --card-shadow-hover: 0 22px 48px -26px rgba(0, 0, 0, 0.55), 0 12px 24px -16px rgba(0, 0, 0, 0.4);
 }
 
 /* Typography - match eir-viewer-react */
 :root {
-  --sl-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sl-font: 'Geist Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sl-font-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
@@ -219,7 +211,7 @@
     }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Geist Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -22,9 +23,12 @@ const { Content } = await render(post);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{post.data.title} | Eir Open Blog</title>
     <meta name="description" content={post.data.description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader current="blog" />
     <main class="post-shell">
       <a class="back-link" href="/blog/">Back to blog</a>
       <article class="post-card">
@@ -55,7 +59,7 @@ const { Content } = await render(post);
   .post-shell {
     width: min(860px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 2rem 0 4rem;
+    padding: 1.25rem 0 4rem;
   }
 
   .back-link {
@@ -156,7 +160,7 @@ const { Content } = await render(post);
   @media (max-width: 800px) {
     .post-shell {
       width: min(100% - 1rem, 860px);
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .post-card {

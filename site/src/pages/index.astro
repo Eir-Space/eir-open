@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
 import StatsBar from '@/components/StatsBar.astro';
 import CapabilityCard from '@/components/CapabilityCard.astro';
@@ -18,13 +19,16 @@ import { projects } from '@/data/projects';
       name="description"
       content="Open source tools for AI-powered health empowerment."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader current="home" />
     <main class="site-shell">
       <section class="hero-panel">
-        <p class="hero-kicker">Eir Open</p>
-        <h1>Open source tools for AI-powered health empowerment.</h1>
+        <p class="hero-kicker">Open health infrastructure</p>
+        <h1>Build patient-first health systems with the Eir stack.</h1>
         <p class="hero-copy">
           Medication lookups, health data standards, privacy-first apps, and
           agent-ready infrastructure for health workflows.
@@ -88,22 +92,35 @@ import { projects } from '@/data/projects';
   .site-shell {
     width: min(1180px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 2rem 0 4rem;
+    padding: 1.25rem 0 4rem;
   }
 
   .hero-panel {
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--border-subtle);
     border-radius: 1.75rem;
     background:
-      radial-gradient(circle at top right, rgba(232, 168, 48, 0.12), transparent 32%),
-      linear-gradient(180deg, color-mix(in srgb, var(--card) 90%, white 10%), var(--card));
+      radial-gradient(circle at 85% 18%, rgba(212, 167, 106, 0.18), transparent 28%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 96%, white 4%), var(--card));
     box-shadow: var(--card-shadow);
     padding: 2.5rem;
   }
 
+  .hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: auto -8% -18% auto;
+    width: 22rem;
+    height: 22rem;
+    background: url('/brand/eir-aura.svg') center/cover no-repeat;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
   .hero-kicker {
     margin: 0;
-    color: var(--muted-foreground);
+    color: color-mix(in srgb, var(--gold-300, #f5c178) 72%, var(--muted-foreground) 28%);
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -141,7 +158,7 @@ import { projects } from '@/data/projects';
     border: 1px solid var(--border-subtle);
     border-radius: 999px;
     padding: 0.8rem 1.05rem;
-    background: var(--card);
+    background: color-mix(in srgb, var(--card) 88%, transparent);
     color: var(--foreground);
     font-weight: 600;
     text-decoration: none;
@@ -156,7 +173,7 @@ import { projects } from '@/data/projects';
   @media (max-width: 800px) {
     .site-shell {
       width: min(100% - 1rem, 1180px);
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .hero-panel {

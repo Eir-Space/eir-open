@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
 import GettingStartedItem from '@/components/GettingStartedItem.astro';
 import { libraryProjects, appProjects } from '@/data/projects';
@@ -17,13 +18,16 @@ import { docsPages } from '@/data/docsPages';
       name="description"
       content="Explore Eir Open docs, projects, and AI-health research pages."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader current="docs" />
     <main class="docs-shell">
       <section class="docs-hero">
         <p class="eyebrow">Documentation</p>
-        <h1>Project docs, integration notes, and the AI compute disease ranking</h1>
+        <h1>Reference docs, applied research, and product surfaces built around Eir.</h1>
         <p>
           This site now uses explicit Astro routes for GitHub Pages stability.
           Core pages are preserved, and legacy docs URLs resolve through a simple docs layer.
@@ -82,13 +86,17 @@ import { docsPages } from '@/data/docsPages';
   .docs-shell {
     width: min(1180px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 2rem 0 4rem;
+    padding: 1.25rem 0 4rem;
   }
 
   .docs-hero {
+    position: relative;
+    overflow: hidden;
     border: 1px solid var(--border-subtle);
     border-radius: 1.75rem;
-    background: color-mix(in srgb, var(--card) 92%, white 8%);
+    background:
+      radial-gradient(circle at 86% 18%, rgba(139, 184, 206, 0.16), transparent 26%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 96%, white 4%), var(--card));
     box-shadow: var(--card-shadow);
     padding: 2.3rem;
   }
@@ -149,7 +157,7 @@ import { docsPages } from '@/data/docsPages';
   @media (max-width: 800px) {
     .docs-shell {
       width: min(100% - 1rem, 1180px);
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .docs-hero {
