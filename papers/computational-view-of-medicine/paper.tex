@@ -198,7 +198,7 @@ Critical care is different from oncology and rare disease, but it is no less com
 These results matter because they establish two parts of the same claim: longitudinal records contain clinically actionable signal, and systems that can hold more of that context together can improve timing-sensitive decisions.
 
 \subsection{Patient access as a force multiplier}
-The computational view becomes more important, not less, as patients gain access to their own records. OpenNotes showed that patients value direct access to clinicians' notes and that such access can change engagement with care \citep{delbanco2010}. Once records become portable and patients can assemble their own longitudinal timelines, compute becomes part of their effective care capacity. The patient is the one actor present for the entire course of illness; what has historically been missing is tooling that lets them reason over that full timeline.
+The computational view becomes more important, not less, as patients gain access to their own records. OpenNotes showed that patients value direct access to clinicians' notes and that such access can change engagement with care \citep{delbanco2010}. Follow-on work showed that patients often shared transparent visit notes with family members and caregivers, turning the note into a practical coordination tool rather than a static archive \citep{jackson2014}. More recently, Salmi and colleagues showed in a proof-of-concept study that patients can use large language models on open notes in ways that help them interpret and work with their records \citep{salmi2025}. Once records become portable and patients can assemble their own longitudinal timelines, compute becomes part of their effective care capacity. The patient is the one actor present for the entire course of illness; what has historically been missing is tooling that lets them reason over that full timeline.
 
 \section{Case examples}
 Table~\ref{tab:cases} shows why a single mental model fits these otherwise different domains.
@@ -219,6 +219,23 @@ Patient-held records & Notes, meds, labs, imaging reports, symptoms, goals & Con
 \end{tabularx}
 \caption{High-value disease areas under a computational lens.}
 \label{tab:cases}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Study type} & \textbf{What changed} & \textbf{Why it matters for the thesis} \\
+\midrule
+Pragmatic randomized clinical trial in cardiovascular screening & AI-enabled ECG alerts were tested as an intervention rather than a retrospective classifier \citep{lin2024} & Supports the claim that computational systems can change downstream decisions and outcomes, not merely generate scores. \\
+Pragmatic cluster-randomized deterioration trial & Real-time surveillance for patient deterioration was tested across live inpatient settings \citep{moses2025} & Strengthens the case that high-context clinical surveillance can function as an operational care system. \\
+Patient-record sharing study & Patients with transparent notes shared them with family and caregivers, extending the practical reach of the record \citep{jackson2014} & Shows that once patients have access to records, those records begin acting as coordination infrastructure. \\
+Patient-side LLM proof of concept & Patients used large language models on open notes to better understand and work with their records \citep{salmi2025} & Gives direct support to the argument that personal compute can become part of the patient toolkit. \\
+\bottomrule
+\end{tabularx}
+\caption{Evidence that the computational view extends beyond retrospective prediction.}
+\label{tab:intervention}
 \end{table}
 
 \calloutbox{Illustrative translational case}{
@@ -244,7 +261,7 @@ There is also a distributional risk: if compute meaningfully improves outcomes, 
 \section{Operational consequences}
 If this view is correct, the agenda for health AI changes. Product teams should stop treating every workflow as though it deserves the same level of model complexity. Clinical systems should separate protocol problems from search problems. Regulators should ask not only whether a model is accurate on average, but whether it improves the quality of reasoning in the cases where reasoning is the bottleneck. And patient-facing tools should be built around timeline integrity, evidence provenance, and re-runnable case synthesis rather than one-shot conversational convenience.
 
-The practical payoff is concentration. More compute should go to the places where it buys something real: fewer missed mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, clearer preparation for specialist visits, and better continuity when care fragments across institutions.
+The practical payoff is concentration. More compute should go to the places where it buys something real: fewer missed mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, clearer preparation for specialist visits, and better continuity when care fragments across institutions. Results from pragmatic intervention studies in ECG alerting and patient-deterioration surveillance suggest that this shift can move from theory into deployed clinical operations when the system is attached to a real decision path \citep{lin2024,moses2025}.
 
 \section{Conclusion}
 The next decade of medical AI should be judged less by how often it automates paperwork and more by how often it helps solve the hard cases. The diseases that matter most here are not simply the most prevalent ones. They are the ones that become search problems when viewed at patient resolution. Precision oncology, rare disease genomics, resistant infection, and certain critical care settings are early proof that this lens is practical, not rhetorical.
