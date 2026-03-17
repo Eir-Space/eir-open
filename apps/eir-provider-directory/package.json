@@ -10,6 +10,7 @@
     "lint": "vinext lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "build:agent-self-referral": "node scripts/generate-self-referral-agent-data.js",
     "verify:self-referral": "node scripts/verify-self-referral-1177.js",
     "enrich:1177": "node scripts/enrich-providers-1177.js",
     "dev:vinext": "vite dev --port 3001",

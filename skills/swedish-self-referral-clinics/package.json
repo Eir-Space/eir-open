@@ -1,0 +1,36 @@
+{
+  "name": "swedish-self-referral-clinics",
+  "version": "1.0.0",
+  "description": "CLI and Agent Skill for finding Swedish clinics with verified 1177 self-referral support",
+  "type": "module",
+  "bin": {
+    "swedish-self-referral-clinics": "scripts/find-clinic.js"
+  },
+  "scripts": {
+    "search": "node scripts/find-clinic.js"
+  },
+  "keywords": [
+    "skill",
+    "agent-skill",
+    "sweden",
+    "1177",
+    "self-referral",
+    "egen-remiss",
+    "egen-vardbegaran",
+    "healthcare",
+    "clinic-search"
+  ],
+  "author": "Eir Space",
+  "license": "MIT",
+  "files": [
+    "SKILL.md",
+    "agents/",
+    "assets/",
+    "data/",
+    "references/",
+    "scripts/"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

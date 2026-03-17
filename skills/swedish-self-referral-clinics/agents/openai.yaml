@@ -1,0 +1,5 @@
+interface:
+  display_name: 'Swedish Self-Referral Clinics'
+  short_description: 'Find Swedish clinics with verified 1177 egen remiss support'
+  icon_small: './assets/self-referral-clinics.svg'
+  icon_large: './assets/self-referral-clinics.svg'
