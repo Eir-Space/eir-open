@@ -1,0 +1,163 @@
+---
+import '@/styles/global.css';
+import ThemeProvider from '@/components/ThemeProvider.astro';
+import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
+import StatsBar from '@/components/StatsBar.astro';
+import CapabilityCard from '@/components/CapabilityCard.astro';
+import GettingStartedItem from '@/components/GettingStartedItem.astro';
+import { projects } from '@/data/projects';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eir Open</title>
+    <meta
+      name="description"
+      content="Open source tools for AI-powered health empowerment."
+    />
+  </head>
+  <body>
+    <ThemeProvider />
+    <main class="site-shell">
+      <section class="hero-panel">
+        <p class="hero-kicker">Eir Open</p>
+        <h1>Open source tools for AI-powered health empowerment.</h1>
+        <p class="hero-copy">
+          Medication lookups, health data standards, privacy-first apps, and
+          agent-ready infrastructure for health workflows.
+        </p>
+        <div class="hero-actions">
+          <a class="primary" href="/docs/">Explore docs</a>
+          <a href="/docs/ai-compute-disease-ranking/">AI compute ranking</a>
+        </div>
+      </section>
+
+      <StatsBar
+        stats={[
+          { value: '81,000+', label: 'Medications' },
+          { value: '17,800+', label: 'Clinics' },
+          { value: '10+', label: 'Projects' },
+          { value: '100%', label: 'Private-first' },
+        ]}
+      />
+
+      <section>
+        <h2>Who this is for</h2>
+        <div class="getting-started-grid">
+          <GettingStartedItem title="Learning about eir-open" icon="book-open">
+            Read the docs overview and explore the project catalog.
+          </GettingStartedItem>
+          <GettingStartedItem title="Building with agents" icon="bot">
+            Use the integration guides and health-data modules in your agent stack.
+          </GettingStartedItem>
+          <GettingStartedItem title="Contributing" icon="users">
+            Join the project as a developer, reviewer, clinician, or maintainer.
+          </GettingStartedItem>
+          <GettingStartedItem title="Ranking AI opportunities" icon="lightbulb">
+            Review the disease ranking page for where large AI inference budgets may matter most.
+          </GettingStartedItem>
+        </div>
+      </section>
+
+      <section>
+        <h2>Key capabilities</h2>
+        <div class="capabilities-grid">
+          <CapabilityCard title="AI-powered" description="Built to fit LLMs, agents, and MCP workflows" icon="bot" />
+          <CapabilityCard title="Privacy-first" description="Designed to keep sensitive health data local" icon="shield-check" />
+          <CapabilityCard title="Open source" description="Composable code and data assets for reuse" icon="globe" />
+          <CapabilityCard title="Developer ready" description="CLI tools, packages, and app building blocks" icon="terminal" />
+        </div>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <ProjectCardGrid projects={projects} linkPrefix="docs/" />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .site-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+  }
+
+  .hero-panel {
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.75rem;
+    background:
+      radial-gradient(circle at top right, rgba(232, 168, 48, 0.12), transparent 32%),
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 90%, white 10%), var(--card));
+    box-shadow: var(--card-shadow);
+    padding: 2.5rem;
+  }
+
+  .hero-kicker {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.8rem 0 0;
+    max-width: 13ch;
+    font-size: clamp(2.8rem, 7vw, 5.1rem);
+    line-height: 0.95;
+  }
+
+  h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.5rem;
+  }
+
+  .hero-copy {
+    max-width: 48rem;
+    margin: 1rem 0 0;
+    color: var(--muted-foreground);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-actions a {
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.8rem 1.05rem;
+    background: var(--card);
+    color: var(--foreground);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .hero-actions .primary {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  @media (max-width: 800px) {
+    .site-shell {
+      width: min(100% - 1rem, 1180px);
+      padding-top: 1rem;
+    }
+
+    .hero-panel {
+      padding: 1.4rem;
+      border-radius: 1.25rem;
+    }
+  }
+</style>

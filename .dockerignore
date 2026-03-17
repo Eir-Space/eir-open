@@ -1,0 +1,12 @@
+.git
+.gitignore
+.github
+node_modules
+**/node_modules
+**/.next
+**/.wrangler
+**/dist
+**/coverage
+**/.DS_Store
+skills/cbt-programs/data/programs/**/progress
+skills/cbt-programs/data/programs/**/locales/.*

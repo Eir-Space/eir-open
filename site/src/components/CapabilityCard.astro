@@ -1,13 +1,10 @@
 ---
 import Icon from './Icon';
-
-interface Props {
+const { title, description, icon } = Astro.props as {
   title: string;
   description: string;
   icon: string;
-}
-
-const { title, description, icon } = Astro.props;
+};
 ---
 
 <div class="capability-card">

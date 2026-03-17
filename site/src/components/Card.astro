@@ -1,16 +1,13 @@
 ---
 import Icon from './Icon';
-
-interface Props {
+const { tag = 'div', href, variant = 'default', icon, title, iconSize = 16 } = Astro.props as {
   tag?: 'div' | 'a';
   href?: string;
   variant?: 'default' | 'feature' | 'project';
   icon?: string;
   title: string;
   iconSize?: number;
-}
-
-const { tag = 'div', href, variant = 'default', icon, title, iconSize = 16 } = Astro.props;
+};
 
 const isLink = tag === 'a' && href;
 const El = isLink ? 'a' : 'div';
