@@ -1,7 +1,3 @@
----
-import { Icon } from '@astrojs/starlight/components';
----
-
 {/* Override: default to light theme (EIR Serenity) instead of system preference */}
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
@@ -34,9 +30,3 @@ import { Icon } from '@astrojs/starlight/components';
 		};
 	})();
 </script>
-
-<template id="theme-icons">
-	<Icon name="sun" class="light" />
-	<Icon name="moon" class="dark" />
-	<Icon name="laptop" class="auto" />
-</template>

@@ -63,13 +63,8 @@ const iconMap: Record<string, LucideIcon> = {
   stethoscope: Stethoscope,
 };
 
-interface Props {
-  name: string;
-  size?: number;
-  className?: string;
-}
-
-export default function Icon({ name, size = 20, className }: Props) {
+export default function Icon(props: { name: string; size?: number; className?: string }) {
+  const { name, size = 20, className } = props;
   const IconComponent = iconMap[name];
   if (!IconComponent) return null;
   return <IconComponent size={size} className={className} />;
