@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => (import.meta.env.PROD ? data.draft !== true : true)))
@@ -22,9 +23,12 @@ const otherPosts = posts.filter((post) => post.id !== featuredPost?.id);
       name="description"
       content="Essays and working notes on health AI, computational medicine, and where large-scale inference actually helps."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader current="blog" />
     <main class="blog-shell">
       <section class="blog-hero">
         <p class="eyebrow">Eir Open Blog</p>
@@ -81,7 +85,7 @@ const otherPosts = posts.filter((post) => post.id !== featuredPost?.id);
   .blog-shell {
     width: min(1120px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 2rem 0 4rem;
+    padding: 1.25rem 0 4rem;
   }
 
   .blog-hero {
@@ -216,7 +220,7 @@ const otherPosts = posts.filter((post) => post.id !== featuredPost?.id);
   @media (max-width: 800px) {
     .blog-shell {
       width: min(100% - 1rem, 1120px);
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .blog-hero {

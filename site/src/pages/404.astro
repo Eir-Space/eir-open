@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 ---
 
 <!doctype html>
@@ -9,9 +10,12 @@ import ThemeProvider from '@/components/ThemeProvider.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found | Eir Open</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader />
     <main class="error-shell">
       <section class="error-card">
         <p class="error-kicker">404</p>
@@ -44,7 +48,7 @@ import ThemeProvider from '@/components/ThemeProvider.astro';
     display: grid;
     min-height: 100vh;
     place-items: center;
-    padding: 2rem;
+    padding: 1.25rem 2rem 2rem;
   }
 
   .error-card {

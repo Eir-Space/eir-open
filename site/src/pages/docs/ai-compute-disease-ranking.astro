@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
+import SiteHeader from '@/components/SiteHeader.astro';
 import DiseaseRankingTable from '@/components/DiseaseRankingTable';
 ---
 
@@ -14,9 +15,12 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
       name="description"
       content="A top-100 ranking of diseases by where larger AI inference budgets are most likely to improve clinical outcomes."
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#111110" />
   </head>
   <body>
     <ThemeProvider />
+    <SiteHeader current="ranking" />
     <main class="page-shell">
       <section class="hero-card">
         <p class="eyebrow">AI Compute Ranking</p>
@@ -141,7 +145,7 @@ import DiseaseRankingTable from '@/components/DiseaseRankingTable';
   .page-shell {
     width: min(1180px, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 2rem 0 4rem;
+    padding: 1.25rem 0 4rem;
   }
 
   .hero-card,

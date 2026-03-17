@@ -1,11 +1,11 @@
-{/* Override: default to light theme (EIR Serenity) instead of system preference */}
+{/* Override: default to dark theme to match the Eir design system home state */}
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
 		let storedTheme =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
 		if (!storedTheme) {
-			storedTheme = 'light';
-			if (typeof localStorage !== 'undefined') localStorage.setItem('starlight-theme', 'light');
+			storedTheme = 'dark';
+			if (typeof localStorage !== 'undefined') localStorage.setItem('starlight-theme', 'dark');
 		}
 		const theme = storedTheme === 'auto'
 			? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
