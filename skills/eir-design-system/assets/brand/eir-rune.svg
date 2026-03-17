@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" fill="none">
+  <defs>
+    <linearGradient id="eir-rune-bg" x1="24" y1="24" x2="296" y2="296" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D4A76A"/>
+      <stop offset=".34" stop-color="#C9B88A"/>
+      <stop offset=".72" stop-color="#A8C5D4"/>
+      <stop offset="1" stop-color="#1E94A8"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="72" fill="url(#eir-rune-bg)"/>
+  <path d="M160 72V248" stroke="white" stroke-linecap="round" stroke-width="22"/>
+  <path d="M160 120L94 168" stroke="white" stroke-linecap="round" stroke-width="22"/>
+  <path d="M160 120L226 168" stroke="white" stroke-linecap="round" stroke-width="22"/>
+</svg>

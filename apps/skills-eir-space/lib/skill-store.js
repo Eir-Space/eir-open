@@ -1,12 +1,24 @@
 import { SEED_STORE } from '@/data/seed-skills';
 
 const env = typeof process !== 'undefined' && process?.env ? process.env : {};
+let postgresClientPromise = null;
 
 const d1Config = {
   accountId: env.CF_ACCOUNT_ID || '',
   databaseId: env.CF_D1_DATABASE_ID || '',
   apiToken: env.CF_API_TOKEN || '',
 };
+
+const postgresConfig = {
+  url: env.DATABASE_URL || env.POSTGRES_URL || '',
+};
+
+const DEPRECATED_SKILL_SLUGS = new Set(['eir-design-system', 'reality-check-support']);
+const LOCAL_SKILL_DOC_CANDIDATES = ['', 'SKILL.md'];
+
+function usePostgresStore() {
+  return Boolean(postgresConfig.url);
+}
 
 function useD1Store() {
   return Boolean(d1Config.accountId && d1Config.databaseId && d1Config.apiToken);
@@ -25,7 +37,63 @@ function normalizeList(input) {
     .filter(Boolean);
 }
 
+function curateSkills(skills = [], fallbackSkills = []) {
+  const merged = new Map();
+
+  for (const skill of safeArray(fallbackSkills)) {
+    if (!skill || DEPRECATED_SKILL_SLUGS.has(skill.slug)) continue;
+    merged.set(skill.id || skill.slug, sanitizeSkill(skill));
+  }
+
+  for (const skill of safeArray(skills)) {
+    if (!skill || DEPRECATED_SKILL_SLUGS.has(skill.slug)) continue;
+    merged.set(skill.id || skill.slug, sanitizeSkill(skill));
+  }
+
+  return [...merged.values()];
+}
+
+function sanitizeSkill(skill) {
+  if (!skill) return skill;
+
+  if (skill.slug === 'health-actions') {
+    return {
+      ...skill,
+      sourceUrls: [],
+    };
+  }
+
+  if (skill.slug === 'reality-check-support') {
+    return {
+      ...skill,
+      id: 'human-alignment',
+      slug: 'human-alignment',
+      name: 'human-alignment',
+      title: 'Human Alignment',
+      skillPath: 'skills/human-alignment/',
+    };
+  }
+
+  return skill;
+}
+
+function curateStore(payload) {
+  return {
+    skills: curateSkills(payload.skills, SEED_STORE.skills),
+    submissions: safeArray(payload.submissions),
+  };
+}
+
 export async function readStore() {
+  if (usePostgresStore()) {
+    try {
+      return await readStoreFromPostgres();
+    } catch (error) {
+      console.error('Postgres read failed, falling back:', error?.message || error);
+      if (useD1Store()) return readStoreFromD1();
+      return readStoreFromFile();
+    }
+  }
   if (useD1Store()) {
     try {
       return await readStoreFromD1();
@@ -38,6 +106,10 @@ export async function readStore() {
 }
 
 export async function writeStore(data) {
+  if (usePostgresStore()) {
+    await writeStoreToPostgres(data);
+    return;
+  }
   if (useD1Store()) {
     await writeStoreToD1(data);
     return;
@@ -49,9 +121,59 @@ export async function writeStore(data) {
     await fs.writeFile(storePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
   } catch {
     throw new Error(
-      'Submission persistence requires Cloudflare D1 in production (set CF_ACCOUNT_ID, CF_D1_DATABASE_ID, CF_API_TOKEN).',
+      'Submission persistence requires DATABASE_URL for Postgres or Cloudflare D1 credentials in production.',
     );
   }
+}
+
+async function getPostgresClient() {
+  if (!postgresClientPromise) {
+    postgresClientPromise = import('postgres').then(({ default: postgres }) =>
+      postgres(postgresConfig.url, {
+        max: 1,
+        prepare: false,
+      }),
+    );
+  }
+
+  return postgresClientPromise;
+}
+
+async function ensurePostgresTable() {
+  const sql = await getPostgresClient();
+  await sql.unsafe(
+    'CREATE TABLE IF NOT EXISTS skill_store (store_key TEXT PRIMARY KEY, store_value JSONB NOT NULL)',
+  );
+}
+
+async function readStoreFromPostgres() {
+  await ensurePostgresTable();
+  const sql = await getPostgresClient();
+  const rows = await sql`SELECT store_value FROM skill_store WHERE store_key = ${'main'}`;
+
+  if (!rows.length) {
+    const seed = await readSeedStore();
+    await writeStoreToPostgres(seed);
+    return seed;
+  }
+
+  const payload =
+    typeof rows[0].store_value === 'string'
+      ? JSON.parse(rows[0].store_value)
+      : rows[0].store_value;
+
+  return curateStore(payload);
+}
+
+async function writeStoreToPostgres(data) {
+  await ensurePostgresTable();
+  const sql = await getPostgresClient();
+  await sql`
+    INSERT INTO skill_store (store_key, store_value)
+    VALUES (${'main'}, ${sql.json(data)})
+    ON CONFLICT (store_key)
+    DO UPDATE SET store_value = EXCLUDED.store_value
+  `;
 }
 
 async function d1Query(sql, params = []) {
@@ -87,11 +209,7 @@ async function ensureD1Table() {
 }
 
 async function readSeedStore() {
-  const parsed = SEED_STORE;
-  return {
-    skills: safeArray(parsed.skills),
-    submissions: safeArray(parsed.submissions),
-  };
+  return curateStore(SEED_STORE);
 }
 
 async function readStoreFromFile() {
@@ -101,10 +219,7 @@ async function readStoreFromFile() {
     const storePath = path.join(process.cwd(), 'data', 'skills.json');
     const raw = await fs.readFile(storePath, 'utf8');
     const parsed = JSON.parse(raw);
-    return {
-      skills: safeArray(parsed.skills),
-      submissions: safeArray(parsed.submissions),
-    };
+    return curateStore(parsed);
   } catch {
     // Workers runtime has no writable/readable project filesystem.
     return readSeedStore();
@@ -121,10 +236,7 @@ async function readStoreFromD1() {
   }
 
   const parsed = JSON.parse(rows[0].store_value);
-  return {
-    skills: safeArray(parsed.skills),
-    submissions: safeArray(parsed.submissions),
-  };
+  return curateStore(parsed);
 }
 
 async function writeStoreToD1(data) {
@@ -176,6 +288,41 @@ export async function listSkills({
 export async function getSkillBySlug(slug) {
   const { skills } = await readStore();
   return skills.find((skill) => skill.slug === slug) || null;
+}
+
+export async function getLocalSkillDocument(skillPath) {
+  const normalizedPath = String(skillPath || '').trim().replace(/^\/+/, '');
+  if (!normalizedPath) return null;
+
+  try {
+    const { promises: fs } = await import('node:fs');
+    const path = await import('node:path');
+    const candidateRoots = [
+      process.cwd(),
+      path.resolve(process.cwd(), '..'),
+      path.resolve(process.cwd(), '..', '..'),
+    ];
+
+    for (const root of candidateRoots) {
+      for (const candidate of LOCAL_SKILL_DOC_CANDIDATES) {
+        const docPath = candidate
+          ? path.resolve(root, normalizedPath, candidate)
+          : path.resolve(root, normalizedPath);
+        try {
+          const stat = await fs.stat(docPath);
+          if (!stat.isFile()) continue;
+          const markdown = await fs.readFile(docPath, 'utf8');
+          return { path: docPath, markdown };
+        } catch {
+          // Try the next candidate path.
+        }
+      }
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
 }
 
 function makeSlug(name) {

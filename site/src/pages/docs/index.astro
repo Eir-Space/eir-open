@@ -1,0 +1,161 @@
+---
+import '@/styles/global.css';
+import ThemeProvider from '@/components/ThemeProvider.astro';
+import ProjectCardGrid from '@/components/ProjectCardGrid.astro';
+import GettingStartedItem from '@/components/GettingStartedItem.astro';
+import { libraryProjects, appProjects } from '@/data/projects';
+import { docsPages } from '@/data/docsPages';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation | Eir Open</title>
+    <meta
+      name="description"
+      content="Explore Eir Open docs, projects, and AI-health research pages."
+    />
+  </head>
+  <body>
+    <ThemeProvider />
+    <main class="docs-shell">
+      <section class="docs-hero">
+        <p class="eyebrow">Documentation</p>
+        <h1>Project docs, integration notes, and the AI compute disease ranking</h1>
+        <p>
+          This site now uses explicit Astro routes for GitHub Pages stability.
+          Core pages are preserved, and legacy docs URLs resolve through a simple docs layer.
+        </p>
+      </section>
+
+      <section>
+        <h2>Get started</h2>
+        <div class="getting-started-grid">
+          <GettingStartedItem title="Quickstart" icon="rocket">
+            <a href="/docs/quickstart/">Install Eir Open locally.</a>
+          </GettingStartedItem>
+          <GettingStartedItem title="Agent integration" icon="bot">
+            <a href="/docs/agent-integration/">Use Eir Open from agents and tools.</a>
+          </GettingStartedItem>
+          <GettingStartedItem title="AI ranking" icon="lightbulb">
+            <a href="/docs/ai-compute-disease-ranking/">Review the top-100 disease ranking.</a>
+          </GettingStartedItem>
+          <GettingStartedItem title="Contributing" icon="users">
+            <a href="/docs/contributing/">Find where to help next.</a>
+          </GettingStartedItem>
+        </div>
+      </section>
+
+      <section>
+        <h2>Reference pages</h2>
+        <div class="docs-links">
+          {docsPages
+            .filter((page) => page.slug)
+            .map((page) => (
+              <a class="docs-link-card" href={`/docs/${page.slug}/`}>
+                <span class="docs-link-title">{page.title}</span>
+                <span class="docs-link-copy">{page.description}</span>
+              </a>
+            ))}
+        </div>
+      </section>
+
+      <section>
+        <h2>Libraries & tools</h2>
+        <ProjectCardGrid projects={libraryProjects} />
+      </section>
+
+      <section>
+        <h2>Applications</h2>
+        <ProjectCardGrid projects={appProjects} class="mt-6" />
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  .docs-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+  }
+
+  .docs-hero {
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.75rem;
+    background: color-mix(in srgb, var(--card) 92%, white 8%);
+    box-shadow: var(--card-shadow);
+    padding: 2.3rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.8rem 0 0;
+    max-width: 16ch;
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+    line-height: 1;
+  }
+
+  h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.4rem;
+  }
+
+  p {
+    color: var(--muted-foreground);
+    line-height: 1.75;
+  }
+
+  .docs-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .docs-link-card {
+    display: grid;
+    gap: 0.35rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 1.1rem;
+    background: var(--card);
+    box-shadow: var(--card-shadow);
+    padding: 1rem 1.1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .docs-link-title {
+    font-weight: 700;
+  }
+
+  .docs-link-copy {
+    color: var(--muted-foreground);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 800px) {
+    .docs-shell {
+      width: min(100% - 1rem, 1180px);
+      padding-top: 1rem;
+    }
+
+    .docs-hero {
+      padding: 1.4rem;
+      border-radius: 1.25rem;
+    }
+
+    .docs-links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

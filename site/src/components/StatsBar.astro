@@ -1,14 +1,7 @@
 ---
-interface StatItem {
-  value: string;
-  label: string;
-}
-
-interface Props {
-  stats: StatItem[];
-}
-
-const { stats } = Astro.props;
+const { stats } = Astro.props as {
+  stats: Array<{ value: string; label: string }>;
+};
 ---
 
 <div class="stats-bar not-content">

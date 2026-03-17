@@ -1,0 +1,3 @@
+interface:
+  display_name: 'Human Alignment'
+  short_description: 'Keep AI conversations grounded, non-sycophantic, reality-based, and connected to real human feedback'

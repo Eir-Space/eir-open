@@ -1,0 +1,19 @@
+---
+import { docsPages } from '@/data/docsPages';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'docs' } },
+    { params: { slug: 'docs/ai-compute-disease-ranking' } },
+    ...docsPages
+      .filter((page) => page.slug)
+      .map((page) => ({ params: { slug: `docs/${page.slug}` } })),
+  ];
+}
+
+const rawSlug = Astro.params.slug;
+const slug = Array.isArray(rawSlug) ? rawSlug.join('/') : rawSlug || '';
+const target = slug ? `/${slug}/` : '/';
+
+return Astro.redirect(target);
+---
