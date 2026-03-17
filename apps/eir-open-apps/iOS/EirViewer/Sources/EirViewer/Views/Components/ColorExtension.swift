@@ -43,6 +43,7 @@ enum AppColors {
     static let blue = Color(hex: "3B82F6")
     static let teal = Color(hex: "14B8A6")
     static let pink = Color(hex: "EC4899")
+    static let yellow = Color(hex: "EAB308")
 
     static func categoryColor(for category: String) -> Color {
         switch category.lowercased() {

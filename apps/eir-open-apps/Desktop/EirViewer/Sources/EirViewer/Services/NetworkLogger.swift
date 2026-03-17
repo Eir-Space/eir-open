@@ -2,12 +2,16 @@ import Foundation
 import os
 
 /// Logs all network activity from the 1177 health data browser to a file for analysis.
-/// Log file: /tmp/eirviewer-network.log
 actor NetworkLogger {
     static let shared = NetworkLogger()
 
     private let logger = Logger(subsystem: "com.eir.viewer", category: "Network")
-    private let logFileURL: URL = URL(fileURLWithPath: "/tmp/eirviewer-network.log")
+    private let logFileURL: URL = {
+        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("EirViewer")
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir.appendingPathComponent("eirviewer-network.log")
+    }()
     private var entries: [LogEntry] = []
 
     struct LogEntry: Identifiable, Sendable {

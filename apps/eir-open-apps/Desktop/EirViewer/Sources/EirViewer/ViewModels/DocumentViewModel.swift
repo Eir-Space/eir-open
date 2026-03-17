@@ -76,12 +76,15 @@ class DocumentViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
 
+        // Clear stale state immediately before parsing new file
+        document = nil
+        selectedEntryID = nil
+        searchText = ""
+        selectedCategory = nil
+        selectedProvider = nil
+
         do {
             document = try EirParser.parse(url: url)
-            selectedEntryID = nil
-            searchText = ""
-            selectedCategory = nil
-            selectedProvider = nil
         } catch {
             errorMessage = error.localizedDescription
         }

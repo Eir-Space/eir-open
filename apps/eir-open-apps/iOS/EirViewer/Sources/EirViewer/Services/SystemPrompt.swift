@@ -68,6 +68,64 @@ enum SystemPrompt {
         return build(memory: defaultMemory, document: document, includeToolInstructions: false)
     }
 
+    /// Compact system prompt for on-device models — much shorter to reduce prefill time
+    static func buildLocal(
+        document: EirDocument?,
+        userName: String? = nil,
+        promptVersion: PromptVersion? = nil
+    ) -> String {
+        var prompt: String
+        if let version = promptVersion {
+            prompt = version.systemPrompt
+        } else {
+            prompt = """
+            You are Eir, a medical records assistant. You can ONLY answer using the patient records provided below. Always respond in English. The records may be in Swedish — translate them.
+
+            CRITICAL CONSTRAINTS — you must follow these at all times:
+            1. Use ONLY information explicitly written in the provided records. Never add details, never infer, never guess.
+            2. If the answer is not in the records, you MUST say: "This information is not in the provided records."
+            3. Never combine or mix details from different entries. Treat each entry as separate.
+            4. When citing information, state the exact date and values as written in the record.
+            5. Never invent medication names, dosages, diagnoses, or test results that are not explicitly stated.
+            6. Never provide definitive diagnoses — only explain what the records say.
+            7. If you are uncertain about anything, say so. Do not fill gaps with assumptions.
+            """
+        }
+
+        if let name = userName, !name.isEmpty {
+            prompt += "\n\nThe user is \(name). All records below belong to this person."
+        }
+
+        if let doc = document {
+            prompt += "\n\n# Patient Records\n"
+            if let patient = doc.metadata.patient {
+                prompt += "Patient: \(patient.name ?? "Unknown")"
+                if let dob = patient.birthDate { prompt += ", born \(dob)" }
+                prompt += "\n"
+            }
+            if let info = doc.metadata.exportInfo, let total = info.totalEntries {
+                prompt += "Total entries: \(total)\n"
+            }
+            let recent = doc.entries.prefix(15)
+            if !recent.isEmpty {
+                prompt += "\nRecent entries:\n"
+                for entry in recent {
+                    prompt += "- \(entry.date ?? "?") [\(entry.category ?? "?")] "
+                    if let summary = entry.content?.summary { prompt += summary }
+                    prompt += " (ID: \(entry.id))\n"
+                }
+                if doc.entries.count > 15 {
+                    prompt += "(\(doc.entries.count - 15) more entries available)\n"
+                }
+            }
+        }
+
+        // Reinforce grounding at the end (research shows repeating constraints reduces hallucination)
+        prompt += "\n\nREMINDER: Only use facts from the records above. If the information is not there, say so. Do not make anything up."
+
+        return prompt
+    }
+
     // MARK: - Records Context
 
     private static func buildRecordsContext(from doc: EirDocument) -> String {

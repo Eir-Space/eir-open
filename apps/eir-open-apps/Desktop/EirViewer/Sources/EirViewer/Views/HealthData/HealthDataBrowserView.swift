@@ -300,8 +300,10 @@ struct HealthDataBrowserView: View {
             }
 
             HStack(spacing: 8) {
+                let cacheDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+                    .appendingPathComponent("EirViewer")
                 Button {
-                    NSWorkspace.shared.open(URL(fileURLWithPath: "/tmp/eirviewer-extracted-data.json"))
+                    NSWorkspace.shared.open(cacheDir.appendingPathComponent("eirviewer-extracted-data.json"))
                 } label: {
                     Text("JSON")
                         .font(.caption2)
@@ -309,7 +311,7 @@ struct HealthDataBrowserView: View {
                 .buttonStyle(.borderless)
 
                 Button {
-                    NSWorkspace.shared.open(URL(fileURLWithPath: "/tmp/eirviewer-extracted-data.txt"))
+                    NSWorkspace.shared.open(cacheDir.appendingPathComponent("eirviewer-extracted-data.txt"))
                 } label: {
                     Text("Text")
                         .font(.caption2)
@@ -317,7 +319,7 @@ struct HealthDataBrowserView: View {
                 .buttonStyle(.borderless)
 
                 Button {
-                    NSWorkspace.shared.open(URL(fileURLWithPath: "/tmp/eirviewer-extraction.log"))
+                    NSWorkspace.shared.open(cacheDir.appendingPathComponent("eirviewer-extraction.log"))
                 } label: {
                     Text("Log")
                         .font(.caption2)

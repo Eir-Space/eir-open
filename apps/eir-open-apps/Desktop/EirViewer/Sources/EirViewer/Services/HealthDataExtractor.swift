@@ -7,6 +7,13 @@ import WebKit
 @MainActor
 class HealthDataExtractor: ObservableObject {
 
+    private static let cacheDir: URL = {
+        let dir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            .appendingPathComponent("EirViewer")
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir
+    }()
+
     enum Status: Equatable {
         case idle
         case navigating
@@ -1820,7 +1827,7 @@ class HealthDataExtractor: ObservableObject {
 
     private func saveResults() async {
         // JSON
-        let fileURL = URL(fileURLWithPath: "/tmp/eirviewer-extracted-data.json")
+        let fileURL = Self.cacheDir.appendingPathComponent("eirviewer-extracted-data.json")
         do {
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
@@ -1832,7 +1839,7 @@ class HealthDataExtractor: ObservableObject {
         }
 
         // Text dump
-        let textURL = URL(fileURLWithPath: "/tmp/eirviewer-extracted-data.txt")
+        let textURL = Self.cacheDir.appendingPathComponent("eirviewer-extracted-data.txt")
         var text = "=== Health Data Extraction ===\n"
         text += "Date: \(Date())\n\n"
         for result in results {
@@ -1886,7 +1893,7 @@ class HealthDataExtractor: ObservableObject {
         let sanitizedName = result.personName
             .replacingOccurrences(of: " ", with: "_")
             .replacingOccurrences(of: "/", with: "-")
-        let fileURL = URL(fileURLWithPath: "/tmp/eirviewer-\(sanitizedName).eir")
+        let fileURL = Self.cacheDir.appendingPathComponent("eirviewer-\(sanitizedName).eir")
 
         let providers = Set(result.entries.compactMap { $0.provider }).sorted()
         let dates = result.entries.compactMap { normalizeDate($0.date) }.sorted()
@@ -2024,7 +2031,7 @@ class HealthDataExtractor: ObservableObject {
             )
         }
 
-        let logURL = URL(fileURLWithPath: "/tmp/eirviewer-extraction.log")
+        let logURL = Self.cacheDir.appendingPathComponent("eirviewer-extraction.log")
         let data = (line + "\n").data(using: .utf8) ?? Data()
         if FileManager.default.fileExists(atPath: logURL.path) {
             if let handle = try? FileHandle(forWritingTo: logURL) {

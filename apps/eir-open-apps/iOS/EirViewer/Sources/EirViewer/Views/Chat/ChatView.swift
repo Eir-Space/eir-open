@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ChatView: View {
     @EnvironmentObject var chatVM: ChatViewModel
@@ -7,6 +8,7 @@ struct ChatView: View {
     @EnvironmentObject var chatThreadStore: ChatThreadStore
     @EnvironmentObject var profileStore: ProfileStore
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
+    @EnvironmentObject var localModelManager: LocalModelManager
 
     @State private var showOnboarding = false
     @State private var showConversations = false
@@ -42,6 +44,7 @@ struct ChatView: View {
                         }
                         .padding()
                     }
+                    .scrollDismissesKeyboard(.interactively)
                     .onChange(of: chatThreadStore.messages.count) { _, _ in
                         if let last = chatThreadStore.messages.last(where: { $0.role != .tool }) {
                             withAnimation {
@@ -79,6 +82,17 @@ struct ChatView: View {
                     .padding(10)
                     .background(AppColors.divider)
                     .cornerRadius(20)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            Spacer()
+                            Button("Klar") {
+                                UIApplication.shared.sendAction(
+                                    #selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil
+                                )
+                            }
+                        }
+                    }
 
                 if chatVM.isStreaming {
                     Button {
@@ -158,6 +172,22 @@ struct ChatView: View {
                 showOnboarding = true
             }
         }
+        .alert(
+            "Share Data with \(chatVM.pendingCloudConsent?.rawValue ?? "Cloud Provider")?",
+            isPresented: Binding(
+                get: { chatVM.pendingCloudConsent != nil },
+                set: { if !$0 { chatVM.consentDenied() } }
+            )
+        ) {
+            Button("Cancel", role: .cancel) {
+                chatVM.consentDenied()
+            }
+            Button("I Agree") {
+                chatVM.consentGrantedAndSend()
+            }
+        } message: {
+            Text("Your medical records and conversation will be sent to \(chatVM.pendingCloudConsent?.rawValue ?? "the selected provider") for AI processing. This data may include personal health information. The provider's privacy policy applies. On-device models keep all data on your phone.")
+        }
     }
 
     private func sendMessage() {
@@ -167,7 +197,8 @@ struct ChatView: View {
             settingsVM: settingsVM,
             chatThreadStore: chatThreadStore,
             profileID: profileID,
-            agentMemoryStore: agentMemoryStore
+            agentMemoryStore: agentMemoryStore,
+            localModelManager: localModelManager
         )
     }
 }
