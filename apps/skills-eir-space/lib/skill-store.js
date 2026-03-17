@@ -325,6 +325,61 @@ export async function getLocalSkillDocument(skillPath) {
   return null;
 }
 
+function normalizeSkillDocPath(skillPath) {
+  const normalizedPath = String(skillPath || '').trim().replace(/^\/+/, '');
+  if (!normalizedPath) return '';
+  return /SKILL\.md$/i.test(normalizedPath)
+    ? normalizedPath
+    : `${normalizedPath.replace(/\/?$/, '/')}SKILL.md`;
+}
+
+function parseGitHubRepo(repoUrl) {
+  const match = String(repoUrl || '').trim().match(/^https:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?$/i);
+  if (!match) return null;
+  return { owner: match[1], repo: match[2] };
+}
+
+export async function getGithubSkillDocument(skill) {
+  const repo = parseGitHubRepo(skill?.repoUrl);
+  const docPath = normalizeSkillDocPath(skill?.skillPath);
+  if (!repo || !docPath) return null;
+
+  for (const ref of ['main', 'master']) {
+    const url = `https://raw.githubusercontent.com/${repo.owner}/${repo.repo}/${ref}/${docPath}`;
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Accept: 'text/plain',
+        },
+      });
+      if (!response.ok) continue;
+      const markdown = await response.text();
+      if (!markdown.trim()) continue;
+      return {
+        path: url,
+        markdown,
+        source: 'github',
+      };
+    } catch {
+      // Try the next ref.
+    }
+  }
+
+  return null;
+}
+
+export async function getSkillDocument(skill) {
+  const localDocument = await getLocalSkillDocument(skill?.skillPath);
+  if (localDocument) {
+    return {
+      ...localDocument,
+      source: 'local',
+    };
+  }
+
+  return getGithubSkillDocument(skill);
+}
+
 function makeSlug(name) {
   return String(name || '')
     .toLowerCase()

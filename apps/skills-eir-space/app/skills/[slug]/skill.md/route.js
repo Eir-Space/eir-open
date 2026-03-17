@@ -1,4 +1,4 @@
-import { getLocalSkillDocument, getSkillBySlug } from '@/lib/skill-store';
+import { getSkillBySlug, getSkillDocument } from '@/lib/skill-store';
 
 export async function GET(_request, { params }) {
   const resolvedParams = await Promise.resolve(params || {});
@@ -13,9 +13,9 @@ export async function GET(_request, { params }) {
     });
   }
 
-  const localDocument = await getLocalSkillDocument(skill.skillPath);
-  if (!localDocument) {
-    return new Response('No local SKILL.md available for this skill.\n', {
+  const document = await getSkillDocument(skill);
+  if (!document) {
+    return new Response('No SKILL.md available for this skill.\n', {
       status: 404,
       headers: {
         'Content-Type': 'text/plain; charset=utf-8',
@@ -23,7 +23,7 @@ export async function GET(_request, { params }) {
     });
   }
 
-  return new Response(localDocument.markdown, {
+  return new Response(document.markdown, {
     status: 200,
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',

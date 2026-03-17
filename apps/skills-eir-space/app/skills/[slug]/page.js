@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import { Fragment } from 'react';
-import { getLocalSkillDocument, getSkillBySlug } from '@/lib/skill-store';
+import { getSkillBySlug, getSkillDocument } from '@/lib/skill-store';
 
 export const dynamic = 'force-dynamic';
 
@@ -124,11 +124,11 @@ export default async function SkillPage({ params }) {
   const host = headerStore.get('x-forwarded-host') || headerStore.get('host') || 'skills.eir.space';
   const protocol = headerStore.get('x-forwarded-proto') || (host.includes('localhost') || host.startsWith('127.0.0.1') ? 'http' : 'https');
   let skill = null;
-  let localDocument = null;
+  let skillDocument = null;
   try {
     skill = await getSkillBySlug(slug);
     if (skill) {
-      localDocument = await getLocalSkillDocument(skill.skillPath);
+      skillDocument = await getSkillDocument(skill);
     }
   } catch (error) {
     console.error('Failed to load skill detail:', error?.message || error);
@@ -149,8 +149,10 @@ skill_path: ${skill.skillPath}`;
     skill.createsLinkedFile
       ? `Declares linked files: ${(skill.linkedFileNames || []).join(', ')}.`
       : 'No linked file contract is declared.',
-    localDocument
-      ? 'A local SKILL.md is rendered directly on this page.'
+    skillDocument
+      ? skillDocument.source === 'local'
+        ? 'A local SKILL.md is rendered directly on this page.'
+        : 'SKILL.md is fetched from the linked GitHub repository.'
       : `${sourceCount} source link(s) are attached to this record.`,
     `Current moderation tier: ${tierLabel[skill.moderationTier] || skill.moderationTier}.`,
   ];
@@ -278,7 +280,7 @@ skill_path: ${skill.skillPath}`;
             path, similar to general skill directories.
           </p>
           <pre className="codeBlock">{installSnippet}</pre>
-          {localDocument ? (
+          {skillDocument ? (
             <>
               <p className="muted installNote">
                 You can also fetch the hosted markdown directly and install from the file.
@@ -291,16 +293,20 @@ skill_path: ${skill.skillPath}`;
           ) : null}
         </div>
 
-        {localDocument ? (
+        {skillDocument ? (
           <div className="panel markdownPanel">
             <div className="markdownMeta">
               <div>
                 <h2>SKILL.md</h2>
-                <p className="muted">Rendered directly from the local skill file used by this registry.</p>
+                <p className="muted">
+                  {skillDocument.source === 'local'
+                    ? 'Rendered directly from the local skill file used by this registry.'
+                    : 'Fetched from the linked GitHub repository for this skill.'}
+                </p>
               </div>
-              <code>{localDocument.path}</code>
+              <code>{skillDocument.path}</code>
             </div>
-            <div className="markdownBody">{renderMarkdownDocument(localDocument.markdown)}</div>
+            <div className="markdownBody">{renderMarkdownDocument(skillDocument.markdown)}</div>
           </div>
         ) : null}
       </section>
