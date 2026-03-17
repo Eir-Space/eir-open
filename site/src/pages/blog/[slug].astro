@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import ThemeProvider from '@/components/ThemeProvider.astro';
 import SiteHeader from '@/components/SiteHeader.astro';
 import ComputationalMedicineBrief from '@/components/ComputationalMedicineBrief.astro';
+import WhitePaperCallout from '@/components/WhitePaperCallout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -50,6 +51,7 @@ const showComputationalBrief = post.id.replace(/\.(md|mdx)$/, '') === 'computati
         </header>
 
         <div class="post-body">
+          {showComputationalBrief && <WhitePaperCallout compact />}
           {showComputationalBrief && <ComputationalMedicineBrief />}
           <Content />
         </div>
