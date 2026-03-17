@@ -28,6 +28,7 @@ import {
   Rocket,
   FileHeart,
   Stethoscope,
+  Newspaper,
   type LucideIcon,
 } from "lucide-react";
 
@@ -61,6 +62,7 @@ const iconMap: Record<string, LucideIcon> = {
   rocket: Rocket,
   "file-heart": FileHeart,
   stethoscope: Stethoscope,
+  newspaper: Newspaper,
 };
 
 export default function Icon(props: { name: string; size?: number; className?: string }) {
