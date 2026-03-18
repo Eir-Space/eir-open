@@ -9,6 +9,17 @@ description: Help users find over-the-counter medications they can buy on Apotea
 
 This skill narrows medication buying to Swedish OTC products that are actually listed on Apotea and can be matched to the local `swedish-medications` data. Use it for shopping help, not for diagnosis, emergencies, or prescription treatment choices.
 
+## Dependency
+
+This skill depends on `swedish-medications`.
+
+Do not use `buy-medication` as a standalone source of medication truth. It relies on `swedish-medications` to:
+- confirm that an Apotea product maps to a real Swedish medication
+- provide what the medication is for
+- provide active substance, OTC vs prescription status, dosing basics, and warnings
+
+If `swedish-medications` is unavailable, say that the medication verification step is missing and avoid making confident medication recommendations.
+
 ## Workflow
 
 ### 1. Triage before suggesting products
@@ -34,7 +45,7 @@ If the user is asking what to buy, ask only for the details needed to avoid a ba
 
 ### 3. Confirm the medication is real
 
-Always use the `swedish-medications` skill before trusting an Apotea product as a medication.
+Always use the `swedish-medications` skill before trusting an Apotea product as a medication. This is a required dependency, not an optional check.
 
 Preferred checks:
 ```bash
