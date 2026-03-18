@@ -3,5 +3,11 @@ interface:
   short_description: "Match OTC meds on Apotea safely."
   default_prompt: "Use $buy-medication to find relevant over-the-counter medicines on Apotea and screen them against Swedish medication data."
 
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "swedish-medications"
+      description: "Required medication reference dependency for uses, warnings, and real-product matching."
+
 policy:
   allow_implicit_invocation: true
