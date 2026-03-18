@@ -1,0 +1,7 @@
+interface:
+  display_name: "Buy Medication"
+  short_description: "Match OTC meds on Apotea safely."
+  default_prompt: "Use $buy-medication to find relevant over-the-counter medicines on Apotea and screen them against Swedish medication data."
+
+policy:
+  allow_implicit_invocation: true
