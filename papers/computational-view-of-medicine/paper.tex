@@ -301,13 +301,6 @@ AI is uniquely positioned to hold the full search state together across fragment
 
 Raw access is not enough. Precision medicine remains incomplete without patients as active participants in data interpretation \citep{tuttle2021}. AI for shared decision-making must improve deliberation, not simply generate recommendations \citep{hassan2024}. Integration of patient-generated health data is not merely a technical challenge but a clinical, organizational, and evidentiary one \citep{jim2020}. Early work shows patients can already use large language models on open notes to interpret their records \citep{salmi2025}---early evidence, not clinical validation, but it clarifies the direction. Once patients can access their full timeline, the missing layer is repeatable reasoning over it.
 
-\subsection{Counterarguments and constraints}
-Patient-held data are not automatically useful. Provenance may be uncertain, timestamps incomplete, self-tracked measures drifting, and the patients most likely to benefit may face the largest barriers in digital access \citep{huckvale2019}. The computational paradigm depends on a stricter standard than interoperability: provenance, chronology, validation, and interfaces that separate observed evidence from inferred conclusions.
-
-\summarybox{
-\textbf{Access versus leverage.} Data access creates possibility. Computational interpretation creates leverage. In a patient-centered health stack, the two should be designed together.
-}
-
 \section{Evidence from the highest-leverage domains}
 
 \subsection{Precision oncology}
@@ -325,6 +318,13 @@ Antimicrobial resistance presents a two-layer search problem. The first is patie
 
 \subsection{Sepsis and critical care}
 In critical care the challenge is time. Dozens of measurements update continuously, and the relevant signal is distributed across trends rather than single observations. A machine-learning sepsis early-warning system deployed across multiple hospitals was associated with faster antibiotic administration and lower mortality \citep{adams2022}. Deep learning on electronic health records can scale across broad clinical prediction tasks using the raw longitudinal record \citep{rajkomar2018}, and pragmatic deterioration surveillance can attach to live escalation pathways \citep{moses2025}. These results establish that longitudinal records contain actionable signal, and systems that hold more context together improve timing-sensitive decisions.
+
+\subsection{Psychiatry and mental health}
+Psychiatry is computational for a simple reason: the relevant state is distributed across time, context, prior treatment response, and the patient's own model of their experience. A clinician deciding what to do next in depression, bipolar disorder, ADHD, or anxiety is rarely choosing from a clean protocol. The task is to synthesize symptom history, prior medication trials, side effects, adherence, sleep, substance use, trauma context, family history, and functioning across settings. More careful reasoning can change the next decision because the problem is often one of sequencing and pattern detection rather than one decisive test.
+
+This is visible even in pharmacotherapy. First-line antidepressants fail in a large share of patients, and standard care often proceeds by serial trial and error over months. Pharmacogenomics offers one example of computation reducing that search burden: cytochrome P450 variation can identify medications that are more likely to be poorly metabolized before they are prescribed \citep{hicks2015}. The point is not that genotype solves psychiatry. It is that psychiatric treatment already contains a branching search problem in which better synthesis can eliminate bad branches earlier.
+
+The same structure appears in psychotherapy. Cognitive behavioral therapy is, in practice, a search for the loops that keep a disorder stable: triggers, beliefs, behaviors, and reinforcing consequences \citep{beck2005}. That does not mean the mind is reducible to a toy algorithm. It means psychiatric care often depends on reconstructing recurrent patterns from a longitudinal record that is partly clinical and partly autobiographical. Under a computational view, psychiatry belongs in the portfolio of high-burden reasoning problems precisely because more context and better synthesis can change the next therapeutic move.
 
 \subsection{Patient-reported outcomes and symptom monitoring}
 Not all high-value computation depends on genomics. Electronic patient-reported symptom monitoring during cancer treatment improved overall survival, likely by enabling earlier response to deterioration patterns otherwise missed \citep{basch2016,basch2017}. Symptoms, side effects, and tolerability live outside the hospital until severe enough to trigger contact. In the computational paradigm, those signals become first-class inputs into the case model.
