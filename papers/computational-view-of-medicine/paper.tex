@@ -136,7 +136,7 @@ A Computational View of Medicine\par}
 \pagenumbering{arabic}
 
 \begin{abstract}
-Artificial intelligence will not improve every part of medicine equally. Its highest-value role is in disease settings where the bottleneck is not data collection or workflow automation but high-context reasoning over multimodal evidence under uncertainty. We argue for a computational view of medicine that treats serious illness as a search problem over longitudinal records, pathology, imaging, genomics, patient-generated data, treatment history, and branching therapeutic options. The key question is not whether a model can produce clinically fluent text, but whether additional inference changes the next real decision for a specific patient. This constraint applies to clinicians and AI systems alike: both face the same search problem, and the quality of the search depends on the depth and structure of reasoning applied. We synthesize evidence from precision oncology, rare-disease genomics, antimicrobial discovery, sepsis surveillance, pharmacogenomics, psychiatric treatment selection, patient-reported outcomes, open-notes adoption, and N-of-1 medicine. Patient access to records is necessary but insufficient; because clinical reasoning is distributed across specialists and institutions---with the patient as the only persistent entity---data access becomes powerful only when patients and clinicians can repeatedly compute over the full timeline of illness. The result is a framework for directing AI toward cases where reasoning is the bottleneck, outcomes depend on synthesis quality and calibration, and patient-held data can become a force multiplier.
+Artificial intelligence will not improve every part of medicine equally. Its highest-value role is in disease settings where the bottleneck is not data collection or workflow automation but high-context reasoning over multimodal evidence under uncertainty. We argue for a computational view of medicine that treats serious illness as a search problem over longitudinal records, pathology, imaging, genomics, patient-generated data, treatment history, and branching therapeutic options. The key question is not whether a model can produce clinically fluent text, but whether additional inference changes the next real decision for a specific patient. This constraint applies to clinicians and AI systems alike: both face the same search problem, and the quality of the search depends on the depth and structure of reasoning applied. We synthesize evidence from precision oncology, rare-disease genomics, antimicrobial discovery, sepsis surveillance, patient-reported outcomes, open-notes adoption, and N-of-1 medicine. Patient access to records is necessary but insufficient; because clinical reasoning is distributed across specialists and institutions---with the patient as the only persistent entity---data access becomes powerful only when patients and clinicians can repeatedly compute over the full timeline of illness. The result is a framework for directing AI toward cases where reasoning is the bottleneck, outcomes depend on synthesis quality and calibration, and patient-held data can become a force multiplier.
 \end{abstract}
 
 \section{Introduction}
@@ -326,17 +326,6 @@ Antimicrobial resistance presents a two-layer search problem. The first is patie
 \subsection{Sepsis and critical care}
 In critical care the challenge is time. Dozens of measurements update continuously, and the relevant signal is distributed across trends rather than single observations. A machine-learning sepsis early-warning system deployed across multiple hospitals was associated with faster antibiotic administration and lower mortality \citep{adams2022}. Deep learning on electronic health records can scale across broad clinical prediction tasks using the raw longitudinal record \citep{rajkomar2018}, and pragmatic deterioration surveillance can attach to live escalation pathways \citep{moses2025}. These results establish that longitudinal records contain actionable signal, and systems that hold more context together improve timing-sensitive decisions.
 
-\subsection{Psychiatry and mental health}
-Psychiatry may be the most computationally complex domain in medicine. First-line antidepressants fail in roughly half of patients; the standard of care is brute-force search through medication options over months, each failed trial costing time, side effects, and continued illness. Pharmacogenomics offers a partial shortcut: variation in cytochrome P450 enzymes can predict whether a patient will metabolize a medication too quickly, too slowly, or normally, eliminating likely failures before they are tried \citep{hicks2015}. The bottleneck is not genotyping---that is cheap---but integration: connecting genotype to drug list to patient history to prescribing decision.
-
-The deeper computational burden extends beyond drug selection. The relevant search space in psychiatry is not a genome or a set of lab values. It is the patient's entire cognitive and experiential landscape: learned patterns, coping strategies, relational templates, and interpretive habits shaped by a lifetime. Many mental health conditions are maladaptive but semi-stable states---locally reinforced ways of interacting with the world that persist because they reduce short-term distress while deepening long-term dysfunction. Social anxiety drives avoidance, which prevents disconfirmation. Depression drives withdrawal, which eliminates sources of reinforcement. These are local minima in a behavioral landscape: stable enough to resist casual intervention, but not globally optimal.
-
-Cognitive behavioral therapy makes this computational structure explicit. The ABC model---antecedent, behavior, consequence---is a structured search through cognitive patterns: identify triggers, map responses, trace reinforcing consequences, and find the self-sustaining loops that maintain the disorder \citep{beck2005}. The therapist's task is a search over a high-dimensional space defined by the patient's beliefs, behaviors, and context, seeking patterns that, if restructured, would shift the patient from a maladaptive equilibrium to a more adaptive one. More careful exploration of this landscape changes the outcome.
-
-The latent demand for computational support is already visible: a large fraction of general-purpose LLM users turn to them for emotional support and self-reflection. This is not validated therapy, but it reveals that people intuit cognitive pattern work as a reasoning process and reach for computational tools when human reasoning time is unavailable.
-
-Psychiatry is not a marginal case for the computational view. It is one of its most demanding tests: iterative search over the full landscape of human cognition, behavior, and experience.
-
 \subsection{Patient-reported outcomes and symptom monitoring}
 Not all high-value computation depends on genomics. Electronic patient-reported symptom monitoring during cancer treatment improved overall survival, likely by enabling earlier response to deterioration patterns otherwise missed \citep{basch2016,basch2017}. Symptoms, side effects, and tolerability live outside the hospital until severe enough to trigger contact. In the computational paradigm, those signals become first-class inputs into the case model.
 
@@ -439,50 +428,42 @@ Patient-side LLM proof of concept & Patients used large language models on open 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \fill[eirsand, rounded corners=14pt] (0,0) rectangle (15.2,6.8);
-  \draw[eirmist, line width=0.9pt, rounded corners=14pt] (0,0) rectangle (15.2,6.8);
+  \fill[eirsand, rounded corners=14pt] (0,0) rectangle (15.2,7.1);
+  \draw[eirmist, line width=0.9pt, rounded corners=14pt] (0,0) rectangle (15.2,7.1);
 
-  % Title
-  \node[anchor=north west, font=\bfseries\fontsize{10}{12}\selectfont, text=eirslate] at (0.6,6.45) {AI reasoning performance on clinical diagnostic tasks};
-  \node[anchor=north west, font=\fontsize{8}{10}\selectfont, text=eirslate] at (0.6,6.0) {Data: Kanjee et al.\ (2023), Singhal et al.\ (2025), Mo\"ell et al.\ (2025)};
+  \node[anchor=north west, font=\bfseries\fontsize{10}{12}\selectfont, text=eirslate] at (0.6,6.75) {AI reasoning performance on clinical diagnostic tasks};
+  \node[anchor=north west, font=\fontsize{8}{10}\selectfont, text=eirslate] at (0.6,6.3) {Data: Kanjee et al.\ (2023), Singhal et al.\ (2025), Mo\"ell et al.\ (2025)};
 
-  % Left panel: NEJM case challenges (Kanjee)
-  \node[anchor=north west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirink] at (0.8,5.35) {Complex NEJM diagnostic cases};
+  \node[anchor=north west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirink] at (0.8,5.7) {Complex diagnostic benchmarks};
 
-  % Clinician bar
-  \fill[eirslate!50] (0.8,4.55) rectangle (4.56,4.95);
-  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (4.36,4.75) {36\%};
-  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (4.76,4.75) {Clinicians (journal readers)};
+  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (0.95,4.95) {Clinicians};
+  \fill[eirslate!45] (2.6,4.75) rectangle (5.48,5.15);
+  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (5.28,4.95) {36\%};
 
-  % GPT-4 bar
-  \fill[eirblue] (0.8,3.85) rectangle (7.46,4.25);
-  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (7.26,4.05) {57\%};
-  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (7.66,4.05) {GPT-4 (correct in differential)};
+  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (0.95,4.2) {GPT-4};
+  \fill[eirblue] (2.6,4.0) rectangle (7.16,4.4);
+  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (6.96,4.2) {57\%};
 
-  % DeepSeek R1 bar
-  \fill[eirgold] (0.8,3.15) rectangle (10.46,3.55);
-  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (10.26,3.35) {93\%};
-  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (10.66,3.35) {DeepSeek R1 (clinical cases)};
+  \node[anchor=west, font=\fontsize{8}{10}\selectfont, text=eirink] at (0.95,3.45) {DeepSeek R1};
+  \fill[eirgold] (2.6,3.25) rectangle (10.04,3.65);
+  \node[anchor=east, font=\bfseries\fontsize{9}{11}\selectfont, text=white] at (9.84,3.45) {93\%};
 
-  % Annotation
-  \node[anchor=north west, text width=6cm, font=\fontsize{8}{10}\selectfont, text=eirslate] at (0.8,2.6) {On the hardest diagnostic challenges, AI reasoning systems already match or exceed average clinician performance---direct evidence that more compute improves clinical synthesis.};
+  \node[anchor=north west, text width=7.15cm, font=\fontsize{8.2}{10.2}\selectfont, text=eirslate] at (0.95,2.55) {On difficult diagnostic tasks, reasoning models already match or exceed average clinician performance. The practical point is narrower than replacement: added computation can improve clinical synthesis on cases where more thinking changes the next decision.};
 
-  % Right panel: Med-PaLM 2
-  \draw[eirmist, line width=0.7pt] (8.6,1.0) -- (8.6,5.35);
+  \draw[eirmist, line width=0.7pt] (8.45,1.0) -- (8.45,5.85);
+  \node[anchor=north west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirink] at (8.9,5.7) {Clinician preference and exam performance};
 
-  \node[anchor=north west, font=\bfseries\fontsize{9}{11}\selectfont, text=eirink] at (9.0,5.35) {Med-PaLM 2 vs.\ physicians};
+  \fill[white, rounded corners=10pt] (8.9,3.75) rectangle (14.2,5.15);
+  \draw[eirmist, line width=0.6pt, rounded corners=10pt] (8.9,3.75) rectangle (14.2,5.15);
+  \node[anchor=north west, font=\bfseries\fontsize{24}{28}\selectfont, text=eirblue] at (9.2,4.92) {8/9};
+  \node[anchor=north west, text width=3.95cm, font=\fontsize{8.1}{10.0}\selectfont, text=eirslate] at (10.75,4.86) {clinical utility axes on which physicians preferred Med-PaLM 2 answers over other physicians' answers};
 
-  \node[anchor=north west, font=\bfseries\fontsize{28}{32}\selectfont, text=eirblue] at (9.0,4.85) {8/9};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,3.65) {clinical utility axes on which};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,3.3) {physicians preferred};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,2.95) {Med-PaLM 2 answers over};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,2.6) {other physicians' answers};
-
-  \node[anchor=north west, font=\bfseries\fontsize{18}{22}\selectfont, text=eirgold] at (9.0,2.05) {86.5\%};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,1.35) {accuracy on USMLE-style};
-  \node[anchor=north west, text width=5cm, font=\fontsize{8.5}{10.5}\selectfont, text=eirslate] at (9.0,1.0) {medical questions};
+  \fill[white, rounded corners=10pt] (8.9,1.35) rectangle (14.2,3.15);
+  \draw[eirmist, line width=0.6pt, rounded corners=10pt] (8.9,1.35) rectangle (14.2,3.15);
+  \node[anchor=north west, font=\bfseries\fontsize{19}{23}\selectfont, text=eirgold] at (9.2,2.77) {86.5\%};
+  \node[anchor=north west, text width=3.95cm, font=\fontsize{8.1}{10.0}\selectfont, text=eirslate] at (10.75,2.7) {accuracy on USMLE-style medical questions in Med-PaLM 2 evaluation};
 \end{tikzpicture}
-\caption{AI reasoning systems match or exceed clinician performance on complex diagnostic benchmarks. Data from Kanjee et al.\ \citep{kanjee2023}, Singhal et al.\ \citep{singhal2025}, and Mo\"ell et al.\ \citep{moell2025reasoning}. These results support the thesis that additional inference---more compute applied to clinical reasoning---improves decision quality.}
+\caption{Reasoning-focused AI systems already perform strongly on difficult diagnostic and medical benchmarks. Data from Kanjee et al.\ \citep{kanjee2023}, Singhal et al.\ \citep{singhal2025}, and Mo\"ell et al.\ \citep{moell2025reasoning}. The clinical relevance is practical: in some cases, more computation improves the quality of synthesis.}
 \label{fig:ai_performance}
 \end{figure}
 
@@ -509,55 +490,27 @@ Patient-facing record synthesis & Patient comprehension; visit preparedness; que
 \label{tab:endpoints}
 \end{table}
 
-\calloutbox{Illustrative translational case}{
-A widely discussed 2025 media report described how an Australian entrepreneur used sequencing, variant analysis, and AI-assisted reasoning to help design a personalized mRNA treatment strategy for his dog Rosie, who had a mast cell tumour \citep{abc2025rosie}. This is not high-level evidence in the way a randomized trial is. It is useful for a different reason: it makes visible what the computational workflow looks like once motivated people can assemble data, models, and synthesis outside a traditional institutional pipeline.
-}
-
 \section{What should be built}
-Health systems, startups, and regulators should prioritize tools that make high-burden reasoning portable, inspectable, and patient-aligned---not chatbots, but reasoning infrastructure.
+The practical implication is narrower than much current health-AI rhetoric. The field does not primarily need more conversational surfaces. It needs reasoning infrastructure: systems that assemble patient records across sites, preserve chronology, separate evidence from inference, and return ranked next steps rather than fluent summaries. The right unit is a living case model that can be re-run as disease evolves.
 
-\begin{enumerate}
-  \item \textbf{Patient-assembled case files.} Systems should ingest records from multiple providers and preserve chronology rather than flattening everything into isolated visits.
-  \item \textbf{Explicit uncertainty handling.} Models should separate evidence, inference, and missing information, especially in oncology, genetics, psychiatry, and infection.
-  \item \textbf{Decision-oriented outputs.} The output should not just summarize. It should rank the next tests, consultations, or therapeutic branches.
-  \item \textbf{Re-runnable reasoning.} Every major disease course changes over time. The right unit is a living case model, not a one-time answer.
-  \item \textbf{Patient-clinician collaboration.} The design target is a stronger clinical conversation, not consumer isolation.
-  \item \textbf{N-of-1 evidence layers.} Systems should support repeated within-person hypothesis testing when disease is relapsing, heterogeneous, or highly treatment-sensitive.
-\end{enumerate}
+These systems should strengthen the clinical encounter rather than bypass it. The design target is a patient-clinician conversation with better state, better uncertainty handling, and better preparation before the next branch in care is chosen.
 
 \section{Risks and constraints}
-The computational view sharpens the need for evidence and oversight. High-burden disease is where hallucinated synthesis, hidden bias, dataset shift, and brittle prompting are most dangerous. Reasoning systems must be auditable, source-grounded, and explicit about what they do not know.
+The computational view sharpens the need for evidence and oversight. High-burden disease is exactly where hallucinated synthesis, hidden bias, and brittle prompting are most dangerous. Reasoning systems must therefore be auditable, source-grounded, and explicit about what they do not know.
 
-If compute improves outcomes, unequal access to compute becomes a health inequity. A health stack that gives patients records but not synthesis leaves too much leverage with the institution.
-
-Some biological processes may be computationally irreducible: no model can predict their trajectory faster than the process itself. Immune response to a novel pathogen, idiosyncratic drug reactions, the nonlinear dynamics of some cancers---these may resist predictive compression regardless of inference applied. Compute elasticity is not universally high. The computational view is a claim about where the bottleneck lies \emph{when it lies in reasoning}, not a claim that reasoning is always the bottleneck.
-
-``Personalization'' in this paradigm is not a user-experience feature. It is a property of the reasoning problem: requiring timeline integrity, provenance, repeated re-analysis, and outcome feedback.
+Not every disease is compute-elastic. Some problems remain dominated by biology, logistics, or protocol execution rather than reasoning depth. And if compute meaningfully improves outcomes, unequal access to compute becomes a health inequity. A health stack that gives patients records without usable synthesis leaves too much leverage with the institution.
 
 \section{Operational consequences}
-The agenda for health AI changes. Product teams should stop treating every workflow as though it deserves the same model complexity. Clinical systems should separate protocol problems from search problems. Regulators should ask whether a model improves reasoning quality in the cases where reasoning is the bottleneck, not only whether it is accurate on average.
+The agenda for health AI changes. Clinical systems should separate protocol problems from search problems. Regulators should ask not only whether a model is accurate on average, but whether it improves reasoning quality in the cases where reasoning is the bottleneck. And product teams should direct the largest inference budgets toward cases where better synthesis can change the next branch in care.
 
-The economics are stark. A rare-disease diagnostic odyssey averages seven years and tens of thousands of dollars in unnecessary procedures. An AI system that compresses that timeline might cost tens of dollars in compute. A missed oncology trial match means a patient who might have responded never receives the therapy; the value of a correct match dwarfs the cost of computation. Each failed antidepressant trial costs six to eight weeks of illness; pharmacogenomic testing costs two hundred dollars. The ratio between the cost of reasoning and the cost of its absence is routinely one hundred to one or higher.
-
-Medicine is organized around the assumption that reasoning is expensive and scarce. This scarcity shapes the referral hierarchy, the fifteen-minute consultation, the division between generalists and specialists, and the requirement that patients travel to access expert judgment. Cheap, portable AI reasoning changes these structures. Referrals become less necessary when generalists access specialist-level synthesis. Consultations shift from racing to integrate data toward judgment over pre-computed analysis. The medical record transforms from stored document to computational substrate. Geography becomes less binding: a rural clinic accesses the same synthesis depth as an academic center. The binding constraint shifts from proximity to experts to data quality and action capacity. This is the deeper paradigm shift: cheap computation restructures how medical reasoning is distributed across people, machines, time, and institutions.
-
-The practical payoff is concentration. Compute should go where it buys something real: fewer missed mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, systematic medication sequencing in psychiatry, and better continuity across fragmented care. Pragmatic intervention studies in ECG alerting, deterioration surveillance, and symptom monitoring show this shift can move from theory to operations when attached to real decision paths \citep{lin2024,moses2025,basch2016}.
-
-\calloutbox{Testable predictions}{
-\textbf{Prediction 1.} Within five years, the most effective clinical AI deployments will increasingly be evaluated on time-to-decision and branch-quality endpoints rather than stand-alone discrimination metrics.\\
-\textbf{Prediction 2.} The first widely adopted patient-facing AI tools in medicine will succeed not as synthetic clinicians but as timeline integrators and case-preparation systems.\\
-\textbf{Prediction 3.} N-of-1 computational care loops will emerge first in rare disease, oncology, and relapsing chronic disease, where within-person variation and high decision burden are most visible.\\
-\textbf{Prediction 4.} Institutions that expose records without exposing usable reasoning will create a new form of incomplete patient empowerment.
-}
+The practical payoff is concentration: fewer missed driver mutations, faster rare-disease diagnoses, better antibiotic choices, earlier sepsis escalation, and better continuity across fragmented care. Pragmatic intervention studies in ECG alerting, deterioration surveillance, and symptom monitoring suggest that this shift can move from theory to operations when attached to real decision paths \citep{lin2024,moses2025,basch2016}.
 
 \section{Conclusion}
-Medicine is already a computational process. It has been one since the first clinician held two observations in mind and asked which diagnosis fit better. Evidence-based medicine formalized this at the population level. The computational view proposed here formalizes it at the patient level, and argues that the gap between what is currently computed and what could be computed is the single largest source of avoidable harm in complex disease.
+Medicine is already a computational process. Evidence-based medicine formalized that process at the population level. The computational view proposed here formalizes it at the patient level and argues that a large share of avoidable harm in complex disease comes from the gap between what could be searched, synthesized, and updated for a patient and what is actually computed in routine care.
 
-The diseases that matter most under this view are not simply the most prevalent. They are the ones that become search problems when viewed at patient resolution---where the hypothesis space is large, the evidence is distributed, and the quality of reasoning directly determines whether the patient ends up on the right branch of care or the wrong one. Precision oncology, rare-disease genomics, resistant infection, psychiatric treatment selection, selected critical care settings, and chronic relapsing diseases are early proof that this lens is practical rather than rhetorical.
+The diseases that matter most under this view are not simply the most prevalent. They are the ones that become search problems at patient resolution: precision oncology, rare-disease genomics, resistant infection, selected critical care settings, and chronic relapsing disease. In these domains, better reasoning can change the next branch in care.
 
-The deeper implication is structural. If reasoning has historically been scarce and expensive---bound to the time, memory, and attention of individual clinicians---then cheap, portable computation changes not only the quality of individual decisions but the architecture of medicine itself: how referrals work, what consultations are for, who can access specialist-level synthesis, and whether the medical record is a static archive or a living computational substrate.
-
-That is why a computational view of medicine matters. It provides a principled way to measure where additional inference can genuinely change outcomes, a framework for directing resources toward the cases where the reasoning deficit is largest, and a vision for how health understanding can become a shared, longitudinal, patient-held capability rather than a privilege of the institution. The question is no longer whether medicine will become more computational. It is how fast, how equitably, and how well.
+The deeper implication is structural. If reasoning has historically been scarce and expensive---bound to the time, memory, and attention of individual clinicians---then cheap, portable computation changes not only the quality of individual decisions but the architecture of medicine itself. A computational view of medicine therefore does two things at once: it shows where additional inference can genuinely improve outcomes, and it points toward a health system in which understanding becomes a shared, longitudinal, patient-held capability rather than a privilege of the institution.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
