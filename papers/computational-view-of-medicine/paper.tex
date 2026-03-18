@@ -146,9 +146,15 @@ Advanced AI should be judged through that lens. The central question is not whet
 
 This is not the first such upgrade. Evidence-based medicine replaced individual recall and apprenticeship-derived judgment with structured synthesis over aggregated trial data. Cochrane reviews are, in effect, pre-computed answers to clinical questions. The computational view is the next step. Where EBM asked ``what does the average patient in this trial tell us about this patient?'', the computational view asks ``what does the full multimodal, longitudinal record of \emph{this} patient tell us about \emph{this} decision?'' The question is no longer whether medicine should be computational, but how deep the computation should go and where to direct it.
 
-This constraint is not unique to machines. Physicians employ both rapid pattern recognition and slower deliberate analysis---dual-process reasoning---switching between modes depending on case complexity \citep{croskerry2009}. But time per patient is finite. The consequences are measurable: approximately 5\% of US adults---over 12 million people---experience a diagnostic error in outpatient care each year \citep{singh2014}, and an estimated 795,000 Americans suffer permanent disability or death annually from diagnostic errors, concentrated in cardiovascular events, infections, and cancer \citep{newmantoker2024}. If a doctor had twice as long to reason through a complex case, would they reach a better conclusion? For routine cases, no: the protocol is clear and more thought adds nothing. For high-burden cases---a confusing constellation of symptoms, an ambiguous genomic result, a cancer that has stopped responding---more reasoning time genuinely changes the output. The ``diagnostic timeout'' in emergency medicine, a structured pause to reconsider the differential, reduces diagnostic error \citep{graber2005, croskerry2009}. Primary care consultation lengths range from 5 minutes to over 20 across healthcare systems \citep{irving2017}; if reasoning time is the bottleneck, this variation should predict diagnostic quality.
+Clinical reasoning can be carried out by clinicians, AI systems, or human-AI teams. The important question is not who reasons in the abstract, but whether additional reasoning changes the next meaningful decision for a patient. This makes the computational view legible inside ordinary medical work: every encounter already runs on a reasoning budget, and many failures of care are failures of time, memory, synthesis, or search rather than failures of data collection alone.
+
+This constraint is not unique to machines. Physicians employ both rapid pattern recognition and slower deliberate analysis---dual-process reasoning---switching between modes depending on case complexity \citep{croskerry2009}. But time per patient is finite. The consequences are measurable: approximately 5\% of US adults---over 12 million people---experience a diagnostic error in outpatient care each year \citep{singh2014}, and an estimated 795,000 Americans suffer permanent disability or death annually from diagnostic errors, concentrated in cardiovascular events, infections, and cancer \citep{newmantoker2024}. If a doctor had twice as long to reason through a complex case, would they reach a better conclusion? For routine cases, no: the protocol is clear and more thought adds nothing. For high-burden cases---a confusing constellation of symptoms, an ambiguous genomic result, a cancer that has stopped responding---more reasoning time genuinely changes the output. The ``diagnostic timeout'' in emergency medicine, a structured pause to reconsider the differential, reduces diagnostic error \citep{graber2005,croskerry2009}. Primary care consultation lengths range from 5 minutes to over 20 across healthcare systems \citep{irving2017}; if reasoning time is the bottleneck, this variation should predict diagnostic quality.
 
 Reasoning-focused language models can engage in structured clinical reasoning---hypothesis generation, differential weighting, evidence integration---that parallels this deliberate process \citep{moell2025reasoning}. On complex diagnostic cases from the \emph{New England Journal of Medicine}, GPT-4 included the correct diagnosis in 64\% of cases, compared to 36\% for medical-journal readers \citep{kanjee2023}. Med-PaLM~2, a medically fine-tuned model, achieved 86.5\% on USMLE-style questions and was preferred over physician answers on eight of nine clinical axes \citep{singhal2025}. These results suggest that sufficiently deep AI reasoning can match or exceed clinician-level synthesis on specific benchmarks. But the relationship between reasoning depth and decision quality is not monotonic. In DeepSeek R1, shorter reasoning chains correlate with accuracy; excessively long chains correlate with anchoring bias and rationalized errors \citep{moell2025reasoning}. Additional reasoning is productive when it widens the search across hypothesis space; it becomes destructive when it deepens commitment to an incorrect branch. Foundation models for generalist medical AI are expected to flexibly interpret combinations of imaging, records, genomics, and text while demonstrating advanced reasoning \citep{moor2023}; the computational view provides the framework for directing that capability where it matters most.
+
+\summarybox{
+\textbf{Reasoning as a clinical resource.} The core question in advanced medical AI is not whether machines can reason in the abstract, but whether more reasoning---human, machine, or combined---changes the next real decision for a patient.
+}
 
 The argument has three parts. First, disease classes differ sharply in how much computation can improve outcomes. Second, patient access to longitudinal records changes the location of medical intelligence: compute can move with the patient rather than remaining trapped inside an institution. Third, the future of high-value health AI is N-of-1: iterative, longitudinal, individualized, and tied to decisions rather than one-shot answers.
 
@@ -178,6 +184,8 @@ In low-elasticity domains, a clinician at normal pace already reaches the correc
 
 The magnitude of the current reasoning gap makes this urgent. A molecular tumor board spends 15--30 minutes per case against a decision space of hundreds of drugs, thousands of trials, and millions of papers; the team searches a fraction of one percent. A geneticist reviewing a rare disease case has 60 minutes and a patient file accumulated over years; the variant literature runs to millions of entries. A primary care physician managing a multimorbid patient on twelve medications has 15 minutes; the combinatorial interaction space is enormous, navigated almost entirely from memorized heuristics. This \emph{compute deficit}---the gap between what is searchable and what is actually searched---is where the largest clinical returns will come from.
 
+This is the practical bridge between an abstract computational framing and the hands-on work of medical professionals. The relevant unit is not ``AI reasoning'' in isolation. It is the total reasoning capacity available to a clinician-patient-team before a branch is chosen. Some of that capacity comes from the clinician's expertise, some from specialist consultation, some from pre-computed evidence such as guidelines and reviews, and increasingly some from machine inference over the longitudinal record. The computational view matters because it names the bottleneck clinicians feel every day: not enough time to search deeply enough before acting.
+
 Figure~\ref{fig:error_burden} makes the compute deficit concrete using epidemiological data. The scale of diagnostic error---795,000 serious harms per year in the US alone, concentrated in the same high-burden domains this paper identifies as computationally tractable---suggests that the reasoning gap is not a theoretical concern but a measurable public health problem.
 
 The scores in Table~\ref{tab:scoring} are conceptual, but they point toward a falsifiable research programme. \textit{Search-space size} can be measured by counting plausible differentials or the relevant variant space; \textit{compute elasticity} can be quantified by systematically varying reasoning depth and measuring downstream decision quality; \textit{data burden} can be assessed by counting distinct modalities required for a defensible decision. These metrics transform the computational view from metaphor into engineering target.
@@ -189,7 +197,9 @@ The scores in Table~\ref{tab:scoring} are conceptual, but they point toward a fa
 \begin{table}[t]
 \centering
 \small
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.0cm} *{5}{>{\centering\arraybackslash}p{1.25cm}} >{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.16}
+\setlength{\tabcolsep}{4.6pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.7cm} *{5}{>{\centering\arraybackslash}p{1.05cm}} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Domain} & \textbf{Search} & \textbf{Data} & \textbf{Pers.} & \textbf{Action} & \textbf{Elast.} & \textbf{Interpretation} \\
 \midrule
@@ -343,6 +353,8 @@ Table~\ref{tab:cases} shows why a single computational model fits these otherwis
 \begin{table}[t]
 \centering
 \small
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.5cm}}
 \toprule
 \textbf{Domain} & \textbf{Core data} & \textbf{How computation is leveraged} & \textbf{Representative evidence} \\
@@ -408,6 +420,8 @@ In each case, computation improves preparation, ranking, and timing for the next
 \begin{table}[t]
 \centering
 \small
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.2cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Study type} & \textbf{What changed} & \textbf{Why it matters for the thesis} \\
@@ -478,6 +492,8 @@ The computational view should change how health AI is evaluated. Discrimination 
 \begin{table}[t]
 \centering
 \small
+\renewcommand{\arraystretch}{1.14}
+\setlength{\tabcolsep}{4.5pt}
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.0cm} >{\raggedright\arraybackslash}p{4.1cm} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{Domain} & \textbf{Primary endpoint candidates} & \textbf{Why these endpoints fit the computational thesis} \\
