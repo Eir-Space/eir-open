@@ -1,0 +1,68 @@
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+
+const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
+
+export const metadata = {
+  title: 'news.eir.space — AI Healthcare News',
+  description:
+    'Curated and structured news about artificial intelligence in healthcare, powered by LLMs.',
+  icons: {
+    icon: '/eir-rune.svg',
+    apple: '/eir-rune.svg',
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <div className="siteShell">
+          <header className="siteHeader">
+            <div className="headerInner">
+              <a href="/" className="siteBrand">
+                <img src="/eir-rune.svg" alt="Eir" className="brandIcon" />
+                <span className="brandMark">eir</span>
+                <span className="brandSub">news</span>
+              </a>
+              <nav className="headerNav">
+                <a href="/">Latest</a>
+                <a href="/?category=clinical">Clinical</a>
+                <a href="/?category=research">Research</a>
+                <a href="/?category=regulation">Regulation</a>
+                <a href="/?category=industry">Industry</a>
+                <a href="/?category=technology">Technology</a>
+              </nav>
+            </div>
+          </header>
+          <main className="pageWrap">{children}</main>
+          <footer className="siteFooter">
+            <div className="footerInner">
+              <div>
+                <p>
+                  news.eir.space — AI-curated healthcare intelligence from{' '}
+                  <a href="https://eir.space">Eir</a>
+                </p>
+                <p className="footerSub">
+                  Stories are discovered and structured by LLMs. Always verify critical information
+                  with primary sources.
+                </p>
+              </div>
+              <div>
+                <a
+                  href="https://github.com/Eir-Space/eir-open"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button ghost"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </body>
+    </html>
+  );
+}

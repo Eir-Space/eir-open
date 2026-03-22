@@ -1,0 +1,39 @@
+FROM node:20-bookworm-slim AS deps
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+WORKDIR /app/apps/eir-news
+
+COPY apps/eir-news/package.json apps/eir-news/package-lock.json ./
+
+RUN npm ci
+
+FROM node:20-bookworm-slim AS build
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+WORKDIR /app
+
+COPY --from=deps /app/apps/eir-news/node_modules ./apps/eir-news/node_modules
+COPY apps/eir-news ./apps/eir-news
+
+WORKDIR /app/apps/eir-news
+
+RUN npm run build && npm prune --omit=dev
+
+FROM node:20-bookworm-slim AS runner
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+WORKDIR /app
+
+COPY --from=build /app/apps/eir-news ./apps/eir-news
+
+WORKDIR /app/apps/eir-news
+
+EXPOSE 3000
+
+CMD ["node", "scripts/start.js"]
