@@ -1,0 +1,24 @@
+{
+  "name": "eir-news",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "fetch-news": "node scripts/fetch-news.js",
+    "cf:build": "opennextjs-cloudflare build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && wrangler deploy --config wrangler.jsonc"
+  },
+  "dependencies": {
+    "openai": "^4.80.0",
+    "next": "16.1.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "1.17.1",
+    "wrangler": "4.69.0"
+  }
+}
