@@ -1,5 +1,57 @@
 [
   {
+    "id": "mit-ai-sensors-early-cancer-detection",
+    "title": "MIT and Microsoft Build AI That Designs Sensors to Detect 30 Cancer Types from a Urine Test",
+    "slug": "mit-ai-sensors-early-cancer-detection",
+    "summary": "MIT and Microsoft researchers developed CleaveNet, an AI system that designs peptide sequences for nanoparticle sensors capable of detecting cancer-linked proteases. The technology could enable at-home urine tests that detect and distinguish up to 30 different cancer types in early stages.",
+    "body": "Researchers at MIT and Microsoft Research have developed CleaveNet, an AI system that generates optimized peptide sequences for detecting cancer through simple urine tests. The peptide-coated nanoparticles act as sensors that detect cancer-linked enzymes called proteases in the body — producing results readable on test strips similar to pregnancy tests.\n\nThe innovation bypasses the traditional trial-and-error approach to peptide design. As co-author Ava Amini of Microsoft Research explained, 'We can leverage the power of computation to try to specifically optimize for these efficiency and selectivity metrics.' The AI model generates peptide sequences that are both highly efficient at detecting target proteases and selective enough to avoid false signals.\n\nThe implications for early cancer detection are profound. The research team, funded by ARPA-H, is currently developing a diagnostic kit that could potentially detect and distinguish between 30 different cancer types during early stages — when treatment is most effective. The approach builds on a decade of research by senior author Sangeeta Bhatia at MIT into using protease activity as a cancer biomarker.\n\nThe findings, published in Nature Communications, represent a convergence of AI-driven molecular design and practical diagnostics. If validated clinically, at-home cancer screening could become as routine as checking blood glucose, fundamentally shifting cancer detection from symptomatic presentation to proactive surveillance.",
+    "category": "research",
+    "tags": ["cancer-detection", "MIT", "Microsoft", "nanoparticles", "diagnostics", "ARPA-H"],
+    "source": "MIT News",
+    "sourceUrl": "https://news.mit.edu/2026/ai-generated-sensors-open-new-paths-early-cancer-detection-0106",
+    "publishedAt": "2026-01-06T00:00:00Z",
+    "fetchedAt": "2026-03-23T10:00:00Z"
+  },
+  {
+    "id": "jhu-robot-performs-surgery-without-human-help",
+    "title": "Johns Hopkins Robot Performs Realistic Surgery Without Human Help for the First Time",
+    "slug": "jhu-robot-performs-surgery-without-human-help",
+    "summary": "Johns Hopkins researchers built SRT-H, a surgical robot that autonomously performed a complete gallbladder removal phase on a lifelike patient model with 100% accuracy. The system learned from surgical videos and adapted to unexpected anatomical variations in real time.",
+    "body": "Johns Hopkins University researchers have achieved a milestone in autonomous surgery: their Surgical Robot Transformer-Hierarchy (SRT-H) system performed a complete gallbladder removal phase on a realistic patient model without human intervention, achieving 100% accuracy across the 17-task procedure.\n\nWhat distinguishes SRT-H from previous autonomous surgical systems is its ability to learn from watching surgery videos — using a machine learning architecture similar to ChatGPT — rather than requiring predetermined plans or specially marked tissue. The robot adapts to individual anatomical variations in real time, makes decisions on the fly, and self-corrects when things don't go as expected.\n\nLead researcher Axel Krieger described the significance: 'This advancement moves us from robots that can execute specific surgical tasks to robots that truly understand surgical procedures.' The system demonstrated expert-level precision even when confronted with unexpected scenarios during the operation.\n\nThe research, published in Science Robotics and funded by ARPA-H, represents a leap toward Level 3 surgical autonomy — where robots can perform conditional task automation under supervision. While fully autonomous surgery remains years away due to safety, regulatory, and liability challenges, the work establishes that AI-powered surgical robots can comprehend and execute complex procedures rather than simply following scripts.",
+    "category": "technology",
+    "tags": ["surgical-robotics", "autonomous-surgery", "Johns-Hopkins", "ARPA-H", "machine-learning"],
+    "source": "Johns Hopkins Hub",
+    "sourceUrl": "https://hub.jhu.edu/2025/07/09/robot-performs-first-realistic-surgery-without-human-help/",
+    "publishedAt": "2025-07-09T00:00:00Z",
+    "fetchedAt": "2026-03-23T10:00:00Z"
+  },
+  {
+    "id": "gemini-study-ai-breast-cancer-screening-uk",
+    "title": "GEMINI Study: AI Boosts UK Breast Cancer Detection by 10.4% While Cutting Workload by a Third",
+    "slug": "gemini-study-ai-breast-cancer-screening-uk",
+    "summary": "The GEMINI study, published in Nature Cancer, found that integrating AI into UK breast cancer screening increased cancer detection by 10.4%, reduced recall rates, cut workload by up to 31%, and slashed cancer notification time from 14 days to 3 days.",
+    "body": "The GEMINI study, published in Nature Cancer, has delivered the most comprehensive evidence yet for AI integration in population-based breast cancer screening. Evaluating the Mammography Intelligent Assessment (Mia) v.3 tool alongside routine human review of 10,889 mammograms in the UK NHS, the results show AI increased cancer detection by 10.4% — one additional cancer found per 1,000 patients screened.\n\nThe operational gains are equally striking. Recall rates decreased by 0.8%, meaning fewer women were subjected to unnecessary follow-up anxiety. Workload reductions reached up to 31%, and total cost savings hit 36% compared to standard double-reading processes. Perhaps most impactful for patients, cancer notification time dropped from 14 days to just 3 days.\n\nLead researcher Dr. Clarisse Florence de Vries summarized the findings: 'We found optimal ways to detect breast cancer, quicker, and more accurately. We also found ways to reduce the number of women having to return for unnecessary tests.' The team plans to expand these findings through the upcoming EDITH trial across the broader UK.\n\nThe study arrives as the UK faces a 29% shortage of clinical radiologists. With breast cancer affecting one woman every 10 minutes in the UK, AI's ability to maintain or improve detection quality while reducing radiologist burden addresses both a clinical and workforce challenge simultaneously.",
+    "category": "clinical",
+    "tags": ["breast-cancer", "mammography", "AI-screening", "NHS", "Nature-Cancer", "GEMINI"],
+    "source": "The ASCO Post",
+    "sourceUrl": "https://ascopost.com/news/march-2026/ai-integration-in-breast-cancer-screening-increases-detection-rate-reduces-work-burden/",
+    "publishedAt": "2026-03-11T00:00:00Z",
+    "fetchedAt": "2026-03-23T10:00:00Z"
+  },
+  {
+    "id": "imperial-google-ai-breast-cancer-175000-women",
+    "title": "Largest NHS Study: Google AI Matches or Exceeds Radiologists in Breast Cancer Screening Across 175,000 Women",
+    "slug": "imperial-google-ai-breast-cancer-175000-women",
+    "summary": "A landmark NHS study of 175,000 women found that Google's AI, used as a second reader in breast cancer screening, detected more invasive cancers, generated fewer false positives, reduced first-time recall rates by 39.3%, and cut scan-reading time by nearly a third.",
+    "body": "The largest NHS study to date on AI in breast cancer screening has found that Google's AI system matches or exceeds human radiologists across all key performance metrics. The study, conducted by Imperial College London in partnership with Google, the universities of Cambridge and Surrey, and multiple NHS Trusts, analyzed mammograms from 175,000 women.\n\nWhen AI served as the second reader — replacing one of the two human radiologists in the UK's standard double-reading protocol — the cancer detection rate rose from 7.54 to 9.33 per 1,000 women. The AI generated fewer false positives, reduced recall rates for first-time screenings by 39.3%, and cut scan-reading time by nearly a third.\n\nThe AI also detected 25% of interval cancers — cancers that appear between routine screening appointments and are typically missed by the screening program entirely. This finding is particularly significant because interval cancers tend to be more aggressive and carry worse prognoses.\n\nThe findings, published in two linked papers in Nature Cancer, arrive at a critical moment. The UK faces a severe radiologist shortage, and breast cancer affects one woman every 10 minutes. The researchers argue these results demonstrate 'the potential for more women to be diagnosed and treated sooner, while reducing radiologists' workload' — a rare case where AI simultaneously improves clinical outcomes and operational efficiency.",
+    "category": "research",
+    "tags": ["breast-cancer", "Google", "Imperial-College", "NHS", "mammography", "screening"],
+    "source": "Imperial College London",
+    "sourceUrl": "https://www.imperial.ac.uk/news/articles/global-health-innovation/2026/new-research-conducted-using-google-ai-can-match-or-exceed-radiologists-in-detecting-cancer-in-breast-scans-/",
+    "publishedAt": "2026-03-10T00:00:00Z",
+    "fetchedAt": "2026-03-23T10:00:00Z"
+  },
+  {
     "id": "ai-cancer-vaccine-dog-alphafold",
     "title": "Australian Entrepreneur Uses AI and AlphaFold to Create First Bespoke Cancer Vaccine for a Dog",
     "slug": "ai-cancer-vaccine-dog-alphafold",
