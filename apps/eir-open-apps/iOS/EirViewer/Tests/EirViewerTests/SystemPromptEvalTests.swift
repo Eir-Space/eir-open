@@ -22,8 +22,8 @@ final class SystemPromptEvalTests: XCTestCase {
       created_at: "2025-06-10T14:30:00Z"
       source: "1177.se Journal"
       patient:
-        name: "Birger Moell"
-        birth_date: "1986-02-28"
+        name: "Example Patient"
+        birth_date: "1970-01-01"
         personal_number: "19700101-0000"
       export_info:
         total_entries: 1
@@ -66,7 +66,7 @@ final class SystemPromptEvalTests: XCTestCase {
         XCTAssertEqual(geneticDoc.entries.count, 1)
         XCTAssertEqual(geneticDoc.entries[0].category, "Provsvar")
         XCTAssertTrue(geneticDoc.entries[0].content!.details!.contains("CYP2D6"))
-        XCTAssertEqual(geneticDoc.metadata.patient?.name, "Birger Moell")
+        XCTAssertEqual(geneticDoc.metadata.patient?.name, "Example Patient")
     }
 
     // MARK: - Prompt Variants
@@ -270,16 +270,16 @@ final class SystemPromptEvalTests: XCTestCase {
     // MARK: - Prompt Construction Tests
 
     func testPromptABuildsCorrectly() {
-        let prompt = SystemPrompt.buildLocal(document: geneticDoc, userName: "Birger Moell")
+        let prompt = SystemPrompt.buildLocal(document: geneticDoc, userName: "Example Patient")
         XCTAssertTrue(prompt.contains("CRITICAL CONSTRAINTS"))
-        XCTAssertTrue(prompt.contains("Birger Moell"))
+        XCTAssertTrue(prompt.contains("Example Patient"))
         XCTAssertTrue(prompt.contains("REMINDER"))
         // Should include entry summary
         XCTAssertTrue(prompt.contains("Helgenomsekvensering"))
     }
 
     func testPromptIncludesEntryData() {
-        let prompt = SystemPrompt.buildLocal(document: geneticDoc, userName: "Birger Moell")
+        let prompt = SystemPrompt.buildLocal(document: geneticDoc, userName: "Example Patient")
         // The local prompt includes the 15 most recent entries as summaries
         XCTAssertTrue(prompt.contains("entry_gen_001"))
         XCTAssertTrue(prompt.contains("2025-05-15"))
@@ -401,9 +401,9 @@ final class SystemPromptEvalTests: XCTestCase {
         for (name, prompt) in variants {
             var fullPrompt = prompt
             // Add patient context (like buildLocal does)
-            fullPrompt += "\n\nThe user is Birger Moell. All records below belong to this person."
+            fullPrompt += "\n\nThe user is Example Patient. All records below belong to this person."
             fullPrompt += "\n\n# Patient Records\n"
-            fullPrompt += "Patient: Birger Moell, born 1986-02-28\n"
+            fullPrompt += "Patient: Example Patient, born 1970-01-01\n"
             fullPrompt += "Total entries: 1\n\n"
             fullPrompt += "Recent entries:\n"
             fullPrompt += "- \(entry.date ?? "?") [\(entry.category ?? "?")] "
