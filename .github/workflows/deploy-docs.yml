@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install, build, and upload
-        uses: withastro/action@v5
+        uses: withastro/action@v6
         with:
           path: site
           package-manager: pnpm@latest
