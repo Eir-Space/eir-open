@@ -1,0 +1,21 @@
+{
+  "name": "viss-primary-care-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for structured, link-backed VISS primary-care lookup.",
+  "type": "module",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:http": "node server-http.js",
+    "lint": "node --check server.js && node --check server-http.js",
+    "lint:core": "node --check server-core.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
