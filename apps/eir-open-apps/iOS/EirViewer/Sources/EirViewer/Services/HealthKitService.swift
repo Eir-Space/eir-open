@@ -97,6 +97,23 @@ enum HealthDataCategory: String, CaseIterable, Identifiable {
         }
     }
 
+    var hkAuthorizationTypes: Set<HKObjectType> {
+        switch self {
+        case .bloodPressure:
+            return [
+                HKObjectType.quantityType(forIdentifier: .bloodPressureSystolic),
+                HKObjectType.quantityType(forIdentifier: .bloodPressureDiastolic)
+            ]
+            .compactMap { $0 }
+            .reduce(into: Set<HKObjectType>()) { partialResult, type in
+                partialResult.insert(type)
+            }
+        default:
+            guard let sampleType = hkSampleType else { return [] }
+            return [sampleType]
+        }
+    }
+
     var hkUnit: HKUnit? {
         switch self {
         case .heartRate: return .count().unitDivided(by: .minute())
@@ -140,16 +157,41 @@ final class HealthKitService {
     static let shared = HealthKitService()
 
     private let store = HKHealthStore()
+    private let calendar = Calendar.current
 
     var isAvailable: Bool {
         HKHealthStore.isHealthDataAvailable()
     }
 
+    private var recoveryAuthorizationTypes: Set<HKObjectType> {
+        [
+            HKObjectType.categoryType(forIdentifier: .sleepAnalysis),
+            HKObjectType.quantityType(forIdentifier: .restingHeartRate),
+            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN),
+            HKObjectType.quantityType(forIdentifier: .stepCount),
+            HKWorkoutType.workoutType(),
+        ]
+        .compactMap { $0 }
+        .reduce(into: Set<HKObjectType>()) { partialResult, type in
+            partialResult.insert(type)
+        }
+    }
+
     // MARK: - Authorization
 
     func requestAuthorization(for categories: [HealthDataCategory]) async throws {
-        let readTypes: Set<HKSampleType> = Set(categories.compactMap(\.hkSampleType))
+        let readTypes = categories.reduce(into: Set<HKObjectType>()) { partialResult, category in
+            partialResult.formUnion(category.hkAuthorizationTypes)
+        }
 
+        try await requestAuthorization(readTypes: readTypes)
+    }
+
+    func requestRecoveryAuthorization() async throws {
+        try await requestAuthorization(readTypes: recoveryAuthorizationTypes)
+    }
+
+    private func requestAuthorization(readTypes: Set<HKObjectType>) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             store.requestAuthorization(toShare: nil, read: readTypes) { success, error in
                 if let error = error {
@@ -209,6 +251,34 @@ final class HealthKitService {
     }
 
     // MARK: - Daily Statistics (for high-frequency data)
+
+    struct RecoveryMetrics {
+        let sleepHoursLastNight: Double?
+        let sleepHoursBaseline: Double?
+        let sleepStartHourLastNight: Double?
+        let sleepStartHourBaseline: Double?
+        let restingHeartRateRecent: Double?
+        let restingHeartRateBaseline: Double?
+        let heartRateVariabilityRecent: Double?
+        let heartRateVariabilityBaseline: Double?
+        let stepsYesterday: Double?
+        let stepsBaseline: Double?
+        let workoutsLast7Days: Int
+
+        static let empty = RecoveryMetrics(
+            sleepHoursLastNight: nil,
+            sleepHoursBaseline: nil,
+            sleepStartHourLastNight: nil,
+            sleepStartHourBaseline: nil,
+            restingHeartRateRecent: nil,
+            restingHeartRateBaseline: nil,
+            heartRateVariabilityRecent: nil,
+            heartRateVariabilityBaseline: nil,
+            stepsYesterday: nil,
+            stepsBaseline: nil,
+            workoutsLast7Days: 0
+        )
+    }
 
     struct DailyStat {
         let date: Date
@@ -279,5 +349,194 @@ final class HealthKitService {
 
             store.execute(query)
         }
+    }
+
+    // MARK: - Recovery Signals
+
+    func loadRecoveryMetrics(referenceDate: Date = Date()) async throws -> RecoveryMetrics {
+        guard isAvailable else {
+            return .empty
+        }
+
+        let today = calendar.startOfDay(for: referenceDate)
+        let twentyEightDaysAgo = calendar.date(byAdding: .day, value: -28, to: today) ?? today
+        let threeDaysAgo = calendar.date(byAdding: .day, value: -3, to: today) ?? today
+        let fourteenDaysAgo = calendar.date(byAdding: .day, value: -14, to: today) ?? today
+        let sevenDaysAgo = calendar.date(byAdding: .day, value: -7, to: today) ?? today
+
+        async let sleepSummaries = querySleepNightSummaries(from: twentyEightDaysAgo, to: referenceDate)
+        async let recentRestingHeartRate = averageQuantity(
+            identifier: .restingHeartRate,
+            unit: .count().unitDivided(by: .minute()),
+            startDate: threeDaysAgo,
+            endDate: referenceDate
+        )
+        async let baselineRestingHeartRate = averageQuantity(
+            identifier: .restingHeartRate,
+            unit: .count().unitDivided(by: .minute()),
+            startDate: twentyEightDaysAgo,
+            endDate: threeDaysAgo
+        )
+        async let recentHeartRateVariability = averageQuantity(
+            identifier: .heartRateVariabilitySDNN,
+            unit: .secondUnit(with: .milli),
+            startDate: threeDaysAgo,
+            endDate: referenceDate
+        )
+        async let baselineHeartRateVariability = averageQuantity(
+            identifier: .heartRateVariabilitySDNN,
+            unit: .secondUnit(with: .milli),
+            startDate: twentyEightDaysAgo,
+            endDate: threeDaysAgo
+        )
+        async let recentStepStats = queryDailyStatistics(for: .steps, from: fourteenDaysAgo, to: referenceDate)
+        async let recentWorkouts = querySamples(for: .workouts, from: sevenDaysAgo, to: referenceDate)
+
+        let sleep = try await sleepSummaries
+        let completeNights = sleep.filter { $0.bucketDate < today }
+        let lastNight = completeNights.last
+        let baselineNights = Array(completeNights.dropLast().suffix(14))
+
+        let lastNightHours = lastNight?.totalHours
+        let baselineSleepHours = average(baselineNights.map(\.totalHours))
+        let lastNightStartHour = lastNight?.startHour
+        let baselineSleepStartHour = average(baselineNights.map(\.startHour))
+
+        let stepStats = try await recentStepStats
+        let completeStepDays = stepStats
+            .filter { calendar.startOfDay(for: $0.date) < today }
+            .sorted { $0.date < $1.date }
+        let yesterdaySteps = completeStepDays.last?.sum
+        let baselineSteps = average(completeStepDays.dropLast().compactMap(\.sum))
+
+        return RecoveryMetrics(
+            sleepHoursLastNight: lastNightHours,
+            sleepHoursBaseline: baselineSleepHours,
+            sleepStartHourLastNight: lastNightStartHour,
+            sleepStartHourBaseline: baselineSleepStartHour,
+            restingHeartRateRecent: try await recentRestingHeartRate,
+            restingHeartRateBaseline: try await baselineRestingHeartRate,
+            heartRateVariabilityRecent: try await recentHeartRateVariability,
+            heartRateVariabilityBaseline: try await baselineHeartRateVariability,
+            stepsYesterday: yesterdaySteps,
+            stepsBaseline: baselineSteps,
+            workoutsLast7Days: (try await recentWorkouts).count
+        )
+    }
+
+    private func averageQuantity(
+        identifier: HKQuantityTypeIdentifier,
+        unit: HKUnit,
+        startDate: Date,
+        endDate: Date
+    ) async throws -> Double? {
+        guard let sampleType = HKObjectType.quantityType(forIdentifier: identifier) else { return nil }
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: sampleType,
+                predicate: predicate,
+                limit: HKObjectQueryNoLimit,
+                sortDescriptors: [sort]
+            ) { _, results, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                let samples = (results as? [HKQuantitySample]) ?? []
+                guard !samples.isEmpty else {
+                    continuation.resume(returning: nil)
+                    return
+                }
+
+                let total = samples.reduce(0.0) { partialResult, sample in
+                    partialResult + sample.quantity.doubleValue(for: unit)
+                }
+                continuation.resume(returning: total / Double(samples.count))
+            }
+            store.execute(query)
+        }
+    }
+
+    private func querySleepNightSummaries(from startDate: Date, to endDate: Date) async throws -> [SleepNightSummary] {
+        guard let sampleType = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else { return [] }
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+        let calendar = self.calendar
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: sampleType,
+                predicate: predicate,
+                limit: HKObjectQueryNoLimit,
+                sortDescriptors: [sort]
+            ) { _, results, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                let samples = (results as? [HKCategorySample]) ?? []
+                guard !samples.isEmpty else {
+                    continuation.resume(returning: [])
+                    return
+                }
+
+                var totals: [Date: Double] = [:]
+                var earliestStart: [Date: Date] = [:]
+
+                for sample in samples where Self.isAsleepSleepValue(sample.value) {
+                    let bucketDate = Self.sleepBucketDate(for: sample.endDate, calendar: calendar)
+                    totals[bucketDate, default: 0] += sample.endDate.timeIntervalSince(sample.startDate) / 3600
+
+                    if let current = earliestStart[bucketDate] {
+                        earliestStart[bucketDate] = min(current, sample.startDate)
+                    } else {
+                        earliestStart[bucketDate] = sample.startDate
+                    }
+                }
+
+                let summaries = totals.keys.sorted().compactMap { date -> SleepNightSummary? in
+                    guard let totalHours = totals[date] else { return nil }
+                    let start = earliestStart[date] ?? date
+                    let components = calendar.dateComponents([.hour, .minute], from: start)
+                    let startHour = Double(components.hour ?? 0) + Double(components.minute ?? 0) / 60
+                    return SleepNightSummary(bucketDate: date, totalHours: totalHours, startHour: startHour)
+                }
+
+                continuation.resume(returning: summaries)
+            }
+            store.execute(query)
+        }
+    }
+
+    private func average<S: Sequence>(_ values: S) -> Double? where S.Element == Double {
+        let array = Array(values)
+        guard !array.isEmpty else { return nil }
+        return array.reduce(0, +) / Double(array.count)
+    }
+
+    private static func isAsleepSleepValue(_ value: Int) -> Bool {
+        guard let sleepValue = HKCategoryValueSleepAnalysis(rawValue: value) else { return false }
+        switch sleepValue {
+        case .awake, .inBed:
+            return false
+        default:
+            return true
+        }
+    }
+
+    private static func sleepBucketDate(for endDate: Date, calendar: Calendar) -> Date {
+        let shifted = endDate.addingTimeInterval(-12 * 60 * 60)
+        return calendar.startOfDay(for: shifted)
+    }
+
+    private struct SleepNightSummary {
+        let bucketDate: Date
+        let totalHours: Double
+        let startHour: Double
     }
 }

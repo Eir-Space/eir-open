@@ -28,8 +28,10 @@ enum AppColors {
     static let primary = Color(hex: "6366F1")
     static let primaryLight = Color(hex: "818CF8")
     static let primarySoft = Color(hex: "EEF2FF")
+    static let primaryStrong = Color(hex: "4F46E5")
 
     static let background = Color(hex: "FAFAF9")
+    static let backgroundMuted = Color(hex: "F5F5F4")
     static let text = Color(hex: "1C1917")
     static let textSecondary = Color(hex: "78716C")
     static let card = Color.white
@@ -44,6 +46,18 @@ enum AppColors {
     static let teal = Color(hex: "14B8A6")
     static let pink = Color(hex: "EC4899")
     static let yellow = Color(hex: "EAB308")
+    static let aiSoft = Color(hex: "FFF9F0")
+    static let aiStrong = Color(hex: "A16207")
+    static let danger = red
+
+    static let auraSubtle = LinearGradient(
+        colors: [
+            Color(hex: "FDE68A").opacity(0.24),
+            Color(hex: "E9D5FF").opacity(0.18)
+        ],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
 
     static func categoryColor(for category: String) -> Color {
         switch category.lowercased() {

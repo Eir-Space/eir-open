@@ -3,6 +3,11 @@ import WebKit
 
 // MARK: - Main View
 
+enum HealthDataBrowserDisplayMode {
+    case standalone
+    case embedded
+}
+
 struct HealthDataBrowserView: View {
     @EnvironmentObject var profileStore: ProfileStore
     @EnvironmentObject var extractor: HealthDataExtractor
@@ -11,77 +16,30 @@ struct HealthDataBrowserView: View {
     @State private var importedPersonIds: Set<String> = []
     @State private var importError: String?
     @State private var showGuide: Bool = !UserDefaults.standard.bool(forKey: "healthDataGuideShown")
+    let displayMode: HealthDataBrowserDisplayMode
+
+    init(displayMode: HealthDataBrowserDisplayMode = .standalone) {
+        self.displayMode = displayMode
+    }
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            HealthDataWebView(viewModel: viewModel, extractor: extractor)
-                .ignoresSafeArea(edges: .bottom)
-
-            // Floating extraction progress pill
-            if extractor.isExtracting {
-                extractionPill
-                    .padding(.bottom, 16)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-            }
-
-            // Guide overlay
-            if showGuide {
-                guideOverlay
-                    .transition(.opacity)
-            }
-        }
-        .animation(.easeInOut(duration: 0.25), value: showGuide)
-        .navigationTitle("Health Data")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItemGroup(placement: .topBarLeading) {
-                Button { viewModel.goBack() } label: { Image(systemName: "chevron.left") }
-                    .disabled(!viewModel.canGoBack)
-                Button { viewModel.goForward() } label: { Image(systemName: "chevron.right") }
-                    .disabled(!viewModel.canGoForward)
-                Button { viewModel.reload() } label: { Image(systemName: "arrow.clockwise") }
-            }
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                Button { showGuide = true } label: {
-                    Image(systemName: "questionmark.circle")
-                }
-
-                if extractor.isExtracting {
-                    Button {
-                        extractor.cancelExtraction()
-                    } label: {
-                        HStack(spacing: 4) {
-                            ProgressView().scaleEffect(0.6)
-                            Text("Cancel")
-                                .font(.caption)
-                        }
+        Group {
+            if displayMode == .standalone {
+                browserContent
+                    .navigationTitle("Import")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        browserToolbar
                     }
-                } else {
-                    Button {
-                        Task {
-                            await extractor.startAPIExtraction()
-                        }
-                    } label: {
-                        HStack(spacing: 4) {
-                            Image(systemName: "bolt.fill")
-                                .font(.caption2)
-                            Text("Download")
-                                .font(.caption)
-                                .fontWeight(.medium)
-                        }
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(AppColors.primary)
-                        .foregroundColor(.white)
-                        .cornerRadius(6)
-                    }
-                    .buttonStyle(.plain)
-
-                    if extractor.hasActiveSession {
-                        Circle()
-                            .fill(Color.green)
-                            .frame(width: 8, height: 8)
-                    }
+            } else {
+                VStack(spacing: 12) {
+                    embeddedToolbar
+                    browserContent
+                        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                                .stroke(AppColors.border, lineWidth: 1)
+                        )
                 }
             }
         }
@@ -93,6 +51,192 @@ struct HealthDataBrowserView: View {
                 showingExtractionSheet = true
             }
         }
+    }
+
+    private var browserContent: some View {
+        ZStack(alignment: .bottom) {
+            Group {
+                if displayMode == .standalone {
+                    HealthDataWebView(viewModel: viewModel, extractor: extractor)
+                        .ignoresSafeArea(edges: .bottom)
+                } else {
+                    HealthDataWebView(viewModel: viewModel, extractor: extractor)
+                }
+            }
+
+            if extractor.isExtracting {
+                extractionPill
+                    .padding(.bottom, 16)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+
+            if showGuide {
+                guideOverlay
+                    .transition(.opacity)
+            }
+        }
+        .animation(.easeInOut(duration: 0.25), value: showGuide)
+    }
+
+    @ToolbarContentBuilder
+    private var browserToolbar: some ToolbarContent {
+        Group {
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button { viewModel.goBack() } label: { Image(systemName: "chevron.left") }
+                    .disabled(!viewModel.canGoBack)
+                Button { viewModel.goForward() } label: { Image(systemName: "chevron.right") }
+                    .disabled(!viewModel.canGoForward)
+                Button { viewModel.reload() } label: { Image(systemName: "arrow.clockwise") }
+            }
+
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                browserGuideButton
+                browserDownloadControl
+            }
+        }
+    }
+
+    private var embeddedToolbar: some View {
+        HStack(spacing: 10) {
+            toolbarCircleButton(systemName: "chevron.left", isDisabled: !viewModel.canGoBack) {
+                viewModel.goBack()
+            }
+
+            toolbarCircleButton(systemName: "chevron.right", isDisabled: !viewModel.canGoForward) {
+                viewModel.goForward()
+            }
+
+            toolbarCircleButton(systemName: "arrow.clockwise") {
+                viewModel.reload()
+            }
+
+            Spacer()
+
+            Button {
+                showGuide = true
+            } label: {
+                Label("Guide", systemImage: "questionmark.circle")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(AppColors.text)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                    .background(AppColors.backgroundMuted)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+
+            embeddedDownloadControl
+        }
+    }
+
+    private var browserGuideButton: some View {
+        Button {
+            showGuide = true
+        } label: {
+            Image(systemName: "questionmark.circle")
+        }
+    }
+
+    @ViewBuilder
+    private var browserDownloadControl: some View {
+        if extractor.isExtracting {
+            Button {
+                extractor.cancelExtraction()
+            } label: {
+                HStack(spacing: 4) {
+                    ProgressView().scaleEffect(0.6)
+                    Text("Cancel")
+                        .font(.caption)
+                }
+            }
+        } else {
+            Button {
+                Task {
+                    await extractor.startAPIExtraction()
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "bolt.fill")
+                        .font(.caption2)
+                    Text("Download")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(AppColors.primary)
+                .foregroundColor(.white)
+                .cornerRadius(6)
+            }
+            .buttonStyle(.plain)
+
+            if extractor.hasActiveSession {
+                Circle()
+                    .fill(Color.green)
+                    .frame(width: 8, height: 8)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var embeddedDownloadControl: some View {
+        if extractor.isExtracting {
+            Button {
+                extractor.cancelExtraction()
+            } label: {
+                HStack(spacing: 8) {
+                    ProgressView()
+                        .tint(.white)
+                    Text("Cancel")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .foregroundStyle(.white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .background(AppColors.danger)
+                .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+        } else {
+            HStack(spacing: 8) {
+                if extractor.hasActiveSession {
+                    Circle()
+                        .fill(Color.green)
+                        .frame(width: 8, height: 8)
+                }
+
+                Button {
+                    Task {
+                        await extractor.startAPIExtraction()
+                    }
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "bolt.fill")
+                        Text("Download")
+                            .font(.subheadline.weight(.semibold))
+                    }
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(AppColors.primary)
+                    .clipShape(Capsule())
+                }
+                .buttonStyle(.plain)
+            }
+        }
+    }
+
+    private func toolbarCircleButton(systemName: String, isDisabled: Bool = false, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: systemName)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(isDisabled ? AppColors.textSecondary.opacity(0.4) : AppColors.text)
+                .frame(width: 38, height: 38)
+                .background(AppColors.backgroundMuted)
+                .clipShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .disabled(isDisabled)
     }
 
     // MARK: - Extraction Progress Pill
