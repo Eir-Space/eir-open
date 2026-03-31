@@ -1,3 +1,4 @@
+import StoreKit
 import SwiftUI
 import HealthKit
 
@@ -5,6 +6,7 @@ struct SettingsView: View {
     @EnvironmentObject var settingsVM: SettingsViewModel
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
     @EnvironmentObject var profileStore: ProfileStore
+    @EnvironmentObject var purchaseManager: PurchaseManager
 
     @State private var showingAddPerson = false
     @State private var showHealthKitImport = false
@@ -60,7 +62,7 @@ struct SettingsView: View {
             Section("AI Provider") {
                 Picker("Active Provider", selection: $settingsVM.activeProviderType) {
                     ForEach(LLMProviderType.allCases) { type in
-                        Text(type.rawValue).tag(type)
+                        Text(type.displayName).tag(type)
                     }
                 }
             }
@@ -122,6 +124,9 @@ struct SettingsView: View {
                         Text("On-device models keep all data on your phone")
                             .font(.caption)
                             .foregroundColor(AppColors.textSecondary)
+                        Text("Free Trial for Eir is hosted by Eir in Stockholm, with Berget providing the inference route")
+                            .font(.caption)
+                            .foregroundColor(AppColors.textSecondary)
                     }
                 }
 
@@ -139,7 +144,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("Profile")
         .sheet(isPresented: $showingAddPerson) {
             AddPersonSheet()
         }
@@ -183,13 +188,27 @@ struct SettingsView: View {
 private struct ProviderSection: View {
     let config: LLMProviderConfig
     @EnvironmentObject var settingsVM: SettingsViewModel
+    @EnvironmentObject var purchaseManager: PurchaseManager
     @State private var apiKey: String = ""
     @State private var baseURL: String = ""
     @State private var model: String = ""
     @State private var showKey = false
+    @State private var isProvisioningManagedAccess = false
+    @State private var managedAccessSnapshot: ManagedCloudAccessSnapshot?
+    @State private var managedAccessError: String?
 
     var isActive: Bool { settingsVM.activeProviderType == config.type }
     var hasKey: Bool { !apiKey.isEmpty }
+    var usesManagedTrial: Bool { config.type.usesManagedTrialAccess }
+    var isConfigured: Bool {
+        usesManagedTrial ? settingsVM.hasManagedAccessToken(for: config.type) : hasKey
+    }
+    var statusText: String {
+        if usesManagedTrial {
+            return isConfigured ? "Trial ready" : "Free credits available"
+        }
+        return hasKey ? "Configured" : "No API key"
+    }
 
     var body: some View {
         Section {
@@ -197,7 +216,7 @@ private struct ProviderSection: View {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 8) {
-                        Text(config.type.rawValue)
+                        Text(config.type.displayName)
                             .font(.headline)
                         if isActive {
                             Text("Active")
@@ -216,7 +235,7 @@ private struct ProviderSection: View {
                             .foregroundColor(AppColors.textSecondary)
                             .lineLimit(2)
                     } else {
-                        Text(config.type.defaultBaseURL)
+                        Text(usesManagedTrial ? "Eir-hosted cloud route" : config.type.defaultBaseURL)
                             .font(.caption2)
                             .foregroundColor(AppColors.textSecondary)
                             .lineLimit(1)
@@ -228,11 +247,11 @@ private struct ProviderSection: View {
                 if !config.type.isLocal {
                     HStack(spacing: 4) {
                         Circle()
-                            .fill(hasKey ? AppColors.green : AppColors.border)
+                            .fill(isConfigured ? AppColors.green : AppColors.border)
                             .frame(width: 8, height: 8)
-                        Text(hasKey ? "Configured" : "No API key")
+                        Text(statusText)
                             .font(.caption)
-                            .foregroundColor(hasKey ? AppColors.green : AppColors.textSecondary)
+                            .foregroundColor(isConfigured ? AppColors.green : AppColors.textSecondary)
                     }
                 }
             }
@@ -240,6 +259,8 @@ private struct ProviderSection: View {
             if config.type.isLocal {
                 // Local model UI — handled by LocalModelSection
                 LocalModelSection()
+            } else if usesManagedTrial {
+                managedCloudSection
             } else {
                 // API Key
                 HStack {
@@ -297,7 +318,7 @@ private struct ProviderSection: View {
                 }
 
                 if !isActive && hasKey {
-                    Button("Use \(config.type.rawValue)") {
+                    Button("Use \(config.type.displayName)") {
                         settingsVM.setActiveProvider(config.type)
                     }
                     .foregroundColor(AppColors.primary)
@@ -308,6 +329,238 @@ private struct ProviderSection: View {
             apiKey = settingsVM.apiKey(for: config.type)
             baseURL = config.baseURL
             model = config.model
+            managedAccessSnapshot = settingsVM.managedAccessSnapshot(for: config.type)
+        }
+    }
+
+    private var managedCloudSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Free Trial for Eir")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(AppColors.text)
+                Text("Your health data is sent over encrypted HTTPS through Eir-managed servers in the Stockholm Region. Eir is configured for zero Eir-side retention, and Berget provides the hosted inference.")
+                    .font(.caption)
+                    .foregroundColor(AppColors.textSecondary)
+            }
+            .padding(12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.aiSoft)
+            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+            HStack {
+                Text("Model")
+                    .foregroundColor(AppColors.textSecondary)
+                Spacer()
+                Text(config.model)
+                    .font(.subheadline.monospaced())
+                    .foregroundColor(AppColors.text)
+            }
+
+            if let managedAccessSnapshot {
+                quotaView(snapshot: managedAccessSnapshot)
+            }
+
+            if usesManagedTrial {
+                billingSection
+            }
+
+            if let managedAccessError, !managedAccessError.isEmpty {
+                Text(managedAccessError)
+                    .font(.caption)
+                    .foregroundColor(AppColors.danger)
+            }
+
+            Button {
+                Task { await provisionManagedAccess() }
+            } label: {
+                HStack {
+                    if isProvisioningManagedAccess {
+                        ProgressView()
+                            .tint(.white)
+                    }
+                    Text(managedAccessSnapshot == nil ? "Start Free Trial" : "Refresh Trial Access")
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppColors.primaryStrong)
+            .disabled(isProvisioningManagedAccess)
+
+            if !isActive {
+                Button("Use \(config.type.displayName)") {
+                    settingsVM.setActiveProvider(config.type)
+                }
+                .foregroundColor(AppColors.primary)
+            }
+        }
+    }
+
+    private func quotaView(snapshot: ManagedCloudAccessSnapshot) -> some View {
+        let balance = settingsVM.eirTrialBalance(for: snapshot, type: config.type)
+        let usageProgress = balance.totalTokens > 0 ? Double(balance.usedTokens) / Double(balance.totalTokens) : 0
+
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Trial usage")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(AppColors.text)
+                Spacer()
+                Text(snapshot.mode.capitalized)
+                    .font(.caption2.weight(.semibold))
+                    .foregroundColor(AppColors.aiStrong)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(AppColors.auraSubtle)
+                    .clipShape(Capsule())
+            }
+
+            ProgressView(value: usageProgress)
+                .tint(AppColors.aiStrong)
+
+            HStack {
+                quotaMetric(title: "Used", value: "\(balance.usedTokens)")
+                Spacer()
+                quotaMetric(title: "Total", value: "\(balance.totalTokens)")
+                Spacer()
+                quotaMetric(title: "Remaining", value: "\(balance.remainingTokens)")
+            }
+
+            Text("1 token = \(balance.requestsPerToken) hosted requests. You receive \(balance.dailyTokenGrant) new tokens each day.")
+                .font(.caption)
+                .foregroundColor(AppColors.textSecondary)
+            Text("\(max(snapshot.quota.used.requests, 0)) hosted requests used")
+                .font(.caption)
+                .foregroundColor(AppColors.textSecondary)
+            Text("Provisioned on \(snapshot.provisionedAt.formatted(date: .abbreviated, time: .shortened))")
+                .font(.caption2)
+                .foregroundColor(AppColors.textSecondary)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColors.backgroundMuted)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private var billingSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Divider()
+
+            Text("Upgrade")
+                .font(.subheadline.weight(.semibold))
+                .foregroundColor(AppColors.text)
+
+            if purchaseManager.hasBillingProducts {
+                if let subscription = purchaseManager.subscriptionProduct {
+                    billingProductButton(
+                        title: subscription.displayName,
+                        subtitle: "Monthly subscription",
+                        price: subscription.displayPrice
+                    ) {
+                        Task { await purchase(subscription) }
+                    }
+                }
+
+                ForEach(purchaseManager.topUpProducts, id: \.id) { product in
+                    billingProductButton(
+                        title: product.displayName,
+                        subtitle: "Extra hosted requests",
+                        price: product.displayPrice
+                    ) {
+                        Task { await purchase(product) }
+                    }
+                }
+
+                Button("Restore Purchases") {
+                    Task { await restorePurchases() }
+                }
+                .foregroundColor(AppColors.primary)
+                .disabled(purchaseManager.isPurchasing)
+            } else {
+                Text("Add App Store product IDs to enable subscriptions and top-ups.")
+                    .font(.caption)
+                    .foregroundColor(AppColors.textSecondary)
+            }
+
+            if let purchaseError = purchaseManager.lastError, !purchaseError.isEmpty {
+                Text(purchaseError)
+                    .font(.caption)
+                    .foregroundColor(AppColors.danger)
+            }
+        }
+    }
+
+    private func billingProductButton(
+        title: String,
+        subtitle: String,
+        price: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundColor(AppColors.text)
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundColor(AppColors.textSecondary)
+                }
+                Spacer()
+                Text(price)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundColor(AppColors.primaryStrong)
+            }
+            .padding(12)
+            .background(AppColors.backgroundMuted)
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        }
+        .buttonStyle(.plain)
+        .disabled(purchaseManager.isPurchasing)
+    }
+
+    private func quotaMetric(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(value)
+                .font(.headline)
+                .foregroundColor(AppColors.text)
+            Text(title)
+                .font(.caption2)
+                .foregroundColor(AppColors.textSecondary)
+        }
+    }
+
+    private func provisionManagedAccess() async {
+        isProvisioningManagedAccess = true
+        managedAccessError = nil
+        defer { isProvisioningManagedAccess = false }
+
+        do {
+            managedAccessSnapshot = try await settingsVM.provisionManagedAccess(for: config)
+        } catch {
+            managedAccessError = error.localizedDescription
+        }
+    }
+
+    private func purchase(_ product: Product) async {
+        do {
+            if let snapshot = try await purchaseManager.purchase(product, settingsVM: settingsVM) {
+                managedAccessSnapshot = snapshot
+                managedAccessError = nil
+            }
+        } catch {
+            managedAccessError = error.localizedDescription
+        }
+    }
+
+    private func restorePurchases() async {
+        do {
+            if let snapshot = try await purchaseManager.restorePurchases(settingsVM: settingsVM) {
+                managedAccessSnapshot = snapshot
+                managedAccessError = nil
+            }
+        } catch {
+            managedAccessError = error.localizedDescription
         }
     }
 }

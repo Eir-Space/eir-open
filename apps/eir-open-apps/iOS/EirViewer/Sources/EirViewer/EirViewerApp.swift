@@ -10,6 +10,11 @@ struct EirViewerApp: App {
     @StateObject private var agentMemoryStore = AgentMemoryStore()
     @StateObject private var localModelManager = LocalModelManager()
     @StateObject private var healthDataExtractor = HealthDataExtractor()
+    @StateObject private var purchaseManager = PurchaseManager()
+    @StateObject private var actionsVM = ActionsViewModel()
+    @StateObject private var forYouVM = ForYouViewModel()
+    @StateObject private var nextBestActionVM = NextBestHealthActionViewModel()
+    @StateObject private var stateActionVM = StateActionRecommendationViewModel()
 
     var body: some Scene {
         WindowGroup {
@@ -22,6 +27,11 @@ struct EirViewerApp: App {
                 .environmentObject(agentMemoryStore)
                 .environmentObject(localModelManager)
                 .environmentObject(healthDataExtractor)
+                .environmentObject(purchaseManager)
+                .environmentObject(actionsVM)
+                .environmentObject(forYouVM)
+                .environmentObject(nextBestActionVM)
+                .environmentObject(stateActionVM)
                 .onOpenURL { url in
                     let ext = url.pathExtension.lowercased()
                     guard ext == "eir" || ext == "yaml" || ext == "yml" else { return }

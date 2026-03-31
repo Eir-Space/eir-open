@@ -68,12 +68,21 @@ enum EncryptedStore {
     private static func getOrCreateKey() throws -> SymmetricKey {
         if let existing = KeychainService.get(key: keychainKey),
            let keyData = Data(base64Encoded: existing) {
+            persistFallbackKey(existing)
+            return SymmetricKey(data: keyData)
+        }
+
+        if let fallback = loadFallbackKey(),
+           let keyData = Data(base64Encoded: fallback) {
+            KeychainService.set(key: keychainKey, value: fallback)
             return SymmetricKey(data: keyData)
         }
 
         let key = SymmetricKey(size: .bits256)
         let keyData = key.withUnsafeBytes { Data($0) }
-        KeychainService.set(key: keychainKey, value: keyData.base64EncodedString())
+        let encoded = keyData.base64EncodedString()
+        KeychainService.set(key: keychainKey, value: encoded)
+        persistFallbackKey(encoded)
         return key
     }
 
@@ -109,6 +118,30 @@ enum EncryptedStore {
         let safe = key.replacingOccurrences(of: "/", with: "_")
             .replacingOccurrences(of: ":", with: "_")
         return storeDirectory.appendingPathComponent("\(safe).enc")
+    }
+
+    private static var fallbackKeyURL: URL {
+        storeDirectory.deletingLastPathComponent().appendingPathComponent("encryption-key.txt")
+    }
+
+    private static func loadFallbackKey() -> String? {
+        guard let data = try? Data(contentsOf: fallbackKeyURL) else { return nil }
+        return String(data: data, encoding: .utf8)?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private static func persistFallbackKey(_ key: String) {
+        guard let data = key.data(using: .utf8) else { return }
+
+        do {
+            try FileManager.default.createDirectory(
+                at: fallbackKeyURL.deletingLastPathComponent(),
+                withIntermediateDirectories: true
+            )
+            try data.write(to: fallbackKeyURL, options: [.atomic, .completeFileProtection])
+        } catch {
+            // Best effort only.
+        }
     }
 
     enum EncryptionError: Error {

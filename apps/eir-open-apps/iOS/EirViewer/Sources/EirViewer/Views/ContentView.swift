@@ -1,19 +1,21 @@
 import SwiftUI
 
 enum NavTab: String, CaseIterable, Identifiable {
+    case forYou = "For You"
+    case action = "Action"
     case journal = "Journal"
-    case healthData = "Health Data"
+    case findCare = "Find Care"
     case chat = "Chat"
-    case settings = "Settings"
 
     var id: String { rawValue }
 
     var icon: String {
         switch self {
+        case .forYou: return "sparkles"
+        case .action: return "figure.run.square.stack"
         case .journal: return "doc.text"
-        case .healthData: return "heart.text.clipboard"
+        case .findCare: return "cross.case"
         case .chat: return "bubble.left.and.bubble.right"
-        case .settings: return "gearshape"
         }
     }
 }
@@ -27,7 +29,7 @@ struct ContentView: View {
     @EnvironmentObject var agentMemoryStore: AgentMemoryStore
     @EnvironmentObject var healthDataExtractor: HealthDataExtractor
 
-    @State private var selectedTab: NavTab = .journal
+    @State private var selectedTab: NavTab = .forYou
 
     var body: some View {
         if profileStore.profiles.isEmpty {
@@ -35,34 +37,46 @@ struct ContentView: View {
         } else {
             TabView(selection: $selectedTab) {
                 NavigationStack {
+                    ForYouView()
+                        .topLevelProfileToolbar()
+                }
+                .tabItem { Label("For You", systemImage: "sparkles") }
+                .tag(NavTab.forYou)
+
+                NavigationStack {
+                    ActionLibraryView()
+                        .topLevelProfileToolbar()
+                }
+                .tabItem { Label("Action", systemImage: "figure.run.square.stack") }
+                .tag(NavTab.action)
+
+                NavigationStack {
                     JournalView()
+                        .topLevelProfileToolbar()
                 }
                 .tabItem { Label("Journal", systemImage: "doc.text") }
                 .tag(NavTab.journal)
 
                 NavigationStack {
-                    HealthDataBrowserView()
+                    FindCareView()
+                        .topLevelProfileToolbar()
                 }
-                .tabItem { Label("Health Data", systemImage: "heart.text.clipboard") }
-                .tag(NavTab.healthData)
+                .tabItem { Label("Find Care", systemImage: "cross.case") }
+                .tag(NavTab.findCare)
 
                 NavigationStack {
                     ChatView()
+                        .topLevelProfileToolbar()
                 }
                 .tabItem { Label("Chat", systemImage: "bubble.left.and.bubble.right") }
                 .tag(NavTab.chat)
-
-                NavigationStack {
-                    SettingsView()
-                }
-                .tabItem { Label("Settings", systemImage: "gearshape") }
-                .tag(NavTab.settings)
             }
             .tint(AppColors.primary)
             .overlay(alignment: .top) {
-                if healthDataExtractor.isExtracting && selectedTab != .healthData {
+                if healthDataExtractor.isExtracting && selectedTab != .journal {
                     Button {
-                        selectedTab = .healthData
+                        NotificationCenter.default.post(name: .openJournalImport, object: nil)
+                        selectedTab = .journal
                     } label: {
                         HStack(spacing: 8) {
                             ProgressView()
@@ -110,6 +124,9 @@ struct ContentView: View {
             .onReceive(NotificationCenter.default.publisher(for: .navigateToChat)) { _ in
                 selectedTab = .chat
             }
+            .onReceive(NotificationCenter.default.publisher(for: .navigateToAction)) { _ in
+                selectedTab = .action
+            }
         }
     }
 
@@ -118,5 +135,88 @@ struct ContentView: View {
         documentVM.loadFile(url: profile.fileURL)
         chatThreadStore.loadThreads(for: profile.id)
         agentMemoryStore.load(profileID: profile.id)
+    }
+}
+
+extension Notification.Name {
+    static let navigateToAction = Notification.Name("navigateToAction")
+}
+
+struct ProfileSettingsSheet: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            SettingsView()
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                    }
+                }
+        }
+    }
+}
+
+private struct TopLevelProfileToolbarModifier: ViewModifier {
+    @EnvironmentObject private var profileStore: ProfileStore
+
+    @State private var showingProfile = false
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingProfile = true
+                    } label: {
+                        ProfileToolbarAvatar(initials: profileStore.selectedProfile?.initials)
+                    }
+                    .accessibilityLabel("Open Profile and Settings")
+                }
+            }
+            .sheet(isPresented: $showingProfile) {
+                ProfileSettingsSheet()
+            }
+    }
+}
+
+private struct ProfileToolbarAvatar: View {
+    let initials: String?
+
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            ZStack {
+                Circle()
+                    .fill(AppColors.backgroundMuted)
+
+                if let initials, !initials.isEmpty {
+                    Text(initials)
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(AppColors.text)
+                } else {
+                    Image(systemName: "person.fill")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(AppColors.text)
+                }
+            }
+            .frame(width: 30, height: 30)
+
+            Circle()
+                .fill(AppColors.primaryStrong)
+                .frame(width: 14, height: 14)
+                .overlay {
+                    Image(systemName: "slider.horizontal.3")
+                        .font(.system(size: 7, weight: .bold))
+                        .foregroundStyle(.white)
+                }
+        }
+    }
+}
+
+extension View {
+    func topLevelProfileToolbar() -> some View {
+        modifier(TopLevelProfileToolbarModifier())
     }
 }

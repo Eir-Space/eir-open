@@ -1,0 +1,4873 @@
+forms:
+  - id: "adhd"
+    title: "ADHD Self-Check"
+    subtitle: "Adult ADHD Self-Report Scale (ASRS v1.1) Screener"
+    themeColor: "#6366f1"
+    category: "Neuro"
+    description: >-
+      Explore attention, organization, and activity patterns over the past six months. This quick screener cannot provide a
+      diagnosis, but it can highlight patterns worth discussing with a clinician.
+    instructions:
+      - "Answer based on your experiences during the last six months."
+      - "There are no right or wrong responses — choose what feels most accurate."
+      - "Use the results to guide conversations with your care team."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "Rarely"
+          value: 1
+        - label: "Sometimes"
+          value: 2
+        - label: "Often"
+          value: 3
+        - label: "Very often"
+          value: 4
+    questions:
+      - id: "adhd_inattention_1"
+        text: "How often do you struggle to finish the final details of a project once the challenging parts are complete?"
+        dimension: "Inattention"
+      - id: "adhd_inattention_2"
+        text: "How frequently do you have difficulty staying organized when tasks require follow-through?"
+        dimension: "Inattention"
+      - id: "adhd_inattention_3"
+        text: "How often do you forget appointments or obligations?"
+        dimension: "Inattention"
+      - id: "adhd_hyper_1"
+        text: "When you must sit for long periods, how often do you fidget or move your hands and feet?"
+        dimension: "Hyperactivity"
+      - id: "adhd_hyper_2"
+        text: "How often do you feel overly active and compelled to do things, as if driven by a motor?"
+        dimension: "Hyperactivity"
+      - id: "adhd_hyper_3"
+        text: "How frequently do you leave your seat in situations where remaining seated is expected?"
+        dimension: "Hyperactivity"
+    scoring:
+      method: "average"
+      overall:
+        label: "Overall ADHD indication"
+        bands:
+          - min: 0
+            max: 1.5
+            label: "Low"
+            color: "#10b981"
+            description: "Your responses do not strongly align with ADHD traits."
+          - min: 1.51
+            max: 2.6
+            label: "Elevated"
+            color: "#f59e0b"
+            description: "You reported several challenges worth monitoring."
+          - min: 2.61
+            max: 4
+            label: "High"
+            color: "#ef4444"
+            description: "Consider sharing these results with a clinician for a full assessment."
+      dimensions:
+        - id: "Inattention"
+          label: "Inattention"
+          description: "Focus, organization, and task completion."
+          bands:
+            - min: 0
+              max: 1.5
+              label: "Strength"
+            - min: 1.51
+              max: 2.6
+              label: "Watchful"
+            - min: 2.61
+              max: 4
+              label: "Needs support"
+        - id: "Hyperactivity"
+          label: "Hyperactivity & Impulsivity"
+          description: "Inner restlessness, impulsive actions, and energy regulation."
+          bands:
+            - min: 0
+              max: 1.5
+              label: "Balanced"
+            - min: 1.51
+              max: 2.6
+              label: "Elevated"
+            - min: 2.61
+              max: 4
+              label: "Needs support"
+
+  - id: "asd"
+    title: "Autism Spectrum Clues"
+    subtitle: "Social communication & sensory pattern check"
+    themeColor: "#0ea5e9"
+    category: "Neuro"
+    description: >-
+      This reflective checklist looks at key autistic traits including sensory preferences, communication style, and need for
+      routine. Use it to organize observations before speaking with a professional.
+    instructions:
+      - "Think about your typical experiences across social, sensory, and routine situations."
+      - "Choose the option that best matches how true each statement feels for you."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Slightly"
+          value: 1
+        - label: "Somewhat"
+          value: 2
+        - label: "Mostly"
+          value: 3
+        - label: "Very much"
+          value: 4
+    questions:
+      - id: "asd_social_1"
+        text: "I find back-and-forth conversations tiring or confusing."
+        dimension: "Social Communication"
+      - id: "asd_social_2"
+        text: "Understanding social cues (like tone or facial expressions) takes effort for me."
+        dimension: "Social Communication"
+      - id: "asd_routine_1"
+        text: "Changes to my plans or routines cause significant stress."
+        dimension: "Routines"
+      - id: "asd_routine_2"
+        text: "I rely on structured rituals to feel calm."
+        dimension: "Routines"
+      - id: "asd_sensory_1"
+        text: "I notice sounds, textures, or lights that others do not."
+        dimension: "Sensory"
+      - id: "asd_sensory_2"
+        text: "Overwhelming sensory input can lead me to withdraw or shut down."
+        dimension: "Sensory"
+      - id: "asd_focus_1"
+        text: "I can focus intensely on interests for long periods without losing motivation."
+        dimension: "Focused Interests"
+      - id: "asd_focus_2"
+        text: "My special interests bring me comfort and stability."
+        dimension: "Focused Interests"
+    scoring:
+      method: "average"
+      overall:
+        label: "Alignment with autistic traits"
+        bands:
+          - min: 0
+            max: 1.3
+            label: "Low"
+            color: "#10b981"
+            description: "Few experiences align with core autistic traits."
+          - min: 1.31
+            max: 2.6
+            label: "Moderate"
+            color: "#f97316"
+            description: "Some consistent autistic patterns are present."
+          - min: 2.61
+            max: 4
+            label: "High"
+            color: "#ef4444"
+            description: "Many experiences match autistic traits — consider a formal assessment."
+      dimensions:
+        - id: "Social Communication"
+          label: "Social Communication"
+          description: "Comfort with dialogue, cues, and connection."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Supportive"
+            - min: 1.31
+              max: 2.6
+              label: "Mindful"
+            - min: 2.61
+              max: 4
+              label: "Challenging"
+        - id: "Routines"
+          label: "Need for Routines"
+          description: "Preference for predictability and structure."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Flexible"
+            - min: 1.31
+              max: 2.6
+              label: "Structured"
+            - min: 2.61
+              max: 4
+              label: "Highly structured"
+        - id: "Sensory"
+          label: "Sensory Processing"
+          description: "Sensitivity to sensory environments."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Regulated"
+            - min: 1.31
+              max: 2.6
+              label: "Attentive"
+            - min: 2.61
+              max: 4
+              label: "Intense"
+        - id: "Focused Interests"
+          label: "Focused Interests"
+          description: "Depth of interest-based focus."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Casual"
+            - min: 1.31
+              max: 2.6
+              label: "Dedicated"
+            - min: 2.61
+              max: 4
+              label: "Immersive"
+
+  - id: "depression"
+    title: "Mood & Energy Check"
+    subtitle: "PHQ-9 inspired depression screener"
+    themeColor: "#f97316"
+    category: "Mental"
+    description: >-
+      Monitor how symptoms of low mood, energy, and motivation have been present during the past two weeks. This tool is based on
+      the widely used PHQ-9 questionnaire.
+    instructions:
+      - "Reflect on your experiences over the last 14 days."
+      - "Consider how often each statement has been true for you."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Several days"
+          value: 1
+        - label: "More than half the days"
+          value: 2
+        - label: "Nearly every day"
+          value: 3
+    questions:
+      - id: "phq_interest"
+        text: "Little interest or pleasure in doing things"
+        dimension: "Anhedonia"
+      - id: "phq_down"
+        text: "Feeling down, depressed, or hopeless"
+        dimension: "Mood"
+      - id: "phq_sleep"
+        text: "Trouble falling or staying asleep, or sleeping too much"
+        dimension: "Somatic"
+      - id: "phq_energy"
+        text: "Feeling tired or having little energy"
+        dimension: "Somatic"
+      - id: "phq_appetite"
+        text: "Poor appetite or overeating"
+        dimension: "Somatic"
+      - id: "phq_self"
+        text: "Feeling bad about yourself — or that you are a failure"
+        dimension: "Self-worth"
+      - id: "phq_focus"
+        text: "Trouble concentrating on things, such as reading or watching TV"
+        dimension: "Cognitive"
+      - id: "phq_movement"
+        text: "Moving or speaking slowly, or being fidgety and restless"
+        dimension: "Somatic"
+      - id: "phq_harm"
+        text: "Thoughts that you would be better off dead, or hurting yourself"
+        dimension: "Safety"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Depression severity"
+        bands:
+          - min: 0
+            max: 4
+            label: "Minimal"
+            color: "#22c55e"
+            description: "Symptoms are minimal; continue healthy habits."
+          - min: 5
+            max: 9
+            label: "Mild"
+            color: "#facc15"
+            description: "Watch for changes and consider early supports."
+          - min: 10
+            max: 14
+            label: "Moderate"
+            color: "#f97316"
+            description: "Consider speaking with a clinician or counselor."
+          - min: 15
+            max: 27
+            label: "Severe"
+            color: "#dc2626"
+            description: "Reach out to a professional or crisis service promptly."
+      dimensions:
+        - id: "Somatic"
+          label: "Physical energy & body rhythms"
+          bands:
+            - min: 0
+              max: 2
+              label: "Stable"
+            - min: 3
+              max: 5
+              label: "Shifted"
+            - min: 6
+              max: 9
+              label: "Strained"
+        - id: "Mood"
+          label: "Emotional tone"
+          bands:
+            - min: 0
+              max: 0
+              label: "Balanced"
+            - min: 1
+              max: 2
+              label: "Tender"
+            - min: 3
+              max: 3
+              label: "Heavy"
+        - id: "Cognitive"
+          label: "Thinking & focus"
+          bands:
+            - min: 0
+              max: 0
+              label: "Clear"
+            - min: 1
+              max: 2
+              label: "Foggy"
+            - min: 3
+              max: 3
+              label: "Impaired"
+        - id: "Self-worth"
+          label: "Self-perception"
+          bands:
+            - min: 0
+              max: 0
+              label: "Grounded"
+            - min: 1
+              max: 1
+              label: "Tender"
+            - min: 2
+              max: 3
+              label: "Hurting"
+        - id: "Anhedonia"
+          label: "Joy & motivation"
+          bands:
+            - min: 0
+              max: 0
+              label: "Engaged"
+            - min: 1
+              max: 1
+              label: "Blunted"
+            - min: 2
+              max: 3
+              label: "Flat"
+        - id: "Safety"
+          label: "Safety signals"
+          bands:
+            - min: 0
+              max: 0
+              label: "Safe"
+            - min: 1
+              max: 1
+              label: "Needs monitoring"
+            - min: 2
+              max: 3
+              label: "Urgent"
+
+  - id: "social-phobia"
+    title: "Social Confidence Pulse"
+    subtitle: "Mini Social Phobia Inventory"
+    themeColor: "#8b5cf6"
+    category: "Mental"
+    description: >-
+      Notice how anxiety shows up in social situations, from physical sensations to avoidance patterns. This brief inventory is
+      inspired by the SPIN screening tool.
+    instructions:
+      - "Respond with what has been typical for you in the last month."
+      - "Use the results to identify areas to practice compassion and coping strategies."
+    scale:
+      label: "Intensity"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "A little"
+          value: 1
+        - label: "Somewhat"
+          value: 2
+        - label: "Very"
+          value: 3
+        - label: "Extremely"
+          value: 4
+    questions:
+      - id: "spin_fear"
+        text: "Fear of embarrassing yourself in front of others"
+        dimension: "Fear"
+      - id: "spin_avoid"
+        text: "Avoiding social situations because of anxiety"
+        dimension: "Avoidance"
+      - id: "spin_body"
+        text: "Experiencing physical symptoms (blushing, shaking, sweating) in social settings"
+        dimension: "Body"
+      - id: "spin_speaking"
+        text: "Fear of speaking in front of a group"
+        dimension: "Fear"
+      - id: "spin_stranger"
+        text: "Anxiety when meeting new people"
+        dimension: "Avoidance"
+      - id: "spin_review"
+        text: "Replaying conversations to look for mistakes"
+        dimension: "Thoughts"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Social anxiety signal"
+        bands:
+          - min: 0
+            max: 7
+            label: "Low"
+            color: "#10b981"
+            description: "Manageable worry — continue supportive habits."
+          - min: 8
+            max: 14
+            label: "Moderate"
+            color: "#facc15"
+            description: "Noticeable anxiety — coping strategies may help."
+          - min: 15
+            max: 24
+            label: "High"
+            color: "#f97316"
+            description: "Consider guided support to build confidence."
+          - min: 25
+            max: 30
+            label: "Very high"
+            color: "#dc2626"
+            description: "Professional support can help reduce distress."
+      dimensions:
+        - id: "Fear"
+          label: "Fear response"
+          bands:
+            - min: 0
+              max: 3
+              label: "Calm"
+            - min: 4
+              max: 6
+              label: "Sensitive"
+            - min: 7
+              max: 8
+              label: "Reactive"
+        - id: "Avoidance"
+          label: "Avoidance pattern"
+          bands:
+            - min: 0
+              max: 3
+              label: "Engaged"
+            - min: 4
+              max: 6
+              label: "Protective"
+            - min: 7
+              max: 8
+              label: "Limiting"
+        - id: "Body"
+          label: "Body sensations"
+          bands:
+            - min: 0
+              max: 1
+              label: "Steady"
+            - min: 2
+              max: 3
+              label: "Noticing"
+            - min: 4
+              max: 4
+              label: "Intense"
+        - id: "Thoughts"
+          label: "Thinking patterns"
+          bands:
+            - min: 0
+              max: 1
+              label: "Flexible"
+            - min: 2
+              max: 2
+              label: "Evaluating"
+            - min: 3
+              max: 4
+              label: "Ruminating"
+
+  - id: "ocean"
+    title: "Personality Snapshot"
+    subtitle: "Big Five (OCEAN) mini inventory"
+    themeColor: "#fbbf24"
+    category: "Personality"
+    description: >-
+      Rate how well each statement describes you. The five trait domains outline broad tendencies — they are not scores of
+      success or failure.
+    instructions:
+      - "Answer instinctively; your first impression is usually most accurate."
+      - "Imagine how you generally show up across situations."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "ocean_o1"
+        text: "I enjoy exploring new ideas."
+        dimension: "Openness"
+      - id: "ocean_o2"
+        text: "I appreciate art, music, or creative experiences."
+        dimension: "Openness"
+      - id: "ocean_c1"
+        text: "I keep my spaces organized."
+        dimension: "Conscientiousness"
+      - id: "ocean_c2"
+        text: "I follow through on my plans."
+        dimension: "Conscientiousness"
+      - id: "ocean_e1"
+        text: "I feel energized by social gatherings."
+        dimension: "Extraversion"
+      - id: "ocean_e2"
+        text: "I take the lead in group conversations."
+        dimension: "Extraversion"
+      - id: "ocean_a1"
+        text: "I value helping others feel at ease."
+        dimension: "Agreeableness"
+      - id: "ocean_a2"
+        text: "I am considerate and kind toward others."
+        dimension: "Agreeableness"
+      - id: "ocean_n1"
+        text: "I get stressed easily."
+        dimension: "Neuroticism"
+      - id: "ocean_n2"
+        text: "I often worry about things outside my control."
+        dimension: "Neuroticism"
+    scoring:
+      method: "average"
+      overall:
+        label: "Trait balance"
+        bands:
+          - min: 1
+            max: 2.2
+            label: "Introverted-Calm"
+            color: "#38bdf8"
+            description: "More inward, steady energy overall."
+          - min: 2.21
+            max: 3.8
+            label: "Balanced"
+            color: "#22c55e"
+            description: "A blend of reflective and expressive traits."
+          - min: 3.81
+            max: 5
+            label: "Expressive"
+            color: "#f97316"
+            description: "High social drive and emotional intensity."
+      dimensions:
+        - id: "Openness"
+          label: "Openness"
+          description: "Curiosity, creativity, and imagination."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Grounded"
+            - min: 2.41
+              max: 3.6
+              label: "Curious"
+            - min: 3.61
+              max: 5
+              label: "Exploratory"
+        - id: "Conscientiousness"
+          label: "Conscientiousness"
+          description: "Organization and goal-directed behavior."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Flexible"
+            - min: 2.41
+              max: 3.6
+              label: "Steady"
+            - min: 3.61
+              max: 5
+              label: "Purposeful"
+        - id: "Extraversion"
+          label: "Extraversion"
+          description: "Sociability and assertiveness."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Reserved"
+            - min: 2.41
+              max: 3.6
+              label: "Engaging"
+            - min: 3.61
+              max: 5
+              label: "Outgoing"
+        - id: "Agreeableness"
+          label: "Agreeableness"
+          description: "Compassion and cooperation."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Candid"
+            - min: 2.41
+              max: 3.6
+              label: "Warm"
+            - min: 3.61
+              max: 5
+              label: "Nurturing"
+        - id: "Neuroticism"
+          label: "Emotional sensitivity"
+          description: "Experience of worry and mood shifts (higher scores mean more sensitivity)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Even-keeled"
+            - min: 2.41
+              max: 3.6
+              label: "Attentive"
+            - min: 3.61
+              max: 5
+              label: "Vigilant"
+
+  - id: "attachment"
+    title: "Attachment Style Reflections"
+    subtitle: "Experiences in close relationships"
+    themeColor: "#34d399"
+    category: "Personality"
+    description: >-
+      Consider how you typically feel and respond in close relationships. These prompts are inspired by the Experiences in Close
+      Relationships short form.
+    instructions:
+      - "Think about your feelings in meaningful romantic or intimate relationships."
+      - "If you are not currently partnered, respond based on past experiences."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "attach_anx1"
+        text: "I worry that my partner does not love me as much as I love them."
+        dimension: "Anxious"
+      - id: "attach_anx2"
+        text: "I need a lot of reassurance from close partners."
+        dimension: "Anxious"
+      - id: "attach_anx3"
+        text: "I find myself craving closeness and fearing distance."
+        dimension: "Anxious"
+      - id: "attach_avoid1"
+        text: "I prefer not to rely on others even when I need support."
+        dimension: "Avoidant"
+      - id: "attach_avoid2"
+        text: "I feel uncomfortable when people get too close emotionally."
+        dimension: "Avoidant"
+      - id: "attach_avoid3"
+        text: "I value independence more than emotional intimacy."
+        dimension: "Avoidant"
+      - id: "attach_secure1"
+        text: "I am comfortable depending on my partner and having them depend on me."
+        dimension: "Secure"
+      - id: "attach_secure2"
+        text: "I feel confident about my partner's care and commitment."
+        dimension: "Secure"
+    scoring:
+      method: "average"
+      overall:
+        label: "Attachment orientation"
+        bands:
+          - min: 1
+            max: 2.5
+            label: "Security-leaning"
+            color: "#22c55e"
+            description: "Responses reflect comfort with closeness and autonomy."
+          - min: 2.51
+            max: 3.5
+            label: "Mixed"
+            color: "#facc15"
+            description: "You may shift between reassurance-seeking and distancing."
+          - min: 3.51
+            max: 5
+            label: "Protective"
+            color: "#ef4444"
+            description: "Patterns suggest strong anxious or avoidant strategies."
+      dimensions:
+        - id: "Secure"
+          label: "Secure base"
+          description: "Comfort with closeness and trust."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Lower"
+            - min: 2.41
+              max: 3.6
+              label: "Balanced"
+            - min: 3.61
+              max: 5
+              label: "Abundant"
+        - id: "Anxious"
+          label: "Anxious activation"
+          description: "Need for reassurance and fear of loss."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Calm"
+            - min: 2.41
+              max: 3.6
+              label: "Watchful"
+            - min: 3.61
+              max: 5
+              label: "High alert"
+        - id: "Avoidant"
+          label: "Avoidant distancing"
+          description: "Preference for independence over closeness."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Comfortable"
+            - min: 2.41
+              max: 3.6
+              label: "Balancing"
+            - min: 3.61
+              max: 5
+              label: "Protective"
+
+  - id: "general-anxiety"
+    title: "Generalized Anxiety Check"
+    subtitle: "GAD-7 inspired worry & anxiety screener"
+    themeColor: "#ec4899"
+    category: "Mental"
+    description: >-
+      Notice patterns of worry, restlessness, and tension that extend beyond specific situations. This screener looks at general
+      anxiety patterns over the past two weeks.
+    instructions:
+      - "Reflect on your experiences over the last 14 days."
+      - "Consider how often you've been bothered by worry and anxiety."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Several days"
+          value: 1
+        - label: "More than half the days"
+          value: 2
+        - label: "Nearly every day"
+          value: 3
+    questions:
+      - id: "gad_worry"
+        text: "Feeling nervous, anxious, or on edge"
+        dimension: "Emotional"
+      - id: "gad_control"
+        text: "Not being able to stop or control worrying"
+        dimension: "Cognitive"
+      - id: "gad_excessive"
+        text: "Worrying too much about different things"
+        dimension: "Cognitive"
+      - id: "gad_trouble"
+        text: "Trouble relaxing"
+        dimension: "Physical"
+      - id: "gad_restless"
+        text: "Being so restless that it's hard to sit still"
+        dimension: "Physical"
+      - id: "gad_irritable"
+        text: "Becoming easily annoyed or irritable"
+        dimension: "Emotional"
+      - id: "gad_fear"
+        text: "Feeling afraid, as if something awful might happen"
+        dimension: "Emotional"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Generalized anxiety severity"
+        bands:
+          - min: 0
+            max: 4
+            label: "Minimal"
+            color: "#22c55e"
+            description: "Anxiety levels are manageable; continue supportive practices."
+          - min: 5
+            max: 9
+            label: "Mild"
+            color: "#facc15"
+            description: "Some anxiety present — self-care and stress management may help."
+          - min: 10
+            max: 14
+            label: "Moderate"
+            color: "#f97316"
+            description: "Moderate anxiety — consider speaking with a clinician."
+          - min: 15
+            max: 21
+            label: "Severe"
+            color: "#dc2626"
+            description: "High anxiety levels — professional support can provide relief."
+      dimensions:
+        - id: "Cognitive"
+          label: "Worry patterns"
+          bands:
+            - min: 0
+              max: 2
+              label: "Calm"
+            - min: 3
+              max: 4
+              label: "Noticing"
+            - min: 5
+              max: 6
+              label: "Preoccupied"
+        - id: "Physical"
+          label: "Body tension"
+          bands:
+            - min: 0
+              max: 1
+              label: "Relaxed"
+            - min: 2
+              max: 3
+              label: "Tense"
+            - min: 4
+              max: 6
+              label: "Agitated"
+        - id: "Emotional"
+          label: "Emotional intensity"
+          bands:
+            - min: 0
+              max: 2
+              label: "Steady"
+            - min: 3
+              max: 4
+              label: "Reactive"
+            - min: 5
+              max: 9
+              label: "Intense"
+
+  - id: "panic"
+    title: "Panic & Physical Anxiety"
+    subtitle: "Panic attack patterns & physical symptoms"
+    themeColor: "#f43f5e"
+    category: "Mental"
+    description: >-
+      Explore sudden surges of fear or physical anxiety symptoms. This assessment helps identify panic patterns and physical anxiety
+      responses that may need attention.
+    instructions:
+      - "Think about episodes of sudden intense fear or physical symptoms."
+      - "Consider both full panic attacks and partial anxiety surges."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "Once or twice"
+          value: 1
+        - label: "A few times"
+          value: 2
+        - label: "Several times"
+          value: 3
+        - label: "Very often"
+          value: 4
+    questions:
+      - id: "panic_sudden"
+        text: "Experiencing sudden surges of intense fear or panic"
+        dimension: "Panic Frequency"
+      - id: "panic_heart"
+        text: "Rapid or pounding heartbeat during anxiety"
+        dimension: "Physical Symptoms"
+      - id: "panic_breath"
+        text: "Shortness of breath or feeling smothered"
+        dimension: "Physical Symptoms"
+      - id: "panic_chest"
+        text: "Chest pain or discomfort during anxiety"
+        dimension: "Physical Symptoms"
+      - id: "panic_dizzy"
+        text: "Feeling dizzy, unsteady, or like you might faint"
+        dimension: "Physical Symptoms"
+      - id: "panic_fear"
+        text: "Fear of losing control or going crazy"
+        dimension: "Cognitive Fear"
+      - id: "panic_death"
+        text: "Fear of dying during panic episodes"
+        dimension: "Cognitive Fear"
+      - id: "panic_avoid"
+        text: "Avoiding places or situations due to fear of panic"
+        dimension: "Avoidance"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Panic & physical anxiety severity"
+        bands:
+          - min: 0
+            max: 4
+            label: "Low"
+            color: "#22c55e"
+            description: "Few panic experiences; anxiety is manageable."
+          - min: 5
+            max: 10
+            label: "Moderate"
+            color: "#facc15"
+            description: "Some panic symptoms; coping strategies may help."
+          - min: 11
+            max: 20
+            label: "High"
+            color: "#f97316"
+            description: "Frequent panic symptoms — consider professional support."
+          - min: 21
+            max: 32
+            label: "Very high"
+            color: "#dc2626"
+            description: "Severe panic patterns — reach out for professional help."
+      dimensions:
+        - id: "Panic Frequency"
+          label: "Panic episodes"
+          bands:
+            - min: 0
+              max: 1
+              label: "Rare"
+            - min: 2
+              max: 3
+              label: "Occasional"
+            - min: 4
+              max: 4
+              label: "Frequent"
+        - id: "Physical Symptoms"
+          label: "Body responses"
+          bands:
+            - min: 0
+              max: 4
+              label: "Mild"
+            - min: 5
+              max: 10
+              label: "Moderate"
+            - min: 11
+              max: 16
+              label: "Intense"
+        - id: "Cognitive Fear"
+          label: "Fear intensity"
+          bands:
+            - min: 0
+              max: 2
+              label: "Manageable"
+            - min: 3
+              max: 4
+              label: "Distressing"
+            - min: 5
+              max: 8
+              label: "Overwhelming"
+        - id: "Avoidance"
+          label: "Avoidance behavior"
+          bands:
+            - min: 0
+              max: 1
+              label: "None"
+            - min: 2
+              max: 3
+              label: "Some"
+            - min: 4
+              max: 4
+              label: "Significant"
+
+  - id: "trauma"
+    title: "Trauma & Stress Response"
+    subtitle: "PTSD symptoms & trauma impact"
+    themeColor: "#7c3aed"
+    category: "Mental"
+    description: >-
+      Explore how past traumatic experiences may still affect you today. This assessment looks at trauma symptoms including intrusive
+      thoughts, hypervigilance, and emotional responses.
+    instructions:
+      - "Consider experiences that were deeply distressing or life-threatening."
+      - "Reflect on how these experiences continue to impact you."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Once or twice"
+          value: 1
+        - label: "A few times"
+          value: 2
+        - label: "Several times"
+          value: 3
+        - label: "Very often"
+          value: 4
+    questions:
+      - id: "ptsd_intrusive"
+        text: "Upsetting memories, images, or thoughts about the traumatic event"
+        dimension: "Intrusions"
+      - id: "ptsd_dreams"
+        text: "Disturbing dreams or nightmares related to the trauma"
+        dimension: "Intrusions"
+      - id: "ptsd_relive"
+        text: "Feeling as if the traumatic event were happening again"
+        dimension: "Intrusions"
+      - id: "ptsd_avoid"
+        text: "Avoiding thoughts, feelings, or reminders of the trauma"
+        dimension: "Avoidance"
+      - id: "ptsd_activities"
+        text: "Avoiding activities, places, or people that remind you of the trauma"
+        dimension: "Avoidance"
+      - id: "ptsd_negative"
+        text: "Inability to remember important parts of what happened"
+        dimension: "Negative Alterations"
+      - id: "ptsd_blame"
+        text: "Blaming yourself or others for what happened"
+        dimension: "Negative Alterations"
+      - id: "ptsd_interest"
+        text: "Loss of interest in activities you used to enjoy"
+        dimension: "Negative Alterations"
+      - id: "ptsd_distant"
+        text: "Feeling distant or cut off from other people"
+        dimension: "Negative Alterations"
+      - id: "ptsd_hypervigilant"
+        text: "Being overly alert, watchful, or on guard"
+        dimension: "Arousal"
+      - id: "ptsd_startle"
+        text: "Being easily startled or jumpy"
+        dimension: "Arousal"
+      - id: "ptsd_anger"
+        text: "Feeling irritable or having angry outbursts"
+        dimension: "Arousal"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Trauma symptom severity"
+        bands:
+          - min: 0
+            max: 8
+            label: "Minimal"
+            color: "#22c55e"
+            description: "Few trauma symptoms — continue healing practices."
+          - min: 9
+            max: 18
+            label: "Mild"
+            color: "#facc15"
+            description: "Some trauma impact — support and coping strategies may help."
+          - min: 19
+            max: 32
+            label: "Moderate"
+            color: "#f97316"
+            description: "Moderate trauma symptoms — consider trauma-informed therapy."
+          - min: 33
+            max: 48
+            label: "Severe"
+            color: "#dc2626"
+            description: "Significant trauma impact — professional trauma support is recommended."
+      dimensions:
+        - id: "Intrusions"
+          label: "Intrusive symptoms"
+          bands:
+            - min: 0
+              max: 4
+              label: "None"
+            - min: 5
+              max: 8
+              label: "Occasional"
+            - min: 9
+              max: 12
+              label: "Frequent"
+        - id: "Avoidance"
+          label: "Avoidance"
+          bands:
+            - min: 0
+              max: 3
+              label: "None"
+            - min: 4
+              max: 6
+              label: "Some"
+            - min: 7
+              max: 8
+              label: "Significant"
+        - id: "Negative Alterations"
+          label: "Negative changes"
+          bands:
+            - min: 0
+              max: 6
+              label: "Minimal"
+            - min: 7
+              max: 12
+              label: "Moderate"
+            - min: 13
+              max: 16
+              label: "Severe"
+        - id: "Arousal"
+          label: "Hypervigilance & reactivity"
+          bands:
+            - min: 0
+              max: 4
+              label: "Calm"
+            - min: 5
+              max: 8
+              label: "Alert"
+            - min: 9
+              max: 12
+              label: "Hypervigilant"
+
+  - id: "alcohol"
+    title: "Alcohol Use Patterns"
+    subtitle: "AUDIT-C inspired drinking assessment"
+    themeColor: "#fb923c"
+    category: "Substance"
+    description: >-
+      Reflect on your relationship with alcohol, including frequency, quantity, and impact on your life. This assessment helps
+      identify patterns that may benefit from support or change.
+    instructions:
+      - "Answer honestly about your typical drinking patterns."
+      - "Consider both quantity and how alcohol affects your daily life."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "Monthly or less"
+          value: 1
+        - label: "2-4 times a month"
+          value: 2
+        - label: "2-3 times a week"
+          value: 3
+        - label: "4 or more times a week"
+          value: 4
+    questions:
+      - id: "audit_frequency"
+        text: "How often do you have a drink containing alcohol?"
+        dimension: "Frequency"
+      - id: "audit_quantity"
+        text: "How many drinks containing alcohol do you have on a typical day when drinking?"
+        dimension: "Quantity"
+      - id: "audit_binge"
+        text: "How often do you have 6 or more drinks on one occasion?"
+        dimension: "Binge"
+      - id: "audit_control"
+        text: "How often during the last year have you found that you were not able to stop drinking once you had started?"
+        dimension: "Dependence"
+      - id: "audit_failed"
+        text: "How often during the last year have you failed to do what was normally expected of you because of drinking?"
+        dimension: "Consequences"
+      - id: "audit_memory"
+        text: "How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?"
+        dimension: "Dependence"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Alcohol use pattern"
+        bands:
+          - min: 0
+            max: 4
+            label: "Low risk"
+            color: "#22c55e"
+            description: "Low-risk drinking pattern; continue mindful choices."
+          - min: 5
+            max: 9
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate drinking — monitor patterns and impact."
+          - min: 10
+            max: 16
+            label: "Hazardous"
+            color: "#f97316"
+            description: "Hazardous drinking — consider reducing or seeking support."
+          - min: 17
+            max: 24
+            label: "Harmful"
+            color: "#dc2626"
+            description: "Harmful pattern — professional support is recommended."
+      dimensions:
+        - id: "Frequency"
+          label: "Drinking frequency"
+          bands:
+            - min: 0
+              max: 1
+              label: "Rare"
+            - min: 2
+              max: 3
+              label: "Regular"
+            - min: 4
+              max: 4
+              label: "Frequent"
+        - id: "Quantity"
+          label: "Drinking quantity"
+          bands:
+            - min: 0
+              max: 1
+              label: "Light"
+            - min: 2
+              max: 3
+              label: "Moderate"
+            - min: 4
+              max: 4
+              label: "Heavy"
+        - id: "Binge"
+          label: "Binge drinking"
+          bands:
+            - min: 0
+              max: 1
+              label: "Rare"
+            - min: 2
+              max: 3
+              label: "Occasional"
+            - min: 4
+              max: 4
+              label: "Frequent"
+        - id: "Dependence"
+          label: "Dependence signs"
+          bands:
+            - min: 0
+              max: 2
+              label: "None"
+            - min: 3
+              max: 4
+              label: "Emerging"
+            - min: 5
+              max: 8
+              label: "Present"
+        - id: "Consequences"
+          label: "Life impact"
+          bands:
+            - min: 0
+              max: 1
+              label: "Minimal"
+            - min: 2
+              max: 3
+              label: "Moderate"
+            - min: 4
+              max: 4
+              label: "Significant"
+
+  - id: "sleep"
+    title: "Sleep Quality & Patterns"
+    subtitle: "Sleep health assessment"
+    themeColor: "#3b82f6"
+    category: "Sleep"
+    description: >-
+      Explore your sleep patterns, quality, and impact on daily functioning. Good sleep is foundational to mental and physical health.
+    instructions:
+      - "Reflect on your typical sleep patterns over the past month."
+      - "Consider both sleep quality and how sleep affects your days."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Less than once a week"
+          value: 1
+        - label: "Once or twice a week"
+          value: 2
+        - label: "Three or more times a week"
+          value: 3
+    questions:
+      - id: "sleep_quality"
+        text: "Poor sleep quality"
+        dimension: "Quality"
+      - id: "sleep_latency"
+        text: "Taking more than 30 minutes to fall asleep"
+        dimension: "Latency"
+      - id: "sleep_wake"
+        text: "Waking up in the middle of the night or early morning"
+        dimension: "Maintenance"
+      - id: "sleep_hours"
+        text: "Getting less than 7 hours of sleep per night"
+        dimension: "Duration"
+      - id: "sleep_efficiency"
+        text: "Sleep efficiency issues (time in bed vs. time asleep)"
+        dimension: "Quality"
+      - id: "sleep_daytime"
+        text: "Problems with daytime functioning due to sleepiness"
+        dimension: "Daytime Impact"
+      - id: "sleep_meds"
+        text: "Need for medication to sleep"
+        dimension: "Aids"
+      - id: "sleep_trouble"
+        text: "Trouble staying awake during daily activities"
+        dimension: "Daytime Impact"
+      - id: "sleep_satisfaction"
+        text: "Lack of enthusiasm or energy due to poor sleep"
+        dimension: "Daytime Impact"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Sleep quality score"
+        bands:
+          - min: 0
+            max: 4
+            label: "Good"
+            color: "#22c55e"
+            description: "Healthy sleep patterns; maintain good sleep hygiene."
+          - min: 5
+            max: 9
+            label: "Fair"
+            color: "#facc15"
+            description: "Some sleep difficulties — sleep hygiene improvements may help."
+          - min: 10
+            max: 18
+            label: "Poor"
+            color: "#f97316"
+            description: "Significant sleep problems — consider sleep specialist evaluation."
+          - min: 19
+            max: 27
+            label: "Very poor"
+            color: "#dc2626"
+            description: "Severe sleep disturbances — professional sleep support recommended."
+      dimensions:
+        - id: "Quality"
+          label: "Sleep quality"
+          bands:
+            - min: 0
+              max: 2
+              label: "Good"
+            - min: 3
+              max: 4
+              label: "Fair"
+            - min: 5
+              max: 6
+              label: "Poor"
+        - id: "Latency"
+          label: "Falling asleep"
+          bands:
+            - min: 0
+              max: 1
+              label: "Quick"
+            - min: 2
+              max: 3
+              label: "Delayed"
+        - id: "Maintenance"
+          label: "Staying asleep"
+          bands:
+            - min: 0
+              max: 2
+              label: "Solid"
+            - min: 3
+              max: 3
+              label: "Fragmented"
+        - id: "Duration"
+          label: "Sleep duration"
+          bands:
+            - min: 0
+              max: 1
+              label: "Adequate"
+            - min: 2
+              max: 3
+              label: "Insufficient"
+        - id: "Daytime Impact"
+          label: "Daytime functioning"
+          bands:
+            - min: 0
+              max: 2
+              label: "Normal"
+            - min: 3
+              max: 6
+              label: "Impaired"
+            - min: 7
+              max: 9
+              label: "Severely impaired"
+        - id: "Aids"
+          label: "Sleep medications"
+          bands:
+            - min: 0
+              max: 1
+              label: "None"
+            - min: 2
+              max: 3
+              label: "Occasional"
+            - min: 4
+              max: 3
+              label: "Regular"
+
+  - id: "chronic-pain"
+    title: "Chronic Pain Impact"
+    subtitle: "Pain severity & interference assessment"
+    themeColor: "#06b6d4"
+    category: "Physical"
+    description: >-
+      Assess how chronic pain affects your daily life, from physical activities to emotional wellbeing. Understanding pain impact
+      helps guide management strategies.
+    instructions:
+      - "Focus on pain you've experienced regularly over the past week."
+      - "Consider both pain intensity and how it affects your activities."
+    scale:
+      label: "Intensity"
+      options:
+        - label: "No pain"
+          value: 0
+        - label: "Mild"
+          value: 1
+        - label: "Moderate"
+          value: 2
+        - label: "Severe"
+          value: 3
+        - label: "Very severe"
+          value: 4
+    questions:
+      - id: "pain_severity"
+        text: "Pain at its worst in the past week"
+        dimension: "Severity"
+      - id: "pain_least"
+        text: "Pain at its least in the past week"
+        dimension: "Severity"
+      - id: "pain_average"
+        text: "Average pain level in the past week"
+        dimension: "Severity"
+      - id: "pain_current"
+        text: "Pain right now"
+        dimension: "Severity"
+      - id: "pain_general"
+        text: "Interference with general activity"
+        dimension: "Interference"
+      - id: "pain_mood"
+        text: "Interference with mood"
+        dimension: "Interference"
+      - id: "pain_walking"
+        text: "Interference with walking ability"
+        dimension: "Interference"
+      - id: "pain_work"
+        text: "Interference with normal work"
+        dimension: "Interference"
+      - id: "pain_relations"
+        text: "Interference with relations with other people"
+        dimension: "Interference"
+      - id: "pain_sleep"
+        text: "Interference with sleep"
+        dimension: "Interference"
+      - id: "pain_enjoyment"
+        text: "Interference with enjoyment of life"
+        dimension: "Interference"
+    scoring:
+      method: "average"
+      overall:
+        label: "Pain impact"
+        bands:
+          - min: 0
+            max: 1.5
+            label: "Mild"
+            color: "#22c55e"
+            description: "Pain is manageable with minimal life impact."
+          - min: 1.51
+            max: 3
+            label: "Moderate"
+            color: "#facc15"
+            description: "Pain affects daily life — pain management strategies may help."
+          - min: 3.01
+            max: 4
+            label: "Severe"
+            color: "#dc2626"
+            description: "Severe pain impact — comprehensive pain management support recommended."
+      dimensions:
+        - id: "Severity"
+          label: "Pain intensity"
+          bands:
+            - min: 0
+              max: 1.5
+              label: "Mild"
+            - min: 1.51
+              max: 3
+              label: "Moderate"
+            - min: 3.01
+              max: 4
+              label: "Severe"
+        - id: "Interference"
+          label: "Life interference"
+          bands:
+            - min: 0
+              max: 1.5
+              label: "Minimal"
+            - min: 1.51
+              max: 3
+              label: "Moderate"
+            - min: 3.01
+              max: 4
+              label: "Significant"
+
+  - id: "fatigue"
+    title: "Fatigue & Energy Patterns"
+    subtitle: "Chronic fatigue assessment"
+    themeColor: "#14b8a6"
+    category: "Physical"
+    description: >-
+      Notice patterns of physical and mental fatigue that persist despite rest. Understanding fatigue patterns helps identify
+      underlying factors and management approaches.
+    instructions:
+      - "Reflect on your energy levels and fatigue over the past month."
+      - "Consider both physical and mental exhaustion."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "fatigue_motivation"
+        text: "My motivation is lower when I am fatigued"
+        dimension: "Impact"
+      - id: "fatigue_exercise"
+        text: "Exercise brings on my fatigue"
+        dimension: "Physical"
+      - id: "fatigue_minimal"
+        text: "I am easily fatigued"
+        dimension: "Physical"
+      - id: "fatigue_mental"
+        text: "Fatigue interferes with my physical functioning"
+        dimension: "Physical"
+      - id: "fatigue_problems"
+        text: "Fatigue causes frequent problems for me"
+        dimension: "Impact"
+      - id: "fatigue_persistent"
+        text: "My fatigue prevents sustained physical functioning"
+        dimension: "Physical"
+      - id: "fatigue_severity"
+        text: "Fatigue is among my three most disabling symptoms"
+        dimension: "Impact"
+      - id: "fatigue_work"
+        text: "Fatigue interferes with carrying out certain duties and responsibilities"
+        dimension: "Impact"
+      - id: "fatigue_activities"
+        text: "Fatigue interferes with my work, family, or social life"
+        dimension: "Impact"
+    scoring:
+      method: "average"
+      overall:
+        label: "Fatigue severity"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Low"
+            color: "#22c55e"
+            description: "Minimal fatigue; energy levels are stable."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Some fatigue impact — lifestyle adjustments may help."
+          - min: 3.61
+            max: 5
+            label: "High"
+            color: "#dc2626"
+            description: "Significant fatigue — consider medical evaluation and support."
+      dimensions:
+        - id: "Physical"
+          label: "Physical fatigue"
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Normal"
+            - min: 2.41
+              max: 3.6
+              label: "Elevated"
+            - min: 3.61
+              max: 5
+              label: "Severe"
+        - id: "Impact"
+          label: "Life impact"
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Minimal"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Severe"
+
+  - id: "burnout"
+    title: "Burnout & Work-Life Balance"
+    subtitle: "Occupational & caregiver exhaustion"
+    themeColor: "#eab308"
+    category: "Stress"
+    description: >-
+      Assess exhaustion, cynicism, and reduced sense of efficacy in work or caregiving roles. Burnout affects both professional and
+      personal wellbeing.
+    instructions:
+      - "Consider your experiences in work, caregiving, or other demanding roles."
+      - "Reflect on feelings of exhaustion, detachment, and effectiveness."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "A few times a year"
+          value: 1
+        - label: "Once a month or less"
+          value: 2
+        - label: "A few times a month"
+          value: 3
+        - label: "Once a week"
+          value: 4
+        - label: "A few times a week"
+          value: 5
+        - label: "Every day"
+          value: 6
+    questions:
+      - id: "burnout_exhausted"
+        text: "Feeling emotionally drained by your work or responsibilities"
+        dimension: "Exhaustion"
+      - id: "burnout_depleted"
+        text: "Feeling used up at the end of the day"
+        dimension: "Exhaustion"
+      - id: "burnout_tired"
+        text: "Feeling tired when you get up in the morning and have to face another day"
+        dimension: "Exhaustion"
+      - id: "burnout_cynical"
+        text: "Becoming more callous toward people since taking on this work"
+        dimension: "Cynicism"
+      - id: "burnout_care"
+        text: "Feeling that you care less and less about what happens to those you serve"
+        dimension: "Cynicism"
+      - id: "burnout_humanity"
+        text: "Feeling that you treat some recipients as if they were impersonal objects"
+        dimension: "Cynicism"
+      - id: "burnout_effective"
+        text: "Feeling that you are positively influencing other people's lives through your work"
+        dimension: "Efficacy"
+      - id: "burnout_accomplish"
+        text: "Feeling accomplished in your work"
+        dimension: "Efficacy"
+      - id: "burnout_energized"
+        text: "Feeling energized by working closely with others"
+        dimension: "Efficacy"
+    scoring:
+      method: "average"
+      overall:
+        label: "Burnout level"
+        bands:
+          - min: 0
+            max: 2
+            label: "Low"
+            color: "#22c55e"
+            description: "Minimal burnout; maintaining healthy engagement."
+          - min: 2.1
+            max: 4
+            label: "Moderate"
+            color: "#facc15"
+            description: "Some burnout signs — self-care and boundaries are important."
+          - min: 4.1
+            max: 6
+            label: "High"
+            color: "#dc2626"
+            description: "Significant burnout — rest and professional support recommended."
+      dimensions:
+        - id: "Exhaustion"
+          label: "Emotional exhaustion"
+          bands:
+            - min: 0
+              max: 2
+              label: "Low"
+            - min: 2.1
+              max: 4
+              label: "Moderate"
+            - min: 4.1
+              max: 6
+              label: "High"
+        - id: "Cynicism"
+          label: "Depersonalization"
+          bands:
+            - min: 0
+              max: 2
+              label: "Low"
+            - min: 2.1
+              max: 4
+              label: "Moderate"
+            - min: 4.1
+              max: 6
+              label: "High"
+        - id: "Efficacy"
+          label: "Personal accomplishment"
+          bands:
+            - min: 0
+              max: 2
+              label: "High"
+            - min: 2.1
+              max: 4
+              label: "Moderate"
+            - min: 4.1
+              max: 6
+              label: "Low"
+
+  - id: "stress"
+    title: "Stress Response Patterns"
+    subtitle: "Perceived stress & coping assessment"
+    themeColor: "#84cc16"
+    category: "Stress"
+    description: >-
+      Evaluate your experience of stress, including sources, intensity, and impact on your wellbeing. Understanding stress patterns
+      helps develop effective coping strategies.
+    instructions:
+      - "Reflect on your stress levels over the past month."
+      - "Consider both stress sources and how you respond to stress."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "Almost never"
+          value: 1
+        - label: "Sometimes"
+          value: 2
+        - label: "Fairly often"
+          value: 3
+        - label: "Very often"
+          value: 4
+    questions:
+      - id: "stress_unexpected"
+        text: "Feeling that you were unable to control the important things in your life"
+        dimension: "Control"
+      - id: "stress_confident"
+        text: "Feeling confident about your ability to handle your personal problems"
+        dimension: "Coping"
+      - id: "stress_nervous"
+        text: "Feeling that things were going your way"
+        dimension: "Control"
+      - id: "stress_coping"
+        text: "Feeling difficulties were piling up so high that you could not overcome them"
+        dimension: "Coping"
+      - id: "stress_daily"
+        text: "Feeling unable to cope with all the things you had to do"
+        dimension: "Coping"
+      - id: "stress_irritation"
+        text: "Feeling angry because of things that were outside of your control"
+        dimension: "Control"
+      - id: "stress_foundations"
+        text: "Feeling that you were on top of things"
+        dimension: "Control"
+      - id: "stress_stressed"
+        text: "Feeling that you were unable to cope with all the things that you had to do"
+        dimension: "Coping"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Perceived stress level"
+        bands:
+          - min: 0
+            max: 8
+            label: "Low"
+            color: "#22c55e"
+            description: "Low stress levels; effective stress management."
+          - min: 9
+            max: 16
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate stress — stress management strategies may help."
+          - min: 17
+            max: 24
+            label: "High"
+            color: "#f97316"
+            description: "High stress levels — consider stress reduction support."
+          - min: 25
+            max: 32
+            label: "Very high"
+            color: "#dc2626"
+            description: "Very high stress — professional stress management support recommended."
+      dimensions:
+        - id: "Control"
+          label: "Sense of control"
+          bands:
+            - min: 0
+              max: 6
+              label: "In control"
+            - min: 7
+              max: 12
+              label: "Some control"
+            - min: 13
+              max: 16
+              label: "Out of control"
+        - id: "Coping"
+          label: "Coping ability"
+          bands:
+            - min: 0
+              max: 6
+              label: "Effective"
+            - min: 7
+              max: 12
+              label: "Moderate"
+            - min: 13
+              max: 16
+              label: "Overwhelmed"
+
+  - id: "ocd"
+    title: "OCD Patterns"
+    subtitle: "Obsessive-compulsive symptom screener"
+    themeColor: "#8b5cf6"
+    category: "Mental"
+    description: >-
+      Notice patterns of unwanted, intrusive thoughts (obsessions) and repetitive behaviors or mental acts (compulsions). This
+      assessment helps identify OCD symptom patterns.
+    instructions:
+      - "Reflect on thoughts that are distressing or hard to control."
+      - "Consider behaviors or mental rituals you feel driven to perform."
+    scale:
+      label: "Time spent"
+      options:
+        - label: "None"
+          value: 0
+        - label: "Less than 1 hour per day"
+          value: 1
+        - label: "1-3 hours per day"
+          value: 2
+        - label: "4-6 hours per day"
+          value: 3
+        - label: "More than 6 hours per day"
+          value: 4
+    questions:
+      - id: "ocd_obsessions"
+        text: "Time spent on obsessive thoughts"
+        dimension: "Obsessions"
+      - id: "ocd_interference_thoughts"
+        text: "How much these thoughts interfere with your daily functioning"
+        dimension: "Obsessions"
+      - id: "ocd_distress_thoughts"
+        text: "How much distress these thoughts cause you"
+        dimension: "Obsessions"
+      - id: "ocd_resist_thoughts"
+        text: "How much effort you make to resist these thoughts"
+        dimension: "Obsessions"
+      - id: "ocd_control_thoughts"
+        text: "How much control you have over these thoughts"
+        dimension: "Obsessions"
+      - id: "ocd_compulsions"
+        text: "Time spent performing compulsive behaviors or mental acts"
+        dimension: "Compulsions"
+      - id: "ocd_interference_behaviors"
+        text: "How much these behaviors interfere with your daily functioning"
+        dimension: "Compulsions"
+      - id: "ocd_distress_behaviors"
+        text: "How much distress you would feel if prevented from performing these behaviors"
+        dimension: "Compulsions"
+      - id: "ocd_resist_behaviors"
+        text: "How much effort you make to resist performing these behaviors"
+        dimension: "Compulsions"
+      - id: "ocd_control_behaviors"
+        text: "How much control you have over these behaviors"
+        dimension: "Compulsions"
+    scoring:
+      method: "sum"
+      overall:
+        label: "OCD symptom severity"
+        bands:
+          - min: 0
+            max: 12
+            label: "Minimal"
+            color: "#22c55e"
+            description: "Few OCD symptoms; patterns are manageable."
+          - min: 13
+            max: 24
+            label: "Mild"
+            color: "#facc15"
+            description: "Some OCD patterns — coping strategies may help."
+          - min: 25
+            max: 36
+            label: "Moderate"
+            color: "#f97316"
+            description: "Moderate OCD symptoms — consider professional OCD treatment."
+          - min: 37
+            max: 40
+            label: "Severe"
+            color: "#dc2626"
+            description: "Severe OCD symptoms — specialized OCD therapy is recommended."
+      dimensions:
+        - id: "Obsessions"
+          label: "Obsessive thoughts"
+          bands:
+            - min: 0
+              max: 10
+              label: "Mild"
+            - min: 11
+              max: 20
+              label: "Moderate"
+            - min: 21
+              max: 20
+              label: "Severe"
+        - id: "Compulsions"
+          label: "Compulsive behaviors"
+          bands:
+            - min: 0
+              max: 10
+              label: "Mild"
+            - min: 11
+              max: 20
+              label: "Moderate"
+            - min: 21
+              max: 20
+              label: "Severe"
+
+  - id: "myers-briggs"
+    title: "16 Personalities Type Indicator"
+    subtitle: "MBTI-inspired personality assessment"
+    themeColor: "#9333ea"
+    category: "Personality"
+    description: >-
+      Explore your personality preferences across four dimensions: how you focus your energy (Extraversion/Introversion), how you take in information (Sensing/Intuition), how you make decisions (Thinking/Feeling), and how you approach life (Judging/Perceiving). This assessment helps you understand your natural preferences and communication style.
+    instructions:
+      - "Answer based on your natural preferences, not how you think you should be."
+      - "There are no right or wrong answers — each preference has strengths."
+      - "Consider how you naturally show up in different situations."
+    scale:
+      label: "Preference"
+      options:
+        - label: "Strongly prefer A"
+          value: 1
+        - label: "Moderately prefer A"
+          value: 2
+        - label: "Slightly prefer A"
+          value: 3
+        - label: "Neutral"
+          value: 4
+        - label: "Slightly prefer B"
+          value: 5
+        - label: "Moderately prefer B"
+          value: 6
+        - label: "Strongly prefer B"
+          value: 7
+    questions:
+      - id: "mbti_ei_1"
+        text: "I feel energized by being around others (A) vs. I feel energized by spending time alone (B)"
+        dimension: "Extraversion/Introversion"
+      - id: "mbti_ei_2"
+        text: "I prefer to think out loud and process externally (A) vs. I prefer to think internally before sharing (B)"
+        dimension: "Extraversion/Introversion"
+      - id: "mbti_ei_3"
+        text: "I enjoy group activities and social gatherings (A) vs. I prefer one-on-one or small group interactions (B)"
+        dimension: "Extraversion/Introversion"
+      - id: "mbti_sn_1"
+        text: "I focus on concrete facts and details (A) vs. I focus on patterns, possibilities, and the big picture (B)"
+        dimension: "Sensing/Intuition"
+      - id: "mbti_sn_2"
+        text: "I prefer practical, step-by-step approaches (A) vs. I prefer conceptual, flexible approaches (B)"
+        dimension: "Sensing/Intuition"
+      - id: "mbti_sn_3"
+        text: "I trust what I can see, hear, and experience directly (A) vs. I trust insights, hunches, and underlying meanings (B)"
+        dimension: "Sensing/Intuition"
+      - id: "mbti_tf_1"
+        text: "I make decisions based on logic and objective analysis (A) vs. I make decisions based on values and how they affect people (B)"
+        dimension: "Thinking/Feeling"
+      - id: "mbti_tf_2"
+        text: "I value fairness and consistency (A) vs. I value harmony and individual circumstances (B)"
+        dimension: "Thinking/Feeling"
+      - id: "mbti_tf_3"
+        text: "I tend to be direct and straightforward (A) vs. I tend to be considerate and tactful (B)"
+        dimension: "Thinking/Feeling"
+      - id: "mbti_jp_1"
+        text: "I prefer structure, plans, and closure (A) vs. I prefer flexibility, spontaneity, and keeping options open (B)"
+        dimension: "Judging/Perceiving"
+      - id: "mbti_jp_2"
+        text: "I work best with deadlines and clear expectations (A) vs. I work best when I can adapt and respond to changes (B)"
+        dimension: "Judging/Perceiving"
+      - id: "mbti_jp_3"
+        text: "I like to make decisions quickly and move forward (A) vs. I like to gather more information before deciding (B)"
+        dimension: "Judging/Perceiving"
+    scoring:
+      method: "average"
+      overall:
+        label: "Personality type profile"
+        bands:
+          - min: 1
+            max: 2.9
+            label: "Strong preference"
+            color: "#10b981"
+            description: "Clear preference in this dimension."
+          - min: 3
+            max: 4.9
+            label: "Moderate preference"
+            color: "#facc15"
+            description: "Moderate preference with some flexibility."
+          - min: 5
+            max: 7
+            label: "Balanced"
+            color: "#3b82f6"
+            description: "You show flexibility across both preferences."
+      dimensions:
+        - id: "Extraversion/Introversion"
+          label: "Energy focus"
+          description: "Where you direct your energy and attention."
+          bands:
+            - min: 1
+              max: 3
+              label: "Extraversion"
+            - min: 4
+              max: 4
+              label: "Balanced"
+            - min: 5
+              max: 7
+              label: "Introversion"
+        - id: "Sensing/Intuition"
+          label: "Information processing"
+          description: "How you prefer to take in and process information."
+          bands:
+            - min: 1
+              max: 3
+              label: "Sensing"
+            - min: 4
+              max: 4
+              label: "Balanced"
+            - min: 5
+              max: 7
+              label: "Intuition"
+        - id: "Thinking/Feeling"
+          label: "Decision making"
+          description: "How you prefer to make decisions and evaluate information."
+          bands:
+            - min: 1
+              max: 3
+              label: "Thinking"
+            - min: 4
+              max: 4
+              label: "Balanced"
+            - min: 5
+              max: 7
+              label: "Feeling"
+        - id: "Judging/Perceiving"
+          label: "Lifestyle approach"
+          description: "How you approach structure and flexibility in your life."
+          bands:
+            - min: 1
+              max: 3
+              label: "Judging"
+            - min: 4
+              max: 4
+              label: "Balanced"
+            - min: 5
+              max: 7
+              label: "Perceiving"
+
+  - id: "communication-thinking"
+    title: "Communication & Thinking Style"
+    subtitle: "How you process, communicate, and think"
+    themeColor: "#06b6d4"
+    category: "Personality"
+    description: >-
+      Understand your natural communication patterns, thinking processes, and how you process information. This assessment explores verbal vs. visual thinking, analytical vs. intuitive processing, and how you prefer to express ideas.
+    instructions:
+      - "Think about how you naturally communicate and process information."
+      - "Consider both work and personal contexts."
+      - "Choose what feels most true to your authentic self."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "comm_verbal"
+        text: "I think in words and often talk to myself internally"
+        dimension: "Verbal vs Visual"
+      - id: "comm_visual"
+        text: "I think in images, pictures, or spatial concepts"
+        dimension: "Verbal vs Visual"
+      - id: "comm_analytical"
+        text: "I prefer breaking down problems into smaller parts to solve them"
+        dimension: "Analytical vs Intuitive"
+      - id: "comm_intuitive"
+        text: "I often rely on gut feelings and first impressions"
+        dimension: "Analytical vs Intuitive"
+      - id: "comm_linear"
+        text: "I prefer structured, step-by-step thinking processes"
+        dimension: "Sequential vs Holistic"
+      - id: "comm_holistic"
+        text: "I prefer seeing the whole picture before diving into details"
+        dimension: "Sequential vs Holistic"
+      - id: "comm_direct"
+        text: "I prefer direct, straightforward communication"
+        dimension: "Direct vs Contextual"
+      - id: "comm_contextual"
+        text: "I prefer providing context and background before the main point"
+        dimension: "Direct vs Contextual"
+      - id: "comm_external"
+        text: "I process ideas better when I talk them through with others"
+        dimension: "Internal vs External"
+      - id: "comm_internal"
+        text: "I process ideas better when I think them through alone first"
+        dimension: "Internal vs External"
+      - id: "comm_facts"
+        text: "I prefer to communicate with concrete facts and examples"
+        dimension: "Factual vs Abstract"
+      - id: "comm_abstract"
+        text: "I prefer to communicate with concepts, metaphors, and big ideas"
+        dimension: "Factual vs Abstract"
+    scoring:
+      method: "average"
+      overall:
+        label: "Communication & thinking style"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Emerging pattern"
+            color: "#3b82f6"
+            description: "Your style is still developing and may vary by context."
+          - min: 2.41
+            max: 3.6
+            label: "Balanced style"
+            color: "#10b981"
+            description: "You show flexibility across different communication and thinking approaches."
+          - min: 3.61
+            max: 5
+            label: "Clear preference"
+            color: "#f97316"
+            description: "You have a strong natural preference in how you think and communicate."
+      dimensions:
+        - id: "Verbal vs Visual"
+          label: "Thought process"
+          description: "How your mind naturally processes information."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Visual-leaning"
+            - min: 2.41
+              max: 3.6
+              label: "Mixed"
+            - min: 3.61
+              max: 5
+              label: "Verbal-leaning"
+        - id: "Analytical vs Intuitive"
+          label: "Processing style"
+          description: "How you approach problem-solving and decision-making."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Intuitive"
+            - min: 2.41
+              max: 3.6
+              label: "Balanced"
+            - min: 3.61
+              max: 5
+              label: "Analytical"
+        - id: "Sequential vs Holistic"
+          label: "Information approach"
+          description: "How you prefer to take in and organize information."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Holistic"
+            - min: 2.41
+              max: 3.6
+              label: "Flexible"
+            - min: 3.61
+              max: 5
+              label: "Sequential"
+        - id: "Direct vs Contextual"
+          label: "Communication approach"
+          description: "How you structure your messages to others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Contextual"
+            - min: 2.41
+              max: 3.6
+              label: "Adaptive"
+            - min: 3.61
+              max: 5
+              label: "Direct"
+        - id: "Internal vs External"
+          label: "Processing mode"
+          description: "Where you prefer to do your thinking and processing."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "External"
+            - min: 2.41
+              max: 3.6
+              label: "Both"
+            - min: 3.61
+              max: 5
+              label: "Internal"
+        - id: "Factual vs Abstract"
+          label: "Expression style"
+          description: "The level of abstraction you prefer in communication."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Abstract"
+            - min: 2.41
+              max: 3.6
+              label: "Mixed"
+            - min: 3.61
+              max: 5
+              label: "Factual"
+
+  - id: "wellbeing"
+    title: "Overall Wellbeing Check"
+    subtitle: "Quality of life & life satisfaction"
+    themeColor: "#10b981"
+    category: "Wellbeing"
+    description: >-
+      Take a holistic view of your quality of life across physical, mental, social, and life satisfaction domains. This assessment
+      provides a comprehensive wellbeing snapshot.
+    instructions:
+      - "Reflect on your overall quality of life in the past two weeks."
+      - "Consider all aspects of your wellbeing together."
+    scale:
+      label: "Satisfaction"
+      options:
+        - label: "At no time"
+          value: 0
+        - label: "Some of the time"
+          value: 1
+        - label: "Less than half the time"
+          value: 2
+        - label: "More than half the time"
+          value: 3
+        - label: "Most of the time"
+          value: 4
+        - label: "All of the time"
+          value: 5
+    questions:
+      - id: "who_cheerful"
+        text: "I have felt cheerful and in good spirits"
+        dimension: "Mental"
+      - id: "who_calm"
+        text: "I have felt calm and relaxed"
+        dimension: "Mental"
+      - id: "who_active"
+        text: "I have felt active and vigorous"
+        dimension: "Physical"
+      - id: "who_fresh"
+        text: "I woke up feeling fresh and rested"
+        dimension: "Physical"
+      - id: "who_interest"
+        text: "My daily life has been filled with things that interest me"
+        dimension: "Life Satisfaction"
+      - id: "who_social"
+        text: "I feel connected to others and have meaningful relationships"
+        dimension: "Social"
+      - id: "who_purpose"
+        text: "I feel my life has meaning and purpose"
+        dimension: "Life Satisfaction"
+      - id: "who_energy"
+        text: "I have had energy to do what I need to do"
+        dimension: "Physical"
+      - id: "who_optimistic"
+        text: "I have felt optimistic about the future"
+        dimension: "Mental"
+      - id: "who_enjoy"
+        text: "I have enjoyed my day-to-day activities"
+        dimension: "Life Satisfaction"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Overall wellbeing"
+        bands:
+          - min: 0
+            max: 20
+            label: "Low"
+            color: "#dc2626"
+            description: "Low wellbeing — comprehensive support may help improve quality of life."
+          - min: 21
+            max: 30
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate wellbeing — focus on areas needing attention."
+          - min: 31
+            max: 40
+            label: "Good"
+            color: "#22c55e"
+            description: "Good wellbeing — continue supportive practices."
+          - min: 41
+            max: 50
+            label: "Very good"
+            color: "#10b981"
+            description: "Very good wellbeing — thriving across life domains."
+      dimensions:
+        - id: "Physical"
+          label: "Physical wellbeing"
+          bands:
+            - min: 0
+              max: 8
+              label: "Low"
+            - min: 9
+              max: 12
+              label: "Moderate"
+            - min: 13
+              max: 15
+              label: "Good"
+        - id: "Mental"
+          label: "Mental wellbeing"
+          bands:
+            - min: 0
+              max: 8
+              label: "Low"
+            - min: 9
+              max: 12
+              label: "Moderate"
+            - min: 13
+              max: 15
+              label: "Good"
+        - id: "Social"
+          label: "Social connection"
+          bands:
+            - min: 0
+              max: 3
+              label: "Low"
+            - min: 4
+              max: 5
+              label: "Good"
+        - id: "Life Satisfaction"
+          label: "Life satisfaction"
+          bands:
+            - min: 0
+              max: 8
+              label: "Low"
+            - min: 9
+              max: 12
+              label: "Moderate"
+            - min: 13
+              max: 15
+              label: "Good"
+
+  - id: "self-compassion"
+    title: "Self-Compassion Assessment"
+    subtitle: "How you relate to yourself in difficult moments"
+    themeColor: "#ec4899"
+    category: "Wellbeing"
+    description: >-
+      Explore how you treat yourself during challenging times, setbacks, and mistakes. Self-compassion involves kindness toward yourself,
+      recognizing your common humanity, and maintaining balanced awareness of difficult emotions.
+    instructions:
+      - "Reflect on how you typically respond to yourself during difficult times."
+      - "Consider both your thoughts and feelings toward yourself when things go wrong."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Almost never"
+          value: 1
+        - label: "Rarely"
+          value: 2
+        - label: "Sometimes"
+          value: 3
+        - label: "Often"
+          value: 4
+        - label: "Almost always"
+          value: 5
+    questions:
+      - id: "sc_kind"
+        text: "When I'm going through a very hard time, I give myself the caring and tenderness I need"
+        dimension: "Self-Kindness"
+      - id: "sc_critical"
+        text: "I'm disapproving and judgmental about my own flaws and inadequacies"
+        dimension: "Self-Judgment"
+      - id: "sc_suffer"
+        text: "When I'm feeling down, I tend to feel like most other people are probably happier than I am"
+        dimension: "Isolation"
+      - id: "sc_common"
+        text: "I try to see my failings as part of the human condition"
+        dimension: "Common Humanity"
+      - id: "sc_obsess"
+        text: "When something upsets me, I get carried away with my feelings"
+        dimension: "Over-Identification"
+      - id: "sc_balance"
+        text: "When something painful happens, I try to take a balanced view of the situation"
+        dimension: "Mindfulness"
+      - id: "sc_failures"
+        text: "When I fail at something important to me, I become consumed by feelings of inadequacy"
+        dimension: "Over-Identification"
+      - id: "sc_imperfect"
+        text: "When I notice aspects of myself I don't like, I get down on myself"
+        dimension: "Self-Judgment"
+      - id: "sc_support"
+        text: "When I'm struggling, I remind myself that there are many people in the world feeling like I am"
+        dimension: "Common Humanity"
+      - id: "sc_mistakes"
+        text: "When times are really difficult, I tend to be tough on myself"
+        dimension: "Self-Judgment"
+      - id: "sc_emotions"
+        text: "I try to be understanding and patient toward aspects of my personality I don't like"
+        dimension: "Self-Kindness"
+      - id: "sc_balance2"
+        text: "I try to see my difficulties as part of life that everyone goes through"
+        dimension: "Common Humanity"
+    scoring:
+      method: "average"
+      overall:
+        label: "Self-compassion level"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Lower"
+            color: "#f97316"
+            description: "You may be hard on yourself — practicing self-compassion can help reduce suffering."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Some self-compassion present — continued practice can deepen this skill."
+          - min: 3.61
+            max: 5
+            label: "Higher"
+            color: "#22c55e"
+            description: "Strong self-compassion — you treat yourself with kindness during difficult times."
+      dimensions:
+        - id: "Self-Kindness"
+          label: "Self-kindness"
+          description: "How gently you treat yourself."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Harsh"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Kind"
+        - id: "Self-Judgment"
+          label: "Self-judgment"
+          description: "Tendency to be critical of yourself (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Common Humanity"
+          label: "Common humanity"
+          description: "Seeing your experiences as part of shared human experience."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Isolated view"
+            - min: 2.41
+              max: 3.6
+              label: "Balanced view"
+            - min: 3.61
+              max: 5
+              label: "Connected view"
+        - id: "Isolation"
+          label: "Isolation"
+          description: "Feeling alone in your suffering (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Mindfulness"
+          label: "Mindfulness"
+          description: "Balanced awareness of difficult emotions."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Reactive"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Balanced"
+        - id: "Over-Identification"
+          label: "Over-identification"
+          description: "Getting overwhelmed by emotions (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+
+  - id: "mindfulness"
+    title: "Mindfulness & Present-Moment Awareness"
+    subtitle: "How present you are in daily life"
+    themeColor: "#14b8a6"
+    category: "Wellbeing"
+    description: >-
+      Assess your ability to pay attention to the present moment with openness, curiosity, and acceptance. Mindfulness helps reduce stress,
+      improve emotional regulation, and enhance overall wellbeing.
+    instructions:
+      - "Reflect on how you typically experience daily activities and moments."
+      - "Consider both your attention and your attitude toward present experiences."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Almost never"
+          value: 1
+        - label: "Rarely"
+          value: 2
+        - label: "Sometimes"
+          value: 3
+        - label: "Often"
+          value: 4
+        - label: "Almost always"
+          value: 5
+    questions:
+      - id: "mind_autopilot"
+        text: "I find myself doing things without paying attention"
+        dimension: "Attention"
+      - id: "mind_breakfast"
+        text: "I rush through activities without being really attentive to them"
+        dimension: "Attention"
+      - id: "mind_aware"
+        text: "I find it difficult to stay focused on what's happening in the present"
+        dimension: "Attention"
+      - id: "mind_automatic"
+        text: "I tend to walk quickly to get where I'm going without paying attention to what I experience along the way"
+        dimension: "Attention"
+      - id: "mind_judge"
+        text: "I tend not to notice feelings of physical tension or discomfort until they really grab my attention"
+        dimension: "Awareness"
+      - id: "mind_forget"
+        text: "I forget a person's name almost as soon as I've been told it for the first time"
+        dimension: "Attention"
+      - id: "mind_aware2"
+        text: "I am aware of thoughts and feelings without getting caught up in them"
+        dimension: "Non-judgment"
+      - id: "mind_judge2"
+        text: "I notice judgments about my experience (thoughts, emotions, sensations) arise without getting caught up in them"
+        dimension: "Non-judgment"
+      - id: "mind_accept"
+        text: "I accept my thoughts and feelings without trying to change them"
+        dimension: "Acceptance"
+      - id: "mind_observe"
+        text: "I notice physical sensations in my body with curiosity and openness"
+        dimension: "Awareness"
+      - id: "mind_present"
+        text: "I am able to stay present with difficult emotions without immediately reacting"
+        dimension: "Non-reactivity"
+      - id: "mind_curiosity"
+        text: "I approach my experiences with curiosity rather than judgment"
+        dimension: "Non-judgment"
+    scoring:
+      method: "average"
+      overall:
+        label: "Mindfulness level"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Lower"
+            color: "#f97316"
+            description: "Lower mindfulness — practice can help increase present-moment awareness."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate mindfulness — continued practice can deepen awareness."
+          - min: 3.61
+            max: 5
+            label: "Higher"
+            color: "#22c55e"
+            description: "Strong mindfulness — you maintain present-moment awareness well."
+      dimensions:
+        - id: "Attention"
+          label: "Present-moment attention"
+          description: "Ability to focus on the here and now."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Distracted"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Attentive"
+        - id: "Awareness"
+          label: "Body awareness"
+          description: "Noticing physical sensations and experiences."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Unaware"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Aware"
+        - id: "Non-judgment"
+          label: "Non-judgmental awareness"
+          description: "Observing experiences without harsh judgment."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Judgmental"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Accepting"
+        - id: "Acceptance"
+          label: "Acceptance"
+          description: "Allowing experiences to be as they are."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Resistant"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Accepting"
+        - id: "Non-reactivity"
+          label: "Non-reactivity"
+          description: "Responding thoughtfully rather than reacting automatically."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Reactive"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Reflective"
+
+  - id: "focus"
+    title: "Focus & Concentration Assessment"
+    subtitle: "Your ability to maintain attention and concentration"
+    themeColor: "#8b5cf6"
+    category: "Neuro"
+    description: >-
+      Explore your ability to focus, sustain attention, and resist distractions. Good focus helps with productivity, learning, and
+      completing tasks effectively.
+    instructions:
+      - "Reflect on your typical experiences with focus and concentration."
+      - "Consider both work and personal activities."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 1
+        - label: "Rarely"
+          value: 2
+        - label: "Sometimes"
+          value: 3
+        - label: "Often"
+          value: 4
+        - label: "Very often"
+          value: 5
+    questions:
+      - id: "focus_distract"
+        text: "I have difficulty filtering out distractions when trying to focus"
+        dimension: "Selective Attention"
+      - id: "focus_sustain"
+        text: "I can maintain focus on tasks for extended periods"
+        dimension: "Sustained Attention"
+      - id: "focus_switch"
+        text: "I find it easy to switch between tasks when needed"
+        dimension: "Task Switching"
+      - id: "focus_interrupt"
+        text: "I get easily interrupted by thoughts or external stimuli"
+        dimension: "Selective Attention"
+      - id: "focus_flow"
+        text: "I experience states of deep focus where time seems to pass quickly"
+        dimension: "Deep Focus"
+      - id: "focus_complete"
+        text: "I have trouble completing tasks because I lose focus partway through"
+        dimension: "Sustained Attention"
+      - id: "focus_multitask"
+        text: "I can effectively focus on multiple things at once"
+        dimension: "Task Switching"
+      - id: "focus_environment"
+        text: "I am easily distracted by my environment (noise, visual stimuli, etc.)"
+        dimension: "Selective Attention"
+      - id: "focus_thoughts"
+        text: "My mind wanders frequently when I'm trying to concentrate"
+        dimension: "Mind Wandering"
+      - id: "focus_return"
+        text: "When I get distracted, I can quickly return my attention to the task"
+        dimension: "Attention Control"
+      - id: "focus_priority"
+        text: "I can focus on what's most important even when there are competing demands"
+        dimension: "Selective Attention"
+      - id: "focus_energy"
+        text: "I notice that my ability to focus varies depending on my energy levels"
+        dimension: "Attention Control"
+    scoring:
+      method: "average"
+      overall:
+        label: "Focus ability"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Challenged"
+            color: "#f97316"
+            description: "Focus is challenging — strategies to improve concentration may help."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate focus — practice and environment optimization can help."
+          - min: 3.61
+            max: 5
+            label: "Strong"
+            color: "#22c55e"
+            description: "Strong focus — you maintain attention well."
+      dimensions:
+        - id: "Selective Attention"
+          label: "Selective attention"
+          description: "Filtering out distractions and focusing on what matters."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Distractible"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Focused"
+        - id: "Sustained Attention"
+          label: "Sustained attention"
+          description: "Maintaining focus over time."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Brief"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Enduring"
+        - id: "Task Switching"
+          label: "Task flexibility"
+          description: "Ability to shift attention between tasks."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Rigid"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Flexible"
+        - id: "Deep Focus"
+          label: "Deep focus"
+          description: "Ability to enter flow states."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Rare"
+            - min: 2.41
+              max: 3.6
+              label: "Occasional"
+            - min: 3.61
+              max: 5
+              label: "Frequent"
+        - id: "Mind Wandering"
+          label: "Mind wandering"
+          description: "Tendency for thoughts to drift (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Attention Control"
+          label: "Attention control"
+          description: "Ability to direct and redirect attention intentionally."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Weak"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+
+  - id: "perspective"
+    title: "Perspective & Cognitive Flexibility"
+    subtitle: "How you view situations and adapt your thinking"
+    themeColor: "#06b6d4"
+    category: "Mental"
+    description: >-
+      Assess your ability to see situations from different angles, adapt your thinking, and maintain balanced perspectives. Cognitive
+      flexibility helps with problem-solving, relationships, and emotional wellbeing.
+    instructions:
+      - "Reflect on how you typically think about situations and challenges."
+      - "Consider your ability to see multiple viewpoints and adjust your thinking."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "persp_multiple"
+        text: "I can see multiple perspectives on the same situation"
+        dimension: "Perspective-Taking"
+      - id: "persp_rigid"
+        text: "I tend to stick to my initial view even when presented with new information"
+        dimension: "Cognitive Rigidity"
+      - id: "persp_understand"
+        text: "I try to understand other people's points of view even when I disagree"
+        dimension: "Perspective-Taking"
+      - id: "persp_change"
+        text: "I can change my mind when I learn new information"
+        dimension: "Adaptability"
+      - id: "persp_blackwhite"
+        text: "I tend to see things in black and white terms"
+        dimension: "Cognitive Rigidity"
+      - id: "persp_context"
+        text: "I consider the context and circumstances when evaluating situations"
+        dimension: "Nuanced Thinking"
+      - id: "persp_alternatives"
+        text: "I can think of multiple solutions to a problem"
+        dimension: "Flexible Thinking"
+      - id: "persp_assumptions"
+        text: "I question my own assumptions and beliefs"
+        dimension: "Self-Reflection"
+      - id: "persp_future"
+        text: "I can imagine how situations might look different in the future"
+        dimension: "Temporal Perspective"
+      - id: "persp_emotions"
+        text: "My emotions cloud my ability to see situations clearly"
+        dimension: "Emotional Influence"
+      - id: "persp_balance"
+        text: "I can hold both positive and negative aspects of a situation in mind simultaneously"
+        dimension: "Nuanced Thinking"
+      - id: "persp_learn"
+        text: "I learn from mistakes and adjust my approach"
+        dimension: "Adaptability"
+    scoring:
+      method: "average"
+      overall:
+        label: "Cognitive flexibility"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Rigid"
+            color: "#f97316"
+            description: "More rigid thinking — practicing perspective-taking can help."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate flexibility — continued practice can enhance adaptability."
+          - min: 3.61
+            max: 5
+            label: "Flexible"
+            color: "#22c55e"
+            description: "Strong cognitive flexibility — you adapt your thinking well."
+      dimensions:
+        - id: "Perspective-Taking"
+          label: "Perspective-taking"
+          description: "Ability to see others' viewpoints."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Limited"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Cognitive Rigidity"
+          label: "Cognitive rigidity"
+          description: "Tendency toward fixed thinking (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Adaptability"
+          label: "Adaptability"
+          description: "Ability to adjust thinking based on new information."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Nuanced Thinking"
+          label: "Nuanced thinking"
+          description: "Seeing complexity and shades of gray."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Simple"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Complex"
+        - id: "Flexible Thinking"
+          label: "Flexible thinking"
+          description: "Generating multiple solutions and approaches."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Limited"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Creative"
+        - id: "Self-Reflection"
+          label: "Self-reflection"
+          description: "Questioning your own assumptions."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Temporal Perspective"
+          label: "Temporal perspective"
+          description: "Seeing how situations change over time."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Present-focused"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Future-aware"
+        - id: "Emotional Influence"
+          label: "Emotional influence"
+          description: "How emotions affect perspective (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+
+  - id: "relationships"
+    title: "Relationship Quality & Patterns"
+    subtitle: "How you connect with others"
+    themeColor: "#f43f5e"
+    category: "Personality"
+    description: >-
+      Explore your relationship patterns, communication style, and ability to form meaningful connections. Healthy relationships support
+      emotional wellbeing and life satisfaction.
+    instructions:
+      - "Reflect on your relationships with family, friends, romantic partners, and colleagues."
+      - "Consider both your behaviors and your feelings in relationships."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "rel_trust"
+        text: "I trust the people close to me"
+        dimension: "Trust"
+      - id: "rel_communicate"
+        text: "I can express my needs and feelings clearly in relationships"
+        dimension: "Communication"
+      - id: "rel_conflict"
+        text: "I handle conflicts in relationships constructively"
+        dimension: "Conflict Resolution"
+      - id: "rel_boundaries"
+        text: "I can set healthy boundaries with others"
+        dimension: "Boundaries"
+      - id: "rel_support"
+        text: "I feel supported by the people in my life"
+        dimension: "Support"
+      - id: "rel_listen"
+        text: "I am a good listener and can understand others' perspectives"
+        dimension: "Communication"
+      - id: "rel_intimacy"
+        text: "I feel comfortable being emotionally intimate with others"
+        dimension: "Intimacy"
+      - id: "rel_alone"
+        text: "I often feel lonely even when I'm with others"
+        dimension: "Connection"
+      - id: "rel_close"
+        text: "I have close relationships that feel meaningful to me"
+        dimension: "Connection"
+      - id: "rel_compromise"
+        text: "I can compromise and find solutions that work for both people"
+        dimension: "Conflict Resolution"
+      - id: "rel_needs"
+        text: "I struggle to ask for what I need in relationships"
+        dimension: "Communication"
+      - id: "rel_quality"
+        text: "The quality of my relationships contributes positively to my wellbeing"
+        dimension: "Support"
+    scoring:
+      method: "average"
+      overall:
+        label: "Relationship quality"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Challenged"
+            color: "#f97316"
+            description: "Relationship challenges present — support and skills building may help."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate relationship quality — continued growth can enhance connections."
+          - min: 3.61
+            max: 5
+            label: "Strong"
+            color: "#22c55e"
+            description: "Strong relationships — you connect well with others."
+      dimensions:
+        - id: "Trust"
+          label: "Trust"
+          description: "Ability to trust others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Communication"
+          label: "Communication"
+          description: "Ability to express yourself and listen to others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Challenged"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Conflict Resolution"
+          label: "Conflict resolution"
+          description: "Ability to handle disagreements constructively."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Avoidant"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Skilled"
+        - id: "Boundaries"
+          label: "Boundaries"
+          description: "Ability to set and maintain healthy limits."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Weak"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Support"
+          label: "Support"
+          description: "Feeling supported in relationships."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Intimacy"
+          label: "Emotional intimacy"
+          description: "Comfort with emotional closeness."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Avoidant"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Comfortable"
+        - id: "Connection"
+          label: "Connection"
+          description: "Feeling connected and close to others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Disconnected"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Connected"
+
+  - id: "money"
+    title: "Financial Wellbeing & Money Management"
+    subtitle: "Your relationship with money and financial health"
+    themeColor: "#f59e0b"
+    category: "Wellbeing"
+    description: >-
+      Assess your financial behaviors, attitudes toward money, and overall financial wellbeing. A healthy relationship with money supports
+      life security and reduces stress.
+    instructions:
+      - "Reflect on your financial behaviors, attitudes, and situation."
+      - "Consider both practical money management and emotional aspects."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "money_budget"
+        text: "I have a budget and stick to it"
+        dimension: "Planning"
+      - id: "money_stress"
+        text: "I feel stressed about my financial situation"
+        dimension: "Financial Stress"
+      - id: "money_save"
+        text: "I regularly save money for future goals or emergencies"
+        dimension: "Saving"
+      - id: "money_impulse"
+        text: "I make impulse purchases without thinking about my budget"
+        dimension: "Spending"
+      - id: "money_debt"
+        text: "I have a plan to manage or pay off any debt I have"
+        dimension: "Debt Management"
+      - id: "money_track"
+        text: "I track my spending and know where my money goes"
+        dimension: "Awareness"
+      - id: "money_goals"
+        text: "I have clear financial goals and am working toward them"
+        dimension: "Planning"
+      - id: "money_emergency"
+        text: "I have enough savings to cover unexpected expenses"
+        dimension: "Saving"
+      - id: "money_anxious"
+        text: "I feel anxious when thinking about money"
+        dimension: "Financial Stress"
+      - id: "money_discuss"
+        text: "I can discuss money matters openly with partners or family"
+        dimension: "Communication"
+      - id: "money_control"
+        text: "I feel in control of my financial situation"
+        dimension: "Financial Control"
+      - id: "money_future"
+        text: "I feel confident about my financial future"
+        dimension: "Financial Control"
+    scoring:
+      method: "average"
+      overall:
+        label: "Financial wellbeing"
+        bands:
+          - min: 1
+            max: 2.4
+            label: "Challenged"
+            color: "#f97316"
+            description: "Financial challenges present — support and planning can help improve financial health."
+          - min: 2.41
+            max: 3.6
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate financial wellbeing — continued planning can enhance financial security."
+          - min: 3.61
+            max: 5
+            label: "Strong"
+            color: "#22c55e"
+            description: "Strong financial wellbeing — you manage money well."
+      dimensions:
+        - id: "Planning"
+          label: "Financial planning"
+          description: "Having budgets, goals, and plans."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Unplanned"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Planned"
+        - id: "Financial Stress"
+          label: "Financial stress"
+          description: "Anxiety and worry about money (lower is better)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+        - id: "Saving"
+          label: "Saving habits"
+          description: "Regular saving and emergency funds."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Minimal"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Spending"
+          label: "Spending control"
+          description: "Ability to control spending and avoid impulse purchases."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Impulsive"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Controlled"
+        - id: "Debt Management"
+          label: "Debt management"
+          description: "Having a plan for managing debt."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Unmanaged"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Managed"
+        - id: "Awareness"
+          label: "Financial awareness"
+          description: "Tracking spending and understanding finances."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Unaware"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Aware"
+        - id: "Communication"
+          label: "Financial communication"
+          description: "Ability to discuss money openly."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Avoidant"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Open"
+        - id: "Financial Control"
+          label: "Financial control"
+          description: "Feeling in control and confident about finances."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+
+  - id: "thought-patterns"
+    title: "Thought Landscape Reflection"
+    subtitle: "Notice where your mind spends time"
+    themeColor: "#818cf8"
+    category: "Mental"
+    description: >-
+      Explore the themes that feel most active in your daily thinking. This reflective
+      check-in helps you observe patterns with compassion so you can nurture balance,
+      focus, or supportive practices where needed.
+    instructions:
+      - "Answer based on your experiences over the last 7 days."
+      - "Respond with curiosity — there are no right or wrong amounts of each thought type."
+      - "Use the results to identify themes you may want to nourish or soften."
+    scale:
+      label: "How often this theme arises"
+      options:
+        - label: "Rarely"
+          value: 0
+        - label: "Sometimes"
+          value: 1
+        - label: "Often"
+          value: 2
+        - label: "Very often"
+          value: 3
+        - label: "Almost constantly"
+          value: 4
+    questions:
+      - id: "thought_people_1"
+        text: "My mind revisits conversations or imagines interactions with others."
+        dimension: "People"
+      - id: "thought_people_2"
+        text: "I think about how loved ones are feeling or what they might need."
+        dimension: "People"
+      - id: "thought_self_1"
+        text: "I reflect on who I am, my identity, or how I am growing."
+        dimension: "Self"
+      - id: "thought_self_2"
+        text: "I notice internal self-talk about my strengths, needs, or challenges."
+        dimension: "Self"
+      - id: "thought_practical_1"
+        text: "I focus on tasks, logistics, or planning how to get things done."
+        dimension: "Practical"
+      - id: "thought_practical_2"
+        text: "My thoughts organize steps, lists, or problem-solving details."
+        dimension: "Practical"
+      - id: "thought_ideas_1"
+        text: "I brainstorm creative ideas, possibilities, or new perspectives."
+        dimension: "Ideas"
+      - id: "thought_ideas_2"
+        text: "I explore big-picture questions about meaning, systems, or innovation."
+        dimension: "Ideas"
+      - id: "thought_body_1"
+        text: "I tune into body sensations, physical comfort, or sensory experiences."
+        dimension: "Embodied"
+      - id: "thought_body_2"
+        text: "I notice how my environment feels — sounds, light, textures, or temperature."
+        dimension: "Embodied"
+      - id: "thought_future_1"
+        text: "I imagine future scenarios, plans, or goals in detail."
+        dimension: "Future"
+      - id: "thought_future_2"
+        text: "I mentally rehearse upcoming events or prepare for possibilities."
+        dimension: "Future"
+    scoring:
+      method: "average"
+      overall:
+        label: "Thought variety balance"
+        bands:
+          - min: 0
+            max: 1.3
+            label: "Spacious"
+            color: "#10b981"
+            description: "Your thinking ranges across many themes with gentle intensity."
+          - min: 1.31
+            max: 2.6
+            label: "Focused"
+            color: "#facc15"
+            description: "Certain themes are drawing steady attention — explore what they offer you."
+          - min: 2.61
+            max: 4
+            label: "Concentrated"
+            color: "#f97316"
+            description: "A few themes feel especially strong. Reflect on how they support or strain you."
+      dimensions:
+        - id: "People"
+          label: "People & relationships"
+          description: "Thinking about others, connection, and social experiences."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+        - id: "Self"
+          label: "Self & identity"
+          description: "Inner narratives about who you are and how you relate to yourself."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+        - id: "Practical"
+          label: "Practical & task-focused"
+          description: "Planning, logistics, and step-by-step thinking."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+        - id: "Ideas"
+          label: "Ideas & imagination"
+          description: "Creative thinking, big-picture reflection, and meaning-making."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+        - id: "Embodied"
+          label: "Embodied & sensory"
+          description: "Attention to bodily cues, comfort, and environmental sensations."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+        - id: "Future"
+          label: "Future orientation"
+          description: "Imagining what comes next, rehearsing, and goal-oriented thinking."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Light"
+            - min: 1.31
+              max: 2.6
+              label: "Balanced"
+            - min: 2.61
+              max: 4
+              label: "High focus"
+
+  - id: "states-of-consciousness"
+    title: "States of Consciousness Check-In"
+    subtitle: "Explore how your awareness shifts through the day"
+    themeColor: "#22d3ee"
+    category: "Wellbeing"
+    description: >-
+      Track the qualities of awareness you experience, from grounded presence to
+      dreamy imagination. Understanding these states can help you cultivate the
+      conditions that support your wellbeing.
+    instructions:
+      - "Reflect on the past two weeks and notice which states felt most common."
+      - "If a state feels unfamiliar, answer based on how often it occurred."
+      - "Use the insights to honor what helps you feel safe, creative, or engaged."
+    scale:
+      label: "Frequency experienced"
+      options:
+        - label: "Not this week"
+          value: 0
+        - label: "Once or twice"
+          value: 1
+        - label: "A few times"
+          value: 2
+        - label: "Most days"
+          value: 3
+        - label: "Multiple times a day"
+          value: 4
+    questions:
+      - id: "conscious_presence_1"
+        text: "I feel calmly aware of my body and surroundings."
+        dimension: "Presence"
+      - id: "conscious_presence_2"
+        text: "I can return to the present moment with ease when I notice drifting."
+        dimension: "Presence"
+      - id: "conscious_flow_1"
+        text: "I become deeply absorbed in meaningful activities or creative work."
+        dimension: "Flow"
+      - id: "conscious_flow_2"
+        text: "Time passes quickly when I am immersed in something engaging."
+        dimension: "Flow"
+      - id: "conscious_autopilot_1"
+        text: "I catch myself on autopilot, moving through routines with limited awareness."
+        dimension: "Autopilot"
+      - id: "conscious_autopilot_2"
+        text: "I feel disconnected or spaced out, as if I am watching myself."
+        dimension: "Autopilot"
+      - id: "conscious_imaginal_1"
+        text: "I enter imaginative, dream-like, or visionary states while awake."
+        dimension: "Imaginal"
+      - id: "conscious_imaginal_2"
+        text: "Insights or creative symbols emerge when I let my mind wander."
+        dimension: "Imaginal"
+      - id: "conscious_expanded_1"
+        text: "I feel connected to something larger than myself — nature, community, or spirit."
+        dimension: "Expanded"
+      - id: "conscious_expanded_2"
+        text: "Moments of awe, transcendence, or deep meaning are part of my experience."
+        dimension: "Expanded"
+      - id: "conscious_restorative_1"
+        text: "I enter restful, restorative states such as meditation, yoga nidra, or deep relaxation."
+        dimension: "Restorative"
+      - id: "conscious_restorative_2"
+        text: "After rest or sleep, I notice shifts in my awareness or vivid dream recall."
+        dimension: "Restorative"
+    scoring:
+      method: "average"
+      overall:
+        label: "Awareness range"
+        bands:
+          - min: 0
+            max: 1.3
+            label: "Gentle"
+            color: "#34d399"
+            description: "A few familiar states feel most comfortable right now."
+          - min: 1.31
+            max: 2.6
+            label: "Diverse"
+            color: "#facc15"
+            description: "You experience a healthy variety of awareness states."
+          - min: 2.61
+            max: 4
+            label: "Expansive"
+            color: "#38bdf8"
+            description: "Many states feel present — explore what supports or overwhelms you."
+      dimensions:
+        - id: "Presence"
+          label: "Grounded presence"
+          description: "Moments of mindful awareness and embodied calm."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Infrequent"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Abundant"
+        - id: "Flow"
+          label: "Flow & absorption"
+          description: "Immersive focus, creativity, and engaged attention."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Infrequent"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Abundant"
+        - id: "Autopilot"
+          label: "Autopilot & disconnection"
+          description: "Times when awareness feels distant or habitual."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rare"
+            - min: 1.31
+              max: 2.6
+              label: "Noticeable"
+            - min: 2.61
+              max: 4
+              label: "Frequent"
+        - id: "Imaginal"
+          label: "Imaginal & creative"
+          description: "Dream-like visioning, symbolism, and imaginative exploration."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Infrequent"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Abundant"
+        - id: "Expanded"
+          label: "Expanded connection"
+          description: "Awe, meaning, and relational or spiritual connection."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Infrequent"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Abundant"
+        - id: "Restorative"
+          label: "Restorative states"
+          description: "Deep rest, integration, and nourishing reset experiences."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Infrequent"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Abundant"
+
+  - id: "emotional-flexibility"
+    title: "Emotional Regulation & Flexibility"
+    subtitle: "Understand how you meet feelings with care"
+    themeColor: "#f472b6"
+    category: "Mental"
+    description: >-
+      This assessment invites you to notice how you relate to emotions — from
+      recognizing them, to soothing your body, to adapting your thinking. It can
+      highlight strengths and offer gentle guidance for building resilience.
+    instructions:
+      - "Consider your experiences over the last month in everyday life."
+      - "Answer honestly; this reflection is for your own support."
+      - "Use insights to identify practices, skills, or support you may want to grow."
+    scale:
+      label: "How true this feels"
+      options:
+        - label: "Rarely true"
+          value: 0
+        - label: "Sometimes true"
+          value: 1
+        - label: "Often true"
+          value: 2
+        - label: "Very true"
+          value: 3
+        - label: "Almost always true"
+          value: 4
+    questions:
+      - id: "emoflex_awareness_1"
+        text: "I can name what I am feeling without judgment."
+        dimension: "Awareness"
+      - id: "emoflex_awareness_2"
+        text: "I notice early signs that emotions are building before they feel overwhelming."
+        dimension: "Awareness"
+      - id: "emoflex_soothing_1"
+        text: "I have go-to practices that help my body settle (breathing, movement, grounding)."
+        dimension: "Soothing"
+      - id: "emoflex_soothing_2"
+        text: "I can offer myself kindness when emotions run strong."
+        dimension: "Soothing"
+      - id: "emoflex_reframing_1"
+        text: "I can consider multiple interpretations of a situation when I feel upset."
+        dimension: "Reframing"
+      - id: "emoflex_reframing_2"
+        text: "I can shift my perspective or find meaning after challenging events."
+        dimension: "Reframing"
+      - id: "emoflex_adaptability_1"
+        text: "I adjust plans or expectations when life changes unexpectedly."
+        dimension: "Adaptability"
+      - id: "emoflex_adaptability_2"
+        text: "I recover my focus after emotional disruptions."
+        dimension: "Adaptability"
+      - id: "emoflex_connection_1"
+        text: "I reach out to supportive people or resources when I need help."
+        dimension: "Connection"
+      - id: "emoflex_connection_2"
+        text: "I can communicate my emotional needs clearly."
+        dimension: "Connection"
+      - id: "emoflex_learning_1"
+        text: "I reflect on emotional experiences to learn about myself."
+        dimension: "Integration"
+      - id: "emoflex_learning_2"
+        text: "I notice when old patterns return and experiment with new responses."
+        dimension: "Integration"
+    scoring:
+      method: "average"
+      overall:
+        label: "Emotional flexibility"
+        bands:
+          - min: 0
+            max: 1.3
+            label: "Growing"
+            color: "#f97316"
+            description: "Foundational skills are forming — celebrate progress and keep practicing."
+          - min: 1.31
+            max: 2.6
+            label: "Steady"
+            color: "#facc15"
+            description: "You have supportive tools and awareness to navigate emotions."
+          - min: 2.61
+            max: 4
+            label: "Resilient"
+            color: "#34d399"
+            description: "Flexible responses are a strong asset — share and sustain what works for you."
+      dimensions:
+        - id: "Awareness"
+          label: "Emotional awareness"
+          description: "Recognizing and naming feelings as they arise."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+        - id: "Soothing"
+          label: "Body-based soothing"
+          description: "Skills that calm the nervous system and offer self-compassion."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+        - id: "Reframing"
+          label: "Perspective shifts"
+          description: "Flexible thinking that helps reframe or find meaning."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+        - id: "Adaptability"
+          label: "Adaptive responding"
+          description: "Adjusting actions when emotions or situations shift."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+        - id: "Connection"
+          label: "Supportive connection"
+          description: "Reaching for and communicating with caring people or resources."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+        - id: "Integration"
+          label: "Integration & learning"
+          description: "Reflecting on experiences to evolve patterns over time."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Growing"
+            - min: 1.31
+              max: 2.6
+              label: "Steady"
+            - min: 2.61
+              max: 4
+              label: "Resilient"
+
+  - id: "meaning-alignment"
+    title: "Meaning & Alignment Snapshot"
+    subtitle: "Check in on values, purpose, and daily life"
+    themeColor: "#a855f7"
+    category: "Wellbeing"
+    description: >-
+      Explore how your daily choices align with what feels meaningful. This assessment
+      offers supportive insight into values, motivation, and areas that may want more
+      attention or nourishment.
+    instructions:
+      - "Reflect on the past month when answering each statement."
+      - "Notice what feels resonant or surprising without self-criticism."
+      - "Let the results inspire gentle adjustments or conversations about your needs."
+    scale:
+      label: "How strongly you agree"
+      options:
+        - label: "Strongly disagree"
+          value: 0
+        - label: "Somewhat disagree"
+          value: 1
+        - label: "Somewhat agree"
+          value: 2
+        - label: "Agree"
+          value: 3
+        - label: "Strongly agree"
+          value: 4
+    questions:
+      - id: "meaning_values_1"
+        text: "My daily actions reflect what matters most to me."
+        dimension: "Values"
+      - id: "meaning_values_2"
+        text: "When I make decisions, I feel guided by a clear internal compass."
+        dimension: "Values"
+      - id: "meaning_purpose_1"
+        text: "I feel connected to a sense of purpose or contribution."
+        dimension: "Purpose"
+      - id: "meaning_purpose_2"
+        text: "I can articulate why my efforts and commitments feel meaningful."
+        dimension: "Purpose"
+      - id: "meaning_expression_1"
+        text: "I have regular outlets for creativity, curiosity, or authentic expression."
+        dimension: "Expression"
+      - id: "meaning_expression_2"
+        text: "My relationships allow me to show up as my genuine self."
+        dimension: "Expression"
+      - id: "meaning_growth_1"
+        text: "I notice personal growth or learning, even through challenges."
+        dimension: "Growth"
+      - id: "meaning_growth_2"
+        text: "I celebrate milestones and honor the progress I am making."
+        dimension: "Growth"
+      - id: "meaning_rest_1"
+        text: "I build in rest, play, or spaciousness to sustain my energy."
+        dimension: "Sustainability"
+      - id: "meaning_rest_2"
+        text: "I know when to pause or recalibrate commitments to stay aligned."
+        dimension: "Sustainability"
+      - id: "meaning_community_1"
+        text: "I feel rooted in supportive communities or relationships."
+        dimension: "Community"
+      - id: "meaning_community_2"
+        text: "I give and receive care in ways that feel reciprocal."
+        dimension: "Community"
+    scoring:
+      method: "average"
+      overall:
+        label: "Alignment with what matters"
+        bands:
+          - min: 0
+            max: 1.3
+            label: "Rebalancing"
+            color: "#f97316"
+            description: "You may be craving more alignment — explore small shifts or support."
+          - min: 1.31
+            max: 2.6
+            label: "Emerging"
+            color: "#facc15"
+            description: "Many areas feel aligned while others invite attention."
+          - min: 2.61
+            max: 4
+            label: "Aligned"
+            color: "#34d399"
+            description: "Your life and values resonate strongly — keep nurturing this balance."
+      dimensions:
+        - id: "Values"
+          label: "Values clarity"
+          description: "Knowing and acting from your guiding principles."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+        - id: "Purpose"
+          label: "Sense of purpose"
+          description: "Connection to meaning, contribution, or direction."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+        - id: "Expression"
+          label: "Authentic expression"
+          description: "Creative outlets and relationships that feel true to you."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+        - id: "Growth"
+          label: "Growth mindset"
+          description: "Learning, resilience, and celebrating personal evolution."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+        - id: "Sustainability"
+          label: "Energy sustainability"
+          description: "Rest, pacing, and rituals that keep your energy steady."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+        - id: "Community"
+          label: "Community connection"
+          description: "Supportive relationships and mutual care."
+          bands:
+            - min: 0
+              max: 1.3
+              label: "Rebalancing"
+            - min: 1.31
+              max: 2.6
+              label: "Emerging"
+            - min: 2.61
+              max: 4
+              label: "Aligned"
+
+  - id: "dopamine-patterns"
+    title: "Dopamine & Motivation Patterns"
+    subtitle: "Understanding your reward system and goal pursuit"
+    themeColor: "#f59e0b"
+    category: "Mental"
+    description: >-
+      Explore how your brain's reward system shapes your motivation, goal pursuit, and excitement patterns. This assessment helps you
+      understand your dopamine patterns — from how you approach new challenges to how you maintain motivation over time. Understanding
+      these patterns can help you work with your natural tendencies rather than against them.
+    instructions:
+      - "Reflect on your typical patterns over the past few months."
+      - "Consider how you naturally respond to goals, rewards, and challenges."
+      - "There are no right or wrong patterns — each has strengths and areas for support."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "dop_goal_excitement"
+        text: "I get very excited when starting a new goal or project"
+        dimension: "Excitement Regulation"
+      - id: "dop_goal_abandon"
+        text: "I often lose interest in goals once the initial excitement fades"
+        dimension: "Goal Pursuit"
+      - id: "dop_motivation_low"
+        text: "I struggle to feel motivated when tasks don't feel immediately rewarding"
+        dimension: "Motivation Levels"
+      - id: "dop_reward_sensitivity"
+        text: "I respond strongly to rewards and positive feedback"
+        dimension: "Reward Sensitivity"
+      - id: "dop_delay_difficulty"
+        text: "I find it challenging to work toward goals with delayed rewards"
+        dimension: "Goal Pursuit"
+      - id: "dop_hyperfocus"
+        text: "I can become completely absorbed in activities that interest me"
+        dimension: "Excitement Regulation"
+      - id: "dop_routine_difficulty"
+        text: "I struggle to maintain motivation for routine or repetitive tasks"
+        dimension: "Motivation Levels"
+      - id: "dop_novelty_seeking"
+        text: "I am drawn to new experiences and novelty"
+        dimension: "Reward Sensitivity"
+      - id: "dop_goal_completion"
+        text: "I have difficulty completing long-term goals even when I start with enthusiasm"
+        dimension: "Goal Pursuit"
+      - id: "dop_energy_fluctuation"
+        text: "My energy and motivation levels fluctuate significantly throughout the day"
+        dimension: "Motivation Levels"
+      - id: "dop_emotional_reward"
+        text: "I feel a strong emotional response to achievements and milestones"
+        dimension: "Reward Sensitivity"
+      - id: "dop_anticipation"
+        text: "I often feel more excited about planning goals than actually doing them"
+        dimension: "Excitement Regulation"
+    scoring:
+      method: "average"
+      overall:
+        label: "Dopamine pattern profile"
+        bands:
+          - min: 1
+            max: 2.5
+            label: "Steady"
+            color: "#22c55e"
+            description: "Your motivation patterns are relatively steady and consistent."
+          - min: 2.51
+            max: 3.5
+            label: "Balanced"
+            color: "#facc15"
+            description: "You show a mix of steady motivation and excitement-driven patterns."
+          - min: 3.51
+            max: 5
+            label: "Intense"
+            color: "#f97316"
+            description: "You experience strong excitement and motivation fluctuations — consider strategies that work with these patterns."
+      dimensions:
+        - id: "Goal Pursuit"
+          label: "Goal pursuit"
+          description: "How you approach and follow through on goals."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Consistent"
+            - min: 2.41
+              max: 3.6
+              label: "Variable"
+            - min: 3.61
+              max: 5
+              label: "Challenge-driven"
+        - id: "Motivation Levels"
+          label: "Motivation levels"
+          description: "Your baseline motivation and energy patterns."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Stable"
+            - min: 2.41
+              max: 3.6
+              label: "Fluctuating"
+            - min: 3.61
+              max: 5
+              label: "Variable"
+        - id: "Excitement Regulation"
+          label: "Excitement regulation"
+          description: "How you experience and manage excitement and enthusiasm."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Moderate"
+            - min: 2.41
+              max: 3.6
+              label: "Enthusiastic"
+            - min: 3.61
+              max: 5
+              label: "Intense"
+        - id: "Reward Sensitivity"
+          label: "Reward sensitivity"
+          description: "How strongly you respond to rewards and positive feedback."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Moderate"
+            - min: 2.41
+              max: 3.6
+              label: "Responsive"
+            - min: 3.61
+              max: 5
+              label: "Highly sensitive"
+
+  - id: "parenting-style"
+    title: "Parenting Style Reflection"
+    subtitle: "Understanding your approach to parenting"
+    themeColor: "#a855f7"
+    category: "Personality"
+    description: >-
+      Reflect on your parenting approach, including how you communicate, set boundaries, and provide emotional support. This assessment
+      helps you understand your parenting patterns and identify areas where you might want to adjust or strengthen your approach.
+      Parenting is a journey, and understanding your patterns can help you show up more intentionally for your children.
+    instructions:
+      - "Think about your typical parenting behaviors over the past few months."
+      - "If you have multiple children, consider your overall parenting approach."
+      - "Be honest with yourself — this reflection is for your own growth."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "parent_warmth"
+        text: "I express warmth and affection toward my children regularly"
+        dimension: "Warmth & Support"
+      - id: "parent_listening"
+        text: "I listen to my children's feelings and perspectives even when I disagree"
+        dimension: "Communication"
+      - id: "parent_boundaries"
+        text: "I set clear, consistent boundaries and explain the reasons behind rules"
+        dimension: "Boundaries & Structure"
+      - id: "parent_responsiveness"
+        text: "I respond to my children's emotional needs with empathy and understanding"
+        dimension: "Warmth & Support"
+      - id: "parent_control"
+        text: "I expect my children to follow rules without questioning them"
+        dimension: "Control & Authority"
+      - id: "parent_autonomy"
+        text: "I encourage my children to make their own decisions and learn from mistakes"
+        dimension: "Autonomy Support"
+      - id: "parent_discipline"
+        text: "I use discipline methods that focus on teaching rather than punishment"
+        dimension: "Boundaries & Structure"
+      - id: "parent_emotions"
+        text: "I help my children understand and manage their emotions"
+        dimension: "Communication"
+      - id: "parent_consistency"
+        text: "I am consistent in my expectations and follow-through"
+        dimension: "Boundaries & Structure"
+      - id: "parent_praise"
+        text: "I recognize and praise my children's efforts and achievements"
+        dimension: "Warmth & Support"
+      - id: "parent_problem_solving"
+        text: "I involve my children in problem-solving when conflicts arise"
+        dimension: "Autonomy Support"
+      - id: "parent_communication"
+        text: "I communicate openly and honestly with my children about difficult topics"
+        dimension: "Communication"
+      - id: "parent_flexibility"
+        text: "I adjust my parenting approach based on my children's individual needs"
+        dimension: "Autonomy Support"
+      - id: "parent_authority"
+        text: "I believe children should always respect adult authority without question"
+        dimension: "Control & Authority"
+    scoring:
+      method: "average"
+      overall:
+        label: "Parenting style orientation"
+        bands:
+          - min: 1
+            max: 2.5
+            label: "Developing"
+            color: "#facc15"
+            description: "Your parenting style is still developing — continue reflecting and growing."
+          - min: 2.51
+            max: 3.8
+            label: "Balanced"
+            color: "#22c55e"
+            description: "You show a balanced approach to parenting with warmth and structure."
+          - min: 3.81
+            max: 5
+            label: "Supportive"
+            color: "#10b981"
+            description: "You demonstrate strong supportive parenting with warmth, structure, and responsiveness."
+      dimensions:
+        - id: "Warmth & Support"
+          label: "Warmth & emotional support"
+          description: "Providing emotional warmth and responsiveness."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Growing"
+            - min: 2.41
+              max: 3.6
+              label: "Present"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Communication"
+          label: "Communication"
+          description: "How you communicate and listen to your children."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Developing"
+            - min: 2.41
+              max: 3.6
+              label: "Open"
+            - min: 3.61
+              max: 5
+              label: "Connected"
+        - id: "Boundaries & Structure"
+          label: "Boundaries & structure"
+          description: "Setting clear, consistent boundaries and expectations."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Inconsistent"
+            - min: 2.41
+              max: 3.6
+              label: "Clear"
+            - min: 3.61
+              max: 5
+              label: "Well-defined"
+        - id: "Autonomy Support"
+          label: "Autonomy support"
+          description: "Encouraging independence and decision-making."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Limited"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+        - id: "Control & Authority"
+          label: "Control & authority"
+          description: "Emphasis on authority and compliance (lower is generally better for balanced parenting)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Low"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "High"
+
+  - id: "communication-patterns"
+    title: "Communication & Relationship Patterns"
+    subtitle: "How you connect and communicate in relationships"
+    themeColor: "#06b6d4"
+    category: "Personality"
+    description: >-
+      Explore how you communicate and maintain relationships, from initiating contact to handling difficult conversations. Understanding
+      your communication patterns can help you connect more effectively with others and navigate relationship challenges with greater
+      awareness and skill.
+    instructions:
+      - "Reflect on your experiences in close relationships (family, friends, romantic partners, colleagues)."
+      - "Consider both your natural tendencies and what you've learned over time."
+      - "Think about how you typically show up in different communication situations."
+    scale:
+      label: "Agreement"
+      options:
+        - label: "Strongly disagree"
+          value: 1
+        - label: "Disagree"
+          value: 2
+        - label: "Neutral"
+          value: 3
+        - label: "Agree"
+          value: 4
+        - label: "Strongly agree"
+          value: 5
+    questions:
+      - id: "comm_initiate"
+        text: "I easily initiate contact and reach out to others"
+        dimension: "Initiation"
+      - id: "comm_maintain"
+        text: "I consistently make effort to maintain contact with people I care about"
+        dimension: "Maintenance"
+      - id: "comm_difficult"
+        text: "I feel comfortable discussing difficult or sensitive topics with others"
+        dimension: "Difficult Conversations"
+      - id: "comm_clarity"
+        text: "I express my thoughts and feelings clearly and directly"
+        dimension: "Clarity"
+      - id: "comm_listening"
+        text: "I listen actively and try to understand others' perspectives"
+        dimension: "Listening"
+      - id: "comm_avoidance"
+        text: "I tend to avoid bringing up topics that might cause conflict"
+        dimension: "Difficult Conversations"
+      - id: "comm_writing"
+        text: "I communicate effectively through writing (texts, emails, messages)"
+        dimension: "Clarity"
+      - id: "comm_emotional"
+        text: "I can express my emotional needs and feelings to others"
+        dimension: "Clarity"
+      - id: "comm_regular"
+        text: "I make regular contact with friends and family without waiting for them to reach out"
+        dimension: "Maintenance"
+      - id: "comm_anxiety"
+        text: "I feel anxious about initiating contact or reaching out to others"
+        dimension: "Initiation"
+      - id: "comm_conflict"
+        text: "I handle conflicts constructively and work toward resolution"
+        dimension: "Difficult Conversations"
+      - id: "comm_understanding"
+        text: "Others seem to understand what I'm trying to communicate"
+        dimension: "Clarity"
+      - id: "comm_validation"
+        text: "I validate others' feelings and experiences when they share with me"
+        dimension: "Listening"
+      - id: "comm_effort"
+        text: "I put effort into staying connected with people even when life gets busy"
+        dimension: "Maintenance"
+      - id: "comm_honesty"
+        text: "I can be honest and direct in my communication without being hurtful"
+        dimension: "Clarity"
+      - id: "comm_comfort"
+        text: "I feel comfortable reaching out to others when I need support"
+        dimension: "Initiation"
+    scoring:
+      method: "average"
+      overall:
+        label: "Communication effectiveness"
+        bands:
+          - min: 1
+            max: 2.5
+            label: "Developing"
+            color: "#facc15"
+            description: "Your communication patterns are developing — there's room for growth and practice."
+          - min: 2.51
+            max: 3.8
+            label: "Competent"
+            color: "#22c55e"
+            description: "You communicate effectively across many situations with some areas for refinement."
+          - min: 3.81
+            max: 5
+            label: "Strong"
+            color: "#10b981"
+            description: "You demonstrate strong communication skills and connection in relationships."
+      dimensions:
+        - id: "Initiation"
+          label: "Initiating contact"
+          description: "How comfortable and skilled you are at reaching out to others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Challenged"
+            - min: 2.41
+              max: 3.6
+              label: "Moderate"
+            - min: 3.61
+              max: 5
+              label: "Comfortable"
+        - id: "Maintenance"
+          label: "Maintaining contact"
+          description: "Your ability to keep relationships active and connected over time."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Inconsistent"
+            - min: 2.41
+              max: 3.6
+              label: "Steady"
+            - min: 3.61
+              max: 5
+              label: "Consistent"
+        - id: "Difficult Conversations"
+          label: "Handling difficult topics"
+          description: "How you approach and manage challenging or sensitive conversations."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Avoidant"
+            - min: 2.41
+              max: 3.6
+              label: "Cautious"
+            - min: 3.61
+              max: 5
+              label: "Comfortable"
+        - id: "Clarity"
+          label: "Communication clarity"
+          description: "How clearly and effectively you express yourself (speaking and writing)."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Unclear"
+            - min: 2.41
+              max: 3.6
+              label: "Clear"
+            - min: 3.61
+              max: 5
+              label: "Very clear"
+        - id: "Listening"
+          label: "Active listening"
+          description: "Your ability to listen, understand, and validate others."
+          bands:
+            - min: 1
+              max: 2.4
+              label: "Limited"
+            - min: 2.41
+              max: 3.6
+              label: "Good"
+            - min: 3.61
+              max: 5
+              label: "Strong"
+
+unused:
+  - id: "eating"
+    title: "Eating Patterns & Concerns"
+    subtitle: "Disordered eating behavior screener"
+    themeColor: "#f472b6"
+    category: "Mental"
+    description: >-
+      Reflect on your relationship with food, eating behaviors, and body image. This assessment helps identify patterns that may
+      benefit from support or professional attention.
+    instructions:
+      - "Answer honestly about your eating behaviors and food relationship."
+      - "Consider both physical behaviors and emotional aspects."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Never"
+          value: 0
+        - label: "Rarely"
+          value: 1
+        - label: "Sometimes"
+          value: 2
+        - label: "Often"
+          value: 3
+        - label: "Very often"
+          value: 4
+    questions:
+      - id: "eat_sick"
+        text: "Making yourself sick because you feel uncomfortably full"
+        dimension: "Purging"
+      - id: "eat_control"
+        text: "Worrying you have lost control over how much you eat"
+        dimension: "Bingeing"
+      - id: "eat_weight"
+        text: "Losing more than 14 pounds in a three-month period"
+        dimension: "Restriction"
+      - id: "eat_fat"
+        text: "Believing yourself to be fat when others say you are too thin"
+        dimension: "Body Image"
+      - id: "eat_dominates"
+        text: "Feeling that food dominates your life"
+        dimension: "Preoccupation"
+      - id: "eat_restrict"
+        text: "Restricting food intake or skipping meals to control weight"
+        dimension: "Restriction"
+      - id: "eat_binge"
+        text: "Eating large amounts of food in a short period when you feel out of control"
+        dimension: "Bingeing"
+      - id: "eat_body"
+        text: "Feeling extremely distressed about your body shape or weight"
+        dimension: "Body Image"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Eating disorder risk"
+        bands:
+          - min: 0
+            max: 3
+            label: "Low"
+            color: "#22c55e"
+            description: "Healthy eating patterns; continue balanced approach."
+          - min: 4
+            max: 8
+            label: "Moderate"
+            color: "#facc15"
+            description: "Some eating concerns — mindful eating support may help."
+          - min: 9
+            max: 16
+            label: "High"
+            color: "#f97316"
+            description: "Significant eating concerns — consider professional support."
+          - min: 17
+            max: 32
+            label: "Very high"
+            color: "#dc2626"
+            description: "Severe eating concerns — professional eating disorder support is recommended."
+      dimensions:
+        - id: "Restriction"
+          label: "Restriction patterns"
+          bands:
+            - min: 0
+              max: 2
+              label: "None"
+            - min: 3
+              max: 4
+              label: "Moderate"
+            - min: 5
+              max: 8
+              label: "Severe"
+        - id: "Bingeing"
+          label: "Bingeing behaviors"
+          bands:
+            - min: 0
+              max: 2
+              label: "None"
+            - min: 3
+              max: 4
+              label: "Occasional"
+            - min: 5
+              max: 8
+              label: "Frequent"
+        - id: "Purging"
+          label: "Purging behaviors"
+          bands:
+            - min: 0
+              max: 1
+              label: "None"
+            - min: 2
+              max: 4
+              label: "Present"
+        - id: "Body Image"
+          label: "Body image distress"
+          bands:
+            - min: 0
+              max: 2
+              label: "Mild"
+            - min: 3
+              max: 4
+              label: "Moderate"
+            - min: 5
+              max: 8
+              label: "Severe"
+        - id: "Preoccupation"
+          label: "Food preoccupation"
+          bands:
+            - min: 0
+              max: 2
+              label: "Minimal"
+            - min: 3
+              max: 4
+              label: "Moderate"
+            - min: 5
+              max: 4
+              label: "Severe"
+
+  - id: "perinatal"
+    title: "Perinatal Mental Health"
+    subtitle: "Pregnancy & postpartum mood assessment"
+    themeColor: "#d946ef"
+    category: "Mental"
+    description: >-
+      Reflect on your emotional wellbeing during pregnancy or after giving birth. This assessment addresses perinatal depression and
+      anxiety specifically.
+    instructions:
+      - "Consider your experiences during pregnancy or in the past week if postpartum."
+      - "Answer honestly about mood, anxiety, and bonding feelings."
+    scale:
+      label: "Frequency"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "Hardly ever"
+          value: 1
+        - label: "Yes, sometimes"
+          value: 2
+        - label: "Yes, quite often"
+          value: 3
+        - label: "Yes, most of the time"
+          value: 4
+    questions:
+      - id: "epds_laugh"
+        text: "I have been able to laugh and see the funny side of things"
+        dimension: "Anhedonia"
+      - id: "epds_enjoy"
+        text: "I have looked forward with enjoyment to things"
+        dimension: "Anhedonia"
+      - id: "epds_blame"
+        text: "I have blamed myself unnecessarily when things went wrong"
+        dimension: "Self-blame"
+      - id: "epds_anxious"
+        text: "I have been anxious or worried for no good reason"
+        dimension: "Anxiety"
+      - id: "epds_fear"
+        text: "I have felt scared or panicky for no very good reason"
+        dimension: "Anxiety"
+      - id: "epds_coping"
+        text: "Things have been getting on top of me"
+        dimension: "Coping"
+      - id: "epds_sleep"
+        text: "I have been so unhappy that I have had difficulty sleeping"
+        dimension: "Sleep"
+      - id: "epds_sad"
+        text: "I have felt sad or miserable"
+        dimension: "Mood"
+      - id: "epds_cry"
+        text: "I have been so unhappy that I have been crying"
+        dimension: "Mood"
+      - id: "epds_harm"
+        text: "The thought of harming myself has occurred to me"
+        dimension: "Safety"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Perinatal mood severity"
+        bands:
+          - min: 0
+            max: 6
+            label: "Minimal"
+            color: "#22c55e"
+            description: "Low perinatal mood symptoms; continue self-care."
+          - min: 7
+            max: 12
+            label: "Mild"
+            color: "#facc15"
+            description: "Some perinatal mood concerns — support and monitoring may help."
+          - min: 13
+            max: 18
+            label: "Moderate"
+            color: "#f97316"
+            description: "Moderate perinatal mood symptoms — consider professional support."
+          - min: 19
+            max: 30
+            label: "Severe"
+            color: "#dc2626"
+            description: "Significant perinatal mood concerns — reach out for professional help promptly."
+      dimensions:
+        - id: "Anhedonia"
+          label: "Enjoyment & engagement"
+          bands:
+            - min: 0
+              max: 2
+              label: "Present"
+            - min: 3
+              max: 4
+              label: "Reduced"
+            - min: 5
+              max: 8
+              label: "Absent"
+        - id: "Anxiety"
+          label: "Anxiety"
+          bands:
+            - min: 0
+              max: 2
+              label: "Low"
+            - min: 3
+              max: 4
+              label: "Moderate"
+            - min: 5
+              max: 8
+              label: "High"
+        - id: "Mood"
+          label: "Mood"
+          bands:
+            - min: 0
+              max: 2
+              label: "Stable"
+            - min: 3
+              max: 4
+              label: "Low"
+            - min: 5
+              max: 8
+              label: "Severely low"
+        - id: "Coping"
+          label: "Coping ability"
+          bands:
+            - min: 0
+              max: 2
+              label: "Good"
+            - min: 3
+              max: 4
+              label: "Strained"
+            - min: 5
+              max: 4
+              label: "Overwhelmed"
+        - id: "Self-blame"
+          label: "Self-blame"
+          bands:
+            - min: 0
+              max: 1
+              label: "Minimal"
+            - min: 2
+              max: 3
+              label: "Moderate"
+            - min: 4
+              max: 4
+              label: "High"
+        - id: "Sleep"
+          label: "Sleep impact"
+          bands:
+            - min: 0
+              max: 1
+              label: "Normal"
+            - min: 2
+              max: 3
+              label: "Disrupted"
+            - min: 4
+              max: 4
+              label: "Severely disrupted"
+        - id: "Safety"
+          label: "Safety concerns"
+          bands:
+            - min: 0
+              max: 0
+              label: "Safe"
+            - min: 1
+              max: 4
+              label: "Needs monitoring"
+
+  - id: "grief"
+    title: "Grief & Loss Response"
+    subtitle: "Grief processing & support needs"
+    themeColor: "#6366f1"
+    category: "Mental"
+    description: >-
+      Reflect on your experience of grief and loss, whether recent or ongoing. This assessment helps understand grief impact and
+      support needs.
+    instructions:
+      - "Consider losses you've experienced, whether recent or from the past."
+      - "Reflect on how grief affects your daily life and functioning."
+    scale:
+      label: "Intensity"
+      options:
+        - label: "Not at all"
+          value: 0
+        - label: "A little"
+          value: 1
+        - label: "Somewhat"
+          value: 2
+        - label: "Quite a bit"
+          value: 3
+        - label: "Extremely"
+          value: 4
+    questions:
+      - id: "grief_intense"
+        text: "Experiencing intense feelings of grief"
+        dimension: "Emotional"
+      - id: "grief_waves"
+        text: "Grief coming in waves or episodes"
+        dimension: "Emotional"
+      - id: "grief_accept"
+        text: "Difficulty accepting the loss"
+        dimension: "Processing"
+      - id: "grief_avoid"
+        text: "Avoiding reminders of the person or loss"
+        dimension: "Avoidance"
+      - id: "grief_functioning"
+        text: "Difficulty carrying out daily activities due to grief"
+        dimension: "Functioning"
+      - id: "grief_meaning"
+        text: "Struggling to find meaning after the loss"
+        dimension: "Processing"
+      - id: "grief_social"
+        text: "Withdrawing from social activities or relationships"
+        dimension: "Social"
+      - id: "grief_future"
+        text: "Feeling hopeless about the future"
+        dimension: "Processing"
+      - id: "grief_support"
+        text: "Feeling isolated or lacking support"
+        dimension: "Social"
+    scoring:
+      method: "sum"
+      overall:
+        label: "Grief severity"
+        bands:
+          - min: 0
+            max: 9
+            label: "Mild"
+            color: "#22c55e"
+            description: "Manageable grief; continue healing practices."
+          - min: 10
+            max: 18
+            label: "Moderate"
+            color: "#facc15"
+            description: "Moderate grief impact — support and time may help."
+          - min: 19
+            max: 27
+            label: "Severe"
+            color: "#f97316"
+            description: "Significant grief — consider grief counseling or support groups."
+          - min: 28
+            max: 36
+            label: "Very severe"
+            color: "#dc2626"
+            description: "Severe grief impact — professional grief support is recommended."
+      dimensions:
+        - id: "Emotional"
+          label: "Emotional intensity"
+          bands:
+            - min: 0
+              max: 4
+              label: "Mild"
+            - min: 5
+              max: 8
+              label: "Moderate"
+            - min: 9
+              max: 8
+              label: "Intense"
+        - id: "Processing"
+          label: "Processing difficulty"
+          bands:
+            - min: 0
+              max: 4
+              label: "Processing"
+            - min: 5
+              max: 8
+              label: "Struggling"
+            - min: 9
+              max: 12
+              label: "Stuck"
+        - id: "Functioning"
+          label: "Daily functioning"
+          bands:
+            - min: 0
+              max: 2
+              label: "Maintained"
+            - min: 3
+              max: 4
+              label: "Impaired"
+        - id: "Social"
+          label: "Social withdrawal"
+          bands:
+            - min: 0
+              max: 3
+              label: "Engaged"
+            - min: 4
+              max: 8
+              label: "Withdrawn"
+        - id: "Avoidance"
+          label: "Avoidance behavior"
+          bands:
+            - min: 0
+              max: 2
+              label: "Minimal"
+            - min: 3
+              max: 4
+              label: "Moderate"
