@@ -40,7 +40,7 @@ export default async function HomePage({ searchParams }) {
           <p className="eyebrow accent">AI in Healthcare</p>
           <h1>The latest on artificial intelligence transforming medicine</h1>
           <p className="lede">
-            News stories discovered, structured, and analyzed by LLMs. Covering clinical
+            News stories discovered and organized by an automated pipeline. Covering clinical
             deployments, research breakthroughs, regulation, and industry developments.
           </p>
         </div>
@@ -111,8 +111,8 @@ export default async function HomePage({ searchParams }) {
           <div className="aboutCard">
             <h3>Structure</h3>
             <p>
-              Claude analyzes each source, extracts key information, and produces structured articles
-              with categories, tags, and analytical context.
+              The pipeline turns source material into concise, readable stories with categories,
+              tags, and context that make the feed easier to scan.
             </p>
           </div>
           <div className="aboutCard">

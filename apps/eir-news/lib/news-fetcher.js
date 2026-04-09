@@ -2,6 +2,12 @@ import OpenAI from 'openai';
 
 // ── Search queries used by Google News RSS and OpenAI web search ──
 
+const DEFAULT_PUBLISHED_AT = 'T00:00:00Z';
+const MAX_STRUCTURED_CANDIDATES = 20;
+const MAX_FALLBACK_STORIES = 10;
+const OPENAI_QUOTA_HINT = /quota|billing|429|insufficient/i;
+const DEFAULT_OPENAI_MODEL = 'gpt-5.4-mini';
+
 const SEARCH_QUERIES = [
   'AI healthcare clinical trials',
   'artificial intelligence medical diagnosis',
@@ -208,7 +214,197 @@ function parseStories(text) {
   }));
 }
 
-async function structureWithLLM(rawArticles, existingStories) {
+function hasOpenAiKey() {
+  return Boolean(process.env.OPENAI_API_KEY);
+}
+
+function openAiModelFor(task) {
+  if (task === 'web-search') {
+    return process.env.OPENAI_WEB_SEARCH_MODEL || process.env.OPENAI_MODEL || DEFAULT_OPENAI_MODEL;
+  }
+  return process.env.OPENAI_STRUCTURING_MODEL || process.env.OPENAI_MODEL || DEFAULT_OPENAI_MODEL;
+}
+
+function isWebSearchEnabled() {
+  return process.env.ENABLE_OPENAI_WEB_SEARCH === 'true';
+}
+
+function sourceHostname(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return 'Unknown source';
+  }
+}
+
+function decodeEntities(text = '') {
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
+function normalizeTitle(title = '') {
+  return decodeEntities(title)
+    .replace(/\s+-\s+Google News$/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function slugify(text = '') {
+  const base = text
+    .toLowerCase()
+    .replace(/['’"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return base || `story-${Date.now()}`;
+}
+
+function normalizePublishedAt(pubDate) {
+  if (!pubDate) return `${new Date().toISOString().split('T')[0]}${DEFAULT_PUBLISHED_AT}`;
+  const parsed = new Date(pubDate);
+  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+
+  const fallback = new Date(`${String(pubDate).trim()}${DEFAULT_PUBLISHED_AT}`);
+  if (!Number.isNaN(fallback.getTime())) return fallback.toISOString();
+
+  return `${new Date().toISOString().split('T')[0]}${DEFAULT_PUBLISHED_AT}`;
+}
+
+function inferCategory(article) {
+  const haystack = `${article.title} ${article.source} ${article.link}`.toLowerCase();
+
+  if (/(fda|ema|regulat|policy|law|act|compliance|approval)/.test(haystack)) return 'regulation';
+  if (/(funding|raise|startup|acquire|market|invest|ceo|company)/.test(haystack)) return 'industry';
+  if (/(study|research|journal|pubmed|benchmark|dataset|paper|preprint)/.test(haystack)) return 'research';
+  if (/(trial|patient|hospital|clinic|therap|diagnos|screen|care|nurse|doctor)/.test(haystack)) return 'clinical';
+  if (/(robot|platform|model|llm|software|device|wearable|sensor)/.test(haystack)) return 'technology';
+  return 'opinion';
+}
+
+function inferTags(article, category) {
+  const haystack = `${article.title} ${article.source}`.toLowerCase();
+  const tagRules = [
+    ['llms', /(llm|large language model|gpt|chatbot)/],
+    ['drug-discovery', /(drug|molecule|chemistry|pharma|therapeutic)/],
+    ['radiology', /(radiology|imaging|x-ray|ct|mri)/],
+    ['regulation', /(fda|ema|regulat|policy|act)/],
+    ['mental-health', /(mental health|depression|anxiety|therapy)/],
+    ['clinical-trials', /(clinical trial|randomized|rct|patient study)/],
+    ['medical-devices', /(device|sensor|wearable)/],
+    ['diagnostics', /(diagnos|screening|detection)/],
+    ['research', /(study|research|journal|pubmed|paper)/],
+    ['industry', /(funding|startup|company|invest)/],
+  ];
+
+  const tags = [];
+  for (const [tag, pattern] of tagRules) {
+    if (pattern.test(haystack)) tags.push(tag);
+  }
+  if (tags.length === 0) tags.push(category);
+  return tags.slice(0, 4);
+}
+
+function trimSourceFromTitle(title, source) {
+  if (!source) return title;
+
+  const escapedSource = source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return title
+    .replace(new RegExp(`\\s+-\\s+${escapedSource}$`, 'i'), '')
+    .replace(new RegExp(`\\s+\\|\\s+${escapedSource}$`, 'i'), '')
+    .trim();
+}
+
+function formatSourceDate(article) {
+  const publishedAt = normalizePublishedAt(article.pubDate);
+  return publishedAt.slice(0, 10);
+}
+
+function categoryAngle(category, title) {
+  const lower = title.toLowerCase();
+
+  if (category === 'regulation') {
+    return 'It matters because regulatory signals often determine how quickly healthcare AI can move from pilot projects into routine use.';
+  }
+  if (category === 'industry') {
+    return 'It matters because capital allocation and go-to-market decisions shape which healthcare AI products actually reach clinics and health systems.';
+  }
+  if (category === 'research') {
+    return 'It matters because new evidence, benchmarks, and validation studies often reveal whether healthcare AI claims are translating into credible science.';
+  }
+  if (category === 'clinical') {
+    return 'It matters because the clinical value of healthcare AI depends on whether it can improve workflows, detection, or outcomes in real patient settings.';
+  }
+  if (category === 'technology') {
+    return 'It matters because infrastructure and model advances often determine what is feasible for the next wave of healthcare applications.';
+  }
+  if (/funding|raise|startup|investment/.test(lower)) {
+    return 'It matters because investor appetite remains a practical signal of where operators believe defensible value is emerging.';
+  }
+  return 'It matters because the headline points to where expectations around healthcare AI are expanding faster than the supporting evidence.';
+}
+
+function buildFallbackSummary(article, category) {
+  const source = article.source || sourceHostname(article.link);
+  const title = trimSourceFromTitle(normalizeTitle(article.title), source);
+  return `${source} reports on ${title}. ${categoryAngle(category, title)}`;
+}
+
+function buildFallbackBody(article, category) {
+  const source = article.source || sourceHostname(article.link);
+  const title = trimSourceFromTitle(normalizeTitle(article.title), source);
+  const publishedDate = formatSourceDate(article);
+
+  return [
+    `${source} published "${title}" on ${publishedDate}. This brief highlights the core development surfaced by the source and keeps the focus on what appears to matter most for healthcare AI.`,
+    `${categoryAngle(category, title)} The headline suggests this is most relevant as ${category} coverage, which is why it has been grouped with similar stories on the site.`,
+    `Readers should treat this as a quick briefing and follow the source link for the full reporting, methods, and limitations in the original piece.`,
+  ].join('\n\n');
+}
+
+function buildFallbackStories(rawArticles, existingStories = []) {
+  const now = new Date().toISOString();
+  const existingSlugs = new Set(existingStories.map((story) => story.slug));
+  const stories = [];
+
+  for (const article of rawArticles) {
+    const source = article.source || sourceHostname(article.link);
+    const title = trimSourceFromTitle(normalizeTitle(article.title), source);
+    if (!title || !article.link) continue;
+
+    const category = inferCategory(article);
+    let slug = slugify(title);
+    let suffix = 2;
+    while (existingSlugs.has(slug) || stories.some((story) => story.slug === slug)) {
+      slug = `${slugify(title)}-${suffix}`;
+      suffix += 1;
+    }
+    existingSlugs.add(slug);
+
+    stories.push({
+      id: slug,
+      title,
+      slug,
+      summary: buildFallbackSummary(article, category),
+      body: buildFallbackBody(article, category),
+      category,
+      tags: inferTags(article, category),
+      source,
+      sourceUrl: article.link,
+      publishedAt: normalizePublishedAt(article.pubDate),
+      fetchedAt: now,
+    });
+
+    if (stories.length >= MAX_FALLBACK_STORIES) break;
+  }
+
+  return stories;
+}
+
+async function structureWithLLM(rawArticles, existingStories, model = openAiModelFor('structuring')) {
   if (rawArticles.length === 0) return [];
 
   const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -229,7 +425,7 @@ async function structureWithLLM(rawArticles, existingStories) {
     .join('\n');
 
   const response = await client.responses.create({
-    model: 'gpt-5.4',
+    model,
     input: `You are a healthcare AI news editor. Below are real articles discovered from news feeds and research databases. Pick the 6-10 most significant and interesting ones and write structured news stories about them.
 
 DISCOVERED ARTICLES:
@@ -272,7 +468,11 @@ IMPORTANT:
  *   6. Deduplication against existing stories
  */
 export async function fetchWithWebSearch(existingStories = []) {
-  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  const openAiConfigured = hasOpenAiKey();
+  const client = openAiConfigured ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) : null;
+  const structuringModel = openAiModelFor('structuring');
+  const webSearchModel = openAiModelFor('web-search');
+  const webSearchEnabled = isWebSearchEnabled();
 
   // Phase 1: Discover articles from real sources (parallel)
   console.log('[fetch] Discovering articles from Google News RSS and PubMed...');
@@ -283,14 +483,15 @@ export async function fetchWithWebSearch(existingStories = []) {
   console.log(`[fetch] Found ${rssArticles.length} RSS + ${pubmedArticles.length} PubMed articles`);
 
   // Phase 2: Also run OpenAI web search for supplementary discovery
-  console.log('[fetch] Running OpenAI web search for additional stories...');
   const queries = pickQueries(3);
   let webSearchStories = [];
-  try {
-    const response = await client.responses.create({
-      model: 'gpt-5.4',
-      tools: [{ type: 'web_search_preview' }],
-      input: `Search the web for the latest significant news about AI in healthcare from the past week. Focus on:
+  if (client && webSearchEnabled) {
+    console.log(`[fetch] Running OpenAI web search with ${webSearchModel} for additional stories...`);
+    try {
+      const response = await client.responses.create({
+        model: webSearchModel,
+        tools: [{ type: 'web_search_preview' }],
+        input: `Search the web for the latest significant news about AI in healthcare from the past week. Focus on:
 
 ${queries.map((q, i) => `${i + 1}. ${q}`).join('\n')}
 
@@ -303,17 +504,25 @@ For each article you find, return a JSON array of objects with:
 Return ONLY a JSON array. No other text.
 
 Today: ${new Date().toISOString().split('T')[0]}`,
-    });
-    const text = response.output_text?.trim();
-    if (text) {
-      const jsonStr = text.startsWith('[') ? text : text.match(/\[[\s\S]*\]/)?.[0];
-      if (jsonStr) {
-        webSearchStories = JSON.parse(jsonStr);
-        console.log(`[fetch] OpenAI web search found ${webSearchStories.length} articles`);
+      });
+      const text = response.output_text?.trim();
+      if (text) {
+        const jsonStr = text.startsWith('[') ? text : text.match(/\[[\s\S]*\]/)?.[0];
+        if (jsonStr) {
+          webSearchStories = JSON.parse(jsonStr);
+          console.log(`[fetch] OpenAI web search found ${webSearchStories.length} articles`);
+        }
+      }
+    } catch (err) {
+      console.log(`[fetch] OpenAI web search failed (non-fatal): ${err.message}`);
+      if (OPENAI_QUOTA_HINT.test(err.message)) {
+        console.log('[fetch] OpenAI web search is over quota, continuing with free sources only');
       }
     }
-  } catch (err) {
-    console.log(`[fetch] OpenAI web search failed (non-fatal): ${err.message}`);
+  } else if (client) {
+    console.log('[fetch] OpenAI web search is disabled, using RSS and PubMed only');
+  } else {
+    console.log('[fetch] OPENAI_API_KEY is missing, skipping web search');
   }
 
   // Phase 3: Combine all discovered articles
@@ -336,10 +545,21 @@ Today: ${new Date().toISOString().split('T')[0]}`,
 
   // Phase 4: Structure top articles with LLM
   // Limit to 20 most interesting candidates to avoid token waste
-  const candidates = uniqueArticles.slice(0, 20);
-  console.log('[fetch] Structuring articles with gpt-5.4...');
-  const structured = await structureWithLLM(candidates, existingStories);
-  console.log(`[fetch] LLM produced ${structured.length} structured stories`);
+  const candidates = uniqueArticles.slice(0, MAX_STRUCTURED_CANDIDATES);
+  let structured = [];
+  if (openAiConfigured) {
+    console.log(`[fetch] Structuring articles with ${structuringModel}...`);
+    try {
+      structured = await structureWithLLM(candidates, existingStories, structuringModel);
+      console.log(`[fetch] LLM produced ${structured.length} structured stories`);
+    } catch (err) {
+      console.log(`[fetch] LLM structuring failed, switching to fallback stories: ${err.message}`);
+      structured = buildFallbackStories(candidates, existingStories);
+    }
+  } else {
+    console.log('[fetch] OPENAI_API_KEY is missing, using fallback story generation');
+    structured = buildFallbackStories(candidates, existingStories);
+  }
 
   // Phase 5: Deduplicate structured stories against existing
   const existingSlugs = new Set(existingStories.map((s) => s.slug));

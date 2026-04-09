@@ -81,8 +81,8 @@ export default async function StoryPage({ params }) {
 
       <div className="storyFooter">
         <p className="aiDisclaimer">
-          This story was discovered and structured by an AI system. Always verify critical
-          information with the{' '}
+          This story was produced by an automated system. Always verify critical information with
+          the{' '}
           <a href={story.sourceUrl} target="_blank" rel="noreferrer">
             original source
           </a>
