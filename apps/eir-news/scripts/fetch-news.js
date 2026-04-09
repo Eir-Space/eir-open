@@ -8,7 +8,7 @@
  *   node scripts/fetch-news.js --dry-run    # print stories without saving
  *
  * Run on a cron (e.g. every 6 hours) to keep the site fresh:
- *   0 */6 * * * cd /path/to/eir-news && node scripts/fetch-news.js
+ *   Example cron entry: run every 6 hours from the app directory.
  */
 
 import { fetchWithWebSearch } from '../lib/news-fetcher.js';
