@@ -27,7 +27,7 @@ jobs:
         uses: withastro/action@v5
         with:
           path: site
-          package-manager: pnpm@latest
+          package-manager: pnpm@9.15.9
 
   deploy:
     environment:
